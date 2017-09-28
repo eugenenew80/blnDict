@@ -1,0 +1,4 @@
+﻿id;code;name;manufacturer;rated_current1;rated_current2;accuracy_class;min_current;max_current
+1;ABB A1802 RL;ABB A1802 RL;ABB;null;null;0.5;null;null
+2;ABB A1805 RL2;ABB A1805 RL2;ABB;null;null;0.5;null;null
+

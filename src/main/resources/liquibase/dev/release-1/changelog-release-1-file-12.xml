@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    
+
+    <changeSet id="eug-46" logicalFilePath="path-independent" author="eugene" context="postgres">        
+        <comment>Creating table: dict_voltage_trans</comment>
+        <createTable tableName="dict_voltage_trans" schemaName="apps">            
+            <column name="id" type="number">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="code" type="varchar(15)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="manufacturer" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="serial_number" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+                        
+            <column name="rated_voltage1" type="number">
+                <constraints nullable="true"/>
+            </column>  
+            
+            <column name="rated_voltage2" type="number">
+                <constraints nullable="true"/>
+            </column>  
+            
+            <column name="accuracy_class" type="number">
+                <constraints nullable="true"/>
+            </column>  
+            
+            <column name="min_voltage" type="number">
+                <constraints nullable="true"/>
+            </column>  
+            
+            <column name="max_voltage" type="number">
+                <constraints nullable="true"/>
+            </column> 
+            
+            <column name="company_id" type="number">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_verification_date" type="date">
+                <constraints nullable="true"/>
+            </column>
+                                    			                                                 
+            <column name="next_verification_date" type="date">
+                <constraints nullable="true"/>
+            </column>                                                             
+        </createTable>
+    </changeSet>
+
+	<changeSet id="eug-47" logicalFilePath="path-independent" author="eugene" context="postgres"> 
+	    <comment>Creating primary key for table: dict_voltage_trans</comment>
+	    <addPrimaryKey 
+	            columnNames="id"
+	            constraintName="pk_dict_voltage_trans"
+	            schemaName="apps"
+	            tableName="dict_voltage_trans"/>
+	</changeSet>
+	
+	<changeSet id="eug-48" logicalFilePath="path-independent" author="eugene" context="postgres">
+		<comment>Load demo data to table: dict_voltage_trans</comment>
+	    <loadData
+	            encoding="UTF-8"
+	            relativeToChangelogFile="true"
+	            file="data/dict_voltage_trans.csv"
+	            quotchar="'"
+	            schemaName="apps"
+	            separator=";"
+	            tableName="dict_voltage_trans">
+	        
+	        <column name="id" 						type="NUMERIC"/>
+	        <column name="code" 					type="STRING"/>
+	        <column name="name"						type="STRING"/>
+	        <column name="manufacturer"				type="STRING"/>
+	        <column name="serial_number"			type="STRING"/>
+	        <column name="rated_voltage1" 			type="NUMERIC"/>
+	        <column name="rated_voltage2" 			type="NUMERIC"/>
+	        <column name="accuracy_class" 			type="NUMERIC"/>
+	        <column name="min_voltage" 				type="NUMERIC"/>
+	        <column name="max_voltage" 				type="NUMERIC"/>
+	        <column name="company_id" 				type="NUMERIC"/>
+	        <column name="last_verification_date" 	type="DATE"/>
+	        <column name="next_verification_date" 	type="DATE"/>	        
+	    </loadData>
+		
+		<rollback>
+        	<delete schemaName="apps" tableName="dict_voltage_trans" />
+        </rollback>	
+	</changeSet>	
+	
+	<changeSet id="eug-49" logicalFilePath="path-independent" author="eugene" context="postgres">
+	    <comment>Creating sequence for table: dict_voltage_trans</comment>
+	    <createSequence 
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="dict_voltage_trans_s"
+	            startValue="3"/>
+	</changeSet>	
+	
+</databaseChangeLog>

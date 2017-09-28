@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<dict_units id="1" code="А" name="ампер" />
+    <dict_units id="2" code="В" name="вольт" />
+
+    <dict_companies id="1" code="0001" name='ТОО "АРЭК-Энергосбыт"'  tin="040840000124" />
+    <dict_companies id="2" code="0002" name='ТОО "АлматыЭнергоСбыт"' tin="060640004748" />
+
+    <dict_accounting_types id="1" code="01" name="Технический учёт" />
+    <dict_accounting_types id="2" code="02" name="Коммерческий учёт" />
+
+    <dict_data_sources id="1" code="KEGOC_EMCOS" name="АСКУЭ ЕМКОС" />
+    <dict_data_sources id="2" code="KEGOC_WinOIC" name="Система ТИ WinOIC" />
+
+    <dict_energy_nodes id="1" code="Кар.ЭУ" name="Карагандинский энергоузел" />
+    <dict_energy_nodes id="2" code="Жезк.ЭУ" name="Жезказганский Энергоузел" />
+</dataset>

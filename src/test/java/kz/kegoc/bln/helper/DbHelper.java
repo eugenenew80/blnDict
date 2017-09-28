@@ -1,0 +1,61 @@
+package kz.kegoc.bln.helper;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+
+public class DbHelper {
+	private EntityManagerFactory entityManagerFactory;
+	private EntityManager em;
+	private Connection connection;
+
+	public DbHelper() {
+		entityManagerFactory = Persistence.createEntityManagerFactory("bln_test");
+		em = entityManagerFactory.createEntityManager();
+
+		em.getTransaction().begin();
+		connection = em.unwrap(Connection.class);
+		em.getTransaction().commit();
+	}
+	
+	public EntityManager getEntityManager() {
+		return em;
+	}
+
+
+	public void closeDatabase()  {
+		if (entityManagerFactory != null) {
+			entityManagerFactory.close();
+		}
+	}
+	
+	public void beginTransaction() {
+		em.getTransaction().begin();
+	}
+	
+	
+	public void commitTransaction() {
+		em.getTransaction().commit();
+		em.clear();
+	}
+
+	
+	public void insert(List<DataSetLoader> loaders) throws Exception {
+		for (DataSetLoader loader : loaders)
+			loader.cleanAndInsert(connection);
+	}
+
+	public void delete(List<DataSetLoader> loaders) throws Exception {
+		for (DataSetLoader loader : loaders)
+			loader.deleteAll(connection);
+	}
+
+	public void cleanAndInsert(List<DataSetLoader> loaders) throws Exception {
+		for (DataSetLoader loader : loaders)
+			loader.cleanAndInsert(connection);
+	}
+}

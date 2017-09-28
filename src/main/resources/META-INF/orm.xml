@@ -1,0 +1,1278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/orm_2_1.xsd">
+	<entity class="kz.kegoc.bln.entity.dict.Unit">
+		<table name="dict_units" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_units_gen" />
+        		<sequence-generator
+        			name="dict_units_gen"
+        			sequence-name="dict_units_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+
+      		<basic name="baseUnit">
+      			<column name="base_unit" />
+      		</basic>
+      		
+      		<basic name="factor">
+      			<column name="factor" />
+      		</basic>      		
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.DataSource">
+		<table name="dict_data_sources" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_data_sources_gen" />
+        		<sequence-generator
+        			name="dict_data_sources_gen"
+        			sequence-name="dict_data_sources_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.MeterType">
+		<table name="dict_meter_types" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_meter_types_gen" />
+        		<sequence-generator
+        			name="dict_meter_types_gen"
+        			sequence-name="dict_meter_types_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="manufacturer">
+      			<column name="manufacturer" />
+      		</basic>
+      		
+      		<basic name="ratedCurrent">
+      			<column name="rated_current" />
+      		</basic>
+      		
+      		<basic name="ratedVoltage">
+      			<column name="rated_voltage" />
+      		</basic>
+
+      		<basic name="accuracyClass">
+      			<column name="accuracy_class" />
+      		</basic>      		
+      		      		      		      		
+      		<basic name="minimumLoad">
+      			<column name="minimum_load" />
+      		</basic>      		
+
+      		<basic name="maximumLoad">
+      			<column name="maximum_load" />
+      		</basic>  
+      		    		
+		</attributes>
+	</entity>
+	
+	
+	<entity class="kz.kegoc.bln.entity.dict.CurrentTransType">
+		<table name="dict_current_trans_types" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_current_trans_types_gen" />
+        		<sequence-generator
+        			name="dict_current_trans_types_gen"
+        			sequence-name="dict_current_trans_types_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="manufacturer">
+      			<column name="manufacturer" />
+      		</basic>
+      		
+      		<basic name="ratedCurrent1">
+      			<column name="rated_current1" />
+      		</basic>
+
+      		<basic name="ratedCurrent2">
+      			<column name="rated_current2" />
+      		</basic>
+
+      		<basic name="accuracyClass">
+      			<column name="accuracy_class" />
+      		</basic>      		
+      		      		      		      		
+      		<basic name="minCurrent">
+      			<column name="min_current" />
+      		</basic>      		
+
+      		<basic name="maxCurrent">
+      			<column name="max_current" />
+      		</basic>  
+      		    		
+		</attributes>
+	</entity>
+		
+
+	<entity class="kz.kegoc.bln.entity.dict.VoltageTransType">
+		<table name="dict_voltage_trans_types" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_voltage_trans_types_gen" />
+        		<sequence-generator
+        			name="dict_voltage_trans_types_gen"
+        			sequence-name="dict_voltage_trans_types_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="manufacturer">
+      			<column name="manufacturer" />
+      		</basic>
+      		
+      		<basic name="ratedVoltage1">
+      			<column name="rated_voltage1" />
+      		</basic>
+
+      		<basic name="ratedVoltage2">
+      			<column name="rated_voltage2" />
+      		</basic>
+
+      		<basic name="accuracyClass">
+      			<column name="accuracy_class" />
+      		</basic>      		
+      		      		      		      		
+      		<basic name="minVoltage">
+      			<column name="min_voltage" />
+      		</basic>      		
+
+      		<basic name="maxVoltage">
+      			<column name="max_voltage" />
+      		</basic>  
+      		    		
+		</attributes>
+	</entity>
+	
+	
+	<entity class="kz.kegoc.bln.entity.dict.EnergyZone">
+		<table name="dict_energy_zones" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_energy_zones_gen" />
+        		<sequence-generator
+        			name="dict_energy_zones_gen"
+        			sequence-name="dict_energy_zones_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+		</attributes>
+	</entity>
+	
+	
+	<entity class="kz.kegoc.bln.entity.dict.Region">
+		<table name="dict_regions" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_regions_gen" />
+        		<sequence-generator
+        			name="dict_regions_gen"
+        			sequence-name="dict_regions_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+		</attributes>
+	</entity>
+	
+
+	<entity class="kz.kegoc.bln.entity.dict.EnergyNode">
+		<table name="dict_energy_nodes" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_energy_nodes_gen" />
+        		<sequence-generator
+        			name="dict_energy_nodes_gen"
+        			sequence-name="dict_energy_nodes_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+		</attributes>
+	</entity>
+	
+		
+	<entity class="kz.kegoc.bln.entity.dict.Company">
+		<table name="dict_companies" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_companies_gen" />
+        		<sequence-generator
+        			name="dict_companies_gen"
+        			sequence-name="dict_companies_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="tin">
+      			<column name="tin" />
+      		</basic>      		
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.Meter">
+		<table name="dict_meters" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_meters_gen" />
+        		<sequence-generator
+        			name="dict_meters_gen"
+        			sequence-name="dict_meters_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+      		
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="manufacturer">
+      			<column name="manufacturer" />
+      		</basic>
+      		
+      		<basic name="serialNumber">
+      			<column name="serial_number" />
+      		</basic>
+      		      		
+      		<basic name="ratedCurrent">
+      			<column name="rated_current" />
+      		</basic>
+      		
+      		<basic name="ratedVoltage">
+      			<column name="rated_voltage" />
+      		</basic>
+
+      		<basic name="accuracyClass">
+      			<column name="accuracy_class" />
+      		</basic>      		
+      		      		      		      		
+      		<basic name="minimumLoad">
+      			<column name="minimum_load" />
+      		</basic>      		
+
+      		<basic name="maximumLoad">
+      			<column name="maximum_load" />
+      		</basic>  
+
+      		<basic name="lastVerificationDate">
+      			<column name="last_verification_date" />
+      		</basic>
+      		
+      		<basic name="nextVerificationDate">
+      			<column name="next_verification_date" />
+      		</basic> 
+      		
+			<many-to-one name="company">
+				<join-column name="company_id"/>
+			</many-to-one> 
+		</attributes>
+	</entity>
+
+	
+	<entity class="kz.kegoc.bln.entity.dict.CurrentTrans">
+		<table name="dict_current_trans" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_current_trans_gen" />
+        		<sequence-generator
+        			name="dict_current_trans_gen"
+        			sequence-name="dict_current_trans_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="manufacturer">
+      			<column name="manufacturer" />
+      		</basic>
+      		
+      		<basic name="serialNumber">
+      			<column name="serial_number" />
+      		</basic>
+      		      		
+      		<basic name="ratedCurrent1">
+      			<column name="rated_current1" />
+      		</basic>
+
+      		<basic name="ratedCurrent2">
+      			<column name="rated_current2" />
+      		</basic>
+
+      		<basic name="accuracyClass">
+      			<column name="accuracy_class" />
+      		</basic>      		
+      		      		      		      		
+      		<basic name="minCurrent">
+      			<column name="min_current" />
+      		</basic>      		
+
+      		<basic name="maxCurrent">
+      			<column name="max_current" />
+      		</basic>  
+      		    		
+      		<basic name="lastVerificationDate">
+      			<column name="last_verification_date" />
+      		</basic>
+      		
+      		<basic name="nextVerificationDate">
+      			<column name="next_verification_date" />
+      		</basic> 
+      		
+			<many-to-one name="company">
+				<join-column name="company_id"/>
+			</many-to-one>       		    		
+		</attributes>
+	</entity>
+	
+
+	<entity class="kz.kegoc.bln.entity.dict.VoltageTrans">
+		<table name="dict_voltage_trans" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_voltage_trans_gen" />
+        		<sequence-generator
+        			name="dict_voltage_trans_gen"
+        			sequence-name="dict_voltage_trans_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="manufacturer">
+      			<column name="manufacturer" />
+      		</basic>
+      		
+      		<basic name="serialNumber">
+      			<column name="serial_number" />
+      		</basic>
+      		      		
+      		<basic name="ratedVoltage1">
+      			<column name="rated_voltage1" />
+      		</basic>
+
+      		<basic name="ratedVoltage2">
+      			<column name="rated_voltage2" />
+      		</basic>
+
+      		<basic name="accuracyClass">
+      			<column name="accuracy_class" />
+      		</basic>      		
+      		      		      		      		
+      		<basic name="minVoltage">
+      			<column name="min_voltage" />
+      		</basic>      		
+
+      		<basic name="maxVoltage">
+      			<column name="max_voltage" />
+      		</basic>  
+      		    		
+      		<basic name="lastVerificationDate">
+      			<column name="last_verification_date" />
+      		</basic>
+      		
+      		<basic name="nextVerificationDate">
+      			<column name="next_verification_date" />
+      		</basic> 
+      		
+			<many-to-one name="company">
+				<join-column name="company_id"/>
+			</many-to-one>       		    		
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.EnergySourceType">
+		<table name="dict_energy_source_types" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_energy_source_types_gen" />
+        		<sequence-generator
+        			name="dict_energy_source_types_gen"
+        			sequence-name="dict_energy_source_types_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="shortName">
+      			<column name="short_name" />
+      		</basic>      		
+		</attributes>
+	</entity>
+	
+	
+	<entity class="kz.kegoc.bln.entity.dict.Substation">
+		<table name="dict_substations" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_substations_gen" />
+        		<sequence-generator
+        			name="dict_substations_gen"
+        			sequence-name="dict_substations_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="shortName">
+      			<column name="short_name" />
+      		</basic>     
+      		
+      		<basic name="voltageClass">
+      			<column name="voltage_class" />
+      		</basic>  
+      		      		
+      		<basic name="address">
+      			<column name="address" />
+      		</basic>
+      		
+			<many-to-one name="substationType">
+				<join-column name="substation_type_id"/>
+			</many-to-one> 
+			
+      		<one-to-many name="companies" mapped-by="substation" />
+			<one-to-many name="meteringPoints" mapped-by="substation" />
+		</attributes>
+	</entity>
+	
+	
+	<entity class="kz.kegoc.bln.entity.dict.SubstationCompany">
+		<table name="dict_substation_companies" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_substation_companies_gen" />
+        		<sequence-generator
+        			name="dict_substation_companies_gen"
+        			sequence-name="dict_substation_companies_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+			
+      		<basic name="startDate">
+      			<column name="start_date" />
+      		</basic>
+
+      		<basic name="endDate">
+      			<column name="end_date" />
+      		</basic>
+      		
+			<many-to-one name="substation">
+				<join-column name="substation_id" />	
+			</many-to-one>  
+
+			<many-to-one name="company">
+				<join-column name="company_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.SubstationMeteringPoint">
+		<table name="dict_substation_metering_points" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_substation_metering_points_gen" />
+				<sequence-generator
+						name="dict_substation_metering_points_gen"
+						sequence-name="dict_substation_metering_points_s"
+						schema="apps"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="startDate">
+				<column name="start_date" />
+			</basic>
+
+			<basic name="endDate">
+				<column name="end_date" />
+			</basic>
+
+			<many-to-one name="substation">
+				<join-column name="substation_id" />
+			</many-to-one>
+
+			<many-to-one name="meteringPoint">
+				<join-column name="metering_point_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.EnergySource">
+		<table name="dict_energy_sources" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_energy_sources_gen" />
+        		<sequence-generator
+        			name="dict_energy_sources_gen"
+        			sequence-name="dict_energy_sources_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="shortName">
+      			<column name="short_name" />
+      		</basic>     
+      		
+      		<basic name="voltageClass">
+      			<column name="voltage_class" />
+      		</basic>  
+      		      		
+      		<basic name="address">
+      			<column name="address" />
+      		</basic>
+      		
+      		<basic name="installedPower">
+      			<column name="installed_power" />
+      		</basic>  
+      		      		
+			<many-to-one name="energySourceType">
+				<join-column name="energy_source_type_id"/>
+			</many-to-one>   
+			
+      		<one-to-many name="companies" mapped-by="energySource" />
+			<one-to-many name="meteringPoints" mapped-by="energySource" />
+		</attributes>
+	</entity>
+	
+
+	<entity class="kz.kegoc.bln.entity.dict.EnergySourceCompany">
+		<table name="dict_energy_source_companies" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_energy_source_companies_gen" />
+        		<sequence-generator
+        			name="dict_energy_source_companies_gen"
+        			sequence-name="dict_substation_companies_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+			
+      		<basic name="startDate">
+      			<column name="start_date" />
+      		</basic>
+
+      		<basic name="endDate">
+      			<column name="end_date" />
+      		</basic>
+      		
+			<many-to-one name="energySource">
+				<join-column name="energy_source_id" />	
+			</many-to-one>  
+
+			<many-to-one name="company">
+				<join-column name="company_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.EnergySourceMeteringPoint">
+		<table name="dict_energy_source_metering_points" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_energy_source_metering_points_gen" />
+				<sequence-generator
+						name="dict_energy_source_metering_points_gen"
+						sequence-name="dict_substation_metering_points_s"
+						schema="apps"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="startDate">
+				<column name="start_date" />
+			</basic>
+
+			<basic name="endDate">
+				<column name="end_date" />
+			</basic>
+
+			<many-to-one name="energySource">
+				<join-column name="energy_source_id" />
+			</many-to-one>
+
+			<many-to-one name="meteringPoint">
+				<join-column name="metering_point_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.MeteringType">
+		<table name="dict_metering_types" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_metering_types_gen" />
+        		<sequence-generator
+        			name="dict_metering_types_gen"
+        			sequence-name="dict_metering_types_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="shortName">
+      			<column name="short_name" />
+      		</basic>     
+		</attributes>
+	</entity>		
+	
+	
+	<entity class="kz.kegoc.bln.entity.dict.SubstationType">
+		<table name="dict_substation_types" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_substation_types_gen" />
+        		<sequence-generator
+        			name="dict_substation_types_gen"
+        			sequence-name="dict_substation_types_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="shortName">
+      			<column name="short_name" />
+      		</basic>     
+		</attributes>
+	</entity>		
+
+
+	<entity class="kz.kegoc.bln.entity.dict.AccountingType">
+		<table name="dict_accounting_types" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_accounting_types_gen" />
+        		<sequence-generator
+        			name="dict_accounting_types_gen"
+        			sequence-name="dict_accounting_types_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+		</attributes>
+	</entity>	
+
+
+	<entity class="kz.kegoc.bln.entity.dict.MeteringPointType">
+		<table name="dict_metering_point_types" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_metering_point_types_gen" />
+        		<sequence-generator
+        			name="dict_metering_point_types_gen"
+        			sequence-name="dict_metering_point_types_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+		</attributes>
+	</entity>
+	
+	
+	<entity class="kz.kegoc.bln.entity.dict.MeteringPoint">
+		<table name="dict_metering_points" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_metering_points_gen" />
+        		<sequence-generator
+        			name="dict_metering_points_gen"
+        			sequence-name="dict_metering_points_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="externalCode">
+      			<column name="external_code" />
+      		</basic>    
+
+      		<basic name="startDate">
+      			<column name="start_date" />
+      		</basic>
+
+      		<basic name="endDate">
+      			<column name="end_date" />
+      		</basic>
+
+      		<basic name="ratedVoltage">
+      			<column name="rated_voltage" />
+      		</basic>
+
+      		<basic name="limitError">
+      			<column name="limit_error" />
+      		</basic>
+
+      		<basic name="transformationRate">
+      			<column name="transformation_rate" />
+      		</basic>
+
+      		<basic name="minLoad">
+      			<column name="min_load" />
+      		</basic>
+
+      		<basic name="maxLoad">
+      			<column name="max_load" />
+      		</basic>
+
+			<many-to-one name="firstCompany">
+				<join-column name="first_company_id"/>
+			</many-to-one>  
+						
+			<many-to-one name="secondCompany">
+				<join-column name="second_company_id"/>
+			</many-to-one>  
+
+			<many-to-one name="meteringType">
+				<join-column name="metering_type_id"/>
+			</many-to-one>  
+
+			<many-to-one name="accountingType">
+				<join-column name="accounting_type_id"/>
+			</many-to-one>  
+
+			<many-to-one name="meteringPointType">
+				<join-column name="metering_point_type_id"/>
+			</many-to-one>  
+		</attributes>
+	</entity>	
+
+
+	<entity class="kz.kegoc.bln.entity.adm.Func">
+		<table name="adm_funcs" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="adm_funcs_gen" />
+        		<sequence-generator
+        			name="adm_funcs_gen"
+        			sequence-name="adm_funcs_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+		</attributes>
+	</entity>
+	
+	
+	<entity class="kz.kegoc.bln.entity.adm.Role">
+		<table name="adm_roles" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="adm_roles_gen" />
+        		<sequence-generator
+        			name="adm_roles_gen"
+        			sequence-name="adm_roles_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<one-to-many name="funcs" mapped-by="role" orphan-removal="true">
+	            <cascade>
+	                <cascade-all/>
+	            </cascade>       		
+      		</one-to-many>
+      		
+      		<one-to-many name="modules" mapped-by="role" orphan-removal="true">
+	            <cascade>
+	                <cascade-all/>
+	            </cascade>      		
+      		</one-to-many>
+      		
+      		<one-to-many name="dicts" mapped-by="role" orphan-removal="true">
+	            <cascade>
+	                <cascade-all/>
+	            </cascade>      		
+      		</one-to-many>      		
+		</attributes>
+	</entity>
+	
+
+	<entity class="kz.kegoc.bln.entity.adm.User">
+		<table name="adm_users" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="adm_users_gen" />
+        		<sequence-generator
+        			name="adm_users_gen"
+        			sequence-name="adm_users_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<one-to-many name="roles" mapped-by="user" orphan-removal="true">
+	            <cascade>
+	                <cascade-all/>
+	            </cascade>      		
+      		</one-to-many>
+		</attributes>
+	</entity>
+	
+
+	<entity class="kz.kegoc.bln.entity.meta.Module">
+		<table name="meta_modules" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="meta_modules_gen" />
+        		<sequence-generator
+        			name="meta_modules_gen"
+        			sequence-name="meta_modules_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="shortName">
+      			<column name="short_name" />
+      		</basic>      		
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.meta.Dict">
+		<table name="meta_dicts" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="meta_dicts_gen" />
+        		<sequence-generator
+        			name="meta_dicts_gen"
+        			sequence-name="meta_dicts_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="shortName">
+      			<column name="short_name" />
+      		</basic>      		
+
+      		<basic name="imagePath">
+      			<column name="image_path" />
+      		</basic>      		
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.meta.Adm">
+		<table name="meta_adms" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="meta_adms_gen" />
+        		<sequence-generator
+        			name="meta_adms_gen"
+        			sequence-name="meta_adms_s"
+					schema="apps"
+					allocation-size="1"
+        		/>				
+			</id>
+
+      		<basic name="code">
+      			<column name="code" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+      		
+      		<basic name="shortName">
+      			<column name="short_name" />
+      		</basic>      		
+
+      		<basic name="imagePath">
+      			<column name="image_path" />
+      		</basic>      		
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.adm.UserRole">
+		<table name="adm_user_roles" schema="apps" />
+		<attributes>
+			<embedded-id name="id" />
+			
+      		<basic name="startDate">
+      			<column name="start_date" />
+      		</basic>
+
+      		<basic name="endDate">
+      			<column name="end_date" />
+      		</basic>
+      						
+			<many-to-one name="user" maps-id="userId">
+				<join-column name="user_id" />	
+			</many-to-one>  
+
+			<many-to-one name="role" maps-id="roleId">
+				<join-column name="role_id"/>
+			</many-to-one>  
+		</attributes>
+	</entity>
+	
+	<entity class="kz.kegoc.bln.entity.adm.RoleModule">
+		<table name="adm_role_modules" schema="apps" />
+		<attributes>
+			<embedded-id name="id" />
+			
+      		<basic name="startDate">
+      			<column name="start_date" />
+      		</basic>
+
+      		<basic name="endDate">
+      			<column name="end_date" />
+      		</basic>
+      		
+			<many-to-one name="role" maps-id="roleId">
+				<join-column name="role_id" />	
+			</many-to-one>  
+
+			<many-to-one name="module" maps-id="moduleId">
+				<join-column name="module_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+	
+	<entity class="kz.kegoc.bln.entity.adm.RoleFunc">
+		<table name="adm_role_funcs" schema="apps" />
+		<attributes>
+			<embedded-id name="id" />
+
+      		<basic name="startDate">
+      			<column name="start_date" />
+      		</basic>
+
+      		<basic name="endDate">
+      			<column name="end_date" />
+      		</basic>
+      					
+			<many-to-one name="role" maps-id="roleId">
+				<join-column name="role_id" />	
+			</many-to-one>  
+
+			<many-to-one name="func" maps-id="funcId">
+				<join-column name="func_id"/>
+			</many-to-one>  
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.adm.RoleDict">
+		<table name="adm_role_dicts" schema="apps" />
+		<attributes>
+			<embedded-id name="id" />
+
+      		<basic name="startDate">
+      			<column name="start_date" />
+      		</basic>
+
+      		<basic name="endDate">
+      			<column name="end_date" />
+      		</basic>
+
+			<many-to-one name="role" maps-id="roleId">
+				<join-column name="role_id" />
+			</many-to-one>
+
+			<many-to-one name="dict" maps-id="dictId">
+				<join-column name="dict_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+	<embeddable class="kz.kegoc.bln.entity.adm.UserRoleId">
+	    <attributes>
+	        <basic name="userId">
+	            <column name="user_id"/>
+	        </basic>
+	        <basic name="roleId">
+	            <column name="role_id"/>
+	        </basic>
+	    </attributes>
+	</embeddable>
+
+	<embeddable class="kz.kegoc.bln.entity.adm.RoleModuleId">
+	    <attributes>
+	        <basic name="roleId">
+	            <column name="role_id"/>
+	        </basic>
+	        <basic name="moduleId">
+	            <column name="module_id"/>
+	        </basic>
+	    </attributes>
+	</embeddable>
+
+	<embeddable class="kz.kegoc.bln.entity.adm.RoleFuncId">
+	    <attributes>
+	        <basic name="roleId">
+	            <column name="role_id"/>
+	        </basic>
+	        <basic name="funcId">
+	            <column name="func_id"/>
+	        </basic>
+	    </attributes>
+	</embeddable>
+
+
+	<embeddable class="kz.kegoc.bln.entity.adm.RoleDictId">
+	    <attributes>
+	        <basic name="roleId">
+	            <column name="role_id"/>
+	        </basic>
+	        <basic name="dictId">
+	            <column name="dict_id"/>
+	        </basic>
+	    </attributes>
+	</embeddable>
+
+
+</entity-mappings>

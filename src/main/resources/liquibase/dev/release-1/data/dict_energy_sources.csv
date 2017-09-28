@@ -1,0 +1,3 @@
+﻿id;code;name;short_name;voltage_class;energy_source_type_id;installed_power
+1;0001;Экибастузская ГРЭС 1;ЭкГРЭС-1;500;1;1000
+2;0002;Экибастузская ГРЭС 2;ЭкГРЭС-2;500;1;1000

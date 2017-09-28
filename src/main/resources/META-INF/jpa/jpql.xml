@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/orm_2_1.xsd">
+	
+	<named-query name="AccountingType.findAll">
+		<query>
+			select t from AccountingType t order by t.id
+		</query>
+	</named-query>
+	<named-query name="AccountingType.findByName">
+		<query>
+			select t from AccountingType t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="AccountingType.findByCode">
+		<query>
+			select t from AccountingType t where t.code=:code
+		</query>
+	</named-query>
+	
+		
+	<named-query name="Company.findAll">
+		<query>
+			select t from Company t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Company.findByName">
+		<query>
+			select t from Company t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Company.findByCode">
+		<query>
+			select t from Company t where t.code=:code
+		</query>
+	</named-query>
+	<named-query name="Company.findByTin">
+		<query>
+			select t from Company t where t.tin=:tin
+		</query>
+	</named-query>
+
+	
+	<named-query name="CurrentTrans.findAll">
+		<query>
+			select t from CurrentTrans t order by t.id
+		</query>
+	</named-query>
+	<named-query name="CurrentTrans.findByName">
+		<query>
+			select t from CurrentTrans t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="CurrentTrans.findByCode">
+		<query>
+			select t from CurrentTrans t where t.code=:code
+		</query>
+	</named-query>
+	
+
+	<named-query name="CurrentTransType.findAll">
+		<query>
+			select t from CurrentTransType t order by t.id
+		</query>
+	</named-query>
+	<named-query name="CurrentTransType.findByName">
+		<query>
+			select t from CurrentTransType t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="CurrentTransType.findByCode">
+		<query>
+			select t from CurrentTransType t where t.code=:code
+		</query>
+	</named-query>		
+	
+
+	<named-query name="DataSource.findAll">
+		<query>
+			select t from DataSource t order by t.id
+		</query>
+	</named-query>
+	<named-query name="DataSource.findByName">
+		<query>
+			select t from DataSource t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="DataSource.findByCode">
+		<query>
+			select t from DataSource t where t.code=:code
+		</query>
+	</named-query>
+	
+
+	<named-query name="EnergyNode.findAll">
+		<query>
+			select t from EnergyNode t order by t.id
+		</query>
+	</named-query>
+	<named-query name="EnergyNode.findByName">
+		<query>
+			select t from EnergyNode t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="EnergyNode.findByCode">
+		<query>
+			select t from EnergyNode t where t.code=:code
+		</query>
+	</named-query>
+	
+	
+	<named-query name="EnergySource.findAll">
+		<query>
+			select t from EnergySource t order by t.id
+		</query>
+	</named-query>
+	<named-query name="EnergySource.findByName">
+		<query>
+			select t from EnergySource t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="EnergySource.findByCode">
+		<query>
+			select t from EnergySource t where t.code=:code
+		</query>
+	</named-query>	
+	
+
+	<named-query name="EnergySourceType.findAll">
+		<query>
+			select t from EnergySourceType t order by t.id
+		</query>
+	</named-query>
+	<named-query name="EnergySourceType.findByName">
+		<query>
+			select t from EnergySourceType t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="EnergySourceType.findByCode">
+		<query>
+			select t from EnergySourceType t where t.code=:code
+		</query>
+	</named-query>	
+	
+		
+	<named-query name="EnergyZone.findAll">
+		<query>
+			select t from EnergyZone t order by t.id
+		</query>
+	</named-query>
+	<named-query name="EnergyZone.findByName">
+		<query>
+			select t from EnergyZone t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="EnergyZone.findByCode">
+		<query>
+			select t from EnergyZone t where t.code=:code
+		</query>
+	</named-query>
+	
+
+	<named-query name="Meter.findAll">
+		<query>
+			select t from Meter t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Meter.findByName">
+		<query>
+			select t from Meter t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Meter.findByCode">
+		<query>
+			select t from Meter t where t.code=:code
+		</query>
+	</named-query>			
+	
+	
+	<named-query name="MeteringPoint.findAll">
+		<query>
+			select t from MeteringPoint t order by t.id
+		</query>
+	</named-query>
+	<named-query name="MeteringPoint.findByName">
+		<query>
+			select t from MeteringPoint t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="MeteringPoint.findByCode">
+		<query>
+			select t from MeteringPoint t where t.code=:code
+		</query>
+	</named-query>
+	
+
+	<named-query name="MeteringPointType.findAll">
+		<query>
+			select t from MeteringPointType t order by t.id
+		</query>
+	</named-query>
+	<named-query name="MeteringPointType.findByName">
+		<query>
+			select t from MeteringPointType t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="MeteringPointType.findByCode">
+		<query>
+			select t from MeteringPointType t where t.code=:code
+		</query>
+	</named-query>
+	
+
+	<named-query name="MeteringType.findAll">
+		<query>
+			select t from MeteringType t order by t.id
+		</query>
+	</named-query>
+	<named-query name="MeteringType.findByName">
+		<query>
+			select t from MeteringType t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="MeteringType.findByCode">
+		<query>
+			select t from MeteringType t where t.code=:code
+		</query>
+	</named-query>
+	
+							
+	<named-query name="MeterType.findAll">
+		<query>
+			select t from MeterType t order by t.id
+		</query>
+	</named-query>
+	<named-query name="MeterType.findByName">
+		<query>
+			select t from MeterType t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="MeterType.findByCode">
+		<query>
+			select t from MeterType t where t.code=:code
+		</query>
+	</named-query>
+	
+
+	<named-query name="Region.findAll">
+		<query>
+			select t from Region t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Region.findByName">
+		<query>
+			select t from Region t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Region.findByCode">
+		<query>
+			select t from Region t where t.code=:code
+		</query>
+	</named-query>
+		
+
+	<named-query name="Substation.findAll">
+		<query>
+			select t from Substation t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Substation.findByName">
+		<query>
+			select t from Substation t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Substation.findByCode">
+		<query>
+			select t from Substation t where t.code=:code
+		</query>
+	</named-query>
+
+
+	<named-query name="SubstationType.findAll">
+		<query>
+			select t from SubstationType t order by t.id
+		</query>
+	</named-query>
+	<named-query name="SubstationType.findByName">
+		<query>
+			select t from SubstationType t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="SubstationType.findByCode">
+		<query>
+			select t from SubstationType t where t.code=:code
+		</query>
+	</named-query>
+	
+
+	<named-query name="Unit.findAll">
+		<query>
+			select t from Unit t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Unit.findByName">
+		<query>
+			select t from Unit t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Unit.findByCode">
+		<query>
+			select t from Unit t where t.code=:code
+		</query>
+	</named-query>
+	
+	
+	<named-query name="VoltageTrans.findAll">
+		<query>
+			select t from VoltageTrans t order by t.id
+		</query>
+	</named-query>
+	<named-query name="VoltageTrans.findByName">
+		<query>
+			select t from VoltageTrans t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="VoltageTrans.findByCode">
+		<query>
+			select t from VoltageTrans t where t.code=:code
+		</query>
+	</named-query>
+	
+
+	<named-query name="VoltageTransType.findAll">
+		<query>
+			select t from VoltageTransType t order by t.id
+		</query>
+	</named-query>
+	<named-query name="VoltageTransType.findByName">
+		<query>
+			select t from VoltageTransType t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="VoltageTransType.findByCode">
+		<query>
+			select t from VoltageTransType t where t.code=:code
+		</query>
+	</named-query>
+	
+
+	<named-query name="Func.findAll">
+		<query>
+			select t from Func t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Func.findByName">
+		<query>
+			select t from Func t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Func.findByCode">
+		<query>
+			select t from Func t where t.code=:code
+		</query>
+	</named-query>
+	
+			
+	<named-query name="Role.findAll">
+		<query>
+			select t from Role t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Role.findByName">
+		<query>
+			select t from Role t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Role.findByCode">
+		<query>
+			select t from Role t where t.code=:code
+		</query>
+	</named-query>
+	
+				
+	<named-query name="User.findAll">
+		<query>
+			select t from User t order by t.id
+		</query>
+	</named-query>
+	<named-query name="User.findByName">
+		<query>
+			select t from User t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="User.findByCode">
+		<query>
+			select t from User t where t.code=:code
+		</query>
+	</named-query>
+
+</entity-mappings>

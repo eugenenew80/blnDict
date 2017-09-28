@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+  <mapping>
+    <class-a>kz.kegoc.bln.entity.dict.MeteringPoint</class-a>
+    <class-b>kz.kegoc.bln.entity.dict.dto.MeteringPointDto</class-b>
+
+     <field>
+       <a>firstCompany.id</a>
+       <b>firstCompanyId</b>
+     </field>
+     
+     <field>
+       <a>secondCompany.id</a>
+       <b>secondCompanyId</b>
+     </field>
+
+     <field>
+       <a>meteringType.id</a>
+       <b>meteringTypeId</b>
+     </field>
+     
+     <field>
+       <a>accountingType.id</a>
+       <b>accountingTypeId</b>
+     </field>
+
+     <field>
+       <a>meteringPointType.id</a>
+       <b>meteringPointTypeId</b>
+     </field>
+  </mapping> 
+</mappings> 
