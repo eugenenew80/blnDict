@@ -3,11 +3,11 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>kz.kegoc</groupId>
-    <artifactId>bln</artifactId>
+    <artifactId>blnDictApi</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>blnApi</name>
-	<description>BILLING Application</description>
+    <name>blnDictApi</name>
+	<description>Web API for Billing Dictionaries</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,7 +16,7 @@
     </properties>
   		
     <build>
-        <finalName>blnApi</finalName>
+        <finalName>blnDictApi</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -236,5 +236,4 @@
             <scope>test</scope>
         </dependency>       
     </dependencies>
-
 </project>

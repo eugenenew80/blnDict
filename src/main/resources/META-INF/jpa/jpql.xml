@@ -396,4 +396,55 @@
 		</query>
 	</named-query>
 
+
+	<named-query name="Module.findAll">
+		<query>
+			select t from Module t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Module.findByName">
+		<query>
+			select t from Module t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Module.findByCode">
+		<query>
+			select t from Module t where t.code=:code
+		</query>
+	</named-query>
+	
+	
+	<named-query name="Dict.findAll">
+		<query>
+			select t from Dict t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Dict.findByName">
+		<query>
+			select t from Dict t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Dict.findByCode">
+		<query>
+			select t from Dict t where t.code=:code
+		</query>
+	</named-query>
+	
+	
+	<named-query name="Adm.findAll">
+		<query>
+			select t from Adm t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Adm.findByName">
+		<query>
+			select t from Adm t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Adm.findByCode">
+		<query>
+			select t from Adm t where t.code=:code
+		</query>
+	</named-query>
+			
 </entity-mappings>
