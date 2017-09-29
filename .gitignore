@@ -1,4 +1,6 @@
 .classpath
 .project
+blnDictApi.iml
 .settings/
+.idea/
 target/
