@@ -2,9 +2,11 @@ package kz.kegoc.bln.entity.dict.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SubstationCompanyDto {
 	private Long id;
 	private Long substationId;
