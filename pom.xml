@@ -63,7 +63,20 @@
                   <username>${username}</username>
                   <password>${password}</password>              
                 </configuration>                
-            </plugin>  
+            </plugin>
+
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.2.0.Final</version>
+
+                <configuration>
+                    <hostname>localhost</hostname>
+                    <port>9990</port>
+                    <username>admin</username>
+                    <password>1</password>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
