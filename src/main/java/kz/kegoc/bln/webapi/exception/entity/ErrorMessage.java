@@ -1,11 +1,10 @@
 package kz.kegoc.bln.webapi.exception.entity;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@XmlRootElement(name="errorMessage")
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@Data
+@EqualsAndHashCode(of= {"errCode"})
 public class ErrorMessage {	
 
 	public ErrorMessage() { }
@@ -20,25 +19,6 @@ public class ErrorMessage {
 		this.errCode = errCode;
 		this.errMsg = errMsg;
 	}
-	
-	
-	public String getErrMsg() {
-		return errMsg;
-	}
-
-	public void setErrMsg(String errMsg) {
-		this.errMsg = errMsg;
-	}
-
-	
-	public String getErrCode() {
-		return errCode;
-	}
-
-	public void setErrCode(String errCode) {
-		this.errCode = errCode;
-	}
-	
 	
 	private String errMsg;
 	private String errCode;

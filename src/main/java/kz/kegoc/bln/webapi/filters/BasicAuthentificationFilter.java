@@ -20,7 +20,7 @@ public class BasicAuthentificationFilter implements ContainerRequestFilter {
 
 	@Override
 	public void filter(ContainerRequestContext ctx) throws IOException {		
-		if (ctx.getUriInfo().getPath().equals("auth"))
+		if (ctx.getUriInfo().getPath().contains("auth"))
 			return;
 				
 		if (StringUtils.isEmpty(ctx.getHeaderString("Authorization")))

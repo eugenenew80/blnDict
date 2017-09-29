@@ -1,46 +1,14 @@
 package kz.kegoc.bln.webapi.config;
 
-import java.util.HashSet;
-import java.util.Set;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
-
-import kz.kegoc.bln.webapi.dict.DataSourceResourceImpl;
-import kz.kegoc.bln.webapi.dict.EnergyNodeResourceImpl;
-import kz.kegoc.bln.webapi.dict.EnergySourceResourceImpl;
-import kz.kegoc.bln.webapi.dict.EnergySourceTypeResourceImpl;
-import kz.kegoc.bln.webapi.dict.EnergyZoneResourceImpl;
-import kz.kegoc.bln.webapi.dict.MeterResourceImpl;
-import kz.kegoc.bln.webapi.dict.MeterTypeResourceImpl;
-import kz.kegoc.bln.webapi.dict.MeteringPointResourceImpl;
-import kz.kegoc.bln.webapi.dict.MeteringPointTypeResourceImpl;
-import kz.kegoc.bln.webapi.dict.MeteringTypeResourceImpl;
-import kz.kegoc.bln.webapi.dict.RegionResourceImpl;
-import kz.kegoc.bln.webapi.dict.SubstationResourceImpl;
-import kz.kegoc.bln.webapi.dict.SubstationTypeResourceImpl;
-import kz.kegoc.bln.service.auth.impl.AuthServiceImpl;
-import kz.kegoc.bln.webapi.adm.FuncResourceImpl;
-import kz.kegoc.bln.webapi.adm.RoleResourceImpl;
-import kz.kegoc.bln.webapi.adm.UserResourceImpl;
-import kz.kegoc.bln.webapi.dict.AccountingTypeResourceImpl;
-import kz.kegoc.bln.webapi.dict.CompanyResourceImpl;
-import kz.kegoc.bln.webapi.dict.CurrentTransResourceImpl;
-import kz.kegoc.bln.webapi.dict.CurrentTransTypeResourceImpl;
-import kz.kegoc.bln.webapi.dict.UnitResourceImpl;
-import kz.kegoc.bln.webapi.dict.VoltageTransResourceImpl;
-import kz.kegoc.bln.webapi.dict.VoltageTransTypeResourceImpl;
-import kz.kegoc.bln.webapi.exception.mapper.EntityNotFoundExceptionMapperImpl;
-import kz.kegoc.bln.webapi.exception.mapper.DefaultExceptionMapperImpl;
-import kz.kegoc.bln.webapi.exception.mapper.DuplicateEntityExceptionMapperImpl;
-import kz.kegoc.bln.webapi.exception.mapper.EjbExceptionMapperImpl;
-import kz.kegoc.bln.webapi.exception.mapper.InvalidArgumentExceptionMapperImpl;
-import kz.kegoc.bln.webapi.exception.mapper.RepositryNotFoundExceptionMapperImpl;
-import kz.kegoc.bln.webapi.exception.mapper.ValidationExceptionMapperImpl;
-import kz.kegoc.bln.webapi.exception.mapper.WebApplicationExceptionMapperImpl;
+import java.util.*;
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
+import kz.kegoc.bln.webapi.dict.*;
+import kz.kegoc.bln.webapi.adm.*;
+import kz.kegoc.bln.webapi.auth.AuthResourceImpl;
+import kz.kegoc.bln.webapi.exception.mapper.*;
 import kz.kegoc.bln.webapi.filters.BasicAuthentificationFilter;
-import kz.kegoc.bln.webapi.meta.MetaAdmResourceImpl;
-import kz.kegoc.bln.webapi.meta.MetaDictResourceImpl;
-import kz.kegoc.bln.webapi.meta.MetaModuleResourceImpl;
+import kz.kegoc.bln.webapi.meta.*;
 
 
 @ApplicationPath("/webapi")
@@ -50,7 +18,7 @@ public class JaxRsConfig extends Application {
 	public Set<Class<?>> getClasses() {
 		final Set<Class<?>> resources = new HashSet<Class<?>>();
 
-		resources.add(AuthServiceImpl.class);
+		resources.add(AuthResourceImpl.class);
 		
 		resources.add(UnitResourceImpl.class);
 		resources.add(DataSourceResourceImpl.class);
@@ -80,7 +48,6 @@ public class JaxRsConfig extends Application {
 		resources.add(MetaModuleResourceImpl.class);
 		resources.add(MetaDictResourceImpl.class);
 		resources.add(MetaAdmResourceImpl.class);
-		
 		
 		resources.add(BasicAuthentificationFilter.class);
 		

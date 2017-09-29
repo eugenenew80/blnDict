@@ -12,9 +12,12 @@
     <mapping-file>META-INF/jpa/jpql.xml</mapping-file>
 
     <properties>
-      <property name="eclipselink.logging.level.sql" value="FINE"/>
+      <!-- <property name="eclipselink.logging.level.sql" value="FINE"/>
       <property name="eclipselink.logging.parameters" value="true"/>
-      <property name="eclipselink.cache.shared.default" value="false"/>
+      <property name="eclipselink.cache.shared.default" value="false"/> -->
+      
+      <property name="hibernate.show_sql" value="true" />
+      <property name="hibernate.enable_lazy_load_no_trans" value="true" />
      </properties>
   </persistence-unit>
 
@@ -26,7 +29,7 @@
       <property name="javax.persistence.jdbc.url" 		value="jdbc:postgresql://localhost:5432/bln_test"/>
       <property name="javax.persistence.jdbc.user" 		value="postgres"/>
       <property name="javax.persistence.jdbc.password" 	value="1"/>
-      <property name="eclipselink.cache.shared.default" value="false"/>
+      <property name="hibernate.show_sql" value="false" />
     </properties>
   </persistence-unit>
   

@@ -1,25 +1,28 @@
 package kz.kegoc.bln.helper;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
 public class DbHelper {
 	private EntityManagerFactory entityManagerFactory;
 	private EntityManager em;
-	private Connection connection;
+	private Connection connection = null;
 
 	public DbHelper() {
 		entityManagerFactory = Persistence.createEntityManagerFactory("bln_test");
 		em = entityManagerFactory.createEntityManager();
-
+		
+		org.hibernate.Session session = em.unwrap(org.hibernate.Session.class);
+		connection = ((org.hibernate.internal.SessionImpl) session).connection();
+		
+		/*
 		em.getTransaction().begin();
 		connection = em.unwrap(Connection.class);
 		em.getTransaction().commit();
+		*/
 	}
 	
 	public EntityManager getEntityManager() {

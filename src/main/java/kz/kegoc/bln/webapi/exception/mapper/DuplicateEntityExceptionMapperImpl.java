@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.exception.mapper;
 
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
@@ -13,7 +14,8 @@ public class DuplicateEntityExceptionMapperImpl implements ExceptionMapper<Dupli
     @Override
     public Response toResponse(DuplicateEntityException exc) {
     	return Response.status(exc.getStatusCode())
-	        .entity(new ErrorMessage(exc.getCode(), exc.getMessage()))
+    		.type(MediaType.APPLICATION_JSON)
+    		.entity(new ErrorMessage(exc.getCode(), exc.getMessage()))
 	        .build();
     }
 }

@@ -15,9 +15,6 @@
     <dict_energy_source_types id="1" code="01" short_name="АЭС" name="Атомная электростанция" />
     <dict_energy_source_types id="2" code="02" short_name="ТЭС" name="Тепловая электростанция" />
     
-    <dict_energy_sources id="1" code="0001" short_name="ЭкГРЭС-1" name="Экибастузская ГРЭС 1" voltage_class="500" energy_source_type_id="1" installed_power="1000" />
-    <dict_energy_sources id="2" code="0002" short_name="ЭкГРЭС-2" name="Экибастузская ГРЭС 1" voltage_class="500" energy_source_type_id="1" installed_power="1000" />
-    
     <dict_energy_zones id="1" code="01" name="Северная" />
     <dict_energy_zones id="2" code="02" name="Южная" />
     
@@ -36,7 +33,9 @@
     <dict_substation_types id="1" code="01" name="Подстанция" short_name="ПС" />
     <dict_substation_types id="2" code="02" name="Комплектная трансформаторная подстанция" short_name="КТП" />        
 
-
 	<dict_units id="1" code="А" name="ампер" />
     <dict_units id="2" code="В" name="вольт" />
+
+    <dict_energy_sources id="1" code="0001" short_name="ЭкГРЭС-1" name="Экибастузская ГРЭС 1" voltage_class="500" energy_source_type_id="1" installed_power="1000" />
+    <dict_energy_sources id="2" code="0002" short_name="ЭкГРЭС-2" name="Экибастузская ГРЭС 1" voltage_class="500" energy_source_type_id="1" installed_power="1000" />
 </dataset>

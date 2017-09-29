@@ -2,6 +2,7 @@ package kz.kegoc.bln.webapi.exception.mapper;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
@@ -10,11 +11,10 @@ import kz.kegoc.bln.webapi.exception.entity.ErrorMessage;
 
 
 @Provider
-public class DefaultExceptionMapperImpl implements ExceptionMapper<Throwable> {
+public class DefaultExceptionMapperImpl implements ExceptionMapper<Throwable> { 
 	
     @Override
     public Response toResponse(Throwable exc) {
-    	
     	Throwable causeException = exc;
     	if (exc.getCause()!=null) 
     		causeException = exc.getCause();
@@ -44,6 +44,7 @@ public class DefaultExceptionMapperImpl implements ExceptionMapper<Throwable> {
     	}
     	
     	return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+    		.type(MediaType.APPLICATION_JSON)
             .entity(new ErrorMessage(code, message))
             .build();
     }

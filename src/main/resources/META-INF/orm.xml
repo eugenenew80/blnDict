@@ -8,8 +8,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_units_gen" />
         		<sequence-generator
         			name="dict_units_gen"
-        			sequence-name="dict_units_s"
-					schema="apps"
+        			sequence-name="apps.dict_units_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -41,8 +40,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_data_sources_gen" />
         		<sequence-generator
         			name="dict_data_sources_gen"
-        			sequence-name="dict_data_sources_s"
-					schema="apps"
+        			sequence-name="apps.dict_data_sources_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -66,8 +64,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_meter_types_gen" />
         		<sequence-generator
         			name="dict_meter_types_gen"
-        			sequence-name="dict_meter_types_s"
-					schema="apps"
+        			sequence-name="apps.dict_meter_types_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -116,8 +113,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_current_trans_types_gen" />
         		<sequence-generator
         			name="dict_current_trans_types_gen"
-        			sequence-name="dict_current_trans_types_s"
-					schema="apps"
+        			sequence-name="apps.dict_current_trans_types_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -166,8 +162,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_voltage_trans_types_gen" />
         		<sequence-generator
         			name="dict_voltage_trans_types_gen"
-        			sequence-name="dict_voltage_trans_types_s"
-					schema="apps"
+        			sequence-name="apps.dict_voltage_trans_types_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -216,8 +211,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_energy_zones_gen" />
         		<sequence-generator
         			name="dict_energy_zones_gen"
-        			sequence-name="dict_energy_zones_s"
-					schema="apps"
+        			sequence-name="apps.dict_energy_zones_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -241,8 +235,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_regions_gen" />
         		<sequence-generator
         			name="dict_regions_gen"
-        			sequence-name="dict_regions_s"
-					schema="apps"
+        			sequence-name="apps.dict_regions_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -266,8 +259,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_energy_nodes_gen" />
         		<sequence-generator
         			name="dict_energy_nodes_gen"
-        			sequence-name="dict_energy_nodes_s"
-					schema="apps"
+        			sequence-name="apps.dict_energy_nodes_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -291,8 +283,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_companies_gen" />
         		<sequence-generator
         			name="dict_companies_gen"
-        			sequence-name="dict_companies_s"
-					schema="apps"
+        			sequence-name="apps.dict_companies_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -320,8 +311,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_meters_gen" />
         		<sequence-generator
         			name="dict_meters_gen"
-        			sequence-name="dict_meters_s"
-					schema="apps"
+        			sequence-name="apps.dict_meters_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -385,8 +375,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_current_trans_gen" />
         		<sequence-generator
         			name="dict_current_trans_gen"
-        			sequence-name="dict_current_trans_s"
-					schema="apps"
+        			sequence-name="apps.dict_current_trans_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -450,8 +439,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_voltage_trans_gen" />
         		<sequence-generator
         			name="dict_voltage_trans_gen"
-        			sequence-name="dict_voltage_trans_s"
-					schema="apps"
+        			sequence-name="apps.dict_voltage_trans_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -515,8 +503,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_energy_source_types_gen" />
         		<sequence-generator
         			name="dict_energy_source_types_gen"
-        			sequence-name="dict_energy_source_types_s"
-					schema="apps"
+        			sequence-name="apps.dict_energy_source_types_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -544,8 +531,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_substations_gen" />
         		<sequence-generator
         			name="dict_substations_gen"
-        			sequence-name="dict_substations_s"
-					schema="apps"
+        			sequence-name="apps.dict_substations_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -588,8 +574,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_substation_companies_gen" />
         		<sequence-generator
         			name="dict_substation_companies_gen"
-        			sequence-name="dict_substation_companies_s"
-					schema="apps"
+        			sequence-name="apps.dict_substation_companies_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -620,8 +605,7 @@
 				<generated-value strategy="SEQUENCE" generator="dict_substation_metering_points_gen" />
 				<sequence-generator
 						name="dict_substation_metering_points_gen"
-						sequence-name="dict_substation_metering_points_s"
-						schema="apps"
+						sequence-name="apps.dict_substation_metering_points_s"
 						allocation-size="1"
 				/>
 			</id>
@@ -653,8 +637,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_energy_sources_gen" />
         		<sequence-generator
         			name="dict_energy_sources_gen"
-        			sequence-name="dict_energy_sources_s"
-					schema="apps"
+        			sequence-name="apps.dict_energy_sources_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -701,8 +684,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_energy_source_companies_gen" />
         		<sequence-generator
         			name="dict_energy_source_companies_gen"
-        			sequence-name="dict_substation_companies_s"
-					schema="apps"
+        			sequence-name="apps.dict_substation_companies_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -734,8 +716,7 @@
 				<generated-value strategy="SEQUENCE" generator="dict_energy_source_metering_points_gen" />
 				<sequence-generator
 						name="dict_energy_source_metering_points_gen"
-						sequence-name="dict_substation_metering_points_s"
-						schema="apps"
+						sequence-name="apps.dict_substation_metering_points_s"
 						allocation-size="1"
 				/>
 			</id>
@@ -766,8 +747,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_metering_types_gen" />
         		<sequence-generator
         			name="dict_metering_types_gen"
-        			sequence-name="dict_metering_types_s"
-					schema="apps"
+        			sequence-name="apps.dict_metering_types_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -795,8 +775,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_substation_types_gen" />
         		<sequence-generator
         			name="dict_substation_types_gen"
-        			sequence-name="dict_substation_types_s"
-					schema="apps"
+        			sequence-name="apps.dict_substation_types_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -824,8 +803,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_accounting_types_gen" />
         		<sequence-generator
         			name="dict_accounting_types_gen"
-        			sequence-name="dict_accounting_types_s"
-					schema="apps"
+        			sequence-name="apps.dict_accounting_types_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -849,8 +827,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_metering_point_types_gen" />
         		<sequence-generator
         			name="dict_metering_point_types_gen"
-        			sequence-name="dict_metering_point_types_s"
-					schema="apps"
+        			sequence-name="apps.dict_metering_point_types_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -874,8 +851,7 @@
         		<generated-value strategy="SEQUENCE" generator="dict_metering_points_gen" />
         		<sequence-generator
         			name="dict_metering_points_gen"
-        			sequence-name="dict_metering_points_s"
-					schema="apps"
+        			sequence-name="apps.dict_metering_points_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -951,8 +927,7 @@
         		<generated-value strategy="SEQUENCE" generator="adm_funcs_gen" />
         		<sequence-generator
         			name="adm_funcs_gen"
-        			sequence-name="adm_funcs_s"
-					schema="apps"
+        			sequence-name="apps.adm_funcs_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -976,8 +951,7 @@
         		<generated-value strategy="SEQUENCE" generator="adm_roles_gen" />
         		<sequence-generator
         			name="adm_roles_gen"
-        			sequence-name="adm_roles_s"
-					schema="apps"
+        			sequence-name="apps.adm_roles_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -1019,8 +993,7 @@
         		<generated-value strategy="SEQUENCE" generator="adm_users_gen" />
         		<sequence-generator
         			name="adm_users_gen"
-        			sequence-name="adm_users_s"
-					schema="apps"
+        			sequence-name="apps.adm_users_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -1050,8 +1023,7 @@
         		<generated-value strategy="SEQUENCE" generator="meta_modules_gen" />
         		<sequence-generator
         			name="meta_modules_gen"
-        			sequence-name="meta_modules_s"
-					schema="apps"
+        			sequence-name="apps.meta_modules_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -1079,8 +1051,7 @@
         		<generated-value strategy="SEQUENCE" generator="meta_dicts_gen" />
         		<sequence-generator
         			name="meta_dicts_gen"
-        			sequence-name="meta_dicts_s"
-					schema="apps"
+        			sequence-name="apps.meta_dicts_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -1111,8 +1082,7 @@
         		<generated-value strategy="SEQUENCE" generator="meta_adms_gen" />
         		<sequence-generator
         			name="meta_adms_gen"
-        			sequence-name="meta_adms_s"
-					schema="apps"
+        			sequence-name="apps.meta_adms_s"
 					allocation-size="1"
         		/>				
 			</id>

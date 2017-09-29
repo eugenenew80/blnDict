@@ -64,56 +64,24 @@
                   <password>${password}</password>              
                 </configuration>                
             </plugin>  
-            
-			<plugin>
-				<groupId>org.glassfish.maven.plugin</groupId>
-				<artifactId>maven-glassfish-plugin</artifactId>
-				<version>2.1</version>
-				<configuration>
-				<glassfishDirectory>${local.glassfish.home}</glassfishDirectory>
-					<user>${local.glassfish.user}</user>
-					<adminPassword>1</adminPassword>
-					<domain>
-						<name>${local.glassfish.domain}</name>
-						<httpPort>8080</httpPort>
-						<adminPort>4848</adminPort>
-					</domain>
-					<components>
-						<component>
-							<name>${project.artifactId}</name>
-							<artifact>target/${project.build.finalName}.war</artifact>
-						</component>
-					</components>
-					<debug>true</debug>
-					<terse>false</terse>
-					<echo>true</echo>
-				</configuration>
-			</plugin>                     
         </plugins>
     </build>
 
     <profiles>
         <profile>
             <id>dev</id>            
+            
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>           
 
             <properties>
-            	<!-- Database properties for liquibase -->
 				<driver>org.postgresql.Driver</driver>
 				<url>jdbc:postgresql://localhost:5432/bln_dev</url>
 				<username>postgres</username>
 				<password>1</password>
 				<scripts>dev</scripts>
-				                  
-				<!-- Local glassfish properties -->                  
-				<local.glassfish.home>C:/jee/glassfish4.1.2/glassfish</local.glassfish.home>
-				<local.glassfish.user>admin</local.glassfish.user>
-				<local.glassfish.domain>domain1</local.glassfish.domain>
-				<local.glassfish.passfile>
-				    ${local.glassfish.home}/domains/${local.glassfish.domain}/master-password
-				</local.glassfish.passfile>
+				<skipTests>true</skipTests>
             </properties>
         </profile>      
         
@@ -121,13 +89,11 @@
             <id>test</id>
             
             <properties>
-                <!-- Database properties for liquibase -->
                 <driver>org.postgresql.Driver</driver>
                 <url>jdbc:postgresql://localhost:5432/bln_test</url>
                 <username>postgres</username>
                 <password>1</password>
                 <scripts>test</scripts>
-
 				<skipTests>false</skipTests>                             
             </properties>
         </profile>
@@ -135,13 +101,47 @@
     
  	<dependencies>
     	<!-- Provided dependencies  -->
-    
-		<dependency>
-		    <groupId>org.glassfish.main.extras</groupId>
-		    <artifactId>glassfish-embedded-all</artifactId>
-		    <version>4.1.2</version>
-		    <scope>provided</scope>
-		</dependency>		
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.0-b01</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.1-m01</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>javax.ejb-api</artifactId>
+            <version>3.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>2.0-EDR2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+            <scope>provided</scope>
+        </dependency>	
 		    
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -149,6 +149,13 @@
             <version>1.16.8</version>
             <scope>provided</scope>
         </dependency>
+
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.9.1</version>
+		    <scope>provided</scope>
+		</dependency>
 
 	        
         <!-- Prod dependencies  -->
@@ -234,6 +241,20 @@
             <artifactId>jetty-servlet</artifactId>
             <version>9.2.3.v20140905</version>
             <scope>test</scope>
-        </dependency>       
+        </dependency>
+        
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.7.Final</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.3.7.Final</version>
+            <scope>test</scope>
+        </dependency>        
     </dependencies>
 </project>
