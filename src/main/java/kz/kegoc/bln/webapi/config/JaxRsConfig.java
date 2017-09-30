@@ -4,7 +4,6 @@ import java.util.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import kz.kegoc.bln.webapi.dict.*;
-import kz.kegoc.bln.webapi.auth.AuthResourceImpl;
 import kz.kegoc.bln.webapi.exception.mapper.*;
 import kz.kegoc.bln.webapi.filters.BasicAuthentificationFilter;
 
@@ -16,8 +15,6 @@ public class JaxRsConfig extends Application {
 	public Set<Class<?>> getClasses() {
 		final Set<Class<?>> resources = new HashSet<Class<?>>();
 
-		resources.add(AuthResourceImpl.class);
-		
 		resources.add(UnitResourceImpl.class);
 		resources.add(DataSourceResourceImpl.class);
 		resources.add(MeterTypeResourceImpl.class);
