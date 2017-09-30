@@ -4,11 +4,9 @@ import java.util.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import kz.kegoc.bln.webapi.dict.*;
-import kz.kegoc.bln.webapi.adm.*;
 import kz.kegoc.bln.webapi.auth.AuthResourceImpl;
 import kz.kegoc.bln.webapi.exception.mapper.*;
 import kz.kegoc.bln.webapi.filters.BasicAuthentificationFilter;
-import kz.kegoc.bln.webapi.meta.*;
 
 
 @ApplicationPath("/webapi")
@@ -41,14 +39,6 @@ public class JaxRsConfig extends Application {
 		resources.add(MeteringPointTypeResourceImpl.class);	
 		resources.add(MeteringPointResourceImpl.class);
 				
-		resources.add(FuncResourceImpl.class);
-		resources.add(RoleResourceImpl.class);
-		resources.add(UserResourceImpl.class);
-		
-		resources.add(MetaModuleResourceImpl.class);
-		resources.add(MetaDictResourceImpl.class);
-		resources.add(MetaAdmResourceImpl.class);
-		
 		resources.add(BasicAuthentificationFilter.class);
 		
 		resources.add(RepositryNotFoundExceptionMapperImpl.class);

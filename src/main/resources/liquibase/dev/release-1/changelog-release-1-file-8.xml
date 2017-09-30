@@ -7,7 +7,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
     
 
-    <changeSet id="eug-30" logicalFilePath="path-independent" author="eugene" context="postgres">        
+    <changeSet id="dict-eug-30" logicalFilePath="path-independent" author="eugene" context="postgres">
         <comment>Creating table: dict_energy_nodes</comment>
         <createTable tableName="dict_energy_nodes" schemaName="apps">            
             <column name="id" type="number">
@@ -25,7 +25,7 @@
         </createTable>
     </changeSet>
 
-	<changeSet id="eug-31" logicalFilePath="path-independent" author="eugene" context="postgres"> 
+	<changeSet id="dict-eug-31" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating primary key for table: dict_energy_nodes</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
@@ -34,7 +34,7 @@
 	            tableName="dict_energy_nodes"/>
 	</changeSet>
 	
-	<changeSet id="eug-32" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-32" logicalFilePath="path-independent" author="eugene" context="postgres">
 		<comment>Load demo data to table: dict_energy_nodes</comment>
 	    <loadData
 	            encoding="UTF-8"
@@ -55,7 +55,7 @@
         </rollback>	
 	</changeSet>	
 	
-	<changeSet id="eug-33" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-33" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating sequence for table: dict_energy_nodes</comment>
 	    <createSequence 
 	            incrementBy="1"

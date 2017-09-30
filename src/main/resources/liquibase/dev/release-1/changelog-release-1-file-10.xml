@@ -7,7 +7,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
     
 
-    <changeSet id="eug-38" logicalFilePath="path-independent" author="eugene" context="postgres">        
+    <changeSet id="dict-eug-38" logicalFilePath="path-independent" author="eugene" context="postgres">
         <comment>Creating table: dict_meters</comment>
         <createTable tableName="dict_meters" schemaName="apps">            
             <column name="id" type="number">
@@ -64,7 +64,7 @@
         </createTable>
     </changeSet>
 
-	<changeSet id="eug-39" logicalFilePath="path-independent" author="eugene" context="postgres"> 
+	<changeSet id="dict-eug-39" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating primary key for table: dict_meters</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
@@ -73,7 +73,7 @@
 	            tableName="dict_meters"/>
 	</changeSet>
 	
-	<changeSet id="eug-40" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-40" logicalFilePath="path-independent" author="eugene" context="postgres">
 		<comment>Load demo data to table: dict_meters</comment>
 	    <loadData
 	            encoding="UTF-8"
@@ -104,7 +104,7 @@
         </rollback>	
 	</changeSet>	
 	
-	<changeSet id="eug-41" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-41" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating sequence for table: dict_meters</comment>
 	    <createSequence 
 	            incrementBy="1"

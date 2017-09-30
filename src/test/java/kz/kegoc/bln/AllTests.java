@@ -11,6 +11,7 @@ import org.junit.runners.Suite.SuiteClasses;
         CompanyRepositoryTest.class,
         AccountingTypeRepositoryTest.class,
         DataSourceRepositoryTest.class,
-        EnergyNodeRepositoryTest.class
+        EnergyNodeRepositoryTest.class,
+        EnergySourceTypeRepositoryTest.class
 })
 public class AllTests { }

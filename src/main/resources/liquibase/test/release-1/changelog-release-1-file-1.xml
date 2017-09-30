@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
     
-    <changeSet id="eug-1" logicalFilePath="path-independent" author="eugene" context="postgres">
+    <changeSet id="dict-eug-1" logicalFilePath="path-independent" author="eugene" context="postgres">
     	<comment>Creating schema</comment>        
 	    <sql dbms="postgresql" endDelimiter=";">
 	        CREATE SCHEMA apps
@@ -20,7 +20,7 @@
     </changeSet>
 
 
-    <changeSet id="eug-2" logicalFilePath="path-independent" author="eugene" context="postgres">        
+    <changeSet id="dict-eug-2" logicalFilePath="path-independent" author="eugene" context="postgres">
         <comment>Creating table: dict_units</comment>
         <createTable tableName="dict_units" schemaName="apps">            
             <column name="id" type="number">
@@ -45,7 +45,7 @@
         </createTable>
     </changeSet>
 
-	<changeSet id="eug-3" logicalFilePath="path-independent" author="eugene" context="postgres"> 
+	<changeSet id="dict-eug-3" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating primary key for table: dict_units</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
@@ -54,7 +54,7 @@
 	            tableName="dict_units"/>
 	</changeSet>
 	
-	<changeSet id="eug-4" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-4" logicalFilePath="path-independent" author="eugene" context="postgres">
 		<comment>Load demo data to table: dict_units</comment>
 	    <loadData
 	            encoding="UTF-8"
@@ -77,7 +77,7 @@
         </rollback>	
 	</changeSet>	
 	
-	<changeSet id="eug-5" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-5" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating sequence for table: dict_units</comment>
 	    <createSequence 
 	            incrementBy="1"
