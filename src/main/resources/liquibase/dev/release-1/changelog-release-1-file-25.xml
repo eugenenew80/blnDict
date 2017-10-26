@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    
+	<changeSet id="dict-eug-97" logicalFilePath="path-independent" author="eugene" context="postgres">
+		<comment>Load demo data to table: dict_metering_points</comment>
+	    <loadData
+	            encoding="UTF-8"
+	            relativeToChangelogFile="true"
+	            file="data/dict_metering_points.csv"
+	            quotchar="'"
+	            schemaName="apps"
+	            separator=";"
+	            tableName="dict_metering_points">
+	        
+	        <column name="id" 						type="NUMERIC"/>
+	        <column name="code" 					type="STRING"/>
+	        <column name="external_code" 			type="STRING"/>
+	        <column name="name"						type="STRING"/>
+	        <column name="first_company_id" 		type="NUMERIC"/>
+	        <column name="second_company_id" 		type="NUMERIC"/>
+	        <column name="metering_type_id" 		type="NUMERIC"/>
+	        <column name="accounting_type_id" 		type="NUMERIC"/>
+	        <column name="metering_point_type_id" 	type="NUMERIC"/>
+	    </loadData>
+		
+		<rollback>
+        	<delete schemaName="apps" tableName="dict_metering_points" />
+        </rollback>	
+	</changeSet>		
+</databaseChangeLog>
