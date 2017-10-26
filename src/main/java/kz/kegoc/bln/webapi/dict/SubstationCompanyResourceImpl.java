@@ -18,12 +18,6 @@ import kz.kegoc.bln.service.dict.SubstationService;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class SubstationCompanyResourceImpl {
-		
-	public SubstationCompanyResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Arrays.asList("mapping/dict/SubstationCompanyDtoDefaultMapping.xml"));
-	}
-
 
 	@GET
 	public Response getAll(@PathParam("substationId") Long substationId) {
@@ -77,7 +71,11 @@ public class SubstationCompanyResourceImpl {
 	}
 
 
-	@Inject private SubstationService substationService;
-	@Inject private SubstationCompanyService service;
-	private DozerBeanMapper mapper;
-}
+	@Inject
+	private SubstationService substationService;
+
+	@Inject
+	private SubstationCompanyService service;
+
+	@Inject
+	private DozerBeanMapper mapper;}

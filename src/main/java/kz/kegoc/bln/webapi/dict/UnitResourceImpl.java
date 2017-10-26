@@ -19,12 +19,6 @@ import kz.kegoc.bln.service.dict.UnitService;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class UnitResourceImpl {
-	
-	public UnitResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Arrays.asList("mapping/dict/UnitDtoDefaultMapping.xml"));
-	} 
-
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
@@ -103,6 +97,9 @@ public class UnitResourceImpl {
 	}	
 	
 
-	@Inject private UnitService unitService;
+	@Inject
+	private UnitService unitService;
+
+	@Inject
 	private DozerBeanMapper mapper;
 }

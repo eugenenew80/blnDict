@@ -19,13 +19,7 @@ import kz.kegoc.bln.service.dict.CompanyService;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class CompanyResourceImpl {
-	
-	public CompanyResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Arrays.asList("mapping/dict/CompanyDtoDefaultMapping.xml"));
-	} 
 
-	
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
 		Query query = QueryImpl.builder()			
@@ -103,6 +97,9 @@ public class CompanyResourceImpl {
 	}
 	
 
-	@Inject private CompanyService service;
+	@Inject
+	private CompanyService service;
+
+	@Inject
 	private DozerBeanMapper mapper;
 }

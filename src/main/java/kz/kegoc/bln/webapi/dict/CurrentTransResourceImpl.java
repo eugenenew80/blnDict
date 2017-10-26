@@ -19,12 +19,6 @@ import kz.kegoc.bln.service.dict.CurrentTransService;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class CurrentTransResourceImpl {
-	
-	public CurrentTransResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Arrays.asList("mapping/dict/CurrentTransDtoDefaultMapping.xml"));
-	} 
-
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
@@ -103,6 +97,9 @@ public class CurrentTransResourceImpl {
 	}
 	
 
-	@Inject private CurrentTransService service;
+	@Inject
+	private CurrentTransService service;
+
+	@Inject
 	private DozerBeanMapper mapper;
 }

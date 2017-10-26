@@ -19,12 +19,6 @@ import kz.kegoc.bln.service.dict.VoltageTransService;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class VoltageTransResourceImpl {
-	
-	public VoltageTransResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Arrays.asList("mapping/dict/VoltageTransDtoDefaultMapping.xml"));
-	} 
-
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
@@ -103,6 +97,9 @@ public class VoltageTransResourceImpl {
 	}
 	
 
-	@Inject private VoltageTransService service;
+	@Inject
+	private VoltageTransService service;
+
+	@Inject
 	private DozerBeanMapper mapper;
 }

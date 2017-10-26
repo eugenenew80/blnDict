@@ -21,12 +21,6 @@ import java.util.stream.Collectors;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class SubstationMeteringPointResourceImpl {
-		
-	public SubstationMeteringPointResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Collections.singletonList("mapping/dict/SubstationMeteringPointDtoDefaultMapping.xml"));
-	}
-
 
 	@GET
 	public Response getAll(@PathParam("substationId") Long substationId) {
@@ -82,8 +76,15 @@ public class SubstationMeteringPointResourceImpl {
 	}
 
 	
-	@Inject private SubstationService substationService;
-    @Inject private MeteringPointService meteringPointService;
-	@Inject private SubstationMeteringPointService service;
+	@Inject
+	private SubstationService substationService;
+
+	@Inject
+	private MeteringPointService meteringPointService;
+
+	@Inject
+	private SubstationMeteringPointService service;
+
+	@Inject
 	private DozerBeanMapper mapper;
 }

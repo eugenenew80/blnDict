@@ -19,12 +19,6 @@ import kz.kegoc.bln.service.dict.EnergySourceTypeService;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class EnergySourceTypeResourceImpl {
-	
-	public EnergySourceTypeResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Arrays.asList("mapping/dict/EnergySourceTypeDtoDefaultMapping.xml"));
-	} 
-
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
@@ -103,6 +97,9 @@ public class EnergySourceTypeResourceImpl {
 	}
 	
 
-	@Inject private EnergySourceTypeService service;
+	@Inject
+	private EnergySourceTypeService service;
+
+	@Inject
 	private DozerBeanMapper mapper;
 }

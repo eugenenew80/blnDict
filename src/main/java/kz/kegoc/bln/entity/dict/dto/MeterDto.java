@@ -1,7 +1,8 @@
 package kz.kegoc.bln.entity.dict.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -22,6 +23,10 @@ public class MeterDto {
 	private Double maximumLoad;
 	private Long companyId;
 	private String companyName;
-	private Date lastVerificationDate;
-	private Date nextVerificationDate;	
+
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private LocalDate lastVerificationDate;
+
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private LocalDate nextVerificationDate;
 }

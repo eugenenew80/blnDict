@@ -19,12 +19,6 @@ import kz.kegoc.bln.service.dict.MeteringPointService;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class MeteringPointResourceImpl {
-	
-	public MeteringPointResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Arrays.asList("mapping/dict/MeteringPointDtoDefaultMapping.xml"));
-	} 
-
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
@@ -103,6 +97,8 @@ public class MeteringPointResourceImpl {
 	}
 	
 
-	@Inject private MeteringPointService service;
-	private DozerBeanMapper mapper;
-}
+	@Inject
+	private MeteringPointService service;
+
+	@Inject
+	private DozerBeanMapper mapper;}

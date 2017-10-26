@@ -22,12 +22,6 @@ import java.util.stream.Collectors;
 @Consumes({ "application/xml", "application/json" })
 public class EnergySourceMeteringPointResourceImpl {
 		
-	public EnergySourceMeteringPointResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Collections.singletonList("mapping/dict/EnergySourceMeteringPointDtoDefaultMapping.xml"));
-	}
-
-
 	@GET
 	public Response getAll(@PathParam("energySourceId") Long energySourceId) {
 		List<EnergySourceMeteringPointDto> list = energySourceService.findById(energySourceId)
@@ -80,7 +74,11 @@ public class EnergySourceMeteringPointResourceImpl {
 	}
 	
 	
-	@Inject private EnergySourceService energySourceService;
-	@Inject private EnergySourceMeteringPointService service;
-	private DozerBeanMapper mapper;
-}
+	@Inject
+	private EnergySourceService energySourceService;
+
+	@Inject
+	private EnergySourceMeteringPointService service;
+
+	@Inject
+	private DozerBeanMapper mapper;}

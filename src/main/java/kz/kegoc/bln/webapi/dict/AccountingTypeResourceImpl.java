@@ -19,12 +19,6 @@ import kz.kegoc.bln.service.dict.AccountingTypeService;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class AccountingTypeResourceImpl {
-	
-	public AccountingTypeResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Arrays.asList("mapping/dict/AccountingTypeDtoDefaultMapping.xml"));
-	} 
-
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
@@ -103,6 +97,9 @@ public class AccountingTypeResourceImpl {
 	}
 	
 
-	@Inject private AccountingTypeService service;
+	@Inject
+	private AccountingTypeService service;
+
+	@Inject
 	private DozerBeanMapper mapper;
 }

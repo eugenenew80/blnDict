@@ -19,12 +19,6 @@ import kz.kegoc.bln.service.dict.MeteringTypeService;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class MeteringTypeResourceImpl {
-	
-	public MeteringTypeResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Arrays.asList("mapping/dict/MeteringTypeDtoDefaultMapping.xml"));
-	} 
-
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
@@ -103,6 +97,8 @@ public class MeteringTypeResourceImpl {
 	}
 	
 
-	@Inject private MeteringTypeService meteringTypeService;
-	private DozerBeanMapper mapper;
-}
+	@Inject
+	private MeteringTypeService meteringTypeService;
+
+	@Inject
+	private DozerBeanMapper mapper;}

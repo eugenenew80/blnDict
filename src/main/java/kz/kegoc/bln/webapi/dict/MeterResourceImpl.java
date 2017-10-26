@@ -13,18 +13,11 @@ import kz.kegoc.bln.entity.dict.dto.MeterDto;
 import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.MeterService;
 
-
 @RequestScoped
 @Path("/dict/dictMeter")
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class MeterResourceImpl {
-	
-	public MeterResourceImpl() {
-		mapper = new DozerBeanMapper();
-		mapper.setMappingFiles(Arrays.asList("mapping/dict/MeterDtoDefaultMapping.xml"));
-	} 
-
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
@@ -38,7 +31,7 @@ public class MeterResourceImpl {
 			.stream()
 			.map( it-> mapper.map(it, MeterDto.class) )
 			.collect(Collectors.toList());
-		
+
 		return Response.ok()
 			.entity(new GenericEntity<Collection<MeterDto>>(list){})
 			.build();
@@ -101,8 +94,10 @@ public class MeterResourceImpl {
 		return Response.noContent()
 			.build();
 	}
-	
 
-	@Inject private MeterService service;
+	@Inject
+	private MeterService service;
+
+	@Inject
 	private DozerBeanMapper mapper;
 }
