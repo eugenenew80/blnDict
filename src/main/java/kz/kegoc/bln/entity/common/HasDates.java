@@ -1,11 +1,12 @@
 package kz.kegoc.bln.entity.common;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public interface HasDates  {
-	Date getCreateDate();
-	Date getUpdateDate();
+	LocalDateTime getCreateDate();
+	LocalDateTime getUpdateDate();
 	
-	void setCreateDate(Date createDate);
-	void setUpdateDate(Date updateDate) ;
+	void setCreateDate(LocalDateTime createDate);
+	void setUpdateDate(LocalDateTime updateDate) ;
 }

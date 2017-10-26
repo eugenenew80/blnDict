@@ -1,7 +1,7 @@
 package kz.kegoc.bln.entity.dict.dto;
 
-import java.util.Date;
-
+import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -14,8 +14,6 @@ public class MeteringPointDto {
 	private String code;
 	private String name;
 	private String externalCode;
-	private Date startDate;
-	private Date endDate;
 	private Double ratedVoltage;
 	private Double limitError;
 	private Double transformationRate;
@@ -31,4 +29,10 @@ public class MeteringPointDto {
 	private String accountingTypeName;
 	private Long meteringPointTypeId;
 	private String meteringPointTypeName;
+
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private LocalDate startDate;
+
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private LocalDate endDate;
 }

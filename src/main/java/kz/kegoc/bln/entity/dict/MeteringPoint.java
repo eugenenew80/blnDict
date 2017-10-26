@@ -1,6 +1,6 @@
 package kz.kegoc.bln.entity.dict;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
 import lombok.*;
@@ -34,8 +34,8 @@ public class MeteringPoint implements HasId, HasCode, HasName {
 	@NotNull
 	private MeteringPointType meteringPointType;
 	
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	private Double ratedVoltage;
 	private Double limitError;
 	private Double transformationRate;

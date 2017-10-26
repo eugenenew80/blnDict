@@ -1,6 +1,6 @@
 package kz.kegoc.bln.entity.dict;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
 import lombok.*;
@@ -28,6 +28,6 @@ public class VoltageTrans implements HasId, HasCode, HasName {
 	private Double accuracyClass;
 	private Double minVoltage;
 	private Double maxVoltage;
-	private Date lastVerificationDate;
-	private Date nextVerificationDate;	
+	private LocalDate lastVerificationDate;
+	private LocalDate nextVerificationDate;
 }

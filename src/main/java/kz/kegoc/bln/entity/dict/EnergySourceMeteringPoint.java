@@ -1,6 +1,6 @@
 package kz.kegoc.bln.entity.dict;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 import kz.kegoc.bln.entity.common.HasId;
 import lombok.*;
@@ -16,6 +16,6 @@ public class EnergySourceMeteringPoint implements HasId {
 	@NotNull
 	private MeteringPoint meteringPoint;
 	
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 }
