@@ -119,4 +119,5 @@ public class EnergySourceResourceImpl {
 	private EnergySourceMeteringPointResourceImpl energySourceMeteringPointResource;
 
 	@Inject
-	private DozerBeanMapper mapper;}
+	private DozerBeanMapper mapper;
+}

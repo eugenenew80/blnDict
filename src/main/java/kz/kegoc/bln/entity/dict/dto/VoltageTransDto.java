@@ -1,7 +1,6 @@
 package kz.kegoc.bln.entity.dict.dto;
 
 import java.time.LocalDate;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -22,10 +21,6 @@ public class VoltageTransDto {
 	private Double accuracyClass;
 	private Double minVoltage;
 	private Double maxVoltage;
-
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private LocalDate lastVerificationDate;
-
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private LocalDate nextVerificationDate;
 }

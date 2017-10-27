@@ -8,10 +8,14 @@ import java.util.Arrays;
 
 @ApplicationScoped
 public class Producer {
-
+	DozerBeanMapper mapper = null;
+	
     @Produces
     public DozerBeanMapper dozerBeanMapper() {
-        DozerBeanMapper mapper = new DozerBeanMapper();
+    	if (mapper!=null)
+    		return mapper;
+    	
+        mapper = new DozerBeanMapper();
         mapper.setMappingFiles(Arrays.asList(
             "mapping/MappingConfig.xml",
             "mapping/dict/AccountingTypeDtoDefaultMapping.xml",
@@ -41,5 +45,4 @@ public class Producer {
         ));
         return mapper;
     }
-
 }
