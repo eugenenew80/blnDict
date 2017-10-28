@@ -11,7 +11,8 @@ import kz.kegoc.bln.service.dict.VoltageTransService;
 
 
 @Stateless
-public class VoltageTransServiceImpl extends AbstractEntityService<VoltageTrans> implements VoltageTransService {
+public class VoltageTransServiceImpl extends AbstractEntityService<VoltageTrans>
+        implements VoltageTransService {
     
 	@Inject
     public VoltageTransServiceImpl(Repository<VoltageTrans> repository, Validator validator) {

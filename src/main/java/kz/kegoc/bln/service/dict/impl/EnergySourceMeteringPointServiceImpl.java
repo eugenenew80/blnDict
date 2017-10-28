@@ -10,7 +10,8 @@ import javax.inject.Inject;
 import javax.validation.Validator;
 
 @Stateless
-public class EnergySourceMeteringPointServiceImpl extends AbstractEntityService<EnergySourceMeteringPoint> implements EnergySourceMeteringPointService {
+public class EnergySourceMeteringPointServiceImpl extends AbstractEntityService<EnergySourceMeteringPoint>
+        implements EnergySourceMeteringPointService {
 
 	@Inject
     public EnergySourceMeteringPointServiceImpl(Repository<EnergySourceMeteringPoint> repository, Validator validator) {

@@ -11,7 +11,8 @@ import kz.kegoc.bln.service.dict.UnitService;
 
 
 @Stateless
-public class UnitServiceImpl extends AbstractEntityService<Unit> implements UnitService {
+public class UnitServiceImpl extends AbstractEntityService<Unit>
+        implements UnitService {
     
 	@Inject
     public UnitServiceImpl(Repository<Unit> repository, Validator validator) {

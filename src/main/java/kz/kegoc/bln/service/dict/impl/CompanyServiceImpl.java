@@ -11,7 +11,8 @@ import kz.kegoc.bln.service.dict.CompanyService;
 
 
 @Stateless
-public class CompanyServiceImpl extends AbstractEntityService<Company> implements CompanyService {
+public class CompanyServiceImpl extends AbstractEntityService<Company>
+        implements CompanyService {
     
 	@Inject
     public CompanyServiceImpl(Repository<Company> repository, Validator validator) {

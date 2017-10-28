@@ -11,7 +11,8 @@ import kz.kegoc.bln.service.dict.EnergySourceTypeService;
 
 
 @Stateless
-public class EnergySourceTypeServiceImpl extends AbstractEntityService<EnergySourceType> implements EnergySourceTypeService {
+public class EnergySourceTypeServiceImpl extends AbstractEntityService<EnergySourceType>
+        implements EnergySourceTypeService {
     
 	@Inject
     public EnergySourceTypeServiceImpl(Repository<EnergySourceType> repository, Validator validator) {

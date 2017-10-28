@@ -9,7 +9,8 @@ import javax.inject.Inject;
 import javax.validation.Validator;
 
 @Stateless
-public class EnergySourceCompanyServiceImpl extends AbstractEntityService<EnergySourceCompany> implements EnergySourceCompanyService {
+public class EnergySourceCompanyServiceImpl extends AbstractEntityService<EnergySourceCompany>
+        implements EnergySourceCompanyService {
 
 	@Inject
     public EnergySourceCompanyServiceImpl(Repository<EnergySourceCompany> repository, Validator validator) {

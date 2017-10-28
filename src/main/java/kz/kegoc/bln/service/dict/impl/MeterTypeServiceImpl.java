@@ -11,7 +11,8 @@ import kz.kegoc.bln.service.dict.MeterTypeService;
 
 
 @Stateless
-public class MeterTypeServiceImpl extends AbstractEntityService<MeterType> implements MeterTypeService {
+public class MeterTypeServiceImpl extends AbstractEntityService<MeterType>
+        implements MeterTypeService {
     
 	@Inject
     public MeterTypeServiceImpl(Repository<MeterType> repository, Validator validator) {

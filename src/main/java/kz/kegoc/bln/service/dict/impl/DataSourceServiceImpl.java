@@ -11,7 +11,8 @@ import kz.kegoc.bln.service.dict.DataSourceService;
 
 
 @Stateless
-public class DataSourceServiceImpl extends AbstractEntityService<DataSource> implements DataSourceService {
+public class DataSourceServiceImpl extends AbstractEntityService<DataSource>
+        implements DataSourceService {
     
 	@Inject
     public DataSourceServiceImpl(Repository<DataSource> repository, Validator validator) {

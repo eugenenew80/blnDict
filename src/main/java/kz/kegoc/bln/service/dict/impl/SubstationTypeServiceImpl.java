@@ -11,7 +11,8 @@ import kz.kegoc.bln.service.dict.SubstationTypeService;
 
 
 @Stateless
-public class SubstationTypeServiceImpl extends AbstractEntityService<SubstationType> implements SubstationTypeService {
+public class SubstationTypeServiceImpl extends AbstractEntityService<SubstationType>
+        implements SubstationTypeService {
     
 	@Inject
     public SubstationTypeServiceImpl(Repository<SubstationType> repository, Validator validator) {

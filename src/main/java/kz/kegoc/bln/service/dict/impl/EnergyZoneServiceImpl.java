@@ -11,7 +11,8 @@ import kz.kegoc.bln.service.dict.EnergyZoneService;
 
 
 @Stateless
-public class EnergyZoneServiceImpl extends AbstractEntityService<EnergyZone> implements EnergyZoneService {
+public class EnergyZoneServiceImpl extends AbstractEntityService<EnergyZone>
+        implements EnergyZoneService {
     
 	@Inject
     public EnergyZoneServiceImpl(Repository<EnergyZone> repository, Validator validator) {

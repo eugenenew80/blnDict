@@ -11,7 +11,8 @@ import kz.kegoc.bln.service.dict.RegionService;
 
 
 @Stateless
-public class RegionServiceImpl extends AbstractEntityService<Region> implements RegionService {
+public class RegionServiceImpl extends AbstractEntityService<Region>
+        implements RegionService {
     
 	@Inject
     public RegionServiceImpl(Repository<Region> repository, Validator validator) {

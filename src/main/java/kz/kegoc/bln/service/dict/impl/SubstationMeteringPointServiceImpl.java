@@ -11,7 +11,8 @@ import javax.validation.Validator;
 
 
 @Stateless
-public class SubstationMeteringPointServiceImpl extends AbstractEntityService<SubstationMeteringPoint> implements SubstationMeteringPointService {
+public class SubstationMeteringPointServiceImpl extends AbstractEntityService<SubstationMeteringPoint>
+        implements SubstationMeteringPointService {
 
 	@Inject
     public SubstationMeteringPointServiceImpl(Repository<SubstationMeteringPoint> repository, Validator validator) {

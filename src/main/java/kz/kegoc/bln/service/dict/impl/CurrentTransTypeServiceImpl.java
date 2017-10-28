@@ -11,7 +11,8 @@ import kz.kegoc.bln.service.dict.CurrentTransTypeService;
 
 
 @Stateless
-public class CurrentTransTypeServiceImpl extends AbstractEntityService<CurrentTransType> implements CurrentTransTypeService {
+public class CurrentTransTypeServiceImpl extends AbstractEntityService<CurrentTransType>
+        implements CurrentTransTypeService {
     
 	@Inject
     public CurrentTransTypeServiceImpl(Repository<CurrentTransType> repository, Validator validator) {
