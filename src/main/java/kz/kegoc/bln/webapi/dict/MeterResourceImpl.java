@@ -2,18 +2,19 @@ package kz.kegoc.bln.webapi.dict;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import org.dozer.DozerBeanMapper;
-import org.apache.commons.lang3.StringUtils;
 import kz.kegoc.bln.entity.dict.Meter;
 import kz.kegoc.bln.entity.dict.dto.MeterDto;
 import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.MeterService;
 
-@RequestScoped
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
+@Stateless
 @Path("/dict/dictMeter")
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
@@ -22,8 +23,8 @@ public class MeterResourceImpl {
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
 		Query query = QueryImpl.builder()			
-			.setParameter("code", StringUtils.isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)	
-			.setParameter("name", StringUtils.isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)	
+			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
+			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
 			.setOrderBy("t.id")
 			.build();		
 		
@@ -100,4 +101,7 @@ public class MeterResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
+
+	@Context
+	private SecurityContext context;
 }

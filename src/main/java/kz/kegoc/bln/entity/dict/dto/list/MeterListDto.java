@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MeterForListDto {
+public class MeterListDto {
 	private Long id;
 	private String code;
 	private String name;

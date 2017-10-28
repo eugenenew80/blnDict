@@ -2,7 +2,7 @@ package kz.kegoc.bln.webapi.dict;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -13,8 +13,7 @@ import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.dto.SubstationCompanyDto;
 import kz.kegoc.bln.service.dict.SubstationService;
 
-
-@RequestScoped
+@Stateless
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class SubstationCompanyResourceImpl {
@@ -78,4 +77,8 @@ public class SubstationCompanyResourceImpl {
 	private SubstationCompanyService service;
 
 	@Inject
-	private DozerBeanMapper mapper;}
+	private DozerBeanMapper mapper;
+
+	@Context
+	private SecurityContext context;
+}

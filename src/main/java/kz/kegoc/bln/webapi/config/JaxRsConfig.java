@@ -50,6 +50,9 @@ public class JaxRsConfig extends Application {
         resources.add(DefaultExceptionMapperImpl.class);
 
         resources.add(ObjectMapperContextResolver.class);
+
+        
+
 		return resources;
 	}	
 }

@@ -5,18 +5,18 @@ import kz.kegoc.bln.entity.dict.dto.EnergySourceMeteringPointDto;
 import kz.kegoc.bln.service.dict.EnergySourceMeteringPointService;
 import kz.kegoc.bln.service.dict.EnergySourceService;
 import org.dozer.DozerBeanMapper;
-
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-@RequestScoped
+@Stateless
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class EnergySourceMeteringPointResourceImpl {
@@ -80,4 +80,8 @@ public class EnergySourceMeteringPointResourceImpl {
 	private EnergySourceMeteringPointService service;
 
 	@Inject
-	private DozerBeanMapper mapper;}
+	private DozerBeanMapper mapper;
+
+	@Context
+	private SecurityContext context;
+}

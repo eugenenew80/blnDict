@@ -2,19 +2,18 @@ package kz.kegoc.bln.webapi.dict;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import org.dozer.DozerBeanMapper;
-import org.apache.commons.lang3.StringUtils;
 import kz.kegoc.bln.entity.dict.Region;
 import kz.kegoc.bln.entity.dict.dto.RegionDto;
 import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.RegionService;
+import static org.apache.commons.lang3.StringUtils.*;
 
-
-@RequestScoped
+@Stateless
 @Path("/dict/dictRegion")
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
@@ -23,8 +22,8 @@ public class RegionResourceImpl {
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
 		Query query = QueryImpl.builder()			
-			.setParameter("code", StringUtils.isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)	
-			.setParameter("name", StringUtils.isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)	
+			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
+			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
 			.setOrderBy("t.id")
 			.build();		
 		
@@ -101,4 +100,8 @@ public class RegionResourceImpl {
 	private RegionService service;
 
 	@Inject
-	private DozerBeanMapper mapper;}
+	private DozerBeanMapper mapper;
+
+	@Context
+	private SecurityContext context;
+}

@@ -6,17 +6,18 @@ import kz.kegoc.bln.service.dict.MeteringPointService;
 import kz.kegoc.bln.service.dict.SubstationMeteringPointService;
 import kz.kegoc.bln.service.dict.SubstationService;
 import org.dozer.DozerBeanMapper;
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-@RequestScoped
+@Stateless
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class SubstationMeteringPointResourceImpl {
@@ -86,4 +87,7 @@ public class SubstationMeteringPointResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
+
+	@Context
+	private SecurityContext context;
 }

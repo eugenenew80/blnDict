@@ -1,11 +1,15 @@
 package kz.kegoc.bln.webapi.filters;
 
 import java.io.IOException;
+import java.security.Principal;
 
+import javax.annotation.Priority;
 import javax.ws.rs.NotAuthorizedException;
+import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.PreMatching;
+import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
 import org.apache.commons.lang3.StringUtils;
 
@@ -16,6 +20,7 @@ import org.apache.commons.codec.binary.Base64;
 
 @Provider
 @PreMatching
+@Priority(Priorities.AUTHENTICATION)
 public class BasicAuthentificationFilter implements ContainerRequestFilter {
 
 	@Override
@@ -54,5 +59,36 @@ public class BasicAuthentificationFilter implements ContainerRequestFilter {
 			pool.close();
 			pool.destroy();		
 		}
+
+
+
+		ctx.setSecurityContext(
+			new SecurityContext() {
+				@Override
+				public boolean isUserInRole(String role) {
+					return true;
+				}
+
+				@Override
+				public boolean isSecure() {
+					return false;
+				}
+
+				@Override
+				public Principal getUserPrincipal() {
+					return new Principal() {
+						@Override
+						public String getName() {
+							return user;
+						}
+					};
+				}
+
+				@Override
+				public String getAuthenticationScheme() {
+					return null;
+				}
+			}
+		);
 	}
 }

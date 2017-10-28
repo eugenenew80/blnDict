@@ -6,6 +6,6 @@
 
   <mapping>
     <class-a>kz.kegoc.bln.entity.dict.Meter</class-a>
-    <class-b>kz.kegoc.bln.entity.dict.dto.list.MeterForListDto</class-b>
+    <class-b>kz.kegoc.bln.entity.dict.dto.list.MeterListDto</class-b>
   </mapping> 
 </mappings> 
