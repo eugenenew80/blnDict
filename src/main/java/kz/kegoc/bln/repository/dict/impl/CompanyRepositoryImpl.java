@@ -8,7 +8,6 @@ import kz.kegoc.bln.entity.dict.Company;
 import kz.kegoc.bln.repository.common.AbstractRepository;
 import kz.kegoc.bln.repository.dict.CompanyRepository;
 
-
 @Stateless
 public class CompanyRepositoryImpl extends AbstractRepository<Company> implements CompanyRepository {
 	public CompanyRepositoryImpl() { setClazz(Company.class); }
