@@ -41,7 +41,8 @@ public class Producer {
             "mapping/dict/SubstationTypeDtoDefaultMapping.xml",
             "mapping/dict/UnitDtoDefaultMapping.xml",
             "mapping/dict/VoltageTransDtoDefaultMapping.xml",
-            "mapping/dict/VoltageTransTypeDtoDefaultMapping.xml"
+            "mapping/dict/VoltageTransTypeDtoDefaultMapping.xml",
+            "mapping/dict/list/MeterDtoForListMapping.xml"
         ));
         return mapper;
     }
