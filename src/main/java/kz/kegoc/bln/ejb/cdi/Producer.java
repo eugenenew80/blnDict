@@ -30,6 +30,7 @@ public class Producer {
                 "dozer/dict/def/EnergySourceTypeDto.xml",
                 "dozer/dict/def/EnergyZoneDto.xml",
                 "dozer/dict/def/MeteringPointDto.xml",
+                "dozer/dict/def/MeteringPointMeterDto.xml",
                 "dozer/dict/def/MeteringPointTypeDto.xml",
                 "dozer/dict/def/MeteringTypeDto.xml",
                 "dozer/dict/def/MeterDto.xml",

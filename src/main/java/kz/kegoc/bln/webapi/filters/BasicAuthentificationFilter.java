@@ -2,17 +2,13 @@ package kz.kegoc.bln.webapi.filters;
 
 import java.io.IOException;
 import java.security.Principal;
-
-import javax.annotation.Priority;
 import javax.ws.rs.NotAuthorizedException;
-import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
 import org.apache.commons.lang3.StringUtils;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -20,7 +16,6 @@ import org.apache.commons.codec.binary.Base64;
 
 @Provider
 @PreMatching
-@Priority(Priorities.AUTHENTICATION)
 public class BasicAuthentificationFilter implements ContainerRequestFilter {
 
 	@Override

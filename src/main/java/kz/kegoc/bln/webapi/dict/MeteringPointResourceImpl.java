@@ -97,8 +97,17 @@ public class MeteringPointResourceImpl {
 	}
 	
 
+	@Path("/{meteringPointId : \\d+}/dictMeteringPointMeter")
+	public MeteringPointMeterResourceImpl getModules(@PathParam("meteringPointId") Long id) {
+		return meteringPointMeterResourceImpl;
+	}
+	
+	
 	@Inject
 	private MeteringPointService service;
+
+	@Inject
+	private MeteringPointMeterResourceImpl meteringPointMeterResourceImpl;
 
 	@Inject
 	private DozerBeanMapper mapper;

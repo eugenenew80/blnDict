@@ -3,7 +3,6 @@ package kz.kegoc.bln.webapi.dict;
 import java.util.*;
 import java.util.stream.Collectors;
 import javax.ejb.Stateless;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;

@@ -1,6 +1,8 @@
 package kz.kegoc.bln.entity.dict;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
 import lombok.*;
@@ -41,4 +43,6 @@ public class MeteringPoint implements HasId, HasCode, HasName {
 	private Double transformationRate;
 	private Double minLoad;
 	private Double maxLoad;
+	
+	private List<MeteringPointMeter> meters;
 }
