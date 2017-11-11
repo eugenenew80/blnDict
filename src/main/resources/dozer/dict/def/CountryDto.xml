@@ -4,17 +4,7 @@
           xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
   <mapping>
-    <class-a>kz.kegoc.bln.entity.dict.Region</class-a>
-    <class-b>kz.kegoc.bln.entity.dict.dto.RegionDto</class-b>
-
-    <field>
-      <a>country.id</a>
-      <b>countryId</b>
-    </field>
-
-    <field>
-      <a>country.name</a>
-      <b>countryName</b>
-    </field>
+    <class-a>kz.kegoc.bln.entity.dict.Country</class-a>
+    <class-b>kz.kegoc.bln.entity.dict.dto.CountryDto</class-b>
   </mapping> 
 </mappings> 

@@ -43,6 +43,7 @@ public class Producer {
                 "dozer/dict/def/UnitDto.xml",
                 "dozer/dict/def/VoltageTransDto.xml",
                 "dozer/dict/def/VoltageTransTypeDto.xml",
+                "dozer/dict/def/CountryDto.xml",
 
                 "dozer/dict/list/MeterDto.xml"
         ));

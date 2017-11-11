@@ -70,8 +70,8 @@ public class DataSourceResourceImpl {
 
 	
 	@POST
-	public Response create(DataSourceDto dataSourceDto) {
-		DataSource newDataSource = dataSourceService.create(mapper.map(dataSourceDto, DataSource.class));	
+	public Response create(DataSourceDto entityDto) {
+		DataSource newDataSource = dataSourceService.create(mapper.map(entityDto, DataSource.class));
 		return Response.ok()
 			.entity(mapper.map(newDataSource, DataSourceDto.class))
 			.build();
@@ -80,8 +80,8 @@ public class DataSourceResourceImpl {
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, DataSourceDto dataSourceDto ) {
-		DataSource newDataSource = dataSourceService.update(mapper.map(dataSourceDto, DataSource.class)); 
+	public Response update(@PathParam("id") Long id, DataSourceDto entityDto ) {
+		DataSource newDataSource = dataSourceService.update(mapper.map(entityDto, DataSource.class));
 		return Response.ok()
 			.entity(mapper.map(newDataSource, DataSourceDto.class))
 			.build();

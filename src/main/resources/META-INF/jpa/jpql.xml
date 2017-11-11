@@ -343,4 +343,20 @@
 			select t from VoltageTransType t where t.code=:code
 		</query>
 	</named-query>
+
+	<named-query name="Country.findAll">
+		<query>
+			select t from VoltageTransType t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Country.findByName">
+		<query>
+			select t from Country t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Country.findByCode">
+		<query>
+			select t from Country t where t.code=:code
+		</query>
+	</named-query>
 </entity-mappings>

@@ -14,4 +14,6 @@ public class Region implements HasId, HasCode, HasName {
 
 	@NotNull @Size(max = 100)
 	private String name;
+
+	private Country country;
 }
