@@ -32,4 +32,10 @@
     <include file="release-1/changelog-release-1-file-24.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-25.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-26.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-28.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-29.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-30.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-34.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-35.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-36.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

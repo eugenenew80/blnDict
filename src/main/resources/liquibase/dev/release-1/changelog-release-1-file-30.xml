@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-9" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Creating table: dict_Certificate_of_application_on_register_account</comment>
+		<createTable tableName="dict_Certificate_of_application_on_register_account" schemaName="apps">
+			<column name="id" type="number">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_series" type="varchar">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_number" type="varchar">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="date_of_issue" type="date">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="taxpayer_rnn" type="varchar(12)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="taxpayer_iin" type="varchar(12)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="taxpayer_name" type="varchar">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="tax_authority_name" type="varchar">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="tax_authority_bin" type="varchar">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_scan" type="bytea">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet id="dict-rus-10" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Creating primary key for table: dict_Certificate_of_application_on_register_account</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dict_Certificate_of_application_on_register_account"
+				schemaName="apps"
+				tableName="dict_Certificate_of_application_on_register_account"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-11" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_Certificate_of_application_on_register_account</comment>
+		<loadData
+				encoding="UTF-8"
+				relativeToChangelogFile="true"
+				file="data/dict_Certificate_of_application_on_register_account.csv"
+				quotchar="'"
+				schemaName="apps"
+				separator=";"
+				tableName="dict_Certificate_of_application_on_register_account">
+
+			<column name="id" 	type="NUMERIC"/>
+			<column name="doc_series" type="STRING"/>
+			<column name="doc_number" type="STRING"/>
+			<column name="date_of_issue"	type="DATE"/>
+			<column name="taxpayer_rnn"	type="STRING"/>
+			<column name="taxpayer_iin"	type="STRING"/>
+			<column name="taxpayer_name"	type="STRING"/>
+			<column name="tax_authority_name"	type="STRING"/>
+			<column name="tax_authority_bin"	type="STRING"/>
+			<column name="doc_scan"	type="SKIP"/>
+		</loadData>
+
+		<rollback>
+			<delete schemaName="apps" tableName="dict_Certificate_of_application_on_register_account" />
+		</rollback>
+	</changeSet>
+
+	<changeSet id="dict-rus-12" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Creating sequence for table: dict_Certificate_of_application_on_register_account</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_Certificate_of_application_on_register_account_s"
+				startValue="3"/>
+	</changeSet>
+
+</databaseChangeLog>
