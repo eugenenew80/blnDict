@@ -65,6 +65,7 @@
 	            schemaName="apps"
 	            sequenceName="dict_banks_s"
 	            startValue="11"/>
-	</changeSet>	
+	</changeSet>
+
 	
 </databaseChangeLog>

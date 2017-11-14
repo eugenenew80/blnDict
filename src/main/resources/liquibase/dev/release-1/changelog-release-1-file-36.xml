@@ -18,15 +18,11 @@
                 <constraints nullable="false"/>
             </column>
             
-            <column name="energy_source_type" type="varchar">
+            <column name="contract_template_id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="rate" type="double">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="start_date" type="date">
+			<column name="start_date" type="double">
 				<constraints nullable="false"/>
 			</column>
 
@@ -58,9 +54,8 @@
 	            tableName="dict_templates_of_standard_contracts">
 	        
 	        <column name="id" 	type="NUMERIC"/>
-			<column name="contact_type" type="STRING"/>
-			<column name="energy_source_type" type="STRING"/>
-			<column name="rate" type="NUMERIC"/>
+			<column name="contract_type" type="STRING"/>
+			<column name="contact_template_id" type="NUMERIC"/>
 			<column name="start_date" type="DATE"/>
 			<column name="end_date" type="DATE"/>
 	    </loadData>

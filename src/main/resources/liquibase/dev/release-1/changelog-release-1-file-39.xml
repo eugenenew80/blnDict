@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    
+
+    <changeSet id="dict-rus-46" logicalFilePath="path-independent" author="ruslan" context="postgres">
+        <comment>Creating table: dict_tariffs_provision_services</comment>
+        <createTable tableName="dict_tariffs_provision_services" schemaName="apps">
+            <column name="id" type="number">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="contract_type_id" type="number">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="energy_source_type" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+			<column name="rate" type="double">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="start_date" type="date">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="end_date" type="date">
+				<constraints nullable="false"/>
+			</column>
+
+
+
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-rus-47" logicalFilePath="path-independent" author="ruslan" context="postgres">
+	    <comment>Creating primary key for table: dict_tariffs_provision_services</comment>
+	    <addPrimaryKey 
+	            columnNames="id"
+	            constraintName="pk_dict_tariffs_provision_services"
+	            schemaName="apps"
+	            tableName="dict_tariffs_provision_services"/>
+	</changeSet>
+	
+	<changeSet id="dict-rus-48" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_tariffs_provision_services </comment>
+	    <loadData
+	            encoding="UTF-8"
+	            relativeToChangelogFile="true"
+	            file="data/dict_tariffs_provision_services.csv"
+	            quotchar="'"
+	            schemaName="apps"
+	            separator=";"
+	            tableName="dict_tariffs_provision_services">
+	        
+	        <column name="id" 	type="NUMERIC"/>
+			<column name="contract_type_id" type="NUMERIC"/>
+			<column name="energy_source_type" type="STRING"/>
+			<column name="rate" type="NUMERIC"/>
+			<column name="start_date" type="DATE"/>
+			<column name="end_date" type="DATE"/>
+	    </loadData>
+		
+		<rollback>
+        	<delete schemaName="apps" tableName="dict_tariffs_provision_services" />
+        </rollback>	
+	</changeSet>	
+	
+	<changeSet id="dict-rus-49" logicalFilePath="path-independent" author="ruslan" context="postgres">
+	    <comment>Creating sequence for table: dict_tariffs_provision_services</comment>
+	    <createSequence 
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="dict_tariffs_provision_services_s"
+	            startValue="1"/>
+	</changeSet>	
+	
+</databaseChangeLog>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    
+
+    <changeSet id="dict-rus-17" logicalFilePath="path-independent" author="ruslan" context="postgres">
+        <comment>Creating table: dict_phone_number</comment>
+        <createTable tableName="dict_phone_number" schemaName="apps">
+            <column name="id" type="number">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="number_type" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="phone_number" type="varchar(15)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-rus-18" logicalFilePath="path-independent" author="ruslan" context="postgres">
+	    <comment>Creating primary key for table: dict_phone_number</comment>
+	    <addPrimaryKey 
+	            columnNames="id"
+	            constraintName="pk_dict_phone_number"
+	            schemaName="apps"
+	            tableName="dict_phone_number"/>
+	</changeSet>
+	
+	<changeSet id="dict-rus-19" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_phone_number</comment>
+	    <loadData
+	            encoding="UTF-8"
+	            relativeToChangelogFile="true"
+	            file="data/dict_phone_number.csv"
+	            quotchar="'"
+	            schemaName="apps"
+	            separator=";"
+	            tableName="dict_phone_number">
+	        
+	        <column name="id" 	type="NUMERIC"/>
+	        <column name="number_type" type="STRING"/>
+	        <column name="phone_number"	type="STRING"/>
+	    </loadData>
+		
+		<rollback>
+        	<delete schemaName="apps" tableName="dict_phone_number" />
+        </rollback>	
+	</changeSet>	
+	
+	<changeSet id="dict-rus-20" logicalFilePath="path-independent" author="ruslan" context="postgres">
+	    <comment>Creating sequence for table: dict_phone_number</comment>
+	    <createSequence 
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="dict_phone_number_s"
+	            startValue="3"/>
+	</changeSet>	
+	
+</databaseChangeLog>

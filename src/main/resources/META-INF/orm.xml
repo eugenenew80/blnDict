@@ -247,6 +247,10 @@
       		<basic name="name">
       			<column name="name" />
       		</basic>
+
+			<many-to-one name="country">
+				<join-column name="country_id"/>
+			</many-to-one>
 		</attributes>
 	</entity>
 	
@@ -952,7 +956,29 @@
 			</many-to-one>
 		</attributes>
 	</entity>
-	
-	
+
+	<entity class="kz.kegoc.bln.entity.dict.Country">
+		<table name="dict_countries" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_countries_gen" />
+				<sequence-generator
+						name="dict_countries_gen"
+						sequence-name="apps.dict_countries_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="code">
+				<column name="code" />
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+		</attributes>
+	</entity>
+
 	
 </entity-mappings>
