@@ -1,4 +1,4 @@
-﻿id;bank_bic;bank_name;iban;business_partner_id
+﻿id;code;bic;name;bank_id;business_partner_id
 1;EABRKZKA;АО"Евразийский банк развития";1234567999999999;1
 2;EXKAKZKA;АО"ЭКСИМБАНК КАЗАХСТАН";1234567999999999;2
 3;HCSKKZKA;АО"Жилстройсбербанк";1234567999999999;2

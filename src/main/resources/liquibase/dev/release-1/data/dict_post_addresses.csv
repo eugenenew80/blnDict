@@ -1,0 +1,3 @@
+﻿id;name;index;country_id;region_id;locality;street;house_number;building_number;apartment;office_number
+1;R;010000;1;1;Astana;pobeda;23;;24;
+2;W;050056;1;2;Almaty;seyfulina;14;;;5
