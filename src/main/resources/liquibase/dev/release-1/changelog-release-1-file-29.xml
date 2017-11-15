@@ -13,7 +13,7 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="name" type="varchar(50)">
+			<column name="name" type="varchar(100)">
 					<constraints nullable="false"/>
 			</column>
 
@@ -78,7 +78,7 @@
 	     <loadData
 	            encoding="UTF-8"
 	            relativeToChangelogFile="true"
-	            file="data/dict_post_address.csv"
+	            file="data/dict_post_addresses.csv"
 	            quotchar="'"
 	            schemaName="apps"
 	            separator=";"
@@ -112,7 +112,7 @@
 	            incrementBy="1"
 	            schemaName="apps"
 	            sequenceName="dict_post_addresses_s"
-	            startValue="3"/>
+	            startValue="1"/>
 	</changeSet>	
 	
 </databaseChangeLog>
