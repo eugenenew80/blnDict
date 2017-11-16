@@ -14,11 +14,10 @@
             </column>
 
 			<column name="name" type="varchar(100)">
-					<constraints nullable="false"/>
+				<constraints nullable="false"/>
 			</column>
 
             <column name="index" type="varchar(10)">
-
                 <constraints nullable="false"/>
             </column>
             
@@ -52,29 +51,40 @@
 
 			<column name="office_number" type="varchar">
 				<constraints nullable="true"/>
-
 			</column>
 
+			<column name="start_date" type="date">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="end_date" type="date">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="business_partner_id" type="number">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="legal_address" type="boolean">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="actual_address" type="boolean">
+				<constraints nullable="true"/>
+			</column>
 		</createTable>
-
 	</changeSet>
-
 	<changeSet id="dict-rus-6" logicalFilePath="path-independent" author="ruslan" context="postgres">
-
 		<comment>Creating primary key for table: dict_post_addresses</comment>
-
 		<addPrimaryKey
 	            columnNames="id"
 	            constraintName="pk_dict_post_addresses"
 	            schemaName="apps"
 	            tableName="dict_post_addresses"/>
 	</changeSet>
-	
 
 	<changeSet id="dict-rus-7" logicalFilePath="path-independent" author="ruslan" context="postgres">
-
 		<comment>Load demo data to table: dict_post_address</comment>
-
 	     <loadData
 	            encoding="UTF-8"
 	            relativeToChangelogFile="true"
@@ -94,20 +104,20 @@
 			<column name="house_number"	type="STRING"/>
 			<column name="building_number"	type="STRING"/>
 			<column name="apartment"	type="STRING"/>
-			 <column name="office_number"	type="STRING"/>
-
+			<column name="start_date"	type="DATE"/>
+			<column name="end_date"	type="DATE"/>
+			<column name="business_partner_id"	type="NUMERIC"/>
+			<column name="legal_address"	type="BOOLEAN"/>
+			<column name="actual_address"	type="BOOLEAN"/>
 		 </loadData>
 		
 		<rollback>
         	<delete schemaName="apps" tableName="dict_post_addresses" />
-        </rollback>	
-
+        </rollback>
 	</changeSet>
-	
+
 	<changeSet id="dict-rus-8" logicalFilePath="path-independent" author="ruslan" context="postgres">
-
 		<comment>Creating sequence for table: dict_post_addresses</comment>
-
 		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"

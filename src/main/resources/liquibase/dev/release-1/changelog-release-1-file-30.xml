@@ -9,7 +9,6 @@
     <changeSet id="dict-rus-9" logicalFilePath="path-independent" author="ruslan" context="postgres">
         <comment>Creating table: dict_business_partners</comment>
         <createTable tableName="dict_business_partners" schemaName="apps">
-
             <column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
@@ -26,11 +25,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="legal_address_id" type="number">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="actual_address_id" type="number">
+            <column name="okpo" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
 
@@ -54,22 +49,14 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="doc_scan_id" type="varchar">
+            <column name="business_partner_id" type="number">
                 <constraints nullable="true"/>
             </column>
-
-            <column name="parent_business_partner_id" type="number">
-                <constraints nullable="true"/>
-            </column>
-
         </createTable>
-
     </changeSet>
 
     <changeSet id="dict-rus-10" logicalFilePath="path-independent" author="ruslan" context="postgres">
-
         <comment>Creating primary key for table: dict_business_partners</comment>
-
         <addPrimaryKey
                 columnNames="id"
                 constraintName="pk_dict_business_partners"
@@ -79,9 +66,7 @@
 
 
     <changeSet id="dict-rus-11" logicalFilePath="path-independent" author="ruslan" context="postgres">
-
         <comment>Load demo data to table: dict_business_partners</comment>
-
         <loadData
                 encoding="UTF-8"
                 relativeToChangelogFile="true"
@@ -95,16 +80,13 @@
             <column name="name" 	type="STRING"/>
             <column name="bin" type="STRING"/>
             <column name="kbe" type="STRING"/>
-            <column name="legal_address_id"	type="NUMERIC"/>
-            <column name="actual_address_id"	type="NUMERIC"/>
+            <column name="okpo" type="STRING"/>
             <column name="certificate_register_series"	type="STRING"/>
             <column name="certificate_register_date"	type="DATE"/>
             <column name="certificate_register_number"	type="STRING"/>
             <column name="certificate_authority_name"	type="STRING"/>
             <column name="certificate_authority_bin"	type="STRING"/>
-            <column name="doc_scan_id"	type="STRING"/>
-            <column name="parent_business_partner_id"	type="NUMERIC"/>
-
+            <column name="business_partner_id"	type="NUMERIC"/>
         </loadData>
 
         <rollback>
@@ -112,16 +94,12 @@
         </rollback>
 
     </changeSet>
-
     <changeSet id="dict-rus-12" logicalFilePath="path-independent" author="ruslan" context="postgres">
-
         <comment>Creating sequence for table: dict_business_partners</comment>
-
         <createSequence
                 incrementBy="1"
                 schemaName="apps"
                 sequenceName="dict_business_partners_s"
                 startValue="1"/>
     </changeSet>
-
 </databaseChangeLog>

@@ -8,9 +8,7 @@
     
 
     <changeSet id="dict-rus-17" logicalFilePath="path-independent" author="ruslan" context="postgres">
-
 		<comment>Creating table: dict_bank_accounts</comment>
-
 		<createTable tableName="dict_bank_accounts" schemaName="apps">
 
 			<column name="id" type="number">
@@ -21,10 +19,6 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="bic" type="varchar(10)">
-                <constraints nullable="false"/>
-            </column>
-            
             <column name="name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
@@ -36,27 +30,20 @@
 			<column name="business_partner_id" type="number">
 				<constraints nullable="false"/>
 			</column>
-
 		</createTable>
-
 	</changeSet>
 
 	<changeSet id="dict-rus-18" logicalFilePath="path-independent" author="ruslan" context="postgres">
-
 		<comment>Creating primary key for table: dict_bank_accounts</comment>
-
 		<addPrimaryKey
 	            columnNames="id"
 	            constraintName="pk_dict_bank_accounts"
 	            schemaName="apps"
 	            tableName="dict_bank_accounts"/>
-
 	</changeSet>
-	
+
 	<changeSet id="dict-rus-19" logicalFilePath="path-independent" author="ruslan" context="postgres">
-
 		<comment>Load demo data to table: dict_bank_accounts</comment>
-
 		<loadData
 	            encoding="UTF-8"
 	            relativeToChangelogFile="true"
@@ -68,7 +55,6 @@
 	        
 	        <column name="id" 	type="NUMERIC"/>
 			<column name="code"	type="STRING"/>
-	        <column name="bic" type="STRING"/>
 	        <column name="name"	type="STRING"/>
 			<column name="bank_id"	type="NUMERIC"/>
 			<column name="business_partner_id"	type="NUMERIC"/>
@@ -76,14 +62,11 @@
 		
 		<rollback>
         	<delete schemaName="apps" tableName="dict_bank_accounts" />
-        </rollback>	
-
+        </rollback>
 	</changeSet>
 	
 	<changeSet id="dict-rus-20" logicalFilePath="path-independent" author="ruslan" context="postgres">
-
 		<comment>Creating sequence for table: dict_bank_accounts</comment>
-
 		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
@@ -91,6 +74,4 @@
 	            startValue="11"/>
 
 	</changeSet>
-
-
 </databaseChangeLog>
