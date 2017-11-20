@@ -14,7 +14,7 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="dict_data_source_id" type="number">
+			<column name="data_source_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -40,7 +40,7 @@
 	<changeSet id="dict-rus-59" logicalFilePath="path-independent" author="ruslan" context="postgres">
 		<comment>Creating unique key for table: dict_data_sources_tl</comment>
 		<addUniqueConstraint
-				columnNames="dict_data_source_id, lang"
+				columnNames="data_source_id, lang"
 				constraintName="uk_dict_data_sources_tl"
 				schemaName="apps"
 				tableName="dict_data_sources_tl"/>

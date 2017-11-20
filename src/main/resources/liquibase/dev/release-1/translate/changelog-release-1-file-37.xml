@@ -14,7 +14,7 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="dict_region_id" type="number">
+			<column name="region_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -40,7 +40,7 @@
 	<changeSet id="dict-rus-39" logicalFilePath="path-independent" author="ruslan" context="postgres">
 		<comment>Creating unique key for table: dict_regions_tl</comment>
 		<addUniqueConstraint
-				columnNames="dict_region_id, lang"
+				columnNames="region_id, lang"
 				constraintName="uk_dict_regions_tl"
 				schemaName="apps"
 				tableName="dict_regions_tl"/>

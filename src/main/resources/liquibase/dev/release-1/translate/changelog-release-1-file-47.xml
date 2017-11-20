@@ -14,7 +14,7 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="dict_current_tran_id" type="number">
+			<column name="current_trans_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -44,7 +44,7 @@
 	<changeSet id="dict-rus-79" logicalFilePath="path-independent" author="ruslan" context="postgres">
 		<comment>Creating unique key for table: dict_current_trans_tl</comment>
 		<addUniqueConstraint
-				columnNames="dict_current_tran_id, lang"
+				columnNames="current_trans_id, lang"
 				constraintName="uk_dict_current_trans_tl"
 				schemaName="apps"
 				tableName="dict_current_trans_tl"/>

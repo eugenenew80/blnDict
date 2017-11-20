@@ -14,7 +14,7 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="dict_energy_source_metering_point_id" type="number">
+			<column name="energy_source_metering_point_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -44,7 +44,7 @@
 	<changeSet id="dict-rus-83" logicalFilePath="path-independent" author="ruslan" context="postgres">
 		<comment>Creating unique key for table: dict_energy_source_metering_points_tl</comment>
 		<addUniqueConstraint
-				columnNames="dict_energy_source_metering_point_id, lang"
+				columnNames="energy_source_metering_point_id, lang"
 				constraintName="uk_dict_energy_source_metering_points_tl"
 				schemaName="apps"
 				tableName="dict_energy_source_metering_points_tl"/>
