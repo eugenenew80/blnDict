@@ -23,4 +23,6 @@ public class CurrentTransDto {
 	private Double maxCurrent;
 	private LocalDate lastVerificationDate;
 	private LocalDate nextVerificationDate;
+	private LocalDate installationDate;
+	private LocalDate disassemblyDate;
 }

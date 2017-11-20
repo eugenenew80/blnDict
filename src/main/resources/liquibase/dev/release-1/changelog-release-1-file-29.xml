@@ -29,27 +29,27 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="locality" type="varchar">
+			<column name="locality" type="varchar(150)">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="street" type="varchar">
+			<column name="street" type="varchar(150)">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="house_number" type="varchar">
+			<column name="house_number" type="varchar(50)">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="building_number" type="varchar">
+			<column name="building_number" type="varchar(50)">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="apartment" type="varchar">
+			<column name="apartment" type="varchar(50)">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="office_number" type="varchar">
+			<column name="office_number" type="varchar(50)">
 				<constraints nullable="true"/>
 			</column>
 

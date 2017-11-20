@@ -30,4 +30,6 @@ public class CurrentTrans implements HasId, HasCode, HasName {
 	private Double maxCurrent;
 	private LocalDate lastVerificationDate;
 	private LocalDate nextVerificationDate;
+	private LocalDate installationDate;
+	private LocalDate disassemblyDate;
 }

@@ -41,7 +41,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="certificate_authority_name" type="varchar">
+            <column name="certificate_authority_name" type="varchar(150)">
                 <constraints nullable="false"/>
             </column>
 

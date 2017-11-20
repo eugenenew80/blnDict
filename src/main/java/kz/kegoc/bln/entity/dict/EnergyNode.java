@@ -4,6 +4,9 @@ import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
 import lombok.*;
 
+import java.util.List;
+
+
 @Data
 @EqualsAndHashCode(of= {"id"})
 public class EnergyNode implements HasId, HasCode, HasName {
@@ -14,4 +17,6 @@ public class EnergyNode implements HasId, HasCode, HasName {
 
 	@NotNull @Size(max = 100)
 	private String name;
+
+	private List<Region> region;
 }

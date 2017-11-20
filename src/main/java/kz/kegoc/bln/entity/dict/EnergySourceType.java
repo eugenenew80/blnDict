@@ -17,4 +17,6 @@ public class EnergySourceType implements HasId, HasCode, HasName {
 	
 	@NotNull @Size(max = 10)
 	private String shortName;
+
+	private Boolean isRes;
 }

@@ -13,7 +13,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="number_type" type="varchar">
+            <column name="number_type" type="varchar(40)">
                 <constraints nullable="false"/>
             </column>
             

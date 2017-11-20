@@ -980,5 +980,40 @@
 		</attributes>
 	</entity>
 
+	<entity class="kz.kegoc.bln.entity.dict.Bank">
+		<table name="dict_banks" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_banks_gen" />
+				<sequence-generator
+						name="dict_banks_gen"
+						sequence-name="apps.dict_banks_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="code">
+				<column name="code" />
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="bic">
+				<column name="bic" />
+			</basic>
+
+			<basic name="bin">
+				<column name="bin" />
+			</basic>
+
+			<many-to-one name="bank">
+				<join-column name="meter_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
 	
 </entity-mappings>
