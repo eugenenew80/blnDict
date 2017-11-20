@@ -73,4 +73,58 @@
 	            sequenceName="dict_documents_s"
 	            startValue="1"/>
 	</changeSet>
+
+	<changeSet id="dict-rus-138" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Adding column installation_date and disassembly_date to table dict_current_trans</comment>
+		<addColumn  schemaName="apps"
+					tableName="dict_current_trans">
+			<column name="installation_date" type="date">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="disassembly_date" type="date">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-rus-139" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Adding column region_id to table dict_energy_nodes</comment>
+		<addColumn  schemaName="apps"
+					tableName="dict_energy_nodes">
+			<column name="region_id" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-rus-140" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Adding column is_res to table dict_energy_source_types</comment>
+		<addColumn  schemaName="apps"
+					tableName="dict_energy_source_types">
+			<column name="is_res" type="boolean">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-rus-141" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Adding column voltage_class_id to table dict_energy_source</comment>
+		<addColumn  schemaName="apps"
+					tableName="dict_energy_sources">
+			<column name="voltage_class_id" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-rus-142" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Adding column voltage_class_id to table dict_substations</comment>
+		<addColumn  schemaName="apps"
+					tableName="dict_substations">
+			<column name="voltage_class_id" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>

@@ -65,11 +65,11 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="legal_address" type="boolean">
+			<column name="legal_address" type="number">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="actual_address" type="boolean">
+			<column name="actual_address" type="number">
 				<constraints nullable="true"/>
 			</column>
 		</createTable>
@@ -107,8 +107,8 @@
 			<column name="start_date"	type="DATE"/>
 			<column name="end_date"	type="DATE"/>
 			<column name="business_partner_id"	type="NUMERIC"/>
-			<column name="legal_address"	type="BOOLEAN"/>
-			<column name="actual_address"	type="BOOLEAN"/>
+			<column name="legal_address"	type="NUMERIC"/>
+			<column name="actual_address"	type="NUMERIC"/>
 		 </loadData>
 		
 		<rollback>

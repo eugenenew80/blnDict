@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    
+
+    <changeSet id="dict-rus-37" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Creating table: dict_regions_tl</comment>
+		<createTable tableName="dict_regions_tl" schemaName="apps">
+			<column name="id" type="number">
+                <constraints nullable="false"/>
+            </column>
+
+			<column name="dict_region_id" type="number">
+				<constraints nullable="false"/>
+			</column>
+
+            <column name="lang" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+
+			<column name="name" type="varchar(110)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-38" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Creating primary key for table: dict_regions_tl</comment>
+		<addPrimaryKey
+	            columnNames="id"
+	            constraintName="pk_dict_regions_tl"
+	            schemaName="apps"
+	            tableName="dict_regions_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-39" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Creating unique key for table: dict_regions_tl</comment>
+		<addUniqueConstraint
+				columnNames="dict_region_id, lang"
+				constraintName="uk_dict_regions_tl"
+				schemaName="apps"
+				tableName="dict_regions_tl"/>
+	</changeSet>
+
+	
+	<changeSet id="dict-rus-40" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Creating sequence for table: dict_regions_tl</comment>
+		<createSequence
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="dict_regions_tl_s"
+	            startValue="1"/>
+	</changeSet>
+
+
+</databaseChangeLog>

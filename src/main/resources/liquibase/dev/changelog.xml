@@ -40,6 +40,29 @@
     <include file="release-1/changelog-release-1-file-32.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-33.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-34.xml" relativeToChangelogFile="true"/>
-
-
+    <include file="release-1/translate/changelog-release-1-file-35.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-36.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-37.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-38.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-39.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-40.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-41.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-42.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-43.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-44.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-45.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-46.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-47.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-48.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-49.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-50.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-51.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-52.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-53.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-54.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-55.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-56.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-57.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-58.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/translate/changelog-release-1-file-59.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
