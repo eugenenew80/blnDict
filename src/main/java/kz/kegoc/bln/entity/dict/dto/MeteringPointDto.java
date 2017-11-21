@@ -18,10 +18,10 @@ public class MeteringPointDto {
 	private Double transformationRate;
 	private Double minLoad;
 	private Double maxLoad;	
-	private Long firstCompanyId;
-	private String firstCompanyName;
-	private Long secondCompanyId;
-	private String secondCompanyName;
+	private Long firstBusinessPartnerId;
+	private String firstBusinessPartnerName;
+	private Long secondBusinessPartnerId;
+	private String secondBusinessPartnerName;
 	private Long meteringTypeId;
 	private String meteringTypeName;
 	private Long accountingTypeId;

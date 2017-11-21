@@ -39,9 +39,9 @@ public class JaxRsConfig extends Application {
 		resources.add(MeteringPointResourceImpl.class);
 		resources.add(MeteringPointMeterResourceImpl.class);
 		resources.add(CountryResourceImpl.class);
+		resources.add(BusinessPartnerResourceImpl.class);
 
 		resources.add(BasicAuthentificationFilter.class);
-		
 		resources.add(RepositryNotFoundExceptionMapperImpl.class);
 		resources.add(EntityNotFoundExceptionMapperImpl.class);
 		resources.add(DuplicateEntityExceptionMapperImpl.class);

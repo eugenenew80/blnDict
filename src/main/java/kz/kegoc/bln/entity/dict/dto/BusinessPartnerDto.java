@@ -18,6 +18,7 @@ public class BusinessPartnerDto {
 	private String certificateRegisterSeries;
 	private LocalDate certificateRegisterDate;
 	private String certificateRegisterNumber;
+	private String certificateAuthorityName;
 	private String certificateAuthorityBin;
 	private Long bpParentId;
 }

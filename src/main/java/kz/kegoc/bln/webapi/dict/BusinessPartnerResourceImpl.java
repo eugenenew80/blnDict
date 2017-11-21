@@ -1,12 +1,12 @@
 package kz.kegoc.bln.webapi.dict;
 
-import kz.kegoc.bln.entity.dict.Country;
-import kz.kegoc.bln.entity.dict.dto.CountryDto;
+import kz.kegoc.bln.entity.dict.BusinessPartner;
+import kz.kegoc.bln.entity.dict.dto.BusinessPartnerDto;
 import kz.kegoc.bln.repository.common.query.ConditionType;
 import kz.kegoc.bln.repository.common.query.MyQueryParam;
 import kz.kegoc.bln.repository.common.query.Query;
 import kz.kegoc.bln.repository.common.query.QueryImpl;
-import kz.kegoc.bln.service.dict.CountryService;
+import kz.kegoc.bln.service.dict.BusinessPartnerService;
 import org.dozer.DozerBeanMapper;
 
 import javax.ejb.Stateless;
@@ -23,10 +23,10 @@ import java.util.stream.Collectors;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 @Stateless
-@Path("/dict/dictCountry")
+@Path("/dict/dictBusinessPartner")
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
-public class CountryResourceImpl {
+public class BusinessPartnerResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
@@ -36,13 +36,13 @@ public class CountryResourceImpl {
 			.setOrderBy("t.id")
 			.build();		
 		
-		List<CountryDto> list = countryService.find(query)
+		List<BusinessPartnerDto> list = businessPartnerService.find(query)
 			.stream()
-			.map( it-> dtoMapper.map(it, CountryDto.class) )
+			.map( it-> dtoMapper.map(it, BusinessPartnerDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-				.entity(new GenericEntity<Collection<CountryDto>>(list){})
+				.entity(new GenericEntity<Collection<BusinessPartnerDto>>(list){})
 				.build();
 	}
 	
@@ -50,9 +50,9 @@ public class CountryResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id) {
-		Country entity = countryService.findById(id);
+		BusinessPartner entity = businessPartnerService.findById(id);
 		return Response.ok()
-			.entity(dtoMapper.map(entity, CountryDto.class))
+			.entity(dtoMapper.map(entity, BusinessPartnerDto.class))
 			.build();		
 	}
 	
@@ -60,9 +60,9 @@ public class CountryResourceImpl {
 	@GET
 	@Path("/byCode/{code}")
 	public Response getByCode(@PathParam("code") String code) {		
-		Country entity = countryService.findByCode(code);
+		BusinessPartner entity = businessPartnerService.findByCode(code);
 		return Response.ok()
-			.entity(dtoMapper.map(entity, CountryDto.class))
+			.entity(dtoMapper.map(entity, BusinessPartnerDto.class))
 			.build();
 	}
 	
@@ -70,28 +70,28 @@ public class CountryResourceImpl {
 	@GET
 	@Path("/byName/{name}")
 	public Response getByName(@PathParam("name") String name) {		
-		Country entity = countryService.findByName(name);
+		BusinessPartner entity = businessPartnerService.findByName(name);
 		return Response.ok()
-			.entity(dtoMapper.map(entity, CountryDto.class))
+			.entity(dtoMapper.map(entity, BusinessPartnerDto.class))
 			.build();
 	}
 
 	
 	@POST
-	public Response create(CountryDto entityDto) {
-		Country newEntity = countryService.create(dtoMapper.map(entityDto, Country.class));
+	public Response create(BusinessPartnerDto entityDto) {
+		BusinessPartner newEntity = businessPartnerService.create(dtoMapper.map(entityDto, BusinessPartner.class));
 		return Response.ok()
-			.entity(dtoMapper.map(newEntity, CountryDto.class))
+			.entity(dtoMapper.map(newEntity, BusinessPartnerDto.class))
 			.build();
 	}
 	
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, CountryDto entityDto ) {
-		Country newEntity = countryService.update(dtoMapper.map(entityDto, Country.class));
+	public Response update(@PathParam("id") Long id, BusinessPartnerDto entityDto ) {
+		BusinessPartner newEntity = businessPartnerService.update(dtoMapper.map(entityDto, BusinessPartner.class));
 		return Response.ok()
-			.entity(dtoMapper.map(newEntity, CountryDto.class))
+			.entity(dtoMapper.map(newEntity, BusinessPartnerDto.class))
 			.build();
 	}
 	
@@ -99,14 +99,14 @@ public class CountryResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		countryService.delete(id);		
+		businessPartnerService.delete(id);		
 		return Response.noContent()
 			.build();
 	}	
 	
 
 	@Inject
-	private CountryService countryService;
+	private BusinessPartnerService businessPartnerService;
 
 	@Inject
 	private DozerBeanMapper dtoMapper;

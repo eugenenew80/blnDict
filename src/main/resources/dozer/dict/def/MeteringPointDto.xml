@@ -8,13 +8,13 @@
     <class-b>kz.kegoc.bln.entity.dict.dto.MeteringPointDto</class-b>
 
      <field>
-       <a>firstCompany.id</a>
-       <b>firstCompanyId</b>
+       <a>firstBusinessPartner.id</a>
+       <b>firstBusinessPartnerId</b>
      </field>
      
      <field>
-       <a>secondCompany.id</a>
-       <b>secondCompanyId</b>
+       <a>secondBusinessPartner.id</a>
+       <b>secondBusinessPartnerId</b>
      </field>
 
      <field>

@@ -916,11 +916,11 @@
       			<column name="max_load" />
       		</basic>
 
-			<many-to-one name="firstCompany">
+			<many-to-one name="firstBusinessPartner">
 				<join-column name="first_company_id"/>
 			</many-to-one>  
 						
-			<many-to-one name="secondCompany">
+			<many-to-one name="secondBusinessPartner">
 				<join-column name="second_company_id"/>
 			</many-to-one>  
 
@@ -1149,6 +1149,10 @@
 
 			<basic name="certificateAuthorityBin">
 				<column name="certificate_authority_bin" />
+			</basic>
+
+			<basic name="certificateAuthorityName">
+				<column name="certificate_authority_name" />
 			</basic>
 
 			<many-to-one name="bpParent">

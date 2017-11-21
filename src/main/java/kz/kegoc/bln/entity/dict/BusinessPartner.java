@@ -1,9 +1,6 @@
 package kz.kegoc.bln.entity.dict;
 
 import java.time.LocalDate;
-import java.util.List;
-
-import kz.kegoc.bln.entity.common.HasCode;
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.entity.common.HasName;
 import lombok.Data;
@@ -40,6 +37,9 @@ public class BusinessPartner implements HasId, HasName {
 
 	@NotNull @Size(max = 150)
 	private String certificateAuthorityBin;
+
+	@NotNull @Size(max = 150)
+	private String certificateAuthorityName;
 
 	private BusinessPartner bpParent;
 }

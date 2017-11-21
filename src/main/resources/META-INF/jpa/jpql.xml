@@ -15,8 +15,7 @@
 			select t from AccountingType t where t.code=:code
 		</query>
 	</named-query>
-	
-		
+
 	<named-query name="Company.findAll">
 		<query>
 			select t from Company t order by t.id
@@ -357,6 +356,18 @@
 	<named-query name="Country.findByCode">
 		<query>
 			select t from Country t where t.code=:code
+		</query>
+	</named-query>
+
+
+	<named-query name="BusinessPartner.findAll">
+		<query>
+			select t from BusinessPartner t order by t.id
+		</query>
+	</named-query>
+	<named-query name="BusinessPartner.findByName">
+		<query>
+			select t from BusinessPartner t where t.name=:name
 		</query>
 	</named-query>
 </entity-mappings>

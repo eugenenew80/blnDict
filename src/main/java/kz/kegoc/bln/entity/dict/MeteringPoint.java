@@ -22,10 +22,10 @@ public class MeteringPoint implements HasId, HasCode, HasName {
 	private String externalCode;
 
 	@NotNull
-	private Company firstCompany;
+	private BusinessPartner firstBusinessPartner;
 	
 	@NotNull
-	private Company secondCompany;
+	private BusinessPartner secondBusinessPartner;
 	
 	@NotNull
 	private MeteringType meteringType;
