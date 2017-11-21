@@ -27,5 +27,5 @@ public class Bank implements HasId, HasCode, HasName {
 	@NotNull @Size(max = 40)
 	private String bin;
 
-	private Bank bank;
+	private Bank parentBank;
 }

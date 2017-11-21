@@ -49,7 +49,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="business_partner_id" type="number">
+            <column name="bp_parent_id" type="number">
                 <constraints nullable="true"/>
             </column>
         </createTable>

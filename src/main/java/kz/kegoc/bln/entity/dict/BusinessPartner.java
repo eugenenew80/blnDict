@@ -41,5 +41,5 @@ public class BusinessPartner implements HasId, HasName {
 	@NotNull @Size(max = 150)
 	private String certificateAuthorityBin;
 
-	private BusinessPartner businessPartner;
+	private BusinessPartner bpParent;
 }
