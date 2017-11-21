@@ -41,23 +41,4 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="dict-rus-28" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Adding column voltage_class_id to table dict_energy_source</comment>
-		<addColumn  schemaName="apps"
-					tableName="dict_energy_sources">
-			<column name="voltage_class_id" type="number">
-				<constraints nullable="true"/>
-			</column>
-		</addColumn>
-	</changeSet>
-
-	<changeSet id="dict-rus-138" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Adding column voltage_class_id to table dict_substations</comment>
-		<addColumn  schemaName="apps"
-					tableName="dict_substations">
-			<column name="voltage_class_id" type="number">
-				<constraints nullable="true"/>
-			</column>
-		</addColumn>
-	</changeSet>
 </databaseChangeLog>

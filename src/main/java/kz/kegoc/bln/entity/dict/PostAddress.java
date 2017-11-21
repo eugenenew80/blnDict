@@ -22,8 +22,9 @@ public class PostAddress implements HasId, HasName {
 	@NotNull @Size(max = 10)
 	private String index;
 
+	@NotNull
 	private Country country;
-
+	@NotNull
 	private Region region;
 
 	@NotNull @Size(max = 150)

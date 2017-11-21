@@ -29,7 +29,7 @@ public class BusinessPartner implements HasId, HasName {
 	@NotNull  @Size(max = 10)
 	private String okpo;
 
-	@NotNull @Size(max = 60)
+	@Size(max = 60)
 	private String certificateRegisterSeries;
 
 	@NotNull
