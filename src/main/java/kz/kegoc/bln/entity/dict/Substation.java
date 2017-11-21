@@ -26,5 +26,4 @@ public class Substation implements HasId, HasCode, HasName {
 	private String address;
 	private List<SubstationCompany> companies;
 	private List<SubstationMeteringPoint> meteringPoints;
-	private List<VoltageClass> voltageClasses;
 }

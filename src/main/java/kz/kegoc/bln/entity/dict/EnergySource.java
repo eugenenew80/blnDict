@@ -27,5 +27,5 @@ public class EnergySource implements HasId, HasCode, HasName {
 	private Double installedPower;
 	private List<EnergySourceCompany> companies;
 	private List<EnergySourceMeteringPoint> meteringPoints;
-	private List<VoltageClass> voltageClasses;
+
 }

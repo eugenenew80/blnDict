@@ -580,10 +580,6 @@
 				<join-column name="substation_type_id"/>
 			</many-to-one>
 
-			<many-to-one name="voltageClassId">
-				<join-column name="voltage_class_id"/>
-			</many-to-one>
-			
       		<one-to-many name="companies" mapped-by="substation" />
 			<one-to-many name="meteringPoints" mapped-by="substation" />
 		</attributes>
@@ -692,10 +688,6 @@
       		      		
 			<many-to-one name="energySourceType">
 				<join-column name="energy_source_type_id"/>
-			</many-to-one>
-
-			<many-to-one name="voltageClassId">
-				<join-column name="voltage_class_id"/>
 			</many-to-one>
 
       		<one-to-many name="companies" mapped-by="energySource" />

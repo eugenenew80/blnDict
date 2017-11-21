@@ -18,5 +18,5 @@ public class EnergyNode implements HasId, HasCode, HasName {
 	@NotNull @Size(max = 100)
 	private String name;
 
-	private List<Region> region;
+	private Region region;
 }
