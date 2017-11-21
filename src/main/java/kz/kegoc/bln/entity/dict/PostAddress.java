@@ -22,9 +22,9 @@ public class PostAddress implements HasId, HasName {
 	@NotNull @Size(max = 10)
 	private String index;
 
-	private List<Country> country;
+	private Country country;
 
-	private List<Region> region;
+	private Region region;
 
 	@NotNull @Size(max = 150)
 	private String locality;
@@ -49,7 +49,7 @@ public class PostAddress implements HasId, HasName {
 	private LocalDate endDate;
 
 	@NotNull
-	private List<BusinessPartner> businessPartner;
+	private BusinessPartner businessPartner;
 
 	private Long legalAddress;
 
