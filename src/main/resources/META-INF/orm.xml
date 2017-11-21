@@ -275,6 +275,10 @@
       		<basic name="name">
       			<column name="name" />
       		</basic>
+
+			<many-to-one name="region">
+				<join-column name="region_id"/>
+			</many-to-one>
 		</attributes>
 	</entity>
 	
@@ -426,8 +430,16 @@
       		
       		<basic name="nextVerificationDate">
       			<column name="next_verification_date" />
-      		</basic> 
-      		
+      		</basic>
+
+			<basic name="installationDate">
+				<column name="installation_date" />
+			</basic>
+
+			<basic name="disassemblyDate">
+				<column name="disassembly_date" />
+			</basic>
+
 			<many-to-one name="company">
 				<join-column name="company_id"/>
 			</many-to-one>       		    		
@@ -522,7 +534,11 @@
       		
       		<basic name="shortName">
       			<column name="short_name" />
-      		</basic>      		
+      		</basic>
+
+			<basic name="isRes">
+				<column name="is_res" />
+			</basic>
 		</attributes>
 	</entity>
 	
@@ -562,7 +578,11 @@
       		
 			<many-to-one name="substationType">
 				<join-column name="substation_type_id"/>
-			</many-to-one> 
+			</many-to-one>
+
+			<many-to-one name="voltageClassId">
+				<join-column name="voltage_class_id"/>
+			</many-to-one>
 			
       		<one-to-many name="companies" mapped-by="substation" />
 			<one-to-many name="meteringPoints" mapped-by="substation" />
@@ -672,8 +692,12 @@
       		      		
 			<many-to-one name="energySourceType">
 				<join-column name="energy_source_type_id"/>
-			</many-to-one>   
-			
+			</many-to-one>
+
+			<many-to-one name="voltageClassId">
+				<join-column name="voltage_class_id"/>
+			</many-to-one>
+
       		<one-to-many name="companies" mapped-by="energySource" />
 			<one-to-many name="meteringPoints" mapped-by="energySource" />
 		</attributes>
@@ -1009,11 +1033,213 @@
 				<column name="bin" />
 			</basic>
 
-			<many-to-one name="bank">
-				<join-column name="meter_id"/>
+			<many-to-one name="parentBank">
+				<join-column name="parent_bank_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
 
-	
+	<entity class="kz.kegoc.bln.entity.dict.PostAddress">
+		<table name="dict_post_addresses" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_post_addresses_gen" />
+				<sequence-generator
+						name="dict_post_addresses_gen"
+						sequence-name="apps.dict_post_addresses_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="index">
+				<column name="index" />
+			</basic>
+
+			<basic name="street">
+				<column name="street"/>
+			</basic>
+
+			<basic name="houseNumber">
+				<column name="house_number" />
+			</basic>
+
+			<basic name="buildingNumber">
+				<column name="building_number" />
+			</basic>
+
+			<basic name="apartment">
+				<column name="apartment" />
+			</basic>
+
+			<basic name="officeNumber">
+				<column name="officeNumber" />
+			</basic>
+
+			<basic name="startDate">
+				<column name="start_date" />
+			</basic>
+
+			<basic name="endDate">
+				<column name="end_date" />
+			</basic>
+
+			<basic name="legalAddress">
+				<column name="legal_address" />
+			</basic>
+
+			<basic name="actualAddress">
+				<column name="actual_address" />
+			</basic>
+
+			<many-to-one name="country">
+				<join-column name="country_id"/>
+			</many-to-one>
+
+			<many-to-one name="region">
+				<join-column name="region_id"/>
+			</many-to-one>
+
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.BusinessPartner">
+	<table name="dict_business_partners" schema="apps"/>
+	<attributes>
+	<id name="id">
+		<column name="id" />
+		<generated-value strategy="SEQUENCE" generator="dict_business_partners_gen" />
+		<sequence-generator
+				name="dict_business_partners_gen"
+				sequence-name="apps.dict_business_partners_s"
+				allocation-size="1"
+		/>
+	</id>
+
+		<basic name="name">
+			<column name="name" />
+		</basic>
+
+		<basic name="bin">
+			<column name="bin" />
+		</basic>
+
+		<basic name="kbe">
+			<column name="kbe" />
+		</basic>
+
+		<basic name="okpo">
+			<column name="okpo" />
+		</basic>
+
+		<basic name="certificateRegisterSeries">
+			<column name="certificate_register_series" />
+		</basic>
+
+		<basic name="certificateRegisterDate">
+			<column name="certificate_register_date" />
+		</basic>
+
+		<basic name="certificateRegisterNumber">
+			<column name="certificate_register_number" />
+		</basic>
+
+		<basic name="certificateAuthorityBin">
+			<column name="certificate_authority_bin" />
+		</basic>
+
+		<many-to-one name="businessPartner">
+			<join-column name="business_partner_id"/>
+		</many-to-one>
+	</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.PhoneNumber">
+	<table name="dict_phone_numbers" schema="apps"/>
+	<attributes>
+	<id name="id">
+		<column name="id" />
+		<generated-value strategy="SEQUENCE" generator="dict_phone_numbers_gen" />
+		<sequence-generator
+				name="dict_phone_numbers_gen"
+				sequence-name="apps.dict_phone_numbers_s"
+				allocation-size="1"
+		/>
+	</id>
+
+		<basic name="numberType">
+			<column name="number_type" />
+		</basic>
+
+		<basic name="phoneNumber">
+			<column name="phone_number" />
+		</basic>
+
+		<many-to-one name="businessPartner">
+			<join-column name="business_partner_id"/>
+		</many-to-one>
+	</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.BankAccount">
+	<table name="dict_bank_accounts" schema="apps"/>
+	<attributes>
+	<id name="id">
+		<column name="id" />
+		<generated-value strategy="SEQUENCE" generator="dict_bank_accounts_gen" />
+		<sequence-generator
+				name="dict_bank_accounts_gen"
+				sequence-name="apps.dict_bank_accounts_s"
+				allocation-size="1"
+		/>
+	</id>
+
+		<basic name="code">
+			<column name="code" />
+		</basic>
+
+		<basic name="name">
+			<column name="name" />
+		</basic>
+
+		<many-to-one name="bank">
+			<join-column name="bank_id"/>
+		</many-to-one>
+
+		<many-to-one name="businessPartner">
+			<join-column name="business_partner_id"/>
+		</many-to-one>
+	</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.VoltageClass">
+		<table name="dict_voltage_classes" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_voltage_classes_gen" />
+				<sequence-generator
+						name="dict_voltage_classes_gen"
+						sequence-name="apps.dict_voltage_classes_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="code">
+				<column name="code" />
+			</basic>
+
+			<basic name="value">
+				<column name="value" />
+			</basic>
+
+		</attributes>
+	</entity>
 </entity-mappings>
