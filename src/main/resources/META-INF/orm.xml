@@ -1025,7 +1025,7 @@
 				<column name="bin" />
 			</basic>
 
-			<many-to-one name="bank">
+			<many-to-one name="parentBank">
 				<join-column name="parent_bank_id"/>
 			</many-to-one>
 		</attributes>
@@ -1151,8 +1151,8 @@
 				<column name="certificate_authority_bin" />
 			</basic>
 
-			<many-to-one name="businessPartner">
-				<join-column name="business_partner_id"/>
+			<many-to-one name="bpParent">
+				<join-column name="bp_parent_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
