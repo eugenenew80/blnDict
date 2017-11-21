@@ -22,8 +22,8 @@ public class BankAccount implements HasId, HasCode, HasName {
 	private String name;
 
 	@NotNull
-	private List<Bank> bank;
+	private Bank bank;
 
 	@NotNull
-	private List<BusinessPartner> businessPartner;
+	private BusinessPartner businessPartner;
 }

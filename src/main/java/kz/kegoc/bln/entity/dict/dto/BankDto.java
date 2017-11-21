@@ -13,5 +13,5 @@ public class BankDto {
 	private String name;
 	private String bic;
 	private String bin;
-	private Long parentBankId;
+	private Long bankId;
 }

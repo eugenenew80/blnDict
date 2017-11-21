@@ -1018,7 +1018,7 @@
 			</id>
 
 			<basic name="code">
-				<column name="code" />
+				<column name="code"/>
 			</basic>
 
 			<basic name="name">
@@ -1033,7 +1033,7 @@
 				<column name="bin" />
 			</basic>
 
-			<many-to-one name="parentBank">
+			<many-to-one name="bank">
 				<join-column name="parent_bank_id"/>
 			</many-to-one>
 		</attributes>
@@ -1058,6 +1058,10 @@
 
 			<basic name="index">
 				<column name="index" />
+			</basic>
+
+			<basic name="locality">
+				<column name="locality" />
 			</basic>
 
 			<basic name="street">
@@ -1111,81 +1115,81 @@
 	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.BusinessPartner">
-	<table name="dict_business_partners" schema="apps"/>
-	<attributes>
-	<id name="id">
-		<column name="id" />
-		<generated-value strategy="SEQUENCE" generator="dict_business_partners_gen" />
-		<sequence-generator
-				name="dict_business_partners_gen"
-				sequence-name="apps.dict_business_partners_s"
-				allocation-size="1"
-		/>
-	</id>
+		<table name="dict_business_partners" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_business_partners_gen" />
+				<sequence-generator
+						name="dict_business_partners_gen"
+						sequence-name="apps.dict_business_partners_s"
+						allocation-size="1"
+				/>
+			</id>
 
-		<basic name="name">
-			<column name="name" />
-		</basic>
+			<basic name="name">
+				<column name="name" />
+			</basic>
 
-		<basic name="bin">
-			<column name="bin" />
-		</basic>
+			<basic name="bin">
+				<column name="bin" />
+			</basic>
 
-		<basic name="kbe">
-			<column name="kbe" />
-		</basic>
+			<basic name="kbe">
+				<column name="kbe" />
+			</basic>
 
-		<basic name="okpo">
-			<column name="okpo" />
-		</basic>
+			<basic name="okpo">
+				<column name="okpo" />
+			</basic>
 
-		<basic name="certificateRegisterSeries">
-			<column name="certificate_register_series" />
-		</basic>
+			<basic name="certificateRegisterSeries">
+				<column name="certificate_register_series" />
+			</basic>
 
-		<basic name="certificateRegisterDate">
-			<column name="certificate_register_date" />
-		</basic>
+			<basic name="certificateRegisterDate">
+				<column name="certificate_register_date" />
+			</basic>
 
-		<basic name="certificateRegisterNumber">
-			<column name="certificate_register_number" />
-		</basic>
+			<basic name="certificateRegisterNumber">
+				<column name="certificate_register_number" />
+			</basic>
 
-		<basic name="certificateAuthorityBin">
-			<column name="certificate_authority_bin" />
-		</basic>
+			<basic name="certificateAuthorityBin">
+				<column name="certificate_authority_bin" />
+			</basic>
 
-		<many-to-one name="businessPartner">
-			<join-column name="business_partner_id"/>
-		</many-to-one>
-	</attributes>
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
+			</many-to-one>
+		</attributes>
 	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.PhoneNumber">
-	<table name="dict_phone_numbers" schema="apps"/>
-	<attributes>
-	<id name="id">
-		<column name="id" />
-		<generated-value strategy="SEQUENCE" generator="dict_phone_numbers_gen" />
-		<sequence-generator
-				name="dict_phone_numbers_gen"
-				sequence-name="apps.dict_phone_numbers_s"
-				allocation-size="1"
-		/>
-	</id>
+		<table name="dict_phone_numbers" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_phone_numbers_gen" />
+				<sequence-generator
+						name="dict_phone_numbers_gen"
+						sequence-name="apps.dict_phone_numbers_s"
+						allocation-size="1"
+				/>
+			</id>
 
-		<basic name="numberType">
-			<column name="number_type" />
-		</basic>
+			<basic name="numberType">
+				<column name="number_type" />
+			</basic>
 
-		<basic name="phoneNumber">
-			<column name="phone_number" />
-		</basic>
+			<basic name="phoneNumber">
+				<column name="phone_number" />
+			</basic>
 
-		<many-to-one name="businessPartner">
-			<join-column name="business_partner_id"/>
-		</many-to-one>
-	</attributes>
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
+			</many-to-one>
+		</attributes>
 	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.BankAccount">
@@ -1239,7 +1243,6 @@
 			<basic name="value">
 				<column name="value" />
 			</basic>
-
 		</attributes>
 	</entity>
 </entity-mappings>

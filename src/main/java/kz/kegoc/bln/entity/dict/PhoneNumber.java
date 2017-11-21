@@ -22,5 +22,5 @@ public class PhoneNumber implements HasId {
 	private String phoneNumber;
 
 	@NotNull
-	private List<BusinessPartner> businessPartner;
+	private BusinessPartner businessPartner;
 }
