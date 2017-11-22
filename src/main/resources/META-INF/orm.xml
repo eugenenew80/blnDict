@@ -373,7 +373,6 @@
 			</many-to-one> 
 		</attributes>
 	</entity>
-
 	
 	<entity class="kz.kegoc.bln.entity.dict.CurrentTrans">
 		<table name="dict_current_trans" schema="apps" />
