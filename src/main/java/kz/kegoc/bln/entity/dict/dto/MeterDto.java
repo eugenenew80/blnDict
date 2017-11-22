@@ -19,8 +19,8 @@ public class MeterDto {
 	private Double accuracyClass;
 	private Double minimumLoad;
 	private Double maximumLoad;
-	private Long companyId;
-	private String companyName;
+	private Long businessPartnerId;
+	private String businessPartnerName;
 	private LocalDate lastVerificationDate;
 	private LocalDate nextVerificationDate;
 }

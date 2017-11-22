@@ -20,7 +20,7 @@ public class Meter implements HasId, HasCode, HasName {
 	private String manufacturer;
 
 	@NotNull
-	private Company company;
+	private BusinessPartner businessPartner;
 	
 	private String serialNumber;
 	private Double ratedCurrent;
