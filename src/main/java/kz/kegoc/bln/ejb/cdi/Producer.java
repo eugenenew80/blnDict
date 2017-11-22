@@ -1,5 +1,6 @@
 package kz.kegoc.bln.ejb.cdi;
 
+import kz.kegoc.bln.entity.common.Lang;
 import org.dozer.DozerBeanMapper;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -56,5 +57,10 @@ public class Producer {
 
         ));
         return mapper;
+    }
+
+    @Produces
+    public Lang defLang() {
+        return Lang.RU;
     }
 }
