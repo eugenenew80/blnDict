@@ -7,7 +7,7 @@
   <configuration>
       <relationship-type>non-cumulative</relationship-type>
       <custom-converters>
-          <converter type="kz.kegoc.bln.ejb.converter.dozer.LocalDateConverter">
+          <converter type="kz.kegoc.bln.ejb.converter.mapper.LocalDateConverter">
               <class-a>java.time.LocalDate</class-a>
               <class-b>java.time.LocalDate</class-b>
           </converter>

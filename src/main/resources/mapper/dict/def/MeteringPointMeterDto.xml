@@ -18,11 +18,6 @@
      </field>    
 
      <field>
-       <a>meter.code</a>
-       <b>meterCode</b>
-     </field>  
-     
-     <field>
        <a>meter.name</a>
        <b>meterName</b>
      </field>    

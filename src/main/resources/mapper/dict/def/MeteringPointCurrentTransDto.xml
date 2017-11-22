@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+  <mapping>
+    <class-a>kz.kegoc.bln.entity.dict.MeteringPointMeter</class-a>
+    <class-b>kz.kegoc.bln.entity.dict.dto.MeteringPointMeterDto</class-b>
+    
+     <field>
+       <a>meteringPoint.id</a>
+       <b>meteringPointId</b>
+     </field>    
+
+     <field>
+       <a>currentTrans.id</a>
+       <b>currentTransId</b>
+     </field>    
+
+     <field>
+       <a>currentTrans.name</a>
+       <b>currentTransName</b>
+     </field>    
+
+     <field>
+       <a>currentTrans.serialNumber</a>
+       <b>currentTransSerialNumber</b>
+     </field>  
+  </mapping> 
+</mappings> 
