@@ -880,7 +880,7 @@
       		</basic>
 
       		<basic name="name">
-      			<column name="name" />
+      			<column name="name" updatable="false" />
       		</basic>
       		
       		<basic name="externalCode">
