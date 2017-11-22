@@ -79,7 +79,11 @@ public class BusinessPartnerResourceImpl {
 	
 	@POST
 	public Response create(BusinessPartnerDto entityDto) {
-		BusinessPartner newEntity = businessPartnerService.create(dtoMapper.map(entityDto, BusinessPartner.class));
+		BusinessPartner entity = dtoMapper.map(entityDto, BusinessPartner.class);
+		BusinessPartner newEntity = businessPartnerService.create(entity);
+		if (entity.getBpParent()!=null && entity.getBpParent().getId()==null)
+			entity.setBpParent(null);
+
 		return Response.ok()
 			.entity(dtoMapper.map(newEntity, BusinessPartnerDto.class))
 			.build();

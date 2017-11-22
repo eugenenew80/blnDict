@@ -23,7 +23,7 @@ public class MeteringPointVoltageTransResourceImpl {
 	@GET
 	public Response getAll(@PathParam("meteringPointId") Long meteringPointId) {
 		List<MeteringPointVoltageTransDto> list = meteringPointService.findById(meteringPointId)
-			.getMeters()
+			.getVoltageTrans()
 			.stream()
 			.map( it-> mapper.map(it, MeteringPointVoltageTransDto.class) )
 			.collect(Collectors.toList());		

@@ -102,17 +102,17 @@ public class MeteringPointResourceImpl {
 		return meterResourceImpl;
 	}
 
-	@Path("/{meteringPointId : \\d+}/dictMeteringPointMeter")
+	@Path("/{meteringPointId : \\d+}/dictMeteringPointCurrentTrans")
 	public MeteringPointCurrentTransResourceImpl getCurrentTransResource() {
 		return currentTransResource;
 	}
 
-	@Path("/{meteringPointId : \\d+}/dictMeteringPointMeter")
+	@Path("/{meteringPointId : \\d+}/dictMeteringPointVoltageTrans")
 	public MeteringPointVoltageTransResourceImpl getVoltageTransResource() {
 		return voltageTransResource;
 	}
 
-	
+
 	@Inject
 	private MeteringPointService service;
 

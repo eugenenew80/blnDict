@@ -22,7 +22,7 @@ public class MeteringPointCurrentTransResourceImpl {
 	@GET
 	public Response getAll(@PathParam("meteringPointId") Long meteringPointId) {
 		List<MeteringPointCurrentTransDto> list = meteringPointService.findById(meteringPointId)
-			.getMeters()
+			.getCurrentTrans()
 			.stream()
 			.map( it-> mapper.map(it, MeteringPointCurrentTransDto.class) )
 			.collect(Collectors.toList());		
@@ -45,7 +45,8 @@ public class MeteringPointCurrentTransResourceImpl {
 
 	@POST
 	public Response create(MeteringPointCurrentTransDto entityDto) {
-		MeteringPointCurrentTrans newEntity = service.create(mapper.map(entityDto, MeteringPointCurrentTrans.class));
+		MeteringPointCurrentTrans entity = mapper.map(entityDto, MeteringPointCurrentTrans.class);
+		MeteringPointCurrentTrans newEntity = service.create(entity);
 		return Response.ok()
 				.entity(mapper.map(newEntity, MeteringPointCurrentTransDto.class))
 				.build();
@@ -55,7 +56,8 @@ public class MeteringPointCurrentTransResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, MeteringPointCurrentTransDto entityDto ) {
-		MeteringPointCurrentTrans newEntity = service.update(mapper.map(entityDto, MeteringPointCurrentTrans.class));
+		MeteringPointCurrentTrans entity = mapper.map(entityDto, MeteringPointCurrentTrans.class);
+		MeteringPointCurrentTrans newEntity = service.update(entity);
 		return Response.ok()
 				.entity(mapper.map(newEntity, MeteringPointCurrentTransDto.class))
 				.build();

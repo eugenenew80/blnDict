@@ -31,6 +31,8 @@ public class Producer {
                 "mapper/dict/def/EnergyZoneDto.xml",
                 "mapper/dict/def/MeteringPointDto.xml",
                 "mapper/dict/def/MeteringPointMeterDto.xml",
+                "mapper/dict/def/MeteringPointCurrentTransDto.xml",
+                "mapper/dict/def/MeteringPointVoltageTransDto.xml",
                 "mapper/dict/def/MeteringPointTypeDto.xml",
                 "mapper/dict/def/MeteringTypeDto.xml",
                 "mapper/dict/def/MeterDto.xml",
