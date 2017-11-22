@@ -45,7 +45,11 @@ public class Producer {
                 "dozer/dict/def/VoltageTransTypeDto.xml",
                 "dozer/dict/def/CountryDto.xml",
                 "dozer/dict/def/BusinessPartnerDto.xml",
-
+                "dozer/dict/def/BankDto.xml",
+                "dozer/dict/def/BankAccountDto.xml",
+                "dozer/dict/def/PhoneNumberDto.xml",
+                "dozer/dict/def/PostAddressDto.xml",
+                "dozer/dict/def/VoltageClassDto.xml",
                 "dozer/dict/list/MeterDto.xml"
 
         ));
