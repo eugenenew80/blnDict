@@ -9,10 +9,10 @@ import javax.persistence.EntityManager;
 
 
 @Stateless
-public class VoltageClassImpl extends AbstractRepository<VoltageClass> implements VoltageClassRepository {
-	public VoltageClassImpl() { setClazz(VoltageClass.class); }
+public class VoltageClassRepositoryImpl extends AbstractRepository<VoltageClass> implements VoltageClassRepository {
+	public VoltageClassRepositoryImpl() { setClazz(VoltageClass.class); }
 
-	public VoltageClassImpl(EntityManager entityManager) {
+	public VoltageClassRepositoryImpl(EntityManager entityManager) {
 		this();
 		setEntityManager(entityManager);
 	}

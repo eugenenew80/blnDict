@@ -9,10 +9,10 @@ import javax.persistence.EntityManager;
 
 
 @Stateless
-public class PostAddressImpl extends AbstractRepository<PostAddress> implements PostAddressRepository {
-	public PostAddressImpl() { setClazz(PostAddress.class); }
+public class PostAddressRepositoryImpl extends AbstractRepository<PostAddress> implements PostAddressRepository {
+	public PostAddressRepositoryImpl() { setClazz(PostAddress.class); }
 
-	public PostAddressImpl(EntityManager entityManager) {
+	public PostAddressRepositoryImpl(EntityManager entityManager) {
 		this();
 		setEntityManager(entityManager);
 	}

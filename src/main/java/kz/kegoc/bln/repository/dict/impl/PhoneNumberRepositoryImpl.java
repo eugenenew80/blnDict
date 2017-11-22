@@ -9,10 +9,10 @@ import javax.persistence.EntityManager;
 
 
 @Stateless
-public class PhoneNumberImpl extends AbstractRepository<PhoneNumber> implements PhoneNumberRepository {
-	public PhoneNumberImpl() { setClazz(PhoneNumber.class); }
+public class PhoneNumberRepositoryImpl extends AbstractRepository<PhoneNumber> implements PhoneNumberRepository {
+	public PhoneNumberRepositoryImpl() { setClazz(PhoneNumber.class); }
 
-	public PhoneNumberImpl(EntityManager entityManager) {
+	public PhoneNumberRepositoryImpl(EntityManager entityManager) {
 		this();
 		setEntityManager(entityManager);
 	}
