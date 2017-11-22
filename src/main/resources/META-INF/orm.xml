@@ -935,10 +935,11 @@
 				<join-column name="metering_point_type_id"/>
 			</many-to-one> 
 			
-			<one-to-many name="meters" mapped-by="meteringPoint" /> 
+			<one-to-many name="meters" mapped-by="meteringPoint" />
+			<one-to-many name="currentTrans" mapped-by="meteringPoint" />
+			<one-to-many name="voltageTrans" mapped-by="meteringPoint" />
 		</attributes>
 	</entity>
-
 
 
 	<entity class="kz.kegoc.bln.entity.dict.MeteringPointMeter">
@@ -971,6 +972,70 @@
 			</many-to-one>
 		</attributes>
 	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.MeteringPointCurrentTrans">
+		<table name="dict_metering_point_current_trans" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_metering_point_current_trans_gen" />
+				<sequence-generator
+						name="dict_metering_point_current_trans_gen"
+						sequence-name="apps.dict_metering_point_current_trans_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="startDate">
+				<column name="start_date" />
+			</basic>
+
+			<basic name="endDate">
+				<column name="end_date" />
+			</basic>
+
+			<many-to-one name="meteringPoint">
+				<join-column name="metering_point_id" />
+			</many-to-one>
+
+			<many-to-one name="currentTrans">
+				<join-column name="current_trans_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.MeteringPointVoltageTrans">
+		<table name="dict_metering_point_voltage_trans" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_metering_point_voltage_trans_gen" />
+				<sequence-generator
+						name="dict_metering_point_voltage_trans_gen"
+						sequence-name="apps.dict_metering_point_voltage_trans_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="startDate">
+				<column name="start_date" />
+			</basic>
+
+			<basic name="endDate">
+				<column name="end_date" />
+			</basic>
+
+			<many-to-one name="meteringPoint">
+				<join-column name="metering_point_id" />
+			</many-to-one>
+
+			<many-to-one name="voltageTrans">
+				<join-column name="voltage_trans_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
 
 	<entity class="kz.kegoc.bln.entity.dict.Country">
 		<table name="dict_countries" schema="apps"/>

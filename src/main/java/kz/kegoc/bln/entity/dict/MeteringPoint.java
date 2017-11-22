@@ -45,4 +45,6 @@ public class MeteringPoint implements HasId, HasCode, HasName {
 	private Double maxLoad;
 	
 	private List<MeteringPointMeter> meters;
+	private List<MeteringPointCurrentTrans> currentTrans;
+	private List<MeteringPointVoltageTrans> voltageTrans;
 }
