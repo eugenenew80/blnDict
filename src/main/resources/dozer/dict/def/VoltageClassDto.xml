@@ -4,12 +4,7 @@
           xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
   <mapping>
-    <class-a>kz.kegoc.bln.entity.dict.BusinessPartner</class-a>
-    <class-b>kz.kegoc.bln.entity.dict.dto.BusinessPartnerDto</class-b>
-
-    <field>
-      <a>bpParent.id</a>
-      <b>bpParentId</b>
-    </field>
+    <class-a>kz.kegoc.bln.entity.dict.VoltageClass</class-a>
+    <class-b>kz.kegoc.bln.entity.dict.dto.VoltageClassDto</class-b>
   </mapping> 
 </mappings> 

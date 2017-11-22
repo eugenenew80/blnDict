@@ -4,12 +4,22 @@
           xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
   <mapping>
-    <class-a>kz.kegoc.bln.entity.dict.BusinessPartner</class-a>
-    <class-b>kz.kegoc.bln.entity.dict.dto.BusinessPartnerDto</class-b>
+    <class-a>kz.kegoc.bln.entity.dict.PostAddress</class-a>
+    <class-b>kz.kegoc.bln.entity.dict.dto.PostAddressDto</class-b>
 
     <field>
-      <a>bpParent.id</a>
-      <b>bpParentId</b>
+      <a>country.id</a>
+      <b>countryId</b>
+    </field>
+
+    <field>
+      <a>region.id</a>
+      <b>regionId</b>
+    </field>
+
+    <field>
+      <a>businessPartner.id</a>
+      <b>businessPartnerId</b>
     </field>
   </mapping> 
 </mappings> 
