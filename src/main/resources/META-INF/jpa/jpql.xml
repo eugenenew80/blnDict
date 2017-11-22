@@ -370,4 +370,69 @@
 			select t from BusinessPartner t where t.name=:name
 		</query>
 	</named-query>
+
+
+	<named-query name="BankAccount.findAll">
+		<query>
+			select t from BusinessPartner t order by t.id
+		</query>
+	</named-query>
+	<named-query name="BankAccount.findByName">
+		<query>
+			select t from BusinessPartner t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="BankAccount.findByCode">
+		<query>
+			select t from BusinessPartner t where t.name=:name
+		</query>
+	</named-query>
+
+
+	<named-query name="Bank.findAll">
+		<query>
+			select t from BusinessPartner t order by t.id
+		</query>
+	</named-query>
+	<named-query name="Bank.findByName">
+		<query>
+			select t from BusinessPartner t where t.name=:name
+		</query>
+	</named-query>
+	<named-query name="Bank.findByCode">
+		<query>
+			select t from BusinessPartner t where t.name=:name
+		</query>
+	</named-query>
+
+
+	<named-query name="PhoneNumber.findAll">
+		<query>
+			select t from BusinessPartner t order by t.id
+		</query>
+	</named-query>
+
+
+	<named-query name="PostAddress.findAll">
+		<query>
+			select t from BusinessPartner t order by t.id
+		</query>
+	</named-query>
+	<named-query name="PostAddress.findByName">
+		<query>
+			select t from BusinessPartner t order by t.id
+		</query>
+	</named-query>
+
+
+	<named-query name="VoltageClass.findAll">
+		<query>
+			select t from BusinessPartner t order by t.id
+		</query>
+	</named-query>
+	<named-query name="VoltageClass.findByCode">
+		<query>
+			select t from BusinessPartner t order by t.id
+		</query>
+	</named-query>
 </entity-mappings>
