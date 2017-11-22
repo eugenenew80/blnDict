@@ -44,8 +44,10 @@ public class Producer {
                 "dozer/dict/def/VoltageTransDto.xml",
                 "dozer/dict/def/VoltageTransTypeDto.xml",
                 "dozer/dict/def/CountryDto.xml",
+                "dozer/dict/def/BusinessPartnerDto.xml",
 
                 "dozer/dict/list/MeterDto.xml"
+
         ));
         return mapper;
     }
