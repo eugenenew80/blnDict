@@ -368,8 +368,8 @@
       			<column name="next_verification_date" />
       		</basic> 
       		
-			<many-to-one name="company">
-				<join-column name="company_id"/>
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
 			</many-to-one> 
 		</attributes>
 	</entity>
