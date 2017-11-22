@@ -98,16 +98,32 @@ public class MeteringPointResourceImpl {
 	
 
 	@Path("/{meteringPointId : \\d+}/dictMeteringPointMeter")
-	public MeteringPointMeterResourceImpl getModules(@PathParam("meteringPointId") Long id) {
-		return meteringPointMeterResourceImpl;
+	public MeteringPointMeterResourceImpl getMeterResource() {
+		return meterResourceImpl;
 	}
-	
+
+	@Path("/{meteringPointId : \\d+}/dictMeteringPointMeter")
+	public MeteringPointCurrentTransResourceImpl getCurrentTransResource() {
+		return currentTransResource;
+	}
+
+	@Path("/{meteringPointId : \\d+}/dictMeteringPointMeter")
+	public MeteringPointVoltageTransResourceImpl getVoltageTransResource() {
+		return voltageTransResource;
+	}
+
 	
 	@Inject
 	private MeteringPointService service;
 
 	@Inject
-	private MeteringPointMeterResourceImpl meteringPointMeterResourceImpl;
+	private MeteringPointMeterResourceImpl meterResourceImpl;
+
+	@Inject
+	private MeteringPointCurrentTransResourceImpl currentTransResource;
+
+	@Inject
+	private MeteringPointVoltageTransResourceImpl voltageTransResource;
 
 	@Inject
 	private DozerBeanMapper mapper;
