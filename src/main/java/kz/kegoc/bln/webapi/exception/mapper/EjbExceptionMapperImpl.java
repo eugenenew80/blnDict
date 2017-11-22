@@ -21,21 +21,19 @@ public class EjbExceptionMapperImpl implements ExceptionMapper<EJBException> {
     	if (exc.getCause()!=null) {
 			if (exc.getCause() instanceof RollbackException) {
 				Throwable appExc =  exc.getCause().getCause().getCause().getCause();
-				//System.out.println("QQQQQ EjbExceptionMapperImpl " + appExc.getClass());
-
 				return Response.status(500)
-						.type(MediaType.APPLICATION_JSON)
-						.entity(new ErrorMessage("tx-exception", appExc.getMessage()))
-						.build();
+					.type(MediaType.APPLICATION_JSON)
+					.entity(new ErrorMessage("tx-exception", appExc.getMessage()))
+					.build();
 			}
 
 
 			if (exc.getCause() instanceof SQLGrammarException) {
 				Throwable appExc =  exc.getCause().getCause();
 				return Response.status(500)
-						.type(MediaType.APPLICATION_JSON)
-						.entity(new ErrorMessage("sql-exception", appExc.getMessage()))
-						.build();
+					.type(MediaType.APPLICATION_JSON)
+					.entity(new ErrorMessage("sql-exception", appExc.getMessage()))
+					.build();
 			}
 
     		if (exc.getCause() instanceof ValidationException) { 

@@ -369,7 +369,7 @@
       		</basic> 
       		
 			<many-to-one name="businessPartner">
-				<join-column name="business_partner_id"/>
+				<join-column name="company_id"/>
 			</many-to-one> 
 		</attributes>
 	</entity>
