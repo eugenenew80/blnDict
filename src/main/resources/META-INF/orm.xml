@@ -938,6 +938,43 @@
 			<one-to-many name="meters" mapped-by="meteringPoint" />
 			<one-to-many name="currentTrans" mapped-by="meteringPoint" />
 			<one-to-many name="voltageTrans" mapped-by="meteringPoint" />
+
+			<one-to-many name="translations" mapped-by="meteringPoint" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang"/>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.MeteringPointTranslate">
+		<table name="dict_metering_points_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_metering_points_tl_gen" />
+				<sequence-generator
+						name="dict_metering_points_tl_gen"
+						sequence-name="apps.dict_metering_points_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<many-to-one name="meteringPoint">
+				<join-column name="metering_point_id"/>
+			</many-to-one>
 		</attributes>
 	</entity>
 
