@@ -1,27 +1,30 @@
 package kz.kegoc.bln.webapi.dict;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import kz.kegoc.bln.entity.common.Lang;
+import kz.kegoc.bln.entity.dict.Bank;
+import kz.kegoc.bln.entity.dict.dto.BankDto;
+import kz.kegoc.bln.repository.common.query.ConditionType;
+import kz.kegoc.bln.repository.common.query.MyQueryParam;
+import kz.kegoc.bln.repository.common.query.Query;
+import kz.kegoc.bln.repository.common.query.QueryImpl;
+import kz.kegoc.bln.service.dict.BankService;
+import kz.kegoc.bln.translator.Translator;
+import org.dozer.DozerBeanMapper;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-
-import kz.kegoc.bln.entity.common.Lang;
-import kz.kegoc.bln.translator.Translator;
-import org.dozer.DozerBeanMapper;
-import kz.kegoc.bln.entity.dict.AccountingType;
-import kz.kegoc.bln.entity.dict.dto.AccountingTypeDto;
-import kz.kegoc.bln.repository.common.query.*;
-import kz.kegoc.bln.service.dict.AccountingTypeService;
-
-import static org.apache.commons.lang3.StringUtils.*;
+import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.Response;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 @Stateless
-@Path("/dict/dictAccountingType")
+@Path("/dict/dictBank")
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
-public class AccountingTypeResourceImpl {
+public class BankResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
@@ -33,14 +36,14 @@ public class AccountingTypeResourceImpl {
 			.setOrderBy("t.id")
 			.build();		
 		
-		List<AccountingTypeDto> list = service.find(query)
+		List<BankDto> list = service.find(query)
 			.stream()
 			.map(it -> translator.translate(it, userLang))
-			.map( it-> mapper.map(it, AccountingTypeDto.class) )
+			.map( it-> mapper.map(it, BankDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-				.entity(new GenericEntity<Collection<AccountingTypeDto>>(list){})
+				.entity(new GenericEntity<Collection<BankDto>>(list){})
 				.build();
 	}
 	
@@ -50,9 +53,9 @@ public class AccountingTypeResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
 
-		AccountingType entity = service.findById(id);
+		Bank entity = service.findById(id);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), AccountingTypeDto.class))
+			.entity(mapper.map(translator.translate(entity, userLang), BankDto.class))
 			.build();		
 	}
 	
@@ -62,9 +65,9 @@ public class AccountingTypeResourceImpl {
 	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
 
-		AccountingType entity = service.findByCode(code);
+		Bank entity = service.findByCode(code);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), AccountingTypeDto.class))
+			.entity(mapper.map(translator.translate(entity, userLang), BankDto.class))
 			.build();
 	}
 	
@@ -74,34 +77,34 @@ public class AccountingTypeResourceImpl {
 	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
 
-		AccountingType entity = service.findByName(name);
+		Bank entity = service.findByName(name);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), AccountingTypeDto.class))
+			.entity(mapper.map(translator.translate(entity, userLang), BankDto.class))
 			.build();
 	}
 
 	
 	@POST
-	public Response create(AccountingTypeDto entityDto) {
+	public Response create(BankDto entityDto) {
 		if (entityDto.getLang()==null)
 			entityDto.setLang(defLang);
 
-		AccountingType newEntity = service.create(mapper.map(entityDto, AccountingType.class));
+		Bank newEntity = service.create(mapper.map(entityDto, Bank.class));
 		return Response.ok()
-			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), AccountingTypeDto.class))
+			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), BankDto.class))
 			.build();
 	}
 	
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, AccountingTypeDto entityDto ) {
+	public Response update(@PathParam("id") Long id, BankDto entityDto ) {
 		if (entityDto.getLang()==null)
 			entityDto.setLang(defLang);
 
-		AccountingType newEntity = service.update(mapper.map(entityDto, AccountingType.class));
+		Bank newEntity = service.update(mapper.map(entityDto, Bank.class));
 		return Response.ok()
-			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), AccountingTypeDto.class))
+			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), BankDto.class))
 			.build();
 	}
 	
@@ -116,14 +119,13 @@ public class AccountingTypeResourceImpl {
 	
 
 	@Inject
-	private AccountingTypeService service;
+	private BankService service;
 
 	@Inject
 	private DozerBeanMapper mapper;
 
-
 	@Inject
-	private Translator<AccountingType> translator;
+	private Translator<Bank> translator;
 
 	@Inject
 	private Lang defLang;

@@ -28,53 +28,8 @@
       		<basic name="factor">
       			<column name="factor" />
       		</basic>
-			<one-to-many name="translations" mapped-by="accountingType" orphan-removal="true">
-				<map-key name="lang"/>
-				<cascade>
-					<cascade-all/>
-				</cascade>
-			</one-to-many>
-
-			<transient name="lang" />
 		</attributes>
 	</entity>
-
-	<entity class="kz.kegoc.bln.entity.dict.translate.AccountingTypeTranslate">
-		<table name="dict_accounting_types_tl" schema="apps"/>
-		<attributes>
-			<id name="id">
-				<column name="id" />
-				<generated-value strategy="SEQUENCE" generator="dict_accounting_types_tl_gen" />
-				<sequence-generator
-						name="dict_accounting_types_tl_gen"
-						sequence-name="apps.dict_accounting_types_tl_s"
-						allocation-size="1"
-				/>
-			</id>
-
-			<basic name="lang">
-				<column name="lang"  />
-				<enumerated>STRING</enumerated>
-			</basic>
-
-			<basic name="name">
-				<column name="name" />
-			</basic>
-
-			<basic name="shortName">
-				<column name="short_name" />
-			</basic>
-
-			<basic name="address">
-				<column name="address" />
-			</basic>
-
-			<many-to-one name="substation">
-				<join-column name="substation_id"/>
-			</many-to-one>
-		</attributes>
-	</entity>
-
 
 	<entity class="kz.kegoc.bln.entity.dict.DataSource">
 		<table name="dict_data_sources" schema="apps"/>
@@ -98,7 +53,6 @@
       		</basic>
 		</attributes>
 	</entity>
-
 
 	<entity class="kz.kegoc.bln.entity.dict.MeterType">
 		<table name="dict_meter_types" schema="apps"/>
@@ -1007,11 +961,47 @@
       		</basic>
 
       		<basic name="name">
-      			<column name="name" />
+      			<column name="name" updatable="false" />
       		</basic>
-		</attributes>
-	</entity>	
 
+			<one-to-many name="translations" mapped-by="accountingType" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang" />
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.AccountingTypeTranslate">
+		<table name="dict_accounting_types_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_accounting_types_tl_gen" />
+				<sequence-generator
+						name="dict_accounting_types_tl_gen"
+						sequence-name="apps.dict_accounting_types_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<many-to-one name="accountingType">
+				<join-column name="accounting_type_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.MeteringPointType">
 		<table name="dict_metering_point_types" schema="apps" />
@@ -1328,6 +1318,43 @@
 
 			<many-to-one name="parentBank">
 				<join-column name="parent_bank_id"/>
+			</many-to-one>
+
+			<one-to-many name="translations" mapped-by="bank" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang" />
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.BankTranslate">
+		<table name="dict_banks_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_banks_tl_gen" />
+				<sequence-generator
+						name="dict_banks_tl_gen"
+						sequence-name="apps.dict_banks_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<many-to-one name="bank">
+				<join-column name="bank_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
