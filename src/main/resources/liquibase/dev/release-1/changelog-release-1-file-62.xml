@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">    
+
+    <changeSet id="dict-eug-112" logicalFilePath="path-independent" author="eugene" context="postgres">
+        <comment>Creating view: dict_energy_objects_v </comment>
+        <createView replaceIfExists="true" schemaName="apps" viewName="dict_energy_objects_v ">
+            SELECT id object_id, name, short_name, 'ENERGY_SOURCE' object_type FROM apps.dict_energy_sources UNION ALL SELECT id object_id, name, short_name, 'SUBSTATION' FROM apps.dict_substations
+        </createView>
+    </changeSet>
+
+    <changeSet id="dict-eug-113" logicalFilePath="path-independent" author="eugene" context="postgres">
+        <comment>Adding columns object_id and object_type to table dict_metering_points</comment>
+        <addColumn  schemaName="apps" tableName="dict_metering_points">
+            <column name="energy_object_id" type="number">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="energy_object_type" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

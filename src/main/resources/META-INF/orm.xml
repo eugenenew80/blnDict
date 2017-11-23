@@ -936,8 +936,8 @@
 			</many-to-one> 
 			
 			<many-to-one name="energyObject">
-				<join-column name="object_id" referenced-column-name="object_id" />
-				<join-column name="object_type" referenced-column-name="object_type" />
+				<join-column name="energy_object_id" referenced-column-name="object_id" />
+				<join-column name="energy_object_type" referenced-column-name="object_type" />
 			</many-to-one>
 
 			<one-to-many name="meters" mapped-by="meteringPoint" />
@@ -983,6 +983,26 @@
 		</attributes>
 	</entity>
 
+	<entity class="kz.kegoc.bln.entity.dict.EnergyObject">
+		<table name="dict_energy_objects_v" schema="apps" />
+		<id-class class="kz.kegoc.bln.entity.dict.EnergyObjectId" />
+		<attributes>
+			<id name="objectId">
+				<column name="object_id" />
+			</id>
+			<id name="objectType">
+				<column name="object_type" />
+			</id>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="shortName">
+				<column name="short_name" />
+			</basic>
+		</attributes>
+	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.MeteringPointMeter">
 		<table name="dict_metering_point_meters" schema="apps" />
