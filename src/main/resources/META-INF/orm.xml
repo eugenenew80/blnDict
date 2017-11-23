@@ -777,7 +777,7 @@
       		<one-to-many name="companies" mapped-by="energySource" />
 			<one-to-many name="meteringPoints" mapped-by="energySource" />
 
-			<one-to-many name="translations" mapped-by="substation" orphan-removal="true">
+			<one-to-many name="translations" mapped-by="energySource" orphan-removal="true">
 				<map-key name="lang"/>
 				<cascade>
 					<cascade-all/>
@@ -796,7 +796,7 @@
 				<generated-value strategy="SEQUENCE" generator="dict_energy_sources_tl_gen" />
 				<sequence-generator
 						name="dict_energy_sources_tl_gen"
-						sequence-name="apps.dict_substations_tl_s"
+						sequence-name="apps.dict_energy_sources_tl_s"
 						allocation-size="1"
 				/>
 			</id>
@@ -818,8 +818,8 @@
 				<column name="address" />
 			</basic>
 
-			<many-to-one name="substation">
-				<join-column name="substation_id"/>
+			<many-to-one name="energySource">
+				<join-column name="energy_source_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
