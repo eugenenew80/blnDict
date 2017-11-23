@@ -2,6 +2,7 @@ package kz.kegoc.bln.entity.dict;
 
 import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
+import kz.kegoc.bln.entity.dict.translate.AccountingTypeTranslate;
 import lombok.*;
 
 import java.util.Map;
@@ -16,5 +17,5 @@ public class AccountingType implements HasId, HasCode, HasName, HasLang {
 	@NotNull @Size(max = 10)
 	private String code;
 
-	private Map<Lang, AccountingType> translations;
+	private Map<Lang, AccountingTypeTranslate> translations;
 }
