@@ -329,11 +329,11 @@
       		</basic>
       		
       		<basic name="name">
-      			<column name="name" />
+      			<column name="name" updatable="false" />
       		</basic>
       		
       		<basic name="manufacturer">
-      			<column name="manufacturer" />
+      			<column name="manufacturer" updatable="false" />
       		</basic>
       		
       		<basic name="serialNumber">
@@ -370,10 +370,53 @@
       		
 			<many-to-one name="businessPartner">
 				<join-column name="company_id"/>
-			</many-to-one> 
+			</many-to-one>
+
+			<one-to-many name="translations" mapped-by="meter" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang" />
 		</attributes>
 	</entity>
-	
+
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.MeterTranslate">
+		<table name="dict_meters_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_meters_tl_gen" />
+				<sequence-generator
+						name="dict_meters_tl_gen"
+						sequence-name="apps.dict_meters_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="manufacturer">
+				<column name="manufacturer" />
+			</basic>
+
+			<many-to-one name="meter">
+				<join-column name="meter_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+
 	<entity class="kz.kegoc.bln.entity.dict.CurrentTrans">
 		<table name="dict_current_trans" schema="apps" />
 		<attributes>
@@ -556,35 +599,79 @@
 			</id>
 
       		<basic name="code">
-      			<column name="code" />
+      			<column name="code"/>
       		</basic>
 
       		<basic name="name">
-      			<column name="name" />
+      			<column name="name" updatable="false" />
       		</basic>
       		
       		<basic name="shortName">
-      			<column name="short_name" />
-      		</basic>     
-      		
+      			<column name="short_name" updatable="false" />
+      		</basic>
+
+			<basic name="address">
+				<column name="address" updatable="false"/>
+			</basic>
+
       		<basic name="voltageClass">
       			<column name="voltage_class" />
-      		</basic>  
-      		      		
-      		<basic name="address">
-      			<column name="address" />
       		</basic>
-      		
+
 			<many-to-one name="substationType">
 				<join-column name="substation_type_id"/>
 			</many-to-one>
 
       		<one-to-many name="companies" mapped-by="substation" />
 			<one-to-many name="meteringPoints" mapped-by="substation" />
+
+			<one-to-many name="translations" mapped-by="substation" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang" />
 		</attributes>
 	</entity>
-	
-	
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.SubstationTranslate">
+		<table name="dict_substations_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_substations_tl_gen" />
+				<sequence-generator
+						name="dict_substations_tl_gen"
+						sequence-name="apps.dict_substations_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="shortName">
+				<column name="short_name" />
+			</basic>
+
+			<basic name="address">
+				<column name="address" />
+			</basic>
+
+			<many-to-one name="substation">
+				<join-column name="substation_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
 	<entity class="kz.kegoc.bln.entity.dict.SubstationCompany">
 		<table name="dict_substation_companies" schema="apps" />
 		<attributes>
@@ -691,9 +778,53 @@
 
       		<one-to-many name="companies" mapped-by="energySource" />
 			<one-to-many name="meteringPoints" mapped-by="energySource" />
+
+			<one-to-many name="translations" mapped-by="energySource" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang" />
 		</attributes>
 	</entity>
-	
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.EnergySourceTranslate">
+		<table name="dict_energy_sources_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_energy_sources_tl_gen" />
+				<sequence-generator
+						name="dict_energy_sources_tl_gen"
+						sequence-name="apps.dict_energy_sources_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="shortName">
+				<column name="short_name" />
+			</basic>
+
+			<basic name="address">
+				<column name="address" />
+			</basic>
+
+			<many-to-one name="energySource">
+				<join-column name="energy_source_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.EnergySourceCompany">
 		<table name="dict_energy_source_companies" schema="apps" />

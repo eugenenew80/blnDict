@@ -151,5 +151,4 @@ public class MeteringPointResourceImpl {
 
 	@Inject
 	private Lang defLang;
-
 }

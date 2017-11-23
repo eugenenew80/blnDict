@@ -6,6 +6,9 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import kz.kegoc.bln.entity.common.Lang;
+import kz.kegoc.bln.translator.Translator;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.Substation;
 import kz.kegoc.bln.entity.dict.dto.SubstationDto;
@@ -20,8 +23,10 @@ import static org.apache.commons.lang3.StringUtils.*;
 public class SubstationResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
-		Query query = QueryImpl.builder()			
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+
+		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
 			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
 			.setOrderBy("t.id")
@@ -29,6 +34,7 @@ public class SubstationResourceImpl {
 		
 		List<SubstationDto> list = service.find(query)
 			.stream()
+			.map(it -> translator.translate(it, userLang))
 			.map( it-> mapper.map(it, SubstationDto.class) )
 			.collect(Collectors.toList());
 		
@@ -40,39 +46,48 @@ public class SubstationResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+
 		Substation entity = service.findById(id);
 		return Response.ok()
-			.entity(mapper.map(entity, SubstationDto.class))
+			.entity(mapper.map(translator.translate(entity, userLang), SubstationDto.class))
 			.build();		
 	}
 	
 
 	@GET
 	@Path("/byCode/{code}")
-	public Response getByCode(@PathParam("code") String code) {		
+	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+
 		Substation entity = service.findByCode(code);
 		return Response.ok()
-			.entity(mapper.map(entity, SubstationDto.class))
+			.entity(mapper.map(translator.translate(entity, userLang), SubstationDto.class))
 			.build(); 
 	}
 	
 	
 	@GET
 	@Path("/byName/{name}")
-	public Response getByName(@PathParam("name") String name) {		
+	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+
 		Substation entity = service.findByName(name);
 		return Response.ok()
-			.entity(mapper.map(entity, SubstationDto.class))
+			.entity(mapper.map(translator.translate(entity, userLang), SubstationDto.class))
 			.build();
 	}
 
 	
 	@POST
 	public Response create(SubstationDto entityDto) {
-		Substation newEntity = service.create(mapper.map(entityDto, Substation.class));	
+		if (entityDto.getLang()==null)
+			entityDto.setLang(defLang);
+
+		Substation newEntity = service.create(mapper.map(entityDto, Substation.class));
 		return Response.ok()
-			.entity(mapper.map(newEntity, SubstationDto.class))
+			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), SubstationDto.class))
 			.build();
 	}
 	
@@ -80,12 +95,15 @@ public class SubstationResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, SubstationDto entityDto ) {
+		if (entityDto.getLang()==null)
+			entityDto.setLang(defLang);
+
 		Substation newEntity = service.update(mapper.map(entityDto, Substation.class)); 
 		return Response.ok()
-			.entity(mapper.map(newEntity, SubstationDto.class))
+			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), SubstationDto.class))
 			.build();
 	}
-	
+
 	
 	@DELETE 
 	@Path("{id : \\d+}") 
@@ -120,6 +138,9 @@ public class SubstationResourceImpl {
 	@Inject
 	private DozerBeanMapper mapper;
 
-	@Context
-	private SecurityContext context;
+	@Inject
+	private Translator<Substation> translator;
+
+	@Inject
+	private Lang defLang;
 }

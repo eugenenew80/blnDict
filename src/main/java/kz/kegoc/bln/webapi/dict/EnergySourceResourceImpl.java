@@ -6,6 +6,9 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import kz.kegoc.bln.entity.common.Lang;
+import kz.kegoc.bln.translator.Translator;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.EnergySource;
 import kz.kegoc.bln.entity.dict.dto.EnergySourceDto;
@@ -21,8 +24,10 @@ import static org.apache.commons.lang3.StringUtils.*;
 public class EnergySourceResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
-		Query query = QueryImpl.builder()			
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+
+		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
 			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
 			.setOrderBy("t.id")
@@ -30,6 +35,7 @@ public class EnergySourceResourceImpl {
 		
 		List<EnergySourceDto> list = service.find(query)
 			.stream()
+			.map(it -> translator.translate(it, userLang))
 			.map( it-> mapper.map(it, EnergySourceDto.class) )
 			.collect(Collectors.toList());
 		
@@ -41,39 +47,48 @@ public class EnergySourceResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+
 		EnergySource entity = service.findById(id);
 		return Response.ok()
-			.entity(mapper.map(entity, EnergySourceDto.class))
+			.entity(mapper.map(translator.translate(entity, userLang), EnergySourceDto.class))
 			.build();		
 	}
 	
 
 	@GET
 	@Path("/byCode/{code}")
-	public Response getByCode(@PathParam("code") String code) {		
+	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+
 		EnergySource entity = service.findByCode(code);
 		return Response.ok()
-			.entity(mapper.map(entity, EnergySourceDto.class))
+			.entity(mapper.map(translator.translate(entity, userLang), EnergySourceDto.class))
 			.build(); 
 	}
 	
 	
 	@GET
 	@Path("/byName/{name}")
-	public Response getByName(@PathParam("name") String name) {		
+	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+
 		EnergySource entity = service.findByName(name);
 		return Response.ok()
-			.entity(mapper.map(entity, EnergySourceDto.class))
+			.entity(mapper.map(translator.translate(entity, userLang), EnergySourceDto.class))
 			.build();
 	}
 
 	
 	@POST
 	public Response create(EnergySourceDto entityDto) {
-		EnergySource newEntity = service.create(mapper.map(entityDto, EnergySource.class));	
+		if (entityDto.getLang()==null)
+			entityDto.setLang(defLang);
+
+		EnergySource newEntity = service.create(mapper.map(entityDto, EnergySource.class));
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergySourceDto.class))
+			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), EnergySourceDto.class))
 			.build();
 	}
 	
@@ -81,9 +96,12 @@ public class EnergySourceResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, EnergySourceDto entityDto ) {
-		EnergySource newEntity = service.update(mapper.map(entityDto, EnergySource.class)); 
+		if (entityDto.getLang()==null)
+			entityDto.setLang(defLang);
+
+		EnergySource newEntity = service.update(mapper.map(entityDto, EnergySource.class));
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergySourceDto.class))
+			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), EnergySourceDto.class))
 			.build();
 	}
 	
@@ -121,6 +139,9 @@ public class EnergySourceResourceImpl {
 	@Inject
 	private DozerBeanMapper mapper;
 
-	@Context
-	private SecurityContext context;
+	@Inject
+	private Translator<EnergySource> translator;
+
+	@Inject
+	private Lang defLang;
 }
