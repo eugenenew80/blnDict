@@ -1,13 +1,10 @@
 package kz.kegoc.bln.filter.impl;
 
 import kz.kegoc.bln.entity.common.Lang;
-import kz.kegoc.bln.entity.dict.Bank;
 import kz.kegoc.bln.entity.dict.BusinessPartner;
-import kz.kegoc.bln.entity.dict.translate.BankTranslate;
 import kz.kegoc.bln.entity.dict.translate.BusinessPartnerTranslate;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.BusinessPartnerService;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.HashMap;
@@ -20,9 +17,6 @@ public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
-
-            if (entity.getBpParent()==null)
-                entity.setBpParent(curEntity.getBpParent());
         }
 
         if (entity.getBpParent()!=null && entity.getBpParent().getId()==null)
