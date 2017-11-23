@@ -2,7 +2,6 @@ package kz.kegoc.bln.service.common;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import javax.inject.Inject;
 import javax.validation.*;
 import kz.kegoc.bln.entity.common.HasDates;
 import kz.kegoc.bln.entity.common.HasId;
@@ -49,7 +48,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 	}
 
 
-	public T findById(Long entityId) {
+	public T findById(Object entityId) {
 		if (repository==null)
 			throw new RepositoryNotFoundException();
 

@@ -10,7 +10,7 @@ public interface Repository <T extends HasId> {
 
     List<T> select(Query query);
     
-    T selectById(Long entityId);
+    T selectById(Object entityId);
     
     T selectByCode(String entitycode);
     

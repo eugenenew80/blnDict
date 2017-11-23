@@ -31,7 +31,7 @@ public abstract class AbstractRepository<T extends HasId> implements Repository<
 	}
 
 	
-	public T selectById(Long entityId) {
+	public T selectById(Object entityId) {
 		return em.find(clazz, entityId);
 	}
 

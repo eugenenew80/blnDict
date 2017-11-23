@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
 import kz.kegoc.bln.entity.dict.translate.MeteringPointTranslate;
@@ -36,7 +39,14 @@ public class MeteringPoint implements HasId, HasCode, HasName, HasLang {
 
 	@NotNull
 	private MeteringPointType meteringPointType;
-	
+
+	@ManyToOne
+	@JoinColumns({
+		@JoinColumn(name="object_id", referencedColumnName="object_id"),
+		@JoinColumn(name="object_type", referencedColumnName="object_type")
+	})
+	private EnergyObject energyObject;
+
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private Double ratedVoltage;

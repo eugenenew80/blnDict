@@ -9,7 +9,7 @@ public interface EntityService<T extends HasId> {
 	
 	List<T> find(Query query);
 	
-	T findById(Long entityId);
+	T findById(Object entityId);
     
 	T findByCode(String entityCode);
 	
