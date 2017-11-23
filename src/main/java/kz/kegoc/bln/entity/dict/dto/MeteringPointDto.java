@@ -30,6 +30,9 @@ public class MeteringPointDto {
 	private String accountingTypeName;
 	private Long meteringPointTypeId;
 	private String meteringPointTypeName;
+	private Long energyObjectId;
+	private String energyObjectType;
+	private String energyObjectName;
 	private LocalDate startDate;
 	private LocalDate endDate;
 }

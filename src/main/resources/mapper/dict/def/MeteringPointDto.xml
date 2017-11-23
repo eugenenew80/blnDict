@@ -31,5 +31,20 @@
        <a>meteringPointType.id</a>
        <b>meteringPointTypeId</b>
      </field>
-  </mapping> 
+
+     <field>
+       <a>energyObject.objectId</a>
+       <b>energyObjectId</b>
+     </field>
+
+     <field>
+       <a>energyObject.objectType</a>
+       <b>energyObjectType</b>
+     </field>
+
+     <field>
+       <a>energyObject.name</a>
+       <b>energyObjectName</b>
+     </field>
+  </mapping>
 </mappings> 

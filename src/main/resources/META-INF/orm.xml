@@ -935,6 +935,11 @@
 				<join-column name="metering_point_type_id"/>
 			</many-to-one> 
 			
+			<many-to-one name="energyObject">
+				<join-column name="object_id" referenced-column-name="object_id" />
+				<join-column name="object_type" referenced-column-name="object_type" />
+			</many-to-one>
+
 			<one-to-many name="meters" mapped-by="meteringPoint" />
 			<one-to-many name="currentTrans" mapped-by="meteringPoint" />
 			<one-to-many name="voltageTrans" mapped-by="meteringPoint" />
