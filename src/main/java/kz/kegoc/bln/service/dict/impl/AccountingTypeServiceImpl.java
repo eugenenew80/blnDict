@@ -8,14 +8,13 @@ import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.AccountingTypeService;
+import kz.kegoc.bln.translator.Translator;
 
 
 @Stateless
-public class AccountingTypeServiceImpl extends AbstractEntityService<AccountingType>
-        implements AccountingTypeService {
-    
+public class AccountingTypeServiceImpl extends AbstractEntityService<AccountingType> implements AccountingTypeService {
 	@Inject
-    public AccountingTypeServiceImpl(Repository<AccountingType> repository, Validator validator, Filter<AccountingType> prePersistFilter) {
-        super(repository, validator, prePersistFilter);
+    public AccountingTypeServiceImpl(Repository<AccountingType> repository, Validator validator, Filter<AccountingType> prePersistFilter, Translator<AccountingType> translator) {
+        super(repository, validator, prePersistFilter, translator);
     }
 }

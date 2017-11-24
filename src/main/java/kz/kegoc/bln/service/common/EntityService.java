@@ -2,6 +2,7 @@ package kz.kegoc.bln.service.common;
 
 import java.util.List;
 import kz.kegoc.bln.entity.common.HasId;
+import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.repository.common.query.Query;
 
 public interface EntityService<T extends HasId> {
@@ -20,4 +21,6 @@ public interface EntityService<T extends HasId> {
 	T update(T entity);
 
     boolean delete(Long entityId);
+
+    void setLang(Lang lang);
 }
