@@ -1,24 +1,23 @@
 package kz.kegoc.bln.entity.dict;
 
 import java.time.LocalDate;
+import java.util.Map;
 import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
+import kz.kegoc.bln.entity.dict.translate.CurrentTransTranslate;
 import lombok.*;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class CurrentTrans implements HasId, HasCode, HasName {
+public class CurrentTrans implements HasId, HasCode, HasName, HasLang {
 	private Long id;
-	
+	private Lang lang;
+	private String name;
+	private String manufacturer;
+
 	@NotNull @Size(max = 15)
 	private String code;
 
-	@NotNull @Size(max = 100)
-	private String name;
-	
-	@NotNull @Size(max = 100)
-	private String manufacturer;
-	
 	@NotNull
 	private Company company;
 	
@@ -32,4 +31,6 @@ public class CurrentTrans implements HasId, HasCode, HasName {
 	private LocalDate nextVerificationDate;
 	private LocalDate installationDate;
 	private LocalDate disassemblyDate;
+
+	private Map<Lang, CurrentTransTranslate> translations;
 }
