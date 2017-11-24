@@ -1321,6 +1321,43 @@
 			<basic name="name">
 				<column name="name" />
 			</basic>
+
+			<one-to-many name="translations" mapped-by="country" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang" />
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.CountryTranslate">
+		<table name="dict_countries_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_countries_tl_gen" />
+				<sequence-generator
+						name="dict_countries_tl_gen"
+						sequence-name="apps.dict_countries_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<many-to-one name="country">
+				<join-column name="country_id"/>
+			</many-to-one>
 		</attributes>
 	</entity>
 

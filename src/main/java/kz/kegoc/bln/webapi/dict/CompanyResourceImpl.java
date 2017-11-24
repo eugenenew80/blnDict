@@ -36,7 +36,7 @@ public class CompanyResourceImpl {
 		List<CompanyDto> list = service.find(query)
 			.stream()
 			.map(it -> translator.translate(it, userLang))
-			.map( it-> mapper.map(it, CompanyDto.class) )
+			.map(it-> mapper.map(it, CompanyDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
