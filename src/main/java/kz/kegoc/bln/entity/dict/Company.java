@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class Company implements HasId, HasCode, HasName {
+public class Company implements HasId, HasCode, HasName, HasLang {
 	private Long id;
 	private Lang lang;
 	private String name;

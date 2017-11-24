@@ -299,12 +299,49 @@
       		</basic>
 
       		<basic name="name">
-      			<column name="name" />
+      			<column name="name" updatable="false" />
       		</basic>
       		
       		<basic name="tin">
       			<column name="tin" />
-      		</basic>      		
+      		</basic>
+
+			<one-to-many name="translations" mapped-by="company" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang" />
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.CompanyTranslate">
+		<table name="dict_companies_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_companies_tl_gen" />
+				<sequence-generator
+						name="dict_companies_tl_gen"
+						sequence-name="apps.dict_companies_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<many-to-one name="company">
+				<join-column name="company_id"/>
+			</many-to-one>
 		</attributes>
 	</entity>
 
