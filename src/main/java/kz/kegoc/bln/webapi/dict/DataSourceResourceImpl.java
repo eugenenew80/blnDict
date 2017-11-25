@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import kz.kegoc.bln.entity.common.Lang;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.DataSource;
 import kz.kegoc.bln.entity.dict.dto.DataSourceDto;
@@ -21,14 +23,14 @@ import static org.apache.commons.lang3.StringUtils.*;
 public class DataSourceResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
 		Query query = QueryImpl.builder()			
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
 			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
 			.setOrderBy("t.id")
 			.build();		
 		
-		List<DataSourceDto> list = dataSourceService.find(query)
+		List<DataSourceDto> list = service.find(query)
 			.stream()
 			.map( it-> mapper.map(it, DataSourceDto.class) )
 			.collect(Collectors.toList());
@@ -41,8 +43,8 @@ public class DataSourceResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id) {
-		DataSource dataSource = dataSourceService.findById(id);
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		DataSource dataSource = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(dataSource, DataSourceDto.class))
 			.build();		
@@ -51,8 +53,8 @@ public class DataSourceResourceImpl {
 
 	@GET
 	@Path("/byCode/{code}")
-	public Response getByCode(@PathParam("code") String code) {		
-		DataSource dataSource = dataSourceService.findByCode(code);
+	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
+		DataSource dataSource = service.findByCode(code);
 		return Response.ok()
 			.entity(mapper.map(dataSource, DataSourceDto.class))
 			.build();
@@ -61,8 +63,8 @@ public class DataSourceResourceImpl {
 	
 	@GET
 	@Path("/byName/{name}")
-	public Response getByName(@PathParam("name") String name) {		
-		DataSource dataSource = dataSourceService.findByName(name);
+	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
+		DataSource dataSource = service.findByName(name);
 		return Response.ok()
 			.entity(mapper.map(dataSource, DataSourceDto.class))
 			.build();
@@ -71,7 +73,7 @@ public class DataSourceResourceImpl {
 	
 	@POST
 	public Response create(DataSourceDto entityDto) {
-		DataSource newDataSource = dataSourceService.create(mapper.map(entityDto, DataSource.class));
+		DataSource newDataSource = service.create(mapper.map(entityDto, DataSource.class));
 		return Response.ok()
 			.entity(mapper.map(newDataSource, DataSourceDto.class))
 			.build();
@@ -81,7 +83,7 @@ public class DataSourceResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, DataSourceDto entityDto ) {
-		DataSource newDataSource = dataSourceService.update(mapper.map(entityDto, DataSource.class));
+		DataSource newDataSource = service.update(mapper.map(entityDto, DataSource.class));
 		return Response.ok()
 			.entity(mapper.map(newDataSource, DataSourceDto.class))
 			.build();
@@ -91,18 +93,15 @@ public class DataSourceResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		dataSourceService.delete(id);		
+		service.delete(id);
 		return Response.noContent()
 			.build();
 	}	
 	
 
 	@Inject
-	private DataSourceService dataSourceService;
+	private DataSourceService service;
 
 	@Inject
 	private DozerBeanMapper mapper;
-
-	@Context
-	private SecurityContext context;
 }

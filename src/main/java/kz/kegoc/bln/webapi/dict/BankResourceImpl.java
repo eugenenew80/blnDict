@@ -8,7 +8,6 @@ import kz.kegoc.bln.repository.common.query.MyQueryParam;
 import kz.kegoc.bln.repository.common.query.Query;
 import kz.kegoc.bln.repository.common.query.QueryImpl;
 import kz.kegoc.bln.service.dict.BankService;
-import kz.kegoc.bln.translator.Translator;
 import org.dozer.DozerBeanMapper;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -29,6 +28,7 @@ public class BankResourceImpl {
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
@@ -38,7 +38,6 @@ public class BankResourceImpl {
 		
 		List<BankDto> list = service.find(query)
 			.stream()
-			.map(it -> translator.translate(it, userLang))
 			.map( it-> mapper.map(it, BankDto.class) )
 			.collect(Collectors.toList());
 		
@@ -52,10 +51,11 @@ public class BankResourceImpl {
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Bank entity = service.findById(id);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), BankDto.class))
+			.entity(mapper.map(entity, BankDto.class))
 			.build();		
 	}
 	
@@ -64,10 +64,11 @@ public class BankResourceImpl {
 	@Path("/byCode/{code}")
 	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Bank entity = service.findByCode(code);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), BankDto.class))
+			.entity(mapper.map(entity, BankDto.class))
 			.build();
 	}
 	
@@ -76,22 +77,23 @@ public class BankResourceImpl {
 	@Path("/byName/{name}")
 	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Bank entity = service.findByName(name);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), BankDto.class))
+			.entity(mapper.map(entity, BankDto.class))
 			.build();
 	}
 
 	
 	@POST
 	public Response create(BankDto entityDto) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
+		service.setLang(userLang);
 
 		Bank newEntity = service.create(mapper.map(entityDto, Bank.class));
 		return Response.ok()
-			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), BankDto.class))
+			.entity(mapper.map(newEntity, BankDto.class))
 			.build();
 	}
 	
@@ -99,12 +101,12 @@ public class BankResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, BankDto entityDto ) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
+		service.setLang(userLang);
 
 		Bank newEntity = service.update(mapper.map(entityDto, Bank.class));
 		return Response.ok()
-			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), BankDto.class))
+			.entity(mapper.map(newEntity, BankDto.class))
 			.build();
 	}
 	
@@ -123,9 +125,6 @@ public class BankResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
-
-	@Inject
-	private Translator<Bank> translator;
 
 	@Inject
 	private Lang defLang;

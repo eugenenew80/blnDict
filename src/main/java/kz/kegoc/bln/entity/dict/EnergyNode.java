@@ -11,6 +11,7 @@ import java.util.List;
 @EqualsAndHashCode(of= {"id"})
 public class EnergyNode implements HasId, HasCode, HasName {
 	private Long id;
+	private Lang lang;
 	
 	@NotNull @Size(max = 10)
 	private String code;

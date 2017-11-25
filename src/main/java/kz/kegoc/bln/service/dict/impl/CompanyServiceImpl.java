@@ -10,6 +10,7 @@ import kz.kegoc.bln.filter.impl.CompanyFilterImpl;
 import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.CompanyService;
+import kz.kegoc.bln.translator.Translator;
 
 
 @Stateless
@@ -17,7 +18,7 @@ public class CompanyServiceImpl extends AbstractEntityService<Company>
         implements CompanyService {
     
 	@Inject
-    public CompanyServiceImpl(Repository<Company> repository, Validator validator, Filter<Company> prePersistFilter) {
-        super(repository, validator, prePersistFilter);
+    public CompanyServiceImpl(Repository<Company> repository, Validator validator, Filter<Company> prePersistFilter, Translator<Company> translator) {
+        super(repository, validator, prePersistFilter, translator);
     }
 }

@@ -8,6 +8,7 @@ import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.MeteringPointService;
+import kz.kegoc.bln.translator.Translator;
 
 
 @Stateless
@@ -15,7 +16,7 @@ public class MeteringPointServiceImpl extends AbstractEntityService<MeteringPoin
         implements MeteringPointService {
     
 	@Inject
-    public MeteringPointServiceImpl(Repository<MeteringPoint> repository, Validator validator, Filter<MeteringPoint> prePersistFilter) {
-        super(repository, validator, prePersistFilter);
+    public MeteringPointServiceImpl(Repository<MeteringPoint> repository, Validator validator, Filter<MeteringPoint> prePersistFilter, Translator<MeteringPoint> translator) {
+        super(repository, validator, prePersistFilter, translator);
     }
 }

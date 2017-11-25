@@ -8,16 +8,13 @@ import kz.kegoc.bln.repository.common.query.MyQueryParam;
 import kz.kegoc.bln.repository.common.query.Query;
 import kz.kegoc.bln.repository.common.query.QueryImpl;
 import kz.kegoc.bln.service.dict.BusinessPartnerService;
-import kz.kegoc.bln.translator.Translator;
 import org.dozer.DozerBeanMapper;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.SecurityContext;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,6 +30,7 @@ public class BusinessPartnerResourceImpl {
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
@@ -40,10 +38,9 @@ public class BusinessPartnerResourceImpl {
 			.setOrderBy("t.id")
 			.build();		
 		
-		List<BusinessPartnerDto> list = businessPartnerService.find(query)
+		List<BusinessPartnerDto> list = service.find(query)
 			.stream()
-			.map(it -> translator.translate(it, userLang))
-			.map( it-> dtoMapper.map(it, BusinessPartnerDto.class) )
+			.map(it-> mapper.map(it, BusinessPartnerDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -56,10 +53,11 @@ public class BusinessPartnerResourceImpl {
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
-		BusinessPartner entity = businessPartnerService.findById(id);
+		BusinessPartner entity = service.findById(id);
 		return Response.ok()
-			.entity(dtoMapper.map(translator.translate(entity, userLang), BusinessPartnerDto.class))
+			.entity(mapper.map(entity, BusinessPartnerDto.class))
 			.build();		
 	}
 	
@@ -68,10 +66,11 @@ public class BusinessPartnerResourceImpl {
 	@Path("/byCode/{code}")
 	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
-		BusinessPartner entity = businessPartnerService.findByCode(code);
+		BusinessPartner entity = service.findByCode(code);
 		return Response.ok()
-			.entity(dtoMapper.map(translator.translate(entity, userLang), BusinessPartnerDto.class))
+			.entity(mapper.map(entity, BusinessPartnerDto.class))
 			.build();
 	}
 	
@@ -80,26 +79,25 @@ public class BusinessPartnerResourceImpl {
 	@Path("/byName/{name}")
 	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
-		BusinessPartner entity = businessPartnerService.findByName(name);
+		BusinessPartner entity = service.findByName(name);
 		return Response.ok()
-			.entity(dtoMapper.map(translator.translate(entity, userLang), BusinessPartnerDto.class))
+			.entity(mapper.map(entity, BusinessPartnerDto.class))
 			.build();
 	}
 
 	
 	@POST
 	public Response create(BusinessPartnerDto entityDto) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
 
-		BusinessPartner entity = dtoMapper.map(entityDto, BusinessPartner.class);
-		BusinessPartner newEntity = businessPartnerService.create(entity);
-		if (entity.getBpParent()!=null && entity.getBpParent().getId()==null)
-			entity.setBpParent(null);
+		BusinessPartner entity = mapper.map(entityDto, BusinessPartner.class);
+		BusinessPartner newEntity = service.create(entity);
 
 		return Response.ok()
-			.entity(dtoMapper.map(translator.translate(newEntity, entityDto.getLang()), BusinessPartnerDto.class))
+			.entity(mapper.map(newEntity, BusinessPartnerDto.class))
 			.build();
 	}
 	
@@ -107,12 +105,14 @@ public class BusinessPartnerResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, BusinessPartnerDto entityDto ) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
 
-		BusinessPartner newEntity = businessPartnerService.update(dtoMapper.map(entityDto, BusinessPartner.class));
+		BusinessPartner entity = mapper.map(entityDto, BusinessPartner.class);
+		BusinessPartner newEntity = service.update(entity);
+
 		return Response.ok()
-			.entity(dtoMapper.map(translator.translate(newEntity, entityDto.getLang()), BusinessPartnerDto.class))
+			.entity(mapper.map(newEntity, BusinessPartnerDto.class))
 			.build();
 	}
 	
@@ -120,23 +120,17 @@ public class BusinessPartnerResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		businessPartnerService.delete(id);		
+		service.delete(id);
 		return Response.noContent()
 			.build();
 	}	
 	
 
 	@Inject
-	private BusinessPartnerService businessPartnerService;
+	private BusinessPartnerService service;
 
 	@Inject
-	private DozerBeanMapper dtoMapper;
-
-	@Context
-	private SecurityContext context;
-
-	@Inject
-	private Translator<BusinessPartner> translator;
+	private DozerBeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

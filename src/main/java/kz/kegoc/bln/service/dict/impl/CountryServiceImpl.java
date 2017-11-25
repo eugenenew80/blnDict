@@ -5,6 +5,8 @@ import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.CountryService;
+import kz.kegoc.bln.translator.Translator;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.validation.Validator;
@@ -14,7 +16,7 @@ public class CountryServiceImpl extends AbstractEntityService<Country>
         implements CountryService {
 
 	@Inject
-    public CountryServiceImpl(Repository<Country> repository, Validator validator, Filter<Country> prePersistFilter) {
-        super(repository, validator, prePersistFilter);
+    public CountryServiceImpl(Repository<Country> repository, Validator validator, Filter<Country> prePersistFilter, Translator<Country> translator) {
+        super(repository, validator, prePersistFilter, translator);
     }
 }

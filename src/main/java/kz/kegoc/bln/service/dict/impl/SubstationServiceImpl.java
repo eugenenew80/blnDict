@@ -8,6 +8,7 @@ import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.SubstationService;
+import kz.kegoc.bln.translator.Translator;
 
 
 @Stateless
@@ -15,7 +16,7 @@ public class SubstationServiceImpl extends AbstractEntityService<Substation>
         implements SubstationService {
     
 	@Inject
-    public SubstationServiceImpl(Repository<Substation> repository, Validator validator, Filter<Substation> prePersistFilte) {
-        super(repository, validator, prePersistFilte);
+    public SubstationServiceImpl(Repository<Substation> repository, Validator validator, Filter<Substation> prePersistFilter, Translator<Substation> translator) {
+        super(repository, validator, prePersistFilter, translator);
     }
 }

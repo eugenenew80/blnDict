@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import kz.kegoc.bln.entity.common.Lang;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.CurrentTransType;
 import kz.kegoc.bln.entity.dict.dto.CurrentTransTypeDto;
@@ -21,8 +23,11 @@ import static org.apache.commons.lang3.StringUtils.*;
 public class CurrentTransTypeResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
-		Query query = QueryImpl.builder()			
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
+		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
 			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
 			.setOrderBy("t.id")
@@ -30,7 +35,7 @@ public class CurrentTransTypeResourceImpl {
 		
 		List<CurrentTransTypeDto> list = service.find(query)
 			.stream()
-			.map( it-> mapper.map(it, CurrentTransTypeDto.class) )
+			.map(it-> mapper.map(it, CurrentTransTypeDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -41,7 +46,10 @@ public class CurrentTransTypeResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		CurrentTransType entity = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(entity, CurrentTransTypeDto.class))
@@ -51,7 +59,10 @@ public class CurrentTransTypeResourceImpl {
 
 	@GET
 	@Path("/byCode/{code}")
-	public Response getByCode(@PathParam("code") String code) {		
+	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		CurrentTransType entity = service.findByCode(code);
 		return Response.ok()
 			.entity(mapper.map(entity, CurrentTransTypeDto.class))
@@ -61,7 +72,10 @@ public class CurrentTransTypeResourceImpl {
 	
 	@GET
 	@Path("/byName/{name}")
-	public Response getByName(@PathParam("name") String name) {		
+	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		CurrentTransType entity = service.findByName(name);
 		return Response.ok()
 			.entity(mapper.map(entity, CurrentTransTypeDto.class))
@@ -71,7 +85,12 @@ public class CurrentTransTypeResourceImpl {
 	
 	@POST
 	public Response create(CurrentTransTypeDto entityDto) {
-		CurrentTransType newEntity = service.create(mapper.map(entityDto,CurrentTransType.class));	
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		CurrentTransType entity = mapper.map(entityDto, CurrentTransType.class);
+		CurrentTransType newEntity = service.create(entity);
+
 		return Response.ok()
 			.entity(mapper.map(newEntity, CurrentTransTypeDto.class))
 			.build();
@@ -80,8 +99,13 @@ public class CurrentTransTypeResourceImpl {
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id,CurrentTransTypeDto entityDto ) {
-		CurrentTransType newEntity = service.update(mapper.map(entityDto,CurrentTransType.class)); 
+	public Response update(@PathParam("id") Long id, CurrentTransTypeDto entityDto) {
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		CurrentTransType entity = mapper.map(entityDto, CurrentTransType.class);
+		CurrentTransType newEntity = service.update(entity);
+
 		return Response.ok()
 			.entity(mapper.map(newEntity, CurrentTransTypeDto.class))
 			.build();
@@ -103,6 +127,6 @@ public class CurrentTransTypeResourceImpl {
 	@Inject
 	private DozerBeanMapper mapper;
 
-	@Context
-	private SecurityContext context;
+	@Inject
+	private Lang defLang;
 }

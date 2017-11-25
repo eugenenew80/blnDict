@@ -5,6 +5,7 @@ import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.BusinessPartnerService;
+import kz.kegoc.bln.translator.Translator;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -15,7 +16,7 @@ public class BusinessPartnerServiceImpl extends AbstractEntityService<BusinessPa
         implements BusinessPartnerService {
 
 	@Inject
-    public BusinessPartnerServiceImpl(Repository<BusinessPartner> repository, Validator validator, Filter<BusinessPartner> prePersistFilter) {
-        super(repository, validator, prePersistFilter);
+    public BusinessPartnerServiceImpl(Repository<BusinessPartner> repository, Validator validator, Filter<BusinessPartner> prePersistFilter, Translator<BusinessPartner> translator) {
+        super(repository, validator, prePersistFilter, translator);
     }
 }

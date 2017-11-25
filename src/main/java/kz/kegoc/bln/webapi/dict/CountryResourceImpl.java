@@ -8,7 +8,6 @@ import kz.kegoc.bln.repository.common.query.MyQueryParam;
 import kz.kegoc.bln.repository.common.query.Query;
 import kz.kegoc.bln.repository.common.query.QueryImpl;
 import kz.kegoc.bln.service.dict.CountryService;
-import kz.kegoc.bln.translator.Translator;
 import org.dozer.DozerBeanMapper;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -29,6 +28,7 @@ public class CountryResourceImpl {
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
@@ -36,10 +36,9 @@ public class CountryResourceImpl {
 			.setOrderBy("t.id")
 			.build();		
 		
-		List<CountryDto> list = countryService.find(query)
+		List<CountryDto> list = service.find(query)
 			.stream()
-			.map(it -> translator.translate(it, userLang))
-			.map( it-> dtoMapper.map(it, CountryDto.class) )
+			.map(it-> mapper.map(it, CountryDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -52,10 +51,11 @@ public class CountryResourceImpl {
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
-		Country entity = countryService.findById(id);
+		Country entity = service.findById(id);
 		return Response.ok()
-			.entity(dtoMapper.map(translator.translate(entity, userLang), CountryDto.class))
+			.entity(mapper.map(entity, CountryDto.class))
 			.build();		
 	}
 	
@@ -64,10 +64,11 @@ public class CountryResourceImpl {
 	@Path("/byCode/{code}")
 	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
-		Country entity = countryService.findByCode(code);
+		Country entity = service.findByCode(code);
 		return Response.ok()
-			.entity(dtoMapper.map(translator.translate(entity, userLang), CountryDto.class))
+			.entity(mapper.map(entity, CountryDto.class))
 			.build();
 	}
 	
@@ -76,22 +77,25 @@ public class CountryResourceImpl {
 	@Path("/byName/{name}")
 	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
-		Country entity = countryService.findByName(name);
+		Country entity = service.findByName(name);
 		return Response.ok()
-			.entity(dtoMapper.map(translator.translate(entity, userLang), CountryDto.class))
+			.entity(mapper.map(entity, CountryDto.class))
 			.build();
 	}
 
 	
 	@POST
 	public Response create(CountryDto entityDto) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
 
-		Country newEntity = countryService.create(dtoMapper.map(entityDto, Country.class));
+		Country entity = mapper.map(entityDto, Country.class);
+		Country newEntity = service.create(entity);
+
 		return Response.ok()
-			.entity(dtoMapper.map(translator.translate(newEntity, entityDto.getLang()), CountryDto.class))
+			.entity(mapper.map(newEntity, CountryDto.class))
 			.build();
 	}
 	
@@ -99,12 +103,14 @@ public class CountryResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, CountryDto entityDto ) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
 
-		Country newEntity = countryService.update(dtoMapper.map(entityDto, Country.class));
+		Country entity = mapper.map(entityDto, Country.class);
+		Country newEntity = service.update(entity);
+
 		return Response.ok()
-			.entity(dtoMapper.map(translator.translate(newEntity, entityDto.getLang()), CountryDto.class))
+			.entity(mapper.map(newEntity, CountryDto.class))
 			.build();
 	}
 	
@@ -112,20 +118,17 @@ public class CountryResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		countryService.delete(id);		
+		service.delete(id);
 		return Response.noContent()
 			.build();
 	}	
 	
 
 	@Inject
-	private CountryService countryService;
+	private CountryService service;
 
 	@Inject
-	private DozerBeanMapper dtoMapper;
-
-	@Inject
-	private Translator<Country> translator;
+	private DozerBeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

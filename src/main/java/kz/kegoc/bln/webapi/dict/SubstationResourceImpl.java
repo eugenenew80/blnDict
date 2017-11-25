@@ -6,9 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-
 import kz.kegoc.bln.entity.common.Lang;
-import kz.kegoc.bln.translator.Translator;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.Substation;
 import kz.kegoc.bln.entity.dict.dto.SubstationDto;
@@ -25,6 +23,7 @@ public class SubstationResourceImpl {
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
@@ -34,7 +33,6 @@ public class SubstationResourceImpl {
 		
 		List<SubstationDto> list = service.find(query)
 			.stream()
-			.map(it -> translator.translate(it, userLang))
 			.map( it-> mapper.map(it, SubstationDto.class) )
 			.collect(Collectors.toList());
 		
@@ -48,10 +46,11 @@ public class SubstationResourceImpl {
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Substation entity = service.findById(id);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), SubstationDto.class))
+			.entity(mapper.map(entity, SubstationDto.class))
 			.build();		
 	}
 	
@@ -60,10 +59,11 @@ public class SubstationResourceImpl {
 	@Path("/byCode/{code}")
 	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Substation entity = service.findByCode(code);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), SubstationDto.class))
+			.entity(mapper.map(entity, SubstationDto.class))
 			.build(); 
 	}
 	
@@ -72,22 +72,25 @@ public class SubstationResourceImpl {
 	@Path("/byName/{name}")
 	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Substation entity = service.findByName(name);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), SubstationDto.class))
+			.entity(mapper.map(entity, SubstationDto.class))
 			.build();
 	}
 
 	
 	@POST
 	public Response create(SubstationDto entityDto) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
 
-		Substation newEntity = service.create(mapper.map(entityDto, Substation.class));
+		Substation entity = mapper.map(entityDto, Substation.class);
+		Substation newEntity = service.create(entity);
+
 		return Response.ok()
-			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), SubstationDto.class))
+			.entity(mapper.map(newEntity, SubstationDto.class))
 			.build();
 	}
 	
@@ -95,12 +98,14 @@ public class SubstationResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, SubstationDto entityDto ) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
 
-		Substation newEntity = service.update(mapper.map(entityDto, Substation.class)); 
+		Substation entity = mapper.map(entityDto, Substation.class);
+		Substation newEntity = service.update(entity);
+
 		return Response.ok()
-			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), SubstationDto.class))
+			.entity(mapper.map(newEntity, SubstationDto.class))
 			.build();
 	}
 
@@ -137,9 +142,6 @@ public class SubstationResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
-
-	@Inject
-	private Translator<Substation> translator;
 
 	@Inject
 	private Lang defLang;

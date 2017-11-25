@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import kz.kegoc.bln.entity.common.Lang;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.MeteringType;
 import kz.kegoc.bln.entity.dict.dto.MeteringTypeDto;
@@ -21,7 +23,7 @@ import static org.apache.commons.lang3.StringUtils.*;
 public class MeteringTypeResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name) {		
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
 		Query query = QueryImpl.builder()			
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
 			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
@@ -41,7 +43,7 @@ public class MeteringTypeResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		MeteringType meteringType = meteringTypeService.findById(id);
 		return Response.ok()
 			.entity(mapper.map(meteringType, MeteringTypeDto.class))
@@ -51,7 +53,7 @@ public class MeteringTypeResourceImpl {
 
 	@GET
 	@Path("/byCode/{code}")
-	public Response getByCode(@PathParam("code") String code) {		
+	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
 		MeteringType meteringType = meteringTypeService.findByCode(code);
 		return Response.ok()
 			.entity(mapper.map(meteringType, MeteringTypeDto.class))
@@ -61,7 +63,7 @@ public class MeteringTypeResourceImpl {
 	
 	@GET
 	@Path("/byName/{name}")
-	public Response getByName(@PathParam("name") String name) {		
+	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
 		MeteringType meteringType = meteringTypeService.findByName(name);
 		return Response.ok()
 			.entity(mapper.map(meteringType, MeteringTypeDto.class))
@@ -102,7 +104,4 @@ public class MeteringTypeResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
-
-	@Context
-	private SecurityContext context;
 }

@@ -8,7 +8,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 import kz.kegoc.bln.entity.common.Lang;
-import kz.kegoc.bln.translator.Translator;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.Company;
 import kz.kegoc.bln.entity.dict.dto.CompanyDto;
@@ -26,6 +25,7 @@ public class CompanyResourceImpl {
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
@@ -35,7 +35,6 @@ public class CompanyResourceImpl {
 		
 		List<CompanyDto> list = service.find(query)
 			.stream()
-			.map(it -> translator.translate(it, userLang))
 			.map(it-> mapper.map(it, CompanyDto.class))
 			.collect(Collectors.toList());
 		
@@ -49,10 +48,11 @@ public class CompanyResourceImpl {
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Company entity = service.findById(id);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), CompanyDto.class))
+			.entity(mapper.map(entity, CompanyDto.class))
 			.build();		
 	}
 	
@@ -61,10 +61,11 @@ public class CompanyResourceImpl {
 	@Path("/byCode/{code}")
 	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Company entity = service.findByCode(code);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), CompanyDto.class))
+			.entity(mapper.map(entity, CompanyDto.class))
 			.build(); 
 	}
 	
@@ -73,22 +74,25 @@ public class CompanyResourceImpl {
 	@Path("/byName/{name}")
 	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Company entity = service.findByName(name);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), CompanyDto.class))
+			.entity(mapper.map(entity, CompanyDto.class))
 			.build();
 	}
 
 	
 	@POST
 	public Response create(CompanyDto entityDto) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
+		service.setLang(userLang);
 
-		Company newEntity = service.create(mapper.map(entityDto,Company.class));	
+		Company entity = mapper.map(entityDto, Company.class);
+		Company newEntity = service.create(entity);
+
 		return Response.ok()
-			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), CompanyDto.class))
+			.entity(mapper.map(newEntity, CompanyDto.class))
 			.build();
 	}
 	
@@ -96,12 +100,14 @@ public class CompanyResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, CompanyDto entityDto ) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
+		service.setLang(userLang);
 
-		Company newEntity = service.update(mapper.map(entityDto,Company.class)); 
+		Company entity = mapper.map(entityDto, Company.class);
+		Company newEntity = service.update(entity);
+
 		return Response.ok()
-			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), CompanyDto.class))
+			.entity(mapper.map(newEntity, CompanyDto.class))
 			.build();
 	}
 	
@@ -120,9 +126,6 @@ public class CompanyResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
-
-	@Inject
-	private Translator<Company> translator;
 
 	@Inject
 	private Lang defLang;

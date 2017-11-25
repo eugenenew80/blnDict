@@ -8,6 +8,7 @@ import lombok.*;
 @EqualsAndHashCode(of= {"id"})
 public class MeteringPointType implements HasId, HasCode, HasName {
 	private Long id;
+	private Lang lang;
 	
 	@NotNull @Size(max = 10)
 	private String code;

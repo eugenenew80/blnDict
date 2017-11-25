@@ -9,6 +9,7 @@ import lombok.*;
 @EqualsAndHashCode(of= {"id"})
 public class VoltageTrans implements HasId, HasCode, HasName {
 	private Long id;
+	private Lang lang;
 	
 	@NotNull @Size(max = 15)
 	private String code;

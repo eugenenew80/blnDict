@@ -3,6 +3,7 @@ package kz.kegoc.bln.entity.dict;
 import kz.kegoc.bln.entity.common.HasCode;
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.entity.common.HasName;
+import kz.kegoc.bln.entity.common.Lang;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,6 +14,7 @@ import javax.validation.constraints.Size;
 @EqualsAndHashCode(of= {"id"})
 public class VoltageClass implements HasId, HasCode {
 	private Long id;
+	private Lang lang;
 
 	@NotNull @Size(max = 60)
 	private String code;
