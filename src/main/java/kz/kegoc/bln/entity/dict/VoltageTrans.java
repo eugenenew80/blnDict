@@ -1,8 +1,10 @@
 package kz.kegoc.bln.entity.dict;
 
 import java.time.LocalDate;
+import java.util.Map;
 import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
+import kz.kegoc.bln.entity.dict.translate.VoltageTransTranslate;
 import lombok.*;
 
 @Data
@@ -31,4 +33,6 @@ public class VoltageTrans implements HasId, HasCode, HasName {
 	private Double maxVoltage;
 	private LocalDate lastVerificationDate;
 	private LocalDate nextVerificationDate;
+
+	private Map<Lang, VoltageTransTranslate> translations;
 }

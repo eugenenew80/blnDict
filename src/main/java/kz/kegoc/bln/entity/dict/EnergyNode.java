@@ -2,10 +2,9 @@ package kz.kegoc.bln.entity.dict;
 
 import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
+import kz.kegoc.bln.entity.dict.translate.EnergyNodeTranslate;
 import lombok.*;
-
-import java.util.List;
-
+import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
@@ -20,4 +19,6 @@ public class EnergyNode implements HasId, HasCode, HasName {
 	private String name;
 
 	private Region region;
+
+	private Map<Lang, EnergyNodeTranslate> translations;
 }

@@ -2,7 +2,9 @@ package kz.kegoc.bln.entity.dict;
 
 import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
+import kz.kegoc.bln.entity.dict.translate.MeterTypeTranslate;
 import lombok.*;
+import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
@@ -24,4 +26,6 @@ public class MeterType implements HasId, HasCode, HasName {
 	private Double accuracyClass;
 	private Double minimumLoad;
 	private Double maximumLoad;
+
+	private Map<Lang, MeterTypeTranslate> translations;
 }

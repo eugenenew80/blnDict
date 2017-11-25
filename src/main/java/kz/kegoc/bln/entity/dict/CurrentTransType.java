@@ -2,7 +2,10 @@ package kz.kegoc.bln.entity.dict;
 
 import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
+import kz.kegoc.bln.entity.dict.translate.CurrentTransTypeTranslate;
 import lombok.*;
+
+import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
@@ -24,4 +27,6 @@ public class CurrentTransType implements HasId, HasCode, HasName {
 	private Double accuracyClass;
 	private Double minCurrent;
 	private Double maxCurrent;
+
+	private Map<Lang, CurrentTransTypeTranslate> translations;
 }

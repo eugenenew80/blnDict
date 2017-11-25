@@ -23,4 +23,7 @@ public class MeteringTypeTranslate implements HasId, HasName, HasLang {
 
     @NotNull @Size(max = 100)
     private String name;
+
+    @NotNull @Size(max = 10)
+    private String shortName;
 }
