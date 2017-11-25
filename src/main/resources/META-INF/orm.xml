@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-mappings version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/orm_2_1.xsd">
+
 	<entity class="kz.kegoc.bln.entity.dict.Unit">
 		<table name="dict_units" schema="apps"/>
 		<attributes>
@@ -28,8 +29,39 @@
       		<basic name="factor">
       			<column name="factor" />
       		</basic>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.UnitTranslate">
+		<table name="dict_units_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_companies_tl_gen" />
+				<sequence-generator
+						name="dict_companies_tl_gen"
+						sequence-name="apps.dict_companies_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<many-to-one name="unit">
+				<join-column name="unit_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
 
 	<entity class="kz.kegoc.bln.entity.dict.DataSource">
 		<table name="dict_data_sources" schema="apps"/>
@@ -51,6 +83,36 @@
       		<basic name="name">
       			<column name="name" />
       		</basic>
+
+			<transient name="lang"/>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.DataSourceTranslate">
+		<table name="dict_data_sources_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_data_sources_tl_gen" />
+				<sequence-generator
+						name="dict_data_sources_tl_gen"
+						sequence-name="apps.dict_data_sources_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<many-to-one name="dataSource">
+				<join-column name="data_source_id"/>
+			</many-to-one>
 		</attributes>
 	</entity>
 
@@ -97,12 +159,45 @@
 
       		<basic name="maximumLoad">
       			<column name="maximum_load" />
-      		</basic>  
-      		    		
+      		</basic>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>
-	
-	
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.MeterTypeTranslate">
+		<table name="dict_meter_types_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_meter_types_tl_gen" />
+				<sequence-generator
+						name="dict_meter_types_tl_gen"
+						sequence-name="apps.dict_meter_types_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="manufacturer">
+				<column name="manufacturer" />
+			</basic>
+
+			<many-to-one name="meterType">
+				<join-column name="meter_type_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+
 	<entity class="kz.kegoc.bln.entity.dict.CurrentTransType">
 		<table name="dict_current_trans_types" schema="apps" />
 		<attributes>
@@ -146,11 +241,44 @@
 
       		<basic name="maxCurrent">
       			<column name="max_current" />
-      		</basic>  
-      		    		
+      		</basic>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>
-		
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.CurrentTransTypeTranslate">
+		<table name="dict_current_trans_types_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_current_trans_types_tl_gen" />
+				<sequence-generator
+						name="dict_current_trans_types_tl_gen"
+						sequence-name="apps.dict_current_trans_types_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="manufacturer">
+				<column name="manufacturer" />
+			</basic>
+
+			<many-to-one name="currentTransType">
+				<join-column name="current_trans_type_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
 
 	<entity class="kz.kegoc.bln.entity.dict.VoltageTransType">
 		<table name="dict_voltage_trans_types" schema="apps" />
@@ -195,12 +323,44 @@
 
       		<basic name="maxVoltage">
       			<column name="max_voltage" />
-      		</basic>  
-      		    		
+      		</basic>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>
-	
-	
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.VoltageTransTypeTranslate">
+		<table name="dict_voltage_trans_types_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_voltage_trans_types_tl_gen" />
+				<sequence-generator
+						name="dict_voltage_trans_types_tl_gen"
+						sequence-name="apps.dict_voltage_trans_types_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="manufacturer">
+				<column name="manufacturer" />
+			</basic>
+
+			<many-to-one name="voltageTransType">
+				<join-column name="voltage_trans_type_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
 	<entity class="kz.kegoc.bln.entity.dict.EnergyZone">
 		<table name="dict_energy_zones" schema="apps" />
 		<attributes>
@@ -221,10 +381,40 @@
       		<basic name="name">
       			<column name="name" />
       		</basic>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>
-	
-	
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.EnergyZoneTranslate">
+		<table name="dict_energy_zones_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_energy_zones_tl_gen" />
+				<sequence-generator
+						name="dict_energy_zones_tl_gen"
+						sequence-name="apps.dict_energy_zones_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<many-to-one name="energyZone">
+				<join-column name="energy_zone_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+
 	<entity class="kz.kegoc.bln.entity.dict.Region">
 		<table name="dict_regions" schema="apps" />
 		<attributes>
@@ -249,6 +439,8 @@
 			<many-to-one name="country">
 				<join-column name="country_id"/>
 			</many-to-one>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>
 	
@@ -277,6 +469,8 @@
 			<many-to-one name="region">
 				<join-column name="region_id"/>
 			</many-to-one>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>
 	
@@ -625,7 +819,9 @@
       		
 			<many-to-one name="company">
 				<join-column name="company_id"/>
-			</many-to-one>       		    		
+			</many-to-one>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>
 
@@ -658,6 +854,8 @@
 			<basic name="isRes">
 				<column name="is_res" />
 			</basic>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>
 	
@@ -989,7 +1187,9 @@
       		
       		<basic name="shortName">
       			<column name="short_name" />
-      		</basic>     
+      		</basic>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>		
 	
@@ -1017,7 +1217,9 @@
       		
       		<basic name="shortName">
       			<column name="short_name" />
-      		</basic>     
+      		</basic>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>		
 
@@ -1102,6 +1304,8 @@
       		<basic name="name">
       			<column name="name" />
       		</basic>
+
+			<transient name="lang"/>
 		</attributes>
 	</entity>
 	
