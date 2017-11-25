@@ -6,15 +6,12 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-
 import kz.kegoc.bln.entity.common.Lang;
-import kz.kegoc.bln.translator.Translator;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.EnergySource;
 import kz.kegoc.bln.entity.dict.dto.EnergySourceDto;
 import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.EnergySourceService;
-
 import static org.apache.commons.lang3.StringUtils.*;
 
 @Stateless
@@ -26,6 +23,7 @@ public class EnergySourceResourceImpl {
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
@@ -35,7 +33,6 @@ public class EnergySourceResourceImpl {
 		
 		List<EnergySourceDto> list = service.find(query)
 			.stream()
-			.map(it -> translator.translate(it, userLang))
 			.map( it-> mapper.map(it, EnergySourceDto.class) )
 			.collect(Collectors.toList());
 		
@@ -49,10 +46,11 @@ public class EnergySourceResourceImpl {
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		EnergySource entity = service.findById(id);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), EnergySourceDto.class))
+			.entity(mapper.map(entity, EnergySourceDto.class))
 			.build();		
 	}
 	
@@ -61,10 +59,11 @@ public class EnergySourceResourceImpl {
 	@Path("/byCode/{code}")
 	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		EnergySource entity = service.findByCode(code);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), EnergySourceDto.class))
+			.entity(mapper.map(entity, EnergySourceDto.class))
 			.build(); 
 	}
 	
@@ -73,22 +72,23 @@ public class EnergySourceResourceImpl {
 	@Path("/byName/{name}")
 	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
 		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
 
 		EnergySource entity = service.findByName(name);
 		return Response.ok()
-			.entity(mapper.map(translator.translate(entity, userLang), EnergySourceDto.class))
+			.entity(mapper.map(entity, EnergySourceDto.class))
 			.build();
 	}
 
 	
 	@POST
 	public Response create(EnergySourceDto entityDto) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
 
 		EnergySource newEntity = service.create(mapper.map(entityDto, EnergySource.class));
 		return Response.ok()
-			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), EnergySourceDto.class))
+			.entity(mapper.map(newEntity, EnergySourceDto.class))
 			.build();
 	}
 	
@@ -96,12 +96,12 @@ public class EnergySourceResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, EnergySourceDto entityDto ) {
-		if (entityDto.getLang()==null)
-			entityDto.setLang(defLang);
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
 
 		EnergySource newEntity = service.update(mapper.map(entityDto, EnergySource.class));
 		return Response.ok()
-			.entity(mapper.map(translator.translate(newEntity, entityDto.getLang()), EnergySourceDto.class))
+			.entity(mapper.map(newEntity, EnergySourceDto.class))
 			.build();
 	}
 	
@@ -138,9 +138,6 @@ public class EnergySourceResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
-
-	@Inject
-	private Translator<EnergySource> translator;
 
 	@Inject
 	private Lang defLang;
