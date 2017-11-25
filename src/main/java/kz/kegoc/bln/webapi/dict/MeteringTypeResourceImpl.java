@@ -6,14 +6,12 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-
 import kz.kegoc.bln.entity.common.Lang;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.MeteringType;
 import kz.kegoc.bln.entity.dict.dto.MeteringTypeDto;
 import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.MeteringTypeService;
-
 import static org.apache.commons.lang3.StringUtils.*;
 
 @Stateless
@@ -24,13 +22,16 @@ public class MeteringTypeResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		Query query = QueryImpl.builder()			
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
+		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
 			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
 			.setOrderBy("t.id")
 			.build();		
 		
-		List<MeteringTypeDto> list = meteringTypeService.find(query)
+		List<MeteringTypeDto> list = service.find(query)
 			.stream()
 			.map( it-> mapper.map(it, MeteringTypeDto.class) )
 			.collect(Collectors.toList());
@@ -44,7 +45,10 @@ public class MeteringTypeResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		MeteringType meteringType = meteringTypeService.findById(id);
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
+		MeteringType meteringType = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(meteringType, MeteringTypeDto.class))
 			.build();		
@@ -54,7 +58,10 @@ public class MeteringTypeResourceImpl {
 	@GET
 	@Path("/byCode/{code}")
 	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
-		MeteringType meteringType = meteringTypeService.findByCode(code);
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
+		MeteringType meteringType = service.findByCode(code);
 		return Response.ok()
 			.entity(mapper.map(meteringType, MeteringTypeDto.class))
 			.build();
@@ -64,7 +71,10 @@ public class MeteringTypeResourceImpl {
 	@GET
 	@Path("/byName/{name}")
 	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
-		MeteringType meteringType = meteringTypeService.findByName(name);
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
+		MeteringType meteringType = service.findByName(name);
 		return Response.ok()
 			.entity(mapper.map(meteringType, MeteringTypeDto.class))
 			.build();
@@ -72,8 +82,11 @@ public class MeteringTypeResourceImpl {
 
 	
 	@POST
-	public Response create(MeteringTypeDto meteringTypeDto) {
-		MeteringType newMeteringType = meteringTypeService.create(mapper.map(meteringTypeDto, MeteringType.class));	
+	public Response create(MeteringTypeDto entityDto) {
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		MeteringType newMeteringType = service.create(mapper.map(entityDto, MeteringType.class));
 		return Response.ok()
 			.entity(mapper.map(newMeteringType, MeteringTypeDto.class))
 			.build();
@@ -82,8 +95,11 @@ public class MeteringTypeResourceImpl {
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, MeteringTypeDto meteringTypeDto ) {
-		MeteringType newMeteringType = meteringTypeService.update(mapper.map(meteringTypeDto, MeteringType.class)); 
+	public Response update(@PathParam("id") Long id, MeteringTypeDto entityDto ) {
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		MeteringType newMeteringType = service.update(mapper.map(entityDto, MeteringType.class));
 		return Response.ok()
 			.entity(mapper.map(newMeteringType, MeteringTypeDto.class))
 			.build();
@@ -93,15 +109,18 @@ public class MeteringTypeResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		meteringTypeService.delete(id);		
+		service.delete(id);
 		return Response.noContent()
 			.build();
 	}
 	
 
 	@Inject
-	private MeteringTypeService meteringTypeService;
+	private MeteringTypeService service;
 
 	@Inject
 	private DozerBeanMapper mapper;
+
+	@Inject
+	private Lang defLang;
 }
