@@ -5,67 +5,39 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
-    
 
-    <changeSet id="dict-eug-34" logicalFilePath="path-independent" author="eugene" context="postgres">
-        <comment>Creating table: dict_companies</comment>
-        <createTable tableName="dict_companies" schemaName="apps">            
+    <changeSet id="dict-eug-26" logicalFilePath="path-independent" author="eugene" context="postgres">
+        <comment>Creating table: dict_organizations</comment>
+        <createTable tableName="dict_organizations" schemaName="apps">
             <column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="code" type="varchar(10)">
-                <constraints nullable="false"/>
-            </column>
-            
             <column name="name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
                       
-            <column name="tin" type="varchar(12)">
+            <column name="bin" type="varchar(12)">
                 <constraints nullable="true"/>
             </column>                                                 
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-eug-35" logicalFilePath="path-independent" author="eugene" context="postgres">
-	    <comment>Creating primary key for table: dict_companies</comment>
+	<changeSet id="dict-eug-27" logicalFilePath="path-independent" author="eugene" context="postgres">
+	    <comment>Creating primary key for table: dict_organizations</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
-	            constraintName="pk_dict_companies"
+	            constraintName="pk_dict_organizations"
 	            schemaName="apps"
-	            tableName="dict_companies"/>
+	            tableName="dict_organizations"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-36" logicalFilePath="path-independent" author="eugene" context="postgres">
-		<comment>Load demo data to table: dict_companies</comment>
-	    <loadData
-	            encoding="UTF-8"
-	            relativeToChangelogFile="true"
-	            file="data/dict_companies.csv"
-	            quotchar="'"
-	            schemaName="apps"
-	            separator=";"
-	            tableName="dict_companies">
-	        
-	        <column name="id" 				type="NUMERIC"/>
-	        <column name="code" 			type="STRING"/>
-	        <column name="name"				type="STRING"/>
-	        <column name="tin"				type="STRING"/>
-	    </loadData>
-		
-		<rollback>
-        	<delete schemaName="apps" tableName="dict_companies" />
-        </rollback>	
-	</changeSet>	
-	
-	<changeSet id="dict-eug-37" logicalFilePath="path-independent" author="eugene" context="postgres">
-	    <comment>Creating sequence for table: dict_companies</comment>
+	<changeSet id="dict-eug-28" logicalFilePath="path-independent" author="eugene" context="postgres">
+	    <comment>Creating sequence for table: dict_organizations</comment>
 	    <createSequence 
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_companies_s"
-	            startValue="3"/>
-	</changeSet>	
-	
+	            sequenceName="dict_organizations_s"
+	            startValue="1"/>
+	</changeSet>
 </databaseChangeLog>

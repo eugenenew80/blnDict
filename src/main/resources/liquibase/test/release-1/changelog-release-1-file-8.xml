@@ -5,9 +5,8 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
-    
 
-    <changeSet id="dict-eug-30" logicalFilePath="path-independent" author="eugene" context="postgres">
+    <changeSet id="dict-eug-23" logicalFilePath="path-independent" author="eugene" context="postgres">
         <comment>Creating table: dict_energy_nodes</comment>
         <createTable tableName="dict_energy_nodes" schemaName="apps">            
             <column name="id" type="number">
@@ -21,11 +20,14 @@
             <column name="name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-                                                 
+
+			<column name="region_id" type="number">
+				<constraints nullable="false"/>
+			</column>
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-eug-31" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-24" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating primary key for table: dict_energy_nodes</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
@@ -34,34 +36,12 @@
 	            tableName="dict_energy_nodes"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-32" logicalFilePath="path-independent" author="eugene" context="postgres">
-		<comment>Load demo data to table: dict_energy_nodes</comment>
-	    <loadData
-	            encoding="UTF-8"
-	            relativeToChangelogFile="true"
-	            file="data/dict_energy_nodes.csv"
-	            quotchar="'"
-	            schemaName="apps"
-	            separator=";"
-	            tableName="dict_energy_nodes">
-	        
-	        <column name="id" 				type="NUMERIC"/>
-	        <column name="code" 			type="STRING"/>
-	        <column name="name"				type="STRING"/>
-	    </loadData>
-		
-		<rollback>
-        	<delete schemaName="apps" tableName="dict_energy_nodes" />
-        </rollback>	
-	</changeSet>	
-	
-	<changeSet id="dict-eug-33" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-25" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating sequence for table: dict_energy_nodes</comment>
 	    <createSequence 
 	            incrementBy="1"
 	            schemaName="apps"
 	            sequenceName="dict_energy_nodes_s"
-	            startValue="5"/>
-	</changeSet>	
-	
+	            startValue="1"/>
+	</changeSet>
 </databaseChangeLog>

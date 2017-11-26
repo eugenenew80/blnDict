@@ -5,9 +5,8 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
-    
 
-    <changeSet id="dict-eug-62" logicalFilePath="path-independent" author="eugene" context="postgres">
+    <changeSet id="dict-eug-47" logicalFilePath="path-independent" author="eugene" context="postgres">
         <comment>Creating table: dict_metering_types</comment>
         <createTable tableName="dict_metering_types" schemaName="apps">            
             <column name="id" type="number">
@@ -22,13 +21,17 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="short_name" type="varchar(10)">
-                <constraints nullable="false"/>
+            <column name="is_used_in_energy_sources" type="varchar(1)">
+                <constraints nullable="true"/>
+            </column>
+
+			<column name="is_used_in_substations" type="varchar(1)">
+                <constraints nullable="true"/>
             </column>
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-eug-63" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-48" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating primary key for table: dict_metering_types</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
@@ -37,35 +40,12 @@
 	            tableName="dict_metering_types"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-64" logicalFilePath="path-independent" author="eugene" context="postgres">
-		<comment>Load demo data to table: dict_metering_types</comment>
-	    <loadData
-	            encoding="UTF-8"
-	            relativeToChangelogFile="true"
-	            file="data/dict_metering_types.csv"
-	            quotchar="'"
-	            schemaName="apps"
-	            separator=";"
-	            tableName="dict_metering_types">
-	        
-	        <column name="id" 				type="NUMERIC"/>
-	        <column name="code" 			type="STRING"/>
-	        <column name="name"				type="STRING"/>
-	        <column name="short_name"		type="STRING"/>
-	    </loadData>
-		
-		<rollback>
-        	<delete schemaName="apps" tableName="dict_metering_types" />
-        </rollback>	
-	</changeSet>	
-	
-	<changeSet id="dict-eug-65" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-49" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating sequence for table: dict_metering_types</comment>
-	    <createSequence 
+	    <createSequence
 	            incrementBy="1"
 	            schemaName="apps"
 	            sequenceName="dict_metering_types_s"
-	            startValue="6"/>
-	</changeSet>	
-	
+	            startValue="1"/>
+	</changeSet>
 </databaseChangeLog>

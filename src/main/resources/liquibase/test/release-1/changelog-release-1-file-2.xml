@@ -5,9 +5,8 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
-    
 
-    <changeSet id="dict-eug-6" logicalFilePath="path-independent" author="eugene" context="postgres">
+    <changeSet id="dict-eug-5" logicalFilePath="path-independent" author="eugene" context="postgres">
         <comment>Creating table: dict_data_sources</comment>
         <createTable tableName="dict_data_sources" schemaName="apps">            
             <column name="id" type="number">
@@ -24,7 +23,7 @@
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-eug-7" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-6" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating primary key for table: dict_data_sources</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
@@ -33,34 +32,12 @@
 	            tableName="dict_data_sources"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-8" logicalFilePath="path-independent" author="eugene" context="postgres">
-		<comment>Load demo data to table: dict_data_sources</comment>
-	    <loadData
-	            encoding="UTF-8"
-	            relativeToChangelogFile="true"
-	            file="data/dict_data_sources.csv"
-	            quotchar="'"
-	            schemaName="apps"
-	            separator=";"
-	            tableName="dict_data_sources">
-	        
-	        <column name="id" 	type="NUMERIC"/>
-	        <column name="code" type="STRING"/>
-	        <column name="name"	type="STRING"/>
-	    </loadData>
-		
-		<rollback>
-        	<delete schemaName="apps" tableName="dict_data_sources" />
-        </rollback>	
-	</changeSet>	
-	
-	<changeSet id="dict-eug-9" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-7" logicalFilePath="path-independent" author="eugene" context="postgres">
 	    <comment>Creating sequence for table: dict_data_sources</comment>
 	    <createSequence 
 	            incrementBy="1"
 	            schemaName="apps"
 	            sequenceName="dict_data_sources_s"
-	            startValue="7"/>
-	</changeSet>	
-	
+	            startValue="1"/>
+	</changeSet>
 </databaseChangeLog>

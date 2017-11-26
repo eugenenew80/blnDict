@@ -4,23 +4,23 @@
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">    
 
-    <changeSet id="dict-eug-62" logicalFilePath="path-independent" author="eugene" context="postgres">
-        <comment>Creating table: dict_substation_business_partners</comment>
-        <createTable tableName="dict_substation_business_partners" schemaName="apps">            
+    <changeSet id="dict-eug-77" logicalFilePath="path-independent" author="eugene" context="postgres">
+        <comment>Creating table: dict_metering_point_meters</comment>
+        <createTable tableName="dict_metering_point_meters" schemaName="apps">            
             <column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
-                        
-            <column name="substation_id" type="number">
+
+            <column name="metering_point_id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="business_partner_id" type="number">
+            <column name="meter_id" type="number">
                 <constraints nullable="false"/>
             </column>
-            
+                        
             <column name="start_date" type="date">
                 <constraints nullable="true"/>
             </column>
@@ -31,21 +31,21 @@
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-eug-63" logicalFilePath="path-independent" author="eugene" context="postgres">
-	    <comment>Creating primary key for table: dict_substation_business_partners</comment>
+	<changeSet id="dict-eug-78" logicalFilePath="path-independent" author="eugene" context="postgres">
+	    <comment>Creating primary key for table: dict_metering_point_meters</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
-	            constraintName="pk_dict_substation_business_partners"
+	            constraintName="pk_dict_metering_point_meters"
 	            schemaName="apps"
-	            tableName="dict_substation_business_partners"/>
+	            tableName="dict_metering_point_meters"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-64" logicalFilePath="path-independent" author="eugene" context="postgres">
-	    <comment>Creating sequence for table: dict_substation_business_partners</comment>
+	<changeSet id="dict-eug-79" logicalFilePath="path-independent" author="eugene" context="postgres">
+	    <comment>Creating sequence for table: dict_metering_point_meters</comment>
 	    <createSequence 
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_substation_business_partners_s"
+	            sequenceName="dict_metering_point_meters_s"
 	            startValue="1"/>
 	</changeSet>	
 </databaseChangeLog>
