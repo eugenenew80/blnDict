@@ -11,12 +11,14 @@ import lombok.Data;
 public class EnergySourceDto {
 	private Long id;
 	private Lang lang;
-	private String code;
 	private String name;
 	private String shortName;
 	private Long energySourceTypeId;
 	private String energySourceTypeName;	
-	private Double voltageClass;
+	private Long voltageClassId;
+	private String voltageClassName;
 	private String address;
 	private Double installedPower;
+	private Long orgId;
+	private String orgName;
 }

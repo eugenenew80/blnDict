@@ -17,10 +17,12 @@ public class BusinessPartnerDto {
 	private String bin;
 	private Long kbe;
 	private String okpo;
-	private String certificateRegisterSeries;
-	private LocalDate certificateRegisterDate;
-	private String certificateRegisterNumber;
-	private String certificateAuthorityName;
-	private String certificateAuthorityBin;
-	private Long bpParentId;
+	private String legalAddressName;
+	private String actualAddressName;
+	private Boolean isLargeConsumer;
+	private Boolean isElectricityProducer;
+	private Boolean isEnergySupplyOrganization;
+	private Boolean isTransmittingOrganization;
+	private Boolean isElectricityConsumer;
+	private Long parentBusinessPartnerId;
 }

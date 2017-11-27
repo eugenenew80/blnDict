@@ -14,18 +14,19 @@ public class MeteringPoint implements HasId, HasCode, HasName, HasLang {
 	private Long id;
 	private Lang lang;
 	private String name;
+	private String shortName;
 
-	@NotNull @Size(max = 10)
+	@NotNull @Size(max = 15)
 	private String code;
 
 	@Size(max = 18)
 	private String externalCode;
 
 	@NotNull
-	private BusinessPartner firstBusinessPartner;
+	private BusinessPartner businessPartner1;
 	
 	@NotNull
-	private BusinessPartner secondBusinessPartner;
+	private BusinessPartner businessPartner2;
 	
 	@NotNull
 	private MeteringType meteringType;
@@ -36,16 +37,17 @@ public class MeteringPoint implements HasId, HasCode, HasName, HasLang {
 	@NotNull
 	private MeteringPointType meteringPointType;
 
+	@NotNull
 	private EnergyObject energyObject;
 
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private Double ratedVoltage;
-	private Double limitError;
-	private Double transformationRate;
-	private Double minLoad;
-	private Double maxLoad;
-	
+	private MeteringPoint referenceMeteringPoint;
+
+	@NotNull
+	private Organization org;
+
 	private List<MeteringPointMeter> meters;
 	private List<MeteringPointCurrentTrans> currentTrans;
 	private List<MeteringPointVoltageTrans> voltageTrans;

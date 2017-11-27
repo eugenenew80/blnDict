@@ -20,30 +20,23 @@ public class BusinessPartner implements HasId, HasName, HasLang {
 	private Long id;
 	private Lang lang;
 	private String name;
-	private String certificateAuthorityName;
 
 	@NotNull @Size(max = 12)
 	private String bin;
 
-	@NotNull
+	@NotNull @Size(min = 2, max = 2)
 	private Long kbe;
 
-	@NotNull  @Size(max = 10)
+	@NotNull  @Size(max = 20)
 	private String okpo;
 
-	@Size(max = 60)
-	private String certificateRegisterSeries;
-
-	@NotNull
-	private LocalDate certificateRegisterDate;
-
-	@NotNull @Size(max = 60)
-	private String certificateRegisterNumber;
-
-	@NotNull @Size(max = 150)
-	private String certificateAuthorityBin;
-
-	private BusinessPartner bpParent;
-
+	private PostAddress legalAddress;
+	private PostAddress actualAddress;
+	private Boolean isLargeConsumer;
+	private Boolean isElectricityProducer;
+	private Boolean isEnergySupplyOrganization;
+	private Boolean isTransmittingOrganization;
+	private Boolean isElectricityConsumer;
+	private BusinessPartner parentBusinessPartner;
 	private Map<Lang, BusinessPartnerTranslate> translations;
 }

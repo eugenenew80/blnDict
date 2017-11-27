@@ -23,7 +23,7 @@ public class VoltageTrans implements HasId, HasCode, HasName {
 	private String manufacturer;
 
 	@NotNull
-	private Company company;
+	private Organization company;
 	
 	private String serialNumber;	
 	private Double ratedVoltage1;

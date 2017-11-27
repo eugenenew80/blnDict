@@ -32,10 +32,6 @@
             <column name="accuracy_class" type="number">
                 <constraints nullable="true"/>
             </column>  
-            
-            <column name="business_partner_id" type="number">
-                <constraints nullable="false"/>
-            </column>
 
             <column name="org_id" type="number">
                 <constraints nullable="false"/>

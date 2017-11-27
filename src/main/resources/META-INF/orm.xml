@@ -585,7 +585,7 @@
 		</attributes>
 	</entity>
 
-	<entity class="kz.kegoc.bln.entity.dict.Company">
+	<entity class="kz.kegoc.bln.entity.dict.Organization">
 		<table name="dict_companies" schema="apps" />
 		<attributes>
 			<id name="id">
@@ -621,7 +621,7 @@
 		</attributes>
 	</entity>
 
-	<entity class="kz.kegoc.bln.entity.dict.translate.CompanyTranslate">
+	<entity class="kz.kegoc.bln.entity.dict.translate.OrganizationTranslate">
 		<table name="dict_companies_tl" schema="apps"/>
 		<attributes>
 			<id name="id">
@@ -1289,7 +1289,7 @@
 		</attributes>
 	</entity>
 
-	<entity class="kz.kegoc.bln.entity.dict.EnergySourceCompany">
+	<entity class="kz.kegoc.bln.entity.dict.EnergySourceBusinessPartner">
 		<table name="dict_energy_source_companies" schema="apps" />
 		<attributes>
 			<id name="id">

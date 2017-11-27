@@ -11,7 +11,6 @@ import lombok.Data;
 public class CurrentTransTypeDto {
 	private Long id;
 	private Lang lang;
-	private String code;
 	private String name;
 	private String manufacturer;
 	private Double ratedCurrent1;

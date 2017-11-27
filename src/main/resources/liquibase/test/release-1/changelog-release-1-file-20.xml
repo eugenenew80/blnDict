@@ -21,7 +21,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="short_name" type="varchar(30)">
+            <column name="short_name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
 
@@ -53,27 +53,11 @@
                 <constraints nullable="true"/>
             </column>
 
-            <column name="resp_boundary_text" type="varchar(300)">
-                <constraints nullable="true"/>
-            </column>
-
             <column name="business_partner_id_1" type="number">
                 <constraints nullable="false"/>
             </column> 
             
             <column name="business_partner_id_2" type="number">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="bp1_is_responsible" type="varchar(300)">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="bp2_is_responsible" type="varchar(300)">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="metering_type_id" type="number">
                 <constraints nullable="false"/>
             </column>
 
@@ -87,10 +71,6 @@
 
             <column name="org_id" type="number">
                 <constraints nullable="false"/>
-            </column>
-
-            <column name="resp_boundary_file_id" type="varchar(100)">
-                <constraints nullable="true"/>
             </column>
         </createTable>
     </changeSet>

@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import kz.kegoc.bln.entity.dict.EnergySourceCompany;
+import kz.kegoc.bln.entity.dict.EnergySourceBusinessPartner;
 import kz.kegoc.bln.service.dict.EnergySourceCompanyService;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.dto.EnergySourceCompanyDto;
@@ -34,7 +34,7 @@ public class EnergySourceCompanyResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id) {
-		EnergySourceCompany entity = service.findById(id);
+		EnergySourceBusinessPartner entity = service.findById(id);
 		return Response.ok()
 				.entity(mapper.map(entity, EnergySourceCompanyDto.class))
 				.build();
@@ -43,7 +43,7 @@ public class EnergySourceCompanyResourceImpl {
 
 	@POST
 	public Response create(EnergySourceCompanyDto entityDto) {
-		EnergySourceCompany newEntity = service.create(mapper.map(entityDto, EnergySourceCompany.class));
+		EnergySourceBusinessPartner newEntity = service.create(mapper.map(entityDto, EnergySourceBusinessPartner.class));
 		return Response.ok()
 				.entity(mapper.map(newEntity, EnergySourceCompanyDto.class))
 				.build();
@@ -53,7 +53,7 @@ public class EnergySourceCompanyResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, EnergySourceCompanyDto entityDto ) {
-		EnergySourceCompany newEntity = service.update(mapper.map(entityDto, EnergySourceCompany.class));
+		EnergySourceBusinessPartner newEntity = service.update(mapper.map(entityDto, EnergySourceBusinessPartner.class));
 		return Response.ok()
 				.entity(mapper.map(newEntity, EnergySourceCompanyDto.class))
 				.build();

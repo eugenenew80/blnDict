@@ -29,5 +29,6 @@ public class EnergySourceTranslate implements HasId, HasName, HasLang {
     @NotNull @Size(max = 10)
     private String shortName;
 
+    @Size(max = 300)
     private String address;
 }

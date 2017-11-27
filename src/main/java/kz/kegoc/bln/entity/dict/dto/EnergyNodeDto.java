@@ -14,4 +14,5 @@ public class EnergyNodeDto {
 	private String code;
 	private String name;
 	private Long regionId;
+	private String regionName;
 }

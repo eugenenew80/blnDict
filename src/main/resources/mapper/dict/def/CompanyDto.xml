@@ -4,7 +4,7 @@
           xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
   <mapping>
-    <class-a>kz.kegoc.bln.entity.dict.Company</class-a>
-    <class-b>kz.kegoc.bln.entity.dict.dto.CompanyDto</class-b>
+    <class-a>kz.kegoc.bln.entity.dict.Organization</class-a>
+    <class-b>kz.kegoc.bln.entity.dict.dto.OrganizationDto</class-b>
   </mapping> 
 </mappings> 

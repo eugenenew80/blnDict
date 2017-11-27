@@ -9,8 +9,7 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BankAccountDto {
 	private Long id;
-	private String code;
-	private String name;
+	private String bankAccountNumber;
 	private Long bankId;
 	private Long businessPartnerId;
 }

@@ -25,4 +25,13 @@ public class MeterDto {
 	private String businessPartnerName;
 	private LocalDate lastVerificationDate;
 	private LocalDate nextVerificationDate;
+	private Long totalDigitsNumber;
+	private Long digitsAfterDecimalPoint;
+	private Boolean parameterAp;
+	private Boolean parameterAm;
+	private Boolean parameterRp;
+	private Boolean parameterRm;
+	private Boolean isWithdrawn;
+	private Long orgId;
+	private String orgName;
 }

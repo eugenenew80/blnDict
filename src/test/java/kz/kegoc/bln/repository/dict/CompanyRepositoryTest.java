@@ -2,11 +2,13 @@ package kz.kegoc.bln.repository.dict;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
+
+import kz.kegoc.bln.entity.dict.Organization;
 import org.junit.*;
 import java.util.*;
 
 import static kz.kegoc.bln.helper.dict.CompanyHelper.*;
-import kz.kegoc.bln.entity.dict.Company;
+
 import kz.kegoc.bln.helper.*;
 import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.repository.dict.impl.CompanyRepositoryImpl;
@@ -49,7 +51,7 @@ public class CompanyRepositoryTest {
 
 	@Test
 	public void theListCompanysMayBeSelected() {
-		List<Company> list = repository.selectAll();
+		List<Organization> list = repository.selectAll();
 		
 		assertThat(list, is(not(nullValue())));
 		assertThat(list, hasSize(2));
@@ -69,7 +71,7 @@ public class CompanyRepositoryTest {
 			.setParameter("name", new MyQueryParam("name", COMPANY_NAME, ConditionType.LIKE))
 			.build();		
 		
-		List<Company> list = repository.select(query);
+		List<Organization> list = repository.select(query);
 		assertThat(list, is(not(nullValue())));
 		assertThat(list, hasSize(1));
 		assertThat(list.get(0), is(not(nullValue())));
@@ -85,7 +87,7 @@ public class CompanyRepositoryTest {
 	
 	@Test
 	public void existingCompanyMayBeSelectedById() {
-		Company entity = repository.selectById(COMPANY_ID);
+		Organization entity = repository.selectById(COMPANY_ID);
 		assertThat(entity, is(not(nullValue())));
 		assertCompany(entity);
 	}
@@ -93,14 +95,14 @@ public class CompanyRepositoryTest {
 
 	@Test
 	public void existingCompanyMayBeSelectedByName()  {
-		Company entity = repository.selectByName(COMPANY_NAME);
+		Organization entity = repository.selectByName(COMPANY_NAME);
 		assertThat(entity, is(not(nullValue())));
 		assertCompany(entity);
 	}
 
 	@Test
 	public void existingCompanyMayBeSelectedByCode() {
-		Company entity = repository.selectByCode(COMPANY_CODE);
+		Organization entity = repository.selectByCode(COMPANY_CODE);
 		assertThat(entity, is(not(nullValue())));
 		assertCompany(entity);
 	}
@@ -108,7 +110,7 @@ public class CompanyRepositoryTest {
 
 	@Test
 	public void existingCompanyMayBeSelectedByTin() {
-		Company entity = repository.selectByTin(COMPANY_TIN);
+		Organization entity = repository.selectByTin(COMPANY_TIN);
 		assertThat(entity, is(not(nullValue())));
 		assertCompany(entity);
 	}
@@ -116,9 +118,9 @@ public class CompanyRepositoryTest {
 
 	@Test
 	public void newCompanyMayBeInserted() {
-		Company origEntity = newCompany(null);
+		Organization origEntity = newCompany(null);
 
-		Company entity = repository.insert(origEntity);
+		Organization entity = repository.insert(origEntity);
 		assertThat(entity.getId(), is(not(nullValue())));
 
         entity = repository.selectById(entity.getId());
@@ -129,10 +131,10 @@ public class CompanyRepositoryTest {
 
 	@Test
 	public void existingCompanyMayBeUpdated() {
-		Company origEntity = repository.selectById(COMPANY_ID);;
+		Organization origEntity = repository.selectById(COMPANY_ID);;
         origEntity.setName(origEntity.getName() + " (нов)");
 
-		Company entity = repository.update(origEntity);
+		Organization entity = repository.update(origEntity);
 		assertThat(entity, is(not(nullValue())));
 
         entity = repository.selectById(entity.getId());
@@ -145,7 +147,7 @@ public class CompanyRepositoryTest {
 		boolean result = repository.delete(COMPANY_ID);
         assertThat(result, is(equalTo(true)));
 
-        Company entity = repository.selectById(COMPANY_ID);
+        Organization entity = repository.selectById(COMPANY_ID);
         assertThat(entity, is(nullValue()));
     }
 
@@ -155,25 +157,25 @@ public class CompanyRepositoryTest {
 
     @Test
     public void methodSelectByIdShouldReturnNullIfIdIsNotExists() {
-        Company entity = repository.selectById(nonExistedId);
+        Organization entity = repository.selectById(nonExistedId);
         assertThat(entity, is(nullValue()));
     }
 
     @Test
     public void methodSelectByNameShouldReturnNullIfNameIsNotExists() {
-        Company entity = repository.selectByName(nonExistedName);
+        Organization entity = repository.selectByName(nonExistedName);
         assertThat(entity, is(nullValue()));
     }
 
     @Test
     public void methodSelectByCodeShouldReturnNullIfCodeIsNotExists() {
-        Company entity = repository.selectByCode(nonExistedCode);
+        Organization entity = repository.selectByCode(nonExistedCode);
         assertThat(entity, is(nullValue()));
     }
 
 	@Test
 	public void methodSelectByTinShouldReturnNullIfCodeIsNotExists() {
-		Company entity = repository.selectByTin(nonExistedTin);
+		Organization entity = repository.selectByTin(nonExistedTin);
 		assertThat(entity, is(nullValue()));
 	}
 

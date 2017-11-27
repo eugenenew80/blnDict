@@ -14,7 +14,7 @@ public class SubstationCompany implements HasId {
 	private Substation substation;
 
 	@NotNull
-	private Company company;
+	private Organization company;
 	
 	private LocalDate startDate;
 	private LocalDate endDate;

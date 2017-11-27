@@ -24,7 +24,4 @@ public class BusinessPartnerTranslate implements HasId, HasName, HasLang {
 
     @NotNull @Size(max = 100)
     private String name;
-
-    @NotNull @Size(max = 150)
-    private String certificateAuthorityName;
 }

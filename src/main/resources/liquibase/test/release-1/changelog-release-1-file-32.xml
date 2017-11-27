@@ -13,14 +13,13 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="code" type="varchar(60)">
+            <column name="name" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
             
             <column name="value" type="number">
                 <constraints nullable="false"/>
             </column>
-
 		</createTable>
 	</changeSet>
 

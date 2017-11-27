@@ -4,13 +4,13 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import kz.kegoc.bln.entity.dict.Company;
+import kz.kegoc.bln.entity.dict.Organization;
 import kz.kegoc.bln.repository.common.AbstractRepository;
 import kz.kegoc.bln.repository.dict.CompanyRepository;
 
 @Stateless
-public class CompanyRepositoryImpl extends AbstractRepository<Company> implements CompanyRepository {
-	public CompanyRepositoryImpl() { setClazz(Company.class); }
+public class CompanyRepositoryImpl extends AbstractRepository<Organization> implements CompanyRepository {
+	public CompanyRepositoryImpl() { setClazz(Organization.class); }
 
 	public CompanyRepositoryImpl(EntityManager entityManager) {
 		this();
@@ -18,8 +18,8 @@ public class CompanyRepositoryImpl extends AbstractRepository<Company> implement
 	}
 
 
-	public Company selectByTin(String tin) {
-		TypedQuery<Company> query = getEntityManager().createNamedQuery("Company.findByTin", Company.class);
+	public Organization selectByTin(String tin) {
+		TypedQuery<Organization> query = getEntityManager().createNamedQuery("Organization.findByTin", Organization.class);
 		query.setParameter("tin", tin);
 
 		return query.getResultList().stream()

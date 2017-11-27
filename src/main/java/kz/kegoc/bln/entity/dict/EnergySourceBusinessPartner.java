@@ -7,14 +7,14 @@ import lombok.*;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class EnergySourceCompany implements HasId {
+public class EnergySourceBusinessPartner implements HasId {
 	private Long id;
 	
 	@NotNull
 	private EnergySource energySource;
 
 	@NotNull
-	private Company company;
+	private BusinessPartner businessPartner;
 	
 	private LocalDate startDate;
 	private LocalDate endDate;

@@ -11,6 +11,5 @@ import lombok.Data;
 public class AccountingTypeDto {
 	private Long id;
 	private Lang lang;
-	private String code;
 	private String name;
 }

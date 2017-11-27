@@ -7,15 +7,11 @@
         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   
   <persistence-unit name="bln">
-    <jta-data-source>blnDev</jta-data-source>
+    <jta-data-source>blnTest</jta-data-source>
     <mapping-file>META-INF/orm.xml</mapping-file>
     <mapping-file>META-INF/jpa/jpql.xml</mapping-file>
 
     <properties>
-      <!-- <property name="eclipselink.logging.level.sql" value="FINE"/>
-      <property name="eclipselink.logging.parameters" value="true"/>
-      <property name="eclipselink.cache.shared.default" value="false"/> -->
-
       <property name="hibernate.show_sql" value="true" />
       <property name="hibernate.enable_lazy_load_no_trans" value="true" />
      </properties>
@@ -32,5 +28,4 @@
       <property name="hibernate.show_sql" value="false" />
     </properties>
   </persistence-unit>
-  
 </persistence>

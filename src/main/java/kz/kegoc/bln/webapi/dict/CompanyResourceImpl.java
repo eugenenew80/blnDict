@@ -8,9 +8,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 import kz.kegoc.bln.entity.common.Lang;
+import kz.kegoc.bln.entity.dict.Organization;
 import org.dozer.DozerBeanMapper;
-import kz.kegoc.bln.entity.dict.Company;
-import kz.kegoc.bln.entity.dict.dto.CompanyDto;
+import kz.kegoc.bln.entity.dict.dto.OrganizationDto;
 import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.CompanyService;
 
@@ -33,13 +33,13 @@ public class CompanyResourceImpl {
 			.setOrderBy("t.id")
 			.build();		
 		
-		List<CompanyDto> list = service.find(query)
+		List<OrganizationDto> list = service.find(query)
 			.stream()
-			.map(it-> mapper.map(it, CompanyDto.class))
+			.map(it-> mapper.map(it, OrganizationDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-			.entity(new GenericEntity<Collection<CompanyDto>>(list){})
+			.entity(new GenericEntity<Collection<OrganizationDto>>(list){})
 			.build();
 	}
 	
@@ -50,9 +50,9 @@ public class CompanyResourceImpl {
 		final Lang userLang = (lang!=null ? lang : defLang);
 		service.setLang(userLang);
 
-		Company entity = service.findById(id);
+		Organization entity = service.findById(id);
 		return Response.ok()
-			.entity(mapper.map(entity, CompanyDto.class))
+			.entity(mapper.map(entity, OrganizationDto.class))
 			.build();		
 	}
 	
@@ -63,9 +63,9 @@ public class CompanyResourceImpl {
 		final Lang userLang = (lang!=null ? lang : defLang);
 		service.setLang(userLang);
 
-		Company entity = service.findByCode(code);
+		Organization entity = service.findByCode(code);
 		return Response.ok()
-			.entity(mapper.map(entity, CompanyDto.class))
+			.entity(mapper.map(entity, OrganizationDto.class))
 			.build(); 
 	}
 	
@@ -76,38 +76,38 @@ public class CompanyResourceImpl {
 		final Lang userLang = (lang!=null ? lang : defLang);
 		service.setLang(userLang);
 
-		Company entity = service.findByName(name);
+		Organization entity = service.findByName(name);
 		return Response.ok()
-			.entity(mapper.map(entity, CompanyDto.class))
+			.entity(mapper.map(entity, OrganizationDto.class))
 			.build();
 	}
 
 	
 	@POST
-	public Response create(CompanyDto entityDto) {
+	public Response create(OrganizationDto entityDto) {
 		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
 		service.setLang(userLang);
 
-		Company entity = mapper.map(entityDto, Company.class);
-		Company newEntity = service.create(entity);
+		Organization entity = mapper.map(entityDto, Organization.class);
+		Organization newEntity = service.create(entity);
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, CompanyDto.class))
+			.entity(mapper.map(newEntity, OrganizationDto.class))
 			.build();
 	}
 	
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, CompanyDto entityDto ) {
+	public Response update(@PathParam("id") Long id, OrganizationDto entityDto ) {
 		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
 		service.setLang(userLang);
 
-		Company entity = mapper.map(entityDto, Company.class);
-		Company newEntity = service.update(entity);
+		Organization entity = mapper.map(entityDto, Organization.class);
+		Organization newEntity = service.update(entity);
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, CompanyDto.class))
+			.entity(mapper.map(newEntity, OrganizationDto.class))
 			.build();
 	}
 	

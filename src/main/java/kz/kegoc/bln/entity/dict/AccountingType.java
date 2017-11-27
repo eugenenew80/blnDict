@@ -9,13 +9,9 @@ import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class AccountingType implements HasId, HasCode, HasName, HasLang {
+public class AccountingType implements HasId, HasName, HasLang {
 	private Long id;
 	private Lang lang;
 	private String name;
-
-	@NotNull @Size(max = 10)
-	private String code;
-
 	private Map<Lang, AccountingTypeTranslate> translations;
 }

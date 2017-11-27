@@ -30,12 +30,16 @@
             <column name="code" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
+
+            <column name="short_name" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
             
             <column name="name" type="varchar(30)">
                 <constraints nullable="false"/>
             </column>
                         
-            <column name="base_unit_code" type="varchar(10)">
+            <column name="base_unit_id" type="number">
                 <constraints nullable="true"/>
             </column>
 

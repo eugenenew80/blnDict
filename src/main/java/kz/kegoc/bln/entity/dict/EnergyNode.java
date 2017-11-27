@@ -11,13 +11,12 @@ import java.util.Map;
 public class EnergyNode implements HasId, HasCode, HasName {
 	private Long id;
 	private Lang lang;
-	
+	private String name;
+
 	@NotNull @Size(max = 10)
 	private String code;
 
-	@NotNull @Size(max = 100)
-	private String name;
-
+	@NotNull
 	private Region region;
 
 	private Map<Lang, EnergyNodeTranslate> translations;

@@ -9,22 +9,24 @@ import lombok.*;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class EnergySource implements HasId, HasCode, HasName, HasLang {
+public class EnergySource implements HasId, HasName, HasLang {
 	private Long id;
 	private Lang lang;
 	private String name;
 	private String shortName;
-
-	@NotNull @Size(max = 15)
-	private String code;
+	private String address;
+	private Double installedPower;
 
 	@NotNull
 	private EnergySourceType energySourceType;
-	
-	private Double voltageClass;
-	private String address;
-	private Double installedPower;
-	private List<EnergySourceCompany> companies;
+
+	@NotNull
+	private VoltageClass voltageClass;
+
+	@NotNull
+	private Organization org;
+
+	private List<EnergySourceBusinessPartner> businessPartners;
 	private List<EnergySourceMeteringPoint> meteringPoints;
 	private Map<Lang, EnergySourceTranslate> translations;
 }

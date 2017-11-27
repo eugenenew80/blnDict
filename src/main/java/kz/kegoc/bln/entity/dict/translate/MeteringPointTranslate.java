@@ -20,4 +20,7 @@ public class MeteringPointTranslate implements HasId, HasName, HasLang {
 
     @NotNull @Size(max = 100)
     private String name;
+
+    @NotNull @Size(max = 100)
+    private String shortName;
 }

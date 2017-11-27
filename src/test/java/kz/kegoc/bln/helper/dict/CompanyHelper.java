@@ -1,6 +1,6 @@
 package kz.kegoc.bln.helper.dict;
 
-import kz.kegoc.bln.entity.dict.Company;
+import kz.kegoc.bln.entity.dict.Organization;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,8 +13,8 @@ public class CompanyHelper {
     public final static String COMPANY_TIN="040840000124";
 
 
-    public static Company newCompany() {
-        Company entity = new Company();
+    public static Organization newCompany() {
+        Organization entity = new Organization();
         entity.setId(COMPANY_ID);
         entity.setName(COMPANY_NAME);
         entity.setCode(COMPANY_CODE);
@@ -23,14 +23,14 @@ public class CompanyHelper {
         return entity;
     }
 
-    public static Company newCompany(Long id) {
-        Company entity= newCompany();
+    public static Organization newCompany(Long id) {
+        Organization entity= newCompany();
         entity.setId(id);
         return entity;
     }
 
 
-    public static void assertCompany(Company entity) {
+    public static void assertCompany(Organization entity) {
         assertNotNull(entity);
         assertNotNull(entity.getId());
         assertTrue(entity.getId()>0);
@@ -39,7 +39,7 @@ public class CompanyHelper {
         assertEquals(COMPANY_TIN, entity.getTin());
     }
 
-    public static void assertCompany(Company entity1, Company entity2) {
+    public static void assertCompany(Organization entity1, Organization entity2) {
         assertNotNull(entity1);
         assertNotNull(entity1.getId());
         assertTrue(entity1.getId()>0);
@@ -55,7 +55,7 @@ public class CompanyHelper {
     }
 
 
-    public static String companyToJson(Company entity) {
+    public static String companyToJson(Organization entity) {
         JSONObject body = new JSONObject();
 
         try {

@@ -11,7 +11,6 @@ import lombok.Data;
 public class EnergySourceTypeDto {
 	private Long id;
 	private Lang lang;
-	private String code;
 	private String name;
 	private String shortName;
 	private Boolean isRes;

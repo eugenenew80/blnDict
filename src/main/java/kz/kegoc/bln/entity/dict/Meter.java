@@ -9,14 +9,11 @@ import lombok.*;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class Meter implements HasId, HasCode, HasName, HasLang {
+public class Meter implements HasId, HasName, HasLang {
 	private Long id;
 	private Lang lang;
 	private String name;
 	private String manufacturer;
-
-	@NotNull @Size(max = 15)
-	private String code;
 
 	@NotNull
 	private BusinessPartner businessPartner;
@@ -29,6 +26,16 @@ public class Meter implements HasId, HasCode, HasName, HasLang {
 	private Double maximumLoad;
 	private LocalDate lastVerificationDate;
 	private LocalDate nextVerificationDate;
+	private Long totalDigitsNumber;
+	private Long digitsAfterDecimalPoint;
+	private Boolean parameterAp;
+	private Boolean parameterAm;
+	private Boolean parameterRp;
+	private Boolean parameterRm;
+	private Boolean isWithdrawn;
+
+	@NotNull
+	private Organization org;
 
 	private Map<Lang, MeterTranslate> translations;
 }

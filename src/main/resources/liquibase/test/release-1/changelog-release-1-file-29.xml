@@ -25,7 +25,7 @@
                 <constraints nullable="true"/>
             </column>
 
-            <column name="bp_parent_id" type="number">
+            <column name="okpo" type="varchar(20)">
                 <constraints nullable="true"/>
             </column>
 
@@ -54,6 +54,10 @@
             </column>
 
             <column name="is_electricity_consumer" type="varchar(1)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="parent_business_partner_id" type="number">
                 <constraints nullable="true"/>
             </column>
         </createTable>
