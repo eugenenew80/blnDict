@@ -13,4 +13,6 @@ public class MeteringTypeDto {
 	private Lang lang;
 	private String name;
 	private String shortName;
+	private Boolean usedInEnergySources;
+	private Boolean usedInSubstations;
 }

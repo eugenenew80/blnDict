@@ -13,7 +13,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="shortName" type="varchar(10)">
+            <column name="short_name" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
             

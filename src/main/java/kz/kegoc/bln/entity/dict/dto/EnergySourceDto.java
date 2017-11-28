@@ -19,6 +19,7 @@ public class EnergySourceDto {
 	private String voltageClassName;
 	private String address;
 	private Double installedPower;
+	private Boolean largeElectricityProducer;
 	private Long orgId;
 	private String orgName;
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-eug-112" logicalFilePath="path-independent" author="eugene" context="postgres">
+		<comment>Creating table: dict_voltage_classes_tl</comment>
+		<createTable tableName="dict_voltage_classes_tl" schemaName="apps">
+			<column name="id" type="number">
+                <constraints nullable="false"/>
+            </column>
+
+			<column name="voltage_class_id" type="number">
+				<constraints nullable="false"/>
+			</column>
+
+            <column name="lang" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+
+			<column name="name" type="varchar(10)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-eug-113" logicalFilePath="path-independent" author="eugene" context="postgres">
+		<comment>Creating primary key for table: dict_voltage_classes_tl</comment>
+		<addPrimaryKey
+	            columnNames="id"
+	            constraintName="pk_dict_voltage_classes_tl"
+	            schemaName="apps"
+	            tableName="dict_voltage_classes_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-eug-114" logicalFilePath="path-independent" author="eugene" context="postgres">
+		<comment>Creating unique key for table: dict_voltage_classes_tl</comment>
+		<addUniqueConstraint
+				columnNames="voltage_class_id, lang"
+				constraintName="uk_dict_voltage_classes_tl"
+				schemaName="apps"
+				tableName="dict_voltage_classes_tl"/>
+	</changeSet>
+	
+	<changeSet id="dict-eug-115" logicalFilePath="path-independent" author="eugene" context="postgres">
+		<comment>Creating sequence for table: dict_voltage_classes_tl</comment>
+		<createSequence
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="dict_voltage_classes_tl_s"
+	            startValue="1"/>
+	</changeSet>
+</databaseChangeLog>

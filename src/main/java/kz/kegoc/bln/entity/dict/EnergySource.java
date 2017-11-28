@@ -16,6 +16,7 @@ public class EnergySource implements HasId, HasName, HasLang {
 	private String shortName;
 	private String address;
 	private Double installedPower;
+	private Boolean largeElectricityProducer;
 
 	@NotNull
 	private EnergySourceType energySourceType;

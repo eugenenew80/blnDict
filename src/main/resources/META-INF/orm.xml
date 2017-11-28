@@ -618,6 +618,11 @@
       			<column name="bin" />
       		</basic>
 
+			<basic name="orgType">
+				<column name="org_type"/>
+				<enumerated>STRING</enumerated>
+			</basic>a
+
 			<many-to-one name="parentOrg">
 				<join-column name="parent_org_id"/>
 			</many-to-one>
@@ -1207,10 +1212,6 @@
         		/>				
 			</id>
 
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
-
       		<basic name="name">
       			<column name="name" />
       		</basic>
@@ -1225,6 +1226,10 @@
 
 			<basic name="installedPower">
 				<column name="installed_power" />
+			</basic>
+
+			<basic name="largeElectricityProducer">
+				<column name="is_large_electricity_producer" />
 			</basic>
 
       		<many-to-one name="voltageClass">
@@ -1375,6 +1380,14 @@
       		
       		<basic name="shortName">
       			<column name="short_name" updatable="false" />
+      		</basic>
+
+      		<basic name="usedInEnergySources">
+      			<column name="is_used_in_energy_sources" />
+      		</basic>
+
+      		<basic name="usedInSubstations">
+      			<column name="is_used_in_substations" />
       		</basic>
 
 			<one-to-many name="translations" mapped-by="meteringType" orphan-removal="true">
@@ -2050,12 +2063,8 @@
 				<column name="okpo" />
 			</basic>
 
-			<basic name="okpo">
-				<column name="okpo" />
-			</basic>
-
 			<basic name="largeConsumer">
-				<column name="isLargeConsumer"/>
+				<column name="is_large_consumer"/>
 			</basic>
 
 			<basic name="electricityProducer">
@@ -2172,6 +2181,179 @@
 			<basic name="value">
 				<column name="value" />
 			</basic>
+
+			<one-to-many name="translations" mapped-by="voltageClass" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang" />
 		</attributes>
 	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.VoltageClassTranslate">
+		<table name="dict_voltage_classes_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_voltage_classes_tl_gen" />
+				<sequence-generator
+						name="dict_voltage_classes_tl_gen"
+						sequence-name="apps.dict_voltage_classes_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<many-to-one name="voltageClass">
+				<join-column name="voltage_class_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.Contact">
+		<table name="dict_contacts" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_contacts_gen" />
+				<sequence-generator
+						name="dict_contacts_gen"
+						sequence-name="apps.dict_contacts_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="post">
+				<column name="post" />
+			</basic>
+
+			<basic name="contactType">
+				<column name="contact_type" />
+			</basic>
+
+			<basic name="post">
+				<column name="post" />
+			</basic>
+
+			<basic name="description">
+				<column name="description" />
+			</basic>
+
+			<one-to-many name="translations" mapped-by="contact" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang" />
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.ContactTranslate">
+		<table name="dict_contacts_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_contacts_tl_gen" />
+				<sequence-generator
+						name="dict_contacts_tl_gen"
+						sequence-name="apps.dict_contacts_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="contactType">
+				<column name="contact_type" />
+			</basic>
+
+			<basic name="post">
+				<column name="post" />
+			</basic>
+
+			<basic name="description">
+				<column name="description" />
+			</basic>
+
+			<many-to-one name="contact">
+				<join-column name="contact_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.PhoneNumber">
+		<table name="dict_phone_numbers" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_phone_numbers_gen" />
+				<sequence-generator
+						name="dict_phone_numbers_gen"
+						sequence-name="apps.dict_phone_numbers_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="numberType">
+				<column name="number_type" />
+			</basic>
+
+			<basic name="phoneNumber">
+				<column name="phone_number" />
+			</basic>
+
+			<many-to-one name="contact">
+				<join-column name="contact_id" />
+			</many-to-one>
+
+			<transient name="lang" />
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.ContactEmail">
+		<table name="dict_contact_emails" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_contact_emails_gen" />
+				<sequence-generator
+						name="dict_contact_emails_gen"
+						sequence-name="apps.dict_contact_emails_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="email">
+				<column name="email" />
+			</basic>
+
+			<basic name="description">
+				<column name="description" />
+			</basic>
+
+			<many-to-one name="contact">
+				<join-column name="contact_id" />
+			</many-to-one>
+
+			<transient name="lang" />
+		</attributes>
+	</entity>
+
 </entity-mappings>
