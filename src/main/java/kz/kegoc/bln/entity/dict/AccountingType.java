@@ -1,10 +1,8 @@
 package kz.kegoc.bln.entity.dict;
 
-import javax.validation.constraints.*;
 import kz.kegoc.bln.entity.common.*;
 import kz.kegoc.bln.entity.dict.translate.AccountingTypeTranslate;
 import lombok.*;
-
 import java.util.Map;
 
 @Data

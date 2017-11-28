@@ -11,7 +11,6 @@ import lombok.Data;
 public class SubstationDto {
 	private Long id;
 	private Lang lang;
-	private String code;
 	private String name;
 	private String shortName;
 	private Long substationTypeId;

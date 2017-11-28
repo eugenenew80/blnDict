@@ -9,15 +9,12 @@ import lombok.*;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class Substation implements HasId, HasCode, HasName, HasLang {
+public class Substation implements HasId, HasName, HasLang {
 	private Long id;
 	private Lang lang;
 	private String name;
 	private String shortName;
 	private String address;
-
-	@NotNull @Size(max = 15)
-	private String code;
 
 	@NotNull
 	private SubstationType substationType;

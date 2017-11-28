@@ -191,11 +191,11 @@
 				<column name="parameter_am" />
 			</basic>
 
-			<basic name="parameterAp">
+			<basic name="parameterRp">
 				<column name="parameter_rp" />
 			</basic>
 
-			<basic name="parameterAp">
+			<basic name="parameterRm">
 				<column name="parameter_rm" />
 			</basic>
 
@@ -727,11 +727,11 @@
 				<column name="parameter_am" />
 			</basic>
 
-			<basic name="parameterAp">
+			<basic name="parameterRp">
 				<column name="parameter_rp" />
 			</basic>
 
-			<basic name="parameterAp">
+			<basic name="parameterRm">
 				<column name="parameter_rm" />
 			</basic>
 

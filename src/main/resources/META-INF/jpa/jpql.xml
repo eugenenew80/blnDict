@@ -223,11 +223,6 @@
 			select t from Substation t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="Substation.findByCode">
-		<query>
-			select t from Substation t where t.code=:code
-		</query>
-	</named-query>
 
 
 	<named-query name="SubstationType.findAll">
