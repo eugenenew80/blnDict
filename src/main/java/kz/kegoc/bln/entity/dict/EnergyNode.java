@@ -8,13 +8,11 @@ import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class EnergyNode implements HasId, HasCode, HasName {
+public class EnergyNode implements HasId, HasName {
 	private Long id;
 	private Lang lang;
 	private String name;
-
-	@NotNull @Size(max = 10)
-	private String code;
+	private String shortName;
 
 	@NotNull
 	private Region region;

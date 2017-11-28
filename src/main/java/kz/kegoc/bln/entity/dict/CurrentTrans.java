@@ -20,6 +20,9 @@ public class CurrentTrans implements HasId, HasName, HasLang {
 	private Double maxCurrent;
 
 	@NotNull
+	private BusinessPartner businessPartner;
+
+	@NotNull
 	private Organization org;
 
 	private Map<Lang, CurrentTransTranslate> translations;

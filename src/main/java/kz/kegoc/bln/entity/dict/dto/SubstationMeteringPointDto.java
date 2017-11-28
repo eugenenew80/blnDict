@@ -13,6 +13,9 @@ public class SubstationMeteringPointDto {
 	private Long substationId;
 	private Long meteringPointId;
 	private String meteringPointName;
+	private Long meteringTypeId;
+	private String meteringTypeName;
+	private Boolean needReverse;
 	private LocalDate startDate;
 	private LocalDate endDate;
 }

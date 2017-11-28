@@ -18,6 +18,8 @@ public class CurrentTransDto {
 	private Double accuracyClass;
 	private Double minCurrent;
 	private Double maxCurrent;
+	private Long businessPartnerId;
+	private String businessPartnerName;
 	private Long orgId;
 	private String orgName;
 }

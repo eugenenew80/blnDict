@@ -13,19 +13,14 @@ public class MeteringPointDto {
 	private Long id;
 	private Lang lang;
 	private String code;
+	private String shortName;
 	private String name;
 	private String externalCode;
 	private Double ratedVoltage;
-	private Double limitError;
-	private Double transformationRate;
-	private Double minLoad;
-	private Double maxLoad;	
-	private Long firstBusinessPartnerId;
-	private String firstBusinessPartnerName;
-	private Long secondBusinessPartnerId;
-	private String secondBusinessPartnerName;
-	private Long meteringTypeId;
-	private String meteringTypeName;
+	private Long businessPartnerId1;
+	private Long businessPartnerId2;
+	private String businessPartnerName1;
+	private String businessPartnerName2;
 	private Long accountingTypeId;
 	private String accountingTypeName;
 	private Long meteringPointTypeId;
@@ -35,4 +30,6 @@ public class MeteringPointDto {
 	private String energyObjectName;
 	private LocalDate startDate;
 	private LocalDate endDate;
+	private Long referenceMeteringPointId;
+	private String referenceMeteringPointName;
 }

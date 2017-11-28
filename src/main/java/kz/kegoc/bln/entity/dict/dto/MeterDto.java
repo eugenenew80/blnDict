@@ -20,7 +20,6 @@ public class MeterDto {
 	private Double ratedVoltage;
 	private Double accuracyClass;
 	private Double minimumLoad;
-	private Double maximumLoad;
 	private Long businessPartnerId;
 	private String businessPartnerName;
 	private LocalDate lastVerificationDate;
@@ -31,7 +30,7 @@ public class MeterDto {
 	private Boolean parameterAm;
 	private Boolean parameterRp;
 	private Boolean parameterRm;
-	private Boolean isWithdrawn;
+	private Boolean withdrawn;
 	private Long orgId;
 	private String orgName;
 }

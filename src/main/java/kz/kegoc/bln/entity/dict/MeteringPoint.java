@@ -24,13 +24,10 @@ public class MeteringPoint implements HasId, HasCode, HasName, HasLang {
 
 	@NotNull
 	private BusinessPartner businessPartner1;
-	
+
 	@NotNull
 	private BusinessPartner businessPartner2;
-	
-	@NotNull
-	private MeteringType meteringType;
-	
+
 	@NotNull
 	private AccountingType accountingType;
 

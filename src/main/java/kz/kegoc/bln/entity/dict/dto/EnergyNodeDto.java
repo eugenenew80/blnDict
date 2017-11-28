@@ -11,7 +11,7 @@ import lombok.Data;
 public class EnergyNodeDto {
 	private Long id;
 	private Lang lang;
-	private String code;
+	private String shortName;
 	private String name;
 	private Long regionId;
 	private String regionName;

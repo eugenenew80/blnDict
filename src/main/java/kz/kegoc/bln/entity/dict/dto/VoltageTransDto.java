@@ -1,6 +1,5 @@
 package kz.kegoc.bln.entity.dict.dto;
 
-import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import kz.kegoc.bln.entity.common.Lang;
@@ -15,14 +14,11 @@ public class VoltageTransDto {
 	private String code;
 	private String name;
 	private String manufacturer;
-	private Long companyId;
-	private String companyName;
-	private String serialNumber;	
 	private Double ratedVoltage1;
 	private Double ratedVoltage2;
 	private Double accuracyClass;
-	private Double minVoltage;
-	private Double maxVoltage;
-	private LocalDate lastVerificationDate;
-	private LocalDate nextVerificationDate;
+	private Long businessPartnerId;
+	private String businessPartnerName;
+	private Long orgId;
+	private String orgName;
 }

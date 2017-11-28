@@ -11,12 +11,16 @@ import lombok.Data;
 public class MeterTypeDto {
 	private Long id;
 	private Lang lang;
-	private String code;
 	private String name;
 	private String manufacturer;
 	private Double ratedCurrent;
 	private Double ratedVoltage;
 	private Double accuracyClass;
 	private Double minimumLoad;
-	private Double maximumLoad;
+	private Long totalDigitsNumber;
+	private Long digitsAfterDecimalPoint;
+	private Boolean parameterAp;
+	private Boolean parameterAm;
+	private Boolean parameterRp;
+	private Boolean parameterRm;
 }

@@ -15,7 +15,11 @@ public class EnergySourceMeteringPoint implements HasId {
 
 	@NotNull
 	private MeteringPoint meteringPoint;
-	
+
+	@NotNull
+	private MeteringType meteringType;
+
+	private Boolean needReverse;
 	private LocalDate startDate;
 	private LocalDate endDate;
 }
