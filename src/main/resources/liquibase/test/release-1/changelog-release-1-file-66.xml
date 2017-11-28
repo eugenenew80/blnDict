@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-eug-123" logicalFilePath="path-independent" author="eugene" context="postgres">
+        <comment>Creating table: ecm_content_types</comment>
+        <createTable tableName="ecm_content_types" schemaName="apps">            
+            <column name="id" type="number">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="description" type="varchar(300)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-eug-124" logicalFilePath="path-independent" author="eugene" context="postgres">
+	    <comment>Creating primary key for table: ecm_content_types</comment>
+	    <addPrimaryKey 
+	            columnNames="id"
+	            constraintName="pk_ecm_content_types"
+	            schemaName="apps"
+	            tableName="ecm_content_types"/>
+	</changeSet>
+	
+	<changeSet id="dict-eug-125" logicalFilePath="path-independent" author="eugene" context="postgres">
+	    <comment>Creating sequence for table: ecm_content_types</comment>
+	    <createSequence 
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="ecm_content_types_s"
+	            startValue="1"/>
+	</changeSet>
+</databaseChangeLog>
