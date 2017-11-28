@@ -179,11 +179,6 @@
 			select t from MeteringType t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="MeteringType.findByCode">
-		<query>
-			select t from MeteringType t where t.code=:code
-		</query>
-	</named-query>
 
 	<named-query name="MeterType.findAll">
 		<query>
