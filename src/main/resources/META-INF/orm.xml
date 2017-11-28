@@ -1176,6 +1176,10 @@
 				/>
 			</id>
 
+			<basic name="needReverse">
+				<column name="is_need_reverse" />
+			</basic>
+
 			<basic name="startDate">
 				<column name="start_date" />
 			</basic>
@@ -1338,6 +1342,10 @@
 						allocation-size="1"
 				/>
 			</id>
+
+			<basic name="needReverse">
+				<column name="is_need_reverse" />
+			</basic>
 
 			<basic name="startDate">
 				<column name="start_date" />
@@ -2251,6 +2259,10 @@
 				<column name="description" />
 			</basic>
 
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id" />
+			</many-to-one>
+
 			<one-to-many name="translations" mapped-by="contact" orphan-removal="true">
 				<map-key name="lang"/>
 				<cascade>
@@ -2352,7 +2364,42 @@
 				<join-column name="contact_id" />
 			</many-to-one>
 
+			<one-to-many name="translations" mapped-by="contactEmail" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
 			<transient name="lang" />
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.ContactEmailTranslate">
+		<table name="dict_contact_emails_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_contact_emails_tl_gen" />
+				<sequence-generator
+						name="dict_contact_emails_tl_gen"
+						sequence-name="apps.dict_contact_emails_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="description">
+				<column name="description" />
+			</basic>
+
+			<many-to-one name="contactEmail">
+				<join-column name="contact_email_id"/>
+			</many-to-one>
 		</attributes>
 	</entity>
 
