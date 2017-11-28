@@ -24,8 +24,6 @@ public class VoltageTransType implements HasId, HasCode, HasName {
 	private Double ratedVoltage1;
 	private Double ratedVoltage2;
 	private Double accuracyClass;
-	private Double minVoltage;
-	private Double maxVoltage;
 
 	private Map<Lang, VoltageTransTypeTranslate> translations;
 }

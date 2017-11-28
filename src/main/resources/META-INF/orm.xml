@@ -22,13 +22,13 @@
       			<column name="name" updatable="false" />
       		</basic>
 
-      		<basic name="baseUnit">
-      			<column name="base_unit" />
-      		</basic>
-      		
-      		<basic name="factor">
-      			<column name="factor" />
-      		</basic>
+			<basic name="factor">
+				<column name="factor" />
+			</basic>
+
+			<many-to-one name="baseUnit">
+				<join-column name="base_unit_id"/>
+			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="unit" orphan-removal="true">
 				<map-key name="lang"/>
@@ -143,10 +143,6 @@
         		/>				
 			</id>
 
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
-
       		<basic name="name">
       			<column name="name" updatable="false" />
       		</basic>
@@ -169,11 +165,15 @@
       		      		      		      		
       		<basic name="minimumLoad">
       			<column name="minimum_load" />
-      		</basic>      		
-
-      		<basic name="maximumLoad">
-      			<column name="maximum_load" />
       		</basic>
+
+			<basic name="totalDigitsNumber">
+				<column name="total_digits_number" />
+			</basic>
+
+			<basic name="digitsAfterDecimalPoint">
+				<column name="digits_after_decimal_point" />
+			</basic>
 
 			<one-to-many name="translations" mapped-by="meterType" orphan-removal="true">
 				<map-key name="lang"/>
@@ -231,10 +231,6 @@
 					allocation-size="1"
         		/>				
 			</id>
-
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
 
       		<basic name="name">
       			<column name="name" updatable="false" />
@@ -321,10 +317,6 @@
         		/>				
 			</id>
 
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
-
       		<basic name="name">
       			<column name="name" updatable="false" />
       		</basic>
@@ -344,14 +336,6 @@
       		<basic name="accuracyClass">
       			<column name="accuracy_class" />
       		</basic>      		
-      		      		      		      		
-      		<basic name="minVoltage">
-      			<column name="min_voltage" />
-      		</basic>      		
-
-      		<basic name="maxVoltage">
-      			<column name="max_voltage" />
-      		</basic>
 
 			<one-to-many name="translations" mapped-by="voltageTransType" orphan-removal="true">
 				<map-key name="lang"/>
@@ -586,28 +570,24 @@
 	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.Organization">
-		<table name="dict_companies" schema="apps" />
+		<table name="dict_organizations" schema="apps" />
 		<attributes>
 			<id name="id">
 				<column name="id" />
-        		<generated-value strategy="SEQUENCE" generator="dict_companies_gen" />
+        		<generated-value strategy="SEQUENCE" generator="dict_organizations_gen" />
         		<sequence-generator
-        			name="dict_companies_gen"
-        			sequence-name="apps.dict_companies_s"
+        			name="dict_organizations_gen"
+        			sequence-name="apps.dict_organizations_s"
 					allocation-size="1"
         		/>				
 			</id>
-
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
 
       		<basic name="name">
       			<column name="name" updatable="false" />
       		</basic>
       		
-      		<basic name="tin">
-      			<column name="tin" />
+      		<basic name="bin">
+      			<column name="bin" />
       		</basic>
 
 			<one-to-many name="translations" mapped-by="company" orphan-removal="true">
@@ -622,14 +602,14 @@
 	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.translate.OrganizationTranslate">
-		<table name="dict_companies_tl" schema="apps"/>
+		<table name="dict_organizations_tl" schema="apps"/>
 		<attributes>
 			<id name="id">
 				<column name="id" />
-				<generated-value strategy="SEQUENCE" generator="dict_companies_tl_gen" />
+				<generated-value strategy="SEQUENCE" generator="dict_organizations_tl_gen" />
 				<sequence-generator
-						name="dict_companies_tl_gen"
-						sequence-name="apps.dict_companies_tl_s"
+						name="dict_organizations_tl_gen"
+						sequence-name="apps.dict_organizations_tl_s"
 						allocation-size="1"
 				/>
 			</id>
@@ -643,8 +623,8 @@
 				<column name="name" />
 			</basic>
 
-			<many-to-one name="company">
-				<join-column name="company_id"/>
+			<many-to-one name="org">
+				<join-column name="org_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
@@ -663,10 +643,6 @@
         		/>				
 			</id>
 
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
-      		
       		<basic name="name">
       			<column name="name" updatable="false" />
       		</basic>
@@ -695,10 +671,6 @@
       			<column name="minimum_load" />
       		</basic>      		
 
-      		<basic name="maximumLoad">
-      			<column name="maximum_load" />
-      		</basic>  
-
       		<basic name="lastVerificationDate">
       			<column name="last_verification_date" />
       		</basic>
@@ -708,7 +680,11 @@
       		</basic> 
       		
 			<many-to-one name="businessPartner">
-				<join-column name="company_id"/>
+				<join-column name="business_partner_id"/>
+			</many-to-one>
+
+			<many-to-one name="org">
+				<join-column name="org_id"/>
 			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="meter" orphan-removal="true">
@@ -769,10 +745,6 @@
         		/>				
 			</id>
 
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
-
       		<basic name="name">
       			<column name="name" updatable="false" />
       		</basic>
@@ -780,11 +752,7 @@
       		<basic name="manufacturer">
       			<column name="manufacturer" updatable="false" />
       		</basic>
-      		
-      		<basic name="serialNumber">
-      			<column name="serial_number" />
-      		</basic>
-      		      		
+
       		<basic name="ratedCurrent1">
       			<column name="rated_current1" />
       		</basic>
@@ -804,25 +772,9 @@
       		<basic name="maxCurrent">
       			<column name="max_current" />
       		</basic>  
-      		    		
-      		<basic name="lastVerificationDate">
-      			<column name="last_verification_date" />
-      		</basic>
-      		
-      		<basic name="nextVerificationDate">
-      			<column name="next_verification_date" />
-      		</basic>
 
-			<basic name="installationDate">
-				<column name="installation_date" />
-			</basic>
-
-			<basic name="disassemblyDate">
-				<column name="disassembly_date" />
-			</basic>
-
-			<many-to-one name="company">
-				<join-column name="company_id"/>
+			<many-to-one name="org">
+				<join-column name="org_id"/>
 			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="currentTrans" orphan-removal="true">
@@ -883,10 +835,6 @@
         		/>				
 			</id>
 
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
-
       		<basic name="name">
       			<column name="name" updatable="false" />
       		</basic>
@@ -895,10 +843,6 @@
       			<column name="manufacturer" updatable="false" />
       		</basic>
       		
-      		<basic name="serialNumber">
-      			<column name="serial_number" />
-      		</basic>
-      		      		
       		<basic name="ratedVoltage1">
       			<column name="rated_voltage1" />
       		</basic>
@@ -911,24 +855,12 @@
       			<column name="accuracy_class" />
       		</basic>      		
       		      		      		      		
-      		<basic name="minVoltage">
-      			<column name="min_voltage" />
-      		</basic>      		
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
+			</many-to-one>
 
-      		<basic name="maxVoltage">
-      			<column name="max_voltage" />
-      		</basic>  
-      		    		
-      		<basic name="lastVerificationDate">
-      			<column name="last_verification_date" />
-      		</basic>
-      		
-      		<basic name="nextVerificationDate">
-      			<column name="next_verification_date" />
-      		</basic> 
-      		
-			<many-to-one name="company">
-				<join-column name="company_id"/>
+			<many-to-one name="org">
+				<join-column name="org_id"/>
 			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="voltageTrans" orphan-removal="true">

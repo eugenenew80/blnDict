@@ -25,7 +25,8 @@ public class MeterType implements HasId, HasCode, HasName {
 	private Double ratedVoltage;
 	private Double accuracyClass;
 	private Double minimumLoad;
-	private Double maximumLoad;
+	private Long totalDigitsNumber;
+	private Long digitsAfterDecimalPoint;
 
 	private Map<Lang, MeterTypeTranslate> translations;
 }

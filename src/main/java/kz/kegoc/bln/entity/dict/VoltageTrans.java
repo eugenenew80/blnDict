@@ -25,14 +25,12 @@ public class VoltageTrans implements HasId, HasCode, HasName {
 	@NotNull
 	private Organization company;
 	
-	private String serialNumber;	
 	private Double ratedVoltage1;
 	private Double ratedVoltage2;
 	private Double accuracyClass;
-	private Double minVoltage;
-	private Double maxVoltage;
-	private LocalDate lastVerificationDate;
-	private LocalDate nextVerificationDate;
+
+	private BusinessPartner businessPartner;
+	private Organization org;
 
 	private Map<Lang, VoltageTransTranslate> translations;
 }
