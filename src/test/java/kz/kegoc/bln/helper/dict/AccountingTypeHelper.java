@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 
 public class AccountingTypeHelper {
     public final static Long ACCOUNTING_TYPE_ID = 1L;
-    public final static String ACCOUNTING_TYPE_CODE="01";
     public final static String ACCOUNTING_TYPE_NAME="Технический учёт";
 
 
@@ -15,7 +14,6 @@ public class AccountingTypeHelper {
         AccountingType entity = new AccountingType();
         entity.setId(ACCOUNTING_TYPE_ID);
         entity.setName(ACCOUNTING_TYPE_NAME);
-        entity.setCode(ACCOUNTING_TYPE_CODE);
         return entity;
     }
 
@@ -31,7 +29,6 @@ public class AccountingTypeHelper {
         assertNotNull(entity.getId());
         assertTrue(entity.getId()>0);
         assertEquals(ACCOUNTING_TYPE_NAME, entity.getName());
-        assertEquals(ACCOUNTING_TYPE_CODE, entity.getCode());
     }
 
     public static void assertAccountingType(AccountingType entity1, AccountingType entity2) {
@@ -45,7 +42,6 @@ public class AccountingTypeHelper {
 
         assertEquals(entity1.getId(), entity2.getId());
         assertEquals(entity1.getName(), entity2.getName());
-        assertEquals(entity1.getCode(), entity2.getCode() );
     }
 
 
@@ -58,9 +54,6 @@ public class AccountingTypeHelper {
 
             if (entity.getName()!=null)
                 body.put("name", entity.getName());
-
-            if (entity.getCode()!=null)
-                body.put("code", entity.getCode());
         }
         catch (JSONException e) {}
 

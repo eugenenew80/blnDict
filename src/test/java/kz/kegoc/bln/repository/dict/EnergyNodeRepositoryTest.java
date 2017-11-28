@@ -98,14 +98,6 @@ public class EnergyNodeRepositoryTest {
 		assertEnergyNode(entity);
 	}
 
-	@Test
-	public void existingEnergyNodeMayBeSelectedByCode() {
-		EnergyNode entity = repository.selectByCode(ENERGY_NODE_CODE);
-		assertThat(entity, is(not(nullValue())));
-		assertEnergyNode(entity);
-	}
-
-
 
 	@Test
 	public void newEnergyNodeMayBeInserted() {

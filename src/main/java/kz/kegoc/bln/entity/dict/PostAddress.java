@@ -4,12 +4,8 @@ import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.entity.common.HasName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
-import java.util.List;
-
 
 @Data
 @EqualsAndHashCode(of= {"id"})
@@ -44,15 +40,4 @@ public class PostAddress implements HasId, HasName {
 
 	@Size(max = 50)
 	private String officeNumber;
-
-	private LocalDate startDate;
-
-	private LocalDate endDate;
-
-	@NotNull
-	private BusinessPartner businessPartner;
-
-	private Long legalAddress;
-
-	private Long actualAddress;
 }

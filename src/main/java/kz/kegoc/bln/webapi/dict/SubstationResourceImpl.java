@@ -120,8 +120,8 @@ public class SubstationResourceImpl {
 	
 
 	@Path("/{substationId : \\d+}/dictSubstationCompany")
-	public SubstationCompanyResourceImpl getModules(@PathParam("substationId") Long id) {
-		return substationCompanyResource;
+	public SubstationBusinessPartnerResourceImpl getModules(@PathParam("substationId") Long id) {
+		return businessPartnerResource;
 	}
 
 
@@ -135,7 +135,7 @@ public class SubstationResourceImpl {
 	private SubstationService service;
 
 	@Inject
-	private SubstationCompanyResourceImpl substationCompanyResource;
+	private SubstationBusinessPartnerResourceImpl businessPartnerResource;
 
 	@Inject
 	private SubstationMeteringPointResourceImpl substationMeteringPointResource;

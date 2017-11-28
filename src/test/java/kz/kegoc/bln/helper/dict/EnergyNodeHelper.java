@@ -8,7 +8,6 @@ import static org.junit.Assert.*;
 
 public class EnergyNodeHelper {
     public final static Long ENERGY_NODE_ID = 1L;
-    public final static String ENERGY_NODE_CODE="Кар.ЭУ";
     public final static String ENERGY_NODE_NAME="Карагандинский энергоузел";
 
 
@@ -16,7 +15,6 @@ public class EnergyNodeHelper {
         EnergyNode entity = new EnergyNode();
         entity.setId(ENERGY_NODE_ID);
         entity.setName(ENERGY_NODE_NAME);
-        entity.setCode(ENERGY_NODE_CODE);
         return entity;
     }
 
@@ -32,7 +30,6 @@ public class EnergyNodeHelper {
         assertNotNull(entity.getId());
         assertTrue(entity.getId()>0);
         assertEquals(ENERGY_NODE_NAME, entity.getName());
-        assertEquals(ENERGY_NODE_CODE, entity.getCode());
     }
 
     public static void assertEnergyNode(EnergyNode entity1, EnergyNode entity2) {
@@ -46,7 +43,6 @@ public class EnergyNodeHelper {
 
         assertEquals(entity1.getId(), entity2.getId());
         assertEquals(entity1.getName(), entity2.getName());
-        assertEquals(entity1.getCode(), entity2.getCode() );
     }
 
 
@@ -59,9 +55,6 @@ public class EnergyNodeHelper {
 
             if (entity.getName()!=null)
                 body.put("name", entity.getName());
-
-            if (entity.getCode()!=null)
-                body.put("code", entity.getCode());
         }
         catch (JSONException e) {}
 

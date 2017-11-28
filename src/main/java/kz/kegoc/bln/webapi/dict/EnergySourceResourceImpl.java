@@ -116,8 +116,8 @@ public class EnergySourceResourceImpl {
 	
 
 	@Path("/{energySourceId : \\d+}/dictEnergySourceCompany")
-	public EnergySourceCompanyResourceImpl getModules(@PathParam("energySourceId") Long id) {
-		return energySourceCompanyResource;
+	public EnergySourceBusinessPartnerResourceImpl getModules(@PathParam("energySourceId") Long id) {
+		return businessPartnerResource;
 	}
 
 
@@ -131,7 +131,7 @@ public class EnergySourceResourceImpl {
 	private EnergySourceService service;
 
 	@Inject
-	private EnergySourceCompanyResourceImpl energySourceCompanyResource;
+	private EnergySourceBusinessPartnerResourceImpl businessPartnerResource;
 
 	@Inject
 	private EnergySourceMeteringPointResourceImpl energySourceMeteringPointResource;

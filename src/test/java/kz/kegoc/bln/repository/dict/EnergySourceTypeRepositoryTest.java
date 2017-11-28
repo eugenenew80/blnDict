@@ -98,12 +98,6 @@ public class EnergySourceTypeRepositoryTest {
 		assertEnergySourceType(entity);
 	}
 
-	@Test
-	public void existingEnergySourceTypeMayBeSelectedByCode() {
-		EnergySourceType entity = repository.selectByCode(ENERGY_SOURCE_TYPE_CODE);
-		assertThat(entity, is(not(nullValue())));
-		assertEnergySourceType(entity);
-	}
 
 
 

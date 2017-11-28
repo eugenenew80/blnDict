@@ -11,16 +11,13 @@ import java.util.Map;
 public class Unit implements HasId, HasCode, HasName {
 	private Long id;
 	private Lang lang;
-	
+	private String name;
+	private String shortName;
+
 	@NotNull @Size(max = 10)
 	private String code;
 
-	@NotNull @Size(max = 100)
-	private String name;
-
 	private Unit baseUnit;
-
 	private Double factor;
-
 	private Map<Lang, UnitTranslate> translations;
 }

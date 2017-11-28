@@ -20,6 +20,6 @@ public class Organization implements HasId, HasName, HasLang {
 	@NotNull
 	private OrganizationType orgType;
 
-	private Organization parentOrganization;
+	private Organization parentOrg;
 	private Map<Lang, OrganizationTranslate> translations;
 }

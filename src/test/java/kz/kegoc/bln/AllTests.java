@@ -8,7 +8,6 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
         UnitRepositoryTest.class,
-        CompanyRepositoryTest.class,
         AccountingTypeRepositoryTest.class,
         DataSourceRepositoryTest.class,
         EnergyNodeRepositoryTest.class,

@@ -5,7 +5,7 @@
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
   <mapping>
     <class-a>kz.kegoc.bln.entity.dict.EnergySourceBusinessPartner</class-a>
-    <class-b>kz.kegoc.bln.entity.dict.dto.EnergySourceCompanyDto</class-b>
+    <class-b>kz.kegoc.bln.entity.dict.dto.EnergySourceBusinessPartnerDto</class-b>
     
      <field>
        <a>energySource.id</a>

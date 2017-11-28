@@ -19,10 +19,8 @@ public class BusinessPartnerTranslatorImpl implements Translator<BusinessPartner
         if (translate==null)
             translate = entity.getTranslations().get(defLang);
 
-        if (translate!=null) {
+        if (translate!=null)
             entity.setName(translate.getName());
-            entity.setCertificateAuthorityName(translate.getCertificateAuthorityName());
-        }
 
         return entity;
     }

@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import java.util.HashMap;
 
 @Stateless
-public class CompanyFilterImpl implements Filter<Organization> {
+public class OrganizationFilterImpl implements Filter<Organization> {
     public Organization filter(Organization entity) {
         if (entity.getId()!=null) {
             Organization curEntity = companyService.findById(entity.getId());
@@ -28,7 +28,7 @@ public class CompanyFilterImpl implements Filter<Organization> {
 
         OrganizationTranslate translate = entity.getTranslations().getOrDefault(lang, new OrganizationTranslate());
         translate.setLang(lang);
-        translate.setCompany(entity);
+        translate.setOrg(entity);
         translate.setName(entity.getName());
         entity.getTranslations().put(lang, translate);
 

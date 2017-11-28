@@ -99,15 +99,6 @@ public class AccountingTypeRepositoryTest {
 	}
 
 	@Test
-	public void existingAccountingTypeMayBeSelectedByCode() {
-		AccountingType entity = repository.selectByCode(ACCOUNTING_TYPE_CODE);
-		assertThat(entity, is(not(nullValue())));
-		assertAccountingType(entity);
-	}
-
-
-
-	@Test
 	public void newAccountingTypeMayBeInserted() {
 		AccountingType origEntity = newAccountingType(null);
 

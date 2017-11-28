@@ -8,11 +8,11 @@ import lombok.*;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EnergySourceCompanyDto {
+public class EnergySourceBusinessPartnerDto {
 	private Long id;
 	private Long energySourceId;
-	private Long companyId;
-	private String companyName;
+	private Long businessPartnerId;
+	private String businessPartnerName;
 	private LocalDate startDate;
 	private LocalDate endDate;
 }

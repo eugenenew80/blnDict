@@ -10,30 +10,20 @@
 			select t from AccountingType t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="AccountingType.findByCode">
-		<query>
-			select t from AccountingType t where t.code=:code
-		</query>
-	</named-query>
 
-	<named-query name="Company.findAll">
+	<named-query name="Organization.findAll">
 		<query>
-			select t from Company t order by t.id
+			select t from Organization t order by t.id
 		</query>
 	</named-query>
-	<named-query name="Company.findByName">
+	<named-query name="Organization.findByName">
 		<query>
-			select t from Company t where t.name=:name
+			select t from Organization t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="Company.findByCode">
+	<named-query name="Organization.findByBin">
 		<query>
-			select t from Company t where t.code=:code
-		</query>
-	</named-query>
-	<named-query name="Company.findByTin">
-		<query>
-			select t from Company t where t.tin=:tin
+			select t from Organization t where t.bin=:bin
 		</query>
 	</named-query>
 
@@ -48,12 +38,7 @@
 			select t from CurrentTrans t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="CurrentTrans.findByCode">
-		<query>
-			select t from CurrentTrans t where t.code=:code
-		</query>
-	</named-query>
-	
+
 
 	<named-query name="CurrentTransType.findAll">
 		<query>
@@ -65,11 +50,7 @@
 			select t from CurrentTransType t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="CurrentTransType.findByCode">
-		<query>
-			select t from CurrentTransType t where t.code=:code
-		</query>
-	</named-query>		
+
 	
 
 	<named-query name="DataSource.findAll">
@@ -99,12 +80,7 @@
 			select t from EnergyNode t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="EnergyNode.findByCode">
-		<query>
-			select t from EnergyNode t where t.code=:code
-		</query>
-	</named-query>
-	
+
 	
 	<named-query name="EnergySource.findAll">
 		<query>
@@ -116,12 +92,7 @@
 			select t from EnergySource t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="EnergySource.findByCode">
-		<query>
-			select t from EnergySource t where t.code=:code
-		</query>
-	</named-query>	
-	
+
 
 	<named-query name="EnergySourceType.findAll">
 		<query>
@@ -133,12 +104,7 @@
 			select t from EnergySourceType t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="EnergySourceType.findByCode">
-		<query>
-			select t from EnergySourceType t where t.code=:code
-		</query>
-	</named-query>	
-	
+
 		
 	<named-query name="EnergyZone.findAll">
 		<query>
@@ -167,12 +133,7 @@
 			select t from Meter t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="Meter.findByCode">
-		<query>
-			select t from Meter t where t.code=:code
-		</query>
-	</named-query>			
-	
+
 	
 	<named-query name="MeteringPoint.findAll">
 		<query>
@@ -223,8 +184,7 @@
 			select t from MeteringType t where t.code=:code
 		</query>
 	</named-query>
-	
-							
+
 	<named-query name="MeterType.findAll">
 		<query>
 			select t from MeterType t order by t.id
@@ -235,12 +195,6 @@
 			select t from MeterType t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="MeterType.findByCode">
-		<query>
-			select t from MeterType t where t.code=:code
-		</query>
-	</named-query>
-	
 
 	<named-query name="Region.findAll">
 		<query>
@@ -320,12 +274,7 @@
 			select t from VoltageTrans t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="VoltageTrans.findByCode">
-		<query>
-			select t from VoltageTrans t where t.code=:code
-		</query>
-	</named-query>
-	
+
 
 	<named-query name="VoltageTransType.findAll">
 		<query>
@@ -337,11 +286,7 @@
 			select t from VoltageTransType t where t.name=:name
 		</query>
 	</named-query>
-	<named-query name="VoltageTransType.findByCode">
-		<query>
-			select t from VoltageTransType t where t.code=:code
-		</query>
-	</named-query>
+
 
 	<named-query name="Country.findAll">
 		<query>

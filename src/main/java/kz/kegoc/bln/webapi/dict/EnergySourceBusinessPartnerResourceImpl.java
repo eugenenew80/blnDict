@@ -9,24 +9,24 @@ import javax.ws.rs.core.*;
 import kz.kegoc.bln.entity.dict.EnergySourceBusinessPartner;
 import kz.kegoc.bln.service.dict.EnergySourceCompanyService;
 import org.dozer.DozerBeanMapper;
-import kz.kegoc.bln.entity.dict.dto.EnergySourceCompanyDto;
+import kz.kegoc.bln.entity.dict.dto.EnergySourceBusinessPartnerDto;
 import kz.kegoc.bln.service.dict.EnergySourceService;
 
 @Stateless
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
-public class EnergySourceCompanyResourceImpl {
+public class EnergySourceBusinessPartnerResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("energySourceId") Long energySourceId) {
-		List<EnergySourceCompanyDto> list = energySourceService.findById(energySourceId)
-			.getCompanies()
+		List<EnergySourceBusinessPartnerDto> list = energySourceService.findById(energySourceId)
+			.getBusinessPartners()
 			.stream()
-			.map( it-> mapper.map(it, EnergySourceCompanyDto.class) )
+			.map( it-> mapper.map(it, EnergySourceBusinessPartnerDto.class) )
 			.collect(Collectors.toList());		
 	
 		return Response.ok()
-			.entity(new GenericEntity<Collection<EnergySourceCompanyDto>>(list){})
+			.entity(new GenericEntity<Collection<EnergySourceBusinessPartnerDto>>(list){})
 			.build();
 	}
 
@@ -36,26 +36,26 @@ public class EnergySourceCompanyResourceImpl {
 	public Response getById(@PathParam("id") Long id) {
 		EnergySourceBusinessPartner entity = service.findById(id);
 		return Response.ok()
-				.entity(mapper.map(entity, EnergySourceCompanyDto.class))
+				.entity(mapper.map(entity, EnergySourceBusinessPartnerDto.class))
 				.build();
 	}
 
 
 	@POST
-	public Response create(EnergySourceCompanyDto entityDto) {
+	public Response create(EnergySourceBusinessPartnerDto entityDto) {
 		EnergySourceBusinessPartner newEntity = service.create(mapper.map(entityDto, EnergySourceBusinessPartner.class));
 		return Response.ok()
-				.entity(mapper.map(newEntity, EnergySourceCompanyDto.class))
+				.entity(mapper.map(newEntity, EnergySourceBusinessPartnerDto.class))
 				.build();
 	}
 
 
 	@PUT
 	@Path("{id : \\d+}")
-	public Response update(@PathParam("id") Long id, EnergySourceCompanyDto entityDto ) {
+	public Response update(@PathParam("id") Long id, EnergySourceBusinessPartnerDto entityDto ) {
 		EnergySourceBusinessPartner newEntity = service.update(mapper.map(entityDto, EnergySourceBusinessPartner.class));
 		return Response.ok()
-				.entity(mapper.map(newEntity, EnergySourceCompanyDto.class))
+				.entity(mapper.map(newEntity, EnergySourceBusinessPartnerDto.class))
 				.build();
 	}
 
@@ -77,7 +77,4 @@ public class EnergySourceCompanyResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
-
-	@Context
-	private SecurityContext context;
 }

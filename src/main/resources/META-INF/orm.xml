@@ -18,6 +18,10 @@
       			<column name="code" />
       		</basic>
 
+      		<basic name="shortName">
+      			<column name="short_name" updatable="false" />
+      		</basic>
+
       		<basic name="name">
       			<column name="name" updatable="false" />
       		</basic>
@@ -61,6 +65,10 @@
 
 			<basic name="name">
 				<column name="name" />
+			</basic>
+
+			<basic name="shortName">
+				<column name="short_name" />
 			</basic>
 
 			<many-to-one name="unit">
@@ -173,6 +181,22 @@
 
 			<basic name="digitsAfterDecimalPoint">
 				<column name="digits_after_decimal_point" />
+			</basic>
+
+			<basic name="parameterAp">
+				<column name="parameter_ap" />
+			</basic>
+
+			<basic name="parameterAm">
+				<column name="parameter_am" />
+			</basic>
+
+			<basic name="parameterAp">
+				<column name="parameter_rp" />
+			</basic>
+
+			<basic name="parameterAp">
+				<column name="parameter_rm" />
 			</basic>
 
 			<one-to-many name="translations" mapped-by="meterType" orphan-removal="true">
@@ -518,8 +542,8 @@
         		/>				
 			</id>
 
-      		<basic name="code">
-      			<column name="code" />
+      		<basic name="shortName">
+      			<column name="short_name" updatable="false" />
       		</basic>
 
       		<basic name="name">
@@ -563,6 +587,10 @@
 				<column name="name" />
 			</basic>
 
+			<basic name="shortName">
+				<column name="short_name" />
+			</basic>
+
 			<many-to-one name="energyNode">
 				<join-column name="energy_node_id"/>
 			</many-to-one>
@@ -590,7 +618,11 @@
       			<column name="bin" />
       		</basic>
 
-			<one-to-many name="translations" mapped-by="company" orphan-removal="true">
+			<many-to-one name="parentOrg">
+				<join-column name="parent_org_id"/>
+			</many-to-one>
+
+			<one-to-many name="translations" mapped-by="org" orphan-removal="true">
 				<map-key name="lang"/>
 				<cascade>
 					<cascade-all/>
@@ -677,8 +709,36 @@
       		
       		<basic name="nextVerificationDate">
       			<column name="next_verification_date" />
-      		</basic> 
-      		
+      		</basic>
+
+			<basic name="totalDigitsNumber">
+				<column name="total_digits_number" />
+			</basic>
+
+			<basic name="digitsAfterDecimalPoint">
+				<column name="digits_after_decimal_point" />
+			</basic>
+
+			<basic name="parameterAp">
+				<column name="parameter_ap" />
+			</basic>
+
+			<basic name="parameterAm">
+				<column name="parameter_am" />
+			</basic>
+
+			<basic name="parameterAp">
+				<column name="parameter_rp" />
+			</basic>
+
+			<basic name="parameterAp">
+				<column name="parameter_rm" />
+			</basic>
+
+			<basic name="withdrawn">
+				<column name="is_withdrawn" />
+			</basic>
+
 			<many-to-one name="businessPartner">
 				<join-column name="business_partner_id"/>
 			</many-to-one>
@@ -772,6 +832,10 @@
       		<basic name="maxCurrent">
       			<column name="max_current" />
       		</basic>  
+
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
+			</many-to-one>
 
 			<many-to-one name="org">
 				<join-column name="org_id"/>
@@ -920,10 +984,6 @@
         		/>				
 			</id>
 
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
-
       		<basic name="name">
       			<column name="name" updatable="false" />
       		</basic>
@@ -993,10 +1053,6 @@
         		/>				
 			</id>
 
-      		<basic name="code">
-      			<column name="code"/>
-      		</basic>
-
       		<basic name="name">
       			<column name="name" updatable="false" />
       		</basic>
@@ -1009,15 +1065,19 @@
 				<column name="address" updatable="false"/>
 			</basic>
 
-      		<basic name="voltageClass">
-      			<column name="voltage_class" />
-      		</basic>
+      		<many-to-one name="voltageClass">
+      			<join-column name="voltage_class_id" />
+      		</many-to-one>
 
 			<many-to-one name="substationType">
 				<join-column name="substation_type_id"/>
 			</many-to-one>
 
-      		<one-to-many name="companies" mapped-by="substation" />
+			<many-to-one name="org">
+				<join-column name="org_id"/>
+			</many-to-one>
+
+      		<one-to-many name="businessPartners" mapped-by="substation" />
 			<one-to-many name="meteringPoints" mapped-by="substation" />
 
 			<one-to-many name="translations" mapped-by="substation" orphan-removal="true">
@@ -1067,15 +1127,15 @@
 		</attributes>
 	</entity>
 
-	<entity class="kz.kegoc.bln.entity.dict.SubstationCompany">
-		<table name="dict_substation_companies" schema="apps" />
+	<entity class="kz.kegoc.bln.entity.dict.SubstationBusinessPartner">
+		<table name="dict_substation_business_partners" schema="apps" />
 		<attributes>
 			<id name="id">
 				<column name="id" />
-        		<generated-value strategy="SEQUENCE" generator="dict_substation_companies_gen" />
+        		<generated-value strategy="SEQUENCE" generator="dict_substation_business_partners_gen" />
         		<sequence-generator
-        			name="dict_substation_companies_gen"
-        			sequence-name="apps.dict_substation_companies_s"
+        			name="dict_substation_business_partners_gen"
+        			sequence-name="apps.dict_substation_business_partners_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -1092,8 +1152,8 @@
 				<join-column name="substation_id" />	
 			</many-to-one>  
 
-			<many-to-one name="company">
-				<join-column name="company_id"/>
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
@@ -1118,6 +1178,10 @@
 			<basic name="endDate">
 				<column name="end_date" />
 			</basic>
+
+			<many-to-one name="meteringType">
+				<join-column name="metering_type_id" />
+			</many-to-one>
 
 			<many-to-one name="substation">
 				<join-column name="substation_id" />
@@ -1153,25 +1217,29 @@
       		
       		<basic name="shortName">
       			<column name="short_name" />
-      		</basic>     
-      		
-      		<basic name="voltageClass">
-      			<column name="voltage_class" />
-      		</basic>  
-      		      		
-      		<basic name="address">
-      			<column name="address" />
       		</basic>
-      		
-      		<basic name="installedPower">
-      			<column name="installed_power" />
-      		</basic>  
-      		      		
+
+			<basic name="address">
+				<column name="address" />
+			</basic>
+
+			<basic name="installedPower">
+				<column name="installed_power" />
+			</basic>
+
+      		<many-to-one name="voltageClass">
+      			<join-column name="voltage_class_id" />
+      		</many-to-one>
+
 			<many-to-one name="energySourceType">
 				<join-column name="energy_source_type_id"/>
 			</many-to-one>
 
-      		<one-to-many name="companies" mapped-by="energySource" />
+			<many-to-one name="org">
+				<join-column name="org_id"/>
+			</many-to-one>
+
+      		<one-to-many name="businessPartners" mapped-by="energySource" />
 			<one-to-many name="meteringPoints" mapped-by="energySource" />
 
 			<one-to-many name="translations" mapped-by="energySource" orphan-removal="true">
@@ -1222,14 +1290,14 @@
 	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.EnergySourceBusinessPartner">
-		<table name="dict_energy_source_companies" schema="apps" />
+		<table name="dict_energy_source_business_partners" schema="apps" />
 		<attributes>
 			<id name="id">
 				<column name="id" />
-        		<generated-value strategy="SEQUENCE" generator="dict_energy_source_companies_gen" />
+        		<generated-value strategy="SEQUENCE" generator="dict_energy_source_business_partners_gen" />
         		<sequence-generator
-        			name="dict_energy_source_companies_gen"
-        			sequence-name="apps.dict_substation_companies_s"
+        			name="dict_energy_source_business_partners_gen"
+        			sequence-name="apps.dict_energy_source_business_partners_s"
 					allocation-size="1"
         		/>				
 			</id>
@@ -1246,8 +1314,8 @@
 				<join-column name="energy_source_id" />	
 			</many-to-one>  
 
-			<many-to-one name="company">
-				<join-column name="company_id"/>
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
@@ -1281,6 +1349,10 @@
 			<many-to-one name="meteringPoint">
 				<join-column name="metering_point_id"/>
 			</many-to-one>
+
+			<many-to-one name="meteringType">
+				<join-column name="metering_type_id"/>
+			</many-to-one>
 		</attributes>
 	</entity>
 
@@ -1296,10 +1368,6 @@
 					allocation-size="1"
         		/>				
 			</id>
-
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
 
       		<basic name="name">
       			<column name="name" updatable="false" />
@@ -1365,10 +1433,6 @@
         		/>				
 			</id>
 
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
-
       		<basic name="name">
       			<column name="name" updatable="false" />
       		</basic>
@@ -1432,10 +1496,6 @@
 					allocation-size="1"
         		/>				
 			</id>
-
-      		<basic name="code">
-      			<column name="code" />
-      		</basic>
 
       		<basic name="name">
       			<column name="name" updatable="false" />
@@ -1561,6 +1621,10 @@
       		<basic name="name">
       			<column name="name" updatable="false" />
       		</basic>
+
+      		<basic name="shortName">
+      			<column name="short_name" updatable="false" />
+      		</basic>
       		
       		<basic name="externalCode">
       			<column name="external_code" />
@@ -1578,32 +1642,12 @@
       			<column name="rated_voltage" />
       		</basic>
 
-      		<basic name="limitError">
-      			<column name="limit_error" />
-      		</basic>
-
-      		<basic name="transformationRate">
-      			<column name="transformation_rate" />
-      		</basic>
-
-      		<basic name="minLoad">
-      			<column name="min_load" />
-      		</basic>
-
-      		<basic name="maxLoad">
-      			<column name="max_load" />
-      		</basic>
-
-			<many-to-one name="firstBusinessPartner">
-				<join-column name="first_company_id"/>
+			<many-to-one name="businessPartner1">
+				<join-column name="business_partner_id_1"/>
 			</many-to-one>  
 						
-			<many-to-one name="secondBusinessPartner">
-				<join-column name="second_company_id"/>
-			</many-to-one>  
-
-			<many-to-one name="meteringType">
-				<join-column name="metering_type_id"/>
+			<many-to-one name="businessPartner2">
+				<join-column name="business_partner_id_2"/>
 			</many-to-one>  
 
 			<many-to-one name="accountingType">
@@ -1612,7 +1656,15 @@
 
 			<many-to-one name="meteringPointType">
 				<join-column name="metering_point_type_id"/>
-			</many-to-one> 
+			</many-to-one>
+
+			<many-to-one name="referenceMeteringPoint">
+				<join-column name="reference_metering_point_id"/>
+			</many-to-one>
+
+			<many-to-one name="org">
+				<join-column name="org_id"/>
+			</many-to-one>
 			
 			<many-to-one name="energyObject">
 				<join-column name="energy_object_id" referenced-column-name="object_id" />
@@ -1654,6 +1706,10 @@
 
 			<basic name="name">
 				<column name="name" />
+			</basic>
+
+			<basic name="shortName">
+				<column name="short_name" />
 			</basic>
 
 			<many-to-one name="meteringPoint">
@@ -1955,32 +2011,12 @@
 				<column name="office_number" />
 			</basic>
 
-			<basic name="startDate">
-				<column name="start_date" />
-			</basic>
-
-			<basic name="endDate">
-				<column name="end_date" />
-			</basic>
-
-			<basic name="legalAddress">
-				<column name="legal_address" />
-			</basic>
-
-			<basic name="actualAddress">
-				<column name="actual_address" />
-			</basic>
-
 			<many-to-one name="country">
 				<join-column name="country_id"/>
 			</many-to-one>
 
 			<many-to-one name="region">
 				<join-column name="region_id"/>
-			</many-to-one>
-
-			<many-to-one name="businessPartner">
-				<join-column name="business_partner_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
@@ -2014,28 +2050,40 @@
 				<column name="okpo" />
 			</basic>
 
-			<basic name="certificateRegisterSeries">
-				<column name="certificate_register_series" />
+			<basic name="okpo">
+				<column name="okpo" />
 			</basic>
 
-			<basic name="certificateRegisterDate">
-				<column name="certificate_register_date" />
+			<basic name="largeConsumer">
+				<column name="isLargeConsumer"/>
 			</basic>
 
-			<basic name="certificateRegisterNumber">
-				<column name="certificate_register_number" />
+			<basic name="electricityProducer">
+				<column name="is_electricity_producer"/>
 			</basic>
 
-			<basic name="certificateAuthorityBin">
-				<column name="certificate_authority_bin" />
+			<basic name="energySupplyOrganization">
+				<column name="is_energy_supply_organization"/>
 			</basic>
 
-			<basic name="certificateAuthorityName">
-				<column name="certificate_authority_name" updatable="false" />
+			<basic name="transmittingOrganization">
+				<column name="is_transmitting_organization"/>
 			</basic>
 
-			<many-to-one name="bpParent">
-				<join-column name="bp_parent_id"/>
+			<basic name="electricityConsumer">
+				<column name="is_electricity_consumer"/>
+			</basic>
+
+			<many-to-one name="actualAddress">
+				<join-column name="actual_address_id"/>
+			</many-to-one>
+
+			<many-to-one name="legalAddress">
+				<join-column name="legal_address_id"/>
+			</many-to-one>
+
+			<many-to-one name="parentBusinessPartner">
+				<join-column name="parent_business_partner_id"/>
 			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="businessPartner" orphan-removal="true">
@@ -2071,37 +2119,6 @@
 				<column name="name" />
 			</basic>
 
-			<basic name="certificateAuthorityName">
-				<column name="certificate_authority_name" />
-			</basic>
-
-			<many-to-one name="businessPartner">
-				<join-column name="business_partner_id"/>
-			</many-to-one>
-		</attributes>
-	</entity>
-
-	<entity class="kz.kegoc.bln.entity.dict.PhoneNumber">
-		<table name="dict_phone_numbers" schema="apps"/>
-		<attributes>
-			<id name="id">
-				<column name="id" />
-				<generated-value strategy="SEQUENCE" generator="dict_phone_numbers_gen" />
-				<sequence-generator
-						name="dict_phone_numbers_gen"
-						sequence-name="apps.dict_phone_numbers_s"
-						allocation-size="1"
-				/>
-			</id>
-
-			<basic name="numberType">
-				<column name="number_type" />
-			</basic>
-
-			<basic name="phoneNumber">
-				<column name="phone_number" />
-			</basic>
-
 			<many-to-one name="businessPartner">
 				<join-column name="business_partner_id"/>
 			</many-to-one>
@@ -2121,12 +2138,8 @@
 				/>
 			</id>
 
-			<basic name="code">
-				<column name="code" />
-			</basic>
-
-			<basic name="name">
-				<column name="name" />
+			<basic name="bankAccountNumber">
+				<column name="bank_account_number" />
 			</basic>
 
 			<many-to-one name="bank">
@@ -2152,8 +2165,8 @@
 				/>
 			</id>
 
-			<basic name="code">
-				<column name="code" />
+			<basic name="name">
+				<column name="name" />
 			</basic>
 
 			<basic name="value">

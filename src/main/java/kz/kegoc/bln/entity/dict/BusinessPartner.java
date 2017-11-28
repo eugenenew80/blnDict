@@ -32,11 +32,11 @@ public class BusinessPartner implements HasId, HasName, HasLang {
 
 	private PostAddress legalAddress;
 	private PostAddress actualAddress;
-	private Boolean isLargeConsumer;
-	private Boolean isElectricityProducer;
-	private Boolean isEnergySupplyOrganization;
-	private Boolean isTransmittingOrganization;
-	private Boolean isElectricityConsumer;
+	private Boolean largeConsumer;
+	private Boolean electricityProducer;
+	private Boolean energySupplyOrganization;
+	private Boolean transmittingOrganization;
+	private Boolean electricityConsumer;
 	private BusinessPartner parentBusinessPartner;
 	private Map<Lang, BusinessPartnerTranslate> translations;
 }

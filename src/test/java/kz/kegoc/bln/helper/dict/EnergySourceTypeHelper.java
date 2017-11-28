@@ -8,14 +8,12 @@ import static org.junit.Assert.*;
 
 public class EnergySourceTypeHelper {
     public final static Long ENERGY_SOURCE_TYPE_ID = 1L;
-    public final static String ENERGY_SOURCE_TYPE_CODE="01";
     public final static String ENERGY_SOURCE_TYPE_NAME="Атомная электростанция";
     public final static String ENERGY_SOURCE_TYPE_SHORT_NAME="АЭС";
     
     public static EnergySourceType newEnergySourceType() {
         EnergySourceType entity = new EnergySourceType();
         entity.setId(ENERGY_SOURCE_TYPE_ID);
-        entity.setCode(ENERGY_SOURCE_TYPE_CODE);
         entity.setName(ENERGY_SOURCE_TYPE_NAME);
         entity.setShortName(ENERGY_SOURCE_TYPE_SHORT_NAME);
         return entity;
@@ -32,7 +30,6 @@ public class EnergySourceTypeHelper {
         assertNotNull(entity);
         assertNotNull(entity.getId());
         assertTrue(entity.getId()>0);
-        assertEquals(ENERGY_SOURCE_TYPE_CODE, entity.getCode());
         assertEquals(ENERGY_SOURCE_TYPE_NAME, entity.getName());
         assertEquals(ENERGY_SOURCE_TYPE_SHORT_NAME, entity.getShortName());
     }
@@ -47,7 +44,6 @@ public class EnergySourceTypeHelper {
         assertTrue(entity2.getId()>0);
 
         assertEquals(entity1.getId(), entity2.getId());
-        assertEquals(entity1.getCode(), entity2.getCode() );
         assertEquals(entity1.getName(), entity2.getName());
         assertEquals(entity1.getShortName(), entity2.getShortName());
     }
@@ -59,9 +55,6 @@ public class EnergySourceTypeHelper {
         try {
             if (entity.getId()!=null)
                 body.put("id", entity.getId());
-
-            if (entity.getCode()!=null)
-                body.put("code", entity.getCode());
 
             if (entity.getName()!=null)
                 body.put("name", entity.getName());

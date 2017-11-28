@@ -21,9 +21,11 @@ public class Substation implements HasId, HasCode, HasName, HasLang {
 
 	@NotNull
 	private SubstationType substationType;
-	
-	private Double voltageClass;
-	private List<SubstationCompany> companies;
+
+	@NotNull
+	private VoltageClass voltageClass;
+
+	private List<SubstationBusinessPartner> businessPartners;
 	private List<SubstationMeteringPoint> meteringPoints;
 	private Map<Lang, SubstationTranslate> translations;
 }

@@ -13,6 +13,7 @@ public class UnitDto {
 	private Lang lang;
 	private String code;
 	private String name;
+	private String shortName;
 	private String baseUnit;
 	private Double factor;
 }

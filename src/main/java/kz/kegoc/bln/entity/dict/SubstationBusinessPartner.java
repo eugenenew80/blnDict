@@ -7,14 +7,14 @@ import lombok.*;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class SubstationCompany implements HasId {
+public class SubstationBusinessPartner implements HasId {
 	private Long id;
 	
 	@NotNull
 	private Substation substation;
 
 	@NotNull
-	private Organization company;
+	private BusinessPartner businessPartner;
 	
 	private LocalDate startDate;
 	private LocalDate endDate;

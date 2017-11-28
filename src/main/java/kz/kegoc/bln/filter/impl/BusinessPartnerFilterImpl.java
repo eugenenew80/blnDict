@@ -19,8 +19,8 @@ public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
                 entity.setTranslations(curEntity.getTranslations());
         }
 
-        if (entity.getBpParent()!=null && entity.getBpParent().getId()==null)
-            entity.setBpParent(null);
+        if (entity.getParentBusinessPartner()!=null && entity.getParentBusinessPartner().getId()==null)
+            entity.setParentBusinessPartner(null);
 
         return translate(entity);
     }
@@ -34,7 +34,6 @@ public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
         translate.setLang(lang);
         translate.setBusinessPartner(entity);
         translate.setName(entity.getName());
-        translate.setCertificateAuthorityName(entity.getCertificateAuthorityName());
         entity.getTranslations().put(lang, translate);
 
         return entity;
