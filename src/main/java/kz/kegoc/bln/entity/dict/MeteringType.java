@@ -9,12 +9,9 @@ import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class MeteringType implements HasId, HasCode, HasName {
+public class MeteringType implements HasId, HasName {
 	private Long id;
 	private Lang lang;
-	
-	@NotNull @Size(max = 10)
-	private String code;
 
 	@NotNull @Size(max = 100)
 	private String name;
