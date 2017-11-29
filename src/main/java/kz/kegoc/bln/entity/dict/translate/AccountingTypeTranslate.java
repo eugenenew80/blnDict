@@ -5,7 +5,6 @@ import kz.kegoc.bln.entity.common.HasLang;
 import kz.kegoc.bln.entity.common.HasName;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.AccountingType;
-import kz.kegoc.bln.entity.dict.MeteringPoint;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -20,9 +19,9 @@ public class AccountingTypeTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private AccountingType accountingType;
-
     @NotNull @Size(max = 100)
     private String name;
+
+    @NotNull
+    private AccountingType accountingType;
 }

@@ -10,16 +10,16 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EnergySourceDto {
 	private Long id;
-	private Lang lang;
 	private String name;
 	private String shortName;
-	private Long energySourceTypeId;
-	private String energySourceTypeName;	
-	private Long voltageClassId;
-	private String voltageClassName;
 	private String address;
 	private Double installedPower;
 	private Boolean largeElectricityProducer;
+	private Long energySourceTypeId;
+	private String energySourceTypeName;
+	private Long voltageClassId;
+	private String voltageClassName;
 	private Long orgId;
 	private String orgName;
+	private Lang lang;
 }

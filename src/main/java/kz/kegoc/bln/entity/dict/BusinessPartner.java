@@ -1,8 +1,6 @@
 package kz.kegoc.bln.entity.dict;
 
-import java.time.LocalDate;
 import java.util.Map;
-
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.entity.common.HasLang;
 import kz.kegoc.bln.entity.common.HasName;
@@ -18,10 +16,11 @@ import javax.validation.constraints.Size;
 @EqualsAndHashCode(of= {"id"})
 public class BusinessPartner implements HasId, HasName, HasLang {
 	private Long id;
-	private Lang lang;
+
+	@NotNull @Size(max = 100)
 	private String name;
 
-	@NotNull @Size(max = 12)
+	@NotNull @Size(min = 12, max = 12)
 	private String bin;
 
 	@NotNull @Size(min = 2, max = 2)
@@ -39,4 +38,5 @@ public class BusinessPartner implements HasId, HasName, HasLang {
 	private Boolean electricityConsumer;
 	private BusinessPartner parentBusinessPartner;
 	private Map<Lang, BusinessPartnerTranslate> translations;
+	private Lang lang;
 }

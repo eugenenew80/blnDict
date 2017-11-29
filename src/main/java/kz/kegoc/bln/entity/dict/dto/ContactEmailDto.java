@@ -10,8 +10,9 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ContactEmailDto {
 	private Long id;
-	private Lang lang;
 	private String email;
 	private String description;
 	private Long contactId;
+	private String contactDescription;
+	private Lang lang;
 }

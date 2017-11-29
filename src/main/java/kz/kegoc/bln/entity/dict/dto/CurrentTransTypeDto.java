@@ -10,7 +10,6 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CurrentTransTypeDto {
 	private Long id;
-	private Lang lang;
 	private String name;
 	private String manufacturer;
 	private Double ratedCurrent1;
@@ -18,4 +17,5 @@ public class CurrentTransTypeDto {
 	private Double accuracyClass;
 	private Double minCurrent;
 	private Double maxCurrent;
+	private Lang lang;
 }

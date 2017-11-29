@@ -11,10 +11,16 @@ import lombok.*;
 @EqualsAndHashCode(of= {"id"})
 public class EnergySource implements HasId, HasName, HasLang {
 	private Long id;
-	private Lang lang;
+
+	@NotNull @Size(max = 100)
 	private String name;
+
+	@NotNull @Size(max = 30)
 	private String shortName;
+
+	@Size(max = 300)
 	private String address;
+
 	private Double installedPower;
 	private Boolean largeElectricityProducer;
 
@@ -30,4 +36,5 @@ public class EnergySource implements HasId, HasName, HasLang {
 	private List<EnergySourceBusinessPartner> businessPartners;
 	private List<EnergySourceMeteringPoint> meteringPoints;
 	private Map<Lang, EnergySourceTranslate> translations;
+	private Lang lang;
 }

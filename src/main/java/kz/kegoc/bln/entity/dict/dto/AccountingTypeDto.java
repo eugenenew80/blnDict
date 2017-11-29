@@ -10,6 +10,6 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccountingTypeDto {
 	private Long id;
-	private Lang lang;
 	private String name;
+	private Lang lang;
 }

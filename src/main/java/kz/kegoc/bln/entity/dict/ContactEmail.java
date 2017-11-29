@@ -15,14 +15,16 @@ import java.util.Map;
 @EqualsAndHashCode(of= {"id"})
 public class ContactEmail implements HasId, HasLang {
 	private Long id;
-	private Lang lang;
-	private String description;
 
-	@NotNull @Size(max = 100)
+	@NotNull @Size(max = 30)
 	private String email;
+
+	@Size(max = 100)
+	private String description;
 
 	@NotNull
 	private Contact contact;
 
 	private Map<Lang, ContactEmailTranslate> translations;
+	private Lang lang;
 }

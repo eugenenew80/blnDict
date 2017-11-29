@@ -18,9 +18,9 @@ public class ContactEmailTranslate implements HasId, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private ContactEmail contactEmail;
-
     @NotNull @Size(max = 100)
     private String description;
+
+    @NotNull
+    private ContactEmail contactEmail;
 }

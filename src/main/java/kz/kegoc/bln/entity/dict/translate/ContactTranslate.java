@@ -17,15 +17,15 @@ public class ContactTranslate implements HasId, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private Contact contact;
-
     @NotNull @Size(max = 30)
     private String contactType;
 
     @Size(max = 100)
     private String post;
 
-    @Size(max = 100)
+    @NotNull @Size(max = 100)
     private String description;
+
+    @NotNull
+    private Contact contact;
 }

@@ -3,11 +3,13 @@ package kz.kegoc.bln.entity.dict;
 import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 import kz.kegoc.bln.entity.common.HasId;
+import kz.kegoc.bln.entity.common.HasLang;
+import kz.kegoc.bln.entity.common.Lang;
 import lombok.*;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class EnergySourceMeteringPoint implements HasId {
+public class EnergySourceMeteringPoint implements HasId, HasLang {
 	private Long id;
 	
 	@NotNull
@@ -22,4 +24,5 @@ public class EnergySourceMeteringPoint implements HasId {
 	private Boolean needReverse;
 	private LocalDate startDate;
 	private LocalDate endDate;
+	private Lang lang;
 }

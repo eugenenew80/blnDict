@@ -10,7 +10,7 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DataSourceDto {
 	private Long id;
-	private Lang lang;
 	private String code;
 	private String name;
+	private Lang lang;
 }

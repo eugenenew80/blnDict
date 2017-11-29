@@ -10,7 +10,6 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CurrentTransDto {
 	private Long id;
-	private Lang lang;
 	private String name;
 	private String manufacturer;
 	private Double ratedCurrent1;
@@ -22,4 +21,5 @@ public class CurrentTransDto {
 	private String businessPartnerName;
 	private Long orgId;
 	private String orgName;
+	private Lang lang;
 }

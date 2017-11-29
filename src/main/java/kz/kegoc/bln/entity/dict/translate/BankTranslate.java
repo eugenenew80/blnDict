@@ -18,9 +18,9 @@ public class BankTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private Bank bank;
-
     @NotNull @Size(max = 100)
     private String name;
+
+    @NotNull
+    private Bank bank;
 }

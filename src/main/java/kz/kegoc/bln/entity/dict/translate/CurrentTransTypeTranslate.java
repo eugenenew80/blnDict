@@ -18,12 +18,12 @@ public class CurrentTransTypeTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private CurrentTransType currentTransType;
-
     @NotNull @Size(max = 100)
     private String name;
 
     @NotNull @Size(max = 100)
     private String manufacturer;
+
+    @NotNull
+    private CurrentTransType currentTransType;
 }

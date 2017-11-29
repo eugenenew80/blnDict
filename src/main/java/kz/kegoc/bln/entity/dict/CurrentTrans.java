@@ -10,9 +10,13 @@ import lombok.*;
 @EqualsAndHashCode(of= {"id"})
 public class CurrentTrans implements HasId, HasName, HasLang {
 	private Long id;
-	private Lang lang;
+
+	@NotNull @Size(max = 100)
 	private String name;
+
+	@NotNull @Size(max = 100)
 	private String manufacturer;
+
 	private Double ratedCurrent1;
 	private Double ratedCurrent2;
 	private Double accuracyClass;
@@ -26,4 +30,5 @@ public class CurrentTrans implements HasId, HasName, HasLang {
 	private Organization org;
 
 	private Map<Lang, CurrentTransTranslate> translations;
+	private Lang lang;
 }

@@ -3,15 +3,22 @@ package kz.kegoc.bln.entity.dict;
 import kz.kegoc.bln.entity.common.*;
 import kz.kegoc.bln.entity.dict.translate.MeterTypeTranslate;
 import lombok.*;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class MeterType implements HasId, HasName {
+public class MeterType implements HasId, HasName, HasLang {
 	private Long id;
-	private Lang lang;
+
+	@NotNull @Size(max = 100)
 	private String name;
+
+	@NotNull @Size(max = 100)
 	private String manufacturer;
+
 	private Double ratedCurrent;
 	private Double ratedVoltage;
 	private Double accuracyClass;
@@ -22,5 +29,7 @@ public class MeterType implements HasId, HasName {
 	private Boolean parameterAm;
 	private Boolean parameterRp;
 	private Boolean parameterRm;
+
 	private Map<Lang, MeterTypeTranslate> translations;
+	private Lang lang;
 }

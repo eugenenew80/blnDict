@@ -3,6 +3,7 @@ package kz.kegoc.bln.entity.dict.dto;
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import kz.kegoc.bln.entity.common.Lang;
 import lombok.*;
 
 @Data
@@ -15,4 +16,5 @@ public class EnergySourceBusinessPartnerDto {
 	private String businessPartnerName;
 	private LocalDate startDate;
 	private LocalDate endDate;
+	private Lang lang;
 }

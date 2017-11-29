@@ -18,9 +18,9 @@ public class CountryTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private Country country;
-
     @NotNull @Size(max = 100)
     private String name;
+
+    @NotNull
+    private Country country;
 }

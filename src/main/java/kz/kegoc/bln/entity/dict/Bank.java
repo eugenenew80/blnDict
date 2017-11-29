@@ -12,19 +12,21 @@ import java.util.Map;
 @EqualsAndHashCode(of= {"id"})
 public class Bank implements HasId, HasCode, HasName, HasLang {
 	private Long id;
-	private Lang lang;
-	private String name;
 
 	@NotNull @Size(max = 40)
 	private String code;
 
-	@NotNull @Size(max = 40)
+	@NotNull @Size(max = 100)
+	private String name;
+
+	@NotNull @Size(max = 10)
 	private String bic;
 
-	@NotNull @Size(max = 40)
+	@NotNull @Size(min = 12, max = 12)
 	private String bin;
 
 	private Bank parentBank;
 
 	private Map<Lang, BankTranslate> translations;
+	private Lang lang;
 }

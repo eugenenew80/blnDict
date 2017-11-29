@@ -20,9 +20,6 @@ public class EnergySourceTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private EnergySource energySource;
-
     @NotNull @Size(max = 100)
     private String name;
 
@@ -31,4 +28,7 @@ public class EnergySourceTranslate implements HasId, HasName, HasLang {
 
     @Size(max = 300)
     private String address;
+
+    @NotNull
+    private EnergySource energySource;
 }

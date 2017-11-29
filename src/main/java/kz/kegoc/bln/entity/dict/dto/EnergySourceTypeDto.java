@@ -10,8 +10,8 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EnergySourceTypeDto {
 	private Long id;
-	private Lang lang;
 	private String name;
 	private String shortName;
-	private Boolean isRes;
+	private Boolean res;
+	private Lang lang;
 }

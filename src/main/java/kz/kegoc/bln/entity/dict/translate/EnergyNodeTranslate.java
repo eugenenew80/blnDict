@@ -18,12 +18,12 @@ public class EnergyNodeTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private EnergyNode energyNode;
-
     @NotNull @Size(max = 10)
     private String shortName;
 
     @NotNull @Size(max = 100)
     private String name;
+
+    @NotNull
+    private EnergyNode energyNode;
 }

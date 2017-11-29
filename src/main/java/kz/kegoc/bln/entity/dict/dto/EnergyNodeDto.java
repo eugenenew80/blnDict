@@ -10,9 +10,9 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EnergyNodeDto {
 	private Long id;
-	private Lang lang;
 	private String shortName;
 	private String name;
 	private Long regionId;
 	private String regionName;
+	private Lang lang;
 }

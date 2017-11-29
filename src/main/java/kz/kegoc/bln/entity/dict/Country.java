@@ -12,11 +12,13 @@ import java.util.Map;
 @EqualsAndHashCode(of= {"id"})
 public class Country implements HasId, HasCode, HasName, HasLang {
 	private Long id;
-	private Lang lang;
-	private String name;
 
 	@NotNull @Size(max = 2)
 	private String code;
 
+	@NotNull @Size(max = 100)
+	private String name;
+
 	private Map<Lang, CountryTranslate> translations;
+	private Lang lang;
 }

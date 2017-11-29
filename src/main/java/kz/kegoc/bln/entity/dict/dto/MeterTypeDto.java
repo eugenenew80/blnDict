@@ -10,7 +10,6 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MeterTypeDto {
 	private Long id;
-	private Lang lang;
 	private String name;
 	private String manufacturer;
 	private Double ratedCurrent;
@@ -23,4 +22,5 @@ public class MeterTypeDto {
 	private Boolean parameterAm;
 	private Boolean parameterRp;
 	private Boolean parameterRm;
+	private Lang lang;
 }

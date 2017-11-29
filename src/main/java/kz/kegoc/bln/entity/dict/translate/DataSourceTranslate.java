@@ -18,9 +18,9 @@ public class DataSourceTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private DataSource dataSource;
-
     @NotNull @Size(max = 100)
     private String name;
+
+    @NotNull
+    private DataSource dataSource;
 }

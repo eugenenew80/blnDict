@@ -1,6 +1,7 @@
 package kz.kegoc.bln.entity.dict;
 
 import kz.kegoc.bln.entity.common.HasId;
+import kz.kegoc.bln.entity.common.Lang;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotNull;
@@ -19,4 +20,6 @@ public class BankAccount implements HasId {
 
 	@NotNull
 	private BusinessPartner businessPartner;
+
+	private Lang lang;
 }
