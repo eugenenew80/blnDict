@@ -3,6 +3,7 @@ package kz.kegoc.bln.entity.dict.dto;
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import kz.kegoc.bln.entity.common.Lang;
 import lombok.*;
 
 @Data
@@ -12,9 +13,9 @@ public class MeteringPointMeterDto {
 	private Long id;
 	private Long meteringPointId;
 	private Long meterId;
-	private String meterCode;
 	private String meterName;
 	private String meterSerialNumber;
 	private LocalDate startDate;
 	private LocalDate endDate;
+	private Lang lang;
 }

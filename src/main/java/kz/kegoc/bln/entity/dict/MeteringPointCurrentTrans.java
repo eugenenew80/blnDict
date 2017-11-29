@@ -1,6 +1,8 @@
 package kz.kegoc.bln.entity.dict;
 
 import kz.kegoc.bln.entity.common.HasId;
+import kz.kegoc.bln.entity.common.HasLang;
+import kz.kegoc.bln.entity.common.Lang;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -9,7 +11,7 @@ import java.time.LocalDate;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class MeteringPointCurrentTrans implements HasId {
+public class MeteringPointCurrentTrans implements HasId, HasLang {
 	private Long id;
 	
 	@NotNull
@@ -20,4 +22,5 @@ public class MeteringPointCurrentTrans implements HasId {
 	
 	private LocalDate startDate;
 	private LocalDate endDate;
+	private Lang lang;
 }

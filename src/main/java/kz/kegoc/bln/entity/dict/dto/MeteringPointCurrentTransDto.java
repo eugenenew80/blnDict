@@ -2,6 +2,7 @@ package kz.kegoc.bln.entity.dict.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import kz.kegoc.bln.entity.common.Lang;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -14,7 +15,7 @@ public class MeteringPointCurrentTransDto {
 	private Long meteringPointId;
 	private Long currentTransId;
 	private String currentTransName;
-	private String currentTransSerialNumber;
 	private LocalDate startDate;
 	private LocalDate endDate;
+	private Lang lang;
 }

@@ -18,9 +18,9 @@ public class MeteringPointTypeTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private MeteringPointType meteringPointType;
-
     @NotNull @Size(max = 100)
     private String name;
+
+    @NotNull
+    private MeteringPointType meteringPointType;
 }

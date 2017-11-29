@@ -10,8 +10,7 @@ import java.util.Map;
 @EqualsAndHashCode(of= {"id"})
 public class MeteringPointType implements HasId, HasCode, HasName {
 	private Long id;
-	private Lang lang;
-	
+
 	@NotNull @Size(max = 10)
 	private String code;
 
@@ -19,4 +18,5 @@ public class MeteringPointType implements HasId, HasCode, HasName {
 	private String name;
 
 	private Map<Lang, MeteringPointTypeTranslate> translations;
+	private Lang lang;
 }
