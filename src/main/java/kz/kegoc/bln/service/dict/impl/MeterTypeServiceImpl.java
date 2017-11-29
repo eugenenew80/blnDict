@@ -5,17 +5,18 @@ import javax.inject.Inject;
 import javax.validation.Validator;
 
 import kz.kegoc.bln.entity.dict.MeterType;
+import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.MeterTypeService;
-
+import kz.kegoc.bln.translator.Translator;
 
 @Stateless
 public class MeterTypeServiceImpl extends AbstractEntityService<MeterType>
         implements MeterTypeService {
     
 	@Inject
-    public MeterTypeServiceImpl(Repository<MeterType> repository, Validator validator) {
-        super(repository, validator);
+    public MeterTypeServiceImpl(Repository<MeterType> repository, Validator validator, Filter<MeterType> prePersistFilter, Translator<MeterType> translator) {
+        super(repository, validator, prePersistFilter, translator);
     }
 }
