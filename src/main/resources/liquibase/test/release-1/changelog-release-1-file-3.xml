@@ -45,19 +45,19 @@
                 <constraints nullable="true"/>
             </column>
 
-			<column name="parameter_ap" type="varchar(1)">
+			<column name="is_parameter_ap" type="varchar(1)">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="parameter_am" type="varchar(1)">
+			<column name="is_parameter_am" type="varchar(1)">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="parameter_rp" type="varchar(1)">
+			<column name="is_parameter_rp" type="varchar(1)">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="parameter_rm" type="varchar(1)">
+			<column name="is_parameter_rm" type="varchar(1)">
 				<constraints nullable="true"/>
 			</column>
         </createTable>

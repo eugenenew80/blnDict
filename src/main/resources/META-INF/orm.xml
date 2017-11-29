@@ -184,19 +184,22 @@
 			</basic>
 
 			<basic name="parameterAp">
-				<column name="parameter_ap" />
+				<column name="is_parameter_ap" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="parameterAm">
-				<column name="parameter_am" />
+				<column name="is_parameter_am" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="parameterRp">
-				<column name="parameter_rp" />
+				<column name="is_parameter_rp" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="parameterRm">
-				<column name="parameter_rm" />
+				<column name="is_parameter_rm" />
 			</basic>
 
 			<one-to-many name="translations" mapped-by="meterType" orphan-removal="true">
@@ -725,23 +728,28 @@
 			</basic>
 
 			<basic name="parameterAp">
-				<column name="parameter_ap" />
+				<column name="is_parameter_ap" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="parameterAm">
-				<column name="parameter_am" />
+				<column name="is_parameter_am" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="parameterRp">
-				<column name="parameter_rp" />
+				<column name="is_parameter_rp" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="parameterRm">
-				<column name="parameter_rm" />
+				<column name="is_parameter_rm" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="withdrawn">
 				<column name="is_withdrawn" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<many-to-one name="businessPartner">
@@ -999,6 +1007,7 @@
 
 			<basic name="isRes">
 				<column name="is_res" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<one-to-many name="translations" mapped-by="energySourceType" orphan-removal="true">
@@ -1178,6 +1187,7 @@
 
 			<basic name="needReverse">
 				<column name="is_need_reverse" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="startDate">
@@ -1234,6 +1244,7 @@
 
 			<basic name="largeElectricityProducer">
 				<column name="is_large_electricity_producer" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
       		<many-to-one name="voltageClass">
@@ -1345,6 +1356,7 @@
 
 			<basic name="needReverse">
 				<column name="is_need_reverse" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="startDate">
@@ -1392,10 +1404,12 @@
 
       		<basic name="usedInEnergySources">
       			<column name="is_used_in_energy_sources" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
       		</basic>
 
       		<basic name="usedInSubstations">
       			<column name="is_used_in_substations" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
       		</basic>
 
 			<one-to-many name="translations" mapped-by="meteringType" orphan-removal="true">
@@ -2073,22 +2087,27 @@
 
 			<basic name="largeConsumer">
 				<column name="is_large_consumer"/>
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="electricityProducer">
 				<column name="is_electricity_producer"/>
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="energySupplyOrganization">
 				<column name="is_energy_supply_organization"/>
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="transmittingOrganization">
 				<column name="is_transmitting_organization"/>
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<basic name="electricityConsumer">
 				<column name="is_electricity_consumer"/>
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<many-to-one name="actualAddress">
@@ -2402,5 +2421,4 @@
 			</many-to-one>
 		</attributes>
 	</entity>
-
 </entity-mappings>
