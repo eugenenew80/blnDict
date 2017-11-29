@@ -8,16 +8,20 @@ import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class Unit implements HasId, HasCode, HasName {
+public class Unit implements HasId, HasCode, HasName, HasLang {
 	private Long id;
-	private Lang lang;
-	private String name;
-	private String shortName;
 
 	@NotNull @Size(max = 10)
 	private String code;
 
+	@NotNull @Size(max = 100)
+	private String name;
+
+	@NotNull @Size(max = 10)
+	private String shortName;
+
 	private Unit baseUnit;
 	private Double factor;
 	private Map<Lang, UnitTranslate> translations;
+	private Lang lang;
 }

@@ -10,8 +10,7 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SubstationTypeDto {
 	private Long id;
-	private Lang lang;
-	private String code;
 	private String name;
 	private String shortName;
+	private Lang lang;
 }

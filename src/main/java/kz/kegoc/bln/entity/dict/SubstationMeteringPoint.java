@@ -3,6 +3,7 @@ package kz.kegoc.bln.entity.dict;
 import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 import kz.kegoc.bln.entity.common.HasId;
+import kz.kegoc.bln.entity.common.Lang;
 import lombok.*;
 
 @Data
@@ -22,4 +23,5 @@ public class SubstationMeteringPoint implements HasId {
 	private Boolean needReverse;
 	private LocalDate startDate;
 	private LocalDate endDate;
+	private Lang lang;
 }

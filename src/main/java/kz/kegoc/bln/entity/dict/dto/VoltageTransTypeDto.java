@@ -10,10 +10,10 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class VoltageTransTypeDto {
 	private Long id;
-	private Lang lang;
 	private String name;
 	private String manufacturer;
 	private Double ratedVoltage1;
 	private Double ratedVoltage2;
 	private Double accuracyClass;
+	private Lang lang;
 }

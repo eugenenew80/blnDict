@@ -18,9 +18,6 @@ public class SubstationTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private Substation substation;
-
     @NotNull @Size(max = 100)
     private String name;
 
@@ -29,4 +26,7 @@ public class SubstationTranslate implements HasId, HasName, HasLang {
 
     @Size(max = 300)
     private String address;
+
+    @NotNull
+    private Substation substation;
 }

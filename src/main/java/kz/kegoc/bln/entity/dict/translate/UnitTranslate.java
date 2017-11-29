@@ -18,12 +18,12 @@ public class UnitTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private Unit unit;
-
     @NotNull @Size(max = 100)
     private String name;
 
     @NotNull @Size(max = 10)
     private String shortName;
+
+    @NotNull
+    private Unit unit;
 }

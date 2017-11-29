@@ -18,12 +18,12 @@ public class VoltageTransTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private VoltageTrans voltageTrans;
-
     @NotNull @Size(max = 100)
     private String name;
 
     @NotNull @Size(max = 100)
     private String manufacturer;
+
+    @NotNull
+    private VoltageTrans voltageTrans;
 }

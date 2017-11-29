@@ -9,17 +9,18 @@ import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class Region implements HasId, HasCode, HasName {
+public class Region implements HasId, HasCode, HasName, HasLang {
 	private Long id;
-	private Lang lang;
-	
-	@NotNull @Size(max = 10)
+
+	@NotNull @Size(max = 6)
 	private String code;
 
 	@NotNull @Size(max = 100)
 	private String name;
 
+	@NotNull
 	private Country country;
 
 	private Map<Lang, RegionTranslate> translations;
+	private Lang lang;
 }

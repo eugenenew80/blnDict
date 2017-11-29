@@ -19,6 +19,7 @@ public class EnergySourceDto {
 	private String energySourceTypeName;
 	private Long voltageClassId;
 	private String voltageClassName;
+	private Double voltageClassValue;
 	private Long orgId;
 	private String orgName;
 	private Lang lang;

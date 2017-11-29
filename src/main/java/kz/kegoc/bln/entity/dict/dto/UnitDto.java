@@ -14,6 +14,7 @@ public class UnitDto {
 	private String code;
 	private String name;
 	private String shortName;
-	private String baseUnit;
+	private Long baseUnitId;
+	private String baseUnitName;
 	private Double factor;
 }

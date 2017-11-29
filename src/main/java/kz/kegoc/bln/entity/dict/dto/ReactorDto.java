@@ -8,15 +8,16 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SubstationDto {
+public class ReactorDto {
 	private Long id;
-	private String name;
 	private String shortName;
-	private Long substationTypeId;
-	private String substationTypeName;
-	private Long voltageClassId;
-	private Long voltageClassName;
-	private Double voltageClassValue;
-	private String address;
+	private String name;
+	private Long energyObjectId;
+	private String energyObjectType;
+	private String energyObjectName;
+	private Double deltaPr;
+	private Double unom;
+	private Long orgId;
+	private String orgName;
 	private Lang lang;
 }

@@ -11,9 +11,14 @@ import lombok.*;
 @EqualsAndHashCode(of= {"id"})
 public class Substation implements HasId, HasName, HasLang {
 	private Long id;
-	private Lang lang;
+
+	@NotNull @Size(max = 100)
 	private String name;
+
+	@NotNull @Size(max = 30)
 	private String shortName;
+
+	@Size(max = 300)
 	private String address;
 
 	@NotNull
@@ -28,4 +33,5 @@ public class Substation implements HasId, HasName, HasLang {
 	private List<SubstationBusinessPartner> businessPartners;
 	private List<SubstationMeteringPoint> meteringPoints;
 	private Map<Lang, SubstationTranslate> translations;
+	private Lang lang;
 }

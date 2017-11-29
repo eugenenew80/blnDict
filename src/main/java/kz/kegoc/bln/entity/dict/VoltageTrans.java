@@ -8,11 +8,15 @@ import lombok.*;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class VoltageTrans implements HasId, HasName {
+public class VoltageTrans implements HasId, HasName, HasLang {
 	private Long id;
-	private Lang lang;
+
+	@NotNull @Size(max = 100)
 	private String name;
+
+	@NotNull @Size(max = 100)
 	private String manufacturer;
+
 	private Double ratedVoltage1;
 	private Double ratedVoltage2;
 	private Double accuracyClass;
@@ -24,4 +28,5 @@ public class VoltageTrans implements HasId, HasName {
 	private Organization org;
 
 	private Map<Lang, VoltageTransTranslate> translations;
+	private Lang lang;
 }

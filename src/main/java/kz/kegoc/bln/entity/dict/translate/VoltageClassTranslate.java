@@ -19,9 +19,9 @@ public class VoltageClassTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private VoltageClass voltageClass;
-
     @NotNull @Size(max = 10)
     private String name;
+
+    @NotNull
+    private VoltageClass voltageClass;
 }
