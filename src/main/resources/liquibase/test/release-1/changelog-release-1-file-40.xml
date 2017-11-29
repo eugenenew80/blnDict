@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-51" logicalFilePath="path-independent" author="ruslan" context="postgres">
+    <changeSet id="dict-rus-51" logicalFilePath="path-independent" author="ruslan" context="oracle">
 		<comment>Creating table: dict_meter_types_tl</comment>
 		<createTable tableName="dict_meter_types_tl" schemaName="apps">
 			<column name="id" type="number">
@@ -31,7 +31,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-52" logicalFilePath="path-independent" author="ruslan" context="postgres">
+	<changeSet id="dict-rus-52" logicalFilePath="path-independent" author="ruslan" context="oracle">
 		<comment>Creating primary key for table: dict_meter_types_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
@@ -40,7 +40,7 @@
 	            tableName="dict_meter_types_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-53" logicalFilePath="path-independent" author="ruslan" context="postgres">
+	<changeSet id="dict-rus-53" logicalFilePath="path-independent" author="ruslan" context="oracle">
 		<comment>Creating unique key for table: dict_meter_types_tl</comment>
 		<addUniqueConstraint
 				columnNames="meter_type_id, lang"
@@ -49,7 +49,7 @@
 				tableName="dict_meter_types_tl"/>
 	</changeSet>
 	
-	<changeSet id="dict-rus-54" logicalFilePath="path-independent" author="ruslan" context="postgres">
+	<changeSet id="dict-rus-54" logicalFilePath="path-independent" author="ruslan" context="oracle">
 		<comment>Creating sequence for table: dict_meter_types_tl</comment>
 		<createSequence
 	            incrementBy="1"

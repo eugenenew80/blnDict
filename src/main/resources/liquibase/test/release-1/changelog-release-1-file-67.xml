@@ -4,7 +4,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="dict-eug-126" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-126" logicalFilePath="path-independent" author="eugene" context="oracle">
 		<comment>Creating table: ecm_content</comment>
 		<createTable tableName="ecm_content" schemaName="apps">
 			<column name="id" type="number">
@@ -41,7 +41,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-eug-127" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-127" logicalFilePath="path-independent" author="eugene" context="oracle">
 		<comment>Creating primary key for table: ecm_content</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -50,7 +50,7 @@
 				tableName="ecm_content"/>
 	</changeSet>
 
-	<changeSet id="dict-eug-128" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-128" logicalFilePath="path-independent" author="eugene" context="oracle">
 		<comment>Creating sequence for table: ecm_content</comment>
 		<createSequence
 				incrementBy="1"

@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 	
-    <changeSet id="dict-rus-99" logicalFilePath="path-independent" author="ruslan" context="postgres">
+    <changeSet id="dict-rus-99" logicalFilePath="path-independent" author="ruslan" context="oracle">
 		<comment>Creating table: dict_energy_sources_tl</comment>
 		<createTable tableName="dict_energy_sources_tl" schemaName="apps">
 			<column name="id" type="number">
@@ -35,7 +35,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-100" logicalFilePath="path-independent" author="ruslan" context="postgres">
+	<changeSet id="dict-rus-100" logicalFilePath="path-independent" author="ruslan" context="oracle">
 		<comment>Creating primary key for table: dict_energy_sources_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
@@ -44,7 +44,7 @@
 	            tableName="dict_energy_sources_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-101" logicalFilePath="path-independent" author="ruslan" context="postgres">
+	<changeSet id="dict-rus-101" logicalFilePath="path-independent" author="ruslan" context="oracle">
 		<comment>Creating unique key for table: dict_energy_sources_tl</comment>
 		<addUniqueConstraint
 				columnNames="energy_source_id, lang"
@@ -53,7 +53,7 @@
 				tableName="dict_energy_sources_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-102" logicalFilePath="path-independent" author="ruslan" context="postgres">
+	<changeSet id="dict-rus-102" logicalFilePath="path-independent" author="ruslan" context="oracle">
 		<comment>Creating sequence for table: dict_energy_sources_tl</comment>
 		<createSequence
 	            incrementBy="1"

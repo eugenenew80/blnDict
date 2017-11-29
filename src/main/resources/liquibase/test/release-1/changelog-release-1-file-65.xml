@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-120" logicalFilePath="path-independent" author="eugene" context="postgres">
+    <changeSet id="dict-eug-120" logicalFilePath="path-independent" author="eugene" context="oracle">
         <comment>Creating table: dict_metering_point_characteristics</comment>
         <createTable tableName="dict_metering_point_characteristics" schemaName="apps">            
             <column name="id" type="number">
@@ -47,7 +47,7 @@
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-eug-121" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-121" logicalFilePath="path-independent" author="eugene" context="oracle">
 	    <comment>Creating primary key for table: dict_metering_point_characteristics</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
@@ -56,7 +56,7 @@
 	            tableName="dict_metering_point_characteristics"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-122" logicalFilePath="path-independent" author="eugene" context="postgres">
+	<changeSet id="dict-eug-122" logicalFilePath="path-independent" author="eugene" context="oracle">
 	    <comment>Creating sequence for table: dict_metering_point_characteristics</comment>
 	    <createSequence 
 	            incrementBy="1"
