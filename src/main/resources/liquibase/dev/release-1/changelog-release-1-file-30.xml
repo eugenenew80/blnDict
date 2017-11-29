@@ -1,105 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-9" logicalFilePath="path-independent" author="ruslan" context="postgres">
-        <comment>Creating table: dict_business_partners</comment>
-        <createTable tableName="dict_business_partners" schemaName="apps">
-            <column name="id" type="number">
+    <changeSet id="dict-rus-10" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating table: dict_phone_numbers</comment>
+		<createTable tableName="dict_phone_numbers" schemaName="apps">
+			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)">
+			<column name="contact_id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="bin" type="varchar(12)">
+            <column name="number_type" type="varchar(40)">
                 <constraints nullable="false"/>
             </column>
+            
+            <column name="phone_number" type="varchar(15)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
 
-            <column name="kbe" type="number">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="okpo" type="varchar(10)">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="certificate_register_series" type="varchar(60)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="certificate_register_date" type="date">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="certificate_register_number" type="varchar(60)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="certificate_authority_name" type="varchar(150)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="certificate_authority_bin" type="varchar(40)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="bp_parent_id" type="number">
-                <constraints nullable="true"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="dict-rus-10" logicalFilePath="path-independent" author="ruslan" context="postgres">
-        <comment>Creating primary key for table: dict_business_partners</comment>
-        <addPrimaryKey
-                columnNames="id"
-                constraintName="pk_dict_business_partners"
-                schemaName="apps"
-                tableName="dict_business_partners"/>
-    </changeSet>
-
-
-    <changeSet id="dict-rus-11" logicalFilePath="path-independent" author="ruslan" context="postgres">
-        <comment>Load demo data to table: dict_business_partners</comment>
-        <loadData
-                encoding="UTF-8"
-                relativeToChangelogFile="true"
-                file="data/dict_business_partners.csv"
-                quotchar="'"
-                schemaName="apps"
-                separator=";"
-                tableName="dict_business_partners">
-
-            <column name="id" 	type="NUMERIC"/>
-            <column name="name" 	type="STRING"/>
-            <column name="bin" type="STRING"/>
-            <column name="kbe" type="STRING"/>
-            <column name="okpo" type="STRING"/>
-            <column name="certificate_register_series"	type="STRING"/>
-            <column name="certificate_register_date"	type="DATE"/>
-            <column name="certificate_register_number"	type="STRING"/>
-            <column name="certificate_authority_name"	type="STRING"/>
-            <column name="certificate_authority_bin"	type="STRING"/>
-            <column name="business_partner_id"	type="NUMERIC"/>
-        </loadData>
-
-        <rollback>
-            <delete schemaName="apps" tableName="dict_business_partners" />
-        </rollback>
-
-    </changeSet>
-    <changeSet id="dict-rus-12" logicalFilePath="path-independent" author="ruslan" context="postgres">
-        <comment>Creating sequence for table: dict_business_partners</comment>
-        <createSequence
-                incrementBy="1"
-                schemaName="apps"
-                sequenceName="dict_business_partners_s"
-                startValue="1"/>
-    </changeSet>
+	<changeSet id="dict-rus-11" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating primary key for table: dict_phone_numbers</comment>
+		<addPrimaryKey
+	            columnNames="id"
+	            constraintName="pk_dict_phone_numbers"
+	            schemaName="apps"
+	            tableName="dict_phone_numbers"/>
+	</changeSet>
+	
+	<changeSet id="dict-rus-12" logicalFilePath="path-independent" author="ruslan" context="oracle">
+	    <comment>Creating sequence for table: dict_phone_numbers</comment>
+	    <createSequence 
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="dict_phone_numbers_s"
+	            startValue="1"/>
+	</changeSet>
 </databaseChangeLog>

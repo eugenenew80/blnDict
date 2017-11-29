@@ -11,14 +11,19 @@ import lombok.*;
 @EqualsAndHashCode(of= {"id"})
 public class Meter implements HasId, HasName, HasLang {
 	private Long id;
-	private Lang lang;
+
+	@NotNull @Size(max = 100)
 	private String name;
+
+	@NotNull @Size(max = 100)
 	private String manufacturer;
 
 	@NotNull
 	private BusinessPartner businessPartner;
-	
+
+	@Size(max = 30)
 	private String serialNumber;
+
 	private Double ratedCurrent;
 	private Double ratedVoltage;
 	private Double accuracyClass;
@@ -37,4 +42,5 @@ public class Meter implements HasId, HasName, HasLang {
 	private Organization org;
 
 	private Map<Lang, MeterTranslate> translations;
+	private Lang lang;
 }

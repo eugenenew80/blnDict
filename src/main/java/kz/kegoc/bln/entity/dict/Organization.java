@@ -11,15 +11,17 @@ import java.util.Map;
 @EqualsAndHashCode(of= {"id"})
 public class Organization implements HasId, HasName, HasLang {
 	private Long id;
-	private Lang lang;
+
+	@NotNull @Size(max = 100)
 	private String name;
 
 	@Size(min=12, max = 12)
 	private String bin;
 
 	@NotNull
-	private OrganizationType orgType;
+	private OrgType orgType;
 
 	private Organization parentOrg;
 	private Map<Lang, OrganizationTranslate> translations;
+	private Lang lang;
 }

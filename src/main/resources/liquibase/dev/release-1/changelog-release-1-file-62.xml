@@ -4,25 +4,61 @@
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">    
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-112" logicalFilePath="path-independent" author="eugene" context="postgres">
-        <comment>Creating view: dict_energy_objects_v </comment>
-        <createView replaceIfExists="true" schemaName="apps" viewName="dict_energy_objects_v ">
-            SELECT id object_id, name, short_name, 'ENERGY_SOURCE' object_type FROM apps.dict_energy_sources UNION ALL SELECT id object_id, name, short_name, 'SUBSTATION' FROM apps.dict_substations
-        </createView>
-    </changeSet>
-
-    <changeSet id="dict-eug-113" logicalFilePath="path-independent" author="eugene" context="postgres">
-        <comment>Adding columns object_id and object_type to table dict_metering_points</comment>
-        <addColumn  schemaName="apps" tableName="dict_metering_points">
-            <column name="energy_object_id" type="number">
-                <constraints nullable="true"/>
+    <changeSet id="dict-eug-108" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating table: dict_contacts_tl</comment>
+		<createTable tableName="dict_contacts_tl" schemaName="apps">
+			<column name="id" type="number">
+                <constraints nullable="false"/>
             </column>
 
-            <column name="energy_object_type" type="varchar(100)">
-                <constraints nullable="true"/>
+			<column name="contact_id" type="number">
+				<constraints nullable="false"/>
+			</column>
+
+            <column name="lang" type="varchar(10)">
+                <constraints nullable="false"/>
             </column>
-        </addColumn>
-    </changeSet>
+
+			<column name="contact_type" type="varchar(30)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="post" type="varchar(100)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="description" type="varchar(100)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-eug-109" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating primary key for table: dict_contacts_tl</comment>
+		<addPrimaryKey
+	            columnNames="id"
+	            constraintName="pk_dict_contacts_tl"
+	            schemaName="apps"
+	            tableName="dict_contacts_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-eug-110" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating unique key for table: dict_contacts_tl</comment>
+		<addUniqueConstraint
+				columnNames="contact_id, lang"
+				constraintName="uk_dict_contacts_tl"
+				schemaName="apps"
+				tableName="dict_contacts_tl"/>
+	</changeSet>
+	
+	<changeSet id="dict-eug-111" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating sequence for table: dict_contacts_tl</comment>
+		<createSequence
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="dict_contacts_tl_s"
+	            startValue="1"/>
+	</changeSet>
 </databaseChangeLog>

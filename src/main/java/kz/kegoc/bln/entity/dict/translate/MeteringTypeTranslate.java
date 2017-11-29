@@ -18,12 +18,12 @@ public class MeteringTypeTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private MeteringType meteringType;
-
     @NotNull @Size(max = 100)
     private String name;
 
     @NotNull @Size(max = 10)
     private String shortName;
+
+    @NotNull
+    private MeteringType meteringType;
 }

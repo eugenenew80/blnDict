@@ -12,14 +12,17 @@ import lombok.*;
 @EqualsAndHashCode(of= {"id"})
 public class MeteringPoint implements HasId, HasCode, HasName, HasLang {
 	private Long id;
-	private Lang lang;
-	private String name;
-	private String shortName;
 
 	@NotNull @Size(max = 15)
 	private String code;
 
-	@Size(max = 18)
+	@NotNull @Size(max = 15)
+	private String name;
+
+	@NotNull @Size(max = 15)
+	private String shortName;
+
+	@Size(min = 18, max = 18)
 	private String externalCode;
 
 	@NotNull
@@ -49,4 +52,5 @@ public class MeteringPoint implements HasId, HasCode, HasName, HasLang {
 	private List<MeteringPointCurrentTrans> currentTrans;
 	private List<MeteringPointVoltageTrans> voltageTrans;
 	private Map<Lang, MeteringPointTranslate> translations;
+	private Lang lang;
 }

@@ -5,16 +5,15 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
-    
 
-    <changeSet id="dict-rus-77" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating table: dict_current_trans_tl</comment>
-		<createTable tableName="dict_current_trans_tl" schemaName="apps">
+    <changeSet id="dict-rus-79" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating table: dict_meters_tl</comment>
+		<createTable tableName="dict_meters_tl" schemaName="apps">
 			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="current_trans_id" type="number">
+			<column name="meter_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -32,33 +31,30 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-78" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating primary key for table: dict_current_trans_tl</comment>
+	<changeSet id="dict-rus-80" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating primary key for table: dict_meters_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_current_trans_tl"
+	            constraintName="pk_dict_meters_tl"
 	            schemaName="apps"
-	            tableName="dict_current_trans_tl"/>
+	            tableName="dict_meters_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-79" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating unique key for table: dict_current_trans_tl</comment>
+	<changeSet id="dict-rus-81" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating unique key for table: dict_meters_tl</comment>
 		<addUniqueConstraint
-				columnNames="current_trans_id, lang"
-				constraintName="uk_dict_current_trans_tl"
+				columnNames="meter_id, lang"
+				constraintName="uk_dict_meters_tl"
 				schemaName="apps"
-				tableName="dict_current_trans_tl"/>
+				tableName="dict_meters_tl"/>
 	</changeSet>
 
-	
-	<changeSet id="dict-rus-80" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating sequence for table: dict_current_trans_tl</comment>
+	<changeSet id="dict-rus-82" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating sequence for table: dict_meters_tl</comment>
 		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_current_trans_tl_s"
+	            sequenceName="dict_meters_tl_s"
 	            startValue="1"/>
 	</changeSet>
-
-
 </databaseChangeLog>

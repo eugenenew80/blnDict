@@ -10,9 +10,9 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MeteringTypeDto {
 	private Long id;
-	private Lang lang;
 	private String name;
 	private String shortName;
 	private Boolean usedInEnergySources;
 	private Boolean usedInSubstations;
+	private Lang lang;
 }

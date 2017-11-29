@@ -2,6 +2,8 @@ package kz.kegoc.bln.entity.dict.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import kz.kegoc.bln.entity.common.Lang;
+import kz.kegoc.bln.entity.common.PhoneNumberType;
 import lombok.Data;
 
 @Data
@@ -9,7 +11,8 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PhoneNumberDto {
 	private Long id;
-	private String numberType;
+	private PhoneNumberType numberType;
 	private String phoneNumber;
 	private Long contactId;
+	private Lang lang;
 }

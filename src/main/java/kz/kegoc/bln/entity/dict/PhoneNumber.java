@@ -12,14 +12,15 @@ import java.util.List;
 @EqualsAndHashCode(of= {"id"})
 public class PhoneNumber implements HasId, HasLang {
 	private Long id;
-	private Lang lang;
 
 	@NotNull @Size(max = 40)
 	private String numberType;
 
-	@NotNull @Size(max = 15)
-	private String phoneNumber;
+	@NotNull
+	private PhoneNumberType phoneNumber;
 
 	@NotNull
 	private Contact contact;
+
+	private Lang lang;
 }

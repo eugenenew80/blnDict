@@ -2,6 +2,7 @@ package kz.kegoc.bln.entity.dict.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import kz.kegoc.bln.entity.common.Lang;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -14,16 +15,14 @@ public class PostAddressDto {
 	private String name;
 	private String index;
 	private Long countryId;
+	private String countryName;
 	private Long  regionId;
+	private String  regionName;
 	private String locality;
 	private String street;
 	private String houseNumber;
 	private String buildingNumber;
 	private String apartment;
 	private String officeNumber;
-	private LocalDate startDate;
-	private LocalDate endDate;
-	private Long businessPartnerId;
-	private Long legalAddress;
-	private Long actualAddress;
+	private Lang lang;
 }

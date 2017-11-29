@@ -37,5 +37,5 @@ public class DataSetLoader {
 	
 	private final String scheme;
 	private final String file;
-	private final String dataSetPath = "src/test/resources/";
+	private final String dataSetPath = "src/dev/resources/";
 }

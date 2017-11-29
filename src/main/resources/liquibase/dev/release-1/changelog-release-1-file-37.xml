@@ -5,16 +5,15 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
-    
 
-    <changeSet id="dict-rus-37" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating table: dict_regions_tl</comment>
-		<createTable tableName="dict_regions_tl" schemaName="apps">
+    <changeSet id="dict-rus-39" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating table: dict_business_partners_tl</comment>
+		<createTable tableName="dict_business_partners_tl" schemaName="apps">
 			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="region_id" type="number">
+			<column name="business_partner_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -22,39 +21,36 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="name" type="varchar(110)">
+			<column name="name" type="varchar(100)">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-38" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating primary key for table: dict_regions_tl</comment>
+	<changeSet id="dict-rus-40" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating primary key for table: dict_business_partners_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_regions_tl"
+	            constraintName="pk_dict_business_partners_tl"
 	            schemaName="apps"
-	            tableName="dict_regions_tl"/>
+	            tableName="dict_business_partners_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-39" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating unique key for table: dict_regions_tl</comment>
+	<changeSet id="dict-rus-41" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating unique key for table: dict_business_partners_tl</comment>
 		<addUniqueConstraint
-				columnNames="region_id, lang"
-				constraintName="uk_dict_regions_tl"
+				columnNames="business_partner_id, lang"
+				constraintName="uk_dict_business_partners_tl"
 				schemaName="apps"
-				tableName="dict_regions_tl"/>
+				tableName="dict_business_partners_tl"/>
 	</changeSet>
 
-	
-	<changeSet id="dict-rus-40" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating sequence for table: dict_regions_tl</comment>
+	<changeSet id="dict-rus-42" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating sequence for table: dict_business_partners_tl</comment>
 		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_regions_tl_s"
+	            sequenceName="dict_business_partners_tl_s"
 	            startValue="1"/>
 	</changeSet>
-
-
 </databaseChangeLog>

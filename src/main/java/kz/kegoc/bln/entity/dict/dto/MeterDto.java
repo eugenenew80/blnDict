@@ -11,8 +11,6 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MeterDto {
 	private Long id;
-	private Lang lang;
-	private String code;
 	private String name;
 	private String manufacturer;
 	private String serialNumber;
@@ -33,4 +31,5 @@ public class MeterDto {
 	private Boolean withdrawn;
 	private Long orgId;
 	private String orgName;
+	private Lang lang;
 }

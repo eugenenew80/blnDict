@@ -2344,6 +2344,7 @@
 
 			<basic name="numberType">
 				<column name="number_type" />
+				<enumerated>STRING</enumerated>
 			</basic>
 
 			<basic name="phoneNumber">

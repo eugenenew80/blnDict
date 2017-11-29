@@ -5,16 +5,15 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
-    
 
-    <changeSet id="dict-eug-114" logicalFilePath="path-independent" author="eugene" context="postgres">
-		<comment>Creating table: dict_accounting_types_tl</comment>
-		<createTable tableName="dict_accounting_types_tl" schemaName="apps">
+    <changeSet id="dict-eug-112" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating table: dict_voltage_classes_tl</comment>
+		<createTable tableName="dict_voltage_classes_tl" schemaName="apps">
 			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="accounting_type_id" type="number">
+			<column name="voltage_class_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -22,36 +21,36 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="name" type="varchar(100)">
+			<column name="name" type="varchar(10)">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-eug-115" logicalFilePath="path-independent" author="eugene" context="postgres">
-		<comment>Creating primary key for table: dict_accounting_types_tl</comment>
+	<changeSet id="dict-eug-113" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating primary key for table: dict_voltage_classes_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_accounting_types_tl"
+	            constraintName="pk_dict_voltage_classes_tl"
 	            schemaName="apps"
-	            tableName="dict_accounting_types_tl"/>
+	            tableName="dict_voltage_classes_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-eug-116" logicalFilePath="path-independent" author="eugene" context="postgres">
-		<comment>Creating unique key for table: dict_accounting_types_tl</comment>
+	<changeSet id="dict-eug-114" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating unique key for table: dict_voltage_classes_tl</comment>
 		<addUniqueConstraint
-				columnNames="accounting_type_id, lang"
-				constraintName="uk_dict_accounting_types_tl"
+				columnNames="voltage_class_id, lang"
+				constraintName="uk_dict_voltage_classes_tl"
 				schemaName="apps"
-				tableName="dict_accounting_types_tl"/>
+				tableName="dict_voltage_classes_tl"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-117" logicalFilePath="path-independent" author="eugene" context="postgres">
-		<comment>Creating sequence for table: dict_accounting_types_tl</comment>
+	<changeSet id="dict-eug-115" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating sequence for table: dict_voltage_classes_tl</comment>
 		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_accounting_types_tl_s"
+	            sequenceName="dict_voltage_classes_tl_s"
 	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

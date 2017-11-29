@@ -1,4 +1,0 @@
-﻿id;code;name;manufacturer;serial_number;rated_current1;rated_current2;accuracy_class;min_current;max_current;company_id
-1;ABB A1802 RL; ABB A1802 RL; ABB;123;null;null;0.5;null;null;1
-2;ABB A1805 RL2;ABB A1805 RL2;ABB;234;null;null;0.5;null;null;1
-

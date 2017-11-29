@@ -6,18 +6,18 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-13" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating table: dict_phone_numbers</comment>
-		<createTable tableName="dict_phone_numbers" schemaName="apps">
+    <changeSet id="dict-rus-13" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating table: dict_bank_accounts</comment>
+		<createTable tableName="dict_bank_accounts" schemaName="apps">
 			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="number_type" type="varchar(40)">
-                <constraints nullable="false"/>
-            </column>
-            
-            <column name="phone_number" type="varchar(15)">
+			<column name="bank_account_number" type="varchar(40)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bank_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -27,43 +27,21 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-14" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating primary key for table: dict_phone_numbers</comment>
+	<changeSet id="dict-rus-14" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating primary key for table: dict_bank_accounts</comment>
 		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_phone_numbers"
+	            constraintName="pk_dict_bank_accounts"
 	            schemaName="apps"
-	            tableName="dict_phone_numbers"/>
+	            tableName="dict_bank_accounts"/>
 	</changeSet>
-	
-	<changeSet id="dict-rus-15" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Load demo data to table: dict_phone_numbers</comment>
-		<loadData
-	            encoding="UTF-8"
-	            relativeToChangelogFile="true"
-	            file="data/dict_phone_numbers.csv"
-	            quotchar="'"
-	            schemaName="apps"
-	            separator=";"
-	            tableName="dict_phone_numbers">
-	        
-	        <column name="id" 	type="NUMERIC"/>
-	        <column name="number_type" type="STRING"/>
-	        <column name="phone_number"	type="STRING"/>
-			<column name="business_partner_id"	type="NUMERIC"/>
-	    </loadData>
-		
-		<rollback>
-        	<delete schemaName="apps" tableName="dict_phone_numbers" />
-		</rollback>
-	</changeSet>
-	
-	<changeSet id="dict-rus-16" logicalFilePath="path-independent" author="ruslan" context="postgres">
-	    <comment>Creating sequence for table: dict_phone_numbers</comment>
-	    <createSequence 
+
+	<changeSet id="dict-rus-15" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating sequence for table: dict_bank_accounts</comment>
+		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_phone_numbers_s"
-	            startValue="3"/>
+	            sequenceName="dict_bank_accounts_s"
+	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

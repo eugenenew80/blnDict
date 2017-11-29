@@ -18,12 +18,12 @@ public class MeterTranslate implements HasId, HasName, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull
-    private Meter meter;
-
     @NotNull @Size(max = 100)
     private String name;
 
     @NotNull @Size(max = 100)
     private String manufacturer;
+
+    @NotNull
+    private Meter meter;
 }

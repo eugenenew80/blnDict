@@ -5,16 +5,15 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
-    
 
-    <changeSet id="dict-rus-130" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating table: dict_energy_source_tl</comment>
-		<createTable tableName="dict_energy_source_tl" schemaName="apps">
+    <changeSet id="dict-eug-94" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating table: dict_units_tl</comment>
+		<createTable tableName="dict_units_tl" schemaName="apps">
 			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="energy_source_id" type="number">
+			<column name="unit_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -32,32 +31,30 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-131" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating primary key for table: dict_energy_source_tl</comment>
+	<changeSet id="dict-eug-95" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating primary key for table: dict_units_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_energy_source_tl"
+	            constraintName="pk_dict_units_tl"
 	            schemaName="apps"
-	            tableName="dict_energy_source_tl"/>
+	            tableName="dict_units_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-132" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating unique key for table: dict_energy_source_tl</comment>
+	<changeSet id="dict-eug-96" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating unique key for table: dict_units_tl</comment>
 		<addUniqueConstraint
-				columnNames="energy_source_id, lang"
-				constraintName="uk_dict_energy_source_tl"
+				columnNames="unit_id, lang"
+				constraintName="uk_dict_units_tl"
 				schemaName="apps"
-				tableName="dict_energy_source_tl"/>
+				tableName="dict_units_tl"/>
 	</changeSet>
-
-	<changeSet id="dict-rus-133" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating sequence for table: dict_energy_source_tl</comment>
+	
+	<changeSet id="dict-eug-97" logicalFilePath="path-independent" author="eugene" context="oracle">
+		<comment>Creating sequence for table: dict_units_tl</comment>
 		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_energy_source_tl_s"
+	            sequenceName="dict_units_tl_s"
 	            startValue="1"/>
 	</changeSet>
-
-
 </databaseChangeLog>

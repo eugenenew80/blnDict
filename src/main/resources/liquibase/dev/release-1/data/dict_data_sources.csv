@@ -1,7 +1,0 @@
-﻿id;code;name
-1;KEGOC_EMCOS;АСКУЭ ЕМКОС
-2;KEGOC_WinOIC;Система ТИ WinOIC
-3;KEGOC_SCADA_EMS;Система ТУ SCADA EMS
-4;EXT_DOC;Внешний документ
-5;INT_DOC;Внутренний документ
-6;VISUAL_READING;Визуальный съем показаний

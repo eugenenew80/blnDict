@@ -5,16 +5,15 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
-    
 
-    <changeSet id="dict-rus-57" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating table: dict_data_sources_tl</comment>
-		<createTable tableName="dict_data_sources_tl" schemaName="apps">
+    <changeSet id="dict-rus-59" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating table: dict_current_trans_types_tl</comment>
+		<createTable tableName="dict_current_trans_types_tl" schemaName="apps">
 			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="data_source_id" type="number">
+			<column name="current_trans_type_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -22,36 +21,40 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="name" type="varchar(110)">
+			<column name="name" type="varchar(100)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="manufacturer" type="varchar(100)">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-58" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating primary key for table: dict_data_sources_tl</comment>
+	<changeSet id="dict-rus-60" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating primary key for table: dict_current_trans_types_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_data_sources_tl"
+	            constraintName="pk_dict_current_trans_types_tl"
 	            schemaName="apps"
-	            tableName="dict_data_sources_tl"/>
+	            tableName="dict_current_trans_types_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-59" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating unique key for table: dict_data_sources_tl</comment>
+	<changeSet id="dict-rus-61" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating unique key for table: dict_current_trans_types_tl</comment>
 		<addUniqueConstraint
-				columnNames="data_source_id, lang"
-				constraintName="uk_dict_data_sources_tl"
+				columnNames="current_trans_type_id, lang"
+				constraintName="uk_dict_current_trans_types_tl"
 				schemaName="apps"
-				tableName="dict_data_sources_tl"/>
+				tableName="dict_current_trans_types_tl"/>
 	</changeSet>
-
-	<changeSet id="dict-rus-60" logicalFilePath="path-independent" author="ruslan" context="postgres">
-		<comment>Creating sequence for table: dict_data_sources_tl</comment>
+	
+	<changeSet id="dict-rus-62" logicalFilePath="path-independent" author="ruslan" context="oracle">
+		<comment>Creating sequence for table: dict_current_trans_types_tl</comment>
 		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_data_sources_tl_s"
+	            sequenceName="dict_current_trans_types_tl_s"
 	            startValue="1"/>
 	</changeSet>
 

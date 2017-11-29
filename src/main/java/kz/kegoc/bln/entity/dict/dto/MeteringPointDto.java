@@ -11,7 +11,6 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MeteringPointDto {
 	private Long id;
-	private Lang lang;
 	private String code;
 	private String shortName;
 	private String name;
@@ -32,4 +31,7 @@ public class MeteringPointDto {
 	private LocalDate endDate;
 	private Long referenceMeteringPointId;
 	private String referenceMeteringPointName;
+	private Long orgId;
+	private String orgName;
+	private Lang lang;
 }

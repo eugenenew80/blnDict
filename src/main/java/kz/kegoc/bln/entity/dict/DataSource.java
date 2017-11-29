@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class DataSource implements HasId, HasCode, HasName {
+public class DataSource implements HasId, HasCode, HasName, HasLang {
 	private Long id;
 
 	@NotNull @Size(max = 15)
