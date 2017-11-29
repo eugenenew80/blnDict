@@ -55,32 +55,6 @@ public class DataSourceResourceImpl {
 	}
 	
 
-	@GET
-	@Path("/byCode/{code}")
-	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		DataSource dataSource = service.findByCode(code);
-		return Response.ok()
-			.entity(mapper.map(dataSource, DataSourceDto.class))
-			.build();
-	}
-	
-	
-	@GET
-	@Path("/byName/{name}")
-	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		DataSource dataSource = service.findByName(name);
-		return Response.ok()
-			.entity(mapper.map(dataSource, DataSourceDto.class))
-			.build();
-	}
-
-	
 	@POST
 	public Response create(DataSourceDto entityDto) {
 		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);

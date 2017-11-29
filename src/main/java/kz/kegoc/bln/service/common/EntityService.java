@@ -11,10 +11,6 @@ public interface EntityService<T extends HasId> {
 	List<T> find(Query query);
 	
 	T findById(Object entityId);
-    
-	T findByCode(String entityCode);
-	
-	T findByName(String entityName);
 	
 	T create(T entity);
 

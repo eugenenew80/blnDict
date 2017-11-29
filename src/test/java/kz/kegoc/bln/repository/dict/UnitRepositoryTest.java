@@ -93,22 +93,6 @@ public class UnitRepositoryTest {
 
 
 	@Test
-	public void existingUnitMayBeSelectedByName()  {
-		Unit entity = repository.selectByName(UNIT_NAME);
-		assertThat(entity, is(not(nullValue())));
-		assertUnit(entity);
-	}
-
-	@Test
-	public void existingUnitMayBeSelectedByCode() {
-		Unit entity = repository.selectByCode(UNIT_CODE);
-		assertThat(entity, is(not(nullValue())));
-		assertUnit(entity);
-	}
-
-
-
-	@Test
 	public void newUnitMayBeInserted() {
 		Unit origEntity = newUnit(null);
 
@@ -150,18 +134,6 @@ public class UnitRepositoryTest {
     @Test
     public void methodSelectByIdShouldReturnNullIfIdIsNotExists() {
         Unit entity = repository.selectById(nonExistedId);
-        assertThat(entity, is(nullValue()));
-    }
-
-    @Test
-    public void methodSelectByNameShouldReturnNullIfNameIsNotExists() {
-        Unit entity = repository.selectByName(nonExistedName);
-        assertThat(entity, is(nullValue()));
-    }
-
-    @Test
-    public void methodSelectByCodeShouldReturnNullIfCodeIsNotExists() {
-        Unit entity = repository.selectByCode(nonExistedCode);
         assertThat(entity, is(nullValue()));
     }
 

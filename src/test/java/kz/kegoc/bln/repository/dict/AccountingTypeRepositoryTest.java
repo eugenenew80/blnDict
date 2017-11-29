@@ -92,13 +92,6 @@ public class AccountingTypeRepositoryTest {
 
 
 	@Test
-	public void existingAccountingTypeMayBeSelectedByName()  {
-		AccountingType entity = repository.selectByName(ACCOUNTING_TYPE_NAME);
-		assertThat(entity, is(not(nullValue())));
-		assertAccountingType(entity);
-	}
-
-	@Test
 	public void newAccountingTypeMayBeInserted() {
 		AccountingType origEntity = newAccountingType(null);
 
@@ -140,18 +133,6 @@ public class AccountingTypeRepositoryTest {
     @Test
     public void methodSelectByIdShouldReturnNullIfIdIsNotExists() {
         AccountingType entity = repository.selectById(nonExistedId);
-        assertThat(entity, is(nullValue()));
-    }
-
-    @Test
-    public void methodSelectByNameShouldReturnNullIfNameIsNotExists() {
-        AccountingType entity = repository.selectByName(nonExistedName);
-        assertThat(entity, is(nullValue()));
-    }
-
-    @Test
-    public void methodSelectByCodeShouldReturnNullIfCodeIsNotExists() {
-        AccountingType entity = repository.selectByCode(nonExistedCode);
         assertThat(entity, is(nullValue()));
     }
 

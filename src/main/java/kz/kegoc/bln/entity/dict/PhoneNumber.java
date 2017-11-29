@@ -13,11 +13,11 @@ import java.util.List;
 public class PhoneNumber implements HasId, HasLang {
 	private Long id;
 
-	@NotNull @Size(max = 40)
-	private String numberType;
-
 	@NotNull
-	private PhoneNumberType phoneNumber;
+	private PhoneNumberType numberType;
+
+	@NotNull @Size(max = 15)
+	private String  phoneNumber;
 
 	@NotNull
 	private Contact contact;

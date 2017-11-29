@@ -48,26 +48,6 @@ public class UnitResourceImpl {
 			.entity(mapper.map(unit, UnitDto.class))
 			.build();		
 	}
-	
-
-	@GET
-	@Path("/byCode/{code}")
-	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
-		Unit unit = unitService.findByCode(code);
-		return Response.ok()
-			.entity(mapper.map(unit, UnitDto.class))
-			.build();
-	}
-	
-	
-	@GET
-	@Path("/byName/{name}")
-	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
-		Unit unit = unitService.findByName(name);
-		return Response.ok()
-			.entity(mapper.map(unit, UnitDto.class))
-			.build();
-	}
 
 	
 	@POST

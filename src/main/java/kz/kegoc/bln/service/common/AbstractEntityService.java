@@ -86,44 +86,8 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 
 		return entity;
 	}
-	
 
-	public T findByCode(String entityCode) {
-		if (repository==null)
-			throw new RepositoryNotFoundException();
-		
-		if (entityCode==null)
-			throw new InvalidArgumentException();
-		
-		T entity = repository.selectByCode(entityCode);
-		if (entity==null)
-			throw new EntityNotFoundException(entityCode);
 
-		if (translator!=null && lang!=null)
-			entity = translator.translate(entity, lang);
-
-		return entity;
-	}
-	
-	
-	public T findByName(String entityName) {
-		if (repository==null)
-			throw new RepositoryNotFoundException();
-		
-		if (entityName==null)
-			throw new InvalidArgumentException();
-		
-		T entity = repository.selectByName(entityName);
-		if (entity==null)
-			throw new EntityNotFoundException(entityName);
-
-		if (translator!=null && lang!=null)
-			entity = translator.translate(entity, lang);
-
-		return entity;
-	}
-	
-	
 	public T create(T entity) {
 		if (repository==null)
 			throw new RepositoryNotFoundException();

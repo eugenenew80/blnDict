@@ -93,22 +93,6 @@ public class DataSourceRepositoryTest {
 
 
 	@Test
-	public void existingDataSourceMayBeSelectedByName()  {
-		DataSource entity = repository.selectByName(DATA_SOURCE_NAME);
-		assertThat(entity, is(not(nullValue())));
-		assertDataSource(entity);
-	}
-
-	@Test
-	public void existingDataSourceMayBeSelectedByCode() {
-		DataSource entity = repository.selectByCode(DATA_SOURCE_CODE);
-		assertThat(entity, is(not(nullValue())));
-		assertDataSource(entity);
-	}
-
-
-
-	@Test
 	public void newDataSourceMayBeInserted() {
 		DataSource origEntity = newDataSource(null);
 
@@ -150,18 +134,6 @@ public class DataSourceRepositoryTest {
     @Test
     public void methodSelectByIdShouldReturnNullIfIdIsNotExists() {
         DataSource entity = repository.selectById(nonExistedId);
-        assertThat(entity, is(nullValue()));
-    }
-
-    @Test
-    public void methodSelectByNameShouldReturnNullIfNameIsNotExists() {
-        DataSource entity = repository.selectByName(nonExistedName);
-        assertThat(entity, is(nullValue()));
-    }
-
-    @Test
-    public void methodSelectByCodeShouldReturnNullIfCodeIsNotExists() {
-        DataSource entity = repository.selectByCode(nonExistedCode);
         assertThat(entity, is(nullValue()));
     }
 

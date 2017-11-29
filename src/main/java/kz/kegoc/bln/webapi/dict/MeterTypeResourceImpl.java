@@ -51,26 +51,6 @@ public class MeterTypeResourceImpl {
 	}
 	
 
-	@GET
-	@Path("/byCode/{code}")
-	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
-		MeterType meterType = meterTypeService.findByCode(code);
-		return Response.ok()
-			.entity(mapper.map(meterType, MeterTypeDto.class))
-			.build();
-	}
-	
-	
-	@GET
-	@Path("/byName/{name}")
-	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
-		MeterType meterType = meterTypeService.findByName(name);
-		return Response.ok()
-			.entity(mapper.map(meterType, MeterTypeDto.class))
-			.build();
-	}
-
-	
 	@POST
 	public Response create(MeterTypeDto meterTypeDto) {
 		MeterType newMeterType = meterTypeService.create(mapper.map(meterTypeDto, MeterType.class));	

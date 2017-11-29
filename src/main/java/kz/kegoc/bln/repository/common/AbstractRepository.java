@@ -35,27 +35,7 @@ public abstract class AbstractRepository<T extends HasId> implements Repository<
 		return em.find(clazz, entityId);
 	}
 
-	
-	public T selectByName(String entityName) {
-		TypedQuery<T> query = em.createNamedQuery(clazz.getSimpleName() + ".findByName", clazz);
-		query.setParameter("name", entityName);
-		
-		return query.getResultList().stream()
-			.findFirst()
-			.orElse(null);
-	}
-	
-	
-	public T selectByCode(String entityCode) {
-		TypedQuery<T> query = em.createNamedQuery(clazz.getSimpleName() + ".findByCode", clazz);
-		query.setParameter("code", entityCode);
-		
-		return query.getResultList().stream()
-			.findFirst()
-			.orElse(null);
-	}
-	
-	
+
 	public T insert(T entity) {
 		em.persist(entity);
 		return entity;

@@ -55,32 +55,6 @@ public class EnergySourceResourceImpl {
 	}
 	
 
-	@GET
-	@Path("/byCode/{code}")
-	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		EnergySource entity = service.findByCode(code);
-		return Response.ok()
-			.entity(mapper.map(entity, EnergySourceDto.class))
-			.build(); 
-	}
-	
-	
-	@GET
-	@Path("/byName/{name}")
-	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		EnergySource entity = service.findByName(name);
-		return Response.ok()
-			.entity(mapper.map(entity, EnergySourceDto.class))
-			.build();
-	}
-
-	
 	@POST
 	public Response create(EnergySourceDto entityDto) {
 		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);

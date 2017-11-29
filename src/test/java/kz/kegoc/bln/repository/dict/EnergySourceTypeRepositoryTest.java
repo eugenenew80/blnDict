@@ -92,16 +92,6 @@ public class EnergySourceTypeRepositoryTest {
 
 
 	@Test
-	public void existingEnergySourceTypeMayBeSelectedByName()  {
-		EnergySourceType entity = repository.selectByName(ENERGY_SOURCE_TYPE_NAME);
-		assertThat(entity, is(not(nullValue())));
-		assertEnergySourceType(entity);
-	}
-
-
-
-
-	@Test
 	public void newEnergySourceTypeMayBeInserted() {
 		EnergySourceType origEntity = newEnergySourceType(null);
 
@@ -143,18 +133,6 @@ public class EnergySourceTypeRepositoryTest {
     @Test
     public void methodSelectByIdShouldReturnNullIfIdIsNotExists() {
         EnergySourceType entity = repository.selectById(nonExistedId);
-        assertThat(entity, is(nullValue()));
-    }
-
-    @Test
-    public void methodSelectByNameShouldReturnNullIfNameIsNotExists() {
-        EnergySourceType entity = repository.selectByName(nonExistedName);
-        assertThat(entity, is(nullValue()));
-    }
-
-    @Test
-    public void methodSelectByCodeShouldReturnNullIfCodeIsNotExists() {
-        EnergySourceType entity = repository.selectByCode(nonExistedCode);
         assertThat(entity, is(nullValue()));
     }
 

@@ -50,26 +50,6 @@ public class VoltageTransResourceImpl {
 	}
 	
 
-	@GET
-	@Path("/byCode/{code}")
-	public Response getByCode(@PathParam("code") String code, @QueryParam("lang") Lang lang) {
-		VoltageTrans entity = service.findByCode(code);
-		return Response.ok()
-			.entity(mapper.map(entity, VoltageTransDto.class))
-			.build(); 
-	}
-	
-	
-	@GET
-	@Path("/byName/{name}")
-	public Response getByName(@PathParam("name") String name, @QueryParam("lang") Lang lang) {
-		VoltageTrans entity = service.findByName(name);
-		return Response.ok()
-			.entity(mapper.map(entity, VoltageTransDto.class))
-			.build();
-	}
-
-	
 	@POST
 	public Response create(VoltageTransDto entityDto) {
 		VoltageTrans newEntity = service.create(mapper.map(entityDto,VoltageTrans.class));	
