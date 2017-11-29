@@ -217,7 +217,7 @@
 		<table name="dict_meter_types_tl" schema="apps"/>
 		<attributes>
 			<id name="id">
-				<column name="id" />
+111				<column name="id" />
 				<generated-value strategy="SEQUENCE" generator="dict_meter_types_tl_gen" />
 				<sequence-generator
 						name="dict_meter_types_tl_gen"

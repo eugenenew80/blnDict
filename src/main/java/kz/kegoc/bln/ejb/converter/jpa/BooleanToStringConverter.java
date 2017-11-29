@@ -12,6 +12,6 @@ public class BooleanToStringConverter implements AttributeConverter<Boolean, Str
 
     @Override
     public Boolean convertToEntityAttribute(String value) {
-        return "Y".equals(value);
+        return (value!=null ? "Y".equals(value) : false);
     }
 }
