@@ -5,18 +5,19 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
-    
+
     <changeSet id="dict-eug-1" logicalFilePath="path-independent" author="eugene" context="dev">
-    	<comment>Creating schema</comment>        
-	    <sql dbms="oracle" endDelimiter=";">
-	        create user apps
-	    </sql>    
-	    
-		<rollback>
-		    <sql dbms="oracle" endDelimiter=";">
-		        drop user apps
-		    </sql>    
-        </rollback>	
+        <comment>Creating schema</comment>
+        <sql dbms="oracle" endDelimiter=";">
+            CREATE USER apps identified by apps;
+            grant connect, resource , create view to apps;
+        </sql>
+
+        <rollback>
+            <sql dbms="oracle" endDelimiter=";">
+                DROP USER apps cascade;
+            </sql>
+        </rollback>
     </changeSet>
 
     <changeSet id="dict-eug-1.1" logicalFilePath="path-independent" author="eugene" context="dev">
