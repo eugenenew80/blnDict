@@ -4,7 +4,7 @@ import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Organization;
 import kz.kegoc.bln.entity.dict.translate.OrganizationTranslate;
 import kz.kegoc.bln.filter.Filter;
-import kz.kegoc.bln.service.dict.CompanyService;
+import kz.kegoc.bln.service.dict.OrganizationService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.HashMap;
@@ -36,7 +36,7 @@ public class OrganizationFilterImpl implements Filter<Organization> {
     }
 
     @Inject
-    private CompanyService companyService;
+    private OrganizationService companyService;
 
     @Inject
     private Lang defLang;

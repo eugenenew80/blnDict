@@ -6,4 +6,4 @@ import kz.kegoc.bln.repository.common.Repository;
 import javax.ejb.Local;
 
 @Local
-public interface SubstationCompanyRepository extends Repository<SubstationBusinessPartner> {}
+public interface SubstationBusinessPartnerRepository extends Repository<SubstationBusinessPartner> {}

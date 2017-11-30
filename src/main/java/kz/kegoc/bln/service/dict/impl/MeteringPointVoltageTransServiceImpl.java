@@ -1,9 +1,11 @@
 package kz.kegoc.bln.service.dict.impl;
 
 import kz.kegoc.bln.entity.dict.MeteringPointVoltageTrans;
+import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.MeteringPointVoltageTransService;
+import kz.kegoc.bln.translator.Translator;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -14,7 +16,7 @@ public class MeteringPointVoltageTransServiceImpl extends AbstractEntityService<
         implements MeteringPointVoltageTransService {
 
 	@Inject
-    public MeteringPointVoltageTransServiceImpl(Repository<MeteringPointVoltageTrans> repository, Validator validator) {
-        super(repository, validator);
+    public MeteringPointVoltageTransServiceImpl(Repository<MeteringPointVoltageTrans> repository, Validator validator, Filter<MeteringPointVoltageTrans> prePersistFilter, Translator<MeteringPointVoltageTrans> translator) {
+        super(repository, validator, prePersistFilter, translator);
     }
 }

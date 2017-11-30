@@ -12,7 +12,7 @@ import kz.kegoc.bln.entity.dict.Organization;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.dto.OrganizationDto;
 import kz.kegoc.bln.repository.common.query.*;
-import kz.kegoc.bln.service.dict.CompanyService;
+import kz.kegoc.bln.service.dict.OrganizationService;
 
 import static org.apache.commons.lang3.StringUtils.*;
 
@@ -96,7 +96,7 @@ public class CompanyResourceImpl {
 	
 
 	@Inject
-	private CompanyService service;
+	private OrganizationService service;
 
 	@Inject
 	private DozerBeanMapper mapper;

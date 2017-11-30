@@ -1,9 +1,11 @@
 package kz.kegoc.bln.service.dict.impl;
 
 import kz.kegoc.bln.entity.dict.MeteringPointCurrentTrans;
+import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.MeteringPointCurrentTransService;
+import kz.kegoc.bln.translator.Translator;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -14,7 +16,7 @@ public class MeteringPointCurrentTransServiceImpl extends AbstractEntityService<
         implements MeteringPointCurrentTransService {
 
 	@Inject
-    public MeteringPointCurrentTransServiceImpl(Repository<MeteringPointCurrentTrans> repository, Validator validator) {
-        super(repository, validator);
+    public MeteringPointCurrentTransServiceImpl(Repository<MeteringPointCurrentTrans> repository, Validator validator, Filter<MeteringPointCurrentTrans> prePersistFilter, Translator<MeteringPointCurrentTrans> translator) {
+        super(repository, validator, prePersistFilter, translator);
     }
 }
