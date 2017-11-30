@@ -17,10 +17,10 @@ import kz.kegoc.bln.service.dict.OrganizationService;
 import static org.apache.commons.lang3.StringUtils.*;
 
 @Stateless
-@Path("/dict/dictCompany")
+@Path("/dict/dictOrganization")
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
-public class CompanyResourceImpl {
+public class OrganizationResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
