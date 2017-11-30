@@ -1005,7 +1005,7 @@
       			<column name="short_name" updatable="false" />
       		</basic>
 
-			<basic name="isRes">
+			<basic name="res">
 				<column name="is_res" />
 				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
@@ -2015,7 +2015,7 @@
 			</id>
 
 			<basic name="name">
-				<column name="name" />
+				<column name="name" updatable="false" />
 			</basic>
 
 			<basic name="index">
@@ -2023,11 +2023,11 @@
 			</basic>
 
 			<basic name="locality">
-				<column name="locality" />
+				<column name="locality" updatable="false" />
 			</basic>
 
 			<basic name="street">
-				<column name="street"/>
+				<column name="street" updatable="false"/>
 			</basic>
 
 			<basic name="houseNumber">
@@ -2052,6 +2052,50 @@
 
 			<many-to-one name="region">
 				<join-column name="region_id"/>
+			</many-to-one>
+			<one-to-many name="translations" mapped-by="postAddress" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang"/>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.PostAddressTranslate">
+		<table name="dict_post_addresses_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_post_addresses_tl_gen" />
+				<sequence-generator
+						name="dict_post_addresses_tl_gen"
+						sequence-name="apps.dict_post_addresses_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="locality">
+				<column name="locality" />
+			</basic>
+
+			<basic name="street">
+				<column name="street" />
+			</basic>
+
+			<many-to-one name="postAddress">
+				<join-column name="post_address_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>

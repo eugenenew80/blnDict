@@ -6,13 +6,13 @@ import javax.persistence.TypedQuery;
 
 import kz.kegoc.bln.entity.dict.Organization;
 import kz.kegoc.bln.repository.common.AbstractRepository;
-import kz.kegoc.bln.repository.dict.CompanyRepository;
+import kz.kegoc.bln.repository.dict.OrganizationRepository;
 
 @Stateless
-public class CompanyRepositoryImpl extends AbstractRepository<Organization> implements CompanyRepository {
-	public CompanyRepositoryImpl() { setClazz(Organization.class); }
+public class OrganizationRepositoryImpl extends AbstractRepository<Organization> implements OrganizationRepository {
+	public OrganizationRepositoryImpl() { setClazz(Organization.class); }
 
-	public CompanyRepositoryImpl(EntityManager entityManager) {
+	public OrganizationRepositoryImpl(EntityManager entityManager) {
 		this();
 		setEntityManager(entityManager);
 	}

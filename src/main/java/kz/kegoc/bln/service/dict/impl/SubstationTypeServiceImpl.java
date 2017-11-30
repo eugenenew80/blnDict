@@ -5,17 +5,18 @@ import javax.inject.Inject;
 import javax.validation.Validator;
 
 import kz.kegoc.bln.entity.dict.SubstationType;
+import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.SubstationTypeService;
-
+import kz.kegoc.bln.translator.Translator;
 
 @Stateless
 public class SubstationTypeServiceImpl extends AbstractEntityService<SubstationType>
         implements SubstationTypeService {
     
 	@Inject
-    public SubstationTypeServiceImpl(Repository<SubstationType> repository, Validator validator) {
-        super(repository, validator);
+    public SubstationTypeServiceImpl(Repository<SubstationType> repository, Validator validator, Filter<SubstationType> prePersistFilter, Translator<SubstationType> translator) {
+        super(repository, validator, prePersistFilter, translator);
     }
 }

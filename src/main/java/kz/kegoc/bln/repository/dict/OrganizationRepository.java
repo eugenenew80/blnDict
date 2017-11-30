@@ -6,6 +6,6 @@ import kz.kegoc.bln.repository.common.Repository;
 import javax.ejb.Local;
 
 @Local
-public interface CompanyRepository extends Repository<Organization> {
+public interface OrganizationRepository extends Repository<Organization> {
     Organization selectByTin(String tin);
 }
