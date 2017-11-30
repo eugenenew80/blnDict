@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-1" logicalFilePath="path-independent" author="eugene" context="dev">
+    <changeSet id="dict-eug-1-1" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating schema</comment>
         <sql dbms="oracle" endDelimiter=";">
             CREATE USER apps identified by apps;
@@ -20,7 +20,7 @@
         </rollback>
     </changeSet>
 
-    <changeSet id="dict-eug-1.1" logicalFilePath="path-independent" author="eugene" context="dev">
+    <changeSet id="dict-eug-1.2" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating schema</comment>
         <sql dbms="postgresql" endDelimiter=";">
             create schema apps
