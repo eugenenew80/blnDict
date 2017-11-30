@@ -7,7 +7,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
     
 
-    <changeSet id="dict-eug-11" logicalFilePath="path-independent" author="eugene" context="oracle">
+    <changeSet id="dict-eug-11" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_current_trans_types</comment>
         <createTable tableName="dict_current_trans_types" schemaName="apps">            
             <column name="id" type="number">
@@ -44,7 +44,7 @@
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-eug-12" logicalFilePath="path-independent" author="eugene" context="oracle">
+	<changeSet id="dict-eug-12" logicalFilePath="path-independent" author="eugene" context="dev">
 	    <comment>Creating primary key for table: dict_current_trans_types</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
@@ -53,7 +53,7 @@
 	            tableName="dict_current_trans_types"/>
 	</changeSet>
 
-	<changeSet id="dict-eug-13" logicalFilePath="path-independent" author="eugene" context="oracle">
+	<changeSet id="dict-eug-13" logicalFilePath="path-independent" author="eugene" context="dev">
 	    <comment>Creating sequence for table: dict_current_trans_types</comment>
 	    <createSequence 
 	            incrementBy="1"

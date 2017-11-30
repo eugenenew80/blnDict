@@ -13,13 +13,13 @@
      </field>    
 
      <field>
-       <a>company.id</a>
-       <b>companyId</b>
+       <a>businessPartner.id</a>
+       <b>businessPartnerId</b>
      </field>    
 
      <field>
-       <a>company.name</a>
-       <b>companyName</b>
+       <a>businessPartner.name</a>
+       <b>businessPartnerName</b>
      </field>    
   </mapping> 
 </mappings> 

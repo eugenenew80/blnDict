@@ -19,9 +19,10 @@ public class MeterTypeTranslatorImpl implements Translator<MeterType> {
         if (translate==null)
             translate = entity.getTranslations().get(defLang);
 
-        if (translate!=null)
+        if (translate!=null) {
             entity.setName(translate.getName());
-
+            entity.setManufacturer(translate.getManufacturer());
+        }
         return entity;
     }
 

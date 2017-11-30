@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-135" logicalFilePath="path-independent" author="eugene" context="oracle">
+    <changeSet id="dict-eug-135" logicalFilePath="path-independent" author="eugene" context="dev">
 		<comment>Creating table: dict_power_transformers_tl</comment>
 		<createTable tableName="dict_power_transformers_tl" schemaName="apps">
 			<column name="id" type="number">
@@ -31,7 +31,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-eug-136" logicalFilePath="path-independent" author="eugene" context="oracle">
+	<changeSet id="dict-eug-136" logicalFilePath="path-independent" author="eugene" context="dev">
 		<comment>Creating primary key for table: dict_power_transformers_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
@@ -40,7 +40,7 @@
 	            tableName="dict_power_transformers_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-eug-137" logicalFilePath="path-independent" author="eugene" context="oracle">
+	<changeSet id="dict-eug-137" logicalFilePath="path-independent" author="eugene" context="dev">
 		<comment>Creating unique key for table: dict_power_transformers_tl</comment>
 		<addUniqueConstraint
 				columnNames="power_transformer_id, lang"
@@ -49,7 +49,7 @@
 				tableName="dict_power_transformers_tl"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-138" logicalFilePath="path-independent" author="eugene" context="oracle">
+	<changeSet id="dict-eug-138" logicalFilePath="path-independent" author="eugene" context="dev">
 		<comment>Creating sequence for table: dict_power_transformers_tl</comment>
 		<createSequence
 	            incrementBy="1"

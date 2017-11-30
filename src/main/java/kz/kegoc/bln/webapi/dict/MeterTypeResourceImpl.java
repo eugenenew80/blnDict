@@ -24,13 +24,16 @@ public class MeterTypeResourceImpl {
 
 	@GET
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		Query query = QueryImpl.builder()			
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
+		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
 			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
 			.setOrderBy("t.id")
 			.build();		
 		
-		List<MeterTypeDto> list = meterTypeService.find(query)
+		List<MeterTypeDto> list = service.find(query)
 			.stream()
 			.map( it-> mapper.map(it, MeterTypeDto.class) )
 			.collect(Collectors.toList());
@@ -44,7 +47,10 @@ public class MeterTypeResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		MeterType meterType = meterTypeService.findById(id);
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
+		MeterType meterType = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(meterType, MeterTypeDto.class))
 			.build();		
@@ -52,8 +58,11 @@ public class MeterTypeResourceImpl {
 	
 
 	@POST
-	public Response create(MeterTypeDto meterTypeDto) {
-		MeterType newMeterType = meterTypeService.create(mapper.map(meterTypeDto, MeterType.class));	
+	public Response create(MeterTypeDto entityDto) {
+		Lang userLang = (entityDto.getLang()==null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		MeterType newMeterType = service.create(mapper.map(entityDto, MeterType.class));
 		return Response.ok()
 			.entity(mapper.map(newMeterType, MeterTypeDto.class))
 			.build();
@@ -62,8 +71,11 @@ public class MeterTypeResourceImpl {
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, MeterTypeDto meterTypeDto ) {
-		MeterType newMeterType = meterTypeService.update(mapper.map(meterTypeDto, MeterType.class)); 
+	public Response update(@PathParam("id") Long id, MeterTypeDto entityDto ) {
+		Lang userLang = (entityDto.getLang()==null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		MeterType newMeterType = service.update(mapper.map(entityDto, MeterType.class));
 		return Response.ok()
 			.entity(mapper.map(newMeterType, MeterTypeDto.class))
 			.build();
@@ -73,15 +85,18 @@ public class MeterTypeResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		meterTypeService.delete(id);		
+		service.delete(id);
 		return Response.noContent()
 			.build();
 	}
 	
 
 	@Inject
-	private MeterTypeService meterTypeService;
+	private MeterTypeService service;
 
 	@Inject
 	private DozerBeanMapper mapper;
+
+	@Inject
+	private Lang defLang;
 }

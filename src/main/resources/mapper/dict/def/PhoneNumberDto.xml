@@ -8,8 +8,8 @@
     <class-b>kz.kegoc.bln.entity.dict.dto.PhoneNumberDto</class-b>
 
     <field>
-      <a>businessPartner.id</a>
-      <b>businessPartnerId</b>
+      <a>contact.id</a>
+      <b>contactId</b>
     </field>
   </mapping> 
 </mappings> 

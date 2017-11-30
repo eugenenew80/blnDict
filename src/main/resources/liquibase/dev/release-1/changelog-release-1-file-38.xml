@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-43" logicalFilePath="path-independent" author="ruslan" context="oracle">
+    <changeSet id="dict-rus-43" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_data_sources_tl</comment>
 		<createTable tableName="dict_data_sources_tl" schemaName="apps">
 			<column name="id" type="number">
@@ -27,7 +27,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-44" logicalFilePath="path-independent" author="ruslan" context="oracle">
+	<changeSet id="dict-rus-44" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: dict_data_sources_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
@@ -36,7 +36,7 @@
 	            tableName="dict_data_sources_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-45" logicalFilePath="path-independent" author="ruslan" context="oracle">
+	<changeSet id="dict-rus-45" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating unique key for table: dict_data_sources_tl</comment>
 		<addUniqueConstraint
 				columnNames="data_source_id, lang"
@@ -45,7 +45,7 @@
 				tableName="dict_data_sources_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-46" logicalFilePath="path-independent" author="ruslan" context="oracle">
+	<changeSet id="dict-rus-46" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: dict_data_sources_tl</comment>
 		<createSequence
 	            incrementBy="1"

@@ -24,9 +24,9 @@ public class BusinessPartner implements HasId, HasName, HasLang {
 	private String bin;
 
 	@NotNull @Size(min = 2, max = 2)
-	private Long kbe;
+	private String kbe;
 
-	@NotNull  @Size(max = 20)
+	@Size(max = 20)
 	private String okpo;
 
 	private PostAddress legalAddress;

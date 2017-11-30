@@ -20,7 +20,16 @@ public class EjbExceptionMapperImpl implements ExceptionMapper<EJBException> {
     	
     	if (exc.getCause()!=null) {
 			if (exc.getCause() instanceof RollbackException) {
-				Throwable appExc =  exc.getCause().getCause().getCause().getCause();
+				Throwable appExc =  exc.getCause();
+				if (appExc.getCause()!=null)
+					appExc =  exc.getCause();
+
+				if (appExc.getCause()!=null)
+					appExc =  exc.getCause();
+
+				if (appExc.getCause()!=null)
+					appExc =  exc.getCause();
+
 				return Response.status(500)
 					.type(MediaType.APPLICATION_JSON)
 					.entity(new ErrorMessage("tx-exception", appExc.getMessage()))

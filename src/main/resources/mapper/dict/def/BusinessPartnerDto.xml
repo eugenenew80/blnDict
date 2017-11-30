@@ -8,8 +8,8 @@
     <class-b>kz.kegoc.bln.entity.dict.dto.BusinessPartnerDto</class-b>
 
     <field>
-      <a>bpParent.id</a>
-      <b>bpParentId</b>
+      <a>parentBusinessPartner.id</a>
+      <b>parentBusinessPartnerId</b>
     </field>
   </mapping> 
 </mappings> 

@@ -21,10 +21,5 @@
        <a>currentTrans.name</a>
        <b>currentTransName</b>
      </field>    
-
-     <field>
-       <a>currentTrans.serialNumber</a>
-       <b>currentTransSerialNumber</b>
-     </field>  
-  </mapping> 
+  </mapping>
 </mappings> 

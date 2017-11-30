@@ -8,20 +8,15 @@
     <class-b>kz.kegoc.bln.entity.dict.dto.MeteringPointDto</class-b>
 
      <field>
-       <a>firstBusinessPartner.id</a>
-       <b>firstBusinessPartnerId</b>
+       <a>businessPartner1.id</a>
+       <b>businessPartnerId1</b>
      </field>
      
      <field>
-       <a>secondBusinessPartner.id</a>
-       <b>secondBusinessPartnerId</b>
+       <a>businessPartner2.id</a>
+       <b>businessPartnerId2</b>
      </field>
 
-     <field>
-       <a>meteringType.id</a>
-       <b>meteringTypeId</b>
-     </field>
-     
      <field>
        <a>accountingType.id</a>
        <b>accountingTypeId</b>

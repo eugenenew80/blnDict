@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-4" logicalFilePath="path-independent" author="ruslan" context="oracle">
+    <changeSet id="dict-rus-4" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating table: dict_post_addresses</comment>
         <createTable tableName="dict_post_addresses" schemaName="apps">
             <column name="id" type="number">
@@ -55,7 +55,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-5" logicalFilePath="path-independent" author="ruslan" context="oracle">
+	<changeSet id="dict-rus-5" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: dict_post_addresses</comment>
 		<addPrimaryKey
 	            columnNames="id"
@@ -64,7 +64,7 @@
 	            tableName="dict_post_addresses"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-6" logicalFilePath="path-independent" author="ruslan" context="oracle">
+	<changeSet id="dict-rus-6" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: dict_post_addresses</comment>
 		<createSequence
 	            incrementBy="1"

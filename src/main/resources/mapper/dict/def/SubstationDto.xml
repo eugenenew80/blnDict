@@ -15,6 +15,16 @@
      <field>
        <a>substationType.name</a>
        <b>substationTypeName</b>
-     </field>    
+     </field>
+
+      <field>
+          <a>org.id</a>
+          <b>orgId</b>
+      </field>
+
+      <field>
+          <a>org.name</a>
+          <b>orgName</b>
+      </field>
   </mapping> 
 </mappings> 

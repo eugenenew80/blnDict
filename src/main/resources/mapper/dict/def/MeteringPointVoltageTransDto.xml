@@ -21,10 +21,5 @@
        <a>voltageTrans.name</a>
        <b>voltageTransName</b>
      </field>    
-
-     <field>
-       <a>voltageTrans.serialNumber</a>
-       <b>voltageTransSerialNumber</b>
-     </field>  
-  </mapping> 
+  </mapping>
 </mappings> 

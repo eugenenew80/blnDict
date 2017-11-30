@@ -200,6 +200,7 @@
 
 			<basic name="parameterRm">
 				<column name="is_parameter_rm" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
 			<one-to-many name="translations" mapped-by="meterType" orphan-removal="true">
@@ -217,7 +218,7 @@
 		<table name="dict_meter_types_tl" schema="apps"/>
 		<attributes>
 			<id name="id">
-111				<column name="id" />
+				<column name="id" />
 				<generated-value strategy="SEQUENCE" generator="dict_meter_types_tl_gen" />
 				<sequence-generator
 						name="dict_meter_types_tl_gen"

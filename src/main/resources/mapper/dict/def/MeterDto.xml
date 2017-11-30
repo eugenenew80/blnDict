@@ -16,6 +16,16 @@
      <field>
        <a>businessPartner.name</a>
        <b>businessPartnerName</b>
-     </field>          
+     </field>
+
+     <field>
+       <a>org.id</a>
+       <b>orgId</b>
+     </field>
+
+     <field>
+       <a>org.name</a>
+       <b>orgName</b>
+     </field>
   </mapping> 
 </mappings> 

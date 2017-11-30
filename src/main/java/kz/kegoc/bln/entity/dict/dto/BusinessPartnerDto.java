@@ -12,7 +12,7 @@ public class BusinessPartnerDto {
 	private Long id;
 	private String name;
 	private String bin;
-	private Long kbe;
+	private String kbe;
 	private String okpo;
 	private String legalAddressName;
 	private String actualAddressName;

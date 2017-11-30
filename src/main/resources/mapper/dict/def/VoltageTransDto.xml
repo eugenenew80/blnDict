@@ -6,15 +6,25 @@
   <mapping>
     <class-a>kz.kegoc.bln.entity.dict.VoltageTrans</class-a>
     <class-b>kz.kegoc.bln.entity.dict.dto.VoltageTransDto</class-b>
-    
-     <field>
-       <a>company.id</a>
-       <b>companyId</b>
-     </field>
 
-     <field>
-       <a>company.name</a>
-       <b>companyName</b>
-     </field>     
+      <field>
+          <a>businessPartner.id</a>
+          <b>businessPartnerId</b>
+      </field>
+
+      <field>
+          <a>businessPartner.name</a>
+          <b>businessPartnerName</b>
+      </field>
+
+      <field>
+          <a>org.id</a>
+          <b>orgId</b>
+      </field>
+
+      <field>
+          <a>org.name</a>
+          <b>orgName</b>
+      </field>
   </mapping> 
 </mappings> 

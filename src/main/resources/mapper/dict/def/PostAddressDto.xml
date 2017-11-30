@@ -16,10 +16,5 @@
       <a>region.id</a>
       <b>regionId</b>
     </field>
-
-    <field>
-      <a>businessPartner.id</a>
-      <b>businessPartnerId</b>
-    </field>
-  </mapping> 
+  </mapping>
 </mappings> 

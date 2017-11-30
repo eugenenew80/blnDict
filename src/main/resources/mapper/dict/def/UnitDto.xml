@@ -6,5 +6,10 @@
   <mapping>
     <class-a>kz.kegoc.bln.entity.dict.Unit</class-a>
     <class-b>kz.kegoc.bln.entity.dict.dto.UnitDto</class-b>
+
+    <field>
+      <a>baseUnit.id</a>
+      <b>baseUnitId</b>
+    </field>
   </mapping> 
 </mappings> 

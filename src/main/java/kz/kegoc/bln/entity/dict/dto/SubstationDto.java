@@ -18,5 +18,9 @@ public class SubstationDto {
 	private Long voltageClassName;
 	private Double voltageClassValue;
 	private String address;
+	private Long businessPartnerId;
+	private String businessPartnerName;
+	private Long orgId;
+	private String orgName;
 	private Lang lang;
 }

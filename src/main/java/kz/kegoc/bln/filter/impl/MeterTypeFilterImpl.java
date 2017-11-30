@@ -31,6 +31,7 @@ public class MeterTypeFilterImpl implements Filter<MeterType> {
         translate.setLang(lang);
         translate.setMeterType(entity);
         translate.setName(entity.getName());
+        translate.setManufacturer(entity.getManufacturer());
         entity.getTranslations().put(lang, translate);
 
         return entity;
