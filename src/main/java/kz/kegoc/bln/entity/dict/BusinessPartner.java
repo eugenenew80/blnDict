@@ -1,5 +1,6 @@
 package kz.kegoc.bln.entity.dict;
 
+import java.util.List;
 import java.util.Map;
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.entity.common.HasLang;
@@ -37,6 +38,8 @@ public class BusinessPartner implements HasId, HasName, HasLang {
 	private Boolean transmittingOrganization;
 	private Boolean electricityConsumer;
 	private BusinessPartner parentBusinessPartner;
+
+	private List<Contact> contacts;
 	private Map<Lang, BusinessPartnerTranslate> translations;
 	private Lang lang;
 }

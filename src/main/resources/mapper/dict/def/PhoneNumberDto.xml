@@ -4,8 +4,8 @@
           xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
   <mapping>
-    <class-a>kz.kegoc.bln.entity.dict.PhoneNumber</class-a>
-    <class-b>kz.kegoc.bln.entity.dict.dto.PhoneNumberDto</class-b>
+    <class-a>kz.kegoc.bln.entity.dict.ContactPhoneNumber</class-a>
+    <class-b>kz.kegoc.bln.entity.dict.dto.ContactPhoneNumberDto</class-b>
 
     <field>
       <a>contact.id</a>

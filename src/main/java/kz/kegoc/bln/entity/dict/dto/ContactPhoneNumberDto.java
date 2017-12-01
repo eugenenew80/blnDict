@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PhoneNumberDto {
+public class ContactPhoneNumberDto {
 	private Long id;
 	private PhoneNumberType numberType;
 	private String phoneNumber;

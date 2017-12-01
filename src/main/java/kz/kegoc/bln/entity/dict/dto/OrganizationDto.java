@@ -14,7 +14,7 @@ public class OrganizationDto {
 	private String name;
 	private String bin;
 	private OrgType orgType;
-	private Long parentOrganizationId;
-	private String parentOrganizationName;
+	private Long parentOrgId;
+	private String parentName;
 	private Lang lang;
 }

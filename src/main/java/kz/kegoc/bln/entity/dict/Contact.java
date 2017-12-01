@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -27,6 +28,8 @@ public class Contact implements HasId, HasLang {
 	@NotNull
 	private BusinessPartner businessPartner;
 
+	private List<ContactEmail> contactEmails;
+	private List<ContactPhoneNumber> contactPhoneNumbers;
 	private Map<Lang, ContactTranslate> translations;
 	private Lang lang;
 }

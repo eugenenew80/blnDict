@@ -6,5 +6,10 @@
   <mapping>
     <class-a>kz.kegoc.bln.entity.dict.Organization</class-a>
     <class-b>kz.kegoc.bln.entity.dict.dto.OrganizationDto</class-b>
+
+    <field>
+      <a>parentOrg.id</a>
+      <b>parentOrgId</b>
+    </field>
   </mapping> 
 </mappings> 

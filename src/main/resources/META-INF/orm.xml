@@ -2167,6 +2167,8 @@
 				<join-column name="parent_business_partner_id"/>
 			</many-to-one>
 
+			<one-to-many name="contacts" mapped-by="businessPartner" />
+
 			<one-to-many name="translations" mapped-by="businessPartner" orphan-removal="true">
 				<map-key name="lang"/>
 				<cascade>
@@ -2374,7 +2376,7 @@
 		</attributes>
 	</entity>
 
-	<entity class="kz.kegoc.bln.entity.dict.PhoneNumber">
+	<entity class="kz.kegoc.bln.entity.dict.ContactPhoneNumber">
 		<table name="dict_phone_numbers" schema="apps" />
 		<attributes>
 			<id name="id">

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class PhoneNumber implements HasId, HasLang {
+public class ContactPhoneNumber implements HasId, HasLang {
 	private Long id;
 
 	@NotNull

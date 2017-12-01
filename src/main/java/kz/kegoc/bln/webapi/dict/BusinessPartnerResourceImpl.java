@@ -97,8 +97,17 @@ public class BusinessPartnerResourceImpl {
 		service.delete(id);
 		return Response.noContent()
 			.build();
-	}	
-	
+	}
+
+
+	@Path("/{businessPartnerId : \\d+}/dictContact")
+	public ContactResourceImpl getContactResource(@PathParam("businessPartnerId") Long id) {
+		return contactResource;
+	}
+
+
+	@Inject
+	private ContactResourceImpl contactResource;
 
 	@Inject
 	private BusinessPartnerService service;
