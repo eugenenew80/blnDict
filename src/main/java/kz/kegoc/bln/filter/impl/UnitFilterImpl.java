@@ -12,19 +12,25 @@ import java.util.HashMap;
 @Stateless
 public class UnitFilterImpl implements Filter<Unit> {
     public Unit filter(Unit entity) {
+        return translate(prepare(entity));
+    }
+
+    private Unit prepare(Unit entity) {
         if (entity.getId()!=null) {
             Unit curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private Unit translate(Unit entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         UnitTranslate translate = entity.getTranslations().getOrDefault(lang, new UnitTranslate());
         translate.setLang(lang);

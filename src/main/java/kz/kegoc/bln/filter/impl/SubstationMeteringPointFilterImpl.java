@@ -7,10 +7,6 @@ import javax.ejb.Stateless;
 @Stateless
 public class SubstationMeteringPointFilterImpl implements Filter<SubstationMeteringPoint> {
     public SubstationMeteringPoint filter(SubstationMeteringPoint entity) {
-        return translate(entity);
-    }
-
-    private SubstationMeteringPoint translate(SubstationMeteringPoint entity) {
         return entity;
     }
 }

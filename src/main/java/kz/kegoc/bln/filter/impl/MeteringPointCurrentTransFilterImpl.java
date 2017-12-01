@@ -8,10 +8,6 @@ import javax.ejb.Stateless;
 @Stateless
 public class MeteringPointCurrentTransFilterImpl implements Filter<MeteringPointCurrentTrans> {
     public MeteringPointCurrentTrans filter(MeteringPointCurrentTrans entity) {
-        return translate(entity);
-    }
-
-    private MeteringPointCurrentTrans translate(MeteringPointCurrentTrans entity) {
         return entity;
     }
 }

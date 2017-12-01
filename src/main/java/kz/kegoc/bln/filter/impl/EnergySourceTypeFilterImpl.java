@@ -12,19 +12,25 @@ import java.util.HashMap;
 @Stateless
 public class EnergySourceTypeFilterImpl implements Filter<EnergySourceType> {
     public EnergySourceType filter(EnergySourceType entity) {
+        return translate(prepare(entity));
+    }
+
+    private EnergySourceType prepare(EnergySourceType entity) {
         if (entity.getId()!=null) {
             EnergySourceType curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private EnergySourceType translate(EnergySourceType entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         EnergySourceTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new EnergySourceTypeTranslate());
         translate.setLang(lang);

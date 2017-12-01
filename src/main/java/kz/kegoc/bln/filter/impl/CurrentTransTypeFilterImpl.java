@@ -12,19 +12,25 @@ import java.util.HashMap;
 @Stateless
 public class CurrentTransTypeFilterImpl implements Filter<CurrentTransType> {
     public CurrentTransType filter(CurrentTransType entity) {
+        return translate(prepare(entity));
+    }
+
+    private CurrentTransType prepare(CurrentTransType entity) {
         if (entity.getId()!=null) {
             CurrentTransType curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private CurrentTransType translate(CurrentTransType entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         CurrentTransTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new CurrentTransTypeTranslate());
         translate.setLang(lang);

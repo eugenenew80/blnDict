@@ -13,19 +13,25 @@ import java.util.HashMap;
 @Stateless
 public class PowerTransformerFilterImpl implements Filter<PowerTransformer> {
     public PowerTransformer filter(PowerTransformer entity) {
+        return translate(prepare(entity));
+    }
+
+    private PowerTransformer prepare(PowerTransformer entity) {
         if (entity.getId()!=null) {
             PowerTransformer curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private PowerTransformer translate(PowerTransformer entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         PowerTransformerTranslate translate = entity.getTranslations().getOrDefault(lang, new PowerTransformerTranslate());
         translate.setLang(lang);

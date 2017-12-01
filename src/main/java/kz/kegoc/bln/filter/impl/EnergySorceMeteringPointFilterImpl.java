@@ -8,10 +8,6 @@ import javax.ejb.Stateless;
 @Stateless
 public class EnergySorceMeteringPointFilterImpl implements Filter<EnergySourceMeteringPoint> {
     public EnergySourceMeteringPoint filter(EnergySourceMeteringPoint entity) {
-        return translate(entity);
-    }
-
-    private EnergySourceMeteringPoint translate(EnergySourceMeteringPoint entity) {
         return entity;
     }
 }

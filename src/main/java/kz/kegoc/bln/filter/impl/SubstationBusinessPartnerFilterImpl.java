@@ -8,10 +8,6 @@ import javax.ejb.Stateless;
 @Stateless
 public class SubstationBusinessPartnerFilterImpl implements Filter<SubstationBusinessPartner> {
     public SubstationBusinessPartner filter(SubstationBusinessPartner entity) {
-        return translate(entity);
-    }
-
-    private SubstationBusinessPartner translate(SubstationBusinessPartner entity) {
         return entity;
     }
 }

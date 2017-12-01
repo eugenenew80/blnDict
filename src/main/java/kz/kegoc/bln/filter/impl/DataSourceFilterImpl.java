@@ -12,19 +12,25 @@ import java.util.HashMap;
 @Stateless
 public class DataSourceFilterImpl implements Filter<DataSource> {
     public DataSource filter(DataSource entity) {
+        return translate(prepare(entity));
+    }
+
+    private DataSource prepare(DataSource entity) {
         if (entity.getId()!=null) {
             DataSource curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private DataSource translate(DataSource entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         DataSourceTranslate translate = entity.getTranslations().getOrDefault(lang, new DataSourceTranslate());
         translate.setLang(lang);

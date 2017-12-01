@@ -13,19 +13,25 @@ import java.util.HashMap;
 @Stateless
 public class CountryFilterImpl implements Filter<Country> {
     public Country filter(Country entity) {
+        return translate(prepare(entity));
+    }
+
+    private Country prepare(Country entity) {
         if (entity.getId()!=null) {
             Country curEntity = countryService.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private Country translate(Country entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         CountryTranslate translate = entity.getTranslations().getOrDefault(lang, new CountryTranslate());
         translate.setLang(lang);

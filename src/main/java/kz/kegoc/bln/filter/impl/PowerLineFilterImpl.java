@@ -13,25 +13,32 @@ import java.util.HashMap;
 @Stateless
 public class PowerLineFilterImpl implements Filter<PowerLine> {
     public PowerLine filter(PowerLine entity) {
+        return translate(prepare(entity));
+    }
+
+    private PowerLine prepare(PowerLine entity) {
         if (entity.getId()!=null) {
             PowerLine curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private PowerLine translate(PowerLine entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         PowerLineTranslate translate = entity.getTranslations().getOrDefault(lang, new PowerLineTranslate());
         translate.setLang(lang);
         translate.setPowerLine(entity);
         translate.setName(entity.getName());
         translate.setShortName(entity.getShortName());
+        translate.setPropertyBoundary(entity.getPropertyBoundary());
         entity.getTranslations().put(lang, translate);
 
         return entity;

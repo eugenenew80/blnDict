@@ -12,19 +12,25 @@ import java.util.HashMap;
 @Stateless
 public class OrganizationFilterImpl implements Filter<Organization> {
     public Organization filter(Organization entity) {
+        return translate(prepare(entity));
+    }
+
+    private Organization prepare(Organization entity) {
         if (entity.getId()!=null) {
             Organization curEntity = companyService.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private Organization translate(Organization entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         OrganizationTranslate translate = entity.getTranslations().getOrDefault(lang, new OrganizationTranslate());
         translate.setLang(lang);

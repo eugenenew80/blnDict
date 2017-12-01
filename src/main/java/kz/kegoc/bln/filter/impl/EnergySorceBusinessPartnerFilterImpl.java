@@ -8,10 +8,6 @@ import javax.ejb.Stateless;
 @Stateless
 public class EnergySorceBusinessPartnerFilterImpl implements Filter<EnergySourceBusinessPartner> {
     public EnergySourceBusinessPartner filter(EnergySourceBusinessPartner entity) {
-        return translate(entity);
-    }
-
-    private EnergySourceBusinessPartner translate(EnergySourceBusinessPartner entity) {
         return entity;
     }
 }

@@ -17,9 +17,6 @@ public class ContactTranslate implements HasId, HasLang {
     @NotNull
     private Lang lang;
 
-    @NotNull @Size(max = 30)
-    private String contactType;
-
     @Size(max = 100)
     private String post;
 

@@ -12,19 +12,25 @@ import java.util.HashMap;
 @Stateless
 public class MeteringPointTypeFilterImpl implements Filter<MeteringPointType> {
     public MeteringPointType filter(MeteringPointType entity) {
+        return translate(entity);
+    }
+
+    private MeteringPointType prepare(MeteringPointType entity) {
         if (entity.getId()!=null) {
             MeteringPointType curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private MeteringPointType translate(MeteringPointType entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         MeteringPointTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new MeteringPointTypeTranslate());
         translate.setLang(lang);

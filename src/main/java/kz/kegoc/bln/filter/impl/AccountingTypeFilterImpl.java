@@ -13,19 +13,24 @@ import java.util.HashMap;
 @Stateless
 public class AccountingTypeFilterImpl implements Filter<AccountingType> {
     public AccountingType filter(AccountingType entity) {
+        return translate(prepare(entity));
+    }
+
+    private AccountingType prepare(AccountingType entity) {
         if (entity.getId()!=null) {
             AccountingType curEntity = accountingTypeService.findById(entity.getId());
-
-            if (entity.getTranslations()==null)
+            if (entity.getTranslations() == null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private AccountingType translate(AccountingType entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         AccountingTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new AccountingTypeTranslate());
         translate.setLang(lang);

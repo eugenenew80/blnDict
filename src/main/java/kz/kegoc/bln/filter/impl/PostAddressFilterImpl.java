@@ -12,20 +12,26 @@ import java.util.HashMap;
 
 @Stateless
 public class PostAddressFilterImpl implements Filter< PostAddress> {
-    public  PostAddress filter( PostAddress entity) {
+    public  PostAddress filter(PostAddress entity) {
+        return translate(prepare(entity));
+    }
+
+    private PostAddress prepare(PostAddress entity) {
         if (entity.getId()!=null) {
             PostAddress curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
-    }
 
-    private  PostAddress translate( PostAddress entity) {
-        Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
+
+        return entity;
+    }
+
+    private PostAddress translate(PostAddress entity) {
+        Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         PostAddressTranslate translate = entity.getTranslations().getOrDefault(lang, new  PostAddressTranslate());
         translate.setLang(lang);

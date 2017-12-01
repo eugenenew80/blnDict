@@ -1,5 +1,6 @@
 package kz.kegoc.bln.entity.dict;
 
+import kz.kegoc.bln.entity.common.ContactType;
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.entity.common.HasLang;
 import kz.kegoc.bln.entity.common.Lang;
@@ -16,8 +17,8 @@ import java.util.Map;
 public class Contact implements HasId, HasLang {
 	private Long id;
 
-	@NotNull @Size(max = 30)
-	private String contactType;
+	@NotNull
+	private ContactType contactType;
 
 	@Size(max = 100)
 	private String post;

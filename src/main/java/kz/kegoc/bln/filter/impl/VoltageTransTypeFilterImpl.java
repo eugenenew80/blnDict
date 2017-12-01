@@ -12,19 +12,25 @@ import java.util.HashMap;
 @Stateless
 public class VoltageTransTypeFilterImpl implements Filter<VoltageTransType> {
     public VoltageTransType filter(VoltageTransType entity) {
+        return translate(prepare(entity));
+    }
+
+    private VoltageTransType prepare(VoltageTransType entity) {
         if (entity.getId()!=null) {
             VoltageTransType curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private VoltageTransType translate(VoltageTransType entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         VoltageTransTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new VoltageTransTypeTranslate());
         translate.setLang(lang);

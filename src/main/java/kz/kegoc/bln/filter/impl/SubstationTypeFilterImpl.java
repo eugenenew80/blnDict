@@ -12,19 +12,25 @@ import java.util.HashMap;
 @Stateless
 public class SubstationTypeFilterImpl implements Filter<SubstationType> {
     public SubstationType filter(SubstationType entity) {
+        return translate(prepare(entity));
+    }
+
+    private SubstationType prepare(SubstationType entity) {
         if (entity.getId()!=null) {
             SubstationType curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private SubstationType translate(SubstationType entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         SubstationTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new SubstationTypeTranslate());
         translate.setLang(lang);

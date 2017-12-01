@@ -20,7 +20,6 @@ public class ContactTranslatorImpl implements Translator<Contact> {
             translate = entity.getTranslations().get(defLang);
 
         if (translate!=null) {
-            entity.setContactType(translate.getContactType());
             entity.setPost(translate.getPost());
             entity.setDescription(translate.getDescription());
         }

@@ -12,24 +12,31 @@ import java.util.HashMap;
 @Stateless
 public class MeteringPointFilterImpl implements Filter<MeteringPoint> {
     public MeteringPoint filter(MeteringPoint entity) {
+        return translate(prepare(entity));
+    }
+
+    private MeteringPoint prepare(MeteringPoint entity) {
         if (entity.getId()!=null) {
             MeteringPoint curEntity = meteringPointService.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private MeteringPoint translate(MeteringPoint entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         MeteringPointTranslate translate = entity.getTranslations().getOrDefault(lang, new MeteringPointTranslate());
         translate.setLang(lang);
         translate.setMeteringPoint(entity);
         translate.setName(entity.getName());
+        translate.setShortName(entity.getShortName());
         entity.getTranslations().put(lang, translate);
 
         return entity;

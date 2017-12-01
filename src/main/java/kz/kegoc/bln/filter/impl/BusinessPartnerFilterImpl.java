@@ -12,6 +12,10 @@ import java.util.HashMap;
 @Stateless
 public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
     public BusinessPartner filter(BusinessPartner entity) {
+        return translate(prepare(entity));
+    }
+
+    private BusinessPartner prepare(BusinessPartner entity) {
         if (entity.getId()!=null) {
             BusinessPartner curEntity = businessPartnerService.findById(entity.getId());
 
@@ -22,13 +26,14 @@ public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
         if (entity.getParentBusinessPartner()!=null && entity.getParentBusinessPartner().getId()==null)
             entity.setParentBusinessPartner(null);
 
-        return translate(entity);
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private BusinessPartner translate(BusinessPartner entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         BusinessPartnerTranslate translate = entity.getTranslations().getOrDefault(lang, new BusinessPartnerTranslate());
         translate.setLang(lang);

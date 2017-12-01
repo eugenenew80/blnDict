@@ -13,24 +13,29 @@ import java.util.HashMap;
 @Stateless
 public class ContactEmailFilterImpl implements Filter<ContactEmail> {
     public ContactEmail filter(ContactEmail entity) {
+        return translate(prepare(entity));
+    }
+
+    private ContactEmail prepare(ContactEmail entity) {
         if (entity.getId()!=null) {
             ContactEmail curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private ContactEmail translate(ContactEmail entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         ContactEmailTranslate translate = entity.getTranslations().getOrDefault(lang, new ContactEmailTranslate());
         translate.setLang(lang);
         translate.setContactEmail(entity);
-        translate.setDescription(entity.getDescription());
         translate.setDescription(entity.getDescription());
         entity.getTranslations().put(lang, translate);
 

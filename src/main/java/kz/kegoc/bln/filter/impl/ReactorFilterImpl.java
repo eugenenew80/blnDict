@@ -12,19 +12,25 @@ import java.util.HashMap;
 @Stateless
 public class ReactorFilterImpl implements Filter<Reactor> {
     public Reactor filter(Reactor entity) {
+        return translate(prepare(entity));
+    }
+
+    private Reactor prepare(Reactor entity) {
         if (entity.getId()!=null) {
             Reactor curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private Reactor translate(Reactor entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         ReactorTranslate translate = entity.getTranslations().getOrDefault(lang, new ReactorTranslate());
         translate.setLang(lang);

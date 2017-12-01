@@ -12,19 +12,25 @@ import java.util.HashMap;
 @Stateless
 public class EnergyZoneFilterImpl implements Filter<EnergyZone> {
     public EnergyZone filter(EnergyZone entity) {
+        return translate(prepare(entity));
+    }
+
+    private EnergyZone prepare(EnergyZone entity) {
         if (entity.getId()!=null) {
             EnergyZone curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private EnergyZone translate(EnergyZone entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         EnergyZoneTranslate translate = entity.getTranslations().getOrDefault(lang, new EnergyZoneTranslate());
         translate.setLang(lang);

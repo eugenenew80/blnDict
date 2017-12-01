@@ -7,10 +7,6 @@ import javax.ejb.Stateless;
 @Stateless
 public class BankAccountFilterImpl implements Filter<BankAccount> {
     public BankAccount filter(BankAccount entity) {
-        return translate(entity);
-    }
-
-    private BankAccount translate(BankAccount entity) {
         return entity;
     }
 }

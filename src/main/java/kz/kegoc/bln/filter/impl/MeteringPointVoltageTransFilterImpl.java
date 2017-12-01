@@ -8,10 +8,6 @@ import javax.ejb.Stateless;
 @Stateless
 public class MeteringPointVoltageTransFilterImpl implements Filter<MeteringPointVoltageTrans> {
     public MeteringPointVoltageTrans filter(MeteringPointVoltageTrans entity) {
-        return translate(entity);
-    }
-
-    private MeteringPointVoltageTrans translate(MeteringPointVoltageTrans entity) {
         return entity;
     }
 }

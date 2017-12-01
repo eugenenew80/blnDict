@@ -8,10 +8,6 @@ import javax.ejb.Stateless;
 @Stateless
 public class ContactPhoneNumberFilterImpl implements Filter<ContactPhoneNumber> {
     public ContactPhoneNumber filter(ContactPhoneNumber entity) {
-        return translate(entity);
-    }
-
-    private ContactPhoneNumber translate(ContactPhoneNumber entity) {
         return entity;
     }
 }

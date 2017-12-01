@@ -12,24 +12,31 @@ import java.util.HashMap;
 @Stateless
 public class EnergyNodeFilterImpl implements Filter<EnergyNode> {
     public EnergyNode filter(EnergyNode entity) {
+        return translate(prepare(entity));
+    }
+
+    private EnergyNode prepare(EnergyNode entity) {
         if (entity.getId()!=null) {
             EnergyNode curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private EnergyNode translate(EnergyNode entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         EnergyNodeTranslate translate = entity.getTranslations().getOrDefault(lang, new EnergyNodeTranslate());
         translate.setLang(lang);
         translate.setEnergyNode(entity);
         translate.setName(entity.getName());
+        translate.setShortName(entity.getShortName());
         entity.getTranslations().put(lang, translate);
 
         return entity;

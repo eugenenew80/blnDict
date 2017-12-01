@@ -13,19 +13,25 @@ import java.util.HashMap;
 @Stateless
 public class MeterTypeFilterImpl implements Filter<MeterType> {
     public MeterType filter(MeterType entity) {
+        return translate(prepare(entity));
+    }
+
+    private MeterType prepare(MeterType entity) {
         if (entity.getId()!=null) {
             MeterType curEntity = service.findById(entity.getId());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
-        return translate(entity);
+
+        if (entity.getTranslations()==null)
+            entity.setTranslations(new HashMap<>());
+
+        return entity;
     }
 
     private MeterType translate(MeterType entity) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
-        if (entity.getTranslations()==null)
-            entity.setTranslations(new HashMap<>());
 
         MeterTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new MeterTypeTranslate());
         translate.setLang(lang);
