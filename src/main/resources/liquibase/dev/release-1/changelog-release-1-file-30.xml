@@ -7,8 +7,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
     <changeSet id="dict-rus-10" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: dict_phone_numbers</comment>
-		<createTable tableName="dict_phone_numbers" schemaName="apps">
+		<comment>Creating table: dict_contact_phone_numbers</comment>
+		<createTable tableName="dict_contact_phone_numbers" schemaName="apps">
 			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
@@ -28,20 +28,20 @@
 	</changeSet>
 
 	<changeSet id="dict-rus-11" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: dict_phone_numbers</comment>
+		<comment>Creating primary key for table: dict_contact_phone_numbers</comment>
 		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_phone_numbers"
+	            constraintName="pk_dict_contact_phone_numbers"
 	            schemaName="apps"
-	            tableName="dict_phone_numbers"/>
+	            tableName="dict_contact_phone_numbers"/>
 	</changeSet>
 	
 	<changeSet id="dict-rus-12" logicalFilePath="path-independent" author="ruslan" context="dev">
-	    <comment>Creating sequence for table: dict_phone_numbers</comment>
+	    <comment>Creating sequence for table: dict_contact_phone_numbers</comment>
 	    <createSequence 
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_phone_numbers_s"
+	            sequenceName="dict_contact_phone_numbers_s"
 	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

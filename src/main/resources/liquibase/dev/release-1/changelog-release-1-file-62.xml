@@ -21,10 +21,6 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="contact_type" type="varchar(30)">
-				<constraints nullable="false"/>
-			</column>
-
 			<column name="post" type="varchar(100)">
 				<constraints nullable="true"/>
 			</column>
