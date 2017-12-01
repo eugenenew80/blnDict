@@ -51,6 +51,7 @@ public class MeteringPoint implements HasId, HasCode, HasName, HasLang {
 	private List<MeteringPointMeter> meters;
 	private List<MeteringPointCurrentTrans> currentTrans;
 	private List<MeteringPointVoltageTrans> voltageTrans;
+	private List<MeteringPointCharacteristic> characteristics;
 	private Map<Lang, MeteringPointTranslate> translations;
 	private Lang lang;
 }
