@@ -1,0 +1,1604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-eug-164" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_accounting_types</comment>
+		<addColumn schemaName="apps" tableName="dict_accounting_types">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-165" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_accounting_types_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_accounting_types_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-166" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_bank_accounts</comment>
+		<addColumn schemaName="apps" tableName="dict_bank_accounts">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-167" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_banks</comment>
+		<addColumn schemaName="apps" tableName="dict_banks">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-168" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_banks_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_banks_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-169" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_business_partners</comment>
+		<addColumn schemaName="apps" tableName="dict_business_partners">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-170" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_business_partners_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_business_partners_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-171" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_contact_emails</comment>
+		<addColumn schemaName="apps" tableName="dict_contact_emails">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-172" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_contact_emails_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_contact_emails_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-173" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_contact_phone_numbers</comment>
+		<addColumn schemaName="apps" tableName="dict_contact_phone_numbers">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-174" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_contacts</comment>
+		<addColumn schemaName="apps" tableName="dict_contacts">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-175" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_contacts_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_contacts_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-176" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_countries</comment>
+		<addColumn schemaName="apps" tableName="dict_countries">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-177" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_countries_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_countries_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-178" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_current_trans</comment>
+		<addColumn schemaName="apps" tableName="dict_current_trans">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-179" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_current_trans_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_current_trans_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-180" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_current_trans_types</comment>
+		<addColumn schemaName="apps" tableName="dict_current_trans_types">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-181" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_current_trans_types_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_current_trans_types_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-182" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_data_sources</comment>
+		<addColumn schemaName="apps" tableName="dict_data_sources">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-183" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_data_sources_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_data_sources_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-184" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_energy_nodes</comment>
+		<addColumn schemaName="apps" tableName="dict_energy_nodes">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-185" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_energy_nodes_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_energy_nodes_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-186" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_energy_source_business_partners</comment>
+		<addColumn schemaName="apps" tableName="dict_energy_source_business_partners">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-187" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_energy_source_metering_points</comment>
+		<addColumn schemaName="apps" tableName="dict_energy_source_metering_points">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-188" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_energy_source_types</comment>
+		<addColumn schemaName="apps" tableName="dict_energy_source_types">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-189" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_energy_source_types_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_energy_source_types_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-190" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_energy_sources</comment>
+		<addColumn schemaName="apps" tableName="dict_energy_sources">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-191" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_energy_sources_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_energy_sources_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-192" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_energy_zones</comment>
+		<addColumn schemaName="apps" tableName="dict_energy_zones">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-193" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_energy_zones_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_energy_zones_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-194" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_meter_types</comment>
+		<addColumn schemaName="apps" tableName="dict_meter_types">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-195" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_meter_types_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_meter_types_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-196" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_metering_point_characteristics</comment>
+		<addColumn schemaName="apps" tableName="dict_metering_point_characteristics">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-197" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_metering_point_current_trans</comment>
+		<addColumn schemaName="apps" tableName="dict_metering_point_current_trans">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-198" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_metering_point_meters</comment>
+		<addColumn schemaName="apps" tableName="dict_metering_point_meters">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-199" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_metering_point_types</comment>
+		<addColumn schemaName="apps" tableName="dict_metering_point_types">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-200" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_metering_point_types_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_metering_point_types_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-201" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_metering_point_voltage_trans</comment>
+		<addColumn schemaName="apps" tableName="dict_metering_point_voltage_trans">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-202" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_metering_points</comment>
+		<addColumn schemaName="apps" tableName="dict_metering_points">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-203" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_metering_points_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_metering_points_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-204" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_metering_types</comment>
+		<addColumn schemaName="apps" tableName="dict_metering_types">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-205" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_metering_types_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_metering_types_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-206" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_meters</comment>
+		<addColumn schemaName="apps" tableName="dict_meters">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-207" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_meters_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_meters_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-208" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_organizations</comment>
+		<addColumn schemaName="apps" tableName="dict_organizations">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-209" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_organizations_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_organizations_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-210" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_post_addresses</comment>
+		<addColumn schemaName="apps" tableName="dict_post_addresses">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-211" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_post_addresses_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_post_addresses_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-212" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_power_line_parts</comment>
+		<addColumn schemaName="apps" tableName="dict_power_line_parts">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-213" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_power_line_parts_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_power_line_parts_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-214" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_power_line_types</comment>
+		<addColumn schemaName="apps" tableName="dict_power_line_types">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-215" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_power_line_types_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_power_line_types_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-216" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_power_lines</comment>
+		<addColumn schemaName="apps" tableName="dict_power_lines">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-217" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_power_lines_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_power_lines_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-218" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_power_transformers</comment>
+		<addColumn schemaName="apps" tableName="dict_power_transformers">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-219" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_power_transformers_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_power_transformers_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-220" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_reactors</comment>
+		<addColumn schemaName="apps" tableName="dict_reactors">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-221" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_reactors_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_reactors_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-222" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_regions</comment>
+		<addColumn schemaName="apps" tableName="dict_regions">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-223" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_regions_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_regions_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-224" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_substation_business_partners</comment>
+		<addColumn schemaName="apps" tableName="dict_substation_business_partners">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-225" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_substation_metering_points</comment>
+		<addColumn schemaName="apps" tableName="dict_substation_metering_points">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-226" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_substation_types</comment>
+		<addColumn schemaName="apps" tableName="dict_substation_types">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-227" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_substation_types_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_substation_types_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-228" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_substations</comment>
+		<addColumn schemaName="apps" tableName="dict_substations">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-229" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_substations_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_substations_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-230" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_units</comment>
+		<addColumn schemaName="apps" tableName="dict_units">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-231" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_units_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_units_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-232" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_voltage_classes</comment>
+		<addColumn schemaName="apps" tableName="dict_voltage_classes">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-233" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_voltage_classes_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_voltage_classes_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-234" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_voltage_trans</comment>
+		<addColumn schemaName="apps" tableName="dict_voltage_trans">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-235" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_voltage_trans_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_voltage_trans_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-236" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_voltage_trans_types</comment>
+		<addColumn schemaName="apps" tableName="dict_voltage_trans_types">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-237" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: dict_voltage_trans_types_tl</comment>
+		<addColumn schemaName="apps" tableName="dict_voltage_trans_types_tl">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-238" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: ecm_content</comment>
+		<addColumn schemaName="apps" tableName="ecm_content">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-eug-239" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Adding columns for data auditing: ecm_content_types</comment>
+		<addColumn schemaName="apps" tableName="ecm_content_types">
+			<column name="create_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP WITHOUT TIME ZONE">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+</databaseChangeLog>
