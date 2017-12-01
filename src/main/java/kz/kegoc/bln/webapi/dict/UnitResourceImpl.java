@@ -23,13 +23,16 @@ public class UnitResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		Query query = QueryImpl.builder()			
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
+		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
 			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
 			.setOrderBy("t.id")
 			.build();		
 		
-		List<UnitDto> list = unitService.find(query)
+		List<UnitDto> list = service.find(query)
 			.stream()
 			.map( it-> mapper.map(it, UnitDto.class) )
 			.collect(Collectors.toList());
@@ -43,7 +46,10 @@ public class UnitResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		Unit unit = unitService.findById(id);
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
+		Unit unit = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(unit, UnitDto.class))
 			.build();		
@@ -51,20 +57,30 @@ public class UnitResourceImpl {
 
 	
 	@POST
-	public Response create(UnitDto unitDto) {
-		Unit newUnit = unitService.create(mapper.map(unitDto, Unit.class));	
+	public Response create(UnitDto entityDto) {
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		Unit entity = mapper.map(entityDto, Unit.class);
+		Unit newEntity = service.create(entity);
+
 		return Response.ok()
-			.entity(mapper.map(newUnit, UnitDto.class))
+			.entity(mapper.map(newEntity, UnitDto.class))
 			.build();
 	}
 	
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, UnitDto unitDto ) {
-		Unit newUnit = unitService.update(mapper.map(unitDto, Unit.class)); 
+	public Response update(@PathParam("id") Long id, UnitDto entityDto ) {
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		Unit entity = mapper.map(entityDto, Unit.class);
+		Unit newEntity = service.update(entity);
+
 		return Response.ok()
-			.entity(mapper.map(newUnit, UnitDto.class))
+			.entity(mapper.map(newEntity, UnitDto.class))
 			.build();
 	}
 	
@@ -72,14 +88,14 @@ public class UnitResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		unitService.delete(id);		
+		service.delete(id);
 		return Response.noContent()
 			.build();
 	}	
 	
 
 	@Inject
-	private UnitService unitService;
+	private UnitService service;
 
 	@Inject
 	private DozerBeanMapper mapper;

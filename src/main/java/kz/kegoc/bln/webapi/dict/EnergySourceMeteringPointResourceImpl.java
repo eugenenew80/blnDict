@@ -24,6 +24,9 @@ public class EnergySourceMeteringPointResourceImpl {
 		
 	@GET
 	public Response getAll(@PathParam("energySourceId") Long energySourceId, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		List<EnergySourceMeteringPointDto> list = energySourceService.findById(energySourceId)
 			.getMeteringPoints()
 			.stream()
@@ -39,6 +42,9 @@ public class EnergySourceMeteringPointResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		EnergySourceMeteringPoint entity = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(entity, EnergySourceMeteringPointDto.class))
@@ -48,20 +54,30 @@ public class EnergySourceMeteringPointResourceImpl {
 
 	@POST
 	public Response create(EnergySourceMeteringPointDto entityDto) {
-		EnergySourceMeteringPoint newEntity = service.create(mapper.map(entityDto, EnergySourceMeteringPoint.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		EnergySourceMeteringPoint entity = mapper.map(entityDto, EnergySourceMeteringPoint.class);
+		EnergySourceMeteringPoint newEntity = service.create(entity);
+
 		return Response.ok()
-				.entity(mapper.map(newEntity, EnergySourceMeteringPointDto.class))
-				.build();
+			.entity(mapper.map(newEntity, EnergySourceMeteringPointDto.class))
+			.build();
 	}
 
 
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, EnergySourceMeteringPointDto entityDto ) {
-		EnergySourceMeteringPoint newEntity = service.update(mapper.map(entityDto, EnergySourceMeteringPoint.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		EnergySourceMeteringPoint entity = mapper.map(entityDto, EnergySourceMeteringPoint.class);
+		EnergySourceMeteringPoint newEntity = service.update(entity);
+
 		return Response.ok()
-				.entity(mapper.map(newEntity, EnergySourceMeteringPointDto.class))
-				.build();
+			.entity(mapper.map(newEntity, EnergySourceMeteringPointDto.class))
+			.build();
 	}
 
 
@@ -70,7 +86,7 @@ public class EnergySourceMeteringPointResourceImpl {
 	public Response delete(@PathParam("id") Long id) {
 		service.delete(id);
 		return Response.noContent()
-				.build();
+			.build();
 	}
 	
 	

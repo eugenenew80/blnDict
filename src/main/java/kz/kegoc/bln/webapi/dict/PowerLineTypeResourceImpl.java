@@ -44,8 +44,8 @@ public class PowerLineTypeResourceImpl {
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-				.entity(new GenericEntity<Collection<PowerLineTypeDto>>(list){})
-				.build();
+			.entity(new GenericEntity<Collection<PowerLineTypeDto>>(list){})
+			.build();
 	}
 	
 	

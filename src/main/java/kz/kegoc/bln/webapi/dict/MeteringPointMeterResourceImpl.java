@@ -21,6 +21,9 @@ public class MeteringPointMeterResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("meteringPointId") Long meteringPointId, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		List<MeteringPointMeterDto> list = meteringPointService.findById(meteringPointId)
 			.getMeters()
 			.stream()
@@ -36,6 +39,9 @@ public class MeteringPointMeterResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		MeteringPointMeter entity = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(entity, MeteringPointMeterDto.class))
@@ -45,20 +51,30 @@ public class MeteringPointMeterResourceImpl {
 
 	@POST
 	public Response create(MeteringPointMeterDto entityDto) {
-		MeteringPointMeter newEntity = service.create(mapper.map(entityDto, MeteringPointMeter.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		MeteringPointMeter entity = mapper.map(entityDto, MeteringPointMeter.class);
+		MeteringPointMeter newEntity = service.create(entity);
+
 		return Response.ok()
-				.entity(mapper.map(newEntity, MeteringPointMeterDto.class))
-				.build();
+			.entity(mapper.map(newEntity, MeteringPointMeterDto.class))
+			.build();
 	}
 
 
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, MeteringPointMeterDto entityDto ) {
-		MeteringPointMeter newEntity = service.update(mapper.map(entityDto, MeteringPointMeter.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		MeteringPointMeter entity = mapper.map(entityDto, MeteringPointMeter.class);
+		MeteringPointMeter newEntity = service.update(entity);
+
 		return Response.ok()
-				.entity(mapper.map(newEntity, MeteringPointMeterDto.class))
-				.build();
+			.entity(mapper.map(newEntity, MeteringPointMeterDto.class))
+			.build();
 	}
 
 
@@ -67,7 +83,7 @@ public class MeteringPointMeterResourceImpl {
 	public Response delete(@PathParam("id") Long id) {
 		service.delete(id);
 		return Response.noContent()
-				.build();
+			.build();
 	}
 
 

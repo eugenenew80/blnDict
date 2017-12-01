@@ -22,6 +22,9 @@ public class ContactPhoneNumberResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("contactId") Long contactId, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		List<ContactPhoneNumberDto> list = contactService.findById(contactId)
 			.getContactPhoneNumbers()
 			.stream()
@@ -37,6 +40,9 @@ public class ContactPhoneNumberResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		ContactPhoneNumber entity = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(entity, ContactPhoneNumberDto.class))
@@ -46,7 +52,12 @@ public class ContactPhoneNumberResourceImpl {
 
 	@POST
 	public Response create(ContactPhoneNumberDto entityDto) {
-		ContactPhoneNumber newEntity = service.create(mapper.map(entityDto, ContactPhoneNumber.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		ContactPhoneNumber entity = mapper.map(entityDto, ContactPhoneNumber.class);
+		ContactPhoneNumber newEntity = service.create(entity);
+
 		return Response.ok()
 			.entity(mapper.map(newEntity, ContactPhoneNumberDto.class))
 			.build();
@@ -56,7 +67,12 @@ public class ContactPhoneNumberResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, ContactPhoneNumberDto entityDto ) {
-		ContactPhoneNumber newEntity = service.update(mapper.map(entityDto, ContactPhoneNumber.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		ContactPhoneNumber entity = mapper.map(entityDto, ContactPhoneNumber.class);
+		ContactPhoneNumber newEntity = service.update(entity);
+
 		return Response.ok()
 			.entity(mapper.map(newEntity, ContactPhoneNumberDto.class))
 			.build();

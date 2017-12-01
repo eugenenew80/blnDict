@@ -23,7 +23,10 @@ public class SubstationTypeResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		Query query = QueryImpl.builder()			
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
+		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
 			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
 			.setOrderBy("t.id")
@@ -43,6 +46,9 @@ public class SubstationTypeResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		SubstationType entity = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(entity, SubstationTypeDto.class))
@@ -52,7 +58,12 @@ public class SubstationTypeResourceImpl {
 
 	@POST
 	public Response create(SubstationTypeDto entityDto) {
-		SubstationType newEntity = service.create(mapper.map(entityDto,SubstationType.class));	
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		SubstationType entity = mapper.map(entityDto, SubstationType.class);
+		SubstationType newEntity = service.create(entity);
+
 		return Response.ok()
 			.entity(mapper.map(newEntity, SubstationTypeDto.class))
 			.build();
@@ -62,7 +73,12 @@ public class SubstationTypeResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, SubstationTypeDto entityDto ) {
-		SubstationType newEntity = service.update(mapper.map(entityDto,SubstationType.class)); 
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		SubstationType entity = mapper.map(entityDto, SubstationType.class);
+		SubstationType newEntity = service.update(entity);
+
 		return Response.ok()
 			.entity(mapper.map(newEntity, SubstationTypeDto.class))
 			.build();

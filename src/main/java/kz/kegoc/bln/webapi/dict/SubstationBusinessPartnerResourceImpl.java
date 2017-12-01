@@ -21,6 +21,9 @@ public class SubstationBusinessPartnerResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("substationId") Long substationId, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		List<SubstationBusinessPartnerDto> list = substationService.findById(substationId)
 			.getBusinessPartners()
 			.stream()
@@ -36,6 +39,9 @@ public class SubstationBusinessPartnerResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		SubstationBusinessPartner entity = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(entity, SubstationBusinessPartnerDto.class))
@@ -45,7 +51,12 @@ public class SubstationBusinessPartnerResourceImpl {
 
 	@POST
 	public Response create(SubstationBusinessPartnerDto entityDto) {
-		SubstationBusinessPartner newEntity = service.create(mapper.map(entityDto, SubstationBusinessPartner.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
+		service.setLang(userLang);
+
+		SubstationBusinessPartner entity = mapper.map(entityDto, SubstationBusinessPartner.class);
+		SubstationBusinessPartner newEntity = service.create(entity);
+
 		return Response.ok()
 			.entity(mapper.map(newEntity, SubstationBusinessPartnerDto.class))
 			.build();
@@ -55,7 +66,12 @@ public class SubstationBusinessPartnerResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, SubstationBusinessPartnerDto entityDto ) {
-		SubstationBusinessPartner newEntity = service.update(mapper.map(entityDto, SubstationBusinessPartner.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		SubstationBusinessPartner entity = mapper.map(entityDto, SubstationBusinessPartner.class);
+		SubstationBusinessPartner newEntity = service.update(entity);
+
 		return Response.ok()
 			.entity(mapper.map(newEntity, SubstationBusinessPartnerDto.class))
 			.build();

@@ -21,6 +21,9 @@ public class EnergySourceBusinessPartnerResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("energySourceId") Long energySourceId, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		List<EnergySourceBusinessPartnerDto> list = energySourceService.findById(energySourceId)
 			.getBusinessPartners()
 			.stream()
@@ -36,29 +39,42 @@ public class EnergySourceBusinessPartnerResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		EnergySourceBusinessPartner entity = service.findById(id);
 		return Response.ok()
-				.entity(mapper.map(entity, EnergySourceBusinessPartnerDto.class))
-				.build();
+			.entity(mapper.map(entity, EnergySourceBusinessPartnerDto.class))
+			.build();
 	}
 
 
 	@POST
 	public Response create(EnergySourceBusinessPartnerDto entityDto) {
-		EnergySourceBusinessPartner newEntity = service.create(mapper.map(entityDto, EnergySourceBusinessPartner.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		EnergySourceBusinessPartner entity = mapper.map(entityDto, EnergySourceBusinessPartner.class);
+		EnergySourceBusinessPartner newEntity = service.create(entity);
+
 		return Response.ok()
-				.entity(mapper.map(newEntity, EnergySourceBusinessPartnerDto.class))
-				.build();
+			.entity(mapper.map(newEntity, EnergySourceBusinessPartnerDto.class))
+			.build();
 	}
 
 
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, EnergySourceBusinessPartnerDto entityDto ) {
-		EnergySourceBusinessPartner newEntity = service.update(mapper.map(entityDto, EnergySourceBusinessPartner.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		EnergySourceBusinessPartner entity = mapper.map(entityDto, EnergySourceBusinessPartner.class);
+		EnergySourceBusinessPartner newEntity = service.update(entity);
+
 		return Response.ok()
-				.entity(mapper.map(newEntity, EnergySourceBusinessPartnerDto.class))
-				.build();
+			.entity(mapper.map(newEntity, EnergySourceBusinessPartnerDto.class))
+			.build();
 	}
 
 
@@ -67,7 +83,7 @@ public class EnergySourceBusinessPartnerResourceImpl {
 	public Response delete(@PathParam("id") Long id) {
 		service.delete(id);
 		return Response.noContent()
-				.build();
+			.build();
 	}
 
 

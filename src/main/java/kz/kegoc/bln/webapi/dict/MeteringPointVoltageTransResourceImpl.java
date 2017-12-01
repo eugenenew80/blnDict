@@ -23,6 +23,9 @@ public class MeteringPointVoltageTransResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("meteringPointId") Long meteringPointId, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		List<MeteringPointVoltageTransDto> list = meteringPointService.findById(meteringPointId)
 			.getVoltageTrans()
 			.stream()
@@ -38,6 +41,9 @@ public class MeteringPointVoltageTransResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		MeteringPointVoltageTrans entity = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(entity, MeteringPointVoltageTransDto.class))
@@ -47,20 +53,30 @@ public class MeteringPointVoltageTransResourceImpl {
 
 	@POST
 	public Response create(MeteringPointVoltageTransDto entityDto) {
-		MeteringPointVoltageTrans newEntity = service.create(mapper.map(entityDto, MeteringPointVoltageTrans.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		MeteringPointVoltageTrans entity = mapper.map(entityDto, MeteringPointVoltageTrans.class);
+		MeteringPointVoltageTrans newEntity = service.create(entity);
+
 		return Response.ok()
-				.entity(mapper.map(newEntity, MeteringPointVoltageTransDto.class))
-				.build();
+			.entity(mapper.map(newEntity, MeteringPointVoltageTransDto.class))
+			.build();
 	}
 
 
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, MeteringPointVoltageTransDto entityDto ) {
-		MeteringPointVoltageTrans newEntity = service.update(mapper.map(entityDto, MeteringPointVoltageTrans.class));
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		MeteringPointVoltageTrans entity = mapper.map(entityDto, MeteringPointVoltageTrans.class);
+		MeteringPointVoltageTrans newEntity = service.update(entity);
+
 		return Response.ok()
-				.entity(mapper.map(newEntity, MeteringPointVoltageTransDto.class))
-				.build();
+			.entity(mapper.map(newEntity, MeteringPointVoltageTransDto.class))
+			.build();
 	}
 
 
@@ -69,7 +85,7 @@ public class MeteringPointVoltageTransResourceImpl {
 	public Response delete(@PathParam("id") Long id) {
 		service.delete(id);
 		return Response.noContent()
-				.build();
+			.build();
 	}
 
 

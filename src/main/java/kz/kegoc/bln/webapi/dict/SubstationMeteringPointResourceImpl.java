@@ -10,10 +10,8 @@ import org.dozer.DozerBeanMapper;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.SecurityContext;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +23,9 @@ public class SubstationMeteringPointResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("substationId") Long substationId, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		List<SubstationMeteringPointDto> list = substationService.findById(substationId)
 			.getMeteringPoints()
 			.stream()
@@ -40,6 +41,9 @@ public class SubstationMeteringPointResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		SubstationMeteringPoint entity = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(entity, SubstationMeteringPointDto.class))
@@ -49,8 +53,12 @@ public class SubstationMeteringPointResourceImpl {
 
 	@POST
 	public Response create(SubstationMeteringPointDto entityDto) {
-        entityDto.setMeteringPointName(meteringPointService.findById(entityDto.getMeteringPointId()).getName());
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		entityDto.setMeteringPointName(meteringPointService.findById(entityDto.getMeteringPointId()).getName());
 		SubstationMeteringPoint newEntity = service.create(mapper.map(entityDto, SubstationMeteringPoint.class));
+
 		return Response.ok()
 			.entity(mapper.map(newEntity, SubstationMeteringPointDto.class))
 			.build();
@@ -60,8 +68,12 @@ public class SubstationMeteringPointResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, SubstationMeteringPointDto entityDto ) {
-        entityDto.setMeteringPointName(meteringPointService.findById(entityDto.getMeteringPointId()).getName());
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
+		service.setLang(userLang);
+
+		entityDto.setMeteringPointName(meteringPointService.findById(entityDto.getMeteringPointId()).getName());
 		SubstationMeteringPoint newEntity = service.update(mapper.map(entityDto, SubstationMeteringPoint.class));
+
 		return Response.ok()
 			.entity(mapper.map(newEntity, SubstationMeteringPointDto.class))
 			.build();
