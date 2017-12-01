@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.MeteringPointMeter;
 import kz.kegoc.bln.service.dict.MeteringPointMeterService;
 import org.dozer.DozerBeanMapper;
@@ -18,7 +20,7 @@ import kz.kegoc.bln.service.dict.MeteringPointService;
 public class MeteringPointMeterResourceImpl {
 
 	@GET
-	public Response getAll(@PathParam("meteringPointId") Long meteringPointId) {
+	public Response getAll(@PathParam("meteringPointId") Long meteringPointId, @QueryParam("lang") Lang lang) {
 		List<MeteringPointMeterDto> list = meteringPointService.findById(meteringPointId)
 			.getMeters()
 			.stream()
@@ -33,11 +35,11 @@ public class MeteringPointMeterResourceImpl {
 
 	@GET
 	@Path("/{id : \\d+}")
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		MeteringPointMeter entity = service.findById(id);
 		return Response.ok()
-				.entity(mapper.map(entity, MeteringPointMeterDto.class))
-				.build();
+			.entity(mapper.map(entity, MeteringPointMeterDto.class))
+			.build();
 	}
 
 
@@ -78,6 +80,6 @@ public class MeteringPointMeterResourceImpl {
 	@Inject
 	private DozerBeanMapper mapper;
 
-	@Context
-	private SecurityContext context;
+	@Inject
+	private Lang defLang;
 }

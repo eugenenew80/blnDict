@@ -44,8 +44,8 @@ public class BusinessPartnerResourceImpl {
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-				.entity(new GenericEntity<Collection<BusinessPartnerDto>>(list){})
-				.build();
+			.entity(new GenericEntity<Collection<BusinessPartnerDto>>(list){})
+			.build();
 	}
 	
 	

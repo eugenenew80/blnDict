@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.EnergySourceMeteringPoint;
 import kz.kegoc.bln.entity.dict.dto.EnergySourceMeteringPointDto;
 import kz.kegoc.bln.service.dict.EnergySourceMeteringPointService;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 public class EnergySourceMeteringPointResourceImpl {
 		
 	@GET
-	public Response getAll(@PathParam("energySourceId") Long energySourceId) {
+	public Response getAll(@PathParam("energySourceId") Long energySourceId, @QueryParam("lang") Lang lang) {
 		List<EnergySourceMeteringPointDto> list = energySourceService.findById(energySourceId)
 			.getMeteringPoints()
 			.stream()
@@ -37,11 +38,11 @@ public class EnergySourceMeteringPointResourceImpl {
 
 	@GET
 	@Path("/{id : \\d+}")
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		EnergySourceMeteringPoint entity = service.findById(id);
 		return Response.ok()
-				.entity(mapper.map(entity, EnergySourceMeteringPointDto.class))
-				.build();
+			.entity(mapper.map(entity, EnergySourceMeteringPointDto.class))
+			.build();
 	}
 
 
@@ -82,6 +83,6 @@ public class EnergySourceMeteringPointResourceImpl {
 	@Inject
 	private DozerBeanMapper mapper;
 
-	@Context
-	private SecurityContext context;
+	@Inject
+	private Lang defLang;
 }

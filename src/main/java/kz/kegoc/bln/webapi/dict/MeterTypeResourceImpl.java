@@ -39,8 +39,8 @@ public class MeterTypeResourceImpl {
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-				.entity(new GenericEntity<Collection<MeterTypeDto>>(list){})
-				.build();
+			.entity(new GenericEntity<Collection<MeterTypeDto>>(list){})
+			.build();
 	}
 	
 	

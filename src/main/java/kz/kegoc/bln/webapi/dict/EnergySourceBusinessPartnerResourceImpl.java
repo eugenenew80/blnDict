@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.EnergySourceBusinessPartner;
 import kz.kegoc.bln.service.dict.EnergySourceCompanyService;
 import org.dozer.DozerBeanMapper;
@@ -18,7 +20,7 @@ import kz.kegoc.bln.service.dict.EnergySourceService;
 public class EnergySourceBusinessPartnerResourceImpl {
 
 	@GET
-	public Response getAll(@PathParam("energySourceId") Long energySourceId) {
+	public Response getAll(@PathParam("energySourceId") Long energySourceId, @QueryParam("lang") Lang lang) {
 		List<EnergySourceBusinessPartnerDto> list = energySourceService.findById(energySourceId)
 			.getBusinessPartners()
 			.stream()
@@ -33,7 +35,7 @@ public class EnergySourceBusinessPartnerResourceImpl {
 
 	@GET
 	@Path("/{id : \\d+}")
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		EnergySourceBusinessPartner entity = service.findById(id);
 		return Response.ok()
 				.entity(mapper.map(entity, EnergySourceBusinessPartnerDto.class))
@@ -77,4 +79,7 @@ public class EnergySourceBusinessPartnerResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
+
+	@Inject
+	private Lang defLang;
 }

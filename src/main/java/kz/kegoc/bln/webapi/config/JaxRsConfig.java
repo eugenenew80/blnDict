@@ -3,12 +3,10 @@ package kz.kegoc.bln.webapi.config;
 import java.util.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-
 import kz.kegoc.bln.ejb.jackson.ObjectMapperContextResolver;
 import kz.kegoc.bln.webapi.dict.*;
 import kz.kegoc.bln.webapi.exception.mapper.*;
 import kz.kegoc.bln.webapi.filters.BasicAuthentificationFilter;
-
 
 @ApplicationPath("/webapi")
 public class JaxRsConfig extends Application {
@@ -40,6 +38,10 @@ public class JaxRsConfig extends Application {
 		resources.add(MeteringPointMeterResourceImpl.class);
 		resources.add(CountryResourceImpl.class);
 		resources.add(BusinessPartnerResourceImpl.class);
+		resources.add(PowerLineTypeResourceImpl.class);
+		resources.add(PowerLineResourceImpl.class);
+		resources.add(PowerTransformerResourceImpl.class);
+		resources.add(PowerReactorResourceImpl.class);
 
 		resources.add(BasicAuthentificationFilter.class);
 		resources.add(RepositryNotFoundExceptionMapperImpl.class);
@@ -52,8 +54,6 @@ public class JaxRsConfig extends Application {
         resources.add(DefaultExceptionMapperImpl.class);
 
         resources.add(ObjectMapperContextResolver.class);
-
-        
 
 		return resources;
 	}	

@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.ContactEmail;
 import kz.kegoc.bln.entity.dict.dto.ContactEmailDto;
 import kz.kegoc.bln.service.dict.ContactEmailService;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 public class ContactEmailResourceImpl {
 
 	@GET
-	public Response getAll(@PathParam("contactId") Long contactId) {
+	public Response getAll(@PathParam("contactId") Long contactId, @QueryParam("lang") Lang lang) {
 		List<ContactEmailDto> list = contactService.findById(contactId)
 			.getContactEmails()
 			.stream()
@@ -35,7 +36,7 @@ public class ContactEmailResourceImpl {
 
 	@GET
 	@Path("/{id : \\d+}")
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		ContactEmail entity = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(entity, ContactEmailDto.class))
@@ -79,4 +80,7 @@ public class ContactEmailResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
+
+	@Inject
+	private Lang defLang;
 }

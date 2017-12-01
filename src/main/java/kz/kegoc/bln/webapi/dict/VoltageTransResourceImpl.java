@@ -23,7 +23,10 @@ public class VoltageTransResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		Query query = QueryImpl.builder()			
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
+		Query query = QueryImpl.builder()
 			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
 			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
 			.setOrderBy("t.id")
@@ -43,6 +46,9 @@ public class VoltageTransResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+		final Lang userLang = (lang!=null ? lang : defLang);
+		service.setLang(userLang);
+
 		VoltageTrans entity = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(entity, VoltageTransDto.class))
@@ -52,7 +58,10 @@ public class VoltageTransResourceImpl {
 
 	@POST
 	public Response create(VoltageTransDto entityDto) {
-		VoltageTrans newEntity = service.create(mapper.map(entityDto,VoltageTrans.class));	
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
+		service.setLang(userLang);
+
+		VoltageTrans newEntity = service.create(mapper.map(entityDto,VoltageTrans.class));
 		return Response.ok()
 			.entity(mapper.map(newEntity, VoltageTransDto.class))
 			.build();
@@ -62,7 +71,10 @@ public class VoltageTransResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, VoltageTransDto entityDto ) {
-		VoltageTrans newEntity = service.update(mapper.map(entityDto,VoltageTrans.class)); 
+		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
+		service.setLang(userLang);
+
+		VoltageTrans newEntity = service.update(mapper.map(entityDto,VoltageTrans.class));
 		return Response.ok()
 			.entity(mapper.map(newEntity, VoltageTransDto.class))
 			.build();
@@ -83,4 +95,7 @@ public class VoltageTransResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
+
+	@Inject
+	private Lang defLang;
 }

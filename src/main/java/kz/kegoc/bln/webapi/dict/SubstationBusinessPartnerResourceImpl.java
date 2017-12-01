@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.SubstationBusinessPartner;
 import kz.kegoc.bln.service.dict.SubstationCompanyService;
 import org.dozer.DozerBeanMapper;
@@ -19,7 +20,7 @@ import kz.kegoc.bln.service.dict.SubstationService;
 public class SubstationBusinessPartnerResourceImpl {
 
 	@GET
-	public Response getAll(@PathParam("substationId") Long substationId) {
+	public Response getAll(@PathParam("substationId") Long substationId, @QueryParam("lang") Lang lang) {
 		List<SubstationBusinessPartnerDto> list = substationService.findById(substationId)
 			.getBusinessPartners()
 			.stream()
@@ -34,11 +35,11 @@ public class SubstationBusinessPartnerResourceImpl {
 
 	@GET
 	@Path("/{id : \\d+}")
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		SubstationBusinessPartner entity = service.findById(id);
 		return Response.ok()
-				.entity(mapper.map(entity, SubstationBusinessPartnerDto.class))
-				.build();
+			.entity(mapper.map(entity, SubstationBusinessPartnerDto.class))
+			.build();
 	}
 
 
@@ -46,8 +47,8 @@ public class SubstationBusinessPartnerResourceImpl {
 	public Response create(SubstationBusinessPartnerDto entityDto) {
 		SubstationBusinessPartner newEntity = service.create(mapper.map(entityDto, SubstationBusinessPartner.class));
 		return Response.ok()
-				.entity(mapper.map(newEntity, SubstationBusinessPartnerDto.class))
-				.build();
+			.entity(mapper.map(newEntity, SubstationBusinessPartnerDto.class))
+			.build();
 	}
 
 
@@ -56,8 +57,8 @@ public class SubstationBusinessPartnerResourceImpl {
 	public Response update(@PathParam("id") Long id, SubstationBusinessPartnerDto entityDto ) {
 		SubstationBusinessPartner newEntity = service.update(mapper.map(entityDto, SubstationBusinessPartner.class));
 		return Response.ok()
-				.entity(mapper.map(newEntity, SubstationBusinessPartnerDto.class))
-				.build();
+			.entity(mapper.map(newEntity, SubstationBusinessPartnerDto.class))
+			.build();
 	}
 
 
@@ -66,7 +67,7 @@ public class SubstationBusinessPartnerResourceImpl {
 	public Response delete(@PathParam("id") Long id) {
 		service.delete(id);
 		return Response.noContent()
-				.build();
+			.build();
 	}
 
 
@@ -79,6 +80,6 @@ public class SubstationBusinessPartnerResourceImpl {
 	@Inject
 	private DozerBeanMapper mapper;
 
-	@Context
-	private SecurityContext context;
+	@Inject
+	private Lang defLang;
 }

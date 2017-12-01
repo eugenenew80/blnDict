@@ -39,8 +39,8 @@ public class MeteringPointTypeResourceImpl {
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-				.entity(new GenericEntity<Collection<MeteringPointTypeDto>>(list){})
-				.build();
+			.entity(new GenericEntity<Collection<MeteringPointTypeDto>>(list){})
+			.build();
 	}
 	
 	

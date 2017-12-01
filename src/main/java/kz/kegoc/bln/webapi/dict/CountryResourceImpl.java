@@ -42,8 +42,8 @@ public class CountryResourceImpl {
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-				.entity(new GenericEntity<Collection<CountryDto>>(list){})
-				.build();
+			.entity(new GenericEntity<Collection<CountryDto>>(list){})
+			.build();
 	}
 	
 	

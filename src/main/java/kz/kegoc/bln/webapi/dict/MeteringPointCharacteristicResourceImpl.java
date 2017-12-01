@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.MeteringPointCharacteristic;
 import kz.kegoc.bln.entity.dict.dto.MeteringPointCharacteristicDto;
 import kz.kegoc.bln.service.dict.MeteringPointCharacteristicService;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 public class MeteringPointCharacteristicResourceImpl {
 
 	@GET
-	public Response getAll(@PathParam("meteringPointId") Long meteringPointId) {
+	public Response getAll(@PathParam("meteringPointId") Long meteringPointId, @QueryParam("lang") Lang lang) {
 		List<MeteringPointCharacteristicDto> list = meteringPointService.findById(meteringPointId)
 			.getCharacteristics()
 			.stream()
@@ -35,7 +36,7 @@ public class MeteringPointCharacteristicResourceImpl {
 
 	@GET
 	@Path("/{id : \\d+}")
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		MeteringPointCharacteristic entity = service.findById(id);
 		return Response.ok()
 			.entity(mapper.map(entity, MeteringPointCharacteristicDto.class))
@@ -81,4 +82,7 @@ public class MeteringPointCharacteristicResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
+
+	@Inject
+	private Lang defLang;
 }

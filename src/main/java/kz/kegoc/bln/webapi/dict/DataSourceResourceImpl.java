@@ -37,8 +37,8 @@ public class DataSourceResourceImpl {
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-				.entity(new GenericEntity<Collection<DataSourceDto>>(list){})
-				.build();
+			.entity(new GenericEntity<Collection<DataSourceDto>>(list){})
+			.build();
 	}
 	
 	

@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.MeteringPointCurrentTrans;
 import kz.kegoc.bln.entity.dict.dto.MeteringPointCurrentTransDto;
 import kz.kegoc.bln.service.dict.MeteringPointCurrentTransService;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 public class MeteringPointCurrentTransResourceImpl {
 
 	@GET
-	public Response getAll(@PathParam("meteringPointId") Long meteringPointId) {
+	public Response getAll(@PathParam("meteringPointId") Long meteringPointId, @QueryParam("lang") Lang lang) {
 		List<MeteringPointCurrentTransDto> list = meteringPointService.findById(meteringPointId)
 			.getCurrentTrans()
 			.stream()
@@ -35,11 +36,11 @@ public class MeteringPointCurrentTransResourceImpl {
 
 	@GET
 	@Path("/{id : \\d+}")
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		MeteringPointCurrentTrans entity = service.findById(id);
 		return Response.ok()
-				.entity(mapper.map(entity, MeteringPointCurrentTransDto.class))
-				.build();
+			.entity(mapper.map(entity, MeteringPointCurrentTransDto.class))
+			.build();
 	}
 
 
@@ -48,8 +49,8 @@ public class MeteringPointCurrentTransResourceImpl {
 		MeteringPointCurrentTrans entity = mapper.map(entityDto, MeteringPointCurrentTrans.class);
 		MeteringPointCurrentTrans newEntity = service.create(entity);
 		return Response.ok()
-				.entity(mapper.map(newEntity, MeteringPointCurrentTransDto.class))
-				.build();
+			.entity(mapper.map(newEntity, MeteringPointCurrentTransDto.class))
+			.build();
 	}
 
 
@@ -59,8 +60,8 @@ public class MeteringPointCurrentTransResourceImpl {
 		MeteringPointCurrentTrans entity = mapper.map(entityDto, MeteringPointCurrentTrans.class);
 		MeteringPointCurrentTrans newEntity = service.update(entity);
 		return Response.ok()
-				.entity(mapper.map(newEntity, MeteringPointCurrentTransDto.class))
-				.build();
+			.entity(mapper.map(newEntity, MeteringPointCurrentTransDto.class))
+			.build();
 	}
 
 
@@ -69,7 +70,7 @@ public class MeteringPointCurrentTransResourceImpl {
 	public Response delete(@PathParam("id") Long id) {
 		service.delete(id);
 		return Response.noContent()
-				.build();
+			.build();
 	}
 
 
@@ -81,4 +82,7 @@ public class MeteringPointCurrentTransResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
+
+	@Inject
+	private Lang defLang;
 }

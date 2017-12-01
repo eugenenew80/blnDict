@@ -83,4 +83,7 @@ public class SubstationTypeResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
+
+	@Inject
+	private Lang defLang;
 }

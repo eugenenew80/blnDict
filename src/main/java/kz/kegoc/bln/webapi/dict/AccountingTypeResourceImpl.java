@@ -39,8 +39,8 @@ public class AccountingTypeResourceImpl {
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-				.entity(new GenericEntity<Collection<AccountingTypeDto>>(list){})
-				.build();
+			.entity(new GenericEntity<Collection<AccountingTypeDto>>(list){})
+			.build();
 	}
 	
 	

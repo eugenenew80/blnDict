@@ -1,14 +1,15 @@
 package kz.kegoc.bln.webapi.dict;
 
 import kz.kegoc.bln.entity.common.Lang;
-import kz.kegoc.bln.entity.dict.Bank;
-import kz.kegoc.bln.entity.dict.dto.BankDto;
+import kz.kegoc.bln.entity.dict.PowerLine;
+import kz.kegoc.bln.entity.dict.dto.PowerLineDto;
 import kz.kegoc.bln.repository.common.query.ConditionType;
 import kz.kegoc.bln.repository.common.query.MyQueryParam;
 import kz.kegoc.bln.repository.common.query.Query;
 import kz.kegoc.bln.repository.common.query.QueryImpl;
-import kz.kegoc.bln.service.dict.BankService;
+import kz.kegoc.bln.service.dict.PowerLineService;
 import org.dozer.DozerBeanMapper;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -17,13 +18,14 @@ import javax.ws.rs.core.Response;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 @Stateless
-@Path("/dict/dictBank")
+@Path("/dict/dictPowerLine")
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
-public class BankResourceImpl {
+public class PowerLineResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
@@ -36,13 +38,13 @@ public class BankResourceImpl {
 			.setOrderBy("t.id")
 			.build();		
 		
-		List<BankDto> list = service.find(query)
+		List<PowerLineDto> list = service.find(query)
 			.stream()
-			.map( it-> mapper.map(it, BankDto.class) )
+			.map( it-> mapper.map(it, PowerLineDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-			.entity(new GenericEntity<Collection<BankDto>>(list){})
+			.entity(new GenericEntity<Collection<PowerLineDto>>(list){})
 			.build();
 	}
 	
@@ -53,34 +55,38 @@ public class BankResourceImpl {
 		final Lang userLang = (lang!=null ? lang : defLang);
 		service.setLang(userLang);
 
-		Bank entity = service.findById(id);
+		PowerLine entity = service.findById(id);
 		return Response.ok()
-			.entity(mapper.map(entity, BankDto.class))
+			.entity(mapper.map(entity, PowerLineDto.class))
 			.build();		
 	}
-	
+
 
 	@POST
-	public Response create(BankDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
+	public Response create(PowerLineDto entityDto) {
+		Lang userLang = (entityDto.getLang()==null ? entityDto.getLang() : defLang);
 		service.setLang(userLang);
 
-		Bank newEntity = service.create(mapper.map(entityDto, Bank.class));
+		PowerLine entity = mapper.map(entityDto, PowerLine.class);
+		PowerLine newEntity = service.create(entity);
+		
 		return Response.ok()
-			.entity(mapper.map(newEntity, BankDto.class))
+			.entity(mapper.map(newEntity, PowerLineDto.class))
 			.build();
 	}
 	
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, BankDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
+	public Response update(@PathParam("id") Long id, PowerLineDto entityDto ) {
+		Lang userLang = (entityDto.getLang()==null ? entityDto.getLang() : defLang);
 		service.setLang(userLang);
 
-		Bank newEntity = service.update(mapper.map(entityDto, Bank.class));
+		PowerLine entity = mapper.map(entityDto, PowerLine.class);
+		PowerLine newEntity = service.update(entity);
+		
 		return Response.ok()
-			.entity(mapper.map(newEntity, BankDto.class))
+			.entity(mapper.map(newEntity, PowerLineDto.class))
 			.build();
 	}
 	
@@ -92,10 +98,19 @@ public class BankResourceImpl {
 		return Response.noContent()
 			.build();
 	}
-	
+
+
+	@Path("/{powerLineId : \\d+}/dictPowerLinePart")
+	public PowerLinePartResourceImpl getPowerLinePartResource(@PathParam("powerLineId") Long id) {
+		return powerLinePartResource;
+	}
+
 
 	@Inject
-	private BankService service;
+	private PowerLinePartResourceImpl powerLinePartResource;
+
+	@Inject
+	private PowerLineService service;
 
 	@Inject
 	private DozerBeanMapper mapper;

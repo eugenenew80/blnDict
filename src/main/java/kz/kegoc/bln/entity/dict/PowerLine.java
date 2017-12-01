@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -32,6 +33,7 @@ public class PowerLine implements HasId, HasName, HasLang {
 	private Double length;
 	private Double r;
 	private Double po;
+	private List<PowerLinePart> powerLineParts;
 	private Map<Lang, PowerLineTranslate> translations;
 	private Lang lang;
 }

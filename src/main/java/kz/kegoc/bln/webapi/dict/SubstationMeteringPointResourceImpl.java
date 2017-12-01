@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.SubstationMeteringPoint;
 import kz.kegoc.bln.entity.dict.dto.SubstationMeteringPointDto;
 import kz.kegoc.bln.service.dict.MeteringPointService;
@@ -23,7 +24,7 @@ import java.util.stream.Collectors;
 public class SubstationMeteringPointResourceImpl {
 
 	@GET
-	public Response getAll(@PathParam("substationId") Long substationId) {
+	public Response getAll(@PathParam("substationId") Long substationId, @QueryParam("lang") Lang lang) {
 		List<SubstationMeteringPointDto> list = substationService.findById(substationId)
 			.getMeteringPoints()
 			.stream()
@@ -38,11 +39,11 @@ public class SubstationMeteringPointResourceImpl {
 
 	@GET
 	@Path("/{id : \\d+}")
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		SubstationMeteringPoint entity = service.findById(id);
 		return Response.ok()
-				.entity(mapper.map(entity, SubstationMeteringPointDto.class))
-				.build();
+			.entity(mapper.map(entity, SubstationMeteringPointDto.class))
+			.build();
 	}
 
 
@@ -51,8 +52,8 @@ public class SubstationMeteringPointResourceImpl {
         entityDto.setMeteringPointName(meteringPointService.findById(entityDto.getMeteringPointId()).getName());
 		SubstationMeteringPoint newEntity = service.create(mapper.map(entityDto, SubstationMeteringPoint.class));
 		return Response.ok()
-				.entity(mapper.map(newEntity, SubstationMeteringPointDto.class))
-				.build();
+			.entity(mapper.map(newEntity, SubstationMeteringPointDto.class))
+			.build();
 	}
 
 
@@ -62,8 +63,8 @@ public class SubstationMeteringPointResourceImpl {
         entityDto.setMeteringPointName(meteringPointService.findById(entityDto.getMeteringPointId()).getName());
 		SubstationMeteringPoint newEntity = service.update(mapper.map(entityDto, SubstationMeteringPoint.class));
 		return Response.ok()
-				.entity(mapper.map(newEntity, SubstationMeteringPointDto.class))
-				.build();
+			.entity(mapper.map(newEntity, SubstationMeteringPointDto.class))
+			.build();
 	}
 
 
@@ -72,7 +73,7 @@ public class SubstationMeteringPointResourceImpl {
 	public Response delete(@PathParam("id") Long id) {
 		service.delete(id);
 		return Response.noContent()
-				.build();
+			.build();
 	}
 
 	
@@ -88,6 +89,6 @@ public class SubstationMeteringPointResourceImpl {
 	@Inject
 	private DozerBeanMapper mapper;
 
-	@Context
-	private SecurityContext context;
+	@Inject
+	private Lang defLang;
 }

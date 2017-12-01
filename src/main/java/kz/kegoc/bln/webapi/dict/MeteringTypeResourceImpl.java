@@ -37,8 +37,8 @@ public class MeteringTypeResourceImpl {
 			.collect(Collectors.toList());
 		
 		return Response.ok()
-				.entity(new GenericEntity<Collection<MeteringTypeDto>>(list){})
-				.build();
+			.entity(new GenericEntity<Collection<MeteringTypeDto>>(list){})
+			.build();
 	}
 	
 	

@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.MeteringPointVoltageTrans;
 import kz.kegoc.bln.entity.dict.dto.MeteringPointVoltageTransDto;
 import kz.kegoc.bln.service.dict.MeteringPointVoltageTransService;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
 public class MeteringPointVoltageTransResourceImpl {
 
 	@GET
-	public Response getAll(@PathParam("meteringPointId") Long meteringPointId) {
+	public Response getAll(@PathParam("meteringPointId") Long meteringPointId, @QueryParam("lang") Lang lang) {
 		List<MeteringPointVoltageTransDto> list = meteringPointService.findById(meteringPointId)
 			.getVoltageTrans()
 			.stream()
@@ -36,11 +37,11 @@ public class MeteringPointVoltageTransResourceImpl {
 
 	@GET
 	@Path("/{id : \\d+}")
-	public Response getById(@PathParam("id") Long id) {
+	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		MeteringPointVoltageTrans entity = service.findById(id);
 		return Response.ok()
-				.entity(mapper.map(entity, MeteringPointVoltageTransDto.class))
-				.build();
+			.entity(mapper.map(entity, MeteringPointVoltageTransDto.class))
+			.build();
 	}
 
 
@@ -80,4 +81,7 @@ public class MeteringPointVoltageTransResourceImpl {
 
 	@Inject
 	private DozerBeanMapper mapper;
+
+	@Inject
+	private Lang defLang;
 }
