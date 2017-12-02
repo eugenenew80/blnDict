@@ -19,6 +19,9 @@ public class EnergySourceFilterImpl implements Filter<EnergySource> {
         if (entity.getId()!=null) {
             EnergySource curEntity = energySourceService.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

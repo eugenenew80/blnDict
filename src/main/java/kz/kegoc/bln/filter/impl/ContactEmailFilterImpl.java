@@ -20,6 +20,9 @@ public class ContactEmailFilterImpl implements Filter<ContactEmail> {
         if (entity.getId()!=null) {
             ContactEmail curEntity = service.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

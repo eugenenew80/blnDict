@@ -9,7 +9,7 @@ import javax.ws.rs.core.*;
 
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.EnergySourceBusinessPartner;
-import kz.kegoc.bln.service.dict.EnergySourceCompanyService;
+import kz.kegoc.bln.service.dict.EnergySourceBusinessPartnerService;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.dto.EnergySourceBusinessPartnerDto;
 import kz.kegoc.bln.service.dict.EnergySourceService;
@@ -91,7 +91,7 @@ public class EnergySourceBusinessPartnerResourceImpl {
 	private EnergySourceService energySourceService;
 
 	@Inject
-	private EnergySourceCompanyService service;
+	private EnergySourceBusinessPartnerService service;
 
 	@Inject
 	private DozerBeanMapper mapper;

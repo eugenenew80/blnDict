@@ -19,6 +19,9 @@ public class ReactorFilterImpl implements Filter<Reactor> {
         if (entity.getId()!=null) {
             Reactor curEntity = service.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

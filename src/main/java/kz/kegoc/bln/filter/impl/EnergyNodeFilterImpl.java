@@ -19,6 +19,9 @@ public class EnergyNodeFilterImpl implements Filter<EnergyNode> {
         if (entity.getId()!=null) {
             EnergyNode curEntity = service.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

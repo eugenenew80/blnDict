@@ -19,6 +19,9 @@ public class VoltageTransFilterImpl implements Filter<VoltageTrans> {
         if (entity.getId()!=null) {
             VoltageTrans curEntity = service.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

@@ -19,6 +19,9 @@ public class MeteringTypeFilterImpl implements Filter<MeteringType> {
         if (entity.getId()!=null) {
             MeteringType curEntity = service.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

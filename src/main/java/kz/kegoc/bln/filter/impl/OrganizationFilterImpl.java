@@ -19,6 +19,9 @@ public class OrganizationFilterImpl implements Filter<Organization> {
         if (entity.getId()!=null) {
             Organization curEntity = companyService.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

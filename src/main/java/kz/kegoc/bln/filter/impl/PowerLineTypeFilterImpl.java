@@ -20,6 +20,9 @@ public class PowerLineTypeFilterImpl implements Filter<PowerLineType> {
         if (entity.getId()!=null) {
             PowerLineType curEntity = service.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

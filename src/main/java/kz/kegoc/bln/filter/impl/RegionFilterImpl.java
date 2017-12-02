@@ -19,6 +19,9 @@ public class RegionFilterImpl implements Filter<Region> {
         if (entity.getId()!=null) {
             Region curEntity = service.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

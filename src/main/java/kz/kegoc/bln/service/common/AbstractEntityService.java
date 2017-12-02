@@ -124,11 +124,8 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		if (prePersistFilter !=null)
 			entity = prePersistFilter.filter(entity);
 
-		T currentEntity = findById(entity.getId());
-		if (entity instanceof HasDates) {
-			((HasDates) entity).setCreateDate( ((HasDates)currentEntity).getCreateDate() );
+		if (entity instanceof HasDates)
 			((HasDates) entity).setLastUpdateDate(LocalDateTime.now());
-		}
 
 		if (validator!=null)
 			validate(entity);

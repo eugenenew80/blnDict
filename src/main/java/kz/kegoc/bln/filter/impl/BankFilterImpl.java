@@ -18,6 +18,10 @@ public class BankFilterImpl implements Filter<Bank> {
     private Bank prepare(Bank entity) {
         if (entity.getId()!=null) {
             Bank curEntity = bankService.findById(entity.getId());
+
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

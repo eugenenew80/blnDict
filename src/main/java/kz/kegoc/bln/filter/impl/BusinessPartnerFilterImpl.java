@@ -19,6 +19,9 @@ public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
         if (entity.getId()!=null) {
             BusinessPartner curEntity = businessPartnerService.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

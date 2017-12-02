@@ -19,6 +19,10 @@ public class AccountingTypeFilterImpl implements Filter<AccountingType> {
     private AccountingType prepare(AccountingType entity) {
         if (entity.getId()!=null) {
             AccountingType curEntity = accountingTypeService.findById(entity.getId());
+
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations() == null)
                 entity.setTranslations(curEntity.getTranslations());
         }

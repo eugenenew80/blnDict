@@ -19,6 +19,9 @@ public class SubstationTypeFilterImpl implements Filter<SubstationType> {
         if (entity.getId()!=null) {
             SubstationType curEntity = service.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

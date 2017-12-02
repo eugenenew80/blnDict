@@ -19,6 +19,9 @@ public class MeteringPointTypeFilterImpl implements Filter<MeteringPointType> {
         if (entity.getId()!=null) {
             MeteringPointType curEntity = service.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

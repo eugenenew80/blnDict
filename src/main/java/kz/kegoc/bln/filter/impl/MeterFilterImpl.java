@@ -19,6 +19,9 @@ public class MeterFilterImpl implements Filter<Meter> {
         if (entity.getId()!=null) {
             Meter curEntity = meterService.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

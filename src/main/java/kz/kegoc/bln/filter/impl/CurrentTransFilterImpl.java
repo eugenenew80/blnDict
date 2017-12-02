@@ -19,6 +19,9 @@ public class CurrentTransFilterImpl implements Filter<CurrentTrans> {
         if (entity.getId()!=null) {
             CurrentTrans curEntity = currentTransService.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

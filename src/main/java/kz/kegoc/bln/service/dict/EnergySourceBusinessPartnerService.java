@@ -6,4 +6,4 @@ import kz.kegoc.bln.service.common.EntityService;
 import javax.ejb.Local;
 
 @Local
-public interface EnergySourceCompanyService extends EntityService<EnergySourceBusinessPartner> {}
+public interface EnergySourceBusinessPartnerService extends EntityService<EnergySourceBusinessPartner> {}

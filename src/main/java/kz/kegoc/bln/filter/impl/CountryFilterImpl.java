@@ -20,6 +20,9 @@ public class CountryFilterImpl implements Filter<Country> {
         if (entity.getId()!=null) {
             Country curEntity = countryService.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }

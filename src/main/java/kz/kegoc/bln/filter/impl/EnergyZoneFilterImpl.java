@@ -19,6 +19,9 @@ public class EnergyZoneFilterImpl implements Filter<EnergyZone> {
         if (entity.getId()!=null) {
             EnergyZone curEntity = service.findById(entity.getId());
 
+            entity.setCreateDate(curEntity.getCreateDate());
+            entity.setCreateBy(curEntity.getCreateBy());
+
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
