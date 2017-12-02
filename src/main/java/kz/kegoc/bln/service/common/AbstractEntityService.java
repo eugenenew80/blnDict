@@ -141,9 +141,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		if (entityId==null) 
 			throw new InvalidArgumentException();		
 		
-		findById(entityId);
-		
-		return repository.delete(entityId); 
+		return repository.delete(entityId);
 	}
 
 
