@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-mappings version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/orm_2_1.xsd">
 
+	<entity class="kz.kegoc.bln.entity.adm.User">
+		<table name="adm_users" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+			</id>
+
+			<basic name="name">
+				<column name="code" />
+			</basic>
+
+			<basic name="description">
+				<column name="name" />
+			</basic>
+		</attributes>
+	</entity>
+
 	<entity class="kz.kegoc.bln.entity.dict.Unit">
 		<table name="dict_units" schema="apps"/>
 		<attributes>
@@ -19,16 +36,32 @@
       		</basic>
 
       		<basic name="shortName">
-      			<column name="short_name" updatable="false" />
+      			<column name="short_name" />
       		</basic>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
 
 			<basic name="factor">
 				<column name="factor" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="baseUnit">
 				<join-column name="base_unit_id"/>
@@ -71,6 +104,22 @@
 				<column name="short_name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="unit">
 				<join-column name="unit_id"/>
 			</many-to-one>
@@ -96,8 +145,24 @@
       		</basic>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="dataSource" orphan-removal="true">
 				<map-key name="lang"/>
@@ -132,6 +197,22 @@
 				<column name="name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="dataSource">
 				<join-column name="data_source_id"/>
 			</many-to-one>
@@ -152,11 +233,11 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
       		
       		<basic name="manufacturer">
-      			<column name="manufacturer" updatable="false" />
+      			<column name="manufacturer" />
       		</basic>
       		
       		<basic name="ratedCurrent">
@@ -203,6 +284,22 @@
 				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<one-to-many name="translations" mapped-by="meterType" orphan-removal="true">
 				<map-key name="lang"/>
 				<cascade>
@@ -240,6 +337,22 @@
 				<column name="manufacturer" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="meterType">
 				<join-column name="meter_type_id"/>
 			</many-to-one>
@@ -261,11 +374,11 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
       		
       		<basic name="manufacturer">
-      			<column name="manufacturer" updatable="false" />
+      			<column name="manufacturer" />
       		</basic>
       		
       		<basic name="ratedCurrent1">
@@ -287,6 +400,22 @@
       		<basic name="maxCurrent">
       			<column name="max_current" />
       		</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="currentTransType" orphan-removal="true">
 				<map-key name="lang"/>
@@ -325,6 +454,22 @@
 				<column name="manufacturer" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="currentTransType">
 				<join-column name="current_trans_type_id"/>
 			</many-to-one>
@@ -346,11 +491,11 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
       		
       		<basic name="manufacturer">
-      			<column name="manufacturer" updatable="false" />
+      			<column name="manufacturer" />
       		</basic>
       		
       		<basic name="ratedVoltage1">
@@ -363,7 +508,23 @@
 
       		<basic name="accuracyClass">
       			<column name="accuracy_class" />
-      		</basic>      		
+      		</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="voltageTransType" orphan-removal="true">
 				<map-key name="lang"/>
@@ -402,6 +563,22 @@
 				<column name="manufacturer" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="voltageTransType">
 				<join-column name="voltage_trans_type_id"/>
 			</many-to-one>
@@ -426,8 +603,24 @@
       		</basic>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="energyZone" orphan-removal="true">
 				<map-key name="lang"/>
@@ -462,6 +655,22 @@
 				<column name="name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="energyZone">
 				<join-column name="energy_zone_id"/>
 			</many-to-one>
@@ -487,11 +696,27 @@
       		</basic>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
 
 			<many-to-one name="country">
 				<join-column name="country_id"/>
+			</many-to-one>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
 			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="region" orphan-removal="true">
@@ -527,6 +752,22 @@
 				<column name="name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="region">
 				<join-column name="region_id"/>
 			</many-to-one>
@@ -547,15 +788,31 @@
 			</id>
 
       		<basic name="shortName">
-      			<column name="short_name" updatable="false" />
+      			<column name="short_name" />
       		</basic>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
 
 			<many-to-one name="region">
 				<join-column name="region_id"/>
+			</many-to-one>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
 			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="energyNode" orphan-removal="true">
@@ -595,6 +852,22 @@
 				<column name="short_name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="energyNode">
 				<join-column name="energy_node_id"/>
 			</many-to-one>
@@ -615,7 +888,7 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
       		
       		<basic name="bin">
@@ -625,7 +898,23 @@
 			<basic name="orgType">
 				<column name="org_type"/>
 				<enumerated>STRING</enumerated>
-			</basic>a
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="parentOrg">
 				<join-column name="parent_org_id"/>
@@ -664,6 +953,22 @@
 				<column name="name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="org">
 				<join-column name="org_id"/>
 			</many-to-one>
@@ -685,11 +990,11 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
       		
       		<basic name="manufacturer">
-      			<column name="manufacturer" updatable="false" />
+      			<column name="manufacturer" />
       		</basic>
       		
       		<basic name="serialNumber">
@@ -753,6 +1058,22 @@
 				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="businessPartner">
 				<join-column name="business_partner_id"/>
 			</many-to-one>
@@ -799,6 +1120,22 @@
 				<column name="manufacturer" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="meter">
 				<join-column name="meter_id"/>
 			</many-to-one>
@@ -820,11 +1157,11 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
       		
       		<basic name="manufacturer">
-      			<column name="manufacturer" updatable="false" />
+      			<column name="manufacturer" />
       		</basic>
 
       		<basic name="ratedCurrent1">
@@ -853,6 +1190,22 @@
 
 			<many-to-one name="org">
 				<join-column name="org_id"/>
+			</many-to-one>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
 			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="currentTrans" orphan-removal="true">
@@ -893,6 +1246,22 @@
 				<column name="manufacturer" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="currentTrans">
 				<join-column name="current_trans_id"/>
 			</many-to-one>
@@ -914,11 +1283,11 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
       		
       		<basic name="manufacturer">
-      			<column name="manufacturer" updatable="false" />
+      			<column name="manufacturer" />
       		</basic>
       		
       		<basic name="ratedVoltage1">
@@ -931,8 +1300,24 @@
 
       		<basic name="accuracyClass">
       			<column name="accuracy_class" />
-      		</basic>      		
-      		      		      		      		
+      		</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="businessPartner">
 				<join-column name="business_partner_id"/>
 			</many-to-one>
@@ -978,6 +1363,22 @@
 				<column name="manufacturer" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="voltageTrans">
 				<join-column name="voltage_trans_id"/>
 			</many-to-one>
@@ -999,17 +1400,33 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
       		
       		<basic name="shortName">
-      			<column name="short_name" updatable="false" />
+      			<column name="short_name" />
       		</basic>
 
 			<basic name="res">
 				<column name="is_res" />
 				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="energySourceType" orphan-removal="true">
 				<map-key name="lang"/>
@@ -1048,6 +1465,22 @@
 				<column name="short_name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="energySourceType">
 				<join-column name="energy_source_type_id"/>
 			</many-to-one>
@@ -1069,18 +1502,34 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
       		
       		<basic name="shortName">
-      			<column name="short_name" updatable="false" />
+      			<column name="short_name" />
       		</basic>
 
 			<basic name="address">
-				<column name="address" updatable="false"/>
+				<column name="address"/>
 			</basic>
 
-      		<many-to-one name="voltageClass">
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="voltageClass">
       			<join-column name="voltage_class_id" />
       		</many-to-one>
 
@@ -1136,6 +1585,22 @@
 				<column name="address" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="substation">
 				<join-column name="substation_id"/>
 			</many-to-one>
@@ -1162,7 +1627,23 @@
       		<basic name="endDate">
       			<column name="end_date" />
       		</basic>
-      		
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="substation">
 				<join-column name="substation_id" />	
 			</many-to-one>  
@@ -1198,6 +1679,22 @@
 			<basic name="endDate">
 				<column name="end_date" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="meteringType">
 				<join-column name="metering_type_id" />
@@ -1248,7 +1745,23 @@
 				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
 
-      		<many-to-one name="voltageClass">
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="voltageClass">
       			<join-column name="voltage_class_id" />
       		</many-to-one>
 
@@ -1304,6 +1817,22 @@
 				<column name="address" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="energySource">
 				<join-column name="energy_source_id"/>
 			</many-to-one>
@@ -1330,7 +1859,23 @@
       		<basic name="endDate">
       			<column name="end_date" />
       		</basic>
-      		
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="energySource">
 				<join-column name="energy_source_id" />	
 			</many-to-one>  
@@ -1368,6 +1913,22 @@
 				<column name="end_date" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="energySource">
 				<join-column name="energy_source_id" />
 			</many-to-one>
@@ -1396,11 +1957,11 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
       		
       		<basic name="shortName">
-      			<column name="short_name" updatable="false" />
+      			<column name="short_name" />
       		</basic>
 
       		<basic name="usedInEnergySources">
@@ -1412,6 +1973,22 @@
       			<column name="is_used_in_substations" />
 				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
       		</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="meteringType" orphan-removal="true">
 				<map-key name="lang"/>
@@ -1450,6 +2027,22 @@
 				<column name="short_name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="meteringType">
 				<join-column name="metering_type_id"/>
 			</many-to-one>
@@ -1470,12 +2063,28 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
       		
       		<basic name="shortName">
-      			<column name="short_name" updatable="false" />
+      			<column name="short_name" />
       		</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="substationType" orphan-removal="true">
 				<map-key name="lang"/>
@@ -1514,6 +2123,22 @@
 				<column name="short_name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="substationType">
 				<join-column name="substation_type_id"/>
 			</many-to-one>
@@ -1534,8 +2159,24 @@
 			</id>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="accountingType" orphan-removal="true">
 				<map-key name="lang"/>
@@ -1570,6 +2211,22 @@
 				<column name="name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="accountingType">
 				<join-column name="accounting_type_id"/>
 			</many-to-one>
@@ -1594,8 +2251,24 @@
       		</basic>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="meteringPointType" orphan-removal="true">
 				<map-key name="lang"/>
@@ -1630,6 +2303,22 @@
 				<column name="name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="meteringPointType">
 				<join-column name="metering_point_type_id"/>
 			</many-to-one>
@@ -1655,11 +2344,11 @@
       		</basic>
 
       		<basic name="name">
-      			<column name="name" updatable="false" />
+      			<column name="name" />
       		</basic>
 
       		<basic name="shortName">
-      			<column name="short_name" updatable="false" />
+      			<column name="short_name" />
       		</basic>
       		
       		<basic name="externalCode">
@@ -1677,6 +2366,22 @@
       		<basic name="ratedVoltage">
       			<column name="rated_voltage" />
       		</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="businessPartner1">
 				<join-column name="business_partner_id_1"/>
@@ -1748,6 +2453,22 @@
 				<column name="short_name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="meteringPoint">
 				<join-column name="metering_point_id"/>
 			</many-to-one>
@@ -1772,6 +2493,22 @@
 			<basic name="shortName">
 				<column name="short_name" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 		</attributes>
 	</entity>
 
@@ -1795,7 +2532,23 @@
       		<basic name="endDate">
       			<column name="end_date" />
       		</basic>
-      		
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="meteringPoint">
 				<join-column name="metering_point_id" />	
 			</many-to-one>  
@@ -1828,6 +2581,22 @@
 				<column name="end_date" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="meteringPoint">
 				<join-column name="metering_point_id" />
 			</many-to-one>
@@ -1858,6 +2627,22 @@
 			<basic name="endDate">
 				<column name="end_date" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="meteringPoint">
 				<join-column name="metering_point_id" />
@@ -1891,6 +2676,22 @@
 				<column name="name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<one-to-many name="translations" mapped-by="country" orphan-removal="true">
 				<map-key name="lang"/>
 				<cascade>
@@ -1923,6 +2724,22 @@
 			<basic name="name">
 				<column name="name" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="country">
 				<join-column name="country_id"/>
@@ -1958,6 +2775,22 @@
 			<basic name="bin">
 				<column name="bin" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="parentBank">
 				<join-column name="parent_bank_id"/>
@@ -1996,6 +2829,22 @@
 				<column name="name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="bank">
 				<join-column name="bank_id"/>
 			</many-to-one>
@@ -2016,7 +2865,7 @@
 			</id>
 
 			<basic name="name">
-				<column name="name" updatable="false" />
+				<column name="name" />
 			</basic>
 
 			<basic name="index">
@@ -2024,11 +2873,11 @@
 			</basic>
 
 			<basic name="locality">
-				<column name="locality" updatable="false" />
+				<column name="locality" />
 			</basic>
 
 			<basic name="street">
-				<column name="street" updatable="false"/>
+				<column name="street"/>
 			</basic>
 
 			<basic name="houseNumber">
@@ -2051,9 +2900,26 @@
 				<join-column name="country_id"/>
 			</many-to-one>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="region">
 				<join-column name="region_id"/>
 			</many-to-one>
+
 			<one-to-many name="translations" mapped-by="postAddress" orphan-removal="true">
 				<map-key name="lang"/>
 				<cascade>
@@ -2095,6 +2961,22 @@
 				<column name="street" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="postAddress">
 				<join-column name="post_address_id"/>
 			</many-to-one>
@@ -2115,7 +2997,7 @@
 			</id>
 
 			<basic name="name">
-				<column name="name" updatable="false" />
+				<column name="name" />
 			</basic>
 
 			<basic name="bin">
@@ -2154,6 +3036,22 @@
 				<column name="is_electricity_consumer"/>
 				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="actualAddress">
 				<join-column name="actual_address_id"/>
@@ -2202,6 +3100,22 @@
 				<column name="name" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="businessPartner">
 				<join-column name="business_partner_id"/>
 			</many-to-one>
@@ -2224,6 +3138,22 @@
 			<basic name="bankAccountNumber">
 				<column name="bank_account_number" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="bank">
 				<join-column name="bank_id"/>
@@ -2255,6 +3185,22 @@
 			<basic name="value">
 				<column name="value" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="voltageClass" orphan-removal="true">
 				<map-key name="lang"/>
@@ -2288,6 +3234,22 @@
 			<basic name="name">
 				<column name="name" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="voltageClass">
 				<join-column name="voltage_class_id"/>
@@ -2325,6 +3287,22 @@
 				<column name="description" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="businessPartner">
 				<join-column name="business_partner_id" />
 			</many-to-one>
@@ -2358,10 +3336,6 @@
 				<enumerated>STRING</enumerated>
 			</basic>
 
-			<basic name="contactType">
-				<column name="contact_type" />
-			</basic>
-
 			<basic name="post">
 				<column name="post" />
 			</basic>
@@ -2370,6 +3344,22 @@
 				<column name="description" />
 			</basic>
 
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
 			<many-to-one name="contact">
 				<join-column name="contact_id"/>
 			</many-to-one>
@@ -2377,14 +3367,14 @@
 	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.ContactPhoneNumber">
-		<table name="dict_phone_numbers" schema="apps" />
+		<table name="dict_contact_phone_numbers" schema="apps" />
 		<attributes>
 			<id name="id">
 				<column name="id" />
-				<generated-value strategy="SEQUENCE" generator="dict_phone_numbers_gen" />
+				<generated-value strategy="SEQUENCE" generator="dict_contact_phone_numbers_gen" />
 				<sequence-generator
-						name="dict_phone_numbers_gen"
-						sequence-name="apps.dict_phone_numbers_s"
+						name="dict_contact_phone_numbers_gen"
+						sequence-name="apps.dict_contact_phone_numbers_s"
 						allocation-size="1"
 				/>
 			</id>
@@ -2400,6 +3390,22 @@
 
 			<many-to-one name="contact">
 				<join-column name="contact_id" />
+			</many-to-one>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
 			</many-to-one>
 
 			<transient name="lang" />
@@ -2426,6 +3432,22 @@
 			<basic name="description">
 				<column name="description" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="contact">
 				<join-column name="contact_id" />
@@ -2463,6 +3485,22 @@
 			<basic name="description">
 				<column name="description" />
 			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
 
 			<many-to-one name="contactEmail">
 				<join-column name="contact_email_id"/>
