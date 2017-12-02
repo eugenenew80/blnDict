@@ -1,16 +1,19 @@
 package kz.kegoc.bln.entity.dict;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import javax.validation.constraints.*;
+
+import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.*;
 import kz.kegoc.bln.entity.dict.translate.MeteringPointTranslate;
 import lombok.*;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class MeteringPoint implements HasId, HasCode, HasName, HasLang {
+public class MeteringPoint implements HasId, HasCode, HasName, HasLang, HasDates, HasUser {
 	private Long id;
 
 	@NotNull @Size(max = 15)
@@ -48,6 +51,10 @@ public class MeteringPoint implements HasId, HasCode, HasName, HasLang {
 	@NotNull
 	private Organization org;
 
+	private LocalDateTime createDate;
+	private LocalDateTime lastUpdateDate;
+	private User createBy;
+	private User lastUpdateBy;
 	private List<MeteringPointMeter> meters;
 	private List<MeteringPointCurrentTrans> currentTrans;
 	private List<MeteringPointVoltageTrans> voltageTrans;

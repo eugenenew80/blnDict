@@ -1387,5 +1387,161 @@
 		/>
 	</changeSet>
 
+	<changeSet id="dict-eug-322" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating foreign constraint: dict_power_transformers to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_power_transformers"
+				baseColumnNames="business_partner_id"
+				constraintName="fk_dict_power_transformers_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-eug-323" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating foreign constraint: dict_power_transformers to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_power_transformers"
+				baseColumnNames="org_id"
+				constraintName="fk_dict_power_transformers_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+
+	<changeSet id="dict-eug-324" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating foreign constraint: dict_reactors to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_reactors"
+				baseColumnNames="business_partner_id"
+				constraintName="fk_dict_reactors_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-eug-325" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating foreign constraint: dict_reactors to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_reactors"
+				baseColumnNames="org_id"
+				constraintName="fk_dict_reactors_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-eug-326" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating foreign constraint: dict_regions to dict_countries</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_regions"
+				baseColumnNames="country_id"
+				constraintName="fk_dict_regions_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_countries"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-eug-327" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating foreign constraint: dict_units to dict_units</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_units"
+				baseColumnNames="base_unit_id"
+				constraintName="fk_dict_units_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+
+	<changeSet id="dict-eug-328" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating foreign constraint: dict_voltage_trans to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_voltage_trans"
+				baseColumnNames="business_partner_id"
+				constraintName="fk_dict_voltage_trans_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-eug-329" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating foreign constraint: dict_voltage_trans to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_voltage_trans"
+				baseColumnNames="org_id"
+				constraintName="fk_dict_voltage_trans_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-eug-330" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating foreign constraint: ecm_content to ecm_content_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="ecm_content"
+				baseColumnNames="content_type_id"
+				constraintName="fk_ecm_content_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="ecm_content_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
 
 </databaseChangeLog>

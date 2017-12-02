@@ -1,18 +1,17 @@
 package kz.kegoc.bln.entity.dict.translate;
 
-import kz.kegoc.bln.entity.common.HasId;
-import kz.kegoc.bln.entity.common.HasLang;
-import kz.kegoc.bln.entity.common.HasName;
-import kz.kegoc.bln.entity.common.Lang;
+import kz.kegoc.bln.entity.adm.User;
+import kz.kegoc.bln.entity.common.*;
 import kz.kegoc.bln.entity.dict.EnergyNode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class EnergyNodeTranslate implements HasId, HasName, HasLang {
+public class EnergyNodeTranslate implements HasId, HasName, HasLang, HasDates, HasUser {
     private Long id;
 
     @NotNull
@@ -26,4 +25,9 @@ public class EnergyNodeTranslate implements HasId, HasName, HasLang {
 
     @NotNull
     private EnergyNode energyNode;
+
+    private LocalDateTime createDate;
+    private LocalDateTime lastUpdateDate;
+    private User createBy;
+    private User lastUpdateBy;
 }

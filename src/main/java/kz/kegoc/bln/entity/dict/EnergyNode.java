@@ -1,14 +1,18 @@
 package kz.kegoc.bln.entity.dict;
 
 import javax.validation.constraints.*;
+
+import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.*;
 import kz.kegoc.bln.entity.dict.translate.EnergyNodeTranslate;
 import lombok.*;
+
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class EnergyNode implements HasId, HasName {
+public class EnergyNode implements HasId, HasName, HasDates, HasUser {
 	private Long id;
 
 	@NotNull @Size(max = 100)
@@ -20,6 +24,10 @@ public class EnergyNode implements HasId, HasName {
 	@NotNull
 	private Region region;
 
+	private LocalDateTime createDate;
+	private LocalDateTime lastUpdateDate;
+	private User createBy;
+	private User lastUpdateBy;
 	private Map<Lang, EnergyNodeTranslate> translations;
 	private Lang lang;
 }

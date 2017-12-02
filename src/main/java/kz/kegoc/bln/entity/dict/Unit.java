@@ -1,14 +1,18 @@
 package kz.kegoc.bln.entity.dict;
 
 import javax.validation.constraints.*;
+
+import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.*;
 import kz.kegoc.bln.entity.dict.translate.UnitTranslate;
 import lombok.*;
+
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class Unit implements HasId, HasCode, HasName, HasLang {
+public class Unit implements HasId, HasCode, HasName, HasLang, HasDates, HasUser {
 	private Long id;
 
 	@NotNull @Size(max = 10)
@@ -22,6 +26,10 @@ public class Unit implements HasId, HasCode, HasName, HasLang {
 
 	private Unit baseUnit;
 	private Double factor;
+	private LocalDateTime createDate;
+	private LocalDateTime lastUpdateDate;
+	private User createBy;
+	private User lastUpdateBy;
 	private Map<Lang, UnitTranslate> translations;
 	private Lang lang;
 }

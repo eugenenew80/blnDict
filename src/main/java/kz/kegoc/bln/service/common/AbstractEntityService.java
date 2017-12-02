@@ -127,7 +127,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		T currentEntity = findById(entity.getId());
 		if (entity instanceof HasDates) {
 			((HasDates) entity).setCreateDate( ((HasDates)currentEntity).getCreateDate() );
-			((HasDates) entity).setUpdateDate(LocalDateTime.now());
+			((HasDates) entity).setLastUpdateDate(LocalDateTime.now());
 		}
 
 		if (validator!=null)

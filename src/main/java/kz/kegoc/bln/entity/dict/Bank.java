@@ -1,16 +1,18 @@
 package kz.kegoc.bln.entity.dict;
 
+import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.*;
 import kz.kegoc.bln.entity.dict.translate.BankTranslate;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class Bank implements HasId, HasCode, HasName, HasLang {
+public class Bank implements HasId, HasCode, HasName, HasLang, HasDates, HasUser {
 	private Long id;
 
 	@NotNull @Size(max = 40)
@@ -26,7 +28,10 @@ public class Bank implements HasId, HasCode, HasName, HasLang {
 	private String bin;
 
 	private Bank parentBank;
-
+	private LocalDateTime createDate;
+	private LocalDateTime lastUpdateDate;
+	private User createBy;
+	private User lastUpdateBy;
 	private Map<Lang, BankTranslate> translations;
 	private Lang lang;
 }

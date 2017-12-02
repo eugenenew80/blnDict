@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 public interface HasDates  {
 	LocalDateTime getCreateDate();
-	LocalDateTime getUpdateDate();
+	LocalDateTime getLastUpdateDate();
 	
 	void setCreateDate(LocalDateTime createDate);
-	void setUpdateDate(LocalDateTime updateDate) ;
+	void setLastUpdateDate(LocalDateTime updateDate) ;
 }

@@ -1,16 +1,16 @@
 package kz.kegoc.bln.entity.dict;
 
-import kz.kegoc.bln.entity.common.HasId;
-import kz.kegoc.bln.entity.common.HasLang;
-import kz.kegoc.bln.entity.common.Lang;
+import kz.kegoc.bln.entity.adm.User;
+import kz.kegoc.bln.entity.common.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class MeteringPointCharacteristic implements HasId,  HasLang {
+public class MeteringPointCharacteristic implements HasId, HasLang, HasDates, HasUser {
 	private Long id;
 
 	@NotNull
@@ -23,5 +23,9 @@ public class MeteringPointCharacteristic implements HasId,  HasLang {
 	private Double transformationRate;
 	private Double minLoadInAccuracyClass;
 	private Double maxLoadInAccuracyClass;
+	private LocalDateTime createDate;
+	private LocalDateTime lastUpdateDate;
+	private User createBy;
+	private User lastUpdateBy;
 	private Lang lang;
 }

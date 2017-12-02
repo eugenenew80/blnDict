@@ -1,16 +1,18 @@
 package kz.kegoc.bln.entity.dict;
 
+import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.*;
 import kz.kegoc.bln.entity.dict.translate.CurrentTransTypeTranslate;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class CurrentTransType implements HasId, HasName {
+public class CurrentTransType implements HasId, HasName, HasDates, HasUser {
 	private Long id;
 
 	@NotNull @Size(max = 100)
@@ -24,7 +26,10 @@ public class CurrentTransType implements HasId, HasName {
 	private Double accuracyClass;
 	private Double minCurrent;
 	private Double maxCurrent;
-
+	private LocalDateTime createDate;
+	private LocalDateTime lastUpdateDate;
+	private User createBy;
+	private User lastUpdateBy;
 	private Map<Lang, CurrentTransTypeTranslate> translations;
 	private Lang lang;
 }

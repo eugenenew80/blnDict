@@ -1,19 +1,18 @@
 package kz.kegoc.bln.entity.dict.translate;
 
-import kz.kegoc.bln.entity.common.HasId;
-import kz.kegoc.bln.entity.common.HasLang;
-import kz.kegoc.bln.entity.common.HasName;
-import kz.kegoc.bln.entity.common.Lang;
+import kz.kegoc.bln.entity.adm.User;
+import kz.kegoc.bln.entity.common.*;
 import kz.kegoc.bln.entity.dict.Reactor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class ReactorTranslate implements HasId, HasName, HasLang {
+public class ReactorTranslate implements HasId, HasName, HasLang, HasDates, HasUser {
     private Long id;
 
     @NotNull
@@ -27,4 +26,9 @@ public class ReactorTranslate implements HasId, HasName, HasLang {
 
     @NotNull
     private Reactor reactor;
+
+    private LocalDateTime createDate;
+    private LocalDateTime lastUpdateDate;
+    private User createBy;
+    private User lastUpdateBy;
 }
