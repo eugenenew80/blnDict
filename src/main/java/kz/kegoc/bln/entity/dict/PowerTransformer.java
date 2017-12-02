@@ -32,6 +32,9 @@ public class PowerTransformer implements HasId, HasName, HasLang, HasDates, HasU
 	private Double pkzMl;
 
 	@NotNull
+	private BusinessPartner businessPartner;
+
+	@NotNull
 	private Organization org;
 
 	private LocalDateTime createDate;

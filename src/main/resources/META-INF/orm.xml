@@ -2493,22 +2493,6 @@
 			<basic name="shortName">
 				<column name="short_name" />
 			</basic>
-
-			<basic name="createDate">
-				<column name="create_date" />
-			</basic>
-
-			<basic name="lastUpdateDate">
-				<column name="last_update_date" />
-			</basic>
-
-			<many-to-one name="createBy">
-				<join-column name="create_by" />
-			</many-to-one>
-
-			<many-to-one name="lastUpdateBy">
-				<join-column name="last_update_by" />
-			</many-to-one>
 		</attributes>
 	</entity>
 
@@ -3277,6 +3261,7 @@
 
 			<basic name="contactType">
 				<column name="contact_type" />
+				<enumerated>STRING</enumerated>
 			</basic>
 
 			<basic name="post">
@@ -3507,4 +3492,586 @@
 			</many-to-one>
 		</attributes>
 	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.PowerLineType">
+		<table name="dict_power_line_types" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_power_line_types_gen" />
+				<sequence-generator
+						name="dict_power_line_types_gen"
+						sequence-name="apps.dict_power_line_types_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="code">
+				<column name="code" />
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<one-to-many name="translations" mapped-by="powerLineType" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang"/>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.PowerLineTypeTranslate">
+		<table name="dict_power_line_types_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_power_line_types_tl_gen" />
+				<sequence-generator
+						name="dict_power_line_types_tl_gen"
+						sequence-name="apps.dict_power_line_types_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="powerLineType">
+				<join-column name="power_line_type_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.Reactor">
+		<table name="dict_reactors" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_reactors_gen" />
+				<sequence-generator
+						name="dict_reactors_gen"
+						sequence-name="apps.dict_reactors_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="shortName">
+				<column name="short_name" />
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="deltaPr">
+				<column name="delta_pr" />
+			</basic>
+
+			<basic name="unom">
+				<column name="unom" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id" />
+			</many-to-one>
+
+			<many-to-one name="org">
+				<join-column name="org_id" />
+			</many-to-one>
+
+			<many-to-one name="energyObject">
+				<join-column name="energy_object_id" referenced-column-name="object_id" />
+				<join-column name="energy_object_type" referenced-column-name="object_type" />
+			</many-to-one>
+
+			<one-to-many name="translations" mapped-by="reactor" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang"/>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.ReactorTranslate">
+		<table name="dict_reactors_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_reactors_tl_gen" />
+				<sequence-generator
+						name="dict_reactors_tl_gen"
+						sequence-name="apps.dict_reactors_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="shortName">
+				<column name="short_name" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="reactor">
+				<join-column name="reactor_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.PowerTransformer">
+		<table name="dict_power_transformers" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_power_transformers_gen" />
+				<sequence-generator
+						name="dict_power_transformers_gen"
+						sequence-name="apps.dict_power_transformers_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="shortName">
+				<column name="short_name" />
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="snom">
+				<column name="snom" />
+			</basic>
+
+			<basic name="deltaPxx">
+				<column name="delta_pxx" />
+			</basic>
+
+			<basic name="unomH">
+				<column name="unom_h" />
+			</basic>
+
+			<basic name="pkzHl">
+				<column name="pkz_hl" />
+			</basic>
+
+			<basic name="pkzMl">
+				<column name="pkz_ml" />
+			</basic>
+
+			<basic name="pkzHm">
+				<column name="pkz_hm" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id" />
+			</many-to-one>
+
+			<many-to-one name="org">
+				<join-column name="org_id" />
+			</many-to-one>
+
+			<many-to-one name="energyObject">
+				<join-column name="energy_object_id" referenced-column-name="object_id" />
+				<join-column name="energy_object_type" referenced-column-name="object_type" />
+			</many-to-one>
+
+			<one-to-many name="translations" mapped-by="reactor" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang"/>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.PowerTransformerTranslate">
+		<table name="dict_power_transformers_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_power_transformers_tl_gen" />
+				<sequence-generator
+						name="dict_power_transformers_tl_gen"
+						sequence-name="apps.dict_power_transformers_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="shortName">
+				<column name="short_name" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="powerTransformer">
+				<join-column name="power_transformer_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.PowerLine">
+		<table name="dict_power_lines" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_power_lines_gen" />
+				<sequence-generator
+						name="dict_power_lines_gen"
+						sequence-name="apps.dict_power_lines_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="shortName">
+				<column name="short_name" />
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="propertyBoundary">
+				<column name="property_boundary" />
+			</basic>
+
+			<basic name="length">
+				<column name="length" />
+			</basic>
+
+			<basic name="r">
+				<column name="r" />
+			</basic>
+
+			<basic name="po">
+				<column name="po" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<one-to-many name="powerLineParts" mapped-by="powerLine" />
+
+			<one-to-many name="translations" mapped-by="powerLine" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang"/>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.PowerLineTranslate">
+		<table name="dict_power_lines_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_power_lines_tl_gen" />
+				<sequence-generator
+						name="dict_power_lines_tl_gen"
+						sequence-name="apps.dict_power_lines_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="shortName">
+				<column name="short_name" />
+			</basic>
+
+			<basic name="propertyBoundary">
+				<column name="property_boundary" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="powerLine">
+				<join-column name="power_line_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.PowerLinePart">
+		<table name="dict_power_line_parts" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_power_line_parts_gen" />
+				<sequence-generator
+						name="dict_power_line_parts_gen"
+						sequence-name="apps.dict_power_line_parts_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="length">
+				<column name="length" />
+			</basic>
+
+			<basic name="r">
+				<column name="r" />
+			</basic>
+
+			<basic name="startDate">
+				<column name="start_date" />
+			</basic>
+
+			<basic name="endDate">
+				<column name="end_date" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="powerLine">
+				<join-column name="power_line_id" />
+			</many-to-one>
+
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id" />
+			</many-to-one>
+
+			<many-to-one name="org">
+				<join-column name="org_id" />
+			</many-to-one>
+
+			<one-to-many name="translations" mapped-by="powerLinePart" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang"/>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.PowerLinePartTranslate">
+		<table name="dict_power_line_parts_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_power_line_parts_tl_gen" />
+				<sequence-generator
+						name="dict_power_line_parts_tl_gen"
+						sequence-name="apps.dict_power_line_parts_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="powerLinePart">
+				<join-column name="power_line_part_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
 </entity-mappings>
