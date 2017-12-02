@@ -2415,6 +2415,7 @@
 			<one-to-many name="meters" mapped-by="meteringPoint" />
 			<one-to-many name="currentTrans" mapped-by="meteringPoint" />
 			<one-to-many name="voltageTrans" mapped-by="meteringPoint" />
+			<one-to-many name="characteristics" mapped-by="meteringPoint" />
 
 			<one-to-many name="translations" mapped-by="meteringPoint" orphan-removal="true">
 				<map-key name="lang"/>
@@ -3292,6 +3293,9 @@
 				<join-column name="business_partner_id" />
 			</many-to-one>
 
+			<one-to-many name="contactEmails" mapped-by="contact" />
+			<one-to-many name="contactPhoneNumbers" mapped-by="contact" />
+
 			<one-to-many name="translations" mapped-by="contact" orphan-removal="true">
 				<map-key name="lang"/>
 				<cascade>
@@ -3493,6 +3497,71 @@
 		</attributes>
 	</entity>
 
+
+	<entity class="kz.kegoc.bln.entity.dict.MeteringPointCharacteristic">
+		<table name="dict_metering_point_characteristics" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_metering_point_characteristics_gen" />
+				<sequence-generator
+						name="dict_metering_point_characteristics_gen"
+						sequence-name="apps.dict_metering_point_characteristics_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="startDate">
+				<column name="start_date" />
+			</basic>
+
+			<basic name="endDate">
+				<column name="end_date" />
+			</basic>
+
+			<basic name="voltagePermissibleLosses">
+				<column name="voltage_permissible_losses" />
+			</basic>
+
+			<basic name="permissibleRelativeErrorLimit">
+				<column name="permissible_relative_error_limit" />
+			</basic>
+
+			<basic name="transformationRate">
+				<column name="transformation_rate" />
+			</basic>
+
+			<basic name="minLoadInAccuracyClass">
+				<column name="min_load_in_accuracy_class" />
+			</basic>
+
+			<basic name="maxLoadInAccuracyClass">
+				<column name="max_load_in_accuracy_class" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="meteringPoint">
+				<join-column name="metering_point_id" />
+			</many-to-one>
+
+			<transient name="lang"/>
+		</attributes>
+	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.PowerLineType">
 		<table name="dict_power_line_types" schema="apps"/>
@@ -3779,7 +3848,7 @@
 				<join-column name="energy_object_type" referenced-column-name="object_type" />
 			</many-to-one>
 
-			<one-to-many name="translations" mapped-by="reactor" orphan-removal="true">
+			<one-to-many name="translations" mapped-by="powerTransformer" orphan-removal="true">
 				<map-key name="lang"/>
 				<cascade>
 					<cascade-all/>
@@ -3890,6 +3959,10 @@
 
 			<many-to-one name="lastUpdateBy">
 				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="powerLineType">
+				<join-column name="power_line_type_id" />
 			</many-to-one>
 
 			<one-to-many name="powerLineParts" mapped-by="powerLine" />
