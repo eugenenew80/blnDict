@@ -40,6 +40,10 @@
 			<column name="end_date" type="date">
 				<constraints nullable="true"/>
 			</column>
+
+			<column name="org_id" type="number">
+				<constraints nullable="true"/>
+			</column>
 		</createTable>
     </changeSet>
 

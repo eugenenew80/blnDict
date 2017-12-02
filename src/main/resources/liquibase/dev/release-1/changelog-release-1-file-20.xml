@@ -65,7 +65,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="reference_metering_point_id" type="varchar(300)">
+            <column name="reference_metering_point_id" type="number">
                 <constraints nullable="true"/>
             </column>
 

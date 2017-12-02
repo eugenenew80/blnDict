@@ -21,7 +21,7 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="line_type_id" type="number">
+			<column name="power_line_type_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
