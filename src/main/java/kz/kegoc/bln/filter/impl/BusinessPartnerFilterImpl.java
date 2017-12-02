@@ -7,6 +7,7 @@ import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.BusinessPartnerService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
@@ -39,6 +40,11 @@ public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         BusinessPartnerTranslate translate = entity.getTranslations().getOrDefault(lang, new BusinessPartnerTranslate());
+        if (translate.getId()==null)
+            translate.setCreateDate(LocalDateTime.now());
+        else
+            translate.setLastUpdateDate(LocalDateTime.now());
+
         translate.setLang(lang);
         translate.setBusinessPartner(entity);
         translate.setName(entity.getName());

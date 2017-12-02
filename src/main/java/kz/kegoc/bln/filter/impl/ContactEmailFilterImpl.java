@@ -8,6 +8,7 @@ import kz.kegoc.bln.service.dict.ContactEmailService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
@@ -37,6 +38,11 @@ public class ContactEmailFilterImpl implements Filter<ContactEmail> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         ContactEmailTranslate translate = entity.getTranslations().getOrDefault(lang, new ContactEmailTranslate());
+        if (translate.getId()==null)
+            translate.setCreateDate(LocalDateTime.now());
+        else
+            translate.setLastUpdateDate(LocalDateTime.now());
+
         translate.setLang(lang);
         translate.setContactEmail(entity);
         translate.setDescription(entity.getDescription());

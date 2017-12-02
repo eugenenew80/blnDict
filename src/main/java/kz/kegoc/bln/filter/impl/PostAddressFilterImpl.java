@@ -8,6 +8,7 @@ import kz.kegoc.bln.service.dict. PostAddressService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
@@ -37,6 +38,11 @@ public class PostAddressFilterImpl implements Filter< PostAddress> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         PostAddressTranslate translate = entity.getTranslations().getOrDefault(lang, new  PostAddressTranslate());
+        if (translate.getId()==null)
+            translate.setCreateDate(LocalDateTime.now());
+        else
+            translate.setLastUpdateDate(LocalDateTime.now());
+
         translate.setLang(lang);
         translate.setPostAddress(entity);
         translate.setName(entity.getName());

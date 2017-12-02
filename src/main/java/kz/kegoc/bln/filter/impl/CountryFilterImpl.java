@@ -8,6 +8,7 @@ import kz.kegoc.bln.service.dict.CountryService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
@@ -37,6 +38,11 @@ public class CountryFilterImpl implements Filter<Country> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         CountryTranslate translate = entity.getTranslations().getOrDefault(lang, new CountryTranslate());
+        if (translate.getId()==null)
+            translate.setCreateDate(LocalDateTime.now());
+        else
+            translate.setLastUpdateDate(LocalDateTime.now());
+
         translate.setLang(lang);
         translate.setCountry(entity);
         translate.setName(entity.getName());

@@ -8,6 +8,7 @@ import kz.kegoc.bln.service.dict.VoltageClassService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
@@ -37,6 +38,11 @@ public class VoltageClassFilterImpl implements Filter<VoltageClass> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         VoltageClassTranslate translate = entity.getTranslations().getOrDefault(lang, new VoltageClassTranslate());
+        if (translate.getId()==null)
+            translate.setCreateDate(LocalDateTime.now());
+        else
+            translate.setLastUpdateDate(LocalDateTime.now());
+
         translate.setLang(lang);
         translate.setVoltageClass(entity);
         translate.setName(entity.getName());

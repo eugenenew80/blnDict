@@ -7,6 +7,7 @@ import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.SubstationTypeService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
@@ -36,6 +37,11 @@ public class SubstationTypeFilterImpl implements Filter<SubstationType> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         SubstationTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new SubstationTypeTranslate());
+        if (translate.getId()==null)
+            translate.setCreateDate(LocalDateTime.now());
+        else
+            translate.setLastUpdateDate(LocalDateTime.now());
+
         translate.setLang(lang);
         translate.setSubstationType(entity);
         translate.setName(entity.getName());

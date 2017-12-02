@@ -8,6 +8,7 @@ import kz.kegoc.bln.service.dict.AccountingTypeService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
@@ -37,6 +38,11 @@ public class AccountingTypeFilterImpl implements Filter<AccountingType> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         AccountingTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new AccountingTypeTranslate());
+        if (translate.getId()==null)
+            translate.setCreateDate(LocalDateTime.now());
+        else
+            translate.setLastUpdateDate(LocalDateTime.now());
+
         translate.setLang(lang);
         translate.setAccountingType(entity);
         translate.setName(entity.getName());

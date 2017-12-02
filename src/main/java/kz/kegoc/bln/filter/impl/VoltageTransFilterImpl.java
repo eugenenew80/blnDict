@@ -7,6 +7,7 @@ import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.VoltageTransService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
@@ -36,6 +37,11 @@ public class VoltageTransFilterImpl implements Filter<VoltageTrans> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         VoltageTransTranslate translate = entity.getTranslations().getOrDefault(lang, new VoltageTransTranslate());
+        if (translate.getId()==null)
+            translate.setCreateDate(LocalDateTime.now());
+        else
+            translate.setLastUpdateDate(LocalDateTime.now());
+
         translate.setLang(lang);
         translate.setVoltageTrans(entity);
         translate.setName(entity.getName());

@@ -8,6 +8,7 @@ import kz.kegoc.bln.service.dict.PowerLineService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
@@ -37,6 +38,11 @@ public class PowerLineFilterImpl implements Filter<PowerLine> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         PowerLineTranslate translate = entity.getTranslations().getOrDefault(lang, new PowerLineTranslate());
+        if (translate.getId()==null)
+            translate.setCreateDate(LocalDateTime.now());
+        else
+            translate.setLastUpdateDate(LocalDateTime.now());
+
         translate.setLang(lang);
         translate.setPowerLine(entity);
         translate.setName(entity.getName());

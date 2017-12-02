@@ -8,6 +8,7 @@ import kz.kegoc.bln.service.dict.PowerTransformerService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
@@ -37,6 +38,11 @@ public class PowerTransformerFilterImpl implements Filter<PowerTransformer> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         PowerTransformerTranslate translate = entity.getTranslations().getOrDefault(lang, new PowerTransformerTranslate());
+        if (translate.getId()==null)
+            translate.setCreateDate(LocalDateTime.now());
+        else
+            translate.setLastUpdateDate(LocalDateTime.now());
+
         translate.setLang(lang);
         translate.setPowerTransformer(entity);
         translate.setName(entity.getName());
