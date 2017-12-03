@@ -7,7 +7,6 @@ public class SessionContext {
     public Lang getLang() {
         return lang;
     }
-
     public User getUser() {
         return user;
     }
