@@ -45,31 +45,6 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		this.translator = translator;
 	}
 
-    
-	public List<T> findAll() {
-		return findAll(null);
-	}
-
-	public List<T> find(Query query) {
-		return find(query, null);
-	}
-
-	public T findById(Object entityId) {
-		return findById(entityId, null);
-	}
-
-	public T create(T entity) {
-		return create(entity, null);
-	}
-
-	public T update(T entity) {
-		return update(entity, null);
-	}
-
-	public boolean delete(Long entityId) {
-		return delete(entityId, null);
-	}
-
 
 	public List<T> findAll(SessionContext context) {
 		if (repository==null)
@@ -130,7 +105,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 			throw new InvalidArgumentException(entity);
 
 		if (prePersistFilter !=null)
-			entity = prePersistFilter.filter(entity);
+			entity = prePersistFilter.filter(entity, context);
 
 		if (entity instanceof HasDates)
 			((HasDates) entity).setCreateDate(LocalDateTime.now());
@@ -158,7 +133,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 			throw new InvalidArgumentException(entity);
 
 		if (prePersistFilter !=null)
-			entity = prePersistFilter.filter(entity);
+			entity = prePersistFilter.filter(entity, context);
 
 		if (entity instanceof HasDates)
 			((HasDates) entity).setLastUpdateDate(LocalDateTime.now());

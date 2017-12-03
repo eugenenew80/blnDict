@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.SubstationType;
 import kz.kegoc.bln.entity.dict.translate.SubstationTypeTranslate;
@@ -12,13 +13,13 @@ import java.util.HashMap;
 
 @Stateless
 public class SubstationTypeFilterImpl implements Filter<SubstationType> {
-    public SubstationType filter(SubstationType entity) {
+    public SubstationType filter(SubstationType entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private SubstationType prepare(SubstationType entity) {
         if (entity.getId()!=null) {
-            SubstationType curEntity = service.findById(entity.getId());
+            SubstationType curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

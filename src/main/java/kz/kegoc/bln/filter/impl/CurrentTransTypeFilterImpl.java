@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.CurrentTransType;
 import kz.kegoc.bln.entity.dict.translate.CurrentTransTypeTranslate;
@@ -12,13 +13,13 @@ import java.util.HashMap;
 
 @Stateless
 public class CurrentTransTypeFilterImpl implements Filter<CurrentTransType> {
-    public CurrentTransType filter(CurrentTransType entity) {
+    public CurrentTransType filter(CurrentTransType entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private CurrentTransType prepare(CurrentTransType entity) {
         if (entity.getId()!=null) {
-            CurrentTransType curEntity = service.findById(entity.getId());
+            CurrentTransType curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

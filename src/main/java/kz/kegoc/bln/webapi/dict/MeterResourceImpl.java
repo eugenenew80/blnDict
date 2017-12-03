@@ -46,11 +46,8 @@ public class MeterResourceImpl {
 	
 	@POST
 	public Response create(MeterDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		Meter entity = mapper.map(entityDto, Meter.class);
-		Meter newEntity = service.create(entity);
+		Meter newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, MeterDto.class))

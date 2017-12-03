@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.ContactEmail;
 import kz.kegoc.bln.entity.dict.translate.ContactEmailTranslate;
@@ -13,13 +14,13 @@ import java.util.HashMap;
 
 @Stateless
 public class ContactEmailFilterImpl implements Filter<ContactEmail> {
-    public ContactEmail filter(ContactEmail entity) {
+    public ContactEmail filter(ContactEmail entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private ContactEmail prepare(ContactEmail entity) {
         if (entity.getId()!=null) {
-            ContactEmail curEntity = service.findById(entity.getId());
+            ContactEmail curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

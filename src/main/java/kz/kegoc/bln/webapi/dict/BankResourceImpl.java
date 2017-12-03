@@ -4,10 +4,6 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Bank;
 import kz.kegoc.bln.entity.dict.dto.BankDto;
-import kz.kegoc.bln.repository.common.query.ConditionType;
-import kz.kegoc.bln.repository.common.query.MyQueryParam;
-import kz.kegoc.bln.repository.common.query.Query;
-import kz.kegoc.bln.repository.common.query.QueryImpl;
 import kz.kegoc.bln.service.dict.BankService;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
@@ -21,7 +17,6 @@ import javax.ws.rs.core.SecurityContext;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 @Stateless
 @Path("/dict/dictBank")
@@ -31,16 +26,7 @@ public class BankResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Query query = QueryImpl.builder()
-			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
-			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
-			.setOrderBy("t.id")
-			.build();		
-		
-		List<BankDto> list = service.find(query)
+		List<BankDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, BankDto.class) )
 			.collect(Collectors.toList());
@@ -54,10 +40,7 @@ public class BankResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Bank entity = service.findById(id);
+		Bank entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, BankDto.class))
 			.build();		
@@ -66,10 +49,9 @@ public class BankResourceImpl {
 
 	@POST
 	public Response create(BankDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
-		service.setLang(userLang);
+		Bank entity = mapper.map(entityDto, Bank.class);
+		Bank newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
-		Bank newEntity = service.create(mapper.map(entityDto, Bank.class));
 		return Response.ok()
 			.entity(mapper.map(newEntity, BankDto.class))
 			.build();
@@ -79,10 +61,9 @@ public class BankResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, BankDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
-		service.setLang(userLang);
+		Bank entity = mapper.map(entityDto, Bank.class);
+		Bank newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
-		Bank newEntity = service.update(mapper.map(entityDto, Bank.class));
 		return Response.ok()
 			.entity(mapper.map(newEntity, BankDto.class))
 			.build();
@@ -92,7 +73,7 @@ public class BankResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);		
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.dict.BankAccount;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.BankAccountService;
@@ -8,13 +9,13 @@ import javax.inject.Inject;
 
 @Stateless
 public class BankAccountFilterImpl implements Filter<BankAccount> {
-    public BankAccount filter(BankAccount entity) {
+    public BankAccount filter(BankAccount entity, SessionContext context) {
         return prepare(entity);
     }
 
     private BankAccount prepare(BankAccount entity) {
         if (entity.getId()!=null) {
-            BankAccount curEntity = service.findById(entity.getId());
+            BankAccount curEntity = service.findById(entity.getId(), null);
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
         }

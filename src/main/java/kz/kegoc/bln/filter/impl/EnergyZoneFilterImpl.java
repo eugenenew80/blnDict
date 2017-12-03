@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.EnergyZone;
 import kz.kegoc.bln.entity.dict.translate.EnergyZoneTranslate;
@@ -12,13 +13,13 @@ import java.util.HashMap;
 
 @Stateless
 public class EnergyZoneFilterImpl implements Filter<EnergyZone> {
-    public EnergyZone filter(EnergyZone entity) {
+    public EnergyZone filter(EnergyZone entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private EnergyZone prepare(EnergyZone entity) {
         if (entity.getId()!=null) {
-            EnergyZone curEntity = service.findById(entity.getId());
+            EnergyZone curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

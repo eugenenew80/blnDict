@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.AccountingType;
 import kz.kegoc.bln.entity.dict.translate.AccountingTypeTranslate;
@@ -13,13 +14,13 @@ import java.util.HashMap;
 
 @Stateless
 public class AccountingTypeFilterImpl implements Filter<AccountingType> {
-    public AccountingType filter(AccountingType entity) {
+    public AccountingType filter(AccountingType entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private AccountingType prepare(AccountingType entity) {
         if (entity.getId()!=null) {
-            AccountingType curEntity = service.findById(entity.getId());
+            AccountingType curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

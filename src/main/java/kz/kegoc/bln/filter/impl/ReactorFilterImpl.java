@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Reactor;
 import kz.kegoc.bln.entity.dict.translate.ReactorTranslate;
@@ -12,13 +13,13 @@ import java.util.HashMap;
 
 @Stateless
 public class ReactorFilterImpl implements Filter<Reactor> {
-    public Reactor filter(Reactor entity) {
+    public Reactor filter(Reactor entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private Reactor prepare(Reactor entity) {
         if (entity.getId()!=null) {
-            Reactor curEntity = service.findById(entity.getId());
+            Reactor curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

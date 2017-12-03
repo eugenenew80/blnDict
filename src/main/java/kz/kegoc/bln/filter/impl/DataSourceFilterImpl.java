@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.DataSource;
 import kz.kegoc.bln.entity.dict.translate.DataSourceTranslate;
@@ -12,13 +13,13 @@ import java.util.HashMap;
 
 @Stateless
 public class DataSourceFilterImpl implements Filter<DataSource> {
-    public DataSource filter(DataSource entity) {
+    public DataSource filter(DataSource entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private DataSource prepare(DataSource entity) {
         if (entity.getId()!=null) {
-            DataSource curEntity = service.findById(entity.getId());
+            DataSource curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

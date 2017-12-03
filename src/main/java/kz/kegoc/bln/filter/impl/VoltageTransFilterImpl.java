@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.VoltageTrans;
 import kz.kegoc.bln.entity.dict.translate.VoltageTransTranslate;
@@ -12,13 +13,13 @@ import java.util.HashMap;
 
 @Stateless
 public class VoltageTransFilterImpl implements Filter<VoltageTrans> {
-    public VoltageTrans filter(VoltageTrans entity) {
+    public VoltageTrans filter(VoltageTrans entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private VoltageTrans prepare(VoltageTrans entity) {
         if (entity.getId()!=null) {
-            VoltageTrans curEntity = service.findById(entity.getId());
+            VoltageTrans curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

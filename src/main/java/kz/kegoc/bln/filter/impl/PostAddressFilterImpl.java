@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict. PostAddress;
 import kz.kegoc.bln.entity.dict.translate. PostAddressTranslate;
@@ -13,13 +14,13 @@ import java.util.HashMap;
 
 @Stateless
 public class PostAddressFilterImpl implements Filter< PostAddress> {
-    public  PostAddress filter(PostAddress entity) {
+    public  PostAddress filter(PostAddress entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private PostAddress prepare(PostAddress entity) {
         if (entity.getId()!=null) {
-            PostAddress curEntity = service.findById(entity.getId());
+            PostAddress curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

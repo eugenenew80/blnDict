@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Bank;
 import kz.kegoc.bln.entity.dict.translate.BankTranslate;
@@ -12,13 +13,13 @@ import java.util.HashMap;
 
 @Stateless
 public class BankFilterImpl implements Filter<Bank> {
-    public Bank filter(Bank entity) {
+    public Bank filter(Bank entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private Bank prepare(Bank entity) {
         if (entity.getId()!=null) {
-            Bank curEntity = bankService.findById(entity.getId());
+            Bank curEntity = bankService.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

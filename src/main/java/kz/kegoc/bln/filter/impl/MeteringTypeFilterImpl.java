@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.MeteringType;
 import kz.kegoc.bln.entity.dict.translate.MeteringTypeTranslate;
@@ -12,13 +13,13 @@ import java.util.HashMap;
 
 @Stateless
 public class MeteringTypeFilterImpl implements Filter<MeteringType> {
-    public MeteringType filter(MeteringType entity) {
+    public MeteringType filter(MeteringType entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private MeteringType prepare(MeteringType entity) {
         if (entity.getId()!=null) {
-            MeteringType curEntity = service.findById(entity.getId());
+            MeteringType curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

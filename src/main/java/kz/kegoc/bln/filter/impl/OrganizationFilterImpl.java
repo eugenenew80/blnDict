@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Organization;
 import kz.kegoc.bln.entity.dict.translate.OrganizationTranslate;
@@ -12,13 +13,13 @@ import java.util.HashMap;
 
 @Stateless
 public class OrganizationFilterImpl implements Filter<Organization> {
-    public Organization filter(Organization entity) {
+    public Organization filter(Organization entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private Organization prepare(Organization entity) {
         if (entity.getId()!=null) {
-            Organization curEntity = companyService.findById(entity.getId());
+            Organization curEntity = companyService.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.BusinessPartner;
 import kz.kegoc.bln.entity.dict.translate.BusinessPartnerTranslate;
@@ -12,13 +13,13 @@ import java.util.HashMap;
 
 @Stateless
 public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
-    public BusinessPartner filter(BusinessPartner entity) {
+    public BusinessPartner filter(BusinessPartner entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private BusinessPartner prepare(BusinessPartner entity) {
         if (entity.getId()!=null) {
-            BusinessPartner curEntity = businessPartnerService.findById(entity.getId());
+            BusinessPartner curEntity = businessPartnerService.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

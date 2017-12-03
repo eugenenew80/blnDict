@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.dict.SubstationMeteringPoint;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.SubstationMeteringPointService;
@@ -9,13 +10,13 @@ import javax.inject.Inject;
 
 @Stateless
 public class SubstationMeteringPointFilterImpl implements Filter<SubstationMeteringPoint> {
-    public SubstationMeteringPoint filter(SubstationMeteringPoint entity) {
+    public SubstationMeteringPoint filter(SubstationMeteringPoint entity, SessionContext context) {
         return prepare(entity);
     }
 
     private SubstationMeteringPoint prepare(SubstationMeteringPoint entity) {
         if (entity.getId()!=null) {
-            SubstationMeteringPoint curEntity = service.findById(entity.getId());
+            SubstationMeteringPoint curEntity = service.findById(entity.getId(), null);
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
         }

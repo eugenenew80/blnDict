@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.PowerLineType;
 import kz.kegoc.bln.entity.dict.translate.PowerLineTypeTranslate;
@@ -13,13 +14,13 @@ import java.util.HashMap;
 
 @Stateless
 public class PowerLineTypeFilterImpl implements Filter<PowerLineType> {
-    public PowerLineType filter(PowerLineType entity) {
+    public PowerLineType filter(PowerLineType entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private PowerLineType prepare(PowerLineType entity) {
         if (entity.getId()!=null) {
-            PowerLineType curEntity = service.findById(entity.getId());
+            PowerLineType curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

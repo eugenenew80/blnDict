@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Country;
 import kz.kegoc.bln.entity.dict.translate.CountryTranslate;
@@ -13,13 +14,13 @@ import java.util.HashMap;
 
 @Stateless
 public class CountryFilterImpl implements Filter<Country> {
-    public Country filter(Country entity) {
+    public Country filter(Country entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private Country prepare(Country entity) {
         if (entity.getId()!=null) {
-            Country curEntity = countryService.findById(entity.getId());
+            Country curEntity = countryService.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

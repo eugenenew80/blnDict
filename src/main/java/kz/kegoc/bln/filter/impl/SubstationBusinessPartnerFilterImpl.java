@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.dict.SubstationBusinessPartner;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.SubstationBusinessPartnerService;
@@ -9,13 +10,13 @@ import javax.inject.Inject;
 
 @Stateless
 public class SubstationBusinessPartnerFilterImpl implements Filter<SubstationBusinessPartner> {
-    public SubstationBusinessPartner filter(SubstationBusinessPartner entity) {
+    public SubstationBusinessPartner filter(SubstationBusinessPartner entity, SessionContext context) {
         return prepare(entity);
     }
 
     private SubstationBusinessPartner prepare(SubstationBusinessPartner entity) {
         if (entity.getId()!=null) {
-            SubstationBusinessPartner curEntity = service.findById(entity.getId());
+            SubstationBusinessPartner curEntity = service.findById(entity.getId(), null);
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
         }

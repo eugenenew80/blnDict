@@ -1,5 +1,6 @@
 package kz.kegoc.bln.filter.impl;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Unit;
 import kz.kegoc.bln.entity.dict.translate.UnitTranslate;
@@ -12,13 +13,13 @@ import java.util.HashMap;
 
 @Stateless
 public class UnitFilterImpl implements Filter<Unit> {
-    public Unit filter(Unit entity) {
+    public Unit filter(Unit entity, SessionContext context) {
         return translate(prepare(entity));
     }
 
     private Unit prepare(Unit entity) {
         if (entity.getId()!=null) {
-            Unit curEntity = service.findById(entity.getId());
+            Unit curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
