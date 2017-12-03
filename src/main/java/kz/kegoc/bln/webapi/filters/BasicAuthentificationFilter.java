@@ -2,13 +2,18 @@ package kz.kegoc.bln.webapi.filters;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.concurrent.TimeUnit;
+import javax.inject.Inject;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
+
+import kz.kegoc.bln.entity.adm.User;
 import org.apache.commons.lang3.StringUtils;
+import org.redisson.api.RMapCache;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -31,31 +36,19 @@ public class BasicAuthentificationFilter implements ContainerRequestFilter {
 
 		String authHeader=  ctx.getHeaderString("Authorization").substring(6);				
 		String[] auth = new String(Base64.decodeBase64(authHeader), "UTF-8").split(":");
-		String user = auth[0];
-		
-		if (StringUtils.isEmpty(user))
+		String userName = auth[0];
+		String password = auth[1];
+
+		if (StringUtils.isEmpty(userName))
 			throw new NotAuthorizedException("EMPTY USER");
-		
-		JedisPool pool = null;
-		try {
-			pool = new JedisPool(new JedisPoolConfig(), "localhost");
-			Jedis jedis = pool.getResource();
-			
-			String storedAuthHeader = jedis.get(user);
-			if (StringUtils.isEmpty(storedAuthHeader))
-				throw new NotAuthorizedException("USER IS NOT REGISTERED");
-			
-			if (!authHeader.equals(storedAuthHeader))
-				throw new NotAuthorizedException("USER IS NOT REGISTERED");
-			
-			jedis.expire(user, 300);
-		}
-		finally {
-			pool.close();
-			pool.destroy();		
-		}
 
+		String hash = Base64.encodeBase64String((userName + ":" + password).getBytes());
+		User user = sessions.get(hash);
+		if (user==null)
+			throw new NotAuthorizedException("USER IS NOT REGISTERED");
 
+		sessions.remove(userName);
+		sessions.put(userName, user,30, TimeUnit.MINUTES);
 
 		ctx.setSecurityContext(
 			new SecurityContext() {
@@ -74,7 +67,7 @@ public class BasicAuthentificationFilter implements ContainerRequestFilter {
 					return new Principal() {
 						@Override
 						public String getName() {
-							return user;
+							return user.getName();
 						}
 					};
 				}
@@ -86,4 +79,7 @@ public class BasicAuthentificationFilter implements ContainerRequestFilter {
 			}
 		);
 	}
+
+	@Inject
+	private RMapCache<String, User> sessions;
 }
