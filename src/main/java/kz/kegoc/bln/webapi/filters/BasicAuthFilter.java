@@ -15,9 +15,6 @@ import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RMapCache;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
 import org.apache.commons.codec.binary.Base64;
 
 @Provider
