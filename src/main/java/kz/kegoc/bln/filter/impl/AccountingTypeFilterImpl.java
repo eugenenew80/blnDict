@@ -4,23 +4,23 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.AccountingType;
 import kz.kegoc.bln.entity.dict.translate.AccountingTypeTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.AccountingTypeService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class AccountingTypeFilterImpl implements Filter<AccountingType> {
+public class AccountingTypeFilterImpl extends AbstractFilter<AccountingType> implements Filter<AccountingType> {
     public AccountingType filter(AccountingType entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
 
     private AccountingType prepare(AccountingType entity, SessionContext context) {
         if (entity.getId()!=null) {
-            AccountingType curEntity = service.findById(entity.getId(), null);
+            AccountingType curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
@@ -32,6 +32,7 @@ public class AccountingTypeFilterImpl implements Filter<AccountingType> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -39,11 +40,7 @@ public class AccountingTypeFilterImpl implements Filter<AccountingType> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         AccountingTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new AccountingTypeTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setAccountingType(entity);
         translate.setName(entity.getName());

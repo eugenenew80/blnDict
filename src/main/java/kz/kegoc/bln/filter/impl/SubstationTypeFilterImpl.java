@@ -4,15 +4,15 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.SubstationType;
 import kz.kegoc.bln.entity.dict.translate.SubstationTypeTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.SubstationTypeService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class SubstationTypeFilterImpl implements Filter<SubstationType> {
+public class SubstationTypeFilterImpl extends AbstractFilter<SubstationType> implements Filter<SubstationType> {
     public SubstationType filter(SubstationType entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
@@ -31,6 +31,7 @@ public class SubstationTypeFilterImpl implements Filter<SubstationType> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -38,11 +39,7 @@ public class SubstationTypeFilterImpl implements Filter<SubstationType> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         SubstationTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new SubstationTypeTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setSubstationType(entity);
         translate.setName(entity.getName());

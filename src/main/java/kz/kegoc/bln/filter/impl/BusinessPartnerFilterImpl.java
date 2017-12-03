@@ -4,22 +4,22 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.BusinessPartner;
 import kz.kegoc.bln.entity.dict.translate.BusinessPartnerTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.BusinessPartnerService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
+public class BusinessPartnerFilterImpl extends AbstractFilter<BusinessPartner> implements Filter<BusinessPartner> {
     public BusinessPartner filter(BusinessPartner entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
 
     private BusinessPartner prepare(BusinessPartner entity, SessionContext context) {
         if (entity.getId()!=null) {
-            BusinessPartner curEntity = businessPartnerService.findById(entity.getId(), null);
+            BusinessPartner curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
@@ -34,6 +34,7 @@ public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -41,11 +42,7 @@ public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         BusinessPartnerTranslate translate = entity.getTranslations().getOrDefault(lang, new BusinessPartnerTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setBusinessPartner(entity);
         translate.setName(entity.getName());
@@ -55,7 +52,7 @@ public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
     }
 
     @Inject
-    private BusinessPartnerService businessPartnerService;
+    private BusinessPartnerService service;
 
     @Inject
     private Lang defLang;

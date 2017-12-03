@@ -4,6 +4,7 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.MeterType;
 import kz.kegoc.bln.entity.dict.translate.MeterTypeTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.MeterTypeService;
 
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class MeterTypeFilterImpl implements Filter<MeterType> {
+public class MeterTypeFilterImpl extends AbstractFilter<MeterType> implements Filter<MeterType> {
     public MeterType filter(MeterType entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
@@ -24,20 +25,15 @@ public class MeterTypeFilterImpl implements Filter<MeterType> {
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
-            entity.setLastUpdateDate(LocalDateTime.now());
-            entity.setLastUpdateBy(context.getUser());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
-        }
-        else {
-            entity.setCreateDate(LocalDateTime.now());
-            entity.setCreateBy(context.getUser());
         }
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -45,15 +41,7 @@ public class MeterTypeFilterImpl implements Filter<MeterType> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         MeterTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new MeterTypeTranslate());
-        if (translate.getId()==null) {
-            translate.setCreateDate(LocalDateTime.now());
-            translate.setCreateBy(context.getUser());
-        }
-        else {
-            translate.setLastUpdateDate(LocalDateTime.now());
-            translate.setLastUpdateBy(context.getUser());
-        }
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setMeterType(entity);
         translate.setName(entity.getName());

@@ -4,15 +4,15 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Organization;
 import kz.kegoc.bln.entity.dict.translate.OrganizationTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.OrganizationService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class OrganizationFilterImpl implements Filter<Organization> {
+public class OrganizationFilterImpl extends AbstractFilter<Organization> implements Filter<Organization> {
     public Organization filter(Organization entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
@@ -31,6 +31,7 @@ public class OrganizationFilterImpl implements Filter<Organization> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -38,11 +39,7 @@ public class OrganizationFilterImpl implements Filter<Organization> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         OrganizationTranslate translate = entity.getTranslations().getOrDefault(lang, new OrganizationTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setOrg(entity);
         translate.setName(entity.getName());

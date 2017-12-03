@@ -4,22 +4,22 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.CurrentTrans;
 import kz.kegoc.bln.entity.dict.translate.CurrentTransTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.CurrentTransService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class CurrentTransFilterImpl implements Filter<CurrentTrans> {
+public class CurrentTransFilterImpl extends AbstractFilter<CurrentTrans> implements Filter<CurrentTrans> {
     public CurrentTrans filter(CurrentTrans entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
 
     private CurrentTrans prepare(CurrentTrans entity, SessionContext context) {
         if (entity.getId()!=null) {
-            CurrentTrans curEntity = currentTransService.findById(entity.getId(), null);
+            CurrentTrans curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
@@ -31,6 +31,7 @@ public class CurrentTransFilterImpl implements Filter<CurrentTrans> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -38,11 +39,7 @@ public class CurrentTransFilterImpl implements Filter<CurrentTrans> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         CurrentTransTranslate translate = entity.getTranslations().getOrDefault(lang, new CurrentTransTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setCurrentTrans(entity);
         translate.setName(entity.getName());
@@ -53,7 +50,7 @@ public class CurrentTransFilterImpl implements Filter<CurrentTrans> {
     }
 
     @Inject
-    private CurrentTransService currentTransService;
+    private CurrentTransService service;
 
     @Inject
     private Lang defLang;

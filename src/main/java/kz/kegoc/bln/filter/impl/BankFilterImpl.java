@@ -4,22 +4,22 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Bank;
 import kz.kegoc.bln.entity.dict.translate.BankTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.BankService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class BankFilterImpl implements Filter<Bank> {
+public class BankFilterImpl extends AbstractFilter<Bank> implements Filter<Bank> {
     public Bank filter(Bank entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
 
     private Bank prepare(Bank entity, SessionContext context) {
         if (entity.getId()!=null) {
-            Bank curEntity = bankService.findById(entity.getId(), null);
+            Bank curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
@@ -31,6 +31,7 @@ public class BankFilterImpl implements Filter<Bank> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -38,11 +39,7 @@ public class BankFilterImpl implements Filter<Bank> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         BankTranslate translate = entity.getTranslations().getOrDefault(lang, new BankTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setBank(entity);
         translate.setName(entity.getName());
@@ -52,7 +49,7 @@ public class BankFilterImpl implements Filter<Bank> {
     }
 
     @Inject
-    private BankService bankService;
+    private BankService service;
 
     @Inject
     private Lang defLang;

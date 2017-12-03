@@ -2,6 +2,7 @@ package kz.kegoc.bln.filter.impl;
 
 import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.dict.SubstationBusinessPartner;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.SubstationBusinessPartnerService;
 
@@ -9,7 +10,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 @Stateless
-public class SubstationBusinessPartnerFilterImpl implements Filter<SubstationBusinessPartner> {
+public class SubstationBusinessPartnerFilterImpl extends AbstractFilter<SubstationBusinessPartner> implements Filter<SubstationBusinessPartner> {
     public SubstationBusinessPartner filter(SubstationBusinessPartner entity, SessionContext context) {
         return prepare(entity, context);
     }
@@ -21,6 +22,7 @@ public class SubstationBusinessPartnerFilterImpl implements Filter<SubstationBus
             entity.setCreateBy(curEntity.getCreateBy());
         }
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 

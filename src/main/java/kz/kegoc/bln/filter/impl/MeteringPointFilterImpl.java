@@ -4,15 +4,15 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.MeteringPoint;
 import kz.kegoc.bln.entity.dict.translate.MeteringPointTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.MeteringPointService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class MeteringPointFilterImpl implements Filter<MeteringPoint> {
+public class MeteringPointFilterImpl extends AbstractFilter<MeteringPoint> implements Filter<MeteringPoint> {
     public MeteringPoint filter(MeteringPoint entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
@@ -31,6 +31,7 @@ public class MeteringPointFilterImpl implements Filter<MeteringPoint> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -38,11 +39,7 @@ public class MeteringPointFilterImpl implements Filter<MeteringPoint> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         MeteringPointTranslate translate = entity.getTranslations().getOrDefault(lang, new MeteringPointTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setMeteringPoint(entity);
         translate.setName(entity.getName());

@@ -4,16 +4,15 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.PowerLine;
 import kz.kegoc.bln.entity.dict.translate.PowerLineTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.PowerLineService;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class PowerLineFilterImpl implements Filter<PowerLine> {
+public class PowerLineFilterImpl extends AbstractFilter<PowerLine> implements Filter<PowerLine> {
     public PowerLine filter(PowerLine entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
@@ -32,6 +31,7 @@ public class PowerLineFilterImpl implements Filter<PowerLine> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -39,11 +39,7 @@ public class PowerLineFilterImpl implements Filter<PowerLine> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         PowerLineTranslate translate = entity.getTranslations().getOrDefault(lang, new PowerLineTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setPowerLine(entity);
         translate.setName(entity.getName());

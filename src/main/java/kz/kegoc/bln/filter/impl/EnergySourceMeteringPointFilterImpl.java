@@ -2,6 +2,7 @@ package kz.kegoc.bln.filter.impl;
 
 import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.dict.EnergySourceMeteringPoint;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.EnergySourceMeteringPointService;
 
@@ -9,7 +10,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 @Stateless
-public class EnergySourceMeteringPointFilterImpl implements Filter<EnergySourceMeteringPoint> {
+public class EnergySourceMeteringPointFilterImpl extends AbstractFilter<EnergySourceMeteringPoint> implements Filter<EnergySourceMeteringPoint> {
     public EnergySourceMeteringPoint filter(EnergySourceMeteringPoint entity, SessionContext context) {
         return prepare(entity, context);
     }
@@ -21,6 +22,7 @@ public class EnergySourceMeteringPointFilterImpl implements Filter<EnergySourceM
             entity.setCreateBy(curEntity.getCreateBy());
         }
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 

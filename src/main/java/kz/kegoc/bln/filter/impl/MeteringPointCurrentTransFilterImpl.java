@@ -2,6 +2,7 @@ package kz.kegoc.bln.filter.impl;
 
 import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.dict.MeteringPointCurrentTrans;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.MeteringPointCurrentTransService;
 
@@ -9,7 +10,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 @Stateless
-public class MeteringPointCurrentTransFilterImpl implements Filter<MeteringPointCurrentTrans> {
+public class MeteringPointCurrentTransFilterImpl extends AbstractFilter<MeteringPointCurrentTrans> implements Filter<MeteringPointCurrentTrans> {
     public MeteringPointCurrentTrans filter(MeteringPointCurrentTrans entity, SessionContext context) {
         return prepare(entity, context);
     }
@@ -21,6 +22,7 @@ public class MeteringPointCurrentTransFilterImpl implements Filter<MeteringPoint
             entity.setCreateBy(curEntity.getCreateBy());
         }
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 

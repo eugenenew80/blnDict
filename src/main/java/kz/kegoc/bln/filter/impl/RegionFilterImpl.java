@@ -4,15 +4,15 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Region;
 import kz.kegoc.bln.entity.dict.translate.RegionTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.RegionService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class RegionFilterImpl implements Filter<Region> {
+public class RegionFilterImpl extends AbstractFilter<Region> implements Filter<Region> {
     public Region filter(Region entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
@@ -31,6 +31,7 @@ public class RegionFilterImpl implements Filter<Region> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -38,11 +39,7 @@ public class RegionFilterImpl implements Filter<Region> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         RegionTranslate translate = entity.getTranslations().getOrDefault(lang, new RegionTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setRegion(entity);
         translate.setName(entity.getName());

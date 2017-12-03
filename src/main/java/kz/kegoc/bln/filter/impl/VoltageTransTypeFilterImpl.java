@@ -4,15 +4,15 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.VoltageTransType;
 import kz.kegoc.bln.entity.dict.translate.VoltageTransTypeTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.VoltageTransTypeService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class VoltageTransTypeFilterImpl implements Filter<VoltageTransType> {
+public class VoltageTransTypeFilterImpl extends AbstractFilter<VoltageTransType> implements Filter<VoltageTransType> {
     public VoltageTransType filter(VoltageTransType entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
@@ -31,6 +31,7 @@ public class VoltageTransTypeFilterImpl implements Filter<VoltageTransType> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -38,11 +39,7 @@ public class VoltageTransTypeFilterImpl implements Filter<VoltageTransType> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         VoltageTransTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new VoltageTransTypeTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setVoltageTransType(entity);
         translate.setName(entity.getName());

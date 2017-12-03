@@ -4,15 +4,15 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.EnergyNode;
 import kz.kegoc.bln.entity.dict.translate.EnergyNodeTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.EnergyNodeService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class EnergyNodeFilterImpl implements Filter<EnergyNode> {
+public class EnergyNodeFilterImpl extends AbstractFilter<EnergyNode> implements Filter<EnergyNode> {
     public EnergyNode filter(EnergyNode entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
@@ -31,6 +31,7 @@ public class EnergyNodeFilterImpl implements Filter<EnergyNode> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -38,11 +39,7 @@ public class EnergyNodeFilterImpl implements Filter<EnergyNode> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         EnergyNodeTranslate translate = entity.getTranslations().getOrDefault(lang, new EnergyNodeTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setEnergyNode(entity);
         translate.setName(entity.getName());

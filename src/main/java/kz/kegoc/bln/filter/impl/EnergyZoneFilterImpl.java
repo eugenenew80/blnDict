@@ -4,15 +4,15 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.EnergyZone;
 import kz.kegoc.bln.entity.dict.translate.EnergyZoneTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.EnergyZoneService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class EnergyZoneFilterImpl implements Filter<EnergyZone> {
+public class EnergyZoneFilterImpl extends AbstractFilter<EnergyZone> implements Filter<EnergyZone> {
     public EnergyZone filter(EnergyZone entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
@@ -31,6 +31,7 @@ public class EnergyZoneFilterImpl implements Filter<EnergyZone> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -38,11 +39,7 @@ public class EnergyZoneFilterImpl implements Filter<EnergyZone> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         EnergyZoneTranslate translate = entity.getTranslations().getOrDefault(lang, new EnergyZoneTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setEnergyZone(entity);
         translate.setName(entity.getName());

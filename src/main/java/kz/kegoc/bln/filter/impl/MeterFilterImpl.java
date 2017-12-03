@@ -4,15 +4,15 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Meter;
 import kz.kegoc.bln.entity.dict.translate.MeterTranslate;
+import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.MeterService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 
 @Stateless
-public class MeterFilterImpl implements Filter<Meter> {
+public class MeterFilterImpl extends AbstractFilter<Meter> implements Filter<Meter> {
     public Meter filter(Meter entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
@@ -31,6 +31,7 @@ public class MeterFilterImpl implements Filter<Meter> {
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -38,11 +39,7 @@ public class MeterFilterImpl implements Filter<Meter> {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         MeterTranslate translate = entity.getTranslations().getOrDefault(lang, new MeterTranslate());
-        if (translate.getId()==null)
-            translate.setCreateDate(LocalDateTime.now());
-        else
-            translate.setLastUpdateDate(LocalDateTime.now());
-
+        translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
         translate.setMeter(entity);
         translate.setName(entity.getName());
