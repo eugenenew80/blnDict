@@ -13,9 +13,7 @@ import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.VoltageTrans;
 import kz.kegoc.bln.entity.dict.dto.VoltageTransDto;
-import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.VoltageTransService;
-import static org.apache.commons.lang3.StringUtils.*;
 
 @Stateless
 @Path("/dict/dictVoltageTrans")
@@ -25,16 +23,7 @@ public class VoltageTransResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Query query = QueryImpl.builder()
-			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
-			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
-			.setOrderBy("t.id")
-			.build();		
-		
-		List<VoltageTransDto> list = service.find(query)
+		List<VoltageTransDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, VoltageTransDto.class) )
 			.collect(Collectors.toList());
@@ -48,10 +37,7 @@ public class VoltageTransResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		VoltageTrans entity = service.findById(id);
+		VoltageTrans entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, VoltageTransDto.class))
 			.build();		
@@ -60,10 +46,9 @@ public class VoltageTransResourceImpl {
 
 	@POST
 	public Response create(VoltageTransDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
-		service.setLang(userLang);
+		VoltageTrans entity = mapper.map(entityDto, VoltageTrans.class);
+		VoltageTrans newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
-		VoltageTrans newEntity = service.create(mapper.map(entityDto,VoltageTrans.class));
 		return Response.ok()
 			.entity(mapper.map(newEntity, VoltageTransDto.class))
 			.build();
@@ -73,10 +58,9 @@ public class VoltageTransResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, VoltageTransDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
-		service.setLang(userLang);
+		VoltageTrans entity = mapper.map(entityDto, VoltageTrans.class);
+		VoltageTrans newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
-		VoltageTrans newEntity = service.update(mapper.map(entityDto,VoltageTrans.class));
 		return Response.ok()
 			.entity(mapper.map(newEntity, VoltageTransDto.class))
 			.build();
@@ -86,7 +70,7 @@ public class VoltageTransResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);		
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

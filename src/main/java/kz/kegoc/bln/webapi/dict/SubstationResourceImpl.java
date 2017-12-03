@@ -13,9 +13,7 @@ import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.Substation;
 import kz.kegoc.bln.entity.dict.dto.SubstationDto;
-import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.SubstationService;
-import static org.apache.commons.lang3.StringUtils.*;
 
 @Stateless
 @Path("/dict/dictSubstation")
@@ -25,16 +23,7 @@ public class SubstationResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Query query = QueryImpl.builder()
-			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
-			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
-			.setOrderBy("t.id")
-			.build();		
-		
-		List<SubstationDto> list = service.find(query)
+		List<SubstationDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, SubstationDto.class) )
 			.collect(Collectors.toList());
@@ -48,10 +37,7 @@ public class SubstationResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Substation entity = service.findById(id);
+		Substation entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, SubstationDto.class))
 			.build();		
@@ -60,11 +46,8 @@ public class SubstationResourceImpl {
 
 	@POST
 	public Response create(SubstationDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		Substation entity = mapper.map(entityDto, Substation.class);
-		Substation newEntity = service.create(entity);
+		Substation newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, SubstationDto.class))
@@ -75,11 +58,8 @@ public class SubstationResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, SubstationDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		Substation entity = mapper.map(entityDto, Substation.class);
-		Substation newEntity = service.update(entity);
+		Substation newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, SubstationDto.class))
@@ -90,7 +70,7 @@ public class SubstationResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);		
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

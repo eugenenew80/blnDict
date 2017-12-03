@@ -23,10 +23,7 @@ public class SubstationBusinessPartnerResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("substationId") Long substationId, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		List<SubstationBusinessPartnerDto> list = substationService.findById(substationId)
+		List<SubstationBusinessPartnerDto> list = substationService.findById(substationId, buildSessionContext(lang))
 			.getBusinessPartners()
 			.stream()
 			.map( it-> mapper.map(it, SubstationBusinessPartnerDto.class) )
@@ -41,10 +38,7 @@ public class SubstationBusinessPartnerResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		SubstationBusinessPartner entity = service.findById(id);
+		SubstationBusinessPartner entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, SubstationBusinessPartnerDto.class))
 			.build();
@@ -53,11 +47,8 @@ public class SubstationBusinessPartnerResourceImpl {
 
 	@POST
 	public Response create(SubstationBusinessPartnerDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
-		service.setLang(userLang);
-
 		SubstationBusinessPartner entity = mapper.map(entityDto, SubstationBusinessPartner.class);
-		SubstationBusinessPartner newEntity = service.create(entity);
+		SubstationBusinessPartner newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, SubstationBusinessPartnerDto.class))
@@ -68,11 +59,8 @@ public class SubstationBusinessPartnerResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, SubstationBusinessPartnerDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		SubstationBusinessPartner entity = mapper.map(entityDto, SubstationBusinessPartner.class);
-		SubstationBusinessPartner newEntity = service.update(entity);
+		SubstationBusinessPartner newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, SubstationBusinessPartnerDto.class))
@@ -83,7 +71,7 @@ public class SubstationBusinessPartnerResourceImpl {
 	@DELETE
 	@Path("{id : \\d+}")
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

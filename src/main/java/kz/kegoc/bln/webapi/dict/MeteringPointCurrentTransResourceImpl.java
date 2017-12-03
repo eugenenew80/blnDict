@@ -26,10 +26,7 @@ public class MeteringPointCurrentTransResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("meteringPointId") Long meteringPointId, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		List<MeteringPointCurrentTransDto> list = meteringPointService.findById(meteringPointId)
+		List<MeteringPointCurrentTransDto> list = meteringPointService.findById(meteringPointId, buildSessionContext(lang))
 			.getCurrentTrans()
 			.stream()
 			.map( it-> mapper.map(it, MeteringPointCurrentTransDto.class) )
@@ -44,10 +41,7 @@ public class MeteringPointCurrentTransResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		MeteringPointCurrentTrans entity = service.findById(id);
+		MeteringPointCurrentTrans entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, MeteringPointCurrentTransDto.class))
 			.build();
@@ -56,11 +50,8 @@ public class MeteringPointCurrentTransResourceImpl {
 
 	@POST
 	public Response create(MeteringPointCurrentTransDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		MeteringPointCurrentTrans entity = mapper.map(entityDto, MeteringPointCurrentTrans.class);
-		MeteringPointCurrentTrans newEntity = service.create(entity);
+		MeteringPointCurrentTrans newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, MeteringPointCurrentTransDto.class))
@@ -71,11 +62,8 @@ public class MeteringPointCurrentTransResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, MeteringPointCurrentTransDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		MeteringPointCurrentTrans entity = mapper.map(entityDto, MeteringPointCurrentTrans.class);
-		MeteringPointCurrentTrans newEntity = service.update(entity);
+		MeteringPointCurrentTrans newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, MeteringPointCurrentTransDto.class))
@@ -86,7 +74,7 @@ public class MeteringPointCurrentTransResourceImpl {
 	@DELETE
 	@Path("{id : \\d+}")
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

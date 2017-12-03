@@ -26,10 +26,7 @@ public class MeteringPointCharacteristicResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("meteringPointId") Long meteringPointId, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		List<MeteringPointCharacteristicDto> list = meteringPointService.findById(meteringPointId)
+		List<MeteringPointCharacteristicDto> list = meteringPointService.findById(meteringPointId, buildSessionContext(lang))
 			.getCharacteristics()
 			.stream()
 			.map( it-> mapper.map(it, MeteringPointCharacteristicDto.class) )
@@ -44,10 +41,7 @@ public class MeteringPointCharacteristicResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		MeteringPointCharacteristic entity = service.findById(id);
+		MeteringPointCharacteristic entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, MeteringPointCharacteristicDto.class))
 			.build();
@@ -56,11 +50,8 @@ public class MeteringPointCharacteristicResourceImpl {
 
 	@POST
 	public Response create(MeteringPointCharacteristicDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		MeteringPointCharacteristic entity = mapper.map(entityDto, MeteringPointCharacteristic.class);
-		MeteringPointCharacteristic newEntity = service.create(entity);
+		MeteringPointCharacteristic newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, MeteringPointCharacteristicDto.class))
@@ -71,11 +62,8 @@ public class MeteringPointCharacteristicResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, MeteringPointCharacteristicDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
-		service.setLang(userLang);
-
 		MeteringPointCharacteristic entity = mapper.map(entityDto, MeteringPointCharacteristic.class);
-		MeteringPointCharacteristic newEntity = service.update(entity);
+		MeteringPointCharacteristic newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, MeteringPointCharacteristicDto.class))
@@ -86,7 +74,7 @@ public class MeteringPointCharacteristicResourceImpl {
 	@DELETE
 	@Path("{id : \\d+}")
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

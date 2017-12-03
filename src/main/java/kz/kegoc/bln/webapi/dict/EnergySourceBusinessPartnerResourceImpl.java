@@ -23,10 +23,7 @@ public class EnergySourceBusinessPartnerResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("energySourceId") Long energySourceId, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		List<EnergySourceBusinessPartnerDto> list = energySourceService.findById(energySourceId)
+		List<EnergySourceBusinessPartnerDto> list = energySourceService.findById(energySourceId, buildSessionContext(lang))
 			.getBusinessPartners()
 			.stream()
 			.map( it-> mapper.map(it, EnergySourceBusinessPartnerDto.class) )
@@ -41,10 +38,7 @@ public class EnergySourceBusinessPartnerResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		EnergySourceBusinessPartner entity = service.findById(id);
+		EnergySourceBusinessPartner entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, EnergySourceBusinessPartnerDto.class))
 			.build();
@@ -53,11 +47,8 @@ public class EnergySourceBusinessPartnerResourceImpl {
 
 	@POST
 	public Response create(EnergySourceBusinessPartnerDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		EnergySourceBusinessPartner entity = mapper.map(entityDto, EnergySourceBusinessPartner.class);
-		EnergySourceBusinessPartner newEntity = service.create(entity);
+		EnergySourceBusinessPartner newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, EnergySourceBusinessPartnerDto.class))
@@ -68,11 +59,8 @@ public class EnergySourceBusinessPartnerResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, EnergySourceBusinessPartnerDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		EnergySourceBusinessPartner entity = mapper.map(entityDto, EnergySourceBusinessPartner.class);
-		EnergySourceBusinessPartner newEntity = service.update(entity);
+		EnergySourceBusinessPartner newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, EnergySourceBusinessPartnerDto.class))
@@ -83,7 +71,7 @@ public class EnergySourceBusinessPartnerResourceImpl {
 	@DELETE
 	@Path("{id : \\d+}")
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

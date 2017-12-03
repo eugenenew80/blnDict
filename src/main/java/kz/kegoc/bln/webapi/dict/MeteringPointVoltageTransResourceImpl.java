@@ -27,10 +27,7 @@ public class MeteringPointVoltageTransResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("meteringPointId") Long meteringPointId, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		List<MeteringPointVoltageTransDto> list = meteringPointService.findById(meteringPointId)
+		List<MeteringPointVoltageTransDto> list = meteringPointService.findById(meteringPointId, buildSessionContext(lang))
 			.getVoltageTrans()
 			.stream()
 			.map( it-> mapper.map(it, MeteringPointVoltageTransDto.class) )
@@ -45,10 +42,7 @@ public class MeteringPointVoltageTransResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		MeteringPointVoltageTrans entity = service.findById(id);
+		MeteringPointVoltageTrans entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, MeteringPointVoltageTransDto.class))
 			.build();
@@ -57,11 +51,8 @@ public class MeteringPointVoltageTransResourceImpl {
 
 	@POST
 	public Response create(MeteringPointVoltageTransDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		MeteringPointVoltageTrans entity = mapper.map(entityDto, MeteringPointVoltageTrans.class);
-		MeteringPointVoltageTrans newEntity = service.create(entity);
+		MeteringPointVoltageTrans newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, MeteringPointVoltageTransDto.class))
@@ -72,11 +63,8 @@ public class MeteringPointVoltageTransResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, MeteringPointVoltageTransDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		MeteringPointVoltageTrans entity = mapper.map(entityDto, MeteringPointVoltageTrans.class);
-		MeteringPointVoltageTrans newEntity = service.update(entity);
+		MeteringPointVoltageTrans newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, MeteringPointVoltageTransDto.class))
@@ -87,7 +75,7 @@ public class MeteringPointVoltageTransResourceImpl {
 	@DELETE
 	@Path("{id : \\d+}")
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

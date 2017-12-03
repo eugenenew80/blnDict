@@ -4,10 +4,6 @@ import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Country;
 import kz.kegoc.bln.entity.dict.dto.CountryDto;
-import kz.kegoc.bln.repository.common.query.ConditionType;
-import kz.kegoc.bln.repository.common.query.MyQueryParam;
-import kz.kegoc.bln.repository.common.query.Query;
-import kz.kegoc.bln.repository.common.query.QueryImpl;
 import kz.kegoc.bln.service.dict.CountryService;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
@@ -21,7 +17,6 @@ import javax.ws.rs.core.SecurityContext;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 @Stateless
 @Path("/dict/dictCountry")
@@ -31,16 +26,7 @@ public class CountryResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Query query = QueryImpl.builder()
-			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
-			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
-			.setOrderBy("t.id")
-			.build();		
-		
-		List<CountryDto> list = service.find(query)
+		List<CountryDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.map(it, CountryDto.class))
 			.collect(Collectors.toList());
@@ -54,10 +40,7 @@ public class CountryResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Country entity = service.findById(id);
+		Country entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, CountryDto.class))
 			.build();		
@@ -66,11 +49,8 @@ public class CountryResourceImpl {
 
 	@POST
 	public Response create(CountryDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		Country entity = mapper.map(entityDto, Country.class);
-		Country newEntity = service.create(entity);
+		Country newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, CountryDto.class))
@@ -81,11 +61,8 @@ public class CountryResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, CountryDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		Country entity = mapper.map(entityDto, Country.class);
-		Country newEntity = service.update(entity);
+		Country newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, CountryDto.class))
@@ -96,7 +73,7 @@ public class CountryResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

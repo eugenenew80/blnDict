@@ -13,10 +13,7 @@ import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.EnergySourceType;
 import kz.kegoc.bln.entity.dict.dto.EnergySourceTypeDto;
-import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.EnergySourceTypeService;
-
-import static org.apache.commons.lang3.StringUtils.*;
 
 @Stateless
 @Path("/dict/dictEnergySourceType")
@@ -26,16 +23,7 @@ public class EnergySourceTypeResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Query query = QueryImpl.builder()
-			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
-			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
-			.setOrderBy("t.id")
-			.build();		
-		
-		List<EnergySourceTypeDto> list = service.find(query)
+		List<EnergySourceTypeDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, EnergySourceTypeDto.class) )
 			.collect(Collectors.toList());
@@ -49,10 +37,7 @@ public class EnergySourceTypeResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		EnergySourceType entity = service.findById(id);
+		EnergySourceType entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, EnergySourceTypeDto.class))
 			.build();		
@@ -61,10 +46,9 @@ public class EnergySourceTypeResourceImpl {
 
 	@POST
 	public Response create(EnergySourceTypeDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
+		EnergySourceType entity = mapper.map(entityDto, EnergySourceType.class);
+		EnergySourceType newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
-		EnergySourceType newEntity = service.create(mapper.map(entityDto,EnergySourceType.class));
 		return Response.ok()
 			.entity(mapper.map(newEntity, EnergySourceTypeDto.class))
 			.build();
@@ -74,10 +58,9 @@ public class EnergySourceTypeResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, EnergySourceTypeDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
+		EnergySourceType entity = mapper.map(entityDto, EnergySourceType.class);
+		EnergySourceType newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
-		EnergySourceType newEntity = service.update(mapper.map(entityDto,EnergySourceType.class));
 		return Response.ok()
 			.entity(mapper.map(newEntity, EnergySourceTypeDto.class))
 			.build();
@@ -87,7 +70,7 @@ public class EnergySourceTypeResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);		
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

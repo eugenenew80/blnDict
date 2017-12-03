@@ -6,16 +6,14 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-
 import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.DataSource;
 import kz.kegoc.bln.entity.dict.dto.DataSourceDto;
-import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.DataSourceService;
-import static org.apache.commons.lang3.StringUtils.*;
+
 
 @Stateless
 @Path("/dict/dictDataSource")
@@ -25,16 +23,7 @@ public class DataSourceResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Query query = QueryImpl.builder()
-			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
-			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
-			.setOrderBy("t.id")
-			.build();		
-		
-		List<DataSourceDto> list = service.find(query)
+		List<DataSourceDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, DataSourceDto.class) )
 			.collect(Collectors.toList());
@@ -48,10 +37,7 @@ public class DataSourceResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		DataSource dataSource = service.findById(id);
+		DataSource dataSource = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(dataSource, DataSourceDto.class))
 			.build();		
@@ -60,10 +46,9 @@ public class DataSourceResourceImpl {
 
 	@POST
 	public Response create(DataSourceDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
+		DataSource entity = mapper.map(entityDto, DataSource.class);
+		DataSource newDataSource = service.create(entity, buildSessionContext(entityDto.getLang()));
 
-		DataSource newDataSource = service.create(mapper.map(entityDto, DataSource.class));
 		return Response.ok()
 			.entity(mapper.map(newDataSource, DataSourceDto.class))
 			.build();
@@ -73,10 +58,9 @@ public class DataSourceResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, DataSourceDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
+		DataSource entity = mapper.map(entityDto, DataSource.class);
+		DataSource newDataSource = service.update(entity, buildSessionContext(entityDto.getLang()));
 
-		DataSource newDataSource = service.update(mapper.map(entityDto, DataSource.class));
 		return Response.ok()
 			.entity(mapper.map(newDataSource, DataSourceDto.class))
 			.build();
@@ -86,7 +70,7 @@ public class DataSourceResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

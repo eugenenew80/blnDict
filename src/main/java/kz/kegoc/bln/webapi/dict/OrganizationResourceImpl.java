@@ -13,10 +13,7 @@ import kz.kegoc.bln.entity.dict.Organization;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.dto.OrganizationDto;
-import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.OrganizationService;
-
-import static org.apache.commons.lang3.StringUtils.*;
 
 @Stateless
 @Path("/dict/dictOrganization")
@@ -26,16 +23,7 @@ public class OrganizationResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Query query = QueryImpl.builder()
-			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
-			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
-			.setOrderBy("t.id")
-			.build();		
-		
-		List<OrganizationDto> list = service.find(query)
+		List<OrganizationDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.map(it, OrganizationDto.class))
 			.collect(Collectors.toList());
@@ -49,10 +37,7 @@ public class OrganizationResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Organization entity = service.findById(id);
+		Organization entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, OrganizationDto.class))
 			.build();		
@@ -61,11 +46,8 @@ public class OrganizationResourceImpl {
 
 	@POST
 	public Response create(OrganizationDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
-		service.setLang(userLang);
-
 		Organization entity = mapper.map(entityDto, Organization.class);
-		Organization newEntity = service.create(entity);
+		Organization newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, OrganizationDto.class))
@@ -76,11 +58,8 @@ public class OrganizationResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, OrganizationDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang(): defLang);
-		service.setLang(userLang);
-
 		Organization entity = mapper.map(entityDto, Organization.class);
-		Organization newEntity = service.update(entity);
+		Organization newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, OrganizationDto.class))
@@ -91,7 +70,7 @@ public class OrganizationResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);		
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}

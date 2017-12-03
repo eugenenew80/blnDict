@@ -13,9 +13,7 @@ import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.MeteringPoint;
 import kz.kegoc.bln.entity.dict.dto.MeteringPointDto;
-import kz.kegoc.bln.repository.common.query.*;
 import kz.kegoc.bln.service.dict.MeteringPointService;
-import static org.apache.commons.lang3.StringUtils.*;
 
 @Stateless
 @Path("/dict/dictMeteringPoint")
@@ -25,16 +23,7 @@ public class MeteringPointResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		Query query = QueryImpl.builder()
-			.setParameter("code", isNotEmpty(code) ? new MyQueryParam("code", code + "%", ConditionType.LIKE) : null)
-			.setParameter("name", isNotEmpty(name) ? new MyQueryParam("name", name + "%", ConditionType.LIKE) : null)
-			.setOrderBy("t.id")
-			.build();		
-		
-		List<MeteringPointDto> list = service.find(query)
+		List<MeteringPointDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.map(it, MeteringPointDto.class))
 			.collect(Collectors.toList());
@@ -48,10 +37,7 @@ public class MeteringPointResourceImpl {
 	@GET 
 	@Path("/{id : \\d+}") 
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		MeteringPoint entity = service.findById(id);
+		MeteringPoint entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, MeteringPointDto.class))
 			.build();		
@@ -60,11 +46,8 @@ public class MeteringPointResourceImpl {
 
 	@POST
 	public Response create(MeteringPointDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		MeteringPoint entity = mapper.map(entityDto, MeteringPoint.class);
-		MeteringPoint newEntity = service.create(entity);
+		MeteringPoint newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, MeteringPointDto.class))
@@ -75,11 +58,8 @@ public class MeteringPointResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, MeteringPointDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		MeteringPoint entity = mapper.map(entityDto, MeteringPoint.class);
-		MeteringPoint newEntity = service.update(entity);
+		MeteringPoint newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, MeteringPointDto.class))
@@ -90,7 +70,7 @@ public class MeteringPointResourceImpl {
 	@DELETE 
 	@Path("{id : \\d+}") 
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);		
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
 	}
