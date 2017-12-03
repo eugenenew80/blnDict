@@ -19,7 +19,7 @@ public class AccountingTypeFilterImpl implements Filter<AccountingType> {
 
     private AccountingType prepare(AccountingType entity) {
         if (entity.getId()!=null) {
-            AccountingType curEntity = accountingTypeService.findById(entity.getId());
+            AccountingType curEntity = service.findById(entity.getId());
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
@@ -52,7 +52,7 @@ public class AccountingTypeFilterImpl implements Filter<AccountingType> {
     }
 
     @Inject
-    private AccountingTypeService accountingTypeService;
+    private AccountingTypeService service;
 
     @Inject
     private Lang defLang;

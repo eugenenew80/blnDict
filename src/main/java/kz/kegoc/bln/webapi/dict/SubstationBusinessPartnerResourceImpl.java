@@ -7,9 +7,11 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.SubstationBusinessPartner;
 import kz.kegoc.bln.service.dict.SubstationBusinessPartnerService;
+import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.dto.SubstationBusinessPartnerDto;
 import kz.kegoc.bln.service.dict.SubstationService;
@@ -87,6 +89,14 @@ public class SubstationBusinessPartnerResourceImpl {
 	}
 
 
+	private SessionContext buildSessionContext(Lang lang) {
+		SessionContext context = new SessionContext();
+		context.setLang(lang!=null ? lang : defLang);
+		context.setUser(((CustomPrincipal)securityContext.getUserPrincipal()).getUser());
+		return context;
+	}
+
+
 	@Inject
 	private SubstationService substationService;
 
@@ -98,4 +108,7 @@ public class SubstationBusinessPartnerResourceImpl {
 
 	@Inject
 	private Lang defLang;
+
+	@Context
+	private SecurityContext securityContext;
 }

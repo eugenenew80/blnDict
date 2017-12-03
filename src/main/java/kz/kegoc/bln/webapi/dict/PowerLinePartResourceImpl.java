@@ -1,17 +1,21 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.PowerLinePart;
 import kz.kegoc.bln.entity.dict.dto.PowerLinePartDto;
 import kz.kegoc.bln.service.dict.PowerLineService;
 import kz.kegoc.bln.service.dict.PowerLinePartService;
+import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -89,6 +93,14 @@ public class PowerLinePartResourceImpl {
 	}
 
 
+	private SessionContext buildSessionContext(Lang lang) {
+		SessionContext context = new SessionContext();
+		context.setLang(lang!=null ? lang : defLang);
+		context.setUser(((CustomPrincipal)securityContext.getUserPrincipal()).getUser());
+		return context;
+	}
+
+
 	@Inject
 	private PowerLineService powerLineService;
 
@@ -100,4 +112,7 @@ public class PowerLinePartResourceImpl {
 
 	@Inject
 	private Lang defLang;
+
+	@Context
+	private SecurityContext securityContext;
 }

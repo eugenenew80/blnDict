@@ -1,16 +1,20 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.ContactPhoneNumber;
 import kz.kegoc.bln.entity.dict.dto.ContactPhoneNumberDto;
 import kz.kegoc.bln.service.dict.ContactPhoneNumberService;
 import kz.kegoc.bln.service.dict.ContactService;
+import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,10 +26,7 @@ public class ContactPhoneNumberResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("contactId") Long contactId, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		List<ContactPhoneNumberDto> list = contactService.findById(contactId)
+		List<ContactPhoneNumberDto> list = contactService.findById(contactId, buildSessionContext(lang))
 			.getContactPhoneNumbers()
 			.stream()
 			.map( it-> mapper.map(it, ContactPhoneNumberDto.class) )
@@ -40,10 +41,7 @@ public class ContactPhoneNumberResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
-		final Lang userLang = (lang!=null ? lang : defLang);
-		service.setLang(userLang);
-
-		ContactPhoneNumber entity = service.findById(id);
+		ContactPhoneNumber entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, ContactPhoneNumberDto.class))
 			.build();
@@ -52,11 +50,8 @@ public class ContactPhoneNumberResourceImpl {
 
 	@POST
 	public Response create(ContactPhoneNumberDto entityDto) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		ContactPhoneNumber entity = mapper.map(entityDto, ContactPhoneNumber.class);
-		ContactPhoneNumber newEntity = service.create(entity);
+		ContactPhoneNumber newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, ContactPhoneNumberDto.class))
@@ -67,11 +62,8 @@ public class ContactPhoneNumberResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, ContactPhoneNumberDto entityDto ) {
-		final Lang userLang = (entityDto.getLang()!=null ? entityDto.getLang() : defLang);
-		service.setLang(userLang);
-
 		ContactPhoneNumber entity = mapper.map(entityDto, ContactPhoneNumber.class);
-		ContactPhoneNumber newEntity = service.update(entity);
+		ContactPhoneNumber newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, ContactPhoneNumberDto.class))
@@ -82,9 +74,17 @@ public class ContactPhoneNumberResourceImpl {
 	@DELETE
 	@Path("{id : \\d+}")
 	public Response delete(@PathParam("id") Long id) {
-		service.delete(id);
+		service.delete(id, buildSessionContext(null));
 		return Response.noContent()
 			.build();
+	}
+
+
+	private SessionContext buildSessionContext(Lang lang) {
+		SessionContext context = new SessionContext();
+		context.setLang(lang!=null ? lang : defLang);
+		context.setUser(((CustomPrincipal)securityContext.getUserPrincipal()).getUser());
+		return context;
 	}
 
 
@@ -99,4 +99,7 @@ public class ContactPhoneNumberResourceImpl {
 
 	@Inject
 	private Lang defLang;
+
+	@Context
+	private SecurityContext securityContext;
 }

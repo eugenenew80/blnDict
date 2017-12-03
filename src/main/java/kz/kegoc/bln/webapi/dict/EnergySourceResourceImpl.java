@@ -6,7 +6,10 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
+import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.EnergySource;
 import kz.kegoc.bln.entity.dict.dto.EnergySourceDto;
@@ -101,6 +104,14 @@ public class EnergySourceResourceImpl {
 	}
 
 
+	private SessionContext buildSessionContext(Lang lang) {
+		SessionContext context = new SessionContext();
+		context.setLang(lang!=null ? lang : defLang);
+		context.setUser(((CustomPrincipal)securityContext.getUserPrincipal()).getUser());
+		return context;
+	}
+
+
 	@Inject
 	private EnergySourceService service;
 
@@ -115,4 +126,7 @@ public class EnergySourceResourceImpl {
 
 	@Inject
 	private Lang defLang;
+
+	@Context
+	private SecurityContext securityContext;
 }

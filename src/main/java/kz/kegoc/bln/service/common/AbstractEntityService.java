@@ -4,8 +4,12 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import javax.validation.*;
+
+import kz.kegoc.bln.ejb.SessionContext;
+import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.HasDates;
 import kz.kegoc.bln.entity.common.HasId;
+import kz.kegoc.bln.entity.common.HasUser;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.exception.EntityNotFoundException;
 import kz.kegoc.bln.exception.InvalidArgumentException;
@@ -43,58 +47,85 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 
     
 	public List<T> findAll() {
+		return findAll(null);
+	}
+
+	public List<T> find(Query query) {
+		return find(query, null);
+	}
+
+	public T findById(Object entityId) {
+		return findById(entityId, null);
+	}
+
+	public T create(T entity) {
+		return create(entity, null);
+	}
+
+	public T update(T entity) {
+		return update(entity, null);
+	}
+
+	public boolean delete(Long entityId) {
+		return delete(entityId, null);
+	}
+
+
+	public List<T> findAll(SessionContext context) {
 		if (repository==null)
 			throw new RepositoryNotFoundException();
+
+		Lang lang = context!=null && context.getLang()!=null ? context.getLang() : Lang.RU;
 
 		List<T> list = repository.selectAll();
 		if (translator!=null && lang!=null) {
 			return list.stream()
-					.map(t -> translator.translate(t, lang))
-					.collect(Collectors.toList());
+				.map(t -> translator.translate(t, lang))
+				.collect(Collectors.toList());
 		}
 		return list;
 	}
 
-
-	public List<T> find(Query query) {
+	public List<T> find(Query query, SessionContext context) {
 		if (repository==null)
 			throw new RepositoryNotFoundException();
+
+		Lang lang = context!=null && context.getLang()!=null ? context.getLang() : Lang.RU;
 
 		List<T> list = repository.select(query);
 		if (translator!=null && lang!=null) {
 			return list.stream()
-					.map(t -> translator.translate(t, lang))
-					.collect(Collectors.toList());
+				.map(t -> translator.translate(t, lang))
+				.collect(Collectors.toList());
 		}
 		return list;
 	}
 
-
-	public T findById(Object entityId) {
+	public T findById(Object entityId, SessionContext context) {
 		if (repository==null)
 			throw new RepositoryNotFoundException();
 
 		if (entityId==null)
 			throw new InvalidArgumentException();
-		
+
 		T entity = repository.selectById(entityId);
 		if (entity==null)
 			throw new EntityNotFoundException(entityId);
 
+		Lang lang = context!=null && context.getLang()!=null ? context.getLang() : Lang.RU;
 		if (translator!=null && lang!=null)
 			entity = translator.translate(entity, lang);
 
 		return entity;
 	}
 
-
-	public T create(T entity) {
+	public T create(T entity, SessionContext context) {
 		if (repository==null)
 			throw new RepositoryNotFoundException();
 
-		if (entity==null) 
+		if (entity==null)
 			throw new InvalidArgumentException();
-		
+
 		if (entity.getId()!=null)
 			throw new InvalidArgumentException(entity);
 
@@ -104,21 +135,26 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		if (entity instanceof HasDates)
 			((HasDates) entity).setCreateDate(LocalDateTime.now());
 
+		if (context!=null) {
+			if (entity instanceof HasUser)
+				((HasUser) entity).setCreateBy(context.getUser());
+		}
+
 		if (validator!=null)
 			validate(entity);
 
 		return repository.insert(entity);
 	}
 
-	
-	public T update(T entity) {
+
+	public T update(T entity, SessionContext context) {
 		if (repository==null)
 			throw new RepositoryNotFoundException();
 
-		if (entity==null) 
+		if (entity==null)
 			throw new InvalidArgumentException();
-		
-		if (entity.getId()==null) 
+
+		if (entity.getId()==null)
 			throw new InvalidArgumentException(entity);
 
 		if (prePersistFilter !=null)
@@ -127,28 +163,26 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		if (entity instanceof HasDates)
 			((HasDates) entity).setLastUpdateDate(LocalDateTime.now());
 
+		if (context!=null) {
+			if (entity instanceof HasUser)
+				((HasUser) entity).setLastUpdateBy(context.getUser());
+		}
+
 		if (validator!=null)
 			validate(entity);
 
 		return repository.update(entity);
 	}
 
-	
-	public boolean delete(Long entityId) {
+	public boolean delete(Long entityId, SessionContext context) {
 		if (repository==null)
 			throw new RepositoryNotFoundException();
 
-		if (entityId==null) 
-			throw new InvalidArgumentException();		
-		
+		if (entityId==null)
+			throw new InvalidArgumentException();
+
 		return repository.delete(entityId);
 	}
-
-
-	public void setLang(Lang lang) {
-    	this.lang = lang;
-	}
-
 
 	private void validate(T entity) {
 		Set<ConstraintViolation<T>> violations =  validator.validate(entity);
@@ -159,9 +193,11 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 	}
 
 
+	public void setLang(Lang lang) { }
+
+
 	private Repository<T> repository;
 	private Validator validator;
 	private Filter<T> prePersistFilter;
 	private Translator<T> translator;
-	private Lang lang;
 }

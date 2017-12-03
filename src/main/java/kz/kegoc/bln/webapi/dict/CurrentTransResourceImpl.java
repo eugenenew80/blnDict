@@ -7,7 +7,9 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
+import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.CurrentTrans;
 import kz.kegoc.bln.entity.dict.dto.CurrentTransDto;
@@ -93,7 +95,15 @@ public class CurrentTransResourceImpl {
 		return Response.noContent()
 			.build();
 	}
-	
+
+
+	private SessionContext buildSessionContext(Lang lang) {
+		SessionContext context = new SessionContext();
+		context.setLang(lang!=null ? lang : defLang);
+		context.setUser(((CustomPrincipal)securityContext.getUserPrincipal()).getUser());
+		return context;
+	}
+
 
 	@Inject
 	private CurrentTransService service;
@@ -103,4 +113,7 @@ public class CurrentTransResourceImpl {
 
 	@Inject
 	private Lang defLang;
+
+	@Context
+	private SecurityContext securityContext;
 }

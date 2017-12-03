@@ -1,10 +1,12 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.EnergySourceMeteringPoint;
 import kz.kegoc.bln.entity.dict.dto.EnergySourceMeteringPointDto;
 import kz.kegoc.bln.service.dict.EnergySourceMeteringPointService;
 import kz.kegoc.bln.service.dict.EnergySourceService;
+import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -88,8 +90,16 @@ public class EnergySourceMeteringPointResourceImpl {
 		return Response.noContent()
 			.build();
 	}
-	
-	
+
+
+	private SessionContext buildSessionContext(Lang lang) {
+		SessionContext context = new SessionContext();
+		context.setLang(lang!=null ? lang : defLang);
+		context.setUser(((CustomPrincipal)securityContext.getUserPrincipal()).getUser());
+		return context;
+	}
+
+
 	@Inject
 	private EnergySourceService energySourceService;
 
@@ -101,4 +111,7 @@ public class EnergySourceMeteringPointResourceImpl {
 
 	@Inject
 	private Lang defLang;
+
+	@Context
+	private SecurityContext securityContext;
 }
