@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 @Stateless
-public class CompanyTranslatorImpl implements Translator<Organization> {
+public class OrganizationTranslatorImpl implements Translator<Organization> {
     public Organization translate(Organization entity, Lang lang) {
         entity.setLang(lang);
 

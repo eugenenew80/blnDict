@@ -20,8 +20,11 @@ public class PostAddressTranslatorImpl implements Translator<PostAddress> {
         if (translate==null)
             translate = entity.getTranslations().get(defLang);
 
-        if (translate!=null)
+        if (translate!=null) {
             entity.setName(translate.getName());
+            entity.setLocality(translate.getLocality());
+            entity.setStreet(translate.getStreet());
+        }
 
         return entity;
     }

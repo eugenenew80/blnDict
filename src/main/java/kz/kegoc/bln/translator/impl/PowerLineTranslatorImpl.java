@@ -23,6 +23,7 @@ public class PowerLineTranslatorImpl implements Translator<PowerLine> {
         if (translate!=null) {
             entity.setName(translate.getName());
             entity.setShortName(translate.getShortName());
+            entity.setPropertyBoundary(translate.getPropertyBoundary());
         }
 
         return entity;
