@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class UnitFilterImpl implements Filter<Unit> {
     public Unit filter(Unit entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private Unit prepare(Unit entity) {
+    private Unit prepare(Unit entity, SessionContext context) {
         if (entity.getId()!=null) {
             Unit curEntity = service.findById(entity.getId(), null);
 
@@ -34,7 +34,7 @@ public class UnitFilterImpl implements Filter<Unit> {
         return entity;
     }
 
-    private Unit translate(Unit entity) {
+    private Unit translate(Unit entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         UnitTranslate translate = entity.getTranslations().getOrDefault(lang, new UnitTranslate());

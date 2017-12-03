@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class EnergyNodeFilterImpl implements Filter<EnergyNode> {
     public EnergyNode filter(EnergyNode entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private EnergyNode prepare(EnergyNode entity) {
+    private EnergyNode prepare(EnergyNode entity, SessionContext context) {
         if (entity.getId()!=null) {
             EnergyNode curEntity = service.findById(entity.getId(), null);
 
@@ -34,7 +34,7 @@ public class EnergyNodeFilterImpl implements Filter<EnergyNode> {
         return entity;
     }
 
-    private EnergyNode translate(EnergyNode entity) {
+    private EnergyNode translate(EnergyNode entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         EnergyNodeTranslate translate = entity.getTranslations().getOrDefault(lang, new EnergyNodeTranslate());

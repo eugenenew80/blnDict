@@ -11,10 +11,10 @@ import javax.inject.Inject;
 @Stateless
 public class MeteringPointCharacteristicFilterImpl implements Filter<MeteringPointCharacteristic> {
     public MeteringPointCharacteristic filter(MeteringPointCharacteristic entity, SessionContext context) {
-        return prepare(entity);
+        return prepare(entity, context);
     }
 
-    private MeteringPointCharacteristic prepare(MeteringPointCharacteristic entity) {
+    private MeteringPointCharacteristic prepare(MeteringPointCharacteristic entity, SessionContext context) {
         if (entity.getId()!=null) {
             MeteringPointCharacteristic curEntity = service.findById(entity.getId(), null);
             entity.setCreateDate(curEntity.getCreateDate());

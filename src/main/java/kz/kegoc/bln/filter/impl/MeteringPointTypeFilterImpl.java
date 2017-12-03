@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class MeteringPointTypeFilterImpl implements Filter<MeteringPointType> {
     public MeteringPointType filter(MeteringPointType entity, SessionContext context) {
-        return translate(entity);
+        return translate(prepare(entity, context), context);
     }
 
-    private MeteringPointType prepare(MeteringPointType entity) {
+    private MeteringPointType prepare(MeteringPointType entity, SessionContext context) {
         if (entity.getId()!=null) {
             MeteringPointType curEntity = service.findById(entity.getId(), null);
 
@@ -34,7 +34,7 @@ public class MeteringPointTypeFilterImpl implements Filter<MeteringPointType> {
         return entity;
     }
 
-    private MeteringPointType translate(MeteringPointType entity) {
+    private MeteringPointType translate(MeteringPointType entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         MeteringPointTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new MeteringPointTypeTranslate());

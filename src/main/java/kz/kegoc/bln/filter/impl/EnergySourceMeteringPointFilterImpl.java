@@ -11,10 +11,10 @@ import javax.inject.Inject;
 @Stateless
 public class EnergySourceMeteringPointFilterImpl implements Filter<EnergySourceMeteringPoint> {
     public EnergySourceMeteringPoint filter(EnergySourceMeteringPoint entity, SessionContext context) {
-        return prepare(entity);
+        return prepare(entity, context);
     }
 
-    private EnergySourceMeteringPoint prepare(EnergySourceMeteringPoint entity) {
+    private EnergySourceMeteringPoint prepare(EnergySourceMeteringPoint entity, SessionContext context) {
         if (entity.getId()!=null) {
             EnergySourceMeteringPoint curEntity = service.findById(entity.getId(), null);
             entity.setCreateDate(curEntity.getCreateDate());

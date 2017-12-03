@@ -11,10 +11,10 @@ import javax.inject.Inject;
 @Stateless
 public class SubstationBusinessPartnerFilterImpl implements Filter<SubstationBusinessPartner> {
     public SubstationBusinessPartner filter(SubstationBusinessPartner entity, SessionContext context) {
-        return prepare(entity);
+        return prepare(entity, context);
     }
 
-    private SubstationBusinessPartner prepare(SubstationBusinessPartner entity) {
+    private SubstationBusinessPartner prepare(SubstationBusinessPartner entity, SessionContext context) {
         if (entity.getId()!=null) {
             SubstationBusinessPartner curEntity = service.findById(entity.getId(), null);
             entity.setCreateDate(curEntity.getCreateDate());

@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class CurrentTransFilterImpl implements Filter<CurrentTrans> {
     public CurrentTrans filter(CurrentTrans entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private CurrentTrans prepare(CurrentTrans entity) {
+    private CurrentTrans prepare(CurrentTrans entity, SessionContext context) {
         if (entity.getId()!=null) {
             CurrentTrans curEntity = currentTransService.findById(entity.getId(), null);
 
@@ -34,7 +34,7 @@ public class CurrentTransFilterImpl implements Filter<CurrentTrans> {
         return entity;
     }
 
-    private CurrentTrans translate(CurrentTrans entity) {
+    private CurrentTrans translate(CurrentTrans entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         CurrentTransTranslate translate = entity.getTranslations().getOrDefault(lang, new CurrentTransTranslate());

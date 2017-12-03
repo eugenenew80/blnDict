@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class ReactorFilterImpl implements Filter<Reactor> {
     public Reactor filter(Reactor entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private Reactor prepare(Reactor entity) {
+    private Reactor prepare(Reactor entity, SessionContext context) {
         if (entity.getId()!=null) {
             Reactor curEntity = service.findById(entity.getId(), null);
 
@@ -34,7 +34,7 @@ public class ReactorFilterImpl implements Filter<Reactor> {
         return entity;
     }
 
-    private Reactor translate(Reactor entity) {
+    private Reactor translate(Reactor entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         ReactorTranslate translate = entity.getTranslations().getOrDefault(lang, new ReactorTranslate());

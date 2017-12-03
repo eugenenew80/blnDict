@@ -11,10 +11,10 @@ import javax.inject.Inject;
 @Stateless
 public class MeteringPointVoltageTransFilterImpl implements Filter<MeteringPointVoltageTrans> {
     public MeteringPointVoltageTrans filter(MeteringPointVoltageTrans entity, SessionContext context) {
-        return prepare(entity);
+        return prepare(entity, context);
     }
 
-    private MeteringPointVoltageTrans prepare(MeteringPointVoltageTrans entity) {
+    private MeteringPointVoltageTrans prepare(MeteringPointVoltageTrans entity, SessionContext context) {
         if (entity.getId()!=null) {
             MeteringPointVoltageTrans curEntity = service.findById(entity.getId(), null);
             entity.setCreateDate(curEntity.getCreateDate());

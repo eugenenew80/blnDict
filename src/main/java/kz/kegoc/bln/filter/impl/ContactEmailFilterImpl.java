@@ -15,10 +15,10 @@ import java.util.HashMap;
 @Stateless
 public class ContactEmailFilterImpl implements Filter<ContactEmail> {
     public ContactEmail filter(ContactEmail entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private ContactEmail prepare(ContactEmail entity) {
+    private ContactEmail prepare(ContactEmail entity, SessionContext context) {
         if (entity.getId()!=null) {
             ContactEmail curEntity = service.findById(entity.getId(), null);
 
@@ -35,7 +35,7 @@ public class ContactEmailFilterImpl implements Filter<ContactEmail> {
         return entity;
     }
 
-    private ContactEmail translate(ContactEmail entity) {
+    private ContactEmail translate(ContactEmail entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         ContactEmailTranslate translate = entity.getTranslations().getOrDefault(lang, new ContactEmailTranslate());

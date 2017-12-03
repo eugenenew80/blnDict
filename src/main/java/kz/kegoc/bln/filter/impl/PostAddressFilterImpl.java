@@ -15,10 +15,10 @@ import java.util.HashMap;
 @Stateless
 public class PostAddressFilterImpl implements Filter< PostAddress> {
     public  PostAddress filter(PostAddress entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private PostAddress prepare(PostAddress entity) {
+    private PostAddress prepare(PostAddress entity, SessionContext context) {
         if (entity.getId()!=null) {
             PostAddress curEntity = service.findById(entity.getId(), null);
 
@@ -35,7 +35,7 @@ public class PostAddressFilterImpl implements Filter< PostAddress> {
         return entity;
     }
 
-    private PostAddress translate(PostAddress entity) {
+    private PostAddress translate(PostAddress entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         PostAddressTranslate translate = entity.getTranslations().getOrDefault(lang, new  PostAddressTranslate());

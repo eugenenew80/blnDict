@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class ContactFilterImpl implements Filter<Contact> {
     public Contact filter(Contact entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private Contact prepare(Contact entity) {
+    private Contact prepare(Contact entity, SessionContext context) {
         if (entity.getId()!=null) {
             Contact curEntity = service.findById(entity.getId(), null);
 
@@ -34,7 +34,7 @@ public class ContactFilterImpl implements Filter<Contact> {
         return entity;
     }
 
-    private Contact translate(Contact entity) {
+    private Contact translate(Contact entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         ContactTranslate translate = entity.getTranslations().getOrDefault(lang, new ContactTranslate());

@@ -11,10 +11,10 @@ import javax.inject.Inject;
 @Stateless
 public class MeteringPointCurrentTransFilterImpl implements Filter<MeteringPointCurrentTrans> {
     public MeteringPointCurrentTrans filter(MeteringPointCurrentTrans entity, SessionContext context) {
-        return prepare(entity);
+        return prepare(entity, context);
     }
 
-    private MeteringPointCurrentTrans prepare(MeteringPointCurrentTrans entity) {
+    private MeteringPointCurrentTrans prepare(MeteringPointCurrentTrans entity, SessionContext context) {
         if (entity.getId()!=null) {
             MeteringPointCurrentTrans curEntity = service.findById(entity.getId(), null);
             entity.setCreateDate(curEntity.getCreateDate());

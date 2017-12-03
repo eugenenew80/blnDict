@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class RegionFilterImpl implements Filter<Region> {
     public Region filter(Region entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private Region prepare(Region entity) {
+    private Region prepare(Region entity, SessionContext context) {
         if (entity.getId()!=null) {
             Region curEntity = service.findById(entity.getId(), null);
 
@@ -34,7 +34,7 @@ public class RegionFilterImpl implements Filter<Region> {
         return entity;
     }
 
-    private Region translate(Region entity) {
+    private Region translate(Region entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         RegionTranslate translate = entity.getTranslations().getOrDefault(lang, new RegionTranslate());

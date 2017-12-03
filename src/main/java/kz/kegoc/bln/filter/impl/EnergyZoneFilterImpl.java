@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class EnergyZoneFilterImpl implements Filter<EnergyZone> {
     public EnergyZone filter(EnergyZone entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private EnergyZone prepare(EnergyZone entity) {
+    private EnergyZone prepare(EnergyZone entity, SessionContext context) {
         if (entity.getId()!=null) {
             EnergyZone curEntity = service.findById(entity.getId(), null);
 
@@ -34,7 +34,7 @@ public class EnergyZoneFilterImpl implements Filter<EnergyZone> {
         return entity;
     }
 
-    private EnergyZone translate(EnergyZone entity) {
+    private EnergyZone translate(EnergyZone entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         EnergyZoneTranslate translate = entity.getTranslations().getOrDefault(lang, new EnergyZoneTranslate());

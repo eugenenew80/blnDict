@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
     public BusinessPartner filter(BusinessPartner entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private BusinessPartner prepare(BusinessPartner entity) {
+    private BusinessPartner prepare(BusinessPartner entity, SessionContext context) {
         if (entity.getId()!=null) {
             BusinessPartner curEntity = businessPartnerService.findById(entity.getId(), null);
 
@@ -37,7 +37,7 @@ public class BusinessPartnerFilterImpl implements Filter<BusinessPartner> {
         return entity;
     }
 
-    private BusinessPartner translate(BusinessPartner entity) {
+    private BusinessPartner translate(BusinessPartner entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         BusinessPartnerTranslate translate = entity.getTranslations().getOrDefault(lang, new BusinessPartnerTranslate());

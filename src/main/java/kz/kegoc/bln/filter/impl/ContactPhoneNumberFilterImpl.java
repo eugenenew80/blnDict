@@ -11,10 +11,10 @@ import javax.inject.Inject;
 @Stateless
 public class ContactPhoneNumberFilterImpl implements Filter<ContactPhoneNumber> {
     public ContactPhoneNumber filter(ContactPhoneNumber entity, SessionContext context) {
-        return prepare(entity);
+        return prepare(entity, context);
     }
 
-    private ContactPhoneNumber prepare(ContactPhoneNumber entity) {
+    private ContactPhoneNumber prepare(ContactPhoneNumber entity, SessionContext context) {
         if (entity.getId()!=null) {
             ContactPhoneNumber curEntity = service.findById(entity.getId(), null);
             entity.setCreateDate(curEntity.getCreateDate());

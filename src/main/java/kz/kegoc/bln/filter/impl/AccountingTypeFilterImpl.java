@@ -15,10 +15,10 @@ import java.util.HashMap;
 @Stateless
 public class AccountingTypeFilterImpl implements Filter<AccountingType> {
     public AccountingType filter(AccountingType entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private AccountingType prepare(AccountingType entity) {
+    private AccountingType prepare(AccountingType entity, SessionContext context) {
         if (entity.getId()!=null) {
             AccountingType curEntity = service.findById(entity.getId(), null);
 
@@ -35,7 +35,7 @@ public class AccountingTypeFilterImpl implements Filter<AccountingType> {
         return entity;
     }
 
-    private AccountingType translate(AccountingType entity) {
+    private AccountingType translate(AccountingType entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         AccountingTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new AccountingTypeTranslate());

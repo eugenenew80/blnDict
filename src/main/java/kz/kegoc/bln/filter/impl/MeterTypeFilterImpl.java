@@ -15,18 +15,24 @@ import java.util.HashMap;
 @Stateless
 public class MeterTypeFilterImpl implements Filter<MeterType> {
     public MeterType filter(MeterType entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private MeterType prepare(MeterType entity) {
+    private MeterType prepare(MeterType entity, SessionContext context) {
         if (entity.getId()!=null) {
             MeterType curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
+            entity.setLastUpdateDate(LocalDateTime.now());
+            entity.setLastUpdateBy(context.getUser());
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
+        }
+        else {
+            entity.setCreateDate(LocalDateTime.now());
+            entity.setCreateBy(context.getUser());
         }
 
         if (entity.getTranslations()==null)
@@ -35,14 +41,18 @@ public class MeterTypeFilterImpl implements Filter<MeterType> {
         return entity;
     }
 
-    private MeterType translate(MeterType entity) {
+    private MeterType translate(MeterType entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         MeterTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new MeterTypeTranslate());
-        if (translate.getId()==null)
+        if (translate.getId()==null) {
             translate.setCreateDate(LocalDateTime.now());
-        else
+            translate.setCreateBy(context.getUser());
+        }
+        else {
             translate.setLastUpdateDate(LocalDateTime.now());
+            translate.setLastUpdateBy(context.getUser());
+        }
 
         translate.setLang(lang);
         translate.setMeterType(entity);

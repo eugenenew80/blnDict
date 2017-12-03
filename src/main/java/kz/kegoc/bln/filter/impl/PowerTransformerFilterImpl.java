@@ -15,10 +15,10 @@ import java.util.HashMap;
 @Stateless
 public class PowerTransformerFilterImpl implements Filter<PowerTransformer> {
     public PowerTransformer filter(PowerTransformer entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private PowerTransformer prepare(PowerTransformer entity) {
+    private PowerTransformer prepare(PowerTransformer entity, SessionContext context) {
         if (entity.getId()!=null) {
             PowerTransformer curEntity = service.findById(entity.getId(), null);
 
@@ -35,7 +35,7 @@ public class PowerTransformerFilterImpl implements Filter<PowerTransformer> {
         return entity;
     }
 
-    private PowerTransformer translate(PowerTransformer entity) {
+    private PowerTransformer translate(PowerTransformer entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         PowerTransformerTranslate translate = entity.getTranslations().getOrDefault(lang, new PowerTransformerTranslate());

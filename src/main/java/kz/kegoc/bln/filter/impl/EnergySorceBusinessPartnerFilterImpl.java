@@ -11,10 +11,10 @@ import javax.inject.Inject;
 @Stateless
 public class EnergySorceBusinessPartnerFilterImpl implements Filter<EnergySourceBusinessPartner> {
     public EnergySourceBusinessPartner filter(EnergySourceBusinessPartner entity, SessionContext context) {
-        return prepare(entity);
+        return prepare(entity, context);
     }
 
-    private EnergySourceBusinessPartner prepare(EnergySourceBusinessPartner entity) {
+    private EnergySourceBusinessPartner prepare(EnergySourceBusinessPartner entity, SessionContext context) {
         if (entity.getId()!=null) {
             EnergySourceBusinessPartner curEntity = service.findById(entity.getId(), null);
             entity.setCreateDate(curEntity.getCreateDate());

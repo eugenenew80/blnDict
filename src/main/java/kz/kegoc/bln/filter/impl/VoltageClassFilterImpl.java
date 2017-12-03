@@ -15,10 +15,10 @@ import java.util.HashMap;
 @Stateless
 public class VoltageClassFilterImpl implements Filter<VoltageClass> {
     public VoltageClass filter(VoltageClass entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private VoltageClass prepare(VoltageClass entity) {
+    private VoltageClass prepare(VoltageClass entity, SessionContext context) {
         if (entity.getId()!=null) {
             VoltageClass curEntity = service.findById(entity.getId(), null);
 
@@ -35,7 +35,7 @@ public class VoltageClassFilterImpl implements Filter<VoltageClass> {
         return entity;
     }
 
-    private VoltageClass translate(VoltageClass entity) {
+    private VoltageClass translate(VoltageClass entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         VoltageClassTranslate translate = entity.getTranslations().getOrDefault(lang, new VoltageClassTranslate());

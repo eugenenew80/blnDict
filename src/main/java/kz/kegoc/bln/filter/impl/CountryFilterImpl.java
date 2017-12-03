@@ -15,10 +15,10 @@ import java.util.HashMap;
 @Stateless
 public class CountryFilterImpl implements Filter<Country> {
     public Country filter(Country entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private Country prepare(Country entity) {
+    private Country prepare(Country entity, SessionContext context) {
         if (entity.getId()!=null) {
             Country curEntity = countryService.findById(entity.getId(), null);
 
@@ -35,7 +35,7 @@ public class CountryFilterImpl implements Filter<Country> {
         return entity;
     }
 
-    private Country translate(Country entity) {
+    private Country translate(Country entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         CountryTranslate translate = entity.getTranslations().getOrDefault(lang, new CountryTranslate());

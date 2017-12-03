@@ -10,10 +10,10 @@ import javax.inject.Inject;
 @Stateless
 public class BankAccountFilterImpl implements Filter<BankAccount> {
     public BankAccount filter(BankAccount entity, SessionContext context) {
-        return prepare(entity);
+        return prepare(entity, context);
     }
 
-    private BankAccount prepare(BankAccount entity) {
+    private BankAccount prepare(BankAccount entity, SessionContext context) {
         if (entity.getId()!=null) {
             BankAccount curEntity = service.findById(entity.getId(), null);
             entity.setCreateDate(curEntity.getCreateDate());

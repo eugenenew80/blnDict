@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class SubstationTypeFilterImpl implements Filter<SubstationType> {
     public SubstationType filter(SubstationType entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private SubstationType prepare(SubstationType entity) {
+    private SubstationType prepare(SubstationType entity, SessionContext context) {
         if (entity.getId()!=null) {
             SubstationType curEntity = service.findById(entity.getId(), null);
 
@@ -34,7 +34,7 @@ public class SubstationTypeFilterImpl implements Filter<SubstationType> {
         return entity;
     }
 
-    private SubstationType translate(SubstationType entity) {
+    private SubstationType translate(SubstationType entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         SubstationTypeTranslate translate = entity.getTranslations().getOrDefault(lang, new SubstationTypeTranslate());

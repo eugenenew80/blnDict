@@ -15,10 +15,10 @@ import java.util.HashMap;
 @Stateless
 public class PowerLineFilterImpl implements Filter<PowerLine> {
     public PowerLine filter(PowerLine entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private PowerLine prepare(PowerLine entity) {
+    private PowerLine prepare(PowerLine entity, SessionContext context) {
         if (entity.getId()!=null) {
             PowerLine curEntity = service.findById(entity.getId(), null);
 
@@ -35,7 +35,7 @@ public class PowerLineFilterImpl implements Filter<PowerLine> {
         return entity;
     }
 
-    private PowerLine translate(PowerLine entity) {
+    private PowerLine translate(PowerLine entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         PowerLineTranslate translate = entity.getTranslations().getOrDefault(lang, new PowerLineTranslate());

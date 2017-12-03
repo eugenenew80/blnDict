@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class BankFilterImpl implements Filter<Bank> {
     public Bank filter(Bank entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private Bank prepare(Bank entity) {
+    private Bank prepare(Bank entity, SessionContext context) {
         if (entity.getId()!=null) {
             Bank curEntity = bankService.findById(entity.getId(), null);
 
@@ -34,7 +34,7 @@ public class BankFilterImpl implements Filter<Bank> {
         return entity;
     }
 
-    private Bank translate(Bank entity) {
+    private Bank translate(Bank entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         BankTranslate translate = entity.getTranslations().getOrDefault(lang, new BankTranslate());

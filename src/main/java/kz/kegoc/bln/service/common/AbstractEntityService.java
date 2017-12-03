@@ -1,15 +1,10 @@
 package kz.kegoc.bln.service.common;
 
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import javax.validation.*;
-
 import kz.kegoc.bln.ejb.SessionContext;
-import kz.kegoc.bln.entity.adm.User;
-import kz.kegoc.bln.entity.common.HasDates;
 import kz.kegoc.bln.entity.common.HasId;
-import kz.kegoc.bln.entity.common.HasUser;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.exception.EntityNotFoundException;
 import kz.kegoc.bln.exception.InvalidArgumentException;
@@ -18,7 +13,6 @@ import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.repository.common.query.Query;
 import kz.kegoc.bln.translator.Translator;
-
 
 public abstract class AbstractEntityService<T extends HasId> implements EntityService<T> {
     public AbstractEntityService() {}
@@ -107,14 +101,6 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		if (prePersistFilter !=null)
 			entity = prePersistFilter.filter(entity, context);
 
-		if (entity instanceof HasDates)
-			((HasDates) entity).setCreateDate(LocalDateTime.now());
-
-		if (context!=null) {
-			if (entity instanceof HasUser)
-				((HasUser) entity).setCreateBy(context.getUser());
-		}
-
 		if (validator!=null)
 			validate(entity);
 
@@ -134,14 +120,6 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 
 		if (prePersistFilter !=null)
 			entity = prePersistFilter.filter(entity, context);
-
-		if (entity instanceof HasDates)
-			((HasDates) entity).setLastUpdateDate(LocalDateTime.now());
-
-		if (context!=null) {
-			if (entity instanceof HasUser)
-				((HasUser) entity).setLastUpdateBy(context.getUser());
-		}
 
 		if (validator!=null)
 			validate(entity);
@@ -166,9 +144,6 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 			throw new ValidationException(violation.getPropertyPath() + ": " + violation.getMessage());
 		}
 	}
-
-
-	public void setLang(Lang lang) { }
 
 
 	private Repository<T> repository;

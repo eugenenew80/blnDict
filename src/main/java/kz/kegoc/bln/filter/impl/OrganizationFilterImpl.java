@@ -14,10 +14,10 @@ import java.util.HashMap;
 @Stateless
 public class OrganizationFilterImpl implements Filter<Organization> {
     public Organization filter(Organization entity, SessionContext context) {
-        return translate(prepare(entity));
+        return translate(prepare(entity, context), context);
     }
 
-    private Organization prepare(Organization entity) {
+    private Organization prepare(Organization entity, SessionContext context) {
         if (entity.getId()!=null) {
             Organization curEntity = companyService.findById(entity.getId(), null);
 
@@ -34,7 +34,7 @@ public class OrganizationFilterImpl implements Filter<Organization> {
         return entity;
     }
 
-    private Organization translate(Organization entity) {
+    private Organization translate(Organization entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
         OrganizationTranslate translate = entity.getTranslations().getOrDefault(lang, new OrganizationTranslate());
