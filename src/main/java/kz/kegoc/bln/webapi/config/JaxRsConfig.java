@@ -25,8 +25,6 @@ public class JaxRsConfig extends Application {
 		resources.add(EnergyNodeResourceImpl.class);
 		resources.add(OrganizationResourceImpl.class);
 		resources.add(MeterResourceImpl.class);
-		resources.add(CurrentTransResourceImpl.class);
-		resources.add(VoltageTransResourceImpl.class);
 		resources.add(EnergySourceTypeResourceImpl.class);
 		resources.add(SubstationResourceImpl.class);
 		resources.add(EnergySourceResourceImpl.class);

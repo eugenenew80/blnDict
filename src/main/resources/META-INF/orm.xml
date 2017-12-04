@@ -1142,250 +1142,6 @@
 		</attributes>
 	</entity>
 
-
-	<entity class="kz.kegoc.bln.entity.dict.CurrentTrans">
-		<table name="dict_current_trans" schema="apps" />
-		<attributes>
-			<id name="id">
-				<column name="id" />
-        		<generated-value strategy="SEQUENCE" generator="dict_current_trans_gen" />
-        		<sequence-generator
-        			name="dict_current_trans_gen"
-        			sequence-name="apps.dict_current_trans_s"
-					allocation-size="1"
-        		/>				
-			</id>
-
-      		<basic name="name">
-      			<column name="name" />
-      		</basic>
-      		
-      		<basic name="manufacturer">
-      			<column name="manufacturer" />
-      		</basic>
-
-      		<basic name="ratedCurrent1">
-      			<column name="rated_current1" />
-      		</basic>
-
-      		<basic name="ratedCurrent2">
-      			<column name="rated_current2" />
-      		</basic>
-
-      		<basic name="accuracyClass">
-      			<column name="accuracy_class" />
-      		</basic>      		
-      		      		      		      		
-      		<basic name="minCurrent">
-      			<column name="min_current" />
-      		</basic>      		
-
-      		<basic name="maxCurrent">
-      			<column name="max_current" />
-      		</basic>  
-
-			<basic name="createDate">
-				<column name="create_date" />
-			</basic>
-
-			<basic name="lastUpdateDate">
-				<column name="last_update_date" />
-			</basic>
-
-			<many-to-one name="createBy">
-				<join-column name="create_by" />
-			</many-to-one>
-
-			<many-to-one name="lastUpdateBy">
-				<join-column name="last_update_by" />
-			</many-to-one>
-
-			<many-to-one name="businessPartner">
-				<join-column name="business_partner_id"/>
-			</many-to-one>
-
-			<many-to-one name="org">
-				<join-column name="org_id"/>
-			</many-to-one>
-
-			<one-to-many name="translations" mapped-by="currentTrans" orphan-removal="true">
-				<map-key name="lang"/>
-				<cascade>
-					<cascade-all/>
-				</cascade>
-			</one-to-many>
-
-			<transient name="lang" />
-		</attributes>
-	</entity>
-
-
-	<entity class="kz.kegoc.bln.entity.dict.translate.CurrentTransTranslate">
-		<table name="dict_current_trans_tl" schema="apps"/>
-		<attributes>
-			<id name="id">
-				<column name="id" />
-				<generated-value strategy="SEQUENCE" generator="dict_current_trans_tl_gen" />
-				<sequence-generator
-						name="dict_current_trans_tl_gen"
-						sequence-name="apps.dict_current_trans_tl_s"
-						allocation-size="1"
-				/>
-			</id>
-
-			<basic name="lang">
-				<column name="lang"  />
-				<enumerated>STRING</enumerated>
-			</basic>
-
-			<basic name="name">
-				<column name="name" />
-			</basic>
-
-			<basic name="manufacturer">
-				<column name="manufacturer" />
-			</basic>
-
-			<basic name="createDate">
-				<column name="create_date" />
-			</basic>
-
-			<basic name="lastUpdateDate">
-				<column name="last_update_date" />
-			</basic>
-
-			<many-to-one name="createBy">
-				<join-column name="create_by" />
-			</many-to-one>
-
-			<many-to-one name="lastUpdateBy">
-				<join-column name="last_update_by" />
-			</many-to-one>
-
-			<many-to-one name="currentTrans">
-				<join-column name="current_trans_id"/>
-			</many-to-one>
-		</attributes>
-	</entity>
-	
-
-	<entity class="kz.kegoc.bln.entity.dict.VoltageTrans">
-		<table name="dict_voltage_trans" schema="apps" />
-		<attributes>
-			<id name="id">
-				<column name="id" />
-        		<generated-value strategy="SEQUENCE" generator="dict_voltage_trans_gen" />
-        		<sequence-generator
-        			name="dict_voltage_trans_gen"
-        			sequence-name="apps.dict_voltage_trans_s"
-					allocation-size="1"
-        		/>				
-			</id>
-
-      		<basic name="name">
-      			<column name="name" />
-      		</basic>
-      		
-      		<basic name="manufacturer">
-      			<column name="manufacturer" />
-      		</basic>
-      		
-      		<basic name="ratedVoltage1">
-      			<column name="rated_voltage1" />
-      		</basic>
-
-      		<basic name="ratedVoltage2">
-      			<column name="rated_voltage2" />
-      		</basic>
-
-      		<basic name="accuracyClass">
-      			<column name="accuracy_class" />
-      		</basic>
-
-			<basic name="createDate">
-				<column name="create_date" />
-			</basic>
-
-			<basic name="lastUpdateDate">
-				<column name="last_update_date" />
-			</basic>
-
-			<many-to-one name="createBy">
-				<join-column name="create_by" />
-			</many-to-one>
-
-			<many-to-one name="lastUpdateBy">
-				<join-column name="last_update_by" />
-			</many-to-one>
-
-			<many-to-one name="businessPartner">
-				<join-column name="business_partner_id"/>
-			</many-to-one>
-
-			<many-to-one name="org">
-				<join-column name="org_id"/>
-			</many-to-one>
-
-			<one-to-many name="translations" mapped-by="voltageTrans" orphan-removal="true">
-				<map-key name="lang"/>
-				<cascade>
-					<cascade-all/>
-				</cascade>
-			</one-to-many>
-
-			<transient name="lang"/>
-		</attributes>
-	</entity>
-
-	<entity class="kz.kegoc.bln.entity.dict.translate.VoltageTransTranslate">
-		<table name="dict_voltage_trans_tl" schema="apps"/>
-		<attributes>
-			<id name="id">
-				<column name="id" />
-				<generated-value strategy="SEQUENCE" generator="dict_voltage_trans_tl_gen" />
-				<sequence-generator
-						name="dict_voltage_trans_tl_gen"
-						sequence-name="apps.dict_voltage_trans_tl_s"
-						allocation-size="1"
-				/>
-			</id>
-
-			<basic name="lang">
-				<column name="lang"  />
-				<enumerated>STRING</enumerated>
-			</basic>
-
-			<basic name="name">
-				<column name="name" />
-			</basic>
-
-			<basic name="manufacturer">
-				<column name="manufacturer" />
-			</basic>
-
-			<basic name="createDate">
-				<column name="create_date" />
-			</basic>
-
-			<basic name="lastUpdateDate">
-				<column name="last_update_date" />
-			</basic>
-
-			<many-to-one name="createBy">
-				<join-column name="create_by" />
-			</many-to-one>
-
-			<many-to-one name="lastUpdateBy">
-				<join-column name="last_update_by" />
-			</many-to-one>
-
-			<many-to-one name="voltageTrans">
-				<join-column name="voltage_trans_id"/>
-			</many-to-one>
-		</attributes>
-	</entity>
-
-
 	<entity class="kz.kegoc.bln.entity.dict.EnergySourceType">
 		<table name="dict_energy_source_types" schema="apps" />
 		<attributes>
@@ -1541,7 +1297,10 @@
 				<join-column name="org_id"/>
 			</many-to-one>
 
-      		<one-to-many name="businessPartners" mapped-by="substation" />
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
+			</many-to-one>
+
 			<one-to-many name="meteringPoints" mapped-by="substation" />
 
 			<one-to-many name="translations" mapped-by="substation" orphan-removal="true">
@@ -1607,52 +1366,6 @@
 		</attributes>
 	</entity>
 
-	<entity class="kz.kegoc.bln.entity.dict.SubstationBusinessPartner">
-		<table name="dict_substation_business_partners" schema="apps" />
-		<attributes>
-			<id name="id">
-				<column name="id" />
-        		<generated-value strategy="SEQUENCE" generator="dict_substation_business_partners_gen" />
-        		<sequence-generator
-        			name="dict_substation_business_partners_gen"
-        			sequence-name="apps.dict_substation_business_partners_s"
-					allocation-size="1"
-        		/>				
-			</id>
-			
-      		<basic name="startDate">
-      			<column name="start_date" />
-      		</basic>
-
-      		<basic name="endDate">
-      			<column name="end_date" />
-      		</basic>
-
-			<basic name="createDate">
-				<column name="create_date" />
-			</basic>
-
-			<basic name="lastUpdateDate">
-				<column name="last_update_date" />
-			</basic>
-
-			<many-to-one name="createBy">
-				<join-column name="create_by" />
-			</many-to-one>
-
-			<many-to-one name="lastUpdateBy">
-				<join-column name="last_update_by" />
-			</many-to-one>
-
-			<many-to-one name="substation">
-				<join-column name="substation_id" />	
-			</many-to-one>  
-
-			<many-to-one name="businessPartner">
-				<join-column name="business_partner_id"/>
-			</many-to-one>
-		</attributes>
-	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.SubstationMeteringPoint">
 		<table name="dict_substation_metering_points" schema="apps" />
@@ -1773,7 +1486,10 @@
 				<join-column name="org_id"/>
 			</many-to-one>
 
-      		<one-to-many name="businessPartners" mapped-by="energySource" />
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
+			</many-to-one>
+
 			<one-to-many name="meteringPoints" mapped-by="energySource" />
 
 			<one-to-many name="translations" mapped-by="energySource" orphan-removal="true">
@@ -1835,53 +1551,6 @@
 
 			<many-to-one name="energySource">
 				<join-column name="energy_source_id"/>
-			</many-to-one>
-		</attributes>
-	</entity>
-
-	<entity class="kz.kegoc.bln.entity.dict.EnergySourceBusinessPartner">
-		<table name="dict_energy_source_business_partners" schema="apps" />
-		<attributes>
-			<id name="id">
-				<column name="id" />
-        		<generated-value strategy="SEQUENCE" generator="dict_energy_source_business_partners_gen" />
-        		<sequence-generator
-        			name="dict_energy_source_business_partners_gen"
-        			sequence-name="apps.dict_energy_source_business_partners_s"
-					allocation-size="1"
-        		/>				
-			</id>
-			
-      		<basic name="startDate">
-      			<column name="start_date" />
-      		</basic>
-
-      		<basic name="endDate">
-      			<column name="end_date" />
-      		</basic>
-
-			<basic name="createDate">
-				<column name="create_date" />
-			</basic>
-
-			<basic name="lastUpdateDate">
-				<column name="last_update_date" />
-			</basic>
-
-			<many-to-one name="createBy">
-				<join-column name="create_by" />
-			</many-to-one>
-
-			<many-to-one name="lastUpdateBy">
-				<join-column name="last_update_by" />
-			</many-to-one>
-
-			<many-to-one name="energySource">
-				<join-column name="energy_source_id" />	
-			</many-to-one>  
-
-			<many-to-one name="businessPartner">
-				<join-column name="business_partner_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
@@ -2558,6 +2227,34 @@
 				/>
 			</id>
 
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="manufacturer">
+				<column name="manufacturer" />
+			</basic>
+
+			<basic name="ratedCurrent1">
+				<column name="rated_current1" />
+			</basic>
+
+			<basic name="ratedCurrent2">
+				<column name="rated_current2" />
+			</basic>
+
+			<basic name="accuracyClass">
+				<column name="accuracy_class" />
+			</basic>
+
+			<basic name="minCurrent">
+				<column name="min_current" />
+			</basic>
+
+			<basic name="maxCurrent">
+				<column name="max_current" />
+			</basic>
+
 			<basic name="startDate">
 				<column name="start_date" />
 			</basic>
@@ -2582,15 +2279,74 @@
 				<join-column name="last_update_by" />
 			</many-to-one>
 
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
+			</many-to-one>
+
 			<many-to-one name="meteringPoint">
 				<join-column name="metering_point_id" />
 			</many-to-one>
 
-			<many-to-one name="currentTrans">
-				<join-column name="current_trans_id"/>
+			<one-to-many name="translations" mapped-by="meteringPointCurrentTrans" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang" />
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.MeteringPointCurrentTransTranslate">
+		<table name="dict_metering_point_current_trans_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_metering_point_current_trans_tl_gen" />
+				<sequence-generator
+						name="dict_metering_point_current_trans_tl_gen"
+						sequence-name="apps.dict_metering_point_current_trans_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="manufacturer">
+				<column name="manufacturer" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="meteringPointCurrentTrans">
+				<join-column name="metering_point_current_trans_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
+
+
 
 	<entity class="kz.kegoc.bln.entity.dict.MeteringPointVoltageTrans">
 		<table name="dict_metering_point_voltage_trans" schema="apps" />
@@ -2605,6 +2361,26 @@
 				/>
 			</id>
 
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="manufacturer">
+				<column name="manufacturer" />
+			</basic>
+
+			<basic name="ratedVoltage1">
+				<column name="rated_voltage1" />
+			</basic>
+
+			<basic name="ratedVoltage2">
+				<column name="rated_voltage2" />
+			</basic>
+
+			<basic name="accuracyClass">
+				<column name="accuracy_class" />
+			</basic>
+
 			<basic name="startDate">
 				<column name="start_date" />
 			</basic>
@@ -2629,12 +2405,70 @@
 				<join-column name="last_update_by" />
 			</many-to-one>
 
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
+			</many-to-one>
+
 			<many-to-one name="meteringPoint">
 				<join-column name="metering_point_id" />
 			</many-to-one>
 
-			<many-to-one name="voltageTrans">
-				<join-column name="voltage_trans_id"/>
+			<one-to-many name="translations" mapped-by="meteringPointVoltageTrans" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang"/>
+		</attributes>
+	</entity>
+
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.MeteringPointVoltageTransTranslate">
+		<table name="dict_metering_point_voltage_trans_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_metering_point_voltage_trans_tl_gen" />
+				<sequence-generator
+						name="dict_metering_point_voltage_trans_tl_gen"
+						sequence-name="apps.dict_metering_point_voltage_trans_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="manufacturer">
+				<column name="manufacturer" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="meteringPointVoltageTrans">
+				<join-column name="metering_point_voltage_trans_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
@@ -3028,6 +2862,18 @@
 
 			<basic name="lastUpdateDate">
 				<column name="last_update_date" />
+			</basic>
+
+			<basic name="certNum">
+				<column name="cert_num" />
+			</basic>
+
+			<basic name="certSer">
+				<column name="cert_ser" />
+			</basic>
+
+			<basic name="certDate">
+				<column name="cert_date" />
 			</basic>
 
 			<many-to-one name="createBy">

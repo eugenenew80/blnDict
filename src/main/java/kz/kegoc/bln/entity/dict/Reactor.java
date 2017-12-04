@@ -25,15 +25,12 @@ public class Reactor implements HasId, HasName, HasLang, HasDates, HasUser {
 	@NotNull
 	private EnergyObject energyObject;
 
-	private Double deltaPr;
-	private Double unom;
-
-	@NotNull
-	private BusinessPartner businessPartner;
-
 	@NotNull
 	private Organization org;
 
+	private Double deltaPr;
+	private Double unom;
+	private BusinessPartner businessPartner;
 	private LocalDateTime createDate;
 	private LocalDateTime lastUpdateDate;
 	private User createBy;

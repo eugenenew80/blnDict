@@ -18,12 +18,6 @@
 		</query>
 	</named-query>
 
-	<named-query name="CurrentTrans.findAll">
-		<query>
-			select t from CurrentTrans t order by t.id
-		</query>
-	</named-query>
-
 	<named-query name="CurrentTransType.findAll">
 		<query>
 			select t from CurrentTransType t order by t.id
@@ -117,14 +111,6 @@
 			select t from Unit t order by t.id
 		</query>
 	</named-query>
-
-	
-	<named-query name="VoltageTrans.findAll">
-		<query>
-			select t from VoltageTrans t order by t.id
-		</query>
-	</named-query>
-
 
 	<named-query name="VoltageTransType.findAll">
 		<query>

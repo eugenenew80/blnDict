@@ -60,6 +60,18 @@
             <column name="parent_business_partner_id" type="number">
                 <constraints nullable="true"/>
             </column>
+
+            <column name="cert_num" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="cert_ser" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="cert_date" type="date">
+                <constraints nullable="true"/>
+            </column>
         </createTable>
     </changeSet>
 

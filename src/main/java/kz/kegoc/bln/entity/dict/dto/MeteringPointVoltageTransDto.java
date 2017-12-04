@@ -13,9 +13,14 @@ import java.time.LocalDate;
 public class MeteringPointVoltageTransDto {
 	private Long id;
 	private Long meteringPointId;
-	private Long voltageTransId;
-	private String voltageTransName;
+	private String name;
+	private String manufacturer;
+	private Double ratedVoltage1;
+	private Double ratedVoltage2;
+	private Double accuracyClass;
+	private Long businessPartnerId;
+	private String businessPartnerName;
+	private Lang lang;
 	private LocalDate startDate;
 	private LocalDate endDate;
-	private Lang lang;
 }

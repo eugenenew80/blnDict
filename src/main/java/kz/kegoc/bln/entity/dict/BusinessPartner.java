@@ -1,5 +1,6 @@
 package kz.kegoc.bln.entity.dict;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,9 @@ public class BusinessPartner implements HasId, HasName, HasLang, HasDates, HasUs
 	private Boolean transmittingOrganization;
 	private Boolean electricityConsumer;
 	private BusinessPartner parentBusinessPartner;
+	private String certNum;
+	private String certSer;
+	private LocalDate certDate;
 	private LocalDateTime createDate;
 	private LocalDateTime lastUpdateDate;
 	private User createBy;

@@ -10,16 +10,16 @@
      <field>
        <a>meteringPoint.id</a>
        <b>meteringPointId</b>
-     </field>    
+     </field>
 
-     <field>
-       <a>voltageTrans.id</a>
-       <b>voltageTransId</b>
-     </field>    
+      <field>
+          <a>businessPartner.id</a>
+          <b>businessPartnerId</b>
+      </field>
 
-     <field>
-       <a>voltageTrans.name</a>
-       <b>voltageTransName</b>
-     </field>    
+      <field>
+          <a>businessPartner.name</a>
+          <b>businessPartnerName</b>
+      </field>
   </mapping>
 </mappings> 

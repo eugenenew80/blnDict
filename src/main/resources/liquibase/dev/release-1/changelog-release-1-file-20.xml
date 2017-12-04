@@ -54,11 +54,11 @@
             </column>
 
             <column name="business_partner_id_1" type="number">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column> 
             
             <column name="business_partner_id_2" type="number">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="accounting_type_id" type="number">

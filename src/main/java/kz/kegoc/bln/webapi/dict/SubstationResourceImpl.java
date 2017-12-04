@@ -74,12 +74,6 @@ public class SubstationResourceImpl {
 		return Response.noContent()
 			.build();
 	}
-	
-
-	@Path("/{substationId : \\d+}/dictSubstationCompany")
-	public SubstationBusinessPartnerResourceImpl getModules(@PathParam("substationId") Long id) {
-		return businessPartnerResource;
-	}
 
 
 	@Path("/{substationId : \\d+}/dictSubstationMeteringPoint")
@@ -98,9 +92,6 @@ public class SubstationResourceImpl {
 
 	@Inject
 	private SubstationService service;
-
-	@Inject
-	private SubstationBusinessPartnerResourceImpl businessPartnerResource;
 
 	@Inject
 	private SubstationMeteringPointResourceImpl substationMeteringPointResource;

@@ -38,7 +38,7 @@
 			</column>
 
 			<column name="business_partner_id" type="number">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="org_id" type="number">

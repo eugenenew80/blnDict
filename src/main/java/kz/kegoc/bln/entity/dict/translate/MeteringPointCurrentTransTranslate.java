@@ -2,7 +2,7 @@ package kz.kegoc.bln.entity.dict.translate;
 
 import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.*;
-import kz.kegoc.bln.entity.dict.VoltageTrans;
+import kz.kegoc.bln.entity.dict.MeteringPointCurrentTrans;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotNull;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class VoltageTransTranslate implements HasId, HasName, HasLang, HasDates, HasUser {
+public class MeteringPointCurrentTransTranslate implements HasId, HasName, HasLang, HasDates, HasUser {
     private Long id;
 
     @NotNull
@@ -24,7 +24,7 @@ public class VoltageTransTranslate implements HasId, HasName, HasLang, HasDates,
     private String manufacturer;
 
     @NotNull
-    private VoltageTrans voltageTrans;
+    private MeteringPointCurrentTrans meteringPointCurrentTrans;
 
     private LocalDateTime createDate;
     private LocalDateTime lastUpdateDate;

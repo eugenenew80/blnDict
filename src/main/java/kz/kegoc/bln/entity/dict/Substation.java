@@ -33,11 +33,11 @@ public class Substation implements HasId, HasName, HasLang, HasDates, HasUser {
 	@NotNull
 	private Organization org;
 
+	private BusinessPartner businessPartner;
 	private LocalDateTime createDate;
 	private LocalDateTime lastUpdateDate;
 	private User createBy;
 	private User lastUpdateBy;
-	private List<SubstationBusinessPartner> businessPartners;
 	private List<SubstationMeteringPoint> meteringPoints;
 	private Map<Lang, SubstationTranslate> translations;
 	private Lang lang;

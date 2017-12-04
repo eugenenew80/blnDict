@@ -13,8 +13,15 @@ import java.time.LocalDate;
 public class MeteringPointCurrentTransDto {
 	private Long id;
 	private Long meteringPointId;
-	private Long currentTransId;
-	private String currentTransName;
+	private String name;
+	private String manufacturer;
+	private Double ratedCurrent1;
+	private Double ratedCurrent2;
+	private Double accuracyClass;
+	private Double minCurrent;
+	private Double maxCurrent;
+	private Long businessPartnerId;
+	private String businessPartnerName;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private Lang lang;

@@ -36,11 +36,11 @@ public class EnergySource implements HasId, HasName, HasLang, HasDates, HasUser 
 	@NotNull
 	private Organization org;
 
+	private BusinessPartner businessPartner;
 	private LocalDateTime createDate;
 	private LocalDateTime lastUpdateDate;
 	private User createBy;
 	private User lastUpdateBy;
-	private List<EnergySourceBusinessPartner> businessPartners;
 	private List<EnergySourceMeteringPoint> meteringPoints;
 	private Map<Lang, EnergySourceTranslate> translations;
 	private Lang lang;

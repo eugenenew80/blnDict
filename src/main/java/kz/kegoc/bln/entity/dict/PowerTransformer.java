@@ -24,19 +24,16 @@ public class PowerTransformer implements HasId, HasName, HasLang, HasDates, HasU
 	@NotNull
 	private EnergyObject energyObject;
 
+	@NotNull
+	private Organization org;
+
 	private Double snom;
 	private Double deltaPxx;
 	private Double unomH;
 	private Double pkzHm;
 	private Double pkzHl;
 	private Double pkzMl;
-
-	@NotNull
 	private BusinessPartner businessPartner;
-
-	@NotNull
-	private Organization org;
-
 	private LocalDateTime createDate;
 	private LocalDateTime lastUpdateDate;
 	private User createBy;

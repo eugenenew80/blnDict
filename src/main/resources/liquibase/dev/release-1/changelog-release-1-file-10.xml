@@ -42,7 +42,7 @@
             </column>  
 
             <column name="business_partner_id" type="number">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="last_verification_date" type="date">

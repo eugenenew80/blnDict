@@ -74,12 +74,6 @@ public class EnergySourceResourceImpl {
 		return Response.noContent()
 			.build();
 	}
-	
-
-	@Path("/{energySourceId : \\d+}/dictEnergySourceCompany")
-	public EnergySourceBusinessPartnerResourceImpl getModules(@PathParam("energySourceId") Long id) {
-		return businessPartnerResource;
-	}
 
 
 	@Path("/{energySourceId : \\d+}/dictEnergySourceMeteringPoint")
@@ -98,9 +92,6 @@ public class EnergySourceResourceImpl {
 
 	@Inject
 	private EnergySourceService service;
-
-	@Inject
-	private EnergySourceBusinessPartnerResourceImpl businessPartnerResource;
 
 	@Inject
 	private EnergySourceMeteringPointResourceImpl energySourceMeteringPointResource;

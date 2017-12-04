@@ -21,12 +21,10 @@ public class Meter implements HasId, HasName, HasLang, HasDates, HasUser {
 	@NotNull @Size(max = 100)
 	private String manufacturer;
 
-	@NotNull
-	private BusinessPartner businessPartner;
-
 	@Size(max = 30)
 	private String serialNumber;
 
+	private BusinessPartner businessPartner;
 	private Double ratedCurrent;
 	private Double ratedVoltage;
 	private Double accuracyClass;

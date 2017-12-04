@@ -24,11 +24,9 @@ public class PowerLinePart implements HasId, HasName, HasLang, HasDates, HasUser
 	private PowerLine powerLine;
 
 	@NotNull
-	private BusinessPartner businessPartner;
-
-	@NotNull
 	private Organization org;
 
+	private BusinessPartner businessPartner;
 	private Double length;
 	private Double r;
 	private LocalDate startDate;

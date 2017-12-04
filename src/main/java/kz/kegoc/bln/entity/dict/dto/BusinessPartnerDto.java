@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import kz.kegoc.bln.entity.common.Lang;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -23,5 +25,8 @@ public class BusinessPartnerDto {
 	private Boolean electricityConsumer;
 	private Long parentBusinessPartnerId;
 	private String parentBusinessPartnerName;
+	private String certNum;
+	private String certSer;
+	private LocalDate certDate;
 	private Lang lang;
 }

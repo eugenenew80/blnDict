@@ -18,6 +18,16 @@
      </field>
 
       <field>
+          <a>businessPartner.id</a>
+          <b>businessPartnerId</b>
+      </field>
+
+      <field>
+          <a>businessPartner.name</a>
+          <b>businessPartnerName</b>
+      </field>
+
+      <field>
           <a>org.id</a>
           <b>orgId</b>
       </field>
