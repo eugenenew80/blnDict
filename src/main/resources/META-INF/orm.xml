@@ -1184,14 +1184,6 @@
       			<column name="max_current" />
       		</basic>  
 
-			<many-to-one name="businessPartner">
-				<join-column name="business_partner_id"/>
-			</many-to-one>
-
-			<many-to-one name="org">
-				<join-column name="org_id"/>
-			</many-to-one>
-
 			<basic name="createDate">
 				<column name="create_date" />
 			</basic>
@@ -1206,6 +1198,14 @@
 
 			<many-to-one name="lastUpdateBy">
 				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="businessPartner">
+				<join-column name="business_partner_id"/>
+			</many-to-one>
+
+			<many-to-one name="org">
+				<join-column name="org_id"/>
 			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="currentTrans" orphan-removal="true">
