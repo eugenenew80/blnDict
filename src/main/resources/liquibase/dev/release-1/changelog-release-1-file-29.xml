@@ -37,23 +37,23 @@
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_large_consumer" type="varchar(1)">
+            <column name="is_large_consumer" type="number">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_electricity_producer" type="varchar(1)">
+            <column name="is_electricity_producer" type="number">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_energy_supply_organization" type="varchar(1)">
+            <column name="is_energy_supply_organization" type="number">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_transmitting_organization" type="varchar(1)">
+            <column name="is_transmitting_organization" type="number">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_electricity_consumer" type="varchar(1)">
+            <column name="is_electricity_consumer" type="number">
                 <constraints nullable="true"/>
             </column>
 

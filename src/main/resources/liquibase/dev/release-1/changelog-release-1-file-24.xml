@@ -25,7 +25,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="is_need_reverse" type="varchar(1)">
+            <column name="is_need_reverse" type="number">
                 <constraints nullable="true"/>
             </column>
 

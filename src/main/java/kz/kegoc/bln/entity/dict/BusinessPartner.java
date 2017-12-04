@@ -24,7 +24,7 @@ public class BusinessPartner implements HasId, HasName, HasLang, HasDates, HasUs
 	@NotNull @Size(min = 12, max = 12)
 	private String bin;
 
-	@NotNull @Size(min = 2, max = 2)
+	@Size(min = 2, max = 2)
 	private String kbe;
 
 	@Size(max = 20)

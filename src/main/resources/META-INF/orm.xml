@@ -266,22 +266,22 @@
 
 			<basic name="parameterAp">
 				<column name="is_parameter_ap" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="parameterAm">
 				<column name="is_parameter_am" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="parameterRp">
 				<column name="is_parameter_rp" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="parameterRm">
 				<column name="is_parameter_rm" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="createDate">
@@ -1035,27 +1035,27 @@
 
 			<basic name="parameterAp">
 				<column name="is_parameter_ap" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="parameterAm">
 				<column name="is_parameter_am" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="parameterRp">
 				<column name="is_parameter_rp" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="parameterRm">
 				<column name="is_parameter_rm" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="withdrawn">
 				<column name="is_withdrawn" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="createDate">
@@ -1409,7 +1409,7 @@
 
 			<basic name="res">
 				<column name="is_res" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="createDate">
@@ -1669,7 +1669,7 @@
 
 			<basic name="needReverse">
 				<column name="is_need_reverse" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="startDate">
@@ -1742,7 +1742,7 @@
 
 			<basic name="largeElectricityProducer">
 				<column name="is_large_electricity_producer" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="createDate">
@@ -1902,7 +1902,7 @@
 
 			<basic name="needReverse">
 				<column name="is_need_reverse" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="startDate">
@@ -1966,12 +1966,12 @@
 
       		<basic name="usedInEnergySources">
       			<column name="is_used_in_energy_sources" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
       		</basic>
 
       		<basic name="usedInSubstations">
       			<column name="is_used_in_substations" />
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
       		</basic>
 
 			<basic name="createDate">
@@ -2854,7 +2854,7 @@
 			</basic>
 
 			<basic name="index">
-				<column name="index" />
+				<column name="post_index" />
 			</basic>
 
 			<basic name="locality">
@@ -2999,27 +2999,27 @@
 
 			<basic name="largeConsumer">
 				<column name="is_large_consumer"/>
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="electricityProducer">
 				<column name="is_electricity_producer"/>
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="energySupplyOrganization">
 				<column name="is_energy_supply_organization"/>
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="transmittingOrganization">
 				<column name="is_transmitting_organization"/>
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="electricityConsumer">
 				<column name="is_electricity_consumer"/>
-				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToStringConverter" />
+				<convert converter="kz.kegoc.bln.ejb.converter.jpa.BooleanToIntConverter" />
 			</basic>
 
 			<basic name="createDate">

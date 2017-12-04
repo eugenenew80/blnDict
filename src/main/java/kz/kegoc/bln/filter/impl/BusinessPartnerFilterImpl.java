@@ -7,6 +7,8 @@ import kz.kegoc.bln.entity.dict.translate.BusinessPartnerTranslate;
 import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.BusinessPartnerService;
+import org.apache.commons.lang3.StringUtils;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.HashMap;
@@ -30,6 +32,9 @@ public class BusinessPartnerFilterImpl extends AbstractFilter<BusinessPartner> i
 
         if (entity.getParentBusinessPartner()!=null && entity.getParentBusinessPartner().getId()==null)
             entity.setParentBusinessPartner(null);
+
+        if (StringUtils.isEmpty(entity.getKbe()))
+            entity.setKbe(null);
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());

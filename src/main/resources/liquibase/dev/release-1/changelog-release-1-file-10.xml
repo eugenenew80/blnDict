@@ -61,23 +61,23 @@
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_ap" type="varchar(1)">
+            <column name="is_parameter_ap" type="number">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_am" type="varchar(1)">
+            <column name="is_parameter_am" type="number">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_rp" type="varchar(1)">
+            <column name="is_parameter_rp" type="number">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_rm" type="varchar(1)">
+            <column name="is_parameter_rm" type="number">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_withdrawn" type="varchar(1)">
+            <column name="is_withdrawn" type="number">
                 <constraints nullable="true"/>
             </column>
 

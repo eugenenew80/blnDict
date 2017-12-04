@@ -17,7 +17,7 @@
 				<constraints nullable="false"/>
 			</column>
 
-            <column name="index" type="varchar(10)">
+            <column name="post_index" type="varchar(10)">
                 <constraints nullable="true"/>
             </column>
             

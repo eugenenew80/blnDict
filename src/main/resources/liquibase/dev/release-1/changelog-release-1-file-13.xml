@@ -21,7 +21,7 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="is_res" type="varchar(1)">
+			<column name="is_res" type="number">
                 <constraints nullable="true"/>
             </column>
         </createTable>

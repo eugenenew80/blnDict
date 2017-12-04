@@ -37,7 +37,7 @@
                 <constraints nullable="true"/>
             </column>
 
-			<column name="is_large_electricity_producer" type="varchar(1)">
+			<column name="is_large_electricity_producer" type="number">
 				<constraints nullable="true"/>
 			</column>
 

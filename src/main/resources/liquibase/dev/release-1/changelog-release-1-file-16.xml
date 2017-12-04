@@ -21,11 +21,11 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="is_used_in_energy_sources" type="varchar(1)">
+            <column name="is_used_in_energy_sources" type="number">
                 <constraints nullable="true"/>
             </column>
 
-			<column name="is_used_in_substations" type="varchar(1)">
+			<column name="is_used_in_substations" type="number">
                 <constraints nullable="true"/>
             </column>
         </createTable>
