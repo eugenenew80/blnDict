@@ -52,17 +52,34 @@
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.5.3</version>
-                
+
                 <configuration>
-                  <changeLogFile>
+                    <changeLogFile>
                         ${basedir}/src/main/resources/liquibase/${scripts}/changelog.xml
-                  </changeLogFile>
-                  
-                  <driver>${driver}</driver>
-                  <url>${url}</url>
-                  <username>${username}</username>
-                  <password>${password}</password>              
-                </configuration>                
+                    </changeLogFile>
+
+                    <driver>${driver}</driver>
+                    <url>${url}</url>
+                    <username>${username}</username>
+                    <password>${password}</password>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.liquibase.ext</groupId>
+                        <artifactId>liquibase-oracle</artifactId>
+                        <version>3.2</version>
+                    </dependency>
+                </dependencies>
+
+                <executions>
+                    <execution>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -82,32 +99,30 @@
 
     <profiles>
         <profile>
-            <id>dev</id>            
-            
+            <id>dev</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
-            </activation>           
+            </activation>
 
             <properties>
-				<driver>org.postgresql.Driver</driver>
-				<url>jdbc:postgresql://localhost:5432/bln_dev</url>
-				<username>postgres</username>
-				<password>1</password>
-				<scripts>dev</scripts>
-				<skipTests>true</skipTests>
+                <driver>oracle.jdbc.OracleDriver</driver>
+                <url>jdbc:oracle:thin:@localhost:1521:BLNDEV</url>
+                <username>system</username>
+                <password>q1w2e3r4T5</password>
+                <scripts>dev</scripts>
+                <skipTests>true</skipTests>
             </properties>
-        </profile>      
+        </profile>
         
         <profile>
-            <id>test</id>
-            
+            <id>localDev</id>
             <properties>
                 <driver>org.postgresql.Driver</driver>
-                <url>jdbc:postgresql://localhost:5432/bln_test</url>
+                <url>jdbc:postgresql://localhost:5432/bln_dev</url>
                 <username>postgres</username>
                 <password>1</password>
-                <scripts>test</scripts>
-				<skipTests>false</skipTests>                             
+                <scripts>dev</scripts>
+                <skipTests>true</skipTests>
             </properties>
         </profile>
     </profiles>
