@@ -6,6 +6,7 @@ import kz.kegoc.bln.entity.dict.Substation;
 import kz.kegoc.bln.entity.dict.translate.SubstationTranslate;
 import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
+import kz.kegoc.bln.service.dict.OrganizationService;
 import kz.kegoc.bln.service.dict.SubstationService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -27,6 +28,18 @@ public class SubstationFilterImpl extends AbstractFilter<Substation> implements 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
+
+        if (entity.getBusinessPartner()!=null && entity.getBusinessPartner().getId()==null)
+            entity.setBusinessPartner(null);
+
+        if (entity.getOrg()!=null && entity.getOrg().getId()==null)
+            entity.setOrg(null);
+
+        if (entity.getVoltageClass()!=null && entity.getVoltageClass().getId()==null)
+            entity.setVoltageClass(null);
+
+        if (entity.getOrg()==null)
+            entity.setOrg(organizationService.findById(1L, context));
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
@@ -52,6 +65,9 @@ public class SubstationFilterImpl extends AbstractFilter<Substation> implements 
 
     @Inject
     private SubstationService substationService;
+
+    @Inject
+    private OrganizationService organizationService;
 
     @Inject
     private Lang defLang;

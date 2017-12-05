@@ -28,6 +28,9 @@ public class EnergyNodeFilterImpl extends AbstractFilter<EnergyNode> implements 
                 entity.setTranslations(curEntity.getTranslations());
         }
 
+        if (entity.getRegion()!=null && entity.getRegion().getId()==null)
+            entity.setRegion(null);
+
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 

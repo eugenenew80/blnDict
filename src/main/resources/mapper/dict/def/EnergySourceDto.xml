@@ -28,6 +28,16 @@
       </field>
 
       <field>
+          <a>voltageClass.id</a>
+          <b>voltageClassId</b>
+      </field>
+
+      <field>
+          <a>voltageClass.name</a>
+          <b>voltageClassName</b>
+      </field>
+
+      <field>
           <a>org.id</a>
           <b>orgId</b>
       </field>

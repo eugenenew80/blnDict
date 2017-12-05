@@ -26,12 +26,12 @@ public class MeteringPointCurrentTrans implements HasId, HasLang, HasDates, HasU
 	@NotNull @Size(max = 100)
 	private String manufacturer;
 
+	private BusinessPartner businessPartner;
 	private Double ratedCurrent1;
 	private Double ratedCurrent2;
 	private Double accuracyClass;
 	private Double minCurrent;
 	private Double maxCurrent;
-	private BusinessPartner businessPartner;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private LocalDateTime createDate;

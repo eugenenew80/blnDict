@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @Path("/dict/dictReactor")
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
-public class PowerReactorResourceImpl {
+public class ReactorResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {

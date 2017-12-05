@@ -16,9 +16,6 @@ import java.util.Map;
 public class Reactor implements HasId, HasName, HasLang, HasDates, HasUser {
 	private Long id;
 
-	@NotNull @Size(max = 30)
-	private String shortName;
-
 	@NotNull @Size(max = 100)
 	private String name;
 
@@ -28,9 +25,9 @@ public class Reactor implements HasId, HasName, HasLang, HasDates, HasUser {
 	@NotNull
 	private Organization org;
 
+	private BusinessPartner businessPartner;
 	private Double deltaPr;
 	private Double unom;
-	private BusinessPartner businessPartner;
 	private LocalDateTime createDate;
 	private LocalDateTime lastUpdateDate;
 	private User createBy;

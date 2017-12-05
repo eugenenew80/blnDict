@@ -28,6 +28,9 @@ public class RegionFilterImpl extends AbstractFilter<Region> implements Filter<R
                 entity.setTranslations(curEntity.getTranslations());
         }
 
+        if (entity.getCountry()!=null && entity.getCountry().getId()==null)
+            entity.setCountry(null);
+
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 

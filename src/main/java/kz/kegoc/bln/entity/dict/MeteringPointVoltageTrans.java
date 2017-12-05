@@ -29,6 +29,7 @@ public class MeteringPointVoltageTrans implements HasId, HasDates, HasUser {
 	@NotNull @Size(max = 100)
 	private String manufacturer;
 
+	private BusinessPartner businessPartner;
 	private Double ratedVoltage1;
 	private Double ratedVoltage2;
 	private Double accuracyClass;

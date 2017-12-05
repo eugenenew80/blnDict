@@ -6,5 +6,15 @@
   <mapping>
     <class-a>kz.kegoc.bln.entity.dict.EnergyNode</class-a>
     <class-b>kz.kegoc.bln.entity.dict.dto.EnergyNodeDto</class-b>
+
+    <field>
+      <a>region.id</a>
+      <b>regionId</b>
+    </field>
+
+    <field>
+      <a>region.name</a>
+      <b>regionName</b>
+    </field>
   </mapping> 
 </mappings> 

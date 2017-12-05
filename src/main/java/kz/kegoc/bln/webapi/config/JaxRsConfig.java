@@ -39,7 +39,8 @@ public class JaxRsConfig extends Application {
 		resources.add(PowerLineTypeResourceImpl.class);
 		resources.add(PowerLineResourceImpl.class);
 		resources.add(PowerTransformerResourceImpl.class);
-		resources.add(PowerReactorResourceImpl.class);
+		resources.add(ReactorResourceImpl.class);
+		resources.add(VoltageClassResourceImpl.class);
 
 		resources.add(BasicAuthFilter.class);
 		resources.add(RepositryNotFoundExceptionMapperImpl.class);

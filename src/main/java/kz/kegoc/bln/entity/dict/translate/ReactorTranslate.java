@@ -18,9 +18,6 @@ public class ReactorTranslate implements HasId, HasName, HasLang, HasDates, HasU
     @NotNull
     private Lang lang;
 
-    @NotNull @Size(max = 30)
-    private String shortName;
-
     @NotNull @Size(max = 100)
     private String name;
 

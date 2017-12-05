@@ -7,6 +7,8 @@ import kz.kegoc.bln.entity.dict.translate.EnergySourceTranslate;
 import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.EnergySourceService;
+import kz.kegoc.bln.service.dict.OrganizationService;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.HashMap;
@@ -27,6 +29,18 @@ public class EnergySourceFilterImpl extends AbstractFilter<EnergySource> impleme
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
+
+        if (entity.getBusinessPartner()!=null && entity.getBusinessPartner().getId()==null)
+            entity.setBusinessPartner(null);
+
+        if (entity.getOrg()!=null && entity.getOrg().getId()==null)
+            entity.setOrg(null);
+
+        if (entity.getVoltageClass()!=null && entity.getVoltageClass().getId()==null)
+            entity.setVoltageClass(null);
+
+        if (entity.getOrg()==null)
+            entity.setOrg(organizationService.findById(1L, context));
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
@@ -52,6 +66,9 @@ public class EnergySourceFilterImpl extends AbstractFilter<EnergySource> impleme
 
     @Inject
     private EnergySourceService service;
+
+    @Inject
+    private OrganizationService organizationService;
 
     @Inject
     private Lang defLang;

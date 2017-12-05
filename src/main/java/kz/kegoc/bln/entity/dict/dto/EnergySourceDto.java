@@ -22,5 +22,7 @@ public class EnergySourceDto {
 	private Double voltageClassValue;
 	private Long orgId;
 	private String orgName;
+	private Long businessPartnerId;
+	private String businessPartnerName;
 	private Lang lang;
 }

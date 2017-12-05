@@ -28,6 +28,9 @@ public class UnitFilterImpl extends AbstractFilter<Unit> implements Filter<Unit>
                 entity.setTranslations(curEntity.getTranslations());
         }
 
+        if (entity.getBaseUnit()!=null && entity.getBaseUnit().getId()==null)
+            entity.setBaseUnit(null);
+
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
@@ -43,6 +46,7 @@ public class UnitFilterImpl extends AbstractFilter<Unit> implements Filter<Unit>
         translate.setLang(lang);
         translate.setUnit(entity);
         translate.setName(entity.getName());
+        translate.setShortName(entity.getShortName());
         entity.getTranslations().put(lang, translate);
 
         return entity;
