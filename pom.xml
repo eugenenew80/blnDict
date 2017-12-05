@@ -14,7 +14,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
     	<skipTests>true</skipTests>
     </properties>
-  		
+
     <build>
         <finalName>blnDictApi</finalName>
         <plugins>
@@ -250,14 +250,12 @@
 		    <scope>test</scope>
 		</dependency>
 
-        <!--
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc8</artifactId>
             <version>12.2.0.1</version>
             <scope>test</scope>
         </dependency>
-         -->
 
         <dependency>
             <groupId>junit</groupId>

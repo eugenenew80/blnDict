@@ -91,6 +91,7 @@ public class Producer {
                 "mapper/dict/def/PhoneNumberDto.xml",
                 "mapper/dict/def/PostAddressDto.xml",
                 "mapper/dict/def/VoltageClassDto.xml",
+                "mapper/dict/def/ReactorDto.xml",
                 "mapper/dict/list/MeterDto.xml"
 
         ));

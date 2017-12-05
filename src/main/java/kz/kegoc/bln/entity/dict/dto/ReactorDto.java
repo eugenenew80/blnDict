@@ -16,6 +16,8 @@ public class ReactorDto {
 	private String energyObjectName;
 	private Double deltaPr;
 	private Double unom;
+	private Long businessPartnerId;
+	private String businessPartnerName;
 	private Long orgId;
 	private String orgName;
 	private Lang lang;

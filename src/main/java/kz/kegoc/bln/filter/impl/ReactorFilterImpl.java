@@ -35,7 +35,6 @@ public class ReactorFilterImpl extends AbstractFilter<Reactor> implements Filter
         if (entity.getOrg()!=null && entity.getOrg().getId()==null)
             entity.setOrg(null);
 
-
         if (entity.getOrg()==null)
             entity.setOrg(organizationService.findById(1L, context));
 
