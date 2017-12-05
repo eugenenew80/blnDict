@@ -6,46 +6,34 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-47" logicalFilePath="path-independent" author="eugene" context="dev">
-        <comment>Creating table: dict_metering_types</comment>
-        <createTable tableName="dict_metering_types" schemaName="apps">            
+    <changeSet id="dict-eug-53" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating table: dict_accounting_types</comment>
+        <createTable tableName="dict_accounting_types" schemaName="apps">            
             <column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="short_name" type="varchar(10)">
-                <constraints nullable="false"/>
-            </column>
-            
             <column name="name" type="varchar(100)">
                 <constraints nullable="false"/>
-            </column>
-
-            <column name="is_used_in_energy_sources" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-			<column name="is_used_in_substations" type="number">
-                <constraints nullable="true"/>
             </column>
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-eug-48" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating primary key for table: dict_metering_types</comment>
+	<changeSet id="dict-eug-54" logicalFilePath="path-independent" author="eugene" context="dev">
+	    <comment>Creating primary key for table: dict_accounting_types</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
-	            constraintName="pk_dict_metering_types"
+	            constraintName="pk_dict_accounting_types"
 	            schemaName="apps"
-	            tableName="dict_metering_types"/>
+	            tableName="dict_accounting_types"/>
 	</changeSet>
-	
-	<changeSet id="dict-eug-49" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating sequence for table: dict_metering_types</comment>
-	    <createSequence
+
+	<changeSet id="dict-eug-55" logicalFilePath="path-independent" author="eugene" context="dev">
+	    <comment>Creating sequence for table: dict_accounting_types</comment>
+	    <createSequence 
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_metering_types_s"
+	            sequenceName="dict_accounting_types_s"
 	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

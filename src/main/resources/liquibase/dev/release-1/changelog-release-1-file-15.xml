@@ -6,9 +6,9 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-44" logicalFilePath="path-independent" author="eugene" context="dev">
-        <comment>Creating table: dict_energy_sources</comment>
-        <createTable tableName="dict_energy_sources" schemaName="apps">            
+    <changeSet id="dict-eug-50" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating table: dict_substation_types</comment>
+        <createTable tableName="dict_substation_types" schemaName="apps">            
             <column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
@@ -16,56 +16,28 @@
             <column name="name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            
-            <column name="short_name" type="varchar(30)">
-                <constraints nullable="false"/>
-            </column>       
-            
-            <column name="voltage_class_id" type="number">
-                <constraints nullable="false"/>
-            </column>     
-            
-            <column name="energy_source_type_id" type="number">
-                <constraints nullable="false"/>
-            </column>                       
-            
-            <column name="address" type="varchar(300)">
-                <constraints nullable="true"/>
-            </column>  
-            
-            <column name="installed_power" type="number">
-                <constraints nullable="true"/>
-            </column>
 
-			<column name="is_large_electricity_producer" type="number">
-				<constraints nullable="true"/>
-			</column>
-
-            <column name="business_partner_id" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-			<column name="org_id" type="number">
+			<column name="short_name" type="varchar(10)">
 				<constraints nullable="false"/>
 			</column>
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-eug-45" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating primary key for table: dict_energy_sources</comment>
+	<changeSet id="dict-eug-51" logicalFilePath="path-independent" author="eugene" context="dev">
+	    <comment>Creating primary key for table: dict_substation_types</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
-	            constraintName="pk_dict_energy_sources"
+	            constraintName="pk_dict_substation_types"
 	            schemaName="apps"
-	            tableName="dict_energy_sources"/>
+	            tableName="dict_substation_types"/>
 	</changeSet>
-	
-	<changeSet id="dict-eug-46" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating sequence for table: dict_energy_sources</comment>
+
+	<changeSet id="dict-eug-52" logicalFilePath="path-independent" author="eugene" context="dev">
+	    <comment>Creating sequence for table: dict_substation_types</comment>
 	    <createSequence 
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_energy_sources_s"
+	            sequenceName="dict_substation_types_s"
 	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>
