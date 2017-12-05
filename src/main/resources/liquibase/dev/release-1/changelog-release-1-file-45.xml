@@ -6,14 +6,14 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-71" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: dict_metering_points_tl</comment>
-		<createTable tableName="dict_metering_points_tl" schemaName="apps">
+    <changeSet id="dict-rus-87" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_energy_zones_tl</comment>
+		<createTable tableName="dict_energy_zones_tl" schemaName="apps">
 			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="metering_point_id" type="number">
+			<column name="energy_zone_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -24,37 +24,33 @@
 			<column name="name" type="varchar(100)">
 				<constraints nullable="false"/>
 			</column>
-
-			<column name="short_name" type="varchar(30)">
-				<constraints nullable="false"/>
-			</column>
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-72" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: dict_metering_points_tl</comment>
+	<changeSet id="dict-rus-88" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_energy_zones_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_metering_points_tl"
+	            constraintName="pk_dict_energy_zones_tl"
 	            schemaName="apps"
-	            tableName="dict_metering_points_tl"/>
+	            tableName="dict_energy_zones_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-73" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: dict_metering_points_tl</comment>
+	<changeSet id="dict-rus-89" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dict_energy_zones_tl</comment>
 		<addUniqueConstraint
-				columnNames="metering_point_id, lang"
-				constraintName="uk_dict_metering_points_tl"
+				columnNames="energy_zone_id, lang"
+				constraintName="uk_dict_energy_zones_tl"
 				schemaName="apps"
-				tableName="dict_metering_points_tl"/>
+				tableName="dict_energy_zones_tl"/>
 	</changeSet>
 	
-	<changeSet id="dict-rus-74" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: dict_metering_points_tl</comment>
+	<changeSet id="dict-rus-90" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_energy_zones_tl</comment>
 		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_metering_points_tl_s"
+	            sequenceName="dict_energy_zones_tl_s"
 	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

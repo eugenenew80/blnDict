@@ -4,76 +4,57 @@
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">    
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-83" logicalFilePath="path-independent" author="eugene" context="dev">
-        <comment>Creating table: dict_metering_point_current_trans</comment>
-        <createTable tableName="dict_metering_point_current_trans" schemaName="apps">            
-            <column name="id" type="number">
+    <changeSet id="dict-eug-94" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating table: dict_units_tl</comment>
+		<createTable tableName="dict_units_tl" schemaName="apps">
+			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="metering_point_id" type="number">
+			<column name="unit_id" type="number">
+				<constraints nullable="false"/>
+			</column>
+
+            <column name="lang" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="start_date" type="date">
-                <constraints nullable="true"/>
-            </column>
-                                    			                                                 
-            <column name="end_date" type="date">
-                <constraints nullable="true"/>
-            </column>
+			<column name="name" type="varchar(100)">
+				<constraints nullable="false"/>
+			</column>
 
-            <column name="name" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
+			<column name="short_name" type="varchar(10)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
 
-            <column name="manufacturer" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="rated_current1" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="rated_current2" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="accuracy_class" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="min_current" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="max_current" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="business_partner_id" type="number">
-                <constraints nullable="true"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-	<changeSet id="dict-eug-84" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating primary key for table: dict_metering_point_current_trans</comment>
-	    <addPrimaryKey 
+	<changeSet id="dict-eug-95" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating primary key for table: dict_units_tl</comment>
+		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_metering_point_current_trans"
+	            constraintName="pk_dict_units_tl"
 	            schemaName="apps"
-	            tableName="dict_metering_point_current_trans"/>
+	            tableName="dict_units_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-eug-96" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating unique key for table: dict_units_tl</comment>
+		<addUniqueConstraint
+				columnNames="unit_id, lang"
+				constraintName="uk_dict_units_tl"
+				schemaName="apps"
+				tableName="dict_units_tl"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-85" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating sequence for table: dict_metering_point_current_trans</comment>
-	    <createSequence 
+	<changeSet id="dict-eug-97" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating sequence for table: dict_units_tl</comment>
+		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_metering_point_current_trans_s"
+	            sequenceName="dict_units_tl_s"
 	            startValue="1"/>
-	</changeSet>	
+	</changeSet>
 </databaseChangeLog>

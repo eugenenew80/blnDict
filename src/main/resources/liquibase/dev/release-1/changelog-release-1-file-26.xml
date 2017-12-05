@@ -6,38 +6,42 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-80" logicalFilePath="path-independent" author="eugene" context="dev">
-        <comment>Creating table: dict_countries</comment>
-        <createTable tableName="dict_countries" schemaName="apps">            
-            <column name="id" type="number">
+    <changeSet id="dict-rus-10" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_contact_phone_numbers</comment>
+		<createTable tableName="dict_contact_phone_numbers" schemaName="apps">
+			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="code" type="varchar(2)">
+			<column name="contact_id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)">
+            <column name="number_type" type="varchar(40)">
                 <constraints nullable="false"/>
             </column>
-        </createTable>
-    </changeSet>
-
-	<changeSet id="dict-eug-81" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating primary key for table: dict_countries</comment>
-	    <addPrimaryKey 
-	            columnNames="id"
-	            constraintName="pk_dict_countries"
-	            schemaName="apps"
-	            tableName="dict_countries"/>
+            
+            <column name="phone_number" type="varchar(15)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-eug-82" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating sequence for table: dict_countries</comment>
+	<changeSet id="dict-rus-11" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_contact_phone_numbers</comment>
+		<addPrimaryKey
+	            columnNames="id"
+	            constraintName="pk_dict_contact_phone_numbers"
+	            schemaName="apps"
+	            tableName="dict_contact_phone_numbers"/>
+	</changeSet>
+	
+	<changeSet id="dict-rus-12" logicalFilePath="path-independent" author="ruslan" context="dev">
+	    <comment>Creating sequence for table: dict_contact_phone_numbers</comment>
 	    <createSequence 
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_countries_s"
+	            sequenceName="dict_contact_phone_numbers_s"
 	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

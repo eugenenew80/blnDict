@@ -6,42 +6,51 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-10" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: dict_contact_phone_numbers</comment>
-		<createTable tableName="dict_contact_phone_numbers" schemaName="apps">
+    <changeSet id="dict-rus-27" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_countries_tl</comment>
+		<createTable tableName="dict_countries_tl" schemaName="apps">
 			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="contact_id" type="number">
+			<column name="country_id" type="number">
+				<constraints nullable="false"/>
+			</column>
+
+            <column name="lang" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="number_type" type="varchar(40)">
-                <constraints nullable="false"/>
-            </column>
-            
-            <column name="phone_number" type="varchar(15)">
+			<column name="name" type="varchar(100)">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-11" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: dict_contact_phone_numbers</comment>
+	<changeSet id="dict-rus-28" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_countries_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_contact_phone_numbers"
+	            constraintName="pk_dict_countries_tl"
 	            schemaName="apps"
-	            tableName="dict_contact_phone_numbers"/>
+	            tableName="dict_countries_tl"/>
 	</changeSet>
-	
-	<changeSet id="dict-rus-12" logicalFilePath="path-independent" author="ruslan" context="dev">
-	    <comment>Creating sequence for table: dict_contact_phone_numbers</comment>
-	    <createSequence 
+
+	<changeSet id="dict-rus-29" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dict_countries_tl</comment>
+		<addUniqueConstraint
+				columnNames="country_id, lang"
+				constraintName="uk_dict_countries_tl"
+				schemaName="apps"
+				tableName="dict_countries_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-30" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_countries_tl</comment>
+		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_contact_phone_numbers_s"
+	            sequenceName="dict_countries_tl_s"
 	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

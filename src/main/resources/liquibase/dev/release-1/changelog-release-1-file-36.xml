@@ -6,14 +6,14 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-35" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: dict_post_addresses_tl</comment>
-		<createTable tableName="dict_post_addresses_tl" schemaName="apps">
+    <changeSet id="dict-rus-51" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_meter_types_tl</comment>
+		<createTable tableName="dict_meter_types_tl" schemaName="apps">
 			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="post_address_id" type="number">
+			<column name="meter_type_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -21,44 +21,40 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="name" type="varchar(300)">
+			<column name="name" type="varchar(100)">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="locality" type="varchar(100)">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="street" type="varchar(100)">
+			<column name="manufacturer" type="varchar(100)">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-36" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: dict_post_addresses_tl</comment>
+	<changeSet id="dict-rus-52" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_meter_types_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_post_addresses_tl"
+	            constraintName="pk_dict_meter_types_tl"
 	            schemaName="apps"
-	            tableName="dict_post_addresses_tl"/>
+	            tableName="dict_meter_types_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-37" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: dict_post_addresses_tl</comment>
+	<changeSet id="dict-rus-53" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dict_meter_types_tl</comment>
 		<addUniqueConstraint
-				columnNames="post_address_id, lang"
-				constraintName="uk_dict_post_addresses_tl"
+				columnNames="meter_type_id, lang"
+				constraintName="uk_dict_meter_types_tl"
 				schemaName="apps"
-				tableName="dict_post_addresses_tl"/>
+				tableName="dict_meter_types_tl"/>
 	</changeSet>
-
-	<changeSet id="dict-rus-38" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: dict_post_addresses_tl</comment>
+	
+	<changeSet id="dict-rus-54" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_meter_types_tl</comment>
 		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_post_addresses_tl_s"
+	            sequenceName="dict_meter_types_tl_s"
 	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

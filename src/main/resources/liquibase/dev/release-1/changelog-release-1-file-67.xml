@@ -1,61 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <databaseChangeLog
-		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="dict-eug-126" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating table: ecm_content</comment>
-		<createTable tableName="ecm_content" schemaName="apps">
+    <changeSet id="dict-eug-139" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating table: dict_reactors_tl</comment>
+		<createTable tableName="dict_reactors_tl" schemaName="apps">
 			<column name="id" type="number">
+                <constraints nullable="false"/>
+            </column>
+
+			<column name="reactor_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="source_table" type="varchar(128)">
+            <column name="lang" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+
+			<column name="short_name" type="varchar(30)">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="source_id" type="number">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="content_type_id" type="number">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="file_name" type="varchar(255)">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="file_ext" type="varchar(10)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="file_size" type="number">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="content" type="BLOB">
+			<column name="name" type="varchar(100)">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-eug-127" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating primary key for table: ecm_content</comment>
+	<changeSet id="dict-eug-140" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating primary key for table: dict_reactors_tl</comment>
 		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_ecm_content"
-				schemaName="apps"
-				tableName="ecm_content"/>
+	            columnNames="id"
+	            constraintName="pk_dict_reactors_tl"
+	            schemaName="apps"
+	            tableName="dict_reactors_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-eug-128" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating sequence for table: ecm_content</comment>
-		<createSequence
-				incrementBy="1"
+	<changeSet id="dict-eug-141" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating unique key for table: dict_reactors_tl</comment>
+		<addUniqueConstraint
+				columnNames="reactor_id, lang"
+				constraintName="uk_dict_reactors_tl"
 				schemaName="apps"
-				sequenceName="ecm_content_s"
-				startValue="1"/>
+				tableName="dict_reactors_tl"/>
+	</changeSet>
+	
+	<changeSet id="dict-eug-142" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating sequence for table: dict_reactors_tl</comment>
+		<createSequence
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="dict_reactors_tl_s"
+	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

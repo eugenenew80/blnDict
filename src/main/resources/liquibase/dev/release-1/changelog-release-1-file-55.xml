@@ -4,68 +4,57 @@
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">    
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-86" logicalFilePath="path-independent" author="eugene" context="dev">
-        <comment>Creating table: dict_metering_point_voltage_trans</comment>
-        <createTable tableName="dict_metering_point_voltage_trans" schemaName="apps">            
-            <column name="id" type="number">
+    <changeSet id="dict-eug-98" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating table: dict_metering_point_voltage_trans_tl</comment>
+		<createTable tableName="dict_metering_point_voltage_trans_tl" schemaName="apps">
+			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="metering_point_id" type="number">
+			<column name="metering_point_voltage_trans_id" type="number">
+				<constraints nullable="false"/>
+			</column>
+
+            <column name="lang" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="start_date" type="date">
-                <constraints nullable="true"/>
-            </column>
-                                    			                                                 
-            <column name="end_date" type="date">
-                <constraints nullable="true"/>
-            </column>
+			<column name="name" type="varchar(100)">
+				<constraints nullable="false"/>
+			</column>
 
-            <column name="name" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
+			<column name="manufacturer" type="varchar(100)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
 
-            <column name="manufacturer" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="rated_voltage1" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="rated_voltage2" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="accuracy_class" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="business_partner_id" type="number">
-                <constraints nullable="true"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-	<changeSet id="dict-eug-87" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating primary key for table: dict_metering_point_voltage_trans</comment>
-	    <addPrimaryKey 
+	<changeSet id="dict-eug-99" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating primary key for table: dict_metering_point_voltage_trans_tl</comment>
+		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_metering_point_voltage_trans"
+	            constraintName="pk_dict_metering_point_voltage_trans_tl"
 	            schemaName="apps"
-	            tableName="dict_metering_point_voltage_trans"/>
+	            tableName="dict_metering_point_voltage_trans_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-eug-100" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating unique key for table: dict_metering_point_voltage_trans_tl</comment>
+		<addUniqueConstraint
+				columnNames="metering_point_voltage_trans_id, lang"
+				constraintName="uk_dict_metering_point_voltage_trans_tl"
+				schemaName="apps"
+				tableName="dict_metering_point_voltage_trans_tl"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-88" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating sequence for table: dict_metering_point_voltage_trans</comment>
-	    <createSequence 
+	<changeSet id="dict-eug-101" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating sequence for table: dict_metering_point_voltage_trans_tl</comment>
+		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_metering_point_voltage_trans_s"
+	            sequenceName="dict_metering_point_voltage_trans_tl_s"
 	            startValue="1"/>
-	</changeSet>	
+	</changeSet>
 </databaseChangeLog>

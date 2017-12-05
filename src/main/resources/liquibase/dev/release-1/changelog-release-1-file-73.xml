@@ -6,14 +6,14 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="dict-eug-146" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating table: dict_power_line_types_tl</comment>
-		<createTable tableName="dict_power_line_types_tl" schemaName="apps">
+	<changeSet id="dict-eug-160" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating table: dict_power_line_parts_tl</comment>
+		<createTable tableName="dict_power_line_parts_tl" schemaName="apps">
 			<column name="id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="power_line_type_id" type="number">
+			<column name="power_line_part_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -27,30 +27,30 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-eug-147" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating primary key for table: dict_power_line_types_tl</comment>
+	<changeSet id="dict-eug-161" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating primary key for table: dict_power_line_parts_tl</comment>
 		<addPrimaryKey
 				columnNames="id"
-				constraintName="pk_dict_power_line_types_tl"
+				constraintName="pk_dict_power_line_parts_tl"
 				schemaName="apps"
-				tableName="dict_power_line_types_tl"/>
+				tableName="dict_power_line_parts_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-eug-148" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating unique key for table: dict_power_line_types_tl</comment>
+	<changeSet id="dict-eug-162" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating unique key for table: dict_power_line_parts_tl</comment>
 		<addUniqueConstraint
-				columnNames="power_line_type_id, lang"
-				constraintName="uk_dict_power_line_types_tl"
+				columnNames="power_line_part_id, lang"
+				constraintName="uk_dict_power_line_parts_tl"
 				schemaName="apps"
-				tableName="dict_power_line_types_tl"/>
+				tableName="dict_power_line_parts_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-eug-149" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating sequence for table: dict_power_line_types_tl</comment>
+	<changeSet id="dict-eug-163" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating sequence for table: dict_power_line_parts_tl</comment>
 		<createSequence
 				incrementBy="1"
 				schemaName="apps"
-				sequenceName="dict_power_line_types_tl_s"
+				sequenceName="dict_power_line_parts_tl_s"
 				startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

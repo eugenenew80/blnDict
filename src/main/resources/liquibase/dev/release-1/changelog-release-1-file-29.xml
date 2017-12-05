@@ -1,95 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-7" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>Creating table: dict_business_partners</comment>
-        <createTable tableName="dict_business_partners" schemaName="apps">
-            <column name="id" type="number">
+    <changeSet id="dict-rus-19" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_banks_tl</comment>
+		<createTable tableName="dict_banks_tl" schemaName="apps">
+			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)">
+			<column name="bank_id" type="number">
+				<constraints nullable="false"/>
+			</column>
+
+            <column name="lang" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="bin" type="varchar(12)">
-                <constraints nullable="false"/>
-            </column>
+			<column name="name" type="varchar(100)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
 
-            <column name="kbe" type="varchar(2)">
-                <constraints nullable="true"/>
-            </column>
+	<changeSet id="dict-rus-20" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_banks_tl</comment>
+		<addPrimaryKey
+	            columnNames="id"
+	            constraintName="pk_dict_banks_tl"
+	            schemaName="apps"
+	            tableName="dict_banks_tl"/>
+	</changeSet>
 
-            <column name="okpo" type="varchar(20)">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="legal_address_id" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="actual_address_id" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="is_large_consumer" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="is_electricity_producer" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="is_energy_supply_organization" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="is_transmitting_organization" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="is_electricity_consumer" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="parent_business_partner_id" type="number">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="cert_num" type="varchar(30)">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="cert_ser" type="varchar(30)">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="cert_date" type="date">
-                <constraints nullable="true"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="dict-rus-8" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>Creating primary key for table: dict_business_partners</comment>
-        <addPrimaryKey
-                columnNames="id"
-                constraintName="pk_dict_business_partners"
-                schemaName="apps"
-                tableName="dict_business_partners"/>
-    </changeSet>
-
-    <changeSet id="dict-rus-9" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>Creating sequence for table: dict_business_partners</comment>
-        <createSequence
-                incrementBy="1"
-                schemaName="apps"
-                sequenceName="dict_business_partners_s"
-                startValue="1"/>
-    </changeSet>
+	<changeSet id="dict-rus-21" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dict_banks_tl</comment>
+		<addUniqueConstraint
+				columnNames="bank_id, lang"
+				constraintName="uk_dict_banks_tl"
+				schemaName="apps"
+				tableName="dict_banks_tl"/>
+	</changeSet>
+	
+	<changeSet id="dict-rus-22" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_banks_tl</comment>
+		<createSequence
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="dict_banks_tl_s"
+	            startValue="1"/>
+	</changeSet>
 </databaseChangeLog>

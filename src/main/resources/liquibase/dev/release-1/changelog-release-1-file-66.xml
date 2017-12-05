@@ -6,38 +6,55 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-123" logicalFilePath="path-independent" author="eugene" context="dev">
-        <comment>Creating table: ecm_content_types</comment>
-        <createTable tableName="ecm_content_types" schemaName="apps">            
-            <column name="id" type="number">
+    <changeSet id="dict-eug-135" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating table: dict_power_transformers_tl</comment>
+		<createTable tableName="dict_power_transformers_tl" schemaName="apps">
+			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)">
+			<column name="power_transformer_id" type="number">
+				<constraints nullable="false"/>
+			</column>
+
+            <column name="lang" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="description" type="varchar(300)">
-                <constraints nullable="true"/>
-            </column>
-        </createTable>
-    </changeSet>
+			<column name="short_name" type="varchar(30)">
+				<constraints nullable="false"/>
+			</column>
 
-	<changeSet id="dict-eug-124" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating primary key for table: ecm_content_types</comment>
-	    <addPrimaryKey 
+			<column name="name" type="varchar(100)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-eug-136" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating primary key for table: dict_power_transformers_tl</comment>
+		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_ecm_content_types"
+	            constraintName="pk_dict_power_transformers_tl"
 	            schemaName="apps"
-	            tableName="ecm_content_types"/>
+	            tableName="dict_power_transformers_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-eug-137" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating unique key for table: dict_power_transformers_tl</comment>
+		<addUniqueConstraint
+				columnNames="power_transformer_id, lang"
+				constraintName="uk_dict_power_transformers_tl"
+				schemaName="apps"
+				tableName="dict_power_transformers_tl"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-125" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating sequence for table: ecm_content_types</comment>
-	    <createSequence 
+	<changeSet id="dict-eug-138" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating sequence for table: dict_power_transformers_tl</comment>
+		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="ecm_content_types_s"
+	            sequenceName="dict_power_transformers_tl_s"
 	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

@@ -6,55 +6,58 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-135" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating table: dict_power_transformers_tl</comment>
-		<createTable tableName="dict_power_transformers_tl" schemaName="apps">
-			<column name="id" type="number">
+    <changeSet id="dict-eug-150" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating table: dict_power_lines</comment>
+        <createTable tableName="dict_power_lines" schemaName="apps">            
+            <column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="power_transformer_id" type="number">
-				<constraints nullable="false"/>
-			</column>
-
-            <column name="lang" type="varchar(10)">
+            <column name="short_name" type="varchar(30)">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="short_name" type="varchar(30)">
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+			<column name="power_line_type_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="name" type="varchar(100)">
-				<constraints nullable="false"/>
+			<column name="property_boundary" type="varchar(300)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="length" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="r" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="po" type="number">
+				<constraints nullable="true"/>
 			</column>
 		</createTable>
-	</changeSet>
+    </changeSet>
 
-	<changeSet id="dict-eug-136" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating primary key for table: dict_power_transformers_tl</comment>
-		<addPrimaryKey
+	<changeSet id="dict-eug-151" logicalFilePath="path-independent" author="eugene" context="dev">
+	    <comment>Creating primary key for table: dict_power_lines</comment>
+	    <addPrimaryKey 
 	            columnNames="id"
-	            constraintName="pk_dict_power_transformers_tl"
+	            constraintName="pk_dict_power_lines"
 	            schemaName="apps"
-	            tableName="dict_power_transformers_tl"/>
-	</changeSet>
-
-	<changeSet id="dict-eug-137" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating unique key for table: dict_power_transformers_tl</comment>
-		<addUniqueConstraint
-				columnNames="power_transformer_id, lang"
-				constraintName="uk_dict_power_transformers_tl"
-				schemaName="apps"
-				tableName="dict_power_transformers_tl"/>
+	            tableName="dict_power_lines"/>
 	</changeSet>
 	
-	<changeSet id="dict-eug-138" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating sequence for table: dict_power_transformers_tl</comment>
-		<createSequence
+	<changeSet id="dict-eug-152" logicalFilePath="path-independent" author="eugene" context="dev">
+	    <comment>Creating sequence for table: dict_power_lines</comment>
+	    <createSequence 
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_power_transformers_tl_s"
+	            sequenceName="dict_power_lines_s"
 	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

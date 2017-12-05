@@ -6,14 +6,14 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-47" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: dict_metering_types_tl</comment>
-		<createTable tableName="dict_metering_types_tl" schemaName="apps">
+    <changeSet id="dict-rus-63" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_metering_point_current_trans_tl</comment>
+		<createTable tableName="dict_metering_point_current_trans_tl" schemaName="apps">
 			<column name="id" type="number">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="metering_type_id" type="number">
+			<column name="metering_point_current_trans_id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
@@ -25,36 +25,36 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="short_name" type="varchar(10)">
+			<column name="manufacturer" type="varchar(100)">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-48" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: dict_metering_types_tl</comment>
+	<changeSet id="dict-rus-64" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_metering_point_current_trans_tl</comment>
 		<addPrimaryKey
 	            columnNames="id"
-	            constraintName="pk_dict_metering_types_tl"
+	            constraintName="pk_dict_metering_point_current_trans_tl"
 	            schemaName="apps"
-	            tableName="dict_metering_types_tl"/>
+	            tableName="dict_metering_point_current_trans_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-49" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: dict_metering_types_tl</comment>
+	<changeSet id="dict-rus-65" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dict_metering_point_current_trans_tl</comment>
 		<addUniqueConstraint
-				columnNames="metering_type_id, lang"
-				constraintName="uk_dict_metering_types_tl"
+				columnNames="metering_point_current_trans_id, lang"
+				constraintName="uk_dict_metering_point_current_trans_tl"
 				schemaName="apps"
-				tableName="dict_metering_types_tl"/>
+				tableName="dict_metering_point_current_trans_tl"/>
 	</changeSet>
-
-	<changeSet id="dict-rus-50" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: dict_metering_types_tl</comment>
+	
+	<changeSet id="dict-rus-66" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_metering_point_current_trans_tl</comment>
 		<createSequence
 	            incrementBy="1"
 	            schemaName="apps"
-	            sequenceName="dict_metering_types_tl_s"
+	            sequenceName="dict_metering_point_current_trans_tl_s"
 	            startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

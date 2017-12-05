@@ -1,67 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <databaseChangeLog
-  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-eug-132" logicalFilePath="path-independent" author="eugene" context="dev">
-        <comment>Creating table: dict_reactors</comment>
-        <createTable tableName="dict_reactors" schemaName="apps">            
-            <column name="id" type="number">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="short_name" type="varchar(30)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="name" type="varchar(100)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="energy_object_type" type="varchar(30)">
-                <constraints nullable="false"/>
-            </column>
-
-			<column name="energy_object_id" type="number">
+	<changeSet id="dict-eug-146" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating table: dict_power_line_types_tl</comment>
+		<createTable tableName="dict_power_line_types_tl" schemaName="apps">
+			<column name="id" type="number">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="delta_pr" type="number">
-				<constraints nullable="true"/>
+			<column name="power_line_type_id" type="number">
+				<constraints nullable="false"/>
 			</column>
 
-			<column name="unom" type="number">
-				<constraints nullable="true"/>
+			<column name="lang" type="varchar(10)">
+				<constraints nullable="false"/>
 			</column>
 
-			<column name="business_partner_id" type="number">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="org_id" type="number">
-				<constraints nullable="true"/>
+			<column name="name" type="varchar(100)">
+				<constraints nullable="false"/>
 			</column>
 		</createTable>
-    </changeSet>
-
-	<changeSet id="dict-eug-133" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating primary key for table: dict_reactors</comment>
-	    <addPrimaryKey 
-	            columnNames="id"
-	            constraintName="pk_dict_reactors"
-	            schemaName="apps"
-	            tableName="dict_reactors"/>
 	</changeSet>
-	
-	<changeSet id="dict-eug-134" logicalFilePath="path-independent" author="eugene" context="dev">
-	    <comment>Creating sequence for table: dict_reactors</comment>
-	    <createSequence 
-	            incrementBy="1"
-	            schemaName="apps"
-	            sequenceName="dict_reactors_s"
-	            startValue="1"/>
+
+	<changeSet id="dict-eug-147" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating primary key for table: dict_power_line_types_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dict_power_line_types_tl"
+				schemaName="apps"
+				tableName="dict_power_line_types_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-eug-148" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating unique key for table: dict_power_line_types_tl</comment>
+		<addUniqueConstraint
+				columnNames="power_line_type_id, lang"
+				constraintName="uk_dict_power_line_types_tl"
+				schemaName="apps"
+				tableName="dict_power_line_types_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-eug-149" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Creating sequence for table: dict_power_line_types_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_power_line_types_tl_s"
+				startValue="1"/>
 	</changeSet>
 </databaseChangeLog>
