@@ -249,7 +249,14 @@
 		    <version>42.1.4</version>
 		    <scope>test</scope>
 		</dependency>
-    
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>12.2.0.1</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
