@@ -567,23 +567,6 @@
 		/>
 	</changeSet>
 
-	<changeSet id="dict-eug-276" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating foreign constraint: dict_banks to dict_banks</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="dict_banks"
-				baseColumnNames="parent_bank_id"
-				constraintName="fk_dict_banks_2"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_banks"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
 	<changeSet id="dict-eug-277" logicalFilePath="path-independent" author="eugene" context="dev">
 		<comment>Creating foreign constraint: dict_business_partners to dict_business_partners</comment>
 		<addForeignKeyConstraint
