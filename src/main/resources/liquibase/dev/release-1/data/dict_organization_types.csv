@@ -1,0 +1,6 @@
+﻿id;code;name
+1;HEAD;головная
+2;BRANCH;филиал
+3;AFFILIATED;дочерняя
+4;DEPARTMENT;департамент
+5;OTHER;другой

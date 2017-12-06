@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Энергорайоны</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-124" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_power_districts</comment>
+		<createTable tableName="dict_power_districts" schemaName="apps" remarks="Энергоузлы">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="short_name" type="varchar(15)" remarks="Краткое наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(40)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="energy_node_id" type="number" remarks="ID энергоузла">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-125" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_power_districts</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dict_power_districts"
+				schemaName="apps"
+				tableName="dict_power_districts"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-126" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_power_districts to dict_energy_nodes</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_power_districts"
+				baseColumnNames="energy_node_id"
+				constraintName="fk_dict_power_districts_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_nodes"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-127" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_power_districts</comment>
+		<loadData
+				encoding="UTF-8"
+				relativeToChangelogFile="true"
+				file="data/dict_power_districts.csv"
+				quotchar="'"
+				schemaName="apps"
+				separator=";"
+				tableName="dict_power_districts">
+
+			<column name="id" type="NUMERIC"/>
+			<column name="short_name" type="STRING"/>
+			<column name="name"	type="STRING"/>
+			<column name="energy_node_id" type="STRING"/>
+		</loadData>
+
+		<rollback>
+			<delete schemaName="apps" tableName="dict_power_districts" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-128" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_power_districts</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_power_districts_s"
+				startValue="8"/>
+	</changeSet>
+</databaseChangeLog>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Загрузка данных </comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-116" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_countries</comment>
+		<loadData
+				encoding="UTF-8"
+				relativeToChangelogFile="true"
+				file="data/dict_countries.csv"
+				quotchar="'"
+				schemaName="apps"
+				separator=";"
+				tableName="dict_countries">
+
+			<column name="id" type="NUMERIC"/>
+			<column name="code" type="STRING"/>
+			<column name="name"	type="STRING"/>
+		</loadData>
+
+		<rollback>
+			<delete schemaName="apps" tableName="dict_countries" />
+		</rollback>
+	</changeSet>
+
+	<changeSet id="dict-rus-117" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_regions</comment>
+		<loadData
+				encoding="UTF-8"
+				relativeToChangelogFile="true"
+				file="data/dict_regions.csv"
+				quotchar="'"
+				schemaName="apps"
+				separator=";"
+				tableName="dict_regions">
+
+			<column name="id" type="NUMERIC"/>
+			<column name="code" type="STRING"/>
+			<column name="name"	type="STRING"/>
+			<column name="country_id" type="NUMERIC"/>
+		</loadData>
+
+		<rollback>
+			<delete schemaName="apps" tableName="dict_regions" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-118" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_energy_nodes</comment>
+		<loadData
+				encoding="UTF-8"
+				relativeToChangelogFile="true"
+				file="data/dict_energy_nodes.csv"
+				quotchar="'"
+				schemaName="apps"
+				separator=";"
+				tableName="dict_energy_nodes">
+
+			<column name="id" type="NUMERIC"/>
+			<column name="short_name" type="STRING"/>
+			<column name="name"	type="STRING"/>
+			<column name="region_id" type="NUMERIC"/>
+		</loadData>
+
+		<rollback>
+			<delete schemaName="apps" tableName="dict_energy_nodes" />
+		</rollback>
+	</changeSet>
+
+	<changeSet id="dict-rus-119" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_energy_source_types</comment>
+		<loadData
+				encoding="UTF-8"
+				relativeToChangelogFile="true"
+				file="data/dict_energy_source_types.csv"
+				quotchar="'"
+				schemaName="apps"
+				separator=";"
+				tableName="dict_energy_source_types">
+
+			<column name="id" type="NUMERIC"/>
+			<column name="short_name" type="STRING"/>
+			<column name="name"	type="STRING"/>
+			<column name="is_res" type="NUMERIC"/>
+		</loadData>
+
+		<rollback>
+			<delete schemaName="apps" tableName="dict_energy_source_types" />
+		</rollback>
+	</changeSet>
+
+	<changeSet id="dict-rus-120" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_energy_zones</comment>
+		<loadData
+				encoding="UTF-8"
+				relativeToChangelogFile="true"
+				file="data/dict_energy_zones.csv"
+				quotchar="'"
+				schemaName="apps"
+				separator=";"
+				tableName="dict_energy_zones">
+
+			<column name="id" type="NUMERIC"/>
+			<column name="code" type="STRING"/>
+			<column name="name"	type="STRING"/>
+		</loadData>
+
+		<rollback>
+			<delete schemaName="apps" tableName="dict_energy_zones" />
+		</rollback>
+	</changeSet>
+
+	<changeSet id="dict-rus-121" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_metering_point_types</comment>
+		<loadData
+				encoding="UTF-8"
+				relativeToChangelogFile="true"
+				file="data/dict_metering_point_types.csv"
+				quotchar="'"
+				schemaName="apps"
+				separator=";"
+				tableName="dict_metering_point_types">
+
+			<column name="id" type="NUMERIC"/>
+			<column name="code" type="STRING"/>
+			<column name="name"	type="STRING"/>
+		</loadData>
+
+		<rollback>
+			<delete schemaName="apps" tableName="dict_metering_point_types" />
+		</rollback>
+	</changeSet>
+
+	<changeSet id="dict-rus-122" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_metering_types</comment>
+		<loadData
+				encoding="UTF-8"
+				relativeToChangelogFile="true"
+				file="data/dict_metering_types.csv"
+				quotchar="'"
+				schemaName="apps"
+				separator=";"
+				tableName="dict_metering_types">
+
+			<column name="id" type="NUMERIC"/>
+			<column name="short_name" type="STRING"/>
+			<column name="name"	type="STRING"/>
+			<column name="is_used_in_energy_sources" type="NUMERIC"/>
+			<column name="is_used_in_substations" type="NUMERIC"/>
+		</loadData>
+
+		<rollback>
+			<delete schemaName="apps" tableName="dict_metering_types" />
+		</rollback>
+	</changeSet>
+
+	<changeSet id="dict-rus-123" logicalFilePath="path-independent" author="ruslan" context="postgres">
+		<comment>Load demo data to table: dict_units</comment>
+		<loadData
+				encoding="UTF-8"
+				relativeToChangelogFile="true"
+				file="data/dict_units.csv"
+				quotchar="'"
+				schemaName="apps"
+				separator=";"
+				tableName="dict_units">
+
+			<column name="id" type="NUMERIC"/>
+			<column name="code" type="STRING"/>
+			<column name="short_name"	type="STRING"/>
+			<column name="name" type="STRING"/>
+			<column name="base_unit_id" type="NUMERIC"/>
+			<column name="factor" type="NUMERIC"/>
+		</loadData>
+
+		<rollback>
+			<delete schemaName="apps" tableName="dict_units" />
+		</rollback>
+	</changeSet>
+
+</databaseChangeLog>

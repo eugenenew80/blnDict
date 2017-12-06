@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<author>ruslan</author>
+<comment>Удаление поля short_name из из 6 таблиц</comment>
+-->
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-107" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>delete column short_name from dict_reactors</comment>
+		<dropColumn columnName="short_name"
+					schemaName="apps"
+					tableName="dict_reactors"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-108" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>delete column short_name from dict_reactors_tl</comment>
+		<dropColumn columnName="short_name"
+					schemaName="apps"
+					tableName="dict_reactors_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-109" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>delete column short_name from dict_power_transformers</comment>
+		<dropColumn columnName="short_name"
+					schemaName="apps"
+					tableName="dict_power_transformers"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-110" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>delete column short_name from dict_power_transformers_tl</comment>
+		<dropColumn columnName="short_name"
+					schemaName="apps"
+					tableName="dict_power_transformers_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-111" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>delete column short_name from dict_power_lines</comment>
+		<dropColumn columnName="short_name"
+					schemaName="apps"
+					tableName="dict_power_lines"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-112" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>delete column short_name from dict_power_lines_tl</comment>
+		<dropColumn columnName="short_name"
+					schemaName="apps"
+					tableName="dict_power_lines_tl"/>
+	</changeSet>
+
+</databaseChangeLog>
