@@ -2210,6 +2210,8 @@
 			<many-to-one name="meter">
 				<join-column name="meter_id"/>
 			</many-to-one>
+
+			<transient name="lang" />
 		</attributes>
 	</entity>
 
@@ -3625,10 +3627,6 @@
 				/>
 			</id>
 
-			<basic name="shortName">
-				<column name="short_name" />
-			</basic>
-
 			<basic name="name">
 				<column name="name" />
 			</basic>
@@ -3719,10 +3717,6 @@
 				<column name="name" />
 			</basic>
 
-			<basic name="shortName">
-				<column name="short_name" />
-			</basic>
-
 			<basic name="createDate">
 				<column name="create_date" />
 			</basic>
@@ -3758,10 +3752,6 @@
 						allocation-size="1"
 				/>
 			</id>
-
-			<basic name="shortName">
-				<column name="short_name" />
-			</basic>
 
 			<basic name="name">
 				<column name="name" />
@@ -3832,10 +3822,6 @@
 			<basic name="lang">
 				<column name="lang"  />
 				<enumerated>STRING</enumerated>
-			</basic>
-
-			<basic name="name">
-				<column name="name" />
 			</basic>
 
 			<basic name="shortName">

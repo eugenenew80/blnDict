@@ -17,9 +17,6 @@ public class PowerTransformerTranslate implements HasId, HasName, HasLang, HasDa
     @NotNull
     private Lang lang;
 
-    @NotNull @Size(max = 30)
-    private String shortName;
-
     @NotNull @Size(max = 100)
     private String name;
 

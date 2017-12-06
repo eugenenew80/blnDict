@@ -15,7 +15,7 @@ import java.util.HashMap;
 @Stateless
 public class MeteringPointVoltageTransFilterImpl extends AbstractFilter<MeteringPointVoltageTrans> implements Filter<MeteringPointVoltageTrans> {
     public MeteringPointVoltageTrans filter(MeteringPointVoltageTrans entity, SessionContext context) {
-        return prepare(translate(entity, context), context);
+        return translate(prepare(entity, context), context);
     }
 
     private MeteringPointVoltageTrans prepare(MeteringPointVoltageTrans entity, SessionContext context) {
@@ -27,6 +27,9 @@ public class MeteringPointVoltageTransFilterImpl extends AbstractFilter<Metering
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
+
+        if (entity.getBusinessPartner()!=null && entity.getBusinessPartner().getId()==null)
+            entity.setBusinessPartner(null);
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());

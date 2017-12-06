@@ -62,8 +62,8 @@ public class ReactorFilterImpl extends AbstractFilter<Reactor> implements Filter
     private ReactorService service;
 
     @Inject
-    private Lang defLang;
+    private OrganizationService organizationService;
 
     @Inject
-    private OrganizationService organizationService;
+    private Lang defLang;
 }

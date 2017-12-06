@@ -43,7 +43,6 @@ public class PowerLineFilterImpl extends AbstractFilter<PowerLine> implements Fi
         translate.setLang(lang);
         translate.setPowerLine(entity);
         translate.setName(entity.getName());
-        translate.setShortName(entity.getShortName());
         translate.setPropertyBoundary(entity.getPropertyBoundary());
         entity.getTranslations().put(lang, translate);
 

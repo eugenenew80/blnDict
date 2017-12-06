@@ -29,12 +29,6 @@ public class MeteringPoint implements HasId, HasCode, HasName, HasLang, HasDates
 	private String externalCode;
 
 	@NotNull
-	private BusinessPartner businessPartner1;
-
-	@NotNull
-	private BusinessPartner businessPartner2;
-
-	@NotNull
 	private AccountingType accountingType;
 
 	@NotNull
@@ -43,6 +37,8 @@ public class MeteringPoint implements HasId, HasCode, HasName, HasLang, HasDates
 	@NotNull
 	private EnergyObject energyObject;
 
+	private BusinessPartner businessPartner1;
+	private BusinessPartner businessPartner2;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private Double ratedVoltage;

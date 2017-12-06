@@ -14,7 +14,7 @@ import java.util.HashMap;
 @Stateless
 public class MeteringPointCurrentTransFilterImpl extends AbstractFilter<MeteringPointCurrentTrans> implements Filter<MeteringPointCurrentTrans> {
     public MeteringPointCurrentTrans filter(MeteringPointCurrentTrans entity, SessionContext context) {
-        return prepare(translate(entity, context), context);
+        return translate(prepare(entity, context), context);
     }
 
     private MeteringPointCurrentTrans prepare(MeteringPointCurrentTrans entity, SessionContext context) {
@@ -26,6 +26,9 @@ public class MeteringPointCurrentTransFilterImpl extends AbstractFilter<Metering
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
+
+        if (entity.getBusinessPartner()!=null && entity.getBusinessPartner().getId()==null)
+            entity.setBusinessPartner(null);
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());

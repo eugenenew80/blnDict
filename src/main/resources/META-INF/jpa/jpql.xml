@@ -168,4 +168,22 @@
 		</query>
 	</named-query>
 
+	<named-query name="PowerTransformer.findAll">
+		<query>
+			select t from PowerTransformer t order by t.id
+		</query>
+	</named-query>
+
+	<named-query name="PowerLineType.findAll">
+		<query>
+			select t from PowerLineType t order by t.id
+		</query>
+	</named-query>
+
+	<named-query name="PowerLine.findAll">
+		<query>
+			select t from PowerLine t order by t.id
+		</query>
+	</named-query>
+
 </entity-mappings>
