@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<author>ruslan</author>
-<comment>Удаление поля short_name из из 6 таблиц: dict_reactors,dict_reactors_tl,</comment>
+<comment>Удаление поля short_name из из 6 таблиц</comment>
 -->
 
 <databaseChangeLog
