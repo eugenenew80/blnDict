@@ -7,6 +7,8 @@ import kz.kegoc.bln.entity.dict.dto.PowerLineTypeDto;
 import kz.kegoc.bln.service.dict.PowerLineTypeService;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -24,9 +26,10 @@ import java.util.stream.Collectors;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 public class PowerLineTypeResourceImpl {
+	private static final Logger logger = LoggerFactory.getLogger(PowerLineTypeResourceImpl.class);
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
 		List<PowerLineTypeDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, PowerLineTypeDto.class) )
@@ -40,7 +43,7 @@ public class PowerLineTypeResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		PowerLineType entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, PowerLineTypeDto.class))
@@ -49,9 +52,9 @@ public class PowerLineTypeResourceImpl {
 
 
 	@POST
-	public Response create(PowerLineTypeDto entityDto) {
+	public Response create(PowerLineTypeDto entityDto, @HeaderParam("lang") Lang lang) {
 		PowerLineType entity = mapper.map(entityDto, PowerLineType.class);
-		PowerLineType newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
+		PowerLineType newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, PowerLineTypeDto.class))
@@ -61,9 +64,9 @@ public class PowerLineTypeResourceImpl {
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, PowerLineTypeDto entityDto ) {
+	public Response update(@PathParam("id") Long id, PowerLineTypeDto entityDto, @HeaderParam("lang") Lang lang) {
 		PowerLineType entity = mapper.map(entityDto, PowerLineType.class);
-		PowerLineType newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
+		PowerLineType newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, PowerLineTypeDto.class))
@@ -73,8 +76,8 @@ public class PowerLineTypeResourceImpl {
 	
 	@DELETE 
 	@Path("{id : \\d+}") 
-	public Response delete(@PathParam("id") Long id) {
-		service.delete(id, buildSessionContext(null));
+	public Response delete(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
+		service.delete(id, buildSessionContext(lang));
 		return Response.noContent()
 			.build();
 	}

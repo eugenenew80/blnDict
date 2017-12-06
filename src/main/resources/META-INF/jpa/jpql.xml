@@ -139,20 +139,7 @@
 
 	<named-query name="Bank.findAll">
 		<query>
-			select t from BusinessPartner t order by t.id
-		</query>
-	</named-query>
-
-	<named-query name="PhoneNumber.findAll">
-		<query>
-			select t from BusinessPartner t order by t.id
-		</query>
-	</named-query>
-
-
-	<named-query name="PostAddress.findAll">
-		<query>
-			select t from BusinessPartner t order by t.id
+			select t from Bank t order by t.id
 		</query>
 	</named-query>
 

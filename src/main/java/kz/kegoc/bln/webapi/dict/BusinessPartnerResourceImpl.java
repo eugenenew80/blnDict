@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 public class BusinessPartnerResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
 		List<BusinessPartnerDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.map(it, BusinessPartnerDto.class))
@@ -40,7 +40,7 @@ public class BusinessPartnerResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		BusinessPartner entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, BusinessPartnerDto.class))
@@ -49,9 +49,9 @@ public class BusinessPartnerResourceImpl {
 	
 
 	@POST
-	public Response create(BusinessPartnerDto entityDto) {
+	public Response create(BusinessPartnerDto entityDto, @HeaderParam("lang") Lang lang) {
 		BusinessPartner entity = mapper.map(entityDto, BusinessPartner.class);
-		BusinessPartner newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
+		BusinessPartner newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, BusinessPartnerDto.class))
@@ -61,9 +61,9 @@ public class BusinessPartnerResourceImpl {
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, BusinessPartnerDto entityDto ) {
+	public Response update(@PathParam("id") Long id, BusinessPartnerDto entityDto, @HeaderParam("lang") Lang lang) {
 		BusinessPartner entity = mapper.map(entityDto, BusinessPartner.class);
-		BusinessPartner newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
+		BusinessPartner newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, BusinessPartnerDto.class))
@@ -73,8 +73,8 @@ public class BusinessPartnerResourceImpl {
 	
 	@DELETE 
 	@Path("{id : \\d+}") 
-	public Response delete(@PathParam("id") Long id) {
-		service.delete(id, buildSessionContext(null));
+	public Response delete(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
+		service.delete(id, buildSessionContext(lang));
 		return Response.noContent()
 			.build();
 	}

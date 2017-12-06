@@ -45,7 +45,6 @@ public class BasicAuthFilter implements ContainerRequestFilter {
 		if (user==null)
 			throw new NotAuthorizedException("USER IS NOT REGISTERED");
 
-		sessions.remove(userName);
 		sessions.put(userName, user,30, TimeUnit.MINUTES);
 
 		ctx.setSecurityContext(

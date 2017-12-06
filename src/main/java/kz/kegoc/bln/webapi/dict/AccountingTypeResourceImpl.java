@@ -23,7 +23,7 @@ import kz.kegoc.bln.service.dict.AccountingTypeService;
 public class AccountingTypeResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
 		List<AccountingTypeDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, AccountingTypeDto.class) )
@@ -37,7 +37,7 @@ public class AccountingTypeResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		AccountingType entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, AccountingTypeDto.class))
@@ -46,9 +46,9 @@ public class AccountingTypeResourceImpl {
 
 
 	@POST
-	public Response create(AccountingTypeDto entityDto) {
+	public Response create(AccountingTypeDto entityDto, @HeaderParam("lang") Lang lang) {
 		AccountingType entity = mapper.map(entityDto, AccountingType.class);
-		AccountingType newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
+		AccountingType newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, AccountingTypeDto.class))
@@ -58,9 +58,9 @@ public class AccountingTypeResourceImpl {
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, AccountingTypeDto entityDto ) {
+	public Response update(@PathParam("id") Long id, AccountingTypeDto entityDto, @HeaderParam("lang") Lang lang) {
 		AccountingType entity = mapper.map(entityDto, AccountingType.class);
-		AccountingType newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
+		AccountingType newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, AccountingTypeDto.class))
@@ -70,8 +70,8 @@ public class AccountingTypeResourceImpl {
 	
 	@DELETE 
 	@Path("{id : \\d+}") 
-	public Response delete(@PathParam("id") Long id) {
-		service.delete(id, buildSessionContext(null));
+	public Response delete(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
+		service.delete(id, buildSessionContext(lang));
 		return Response.noContent()
 			.build();
 	}
