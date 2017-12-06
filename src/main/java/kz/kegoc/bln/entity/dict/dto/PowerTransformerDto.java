@@ -10,7 +10,6 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PowerTransformerDto {
 	private Long id;
-	private String shortName;
 	private String name;
 	private Long energyObjectId;
 	private String energyObjectType;
