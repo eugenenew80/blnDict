@@ -29,17 +29,8 @@ public class SubstationFilterImpl extends AbstractFilter<Substation> implements 
                 entity.setTranslations(curEntity.getTranslations());
         }
 
-        if (entity.getBusinessPartner()!=null && entity.getBusinessPartner().getId()==null)
-            entity.setBusinessPartner(null);
-
-        if (entity.getOrg()!=null && entity.getOrg().getId()==null)
-            entity.setOrg(null);
-
-        if (entity.getVoltageClass()!=null && entity.getVoltageClass().getId()==null)
-            entity.setVoltageClass(null);
-
         if (entity.getOrg()==null)
-            entity.setOrg(organizationService.findById(1L, context));
+            entity.setOrg(organizationService.findById(context.getUser().getOrgId(), context));
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());

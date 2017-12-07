@@ -5,12 +5,17 @@
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
   <mapping map-null="false" map-empty-string="false" trim-strings="true">
-    <class-a>kz.kegoc.bln.entity.dict.ContactPhoneNumber</class-a>
-    <class-b>kz.kegoc.bln.entity.dict.dto.ContactPhoneNumberDto</class-b>
+    <class-a>kz.kegoc.bln.entity.dict.EnergyDistrict</class-a>
+    <class-b>kz.kegoc.bln.entity.dict.dto.EnergyDistrictDto</class-b>
 
     <field>
-      <a>contact.id</a>
-      <b>contactId</b>
+      <a>energyNode.id</a>
+      <b>energyNodeId</b>
+    </field>
+
+    <field>
+      <a>energyNode.name</a>
+      <b>energyNodeName</b>
     </field>
   </mapping> 
 </mappings> 

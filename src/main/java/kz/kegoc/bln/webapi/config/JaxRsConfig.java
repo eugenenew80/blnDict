@@ -23,6 +23,7 @@ public class JaxRsConfig extends Application {
 		resources.add(EnergyZoneResourceImpl.class);
 		resources.add(RegionResourceImpl.class);
 		resources.add(EnergyNodeResourceImpl.class);
+		resources.add(EnergyDistrictResourceImpl.class);
 		resources.add(OrganizationResourceImpl.class);
 		resources.add(MeterResourceImpl.class);
 		resources.add(EnergySourceTypeResourceImpl.class);

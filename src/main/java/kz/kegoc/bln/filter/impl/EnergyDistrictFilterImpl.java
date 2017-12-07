@@ -2,24 +2,25 @@ package kz.kegoc.bln.filter.impl;
 
 import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
-import kz.kegoc.bln.entity.dict.Organization;
-import kz.kegoc.bln.entity.dict.translate.OrganizationTranslate;
+import kz.kegoc.bln.entity.dict.EnergyDistrict;
+import kz.kegoc.bln.entity.dict.translate.EnergyDistrictTranslate;
 import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
-import kz.kegoc.bln.service.dict.OrganizationService;
+import kz.kegoc.bln.service.dict.EnergyDistrictService;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.HashMap;
 
 @Stateless
-public class OrganizationFilterImpl extends AbstractFilter<Organization> implements Filter<Organization> {
-    public Organization filter(Organization entity, SessionContext context) {
+public class EnergyDistrictFilterImpl extends AbstractFilter<EnergyDistrict> implements Filter<EnergyDistrict> {
+    public EnergyDistrict filter(EnergyDistrict entity, SessionContext context) {
         return translate(prepare(entity, context), context);
     }
 
-    private Organization prepare(Organization entity, SessionContext context) {
+    private EnergyDistrict prepare(EnergyDistrict entity, SessionContext context) {
         if (entity.getId()!=null) {
-            Organization curEntity = companyService.findById(entity.getId(), null);
+            EnergyDistrict curEntity = service.findById(entity.getId(), null);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
@@ -35,21 +36,22 @@ public class OrganizationFilterImpl extends AbstractFilter<Organization> impleme
         return entity;
     }
 
-    private Organization translate(Organization entity, SessionContext context) {
+    private EnergyDistrict translate(EnergyDistrict entity, SessionContext context) {
         Lang lang = entity.getLang()!=null ? entity.getLang() : defLang;
 
-        OrganizationTranslate translate = entity.getTranslations().getOrDefault(lang, new OrganizationTranslate());
+        EnergyDistrictTranslate translate = entity.getTranslations().getOrDefault(lang, new EnergyDistrictTranslate());
         translate = addUpdateInfo(translate, context);
         translate.setLang(lang);
-        translate.setOrg(entity);
+        translate.setEnergyDistrict(entity);
         translate.setName(entity.getName());
+        translate.setShortName(entity.getShortName());
         entity.getTranslations().put(lang, translate);
 
         return entity;
     }
 
     @Inject
-    private OrganizationService companyService;
+    private EnergyDistrictService service;
 
     @Inject
     private Lang defLang;

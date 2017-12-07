@@ -66,6 +66,7 @@ public class Producer {
             "mapper/dict/def/CurrentTransTypeDto.xml",
             "mapper/dict/def/DataSourceDto.xml",
             "mapper/dict/def/EnergyNodeDto.xml",
+            "mapper/dict/def/EnergyDistrictDto.xml",
             "mapper/dict/def/EnergySourceMeteringPointDto.xml",
             "mapper/dict/def/EnergySourceDto.xml",
             "mapper/dict/def/EnergySourceTypeDto.xml",
@@ -94,6 +95,7 @@ public class Producer {
             "mapper/dict/def/ReactorDto.xml",
             "mapper/dict/def/PowerTransformerDto.xml",
             "mapper/dict/def/PowerLineDto.xml",
+            "mapper/dict/def/PowerLinePartDto.xml",
             "mapper/dict/def/PowerLineTypeDto.xml",
             "mapper/dict/list/MeterDto.xml"
         ));

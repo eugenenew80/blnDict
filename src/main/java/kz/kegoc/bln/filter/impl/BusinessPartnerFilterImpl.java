@@ -30,12 +30,6 @@ public class BusinessPartnerFilterImpl extends AbstractFilter<BusinessPartner> i
                 entity.setTranslations(curEntity.getTranslations());
         }
 
-        if (entity.getParentBusinessPartner()!=null && entity.getParentBusinessPartner().getId()==null)
-            entity.setParentBusinessPartner(null);
-
-        if (StringUtils.isEmpty(entity.getKbe()))
-            entity.setKbe(null);
-
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 

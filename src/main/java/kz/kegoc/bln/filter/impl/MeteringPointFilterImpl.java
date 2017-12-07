@@ -30,18 +30,8 @@ public class MeteringPointFilterImpl extends AbstractFilter<MeteringPoint> imple
                 entity.setTranslations(curEntity.getTranslations());
         }
 
-        if (entity.getBusinessPartner1()!=null && entity.getBusinessPartner1().getId()==null)
-            entity.setBusinessPartner1(null);
-
-        if (entity.getBusinessPartner2()!=null && entity.getBusinessPartner2().getId()==null)
-            entity.setBusinessPartner2(null);
-
-        if (entity.getOrg()!=null && entity.getOrg().getId()==null)
-            entity.setOrg(null);
-
-
         if (entity.getOrg()==null)
-            entity.setOrg(organizationService.findById(1L, context));
+            entity.setOrg(organizationService.findById(context.getUser().getOrgId(), context));
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
