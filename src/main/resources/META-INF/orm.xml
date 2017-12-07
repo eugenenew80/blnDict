@@ -896,10 +896,6 @@
       			<column name="name" />
       		</basic>
 
-			<many-to-one name="energyNode">
-				<join-column name="energy_node_id"/>
-			</many-to-one>
-
 			<basic name="createDate">
 				<column name="create_date" />
 			</basic>
@@ -914,6 +910,10 @@
 
 			<many-to-one name="lastUpdateBy">
 				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="energyNode">
+				<join-column name="energy_node_id"/>
 			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="energyDistrict" orphan-removal="true">
@@ -969,8 +969,8 @@
 				<join-column name="last_update_by" />
 			</many-to-one>
 
-			<many-to-one name="energyNode">
-				<join-column name="energy_node_id"/>
+			<many-to-one name="energyDistrict">
+				<join-column name="energy_district_id"/>
 			</many-to-one>
 		</attributes>
 	</entity>
