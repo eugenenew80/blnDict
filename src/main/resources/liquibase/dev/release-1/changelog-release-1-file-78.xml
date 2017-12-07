@@ -12,10 +12,6 @@
 	<changeSet id="dict-rus-122" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_organizations_types</comment>
 		<createTable tableName="dict_organizations_types" schemaName="apps" remarks="Справочник Типы организационных единиц">
-			<column name="id" type="number" remarks="Индетификатор">
-				<constraints nullable="false"/>
-			</column>
-
 			<column name="code" type="varchar(60)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
@@ -23,14 +19,13 @@
 			<column name="name" type="varchar(60)" remarks="Наименование">
 				<constraints nullable="false"/>
 			</column>
-
 		</createTable>
 	</changeSet>
 
 	<changeSet id="dict-rus-123" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: dict_organizations_types</comment>
 		<addPrimaryKey
-				columnNames="id"
+				columnNames="code"
 				constraintName="pk_dict_organizations_types"
 				schemaName="apps"
 				tableName="dict_organizations_types"/>
@@ -49,11 +44,7 @@
 	<changeSet id="dict-rus-125" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_organizations_types_tl</comment>
 		<createTable tableName="dict_organizations_types_tl" schemaName="apps" remarks="Справочник Типы организационных единиц (Перевод)">
-			<column name="id" type="number" remarks="Индетификатор">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="organizations_type_id" type="number" remarks="Ссылка на родительскую запись">
+			<column name="organizations_type_code" type="varchar(60)" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
 
@@ -70,7 +61,7 @@
 	<changeSet id="dict-rus-126" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: dict_organizations_types_tl</comment>
 		<addPrimaryKey
-				columnNames="id"
+				columnNames="organizations_type_code"
 				constraintName="pk_dict_organizations_types_tl"
 				schemaName="apps"
 				tableName="dict_organizations_types_tl"/>
@@ -79,7 +70,7 @@
 	<changeSet id="dict-rus-127" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating unique key for table: dict_organizations_types_tl</comment>
 		<addUniqueConstraint
-				columnNames="organizations_type_id, lang"
+				columnNames="organizations_type_code, lang"
 				constraintName="uk_dict_organizations_types_tl"
 				schemaName="apps"
 				tableName="dict_organizations_types_tl"/>
@@ -99,7 +90,7 @@
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="dict_organizations_types_tl"
-				baseColumnNames="organizations_type_id"
+				baseColumnNames="organizations_type_code"
 				constraintName="fk_dict_organizations_types_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
@@ -107,7 +98,7 @@
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
 				referencedTableName="dict_organizations_types"
-				referencedColumnNames="id"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
 </databaseChangeLog>

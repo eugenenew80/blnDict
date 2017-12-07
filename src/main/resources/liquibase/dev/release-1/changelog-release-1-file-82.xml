@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-154" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_metering_points_locations</comment>
+		<createTable tableName="dict_metering_points_locations" schemaName="apps" remarks="Справочник Места размещения точек учета">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="code" type="varchar(15)" remarks="Код типа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(40)" remarks="Наименование типа энергообъектов">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="metering_point_type_id" type="number" remarks="Место размещения (электростанция или подстанция)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-155" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_metering_points_locations</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dict_metering_points_locations"
+				schemaName="apps"
+				tableName="dict_metering_points_locations"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-156" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_metering_points_locations</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_metering_points_locations_s"
+				startValue="1"/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-157" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_metering_points_locations_tl</comment>
+		<createTable tableName="dict_metering_points_locations_tl" schemaName="apps" remarks="Справочник Места размещения точек учета (Перевод)">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="metering_points_location_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(80)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-158" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_metering_points_locations_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dict_metering_points_locations_tl"
+				schemaName="apps"
+				tableName="dict_metering_points_locations_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-159" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dict_metering_points_locations_tl</comment>
+		<addUniqueConstraint
+				columnNames="metering_points_location_id, lang"
+				constraintName="uk_dict_metering_points_locations_tl"
+				schemaName="apps"
+				tableName="dict_metering_points_locations_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-160" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_metering_points_locations_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_metering_points_locations_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-161" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_metering_points_locations_tl to dict_metering_points_locations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_metering_points_locations_tl"
+				baseColumnNames="metering_points_location_id"
+				constraintName="fk_dict_metering_points_locations_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_metering_points_locations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-162" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_metering_points_locations to dict_metering_point_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_metering_points_locations"
+				baseColumnNames="metering_point_type_id"
+				constraintName="fk_dict_metering_points_locations_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_metering_point_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>
