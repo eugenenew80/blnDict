@@ -4,7 +4,7 @@
           xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
-  <mapping>
+  <mapping map-null="false" map-empty-string="false" trim-strings="true">
     <class-a>kz.kegoc.bln.entity.dict.PowerTransformer</class-a>
     <class-b>kz.kegoc.bln.entity.dict.dto.PowerTransformerDto</class-b>
     
