@@ -28,9 +28,6 @@ public class MeteringPointVoltageTransFilterImpl extends AbstractFilter<Metering
                 entity.setTranslations(curEntity.getTranslations());
         }
 
-        if (entity.getBusinessPartner()!=null && entity.getBusinessPartner().getId()==null)
-            entity.setBusinessPartner(null);
-
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 

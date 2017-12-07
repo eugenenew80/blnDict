@@ -28,9 +28,6 @@ public class OrganizationFilterImpl extends AbstractFilter<Organization> impleme
                 entity.setTranslations(curEntity.getTranslations());
         }
 
-        if (entity.getParentOrg()!=null && entity.getParentOrg().getId()==null)
-            entity.setParentOrg(null);
-
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 

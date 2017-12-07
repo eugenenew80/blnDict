@@ -28,9 +28,6 @@ public class UnitFilterImpl extends AbstractFilter<Unit> implements Filter<Unit>
                 entity.setTranslations(curEntity.getTranslations());
         }
 
-        if (entity.getBaseUnit()!=null && entity.getBaseUnit().getId()==null)
-            entity.setBaseUnit(null);
-
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 

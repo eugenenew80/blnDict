@@ -29,9 +29,6 @@ public class EnergyDistrictFilterImpl extends AbstractFilter<EnergyDistrict> imp
                 entity.setTranslations(curEntity.getTranslations());
         }
 
-        if (entity.getEnergyNode()!=null && entity.getEnergyNode().getId()==null)
-            entity.setEnergyNode(null);
-
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
