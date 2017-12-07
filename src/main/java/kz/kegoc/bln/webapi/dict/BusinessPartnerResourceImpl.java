@@ -81,7 +81,7 @@ public class BusinessPartnerResourceImpl {
 
 
 	@Path("/{businessPartnerId : \\d+}/dictBusinessPartnerContact")
-	public ContactResourceImpl getContactResource(@PathParam("businessPartnerId") Long id) {
+	public ContactResourceImpl getContactResource() {
 		return contactResource;
 	}
 

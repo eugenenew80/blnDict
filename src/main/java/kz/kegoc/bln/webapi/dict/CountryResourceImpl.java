@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class CountryResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
 		List<CountryDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.map(it, CountryDto.class))
@@ -39,7 +39,7 @@ public class CountryResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		Country entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, CountryDto.class))
@@ -48,9 +48,9 @@ public class CountryResourceImpl {
 	
 
 	@POST
-	public Response create(CountryDto entityDto) {
+	public Response create(CountryDto entityDto, @HeaderParam("lang") Lang lang) {
 		Country entity = mapper.map(entityDto, Country.class);
-		Country newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
+		Country newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, CountryDto.class))
@@ -60,9 +60,9 @@ public class CountryResourceImpl {
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, CountryDto entityDto ) {
+	public Response update(@PathParam("id") Long id, CountryDto entityDto, @HeaderParam("lang") Lang lang ) {
 		Country entity = mapper.map(entityDto, Country.class);
-		Country newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
+		Country newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, CountryDto.class))
@@ -72,8 +72,8 @@ public class CountryResourceImpl {
 	
 	@DELETE 
 	@Path("{id : \\d+}") 
-	public Response delete(@PathParam("id") Long id) {
-		service.delete(id, buildSessionContext(null));
+	public Response delete(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
+		service.delete(id, buildSessionContext(lang));
 		return Response.noContent()
 			.build();
 	}

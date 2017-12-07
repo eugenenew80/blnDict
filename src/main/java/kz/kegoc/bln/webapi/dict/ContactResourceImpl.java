@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class ContactResourceImpl {
 
 	@GET
-	public Response getAll(@PathParam("businessPartnerId") Long businessPartnerId, @QueryParam("lang") Lang lang) {
+	public Response getAll(@PathParam("businessPartnerId") Long businessPartnerId, @HeaderParam("lang") Lang lang) {
 		List<ContactDto> list = businessPartnerService.findById(businessPartnerId, buildSessionContext(lang))
 			.getContacts()
 			.stream()
@@ -40,7 +40,7 @@ public class ContactResourceImpl {
 
 	@GET
 	@Path("/{id : \\d+}")
-	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		Contact entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, ContactDto.class))
@@ -49,9 +49,9 @@ public class ContactResourceImpl {
 
 
 	@POST
-	public Response create(ContactDto entityDto) {
+	public Response create(ContactDto entityDto, @HeaderParam("lang") Lang lang) {
 		Contact entity = mapper.map(entityDto, Contact.class);
-		Contact newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
+		Contact newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, ContactDto.class))
@@ -61,9 +61,9 @@ public class ContactResourceImpl {
 
 	@PUT
 	@Path("{id : \\d+}")
-	public Response update(@PathParam("id") Long id, ContactDto entityDto ) {
+	public Response update(@PathParam("id") Long id, ContactDto entityDto, @HeaderParam("lang") Lang lang) {
 		Contact entity = mapper.map(entityDto, Contact.class);
-		Contact newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
+		Contact newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, ContactDto.class))
@@ -73,21 +73,21 @@ public class ContactResourceImpl {
 
 	@DELETE
 	@Path("{id : \\d+}")
-	public Response delete(@PathParam("id") Long id) {
-		service.delete(id, buildSessionContext(null));
+	public Response delete(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
+		service.delete(id, buildSessionContext(lang));
 		return Response.noContent()
 			.build();
 	}
 
 
 	@Path("/{contactId : \\d+}/dictContactEmail")
-	public ContactEmailResourceImpl getContactEmailResource(@PathParam("contactId") Long id) {
+	public ContactEmailResourceImpl getContactEmailResource() {
 		return contactEmailResource;
 	}
 
 
 	@Path("/{contactId : \\d+}/dictContactPhoneNumber")
-	public ContactPhoneNumberResourceImpl getContactPhoneNumberResource(@PathParam("contactId") Long id) {
+	public ContactPhoneNumberResourceImpl getContactPhoneNumberResource() {
 		return contactPhoneNumberResource;
 	}
 

@@ -22,7 +22,7 @@ import kz.kegoc.bln.service.dict.EnergyNodeService;
 public class EnergyNodeResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
 		List<EnergyNodeDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, EnergyNodeDto.class) )
@@ -36,7 +36,7 @@ public class EnergyNodeResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		EnergyNode entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, EnergyNodeDto.class))
@@ -45,9 +45,9 @@ public class EnergyNodeResourceImpl {
 	
 
 	@POST
-	public Response create(EnergyNodeDto entityDto) {
+	public Response create(EnergyNodeDto entityDto, @HeaderParam("lang") Lang lang) {
 		EnergyNode entity = mapper.map(entityDto, EnergyNode.class);
-		EnergyNode newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
+		EnergyNode newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, EnergyNodeDto.class))
@@ -57,9 +57,9 @@ public class EnergyNodeResourceImpl {
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, EnergyNodeDto entityDto ) {
+	public Response update(@PathParam("id") Long id, EnergyNodeDto entityDto, @HeaderParam("lang") Lang lang ) {
 		EnergyNode map = mapper.map(entityDto, EnergyNode.class);
-		EnergyNode newEntity = service.update(map, buildSessionContext(entityDto.getLang()));
+		EnergyNode newEntity = service.update(map, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, EnergyNodeDto.class))
@@ -69,8 +69,8 @@ public class EnergyNodeResourceImpl {
 	
 	@DELETE 
 	@Path("{id : \\d+}") 
-	public Response delete(@PathParam("id") Long id) {
-		service.delete(id, buildSessionContext(null));
+	public Response delete(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
+		service.delete(id, buildSessionContext(lang));
 		return Response.noContent()
 			.build();
 	}

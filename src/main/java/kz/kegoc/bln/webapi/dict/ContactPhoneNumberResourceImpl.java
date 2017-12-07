@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class ContactPhoneNumberResourceImpl {
 
 	@GET
-	public Response getAll(@PathParam("contactId") Long contactId, @QueryParam("lang") Lang lang) {
+	public Response getAll(@PathParam("contactId") Long contactId, @HeaderParam("lang") Lang lang) {
 		List<ContactPhoneNumberDto> list = contactService.findById(contactId, buildSessionContext(lang))
 			.getContactPhoneNumbers()
 			.stream()
@@ -40,7 +40,7 @@ public class ContactPhoneNumberResourceImpl {
 
 	@GET
 	@Path("/{id : \\d+}")
-	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		ContactPhoneNumber entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, ContactPhoneNumberDto.class))
@@ -49,9 +49,9 @@ public class ContactPhoneNumberResourceImpl {
 
 
 	@POST
-	public Response create(ContactPhoneNumberDto entityDto) {
+	public Response create(ContactPhoneNumberDto entityDto, @HeaderParam("lang") Lang lang) {
 		ContactPhoneNumber entity = mapper.map(entityDto, ContactPhoneNumber.class);
-		ContactPhoneNumber newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
+		ContactPhoneNumber newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, ContactPhoneNumberDto.class))
@@ -61,9 +61,9 @@ public class ContactPhoneNumberResourceImpl {
 
 	@PUT
 	@Path("{id : \\d+}")
-	public Response update(@PathParam("id") Long id, ContactPhoneNumberDto entityDto ) {
+	public Response update(@PathParam("id") Long id, ContactPhoneNumberDto entityDto, @HeaderParam("lang") Lang lang ) {
 		ContactPhoneNumber entity = mapper.map(entityDto, ContactPhoneNumber.class);
-		ContactPhoneNumber newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
+		ContactPhoneNumber newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, ContactPhoneNumberDto.class))
@@ -73,8 +73,8 @@ public class ContactPhoneNumberResourceImpl {
 
 	@DELETE
 	@Path("{id : \\d+}")
-	public Response delete(@PathParam("id") Long id) {
-		service.delete(id, buildSessionContext(null));
+	public Response delete(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
+		service.delete(id, buildSessionContext(lang));
 		return Response.noContent()
 			.build();
 	}

@@ -22,7 +22,7 @@ import kz.kegoc.bln.service.dict.DataSourceService;
 public class DataSourceResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
 		List<DataSourceDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, DataSourceDto.class) )
@@ -36,7 +36,7 @@ public class DataSourceResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		DataSource dataSource = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(dataSource, DataSourceDto.class))
@@ -45,9 +45,9 @@ public class DataSourceResourceImpl {
 	
 
 	@POST
-	public Response create(DataSourceDto entityDto) {
+	public Response create(DataSourceDto entityDto, @HeaderParam("lang") Lang lang) {
 		DataSource entity = mapper.map(entityDto, DataSource.class);
-		DataSource newDataSource = service.create(entity, buildSessionContext(entityDto.getLang()));
+		DataSource newDataSource = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newDataSource, DataSourceDto.class))
@@ -57,9 +57,9 @@ public class DataSourceResourceImpl {
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, DataSourceDto entityDto ) {
+	public Response update(@PathParam("id") Long id, DataSourceDto entityDto, @HeaderParam("lang") Lang lang ) {
 		DataSource entity = mapper.map(entityDto, DataSource.class);
-		DataSource newDataSource = service.update(entity, buildSessionContext(entityDto.getLang()));
+		DataSource newDataSource = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newDataSource, DataSourceDto.class))
@@ -69,8 +69,8 @@ public class DataSourceResourceImpl {
 	
 	@DELETE 
 	@Path("{id : \\d+}") 
-	public Response delete(@PathParam("id") Long id) {
-		service.delete(id, buildSessionContext(null));
+	public Response delete(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
+		service.delete(id, buildSessionContext(lang));
 		return Response.noContent()
 			.build();
 	}

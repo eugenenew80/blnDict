@@ -874,6 +874,107 @@
 		</attributes>
 	</entity>
 
+
+	<entity class="kz.kegoc.bln.entity.dict.EnergyDistrict">
+		<table name="dict_power_districts" schema="apps" />
+		<attributes>
+			<id name="id">
+				<column name="id" />
+        		<generated-value strategy="SEQUENCE" generator="dict_power_districts_gen" />
+        		<sequence-generator
+        			name="dict_power_districts_gen"
+        			sequence-name="apps.dict_power_districts_s"
+					allocation-size="1"
+        		/>
+			</id>
+
+      		<basic name="shortName">
+      			<column name="short_name" />
+      		</basic>
+
+      		<basic name="name">
+      			<column name="name" />
+      		</basic>
+
+			<many-to-one name="energyNode">
+				<join-column name="energy_node_id"/>
+			</many-to-one>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<one-to-many name="translations" mapped-by="energyDistrict" orphan-removal="true">
+				<map-key name="lang"/>
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
+
+			<transient name="lang"/>
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.dict.translate.EnergyDistrictTranslate">
+		<table name="dict_power_districts_tl" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="dict_energy_nodes_tl_gen" />
+				<sequence-generator
+						name="dict_energy_nodes_tl_gen"
+						sequence-name="apps.dict_energy_nodes_tl_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="lang">
+				<column name="lang"  />
+				<enumerated>STRING</enumerated>
+			</basic>
+
+			<basic name="name">
+				<column name="name" />
+			</basic>
+
+			<basic name="shortName">
+				<column name="short_name" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="energyNode">
+				<join-column name="energy_node_id"/>
+			</many-to-one>
+		</attributes>
+	</entity>
+
 	<entity class="kz.kegoc.bln.entity.dict.Organization">
 		<table name="dict_organizations" schema="apps" />
 		<attributes>

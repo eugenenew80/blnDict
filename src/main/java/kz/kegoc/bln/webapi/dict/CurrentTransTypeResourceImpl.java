@@ -21,7 +21,7 @@ import kz.kegoc.bln.service.dict.CurrentTransTypeService;
 public class CurrentTransTypeResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
 		List<CurrentTransTypeDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.map(it, CurrentTransTypeDto.class))
@@ -35,7 +35,7 @@ public class CurrentTransTypeResourceImpl {
 	
 	@GET 
 	@Path("/{id : \\d+}") 
-	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
+	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		CurrentTransType entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
 			.entity(mapper.map(entity, CurrentTransTypeDto.class))
@@ -44,9 +44,9 @@ public class CurrentTransTypeResourceImpl {
 	
 
 	@POST
-	public Response create(CurrentTransTypeDto entityDto) {
+	public Response create(CurrentTransTypeDto entityDto, @HeaderParam("lang") Lang lang) {
 		CurrentTransType entity = mapper.map(entityDto, CurrentTransType.class);
-		CurrentTransType newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
+		CurrentTransType newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, CurrentTransTypeDto.class))
@@ -56,9 +56,9 @@ public class CurrentTransTypeResourceImpl {
 	
 	@PUT 
 	@Path("{id : \\d+}") 
-	public Response update(@PathParam("id") Long id, CurrentTransTypeDto entityDto) {
+	public Response update(@PathParam("id") Long id, CurrentTransTypeDto entityDto, @HeaderParam("lang") Lang lang) {
 		CurrentTransType entity = mapper.map(entityDto, CurrentTransType.class);
-		CurrentTransType newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
+		CurrentTransType newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
 			.entity(mapper.map(newEntity, CurrentTransTypeDto.class))
@@ -68,8 +68,8 @@ public class CurrentTransTypeResourceImpl {
 	
 	@DELETE 
 	@Path("{id : \\d+}") 
-	public Response delete(@PathParam("id") Long id) {
-		service.delete(id, buildSessionContext(null));
+	public Response delete(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
+		service.delete(id, buildSessionContext(lang));
 		return Response.noContent()
 			.build();
 	}
