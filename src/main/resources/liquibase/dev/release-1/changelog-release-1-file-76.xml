@@ -14,6 +14,12 @@
 		<dropColumn columnName="short_name"
 					schemaName="apps"
 					tableName="dict_reactors"/>
+		<rollback>
+			<addColumn schemaName="apps"
+					   tableName="dict_reactors">
+				<column name="short_name" type="varchar(30)"/>
+			</addColumn>
+		</rollback>
 	</changeSet>
 
 	<changeSet id="dict-rus-108" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -21,6 +27,12 @@
 		<dropColumn columnName="short_name"
 					schemaName="apps"
 					tableName="dict_reactors_tl"/>
+		<rollback>
+			<addColumn schemaName="apps"
+					   tableName="dict_reactors_tl">
+				<column name="short_name" type="varchar(30)"/>
+			</addColumn>
+		</rollback>
 	</changeSet>
 
 	<changeSet id="dict-rus-109" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -28,6 +40,12 @@
 		<dropColumn columnName="short_name"
 					schemaName="apps"
 					tableName="dict_power_transformers"/>
+		<rollback>
+			<addColumn schemaName="apps"
+					   tableName="dict_power_transformers">
+				<column name="short_name" type="varchar(30)"/>
+			</addColumn>
+		</rollback>
 	</changeSet>
 
 	<changeSet id="dict-rus-110" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -35,6 +53,12 @@
 		<dropColumn columnName="short_name"
 					schemaName="apps"
 					tableName="dict_power_transformers_tl"/>
+		<rollback>
+			<addColumn schemaName="apps"
+					   tableName="dict_power_transformers_tl">
+				<column name="short_name" type="varchar(30)"/>
+			</addColumn>
+		</rollback>
 	</changeSet>
 
 	<changeSet id="dict-rus-111" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -42,6 +66,12 @@
 		<dropColumn columnName="short_name"
 					schemaName="apps"
 					tableName="dict_power_lines"/>
+		<rollback>
+			<addColumn schemaName="apps"
+					   tableName="dict_power_lines">
+				<column name="short_name" type="varchar(30)"/>
+			</addColumn>
+		</rollback>
 	</changeSet>
 
 	<changeSet id="dict-rus-112" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -49,6 +79,12 @@
 		<dropColumn columnName="short_name"
 					schemaName="apps"
 					tableName="dict_power_lines_tl"/>
+		<rollback>
+			<addColumn schemaName="apps"
+					   tableName="dict_power_lines_tl">
+				<column name="short_name" type="varchar(30)"/>
+			</addColumn>
+		</rollback>
 	</changeSet>
 
 </databaseChangeLog>
