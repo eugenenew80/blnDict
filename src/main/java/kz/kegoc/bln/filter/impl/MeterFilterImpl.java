@@ -37,7 +37,7 @@ public class MeterFilterImpl extends AbstractFilter<Meter> implements Filter<Met
             entity.setOrg(null);
 
         if (entity.getOrg()==null)
-            entity.setOrg(organizationService.findById(1L, context));
+            entity.setOrg(organizationService.findById(context.getUser().getOrgId(), context));
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());

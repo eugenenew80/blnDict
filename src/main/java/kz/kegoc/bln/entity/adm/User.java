@@ -17,4 +17,7 @@ public class User implements HasId, HasName{
 
 	@NotNull @Size(max=100)
 	private String description;
+
+	@NotNull
+	private Long orgId;
 }

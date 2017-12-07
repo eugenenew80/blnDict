@@ -40,7 +40,7 @@ public class EnergySourceFilterImpl extends AbstractFilter<EnergySource> impleme
             entity.setVoltageClass(null);
 
         if (entity.getOrg()==null)
-            entity.setOrg(organizationService.findById(1L, context));
+            entity.setOrg(organizationService.findById(context.getUser().getOrgId(), context));
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());

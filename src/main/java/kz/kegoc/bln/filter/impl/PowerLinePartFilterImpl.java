@@ -36,7 +36,7 @@ public class PowerLinePartFilterImpl extends AbstractFilter<PowerLinePart> imple
             entity.setOrg(null);
 
         if (entity.getOrg()==null)
-            entity.setOrg(organizationService.findById(1L, context));
+            entity.setOrg(organizationService.findById(context.getUser().getOrgId(), context));
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
