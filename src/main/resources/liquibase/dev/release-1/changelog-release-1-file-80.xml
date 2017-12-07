@@ -9,7 +9,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="dict-rus-138" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-132" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_phone_number_types</comment>
 		<createTable tableName="dict_phone_number_types" schemaName="apps" remarks="Справочник Типы номеров контактных телефонов">
 			<column name="code" type="varchar(60)" remarks="Код">
@@ -19,11 +19,10 @@
 			<column name="name" type="varchar(80)" remarks="Наименование">
 				<constraints nullable="false"/>
 			</column>
-
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-139" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-133" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: dict_phone_number_types</comment>
 		<addPrimaryKey
 				columnNames="code"
@@ -32,20 +31,10 @@
 				tableName="dict_phone_number_types"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-140" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: dict_phone_number_types</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="dict_phone_number_types_s"
-				startValue="1"/>
-	</changeSet>
-
-
-	<changeSet id="dict-rus-141" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-134" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_phone_number_types_tl</comment>
 		<createTable tableName="dict_phone_number_types_tl" schemaName="apps" remarks="Справочник Типы номеров контактных телефонов (Перевод)">
-			<column name="phone_number_type_code" type="varchar(60)" remarks="Ссылка на родительскую запись">
+			<column name="code" type="varchar(60)" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
 
@@ -59,39 +48,21 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-142" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-135" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: dict_phone_number_types_tl</comment>
 		<addPrimaryKey
-				columnNames="phone_number_type_code"
+				columnNames="code, lang"
 				constraintName="pk_dict_phone_number_types_tl"
 				schemaName="apps"
 				tableName="dict_phone_number_types_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-143" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: dict_phone_number_types_tl</comment>
-		<addUniqueConstraint
-				columnNames="phone_number_type_code, lang"
-				constraintName="uk_dict_phone_number_types_tl"
-				schemaName="apps"
-				tableName="dict_phone_number_types_tl"/>
-	</changeSet>
-
-	<changeSet id="dict-rus-144" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: dict_phone_number_types_tl</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="dict_phone_number_types_tl_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="dict-rus-145" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-136" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: dict_phone_number_types_tl to dict_phone_number_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="dict_phone_number_types_tl"
-				baseColumnNames="phone_number_type_code"
+				baseColumnNames="code"
 				constraintName="fk_dict_phone_number_types_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"

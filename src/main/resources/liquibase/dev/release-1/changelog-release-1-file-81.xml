@@ -9,7 +9,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="dict-rus-146" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-137" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_energy_object_types</comment>
 		<createTable tableName="dict_energy_object_types" schemaName="apps" remarks="Справочник Типы энергообъектов">
 			<column name="id" type="number" remarks="Индетификатор">
@@ -42,7 +42,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-147" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-138" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: dict_energy_object_types</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -51,7 +51,7 @@
 				tableName="dict_energy_object_types"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-148" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-139" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: dict_energy_object_types</comment>
 		<createSequence
 				incrementBy="1"
@@ -61,7 +61,7 @@
 	</changeSet>
 
 
-	<changeSet id="dict-rus-149" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-140" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_energy_object_types_tl</comment>
 		<createTable tableName="dict_energy_object_types_tl" schemaName="apps" remarks="Справочник Типы энергообъектов (Перевод)">
 			<column name="id" type="number" remarks="Индетификатор">
@@ -98,7 +98,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-150" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-141" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: dict_energy_object_types_tl</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -107,7 +107,7 @@
 				tableName="dict_energy_object_types_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-151" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-142" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating unique key for table: dict_energy_object_types_tl</comment>
 		<addUniqueConstraint
 				columnNames="energy_object_type_id, lang"
@@ -116,7 +116,7 @@
 				tableName="dict_energy_object_types_tl"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-152" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-143" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: dict_energy_object_types_tl</comment>
 		<createSequence
 				incrementBy="1"
@@ -125,7 +125,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-153" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-144" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: dict_energy_object_types_tl to dict_energy_object_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"

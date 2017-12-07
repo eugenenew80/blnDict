@@ -13,7 +13,7 @@
        <b>energySourceTypeId</b>
      </field>
 
-     <field>
+     <field type="one-way">
        <a>energySourceType.name</a>
        <b>energySourceTypeName</b>
      </field>
@@ -23,7 +23,7 @@
           <b>businessPartnerId</b>
       </field>
 
-      <field>
+      <field type="one-way">
           <a>businessPartner.name</a>
           <b>businessPartnerName</b>
       </field>
@@ -33,7 +33,7 @@
           <b>voltageClassId</b>
       </field>
 
-      <field>
+      <field type="one-way">
           <a>voltageClass.name</a>
           <b>voltageClassName</b>
       </field>
@@ -43,7 +43,7 @@
           <b>orgId</b>
       </field>
 
-      <field>
+      <field type="one-way">
           <a>org.name</a>
           <b>orgName</b>
       </field>
