@@ -795,10 +795,6 @@
       			<column name="name" />
       		</basic>
 
-			<many-to-one name="region">
-				<join-column name="region_id"/>
-			</many-to-one>
-
 			<basic name="createDate">
 				<column name="create_date" />
 			</basic>
@@ -813,6 +809,10 @@
 
 			<many-to-one name="lastUpdateBy">
 				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<many-to-one name="region">
+				<join-column name="region_id"/>
 			</many-to-one>
 
 			<one-to-many name="translations" mapped-by="energyNode" orphan-removal="true">
@@ -876,14 +876,14 @@
 
 
 	<entity class="kz.kegoc.bln.entity.dict.EnergyDistrict">
-		<table name="dict_power_districts" schema="apps" />
+		<table name="dict_energy_districts" schema="apps" />
 		<attributes>
 			<id name="id">
 				<column name="id" />
-        		<generated-value strategy="SEQUENCE" generator="dict_power_districts_gen" />
+        		<generated-value strategy="SEQUENCE" generator="dict_energy_districts_gen" />
         		<sequence-generator
-        			name="dict_power_districts_gen"
-        			sequence-name="apps.dict_power_districts_s"
+        			name="dict_energy_districts_gen"
+        			sequence-name="apps.dict_energy_districts_s"
 					allocation-size="1"
         		/>
 			</id>
@@ -928,14 +928,14 @@
 	</entity>
 
 	<entity class="kz.kegoc.bln.entity.dict.translate.EnergyDistrictTranslate">
-		<table name="dict_power_districts_tl" schema="apps"/>
+		<table name="dict_energy_districts_tl" schema="apps"/>
 		<attributes>
 			<id name="id">
 				<column name="id" />
-				<generated-value strategy="SEQUENCE" generator="dict_energy_nodes_tl_gen" />
+				<generated-value strategy="SEQUENCE" generator="dict_energy_districts_tl_gen" />
 				<sequence-generator
-						name="dict_energy_nodes_tl_gen"
-						sequence-name="apps.dict_energy_nodes_tl_s"
+						name="dict_energy_districts_tl_gen"
+						sequence-name="apps.dict_energy_districts_tl_s"
 						allocation-size="1"
 				/>
 			</id>

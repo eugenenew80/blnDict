@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+  <mapping>
+    <class-a>kz.kegoc.bln.entity.dict.PowerLinePart</class-a>
+    <class-b>kz.kegoc.bln.entity.dict.dto.PowerLinePartDto</class-b>
+
+    <field>
+      <a>powerLine.id</a>
+      <b>powerLineId</b>
+    </field>
+
+    <field>
+      <a>powerLine.name</a>
+      <b>powerLineName</b>
+    </field>
+
+    <field>
+      <a>businessPartner.id</a>
+      <b>businessPartnerId</b>
+    </field>
+
+    <field>
+      <a>businessPartner.name</a>
+      <b>businessPartnerName</b>
+    </field>
+  </mapping>
+</mappings>

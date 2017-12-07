@@ -127,6 +127,22 @@
 			<column name="short_name" type="varchar(10)">
 				<constraints nullable="false"/>
 			</column>
+
+			<column name="create_date" type="TIMESTAMP">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number">
+				<constraints nullable="true"/>
+			</column>
 		</createTable>
 	</changeSet>
 

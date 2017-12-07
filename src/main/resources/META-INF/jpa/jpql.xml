@@ -173,4 +173,9 @@
 		</query>
 	</named-query>
 
+	<named-query name="EnergyDistrict.findAll">
+		<query>
+			select t from EnergyDistrict t order by t.id
+		</query>
+	</named-query>
 </entity-mappings>

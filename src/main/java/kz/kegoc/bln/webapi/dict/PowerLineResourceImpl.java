@@ -81,7 +81,7 @@ public class PowerLineResourceImpl {
 
 
 	@Path("/{powerLineId : \\d+}/dictPowerLinePart")
-	public PowerLinePartResourceImpl getPowerLinePartResource(@PathParam("powerLineId") Long id) {
+	public PowerLinePartResourceImpl getPowerLinePartResource() {
 		return powerLinePartResource;
 	}
 

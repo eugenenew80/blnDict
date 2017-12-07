@@ -6,6 +6,7 @@ import kz.kegoc.bln.entity.dict.PowerLinePart;
 import kz.kegoc.bln.entity.dict.translate.PowerLinePartTranslate;
 import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
+import kz.kegoc.bln.service.dict.OrganizationService;
 import kz.kegoc.bln.service.dict.PowerLinePartService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -27,6 +28,15 @@ public class PowerLinePartFilterImpl extends AbstractFilter<PowerLinePart> imple
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
         }
+
+        if (entity.getBusinessPartner()!=null && entity.getBusinessPartner().getId()==null)
+            entity.setBusinessPartner(null);
+
+        if (entity.getOrg()!=null && entity.getOrg().getId()==null)
+            entity.setOrg(null);
+
+        if (entity.getOrg()==null)
+            entity.setOrg(organizationService.findById(1L, context));
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
@@ -50,6 +60,9 @@ public class PowerLinePartFilterImpl extends AbstractFilter<PowerLinePart> imple
 
     @Inject
     private PowerLinePartService service;
+
+    @Inject
+    private OrganizationService organizationService;
 
     @Inject
     private Lang defLang;
