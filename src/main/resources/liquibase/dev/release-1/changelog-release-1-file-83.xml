@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Поддерживаемые языки</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-163" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_supported_languages</comment>
+		<createTable tableName="dict_supported_languages" schemaName="apps" remarks="Справочник Поддерживаемые языки">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="code" type="varchar(10)" remarks="Код языки">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(100)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-164" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_supported_languages</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dict_supported_languages"
+				schemaName="apps"
+				tableName="dict_supported_languages"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-165" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_supported_languages</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_supported_languages_s"
+				startValue="1"/>
+	</changeSet>
+
+
+
+</databaseChangeLog>
