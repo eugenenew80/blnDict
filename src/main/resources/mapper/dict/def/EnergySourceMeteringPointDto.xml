@@ -16,9 +16,9 @@
      <field>
        <a>meteringPoint.id</a>
        <b>meteringPointId</b>
-     </field>    
+     </field>
 
-     <field>
+        <field type="one-way">
        <a>meteringPoint.name</a>
        <b>meteringPointName</b>
      </field>    

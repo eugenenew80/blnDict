@@ -13,7 +13,7 @@
       <b>regionId</b>
     </field>
 
-    <field>
+    <field type="one-way">
       <a>region.name</a>
       <b>regionName</b>
     </field>

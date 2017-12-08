@@ -15,14 +15,14 @@
      <field>
        <a>meter.id</a>
        <b>meterId</b>
-     </field>    
+     </field>
 
-     <field>
+      <field type="one-way">
        <a>meter.name</a>
        <b>meterName</b>
-     </field>    
+     </field>
 
-     <field>
+      <field type="one-way">
        <a>meter.serialNumber</a>
        <b>meterSerialNumber</b>
      </field>  

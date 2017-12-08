@@ -13,7 +13,7 @@
       <b>powerLineId</b>
     </field>
 
-    <field>
+    <field type="one-way">
       <a>powerLine.name</a>
       <b>powerLineName</b>
     </field>
@@ -23,7 +23,7 @@
       <b>businessPartnerId</b>
     </field>
 
-    <field>
+    <field type="one-way">
       <a>businessPartner.name</a>
       <b>businessPartnerName</b>
     </field>

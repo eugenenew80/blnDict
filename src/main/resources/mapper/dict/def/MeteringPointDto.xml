@@ -37,7 +37,7 @@
        <b>energyObjectType</b>
      </field>
 
-     <field>
+      <field type="one-way">
        <a>energyObject.name</a>
        <b>energyObjectName</b>
      </field>

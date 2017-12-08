@@ -13,7 +13,7 @@
       <b>countryId</b>
     </field>
 
-    <field>
+    <field type="one-way">
       <a>country.name</a>
       <b>countryName</b>
     </field>
