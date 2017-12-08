@@ -13,7 +13,7 @@
       <b>energyNodeId</b>
     </field>
 
-    <field>
+    <field type="one-way">
       <a>energyNode.name</a>
       <b>energyNodeName</b>
     </field>

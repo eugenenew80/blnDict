@@ -13,7 +13,7 @@
        <b>substationTypeId</b>
      </field>
 
-     <field>
+      <field type="one-way">
        <a>substationType.name</a>
        <b>substationTypeName</b>
      </field>
@@ -23,7 +23,7 @@
           <b>businessPartnerId</b>
       </field>
 
-      <field>
+      <field type="one-way">
           <a>businessPartner.name</a>
           <b>businessPartnerName</b>
       </field>
@@ -33,11 +33,12 @@
           <b>voltageClassId</b>
       </field>
 
-      <field>
+      <field type="one-way">
           <a>voltageClass.name</a>
           <b>voltageClassName</b>
       </field>
-      <field>
+
+      <field type="one-way">
           <a>voltageClass.value</a>
           <b>voltageClassValue</b>
       </field>
@@ -47,7 +48,7 @@
           <b>orgId</b>
       </field>
 
-      <field>
+      <field type="one-way">
           <a>org.name</a>
           <b>orgName</b>
       </field>

@@ -13,7 +13,7 @@
       <b>powerLineTypeId</b>
     </field>
 
-    <field>
+    <field type="one-way">
       <a>powerLineType.name</a>
       <b>powerLineTypeName</b>
     </field>
