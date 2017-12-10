@@ -3906,7 +3906,11 @@
 				<join-column name="power_line_type_id" />
 			</many-to-one>
 
-			<one-to-many name="powerLineParts" mapped-by="powerLine" />
+			<one-to-many name="powerLineParts" mapped-by="powerLine" orphan-removal="true">
+				<cascade>
+					<cascade-all/>
+				</cascade>
+			</one-to-many>
 
 			<one-to-many name="translations" mapped-by="powerLine" orphan-removal="true">
 				<map-key name="lang"/>

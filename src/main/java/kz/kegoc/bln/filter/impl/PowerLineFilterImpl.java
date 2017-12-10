@@ -3,12 +3,15 @@ package kz.kegoc.bln.filter.impl;
 import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.PowerLine;
+import kz.kegoc.bln.entity.dict.PowerLinePart;
 import kz.kegoc.bln.entity.dict.translate.PowerLineTranslate;
 import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
+import kz.kegoc.bln.service.dict.OrganizationService;
 import kz.kegoc.bln.service.dict.PowerLineService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Stateless
@@ -26,10 +29,26 @@ public class PowerLineFilterImpl extends AbstractFilter<PowerLine> implements Fi
 
             if (entity.getTranslations()==null)
                 entity.setTranslations(curEntity.getTranslations());
+
+            if (entity.getPowerLineParts()==null)
+                entity.setPowerLineParts(curEntity.getPowerLineParts());
         }
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
+
+
+        if (entity.getPowerLineParts()==null) {
+            entity.setPowerLineParts(new ArrayList<>());
+            PowerLinePart linePart = new PowerLinePart();
+            linePart.setPowerLine(entity);
+            linePart.setName(entity.getName());
+            linePart.setLength(entity.getLength());
+            linePart.setR(entity.getR());
+            linePart.setOrg(organizationService.findById(context.getUser().getOrgId(), context));
+            linePart = addUpdateInfo(linePart, context);
+            entity.getPowerLineParts().add(linePart);
+        }
 
         entity = addUpdateInfo(entity, context);
         return entity;
@@ -51,6 +70,9 @@ public class PowerLineFilterImpl extends AbstractFilter<PowerLine> implements Fi
 
     @Inject
     private PowerLineService service;
+
+    @Inject
+    private OrganizationService organizationService;
 
     @Inject
     private Lang defLang;
