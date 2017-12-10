@@ -146,8 +146,8 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 	}
 
 
-	private Repository<T> repository;
-	private Validator validator;
-	private Filter<T> prePersistFilter;
-	private Translator<T> translator;
+	protected Repository<T> repository;
+	protected Validator validator;
+	protected Filter<T> prePersistFilter;
+	protected Translator<T> translator;
 }
