@@ -61,10 +61,21 @@
 		</query>
 	</named-query>
 
-	
+	<named-query name="Meter.findByOrg">
+		<query>
+			select t from Meter t where t.org.id in :orgList order by t.id
+		</query>
+	</named-query>
+
 	<named-query name="MeteringPoint.findAll">
 		<query>
 			select t from MeteringPoint t order by t.id
+		</query>
+	</named-query>
+
+	<named-query name="MeteringPoint.findByOrg">
+		<query>
+			select t from MeteringPoint t where t.org.id in :orgList order by t.id
 		</query>
 	</named-query>
 
@@ -166,6 +177,12 @@
 		</query>
 	</named-query>
 
+	<named-query name="PowerTransformer.findByOrg">
+		<query>
+			select t from PowerTransformer t where t.org.id in :orgList order by t.id
+		</query>
+	</named-query>
+
 	<named-query name="PowerLineType.findAll">
 		<query>
 			select t from PowerLineType t order by t.id
@@ -175,6 +192,12 @@
 	<named-query name="PowerLine.findAll">
 		<query>
 			select t from PowerLine t order by t.id
+		</query>
+	</named-query>
+
+	<named-query name="PowerLine.findByOrg">
+		<query>
+			select distinct(t) from PowerLine t left join t.powerLineParts t1 where t1.org.id in :orgList order by t.id
 		</query>
 	</named-query>
 
