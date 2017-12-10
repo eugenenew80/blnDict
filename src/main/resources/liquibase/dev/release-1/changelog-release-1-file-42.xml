@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+	<?xml version="1.0" encoding="UTF-8"?>
 
 <databaseChangeLog
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
@@ -24,6 +24,10 @@
 			<column name="name" type="varchar(100)">
 				<constraints nullable="false"/>
 			</column>
+
+			<column name="short_name" type="varchar(100)">
+				<constraints nullable="false"/>
+			</column>
 		</createTable>
 	</changeSet>
 
@@ -44,7 +48,7 @@
 				schemaName="apps"
 				tableName="dict_organizations_tl"/>
 	</changeSet>
-	
+
 	<changeSet id="dict-rus-78" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: dict_organizations_tl</comment>
 		<createSequence

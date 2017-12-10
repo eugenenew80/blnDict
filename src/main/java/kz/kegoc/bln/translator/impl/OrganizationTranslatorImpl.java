@@ -20,8 +20,10 @@ public class OrganizationTranslatorImpl implements Translator<Organization> {
         if (translate==null)
             translate = entity.getTranslations().get(defLang);
 
-        if (translate!=null)
+        if (translate!=null) {
             entity.setName(translate.getName());
+            entity.setShortName(translate.getShortName());
+        }
 
         return entity;
     }

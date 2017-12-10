@@ -12,6 +12,7 @@ import lombok.Data;
 public class OrganizationDto {
 	private Long id;
 	private String name;
+	private String shortName;
 	private String bin;
 	private OrgType orgType;
 	private Long parentOrgId;

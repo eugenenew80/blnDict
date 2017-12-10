@@ -15,8 +15,11 @@ import java.util.Map;
 public class Organization implements HasId, HasName, HasLang, HasDates, HasUser {
 	private Long id;
 
-	@NotNull @Size(max = 100)
+	@NotNull @Size(max = 250)
 	private String name;
+
+	@NotNull @Size(max = 100)
+	private String shortName;
 
 	@Size(min=12, max = 12)
 	private String bin;

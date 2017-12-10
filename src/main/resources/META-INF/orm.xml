@@ -995,6 +995,10 @@
       		<basic name="name">
       			<column name="name" />
       		</basic>
+
+      		<basic name="shortName">
+      			<column name="short_name" />
+      		</basic>
       		
       		<basic name="bin">
       			<column name="bin" />
@@ -1056,6 +1060,10 @@
 
 			<basic name="name">
 				<column name="name" />
+			</basic>
+
+			<basic name="shortName">
+				<column name="short_name" />
 			</basic>
 
 			<basic name="createDate">

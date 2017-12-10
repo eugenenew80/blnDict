@@ -43,6 +43,7 @@ public class OrganizationFilterImpl extends AbstractFilter<Organization> impleme
         translate.setLang(lang);
         translate.setOrg(entity);
         translate.setName(entity.getName());
+        translate.setShortName(entity.getShortName());
         entity.getTranslations().put(lang, translate);
 
         return entity;

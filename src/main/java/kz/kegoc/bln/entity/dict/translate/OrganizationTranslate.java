@@ -18,8 +18,11 @@ public class OrganizationTranslate implements HasId, HasName, HasLang, HasDates,
     @NotNull
     private Lang lang;
 
-    @NotNull @Size(max = 100)
+    @NotNull @Size(max = 250)
     private String name;
+
+    @NotNull @Size(max = 100)
+    private String shortName;
 
     @NotNull
     private Organization org;
