@@ -93,7 +93,6 @@
 		</query>
 	</named-query>
 
-
 	<named-query name="Substation.findAll">
 		<query>
 			select t from Substation t order by t.id
@@ -152,6 +151,12 @@
 	<named-query name="Reactor.findAll">
 		<query>
 			select t from Reactor t order by t.id
+		</query>
+	</named-query>
+
+	<named-query name="Reactor.findByOrg">
+		<query>
+			select t from Reactor t where t.org.id in :orgList order by t.id
 		</query>
 	</named-query>
 
