@@ -8,56 +8,56 @@
 
     <changeSet id="dict-eug-8" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_meter_types</comment>
-        <createTable tableName="dict_meter_types" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_meter_types" schemaName="apps" remerks="Справочник Типы счетчиков">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Тип счетчика электроэнергии">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="manufacturer" type="varchar(100)">
+            <column name="manufacturer" type="varchar(100)" remarks="Производитель">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="rated_current" type="number">
+            <column name="rated_current" type="number" remarks="Номинальный ток, А">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="rated_voltage" type="number">
+            <column name="rated_voltage" type="number" remarks="Номанальное напрежение, В">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="accuracy_class" type="number">
+            <column name="accuracy_class" type="number" remarks="Класс точности">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="minimum_load" type="number">
+            <column name="minimum_load" type="number" remarks="Минимальная нагрузка в классе точности,%">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="total_digits_number" type="number">
+            <column name="total_digits_number" type="number" remarks="Общее количество знаков в показаниях счетчика">
                 <constraints nullable="true"/>
             </column>                                                  
 
-            <column name="digits_after_decimal_point" type="number">
+            <column name="digits_after_decimal_point" type="number" remarks="Количество знаков после запятой">
                 <constraints nullable="true"/>
             </column>
 
-			<column name="is_parameter_ap" type="number">
+			<column name="is_parameter_ap" type="number" remarks="Фиксирует параметр A+">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="is_parameter_am" type="number">
+			<column name="is_parameter_am" type="number" remarks="Фиксирует параметр A-">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="is_parameter_rp" type="number">
+			<column name="is_parameter_rp" type="number" remarks="Фиксирует параметр R+">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="is_parameter_rm" type="number">
+			<column name="is_parameter_rm" type="number" remarks="Фиксирует параметр R-">
 				<constraints nullable="true"/>
 			</column>
         </createTable>

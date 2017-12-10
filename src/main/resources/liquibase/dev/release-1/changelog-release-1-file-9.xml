@@ -18,11 +18,11 @@
             </column>
 
 			<column name="short_name" type="varchar(100)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
 			<column name="bin" type="varchar(12)">
-                <constraints nullable="true"/>
+                <constraints nullable="false"/>
             </column>
 
 			<column name="org_type" type="varchar(30)">

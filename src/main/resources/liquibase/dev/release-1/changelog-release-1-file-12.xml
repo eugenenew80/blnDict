@@ -8,36 +8,36 @@
 
     <changeSet id="dict-eug-41" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_substations</comment>
-        <createTable tableName="dict_substations" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_substations" schemaName="apps" remarks="Подстанции">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Полное наименование ПС">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="short_name" type="varchar(30)">
+            <column name="short_name" type="varchar(30)" remarks="Краткое наименование ПС">
                 <constraints nullable="false"/>
             </column>       
             
-            <column name="voltage_class_id" type="number">
+            <column name="voltage_class_id" type="number" remarks="Ид класса напряжения">
                 <constraints nullable="false"/>
             </column>     
             
-            <column name="substation_type_id" type="number">
+            <column name="substation_type_id" type="number" remarks="Ид типа подстанции">
                 <constraints nullable="false"/>
             </column>                       
             
-            <column name="address" type="varchar(300)">
+            <column name="address" type="varchar(300)" remarks="Адрес местонахождения">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="business_partner_id" type="number">
+            <column name="business_partner_id" type="number" remarks="Идентификатор Бизнес-партнера владельнца">
                 <constraints nullable="true"/>
             </column>
 
-			<column name="org_id" type="number">
+			<column name="org_id" type="number" remarks="Идентификатор филиала, в зоне ответственности которого находится подстанция">
 				<constraints nullable="false"/>
 			</column>
         </createTable>

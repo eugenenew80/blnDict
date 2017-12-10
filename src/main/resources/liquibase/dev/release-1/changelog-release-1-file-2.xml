@@ -8,16 +8,16 @@
 
     <changeSet id="dict-eug-5" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_data_sources</comment>
-        <createTable tableName="dict_data_sources" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_data_sources" schemaName="apps" remarks="Справочник Источники данных">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="code" type="varchar(15)">
+            <column name="code" type="varchar(15)" remarks="Код">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Наименование">
                 <constraints nullable="false"/>
             </column>
         </createTable>

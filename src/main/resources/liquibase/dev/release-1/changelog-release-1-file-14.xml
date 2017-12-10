@@ -8,24 +8,24 @@
 
     <changeSet id="dict-eug-47" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_metering_types</comment>
-        <createTable tableName="dict_metering_types" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_metering_types" schemaName="apps" remarks="Типы учета электроэнергии">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="short_name" type="varchar(10)">
+            <column name="short_name" type="varchar(10)" remarks="Краткое обозначение">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Наименование">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="is_used_in_energy_sources" type="number">
+            <column name="is_used_in_energy_sources" type="number" remarks="Используется на электростанциях">
                 <constraints nullable="true"/>
             </column>
 
-			<column name="is_used_in_substations" type="number">
+			<column name="is_used_in_substations" type="number" remarks="Используется на подстанциях">
                 <constraints nullable="true"/>
             </column>
         </createTable>

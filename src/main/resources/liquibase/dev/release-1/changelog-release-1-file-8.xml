@@ -8,20 +8,20 @@
 
     <changeSet id="dict-eug-23" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_energy_nodes</comment>
-        <createTable tableName="dict_energy_nodes" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_energy_nodes" schemaName="apps" remarks="Справочник Энергоузлы НЭС РК">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="short_name" type="varchar(10)">
+            <column name="short_name" type="varchar(10)" remarks="Краткое наименование">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Наименование энергоузла">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="region_id" type="number">
+			<column name="region_id" type="number" remarks="Наименование административной области, к которой отностися энергоузел">
 				<constraints nullable="false"/>
 			</column>
         </createTable>

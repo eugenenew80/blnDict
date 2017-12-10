@@ -8,80 +8,80 @@
 
     <changeSet id="dict-eug-29" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_meters</comment>
-        <createTable tableName="dict_meters" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_meters" schemaName="apps" remarks="Справочник Счетчики">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Тип счетчика">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="manufacturer" type="varchar(100)">
+            <column name="manufacturer" type="varchar(100)" remarks="Производитель">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="serial_number" type="varchar(30)">
+            <column name="serial_number" type="varchar(30)" remarks="Заводской номер">
                 <constraints nullable="true"/>
             </column>
                         
-            <column name="rated_current" type="number">
+            <column name="rated_current" type="number" remarks="Номанальный ток, А">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="rated_voltage" type="number">
+            <column name="rated_voltage" type="number" remarks="Номинальное напряжение, В">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="accuracy_class" type="number">
+            <column name="accuracy_class" type="number" remarks=" Класс точности">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="minimum_load" type="number">
+            <column name="minimum_load" type="number" remarks="Минимальная нагрузка в классе точности, %">
                 <constraints nullable="true"/>
             </column>  
 
-            <column name="business_partner_id" type="number">
+            <column name="business_partner_id" type="number" remarks="Компания владелец счетчика">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="last_verification_date" type="date">
+            <column name="last_verification_date" type="date" remarks="Дата последней поверки">
                 <constraints nullable="true"/>
             </column>
                                     			                                                 
-            <column name="next_verification_date" type="date">
+            <column name="next_verification_date" type="date" remarks="Дата следующей поверки">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="total_digits_number" type="number">
+            <column name="total_digits_number" type="number" remarks="Общее количество знаков в показаниях счетчика">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="digits_after_decimal_point" type="number">
+            <column name="digits_after_decimal_point" type="number" remarks="Количество знаков в дробной части показаний счетчика">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_ap" type="number">
+            <column name="is_parameter_ap" type="number" remarks="Фиксирует параметр A+">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_am" type="number">
+            <column name="is_parameter_am" type="number" remarks="Фиксирует параметр A-">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_rp" type="number">
+            <column name="is_parameter_rp" type="number" remarks="Фиксирует параметр R+">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_rm" type="number">
+            <column name="is_parameter_rm" type="number" remarks="Фиксирует параметр R-">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_withdrawn" type="number">
+            <column name="is_withdrawn" type="number" remarks="Счетчик снят с баланса предприятия">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="org_id" type="number">
+            <column name="org_id" type="number" remarks="Идентификатор филиала в зоне ответственности которого находится счетчик">
                 <constraints nullable="false"/>
             </column>
         </createTable>
