@@ -8,40 +8,40 @@
 
     <changeSet id="dict-eug-120" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_metering_point_characteristics</comment>
-        <createTable tableName="dict_metering_point_characteristics" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_metering_point_characteristics" schemaName="apps" remarks="Справочник Характеристики приборов в точках учета">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="metering_point_id" type="number">
+            <column name="metering_point_id" type="number" remarks="Ид точки учета">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="start_date" type="date">
+            <column name="start_date" type="date" remarks="Дата и время действия с">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="end_date" type="date">
+            <column name="end_date" type="date" remarks="Дата и время действия по">
                 <constraints nullable="true"/>
             </column>
 
-			<column name="voltage_permissible_losses" type="number">
+			<column name="voltage_permissible_losses" type="number" remarks="U">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="permissible_relative_error_limit" type="number">
+			<column name="permissible_relative_error_limit" type="number" remarks="ИКУЭ">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="transformation_rate" type="number">
+			<column name="transformation_rate" type="number" remarks="Коэффициент трансформации">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="min_load_in_accuracy_class" type="number">
+			<column name="min_load_in_accuracy_class" type="number" remarks="Минимальная нагрузка в классе точности">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="max_load_in_accuracy_class" type="number">
+			<column name="max_load_in_accuracy_class" type="number" remarks="Максимальная нагрузка в классе точности">
 				<constraints nullable="true"/>
 			</column>
         </createTable>

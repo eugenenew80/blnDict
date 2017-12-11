@@ -8,28 +8,28 @@
 
     <changeSet id="dict-rus-103" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_substations_tl</comment>
-		<createTable tableName="dict_substations_tl" schemaName="apps">
-			<column name="id" type="number">
+		<createTable tableName="dict_substations_tl" schemaName="apps" remarks="Справочник Подстанции (Перевод)">
+			<column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="substation_id" type="number">
+			<column name="substation_id" type="number" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
 
-            <column name="lang" type="varchar(10)">
+            <column name="lang" type="varchar(10)" remarks="Язык">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="name" type="varchar(100)">
+			<column name="name" type="varchar(100)" remarks="Полное наименование ПС">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="short_name" type="varchar(30)">
+			<column name="short_name" type="varchar(30)" remarks="Краткое наименование ПС">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="address" type="varchar(100)">
+			<column name="address" type="varchar(100)" remarks="Адрес">
 				<constraints nullable="true"/>
 			</column>
 		</createTable>

@@ -8,20 +8,20 @@
 
     <changeSet id="dict-eug-116" logicalFilePath="path-independent" author="eugene" context="dev">
 		<comment>Creating table: dict_contact_emails_tl</comment>
-		<createTable tableName="dict_contact_emails_tl" schemaName="apps">
-			<column name="id" type="number">
+		<createTable tableName="dict_contact_emails_tl" schemaName="apps" remarks="Справочник Адреса электронной почты (Перевод)">
+			<column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="contact_email_id" type="number">
+			<column name="contact_email_id" type="number" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
 
-            <column name="lang" type="varchar(10)">
+            <column name="lang" type="varchar(10)" remarks="Язык">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="description" type="varchar(100)">
+			<column name="description" type="varchar(100)" remarks="Примечание">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>

@@ -8,68 +8,68 @@
 
     <changeSet id="dict-rus-7" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating table: dict_business_partners</comment>
-        <createTable tableName="dict_business_partners" schemaName="apps">
-            <column name="id" type="number">
+        <createTable tableName="dict_business_partners" schemaName="apps" remarks="Справочник Бизнес-партнеры">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Наименование">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="bin" type="varchar(12)">
+            <column name="bin" type="varchar(12)" remarks="БИН">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="kbe" type="varchar(2)">
+            <column name="kbe" type="varchar(2)" remarks="КБЕ">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="okpo" type="varchar(20)">
+            <column name="okpo" type="varchar(20)" remarks="ОКПО">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="legal_address_id" type="number">
+            <column name="legal_address_id" type="number" remarks="Юридический адрес">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="actual_address_id" type="number">
+            <column name="actual_address_id" type="number" remarks="Фактический адрес">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_large_consumer" type="number">
+            <column name="is_large_consumer" type="number" remarks="Является крупным потребителем">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_electricity_producer" type="number">
+            <column name="is_electricity_producer" type="number" remarks="Является энергопроизводящей организацией">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_energy_supply_organization" type="number">
+            <column name="is_energy_supply_organization" type="number" remarks="Является энергоснабжающей организацией">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_transmitting_organization" type="number">
+            <column name="is_transmitting_organization" type="number" remarks="Является энергопередающей организацией">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_electricity_consumer" type="number">
+            <column name="is_electricity_consumer" type="number" remarks="Является потребителем электроэнергии">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="parent_business_partner_id" type="number">
+            <column name="parent_business_partner_id" type="number" remarks="Ид бизнес-партнера">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="cert_num" type="varchar(30)">
+            <column name="cert_num" type="varchar(30)" remarks="Номер">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="cert_ser" type="varchar(30)">
+            <column name="cert_ser" type="varchar(30)" remarks="Серия">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="cert_date" type="date">
+            <column name="cert_date" type="date" remarks="Дата выдачи">
                 <constraints nullable="true"/>
             </column>
         </createTable>

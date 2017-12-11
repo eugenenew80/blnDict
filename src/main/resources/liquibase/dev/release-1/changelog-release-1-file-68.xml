@@ -8,16 +8,16 @@
 
     <changeSet id="dict-eug-143" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_power_line_types</comment>
-        <createTable tableName="dict_power_line_types" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_power_line_types" schemaName="apps" remarks="Типы ЛЭП">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="code" type="varchar(15)">
+            <column name="code" type="varchar(15)" remarks="Код">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Наименование">
                 <constraints nullable="false"/>
             </column>
         </createTable>

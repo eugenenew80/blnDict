@@ -24,7 +24,7 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="metering_point_type_id" type="number" remarks="Место размещения (электростанция или подстанция)">
+			<column name="energy_object_type_id" type="number" remarks="Место размещения (электростанция или подстанция)">
 				<constraints nullable="false"/>
 			</column>
 
@@ -151,7 +151,7 @@
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="dict_metering_points_locations"
-				baseColumnNames="metering_point_type_id"
+				baseColumnNames="energy_object_type_id"
 				constraintName="fk_dict_metering_points_locations_1"
 				deferrable="true"
 				initiallyDeferred="true"

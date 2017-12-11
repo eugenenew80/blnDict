@@ -8,24 +8,24 @@
 
     <changeSet id="dict-eug-102" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_contacts</comment>
-        <createTable tableName="dict_contacts" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_contacts" schemaName="apps" remarks="Справочник Контакты">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="business_partner_id" type="number">
+			<column name="business_partner_id" type="number" remarks="ID бизнес-партнера">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="contact_type" type="varchar(30)">
+            <column name="contact_type" type="varchar(30)" remarks="Тип контакта">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="post" type="varchar(100)">
+            <column name="post" type="varchar(100)" remarks="Должность">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="description" type="varchar(100)">
+            <column name="description" type="varchar(100)" remarks="ФИО">
                 <constraints nullable="false"/>
             </column>
         </createTable>

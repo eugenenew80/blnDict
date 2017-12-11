@@ -8,40 +8,40 @@
 
     <changeSet id="dict-eug-153" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_power_line_parts</comment>
-        <createTable tableName="dict_power_line_parts" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_power_line_parts" schemaName="apps" remarks="Участки линий электропередач">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="power_line_id" type="number">
+			<column name="power_line_id" type="number" remarks="Ид ЛЭП">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Участок ЛЭП">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="business_partner_id" type="number">
+			<column name="business_partner_id" type="number" remarks="Ид владельца участка ЛЭП">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="length" type="number">
+			<column name="length" type="number" remarks="Длина, км">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="r" type="number">
+			<column name="r" type="number" remarks="Сопротивление, Ом">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="start_date" type="date">
+			<column name="start_date" type="date" remarks="Дата действия с">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="end_date" type="date">
+			<column name="end_date" type="date" remarks="Дата действия по">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="org_id" type="number">
+			<column name="org_id" type="number" remarks="ID заитересованого филиала">
 				<constraints nullable="true"/>
 			</column>
 		</createTable>

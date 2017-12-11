@@ -8,68 +8,68 @@
 
     <changeSet id="dict-eug-59" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_metering_points</comment>
-        <createTable tableName="dict_metering_points" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_metering_points" schemaName="apps" remarks="Справочник Точки учета">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="code" type="varchar(15)">
+            <column name="code" type="varchar(15)" remarks="Код точки учета">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Полное наименование">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="short_name" type="varchar(100)">
+            <column name="short_name" type="varchar(100)" remarks="Краткое наименование">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="external_code" type="varchar(18)">
+            <column name="external_code" type="varchar(18)" remarks="Внешний код точки учета">
                 <constraints nullable="true"/>
             </column>
             
-            <column name="start_date" type="date">
+            <column name="start_date" type="date" remarks="Дата действия с">
                 <constraints nullable="true"/>
             </column>
                                     			                                                 
-            <column name="end_date" type="date">
+            <column name="end_date" type="date" remarks="Дата действия по">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="metering_point_type_id" type="number">
+            <column name="metering_point_type_id" type="number" remarks="Тип точки учета">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="energy_object_id" type="number">
+            <column name="energy_object_id" type="number" remarks="Местонахождение: id объекта">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="energy_object_type" type="varchar(100)">
+            <column name="energy_object_type" type="varchar(100)" remarks="Местонахождение: id объекта">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="rated_voltage" type="number">
+            <column name="rated_voltage" type="number" remarks="Класс напряжения">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="business_partner_id_1" type="number">
+            <column name="business_partner_id_1" type="number" remarks="Компания 1 на границе раздела">
                 <constraints nullable="true"/>
             </column> 
             
-            <column name="business_partner_id_2" type="number">
+            <column name="business_partner_id_2" type="number" remarks="Компания 2 на границе раздела">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="accounting_type_id" type="number">
+            <column name="accounting_type_id" type="number" remarks="Является коммерческой">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="reference_metering_point_id" type="number">
+            <column name="reference_metering_point_id" type="number" remarks="Опорная точка учета">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="org_id" type="number">
+            <column name="org_id" type="number" remarks="Ид филиала">
                 <constraints nullable="false"/>
             </column>
         </createTable>
