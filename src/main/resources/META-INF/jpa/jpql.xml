@@ -206,4 +206,10 @@
 			select t from EnergyDistrict t order by t.id
 		</query>
 	</named-query>
+
+	<named-query name="Content.findAll">
+		<query>
+			select t from Content t order by t.id
+		</query>
+	</named-query>
 </entity-mappings>
