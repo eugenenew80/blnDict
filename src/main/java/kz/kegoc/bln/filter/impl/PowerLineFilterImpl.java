@@ -34,23 +34,32 @@ public class PowerLineFilterImpl extends AbstractFilter<PowerLine> implements Fi
                 entity.setPowerLineParts(curEntity.getPowerLineParts());
         }
 
+        if (entity.getOrg()==null)
+            entity.setOrg(organizationService.findById(context.getUser().getOrgId(), context));
+
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
+        entity = addPowerLinePart(entity, context);
+        entity = addUpdateInfo(entity, context);
+        return entity;
+    }
 
-        if (entity.getPowerLineParts()==null) {
+    private PowerLine addPowerLinePart(PowerLine entity, SessionContext context) {
+        if (entity.getPowerLineParts()==null)
             entity.setPowerLineParts(new ArrayList<>());
+
+        if (entity.getPowerLineParts().size()==0) {
             PowerLinePart linePart = new PowerLinePart();
             linePart.setPowerLine(entity);
             linePart.setName(entity.getName());
             linePart.setLength(entity.getLength());
             linePart.setR(entity.getR());
-            linePart.setOrg(organizationService.findById(context.getUser().getOrgId(), context));
-            linePart = addUpdateInfo(linePart, context);
+            linePart.setOrg(entity.getOrg());
+            linePart = powerLinePartFilter.filter(linePart, context);
             entity.getPowerLineParts().add(linePart);
         }
 
-        entity = addUpdateInfo(entity, context);
         return entity;
     }
 
@@ -76,4 +85,7 @@ public class PowerLineFilterImpl extends AbstractFilter<PowerLine> implements Fi
 
     @Inject
     private Lang defLang;
+
+    @Inject
+    private Filter<PowerLinePart> powerLinePartFilter;
 }
