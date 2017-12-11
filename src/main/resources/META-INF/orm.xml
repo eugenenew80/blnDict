@@ -3906,6 +3906,10 @@
 				<join-column name="power_line_type_id" />
 			</many-to-one>
 
+			<many-to-one name="org">
+				<join-column name="org_id" />
+			</many-to-one>
+
 			<one-to-many name="powerLineParts" mapped-by="powerLine" orphan-removal="true">
 				<cascade>
 					<cascade-all/>

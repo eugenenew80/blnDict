@@ -21,5 +21,7 @@ public class PowerLinePartDto {
 	private Double r;
 	private LocalDate startDate;
 	private LocalDate endDate;
+	private Long orgId;
+	private String orgName;
 	private Lang lang;
 }

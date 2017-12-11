@@ -17,5 +17,7 @@ public class PowerLineDto {
 	private Double length;
 	private Double r;
 	private Double po;
+	private Long orgId;
+	private String orgName;
 	private Lang lang;
 }

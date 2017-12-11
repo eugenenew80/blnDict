@@ -23,6 +23,9 @@ public class PowerLine implements HasId, HasName, HasLang, HasDates, HasUser {
 	@NotNull
 	private PowerLineType powerLineType;
 
+	@NotNull
+	private Organization org;
+
 	@Size(max = 300)
 	private String propertyBoundary;
 

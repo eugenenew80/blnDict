@@ -8,7 +8,7 @@
 
     <changeSet id="dict-eug-8" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_meter_types</comment>
-        <createTable tableName="dict_meter_types" schemaName="apps" remerks="Справочник Типы счетчиков">
+        <createTable tableName="dict_meter_types" schemaName="apps" remarks="Справочник Типы счетчиков">
             <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
