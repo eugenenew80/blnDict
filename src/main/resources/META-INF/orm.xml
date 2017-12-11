@@ -1,33 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-mappings version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/orm_2_1.xsd">
 
-	<entity class="kz.kegoc.bln.entity.ecm.Content">
-		<table name="ecm_content" schema="apps"/>
+	<entity class="kz.kegoc.bln.entity.ecm.ContentType">
+		<table name="ecm_content_types" schema="apps" />
 		<attributes>
 			<id name="id">
 				<column name="id" />
-				<generated-value strategy="SEQUENCE" generator="dict_units_gen" />
+				<generated-value strategy="SEQUENCE" generator="ecm_content_types_gen" />
 				<sequence-generator
-						name="dict_units_gen"
-						sequence-name="apps.dict_units_s"
+						name="ecm_content_types_gen"
+						sequence-name="apps.ecm_content_types_s"
 						allocation-size="1"
 				/>
 			</id>
-
-			<basic name="code">
-				<column name="code" />
-			</basic>
-
-			<basic name="shortName">
-				<column name="short_name" />
-			</basic>
 
 			<basic name="name">
 				<column name="name" />
 			</basic>
 
-			<basic name="factor">
-				<column name="factor" />
+			<basic name="description">
+				<column name="description" />
+			</basic>
+
+			<basic name="createDate">
+				<column name="create_date" />
+			</basic>
+
+			<basic name="lastUpdateDate">
+				<column name="last_update_date" />
+			</basic>
+
+			<many-to-one name="createBy">
+				<join-column name="create_by" />
+			</many-to-one>
+
+			<many-to-one name="lastUpdateBy">
+				<join-column name="last_update_by" />
+			</many-to-one>
+
+			<transient name="lang" />
+		</attributes>
+	</entity>
+
+	<entity class="kz.kegoc.bln.entity.ecm.Content">
+		<table name="ecm_content" schema="apps"/>
+		<attributes>
+			<id name="id">
+				<column name="id" />
+				<generated-value strategy="SEQUENCE" generator="ecm_content_gen" />
+				<sequence-generator
+						name="ecm_content_gen"
+						sequence-name="apps.ecm_content_s"
+						allocation-size="1"
+				/>
+			</id>
+
+			<basic name="sourceTable">
+				<column name="source_table" />
+			</basic>
+
+			<basic name="sourceId">
+				<column name="source_id" />
+			</basic>
+
+			<basic name="fileName">
+				<column name="file_name" />
+			</basic>
+
+			<basic name="fileExt">
+				<column name="file_ext" />
+			</basic>
+
+			<basic name="fileSize">
+				<column name="file_size" />
+			</basic>
+
+			<basic name="content">
+				<column name="content" />
 			</basic>
 
 			<basic name="createDate">
@@ -3065,6 +3114,7 @@
 			</many-to-one>
 
 			<one-to-many name="contacts" mapped-by="businessPartner" />
+			<one-to-many name="bankAccounts" mapped-by="businessPartner" />
 
 			<one-to-many name="translations" mapped-by="businessPartner" orphan-removal="true">
 				<map-key name="lang"/>
@@ -3161,6 +3211,8 @@
 			<many-to-one name="businessPartner">
 				<join-column name="business_partner_id"/>
 			</many-to-one>
+
+			<transient name="lang" />
 		</attributes>
 	</entity>
 
