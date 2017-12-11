@@ -8,20 +8,20 @@
 
     <changeSet id="dict-rus-13" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_bank_accounts</comment>
-		<createTable tableName="dict_bank_accounts" schemaName="apps">
-			<column name="id" type="number">
+		<createTable tableName="dict_bank_accounts" schemaName="apps" remarks="Справочник Счета в банках">
+			<column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="bank_account_number" type="varchar(40)">
+			<column name="bank_account_number" type="varchar(40)" remarks="Номер счета в банке">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="bank_id" type="number">
+			<column name="bank_id" type="number" remarks="Идентификационный номер банка">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="business_partner_id" type="number">
+			<column name="business_partner_id" type="number" remarks="Идентификационный номер бизнес партнера">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>

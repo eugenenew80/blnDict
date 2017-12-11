@@ -8,24 +8,24 @@
 
     <changeSet id="dict-eug-77" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_metering_point_meters</comment>
-        <createTable tableName="dict_metering_point_meters" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_metering_point_meters" schemaName="apps" remarks="Справочник Установленные счетчики в точках учета">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="metering_point_id" type="number">
+            <column name="metering_point_id" type="number" remarks="Ид точки учета">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="meter_id" type="number">
+            <column name="meter_id" type="number" remarks="Ид счетчика">
                 <constraints nullable="false"/>
             </column>
                         
-            <column name="start_date" type="date">
+            <column name="start_date" type="date" remarks="Дата и время действия с">
                 <constraints nullable="true"/>
             </column>
                                     			                                                 
-            <column name="end_date" type="date">
+            <column name="end_date" type="date" remarks="Дата и время действия по">
                 <constraints nullable="true"/>
             </column>              
         </createTable>

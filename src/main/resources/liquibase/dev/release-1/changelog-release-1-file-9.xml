@@ -8,28 +8,28 @@
 
     <changeSet id="dict-eug-26" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_organizations</comment>
-        <createTable tableName="dict_organizations" schemaName="apps">
-            <column name="id" type="number">
+        <createTable tableName="dict_organizations" schemaName="apps" remarks="Организация">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(250)">
+            <column name="name" type="varchar(250)" remarks="Наименование компании">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="short_name" type="varchar(100)">
+			<column name="short_name" type="varchar(100)" remarks="Краткое наименование">
                 <constraints nullable="true"/>
             </column>
 
-			<column name="bin" type="varchar(12)">
+			<column name="bin" type="varchar(12)" remarks="БИН компании">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="org_type" type="varchar(30)">
+			<column name="org_type" type="varchar(30)" remarks="тип организационной еденицы(головная,филиал,дочерняя,департамент)">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="parent_org_id" type="number">
+			<column name="parent_org_id" type="number" remarks="Ид головной организации">
 				<constraints nullable="true"/>
 			</column>
 		</createTable>

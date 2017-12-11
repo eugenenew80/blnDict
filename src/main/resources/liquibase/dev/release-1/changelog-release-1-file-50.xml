@@ -8,52 +8,52 @@
 
     <changeSet id="dict-eug-83" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_metering_point_current_trans</comment>
-        <createTable tableName="dict_metering_point_current_trans" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_metering_point_current_trans" schemaName="apps" remarks="Справочник Установленные трансформаторы тока">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="metering_point_id" type="number">
+            <column name="metering_point_id" type="number" remarks="Ид точки учета">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="start_date" type="date">
+            <column name="start_date" type="date" remarks="Дата и время действия с">
                 <constraints nullable="true"/>
             </column>
                                     			                                                 
-            <column name="end_date" type="date">
+            <column name="end_date" type="date" remarks="Дата и время действия по">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Тип">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="manufacturer" type="varchar(100)">
+            <column name="manufacturer" type="varchar(100)" remarks="Производитель">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="rated_current1" type="number">
+            <column name="rated_current1" type="number" remarks="Номинальный ток первичной обмотки">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="rated_current2" type="number">
+            <column name="rated_current2" type="number" remarks="Номинальный ток вторичной обмотки">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="accuracy_class" type="number">
+            <column name="accuracy_class" type="number" remarks="Класс точности">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="min_current" type="number">
+            <column name="min_current" type="number" remarks="Мин ток, %">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="max_current" type="number">
+            <column name="max_current" type="number" remarks="Макс ток, %">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="business_partner_id" type="number">
+            <column name="business_partner_id" type="number" remarks="Ид компании-владельца">
                 <constraints nullable="true"/>
             </column>
         </createTable>

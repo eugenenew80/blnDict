@@ -8,20 +8,20 @@
 
     <changeSet id="dict-rus-31" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_regions_tl</comment>
-		<createTable tableName="dict_regions_tl" schemaName="apps">
-			<column name="id" type="number">
+		<createTable tableName="dict_regions_tl" schemaName="apps" remarks="Справочник Регионы (Перевод)">
+			<column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="region_id" type="number">
+			<column name="region_id" type="number" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
 
-            <column name="lang" type="varchar(10)">
+            <column name="lang" type="varchar(10)" remarks="Язык">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="name" type="varchar(100)">
+			<column name="name" type="varchar(100)" remarks="Наименование области">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>

@@ -8,48 +8,52 @@
 
     <changeSet id="dict-rus-4" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating table: dict_post_addresses</comment>
-        <createTable tableName="dict_post_addresses" schemaName="apps">
-            <column name="id" type="number">
+        <createTable tableName="dict_post_addresses" schemaName="apps" remarks="Почтовый адрес">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="name" type="varchar(300)">
+			<column name="name" type="varchar(300)" remarks="Полный адрес">
 				<constraints nullable="false"/>
 			</column>
 
-            <column name="post_index" type="varchar(10)">
+            <column name="post_index" type="varchar(10)" remarks="Почтовый индекс">
                 <constraints nullable="true"/>
             </column>
             
-            <column name="country_id" type="number">
+            <column name="country_id" type="number" remarks="Идентификационный номер страны">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="region_id" type="number">
+			<column name="region_id" type="number" remarks="Идентификационный номер области">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="locality" type="varchar(100)">
+			<column name="locality" type="varchar(100)" remarks="Наименование населенного пункта">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="street" type="varchar(100)">
+			<column name="street" type="varchar(100)" remarks="Наименование проспекта, улицы, бульвара, на которой находится строение">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="house_number" type="varchar(10)">
+			<column name="house_number" type="varchar(10)" remarks="Номер дома">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="building_number" type="varchar(10)">
+			<column name="building_number" type="varchar(10)" remarks="Номер строения">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="apartment" type="varchar(10)">
+			<column name="apartment" type="varchar(10)" remarks="Номер квартиры">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="office_number" type="varchar(10)">
+			<column name="office_number" type="varchar(10)" remarks="Номер офиса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="object_name" type="varchar(30)" remarks="Наименование объекта">
 				<constraints nullable="true"/>
 			</column>
 		</createTable>

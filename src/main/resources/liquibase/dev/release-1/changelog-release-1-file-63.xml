@@ -6,36 +6,36 @@
 
 	<changeSet id="dict-eug-126" logicalFilePath="path-independent" author="eugene" context="dev">
 		<comment>Creating table: ecm_content</comment>
-		<createTable tableName="ecm_content" schemaName="apps">
-			<column name="id" type="number">
+		<createTable tableName="ecm_content" schemaName="apps" remarks="Справочник Связанные документы">
+			<column name="id" type="number" remarks="Идентификатор">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="source_table" type="varchar(128)">
+			<column name="source_table" type="varchar(128)" remarks="Наименование таблицы">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="source_id" type="number">
+			<column name="source_id" type="number" remarks="Ид записи">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="content_type_id" type="number">
+			<column name="content_type_id" type="number" remarks="Ид типа документа">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="file_name" type="varchar(255)">
+			<column name="file_name" type="varchar(255)" remarks="Имя файла">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="file_ext" type="varchar(10)">
+			<column name="file_ext" type="varchar(10)" remarks="Расширение">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="file_size" type="number">
+			<column name="file_size" type="number" remarks="Размер файла, байт">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="content" type="BLOB">
+			<column name="content" type="BLOB" remarks="Файл">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>

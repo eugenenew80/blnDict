@@ -8,40 +8,40 @@
 
     <changeSet id="dict-eug-132" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_reactors</comment>
-        <createTable tableName="dict_reactors" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_reactors" schemaName="apps" remarks="Реакторы">
+            <column name="id" type="number" remarks="Идентификаторы">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="short_name" type="varchar(30)">
+            <column name="short_name" type="varchar(30)" remarks="Код">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)">
+            <column name="name" type="varchar(100)" remarks="Наименование">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="energy_object_type" type="varchar(30)">
+            <column name="energy_object_type" type="varchar(30)" remarks="Местонахождение: Типа объекта">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="energy_object_id" type="number">
+			<column name="energy_object_id" type="number" remarks="Местонахождение: id объекта">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="delta_pr" type="number">
+			<column name="delta_pr" type="number" remarks="Потери мощности, кВт">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="unom" type="number">
+			<column name="unom" type="number" remarks="Uном, кВ">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="business_partner_id" type="number">
+			<column name="business_partner_id" type="number" remarks="id заинтересованного филиала">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="org_id" type="number">
+			<column name="org_id" type="number" remarks="id заинтересованного филиала">
 				<constraints nullable="true"/>
 			</column>
 		</createTable>

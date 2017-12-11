@@ -8,32 +8,32 @@
 
     <changeSet id="dict-eug-68" logicalFilePath="path-independent" author="eugene" context="dev">
         <comment>Creating table: dict_substation_metering_points</comment>
-        <createTable tableName="dict_substation_metering_points" schemaName="apps">            
-            <column name="id" type="number">
+        <createTable tableName="dict_substation_metering_points" schemaName="apps" remarks="Справочник Точки учета для составления баланса подстанции">
+            <column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
                         
-            <column name="substation_id" type="number">
+            <column name="substation_id" type="number" remarks="id подстанции">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="metering_point_id" type="number">
+            <column name="metering_point_id" type="number" remarks="id точки учета">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="metering_type_id" type="number">
+            <column name="metering_type_id" type="number" remarks="id типа учета электроэнергии">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="is_need_reverse" type="number">
+            <column name="is_need_reverse" type="number" remarks="Требуется изменить направление">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="start_date" type="date">
+            <column name="start_date" type="date" remarks="Дата действия с">
                 <constraints nullable="true"/>
             </column>
                                     			                                                 
-            <column name="end_date" type="date">
+            <column name="end_date" type="date" remarks="Дата действия по">
                 <constraints nullable="true"/>
             </column>              
         </createTable>

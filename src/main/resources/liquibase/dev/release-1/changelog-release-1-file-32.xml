@@ -8,28 +8,28 @@
 
     <changeSet id="dict-rus-35" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_post_addresses_tl</comment>
-		<createTable tableName="dict_post_addresses_tl" schemaName="apps">
-			<column name="id" type="number">
+		<createTable tableName="dict_post_addresses_tl" schemaName="apps" remarks="Справочник Почтовые адресса (Перевод)">
+			<column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="post_address_id" type="number">
+			<column name="post_address_id" type="number" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
 
-            <column name="lang" type="varchar(10)">
+            <column name="lang" type="varchar(10)" remarks="Язык">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="name" type="varchar(300)">
+			<column name="name" type="varchar(300)" remarks="Полный адрес">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="locality" type="varchar(100)">
+			<column name="locality" type="varchar(100)" remarks="Наименование населенного пункта">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="street" type="varchar(100)">
+			<column name="street" type="varchar(100)" remarks="Наименование проспекта, улицы, бульвара, на которой находится строение">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
