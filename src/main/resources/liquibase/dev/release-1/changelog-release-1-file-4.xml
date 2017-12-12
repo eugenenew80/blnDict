@@ -22,11 +22,11 @@
                 <constraints nullable="false"/>
             </column>
             
-            <column name="rated_current1" type="number" remarks="Номинальный ток первичной обмотки,А">
+            <column name="rated_current1" type="number" remarks="Номинальный ток первичной обмотки">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="rated_current2" type="number" remarks="Номинальный ток вторичной обмотки,А">
+            <column name="rated_current2" type="number" remarks="Номинальный ток вторичной обмотки">
                 <constraints nullable="true"/>
             </column>  
             
@@ -34,11 +34,11 @@
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="min_current" type="number" remarks="Минимальная нагрузка в классе точности,%">
+            <column name="min_current" type="number" remarks="Минимальный ток">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="max_current" type="number" remarks="Максимальная нагрузка в классе точности,%">
+            <column name="max_current" type="number" remarks="Максимальный ток">
                 <constraints nullable="true"/>
             </column>                                                  
         </createTable>

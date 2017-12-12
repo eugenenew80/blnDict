@@ -13,7 +13,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)" remarks="Тип счетчика">
+            <column name="name" type="varchar(100)" remarks="Тип">
                 <constraints nullable="false"/>
             </column>
 
@@ -25,23 +25,23 @@
                 <constraints nullable="true"/>
             </column>
                         
-            <column name="rated_current" type="number" remarks="Номанальный ток, А">
+            <column name="rated_current" type="number" remarks="Номанальный ток">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="rated_voltage" type="number" remarks="Номинальное напряжение, В">
+            <column name="rated_voltage" type="number" remarks="Номинальное напряжение">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="accuracy_class" type="number" remarks=" Класс точности">
+            <column name="accuracy_class" type="number" remarks="Класс точности">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="minimum_load" type="number" remarks="Минимальная нагрузка в классе точности, %">
+            <column name="minimum_load" type="number" remarks="Минимальная нагрузка в классе точности">
                 <constraints nullable="true"/>
             </column>  
 
-            <column name="business_partner_id" type="number" remarks="Компания владелец счетчика">
+            <column name="business_partner_id" type="number" remarks="id Компании владелеца счетчика">
                 <constraints nullable="true"/>
             </column>
 
@@ -53,35 +53,35 @@
                 <constraints nullable="true"/>
             </column>
 
-            <column name="total_digits_number" type="number" remarks="Общее количество знаков в показаниях счетчика">
+            <column name="total_digits_number" type="number" remarks="Общее количество знаков в показаниях">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="digits_after_decimal_point" type="number" remarks="Количество знаков в дробной части показаний счетчика">
+            <column name="digits_after_decimal_point" type="number" remarks="Количество знаков после запятой">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_ap" type="number" remarks="Фиксирует параметр A+">
+            <column name="is_parameter_ap" type="number" remarks="Параметр A+">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_am" type="number" remarks="Фиксирует параметр A-">
+            <column name="is_parameter_am" type="number" remarks="Параметр A-">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_rp" type="number" remarks="Фиксирует параметр R+">
+            <column name="is_parameter_rp" type="number" remarks="Параметр R+">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_parameter_rm" type="number" remarks="Фиксирует параметр R-">
+            <column name="is_parameter_rm" type="number" remarks="Параметр R-">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="is_withdrawn" type="number" remarks="Счетчик снят с баланса предприятия">
+            <column name="is_withdrawn" type="number" remarks="Снят с баланса">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="org_id" type="number" remarks="Идентификатор филиала в зоне ответственности которого находится счетчик">
+            <column name="org_id" type="number" remarks="id ответственного филиала">
                 <constraints nullable="false"/>
             </column>
         </createTable>

@@ -17,7 +17,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="metering_point_id" type="number" remarks="id типа учета электроэнергии">
+            <column name="metering_point_id" type="number" remarks="id точки учета">
                 <constraints nullable="false"/>
             </column>
 

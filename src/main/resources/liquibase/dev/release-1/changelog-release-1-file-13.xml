@@ -13,15 +13,15 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)" remarks="Полное диспетчерское наименование">
+            <column name="name" type="varchar(100)" remarks="Диспетчерское наименование">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="short_name" type="varchar(30)" remarks="Краткое наименование энергоисточника">
+            <column name="short_name" type="varchar(30)" remarks="Краткое наименование">
                 <constraints nullable="false"/>
             </column>       
             
-            <column name="voltage_class_id" type="number" remarks="Класс напряжения. Данные из поля 'Обозначение' справочника 'Классы напрежения'">
+            <column name="voltage_class_id" type="number" remarks="Класс напряжения">
                 <constraints nullable="false"/>
             </column>     
             
@@ -29,7 +29,7 @@
                 <constraints nullable="false"/>
             </column>                       
             
-            <column name="address" type="varchar(300)" remarks="Адрес энергоисточника">
+            <column name="address" type="varchar(300)" remarks="Адрес">
                 <constraints nullable="true"/>
             </column>  
             
@@ -45,7 +45,7 @@
                 <constraints nullable="true"/>
             </column>
 
-			<column name="org_id" type="number" remarks="Идентификатор филиала, в зоне ответственности которого находится подстанция">
+			<column name="org_id" type="number" remarks="Идентификатор заинтересованного филиала">
 				<constraints nullable="false"/>
 			</column>
         </createTable>

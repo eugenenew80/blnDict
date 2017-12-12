@@ -13,11 +13,11 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="code" type="varchar(15)" remarks="Код точки учета">
+            <column name="code" type="varchar(15)" remarks="Код">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="name" type="varchar(100)" remarks="Полное наименование">
+            <column name="name" type="varchar(100)" remarks="Наименование">
                 <constraints nullable="false"/>
             </column>
 
@@ -25,7 +25,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="external_code" type="varchar(18)" remarks="Внешний код точки учета">
+            <column name="external_code" type="varchar(18)" remarks="Внешний код">
                 <constraints nullable="true"/>
             </column>
             
@@ -37,27 +37,27 @@
                 <constraints nullable="true"/>
             </column>
 
-            <column name="metering_point_type_id" type="number" remarks="Тип точки учета">
+            <column name="metering_point_type_id" type="number" remarks="ID Типа точки учета">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="energy_object_id" type="number" remarks="Местонахождение: id объекта">
+            <column name="energy_object_id" type="number" remarks="id объекта">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="energy_object_type" type="varchar(100)" remarks="Местонахождение: id объекта">
+            <column name="energy_object_type" type="varchar(100)" remarks="Тип обьекта">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="rated_voltage" type="number" remarks="Класс напряжения">
+            <column name="rated_voltage" type="number" remarks="id класса напряжения">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="business_partner_id_1" type="number" remarks="Компания 1 на границе раздела">
+            <column name="business_partner_id_1" type="number" remarks="Id бизнес партнера 1 на границе раздела">
                 <constraints nullable="true"/>
             </column> 
             
-            <column name="business_partner_id_2" type="number" remarks="Компания 2 на границе раздела">
+            <column name="business_partner_id_2" type="number" remarks="Id бизнес партнера 2 на границе раздела">
                 <constraints nullable="true"/>
             </column>
 
@@ -65,11 +65,11 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="reference_metering_point_id" type="number" remarks="Опорная точка учета">
+            <column name="reference_metering_point_id" type="number" remarks="id опорной точки учета">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="org_id" type="number" remarks="Ид филиала">
+            <column name="org_id" type="number" remarks="Ид заинтересованаго филиала">
                 <constraints nullable="false"/>
             </column>
         </createTable>

@@ -17,7 +17,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="email" type="varchar(30)" remarks="Адрес эл.почты">
+            <column name="email" type="varchar(100)" remarks="Адрес электроной почты">
                 <constraints nullable="false"/>
             </column>
             

@@ -13,15 +13,15 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="short_name" type="varchar(10)" remarks="Краткое обозначение типа энергоисточника">
+            <column name="short_name" type="varchar(10)" remarks="Тип">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="name" type="varchar(100)" remarks="Полное наименование типа энергоисточника">
+            <column name="name" type="varchar(100)" remarks="Наименование">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="is_res" type="number" remarks="Признак, того что данный тип электростанции относится к ВИЭ">
+			<column name="is_res" type="number" remarks="Относится к ВИЭ">
                 <constraints nullable="true"/>
             </column>
         </createTable>

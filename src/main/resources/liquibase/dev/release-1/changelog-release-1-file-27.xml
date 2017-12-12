@@ -13,15 +13,15 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="bank_account_number" type="varchar(40)" remarks="Номер счета в банке">
+			<column name="bank_account_number" type="varchar(40)" remarks="Код/ИИК/IBAN">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="bank_id" type="number" remarks="Идентификационный номер банка">
+			<column name="bank_id" type="number" remarks="Номер банка">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="business_partner_id" type="number" remarks="Идентификационный номер бизнес партнера">
+			<column name="business_partner_id" type="number" remarks="Номер бизнес партнера">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
