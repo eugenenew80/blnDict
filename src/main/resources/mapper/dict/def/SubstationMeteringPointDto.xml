@@ -21,6 +21,16 @@
       <field type="one-way">
        <a>meteringPoint.name</a>
        <b>meteringPointName</b>
-     </field>    
+     </field>
+
+     <field>
+         <a>meteringType.id</a>
+         <b>meteringTypeId</b>
+     </field>
+
+     <field type="one-way">
+         <a>meteringType.name</a>
+         <b>meteringTypeName</b>
+     </field>
   </mapping> 
 </mappings> 

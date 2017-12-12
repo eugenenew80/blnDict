@@ -99,7 +99,9 @@ public class Producer {
             "mapper/dict/def/PowerLineTypeDto.xml",
             "mapper/dict/def/ContactDto.xml",
             "mapper/dict/list/MeterDto.xml",
-            "mapper/ecm/def/ContentDto.xml"
+            "mapper/ecm/def/ContentDto.xml",
+            "mapper/ecm/def/BusinessPartnerContentDto.xml",
+            "mapper/ecm/def/ContentTypeDto.xml"
         ));
         return mapper;
     }

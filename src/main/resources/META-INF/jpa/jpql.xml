@@ -212,4 +212,10 @@
 			select t from Content t order by t.id
 		</query>
 	</named-query>
+
+	<named-query name="ContentType.findAll">
+		<query>
+			select t from ContentType t order by t.id
+		</query>
+	</named-query>
 </entity-mappings>

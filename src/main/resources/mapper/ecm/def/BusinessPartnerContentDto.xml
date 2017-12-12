@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+  <mapping map-null="false" map-empty-string="false" trim-strings="true">
+    <class-a>kz.kegoc.bln.entity.ecm.Content</class-a>
+    <class-b>kz.kegoc.bln.entity.ecm.dto.BusinessPartnerContentDto</class-b>
+
+    <field>
+      <a>contentType.id</a>
+      <b>contentTypeId</b>
+    </field>
+
+    <field type="one-way">
+      <a>contentType.name</a>
+      <b>contentTypeName</b>
+    </field>
+
+    <field>
+      <a>sourceId</a>
+      <b>businessPartnerId</b>
+    </field>
+  </mapping> 
+</mappings> 

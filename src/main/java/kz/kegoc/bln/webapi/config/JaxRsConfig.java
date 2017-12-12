@@ -5,6 +5,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import kz.kegoc.bln.ejb.jackson.ObjectMapperContextResolver;
 import kz.kegoc.bln.webapi.dict.*;
+import kz.kegoc.bln.webapi.ecm.ContentTypeResourceImpl;
 import kz.kegoc.bln.webapi.exception.mapper.*;
 import kz.kegoc.bln.webapi.filters.BasicAuthFilter;
 
@@ -44,6 +45,7 @@ public class JaxRsConfig extends Application {
 		resources.add(VoltageClassResourceImpl.class);
 		resources.add(BankResourceImpl.class);
 		resources.add(OrgTypeResourceImpl.class);
+		resources.add(ContentTypeResourceImpl.class);
 
 		resources.add(BasicAuthFilter.class);
 		resources.add(RepositryNotFoundExceptionMapperImpl.class);
