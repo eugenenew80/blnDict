@@ -17,6 +17,9 @@ import java.util.Map;
 public class PowerLine implements HasId, HasName, HasLang, HasDates, HasUser {
 	private Long id;
 
+	@NotNull @Size(max = 30)
+	private String code;
+
 	@NotNull @Size(max = 100)
 	private String name;
 

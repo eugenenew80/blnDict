@@ -3971,6 +3971,10 @@
 				/>
 			</id>
 
+			<basic name="code">
+				<column name="code" />
+			</basic>
+
 			<basic name="name">
 				<column name="name" />
 			</basic>
