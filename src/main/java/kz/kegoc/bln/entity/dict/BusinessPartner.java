@@ -47,6 +47,7 @@ public class BusinessPartner implements HasId, HasName, HasLang, HasDates, HasUs
 	private User createBy;
 	private User lastUpdateBy;
 	private List<Contact> contacts;
+	private List<BankAccount> bankAccounts;
 	private Map<Lang, BusinessPartnerTranslate> translations;
 	private Lang lang;
 }

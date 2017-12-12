@@ -85,6 +85,16 @@ public class BusinessPartnerResourceImpl {
 		return contactResource;
 	}
 
+	@Path("/{businessPartnerId : \\d+}/dictBusinessPartnerBankAccount")
+	public BankAccountResourceImpl getBankAccountResource() {
+		return bankAccountResource;
+	}
+
+	@Path("/{businessPartnerId : \\d+}/dictBusinessPartnerContent")
+	public BusinessPartnerContentResourceImpl getContentResource() {
+		return contentResource;
+	}
+
 
 	private SessionContext buildSessionContext(Lang lang) {
 		SessionContext context = new SessionContext();
@@ -96,6 +106,12 @@ public class BusinessPartnerResourceImpl {
 
 	@Inject
 	private ContactResourceImpl contactResource;
+
+	@Inject
+	private BankAccountResourceImpl bankAccountResource;
+
+	@Inject
+	private BusinessPartnerContentResourceImpl contentResource;
 
 	@Inject
 	private BusinessPartnerService service;

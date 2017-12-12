@@ -44,6 +44,10 @@
 			<column name="po" type="number" remarks="Удельная зарядная мощность ЛЭП">
 				<constraints nullable="true"/>
 			</column>
+
+			<column name="org_id" type="number" remarks="Ид филиала">
+				<constraints nullable="false"/>
+			</column>
 		</createTable>
     </changeSet>
 

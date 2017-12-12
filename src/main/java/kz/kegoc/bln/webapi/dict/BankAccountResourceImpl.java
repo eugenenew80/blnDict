@@ -2,9 +2,10 @@ package kz.kegoc.bln.webapi.dict;
 
 import kz.kegoc.bln.ejb.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
-import kz.kegoc.bln.entity.ecm.Content;
-import kz.kegoc.bln.entity.ecm.dto.ContentDto;
-import kz.kegoc.bln.service.ecm.ContentService;
+import kz.kegoc.bln.entity.dict.BankAccount;
+import kz.kegoc.bln.entity.dict.dto.BankAccountDto;
+import kz.kegoc.bln.service.dict.BusinessPartnerService;
+import kz.kegoc.bln.service.dict.BankAccountService;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.dozer.DozerBeanMapper;
 
@@ -22,17 +23,18 @@ import java.util.stream.Collectors;
 @Stateless
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
-public class BusinessPartnerContentResourceImpl {
+public class BankAccountResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("businessPartnerId") Long businessPartnerId, @HeaderParam("lang") Lang lang) {
-		List<ContentDto> list = service.findAll(buildSessionContext(lang))
+		List<BankAccountDto> list = businessPartnerService.findById(businessPartnerId, buildSessionContext(lang))
+			.getBankAccounts()
 			.stream()
-			.map( it-> mapper.map(it, ContentDto.class) )
-			.collect(Collectors.toList());
-
+			.map( it-> mapper.map(it, BankAccountDto.class) )
+			.collect(Collectors.toList());		
+	
 		return Response.ok()
-			.entity(new GenericEntity<Collection<ContentDto>>(list){})
+			.entity(new GenericEntity<Collection<BankAccountDto>>(list){})
 			.build();
 	}
 
@@ -40,32 +42,32 @@ public class BusinessPartnerContentResourceImpl {
 	@GET
 	@Path("/{id : \\d+}")
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
-		Content entity = service.findById(id, buildSessionContext(lang));
+		BankAccount entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, ContentDto.class))
+			.entity(mapper.map(entity, BankAccountDto.class))
 			.build();
 	}
 
 
 	@POST
-	public Response create(ContentDto entityDto, @HeaderParam("lang") Lang lang) {
-		Content entity = mapper.map(entityDto, Content.class);
-		Content newEntity = service.create(entity, buildSessionContext(lang));
+	public Response create(BankAccountDto entityDto, @HeaderParam("lang") Lang lang) {
+		BankAccount entity = mapper.map(entityDto, BankAccount.class);
+		BankAccount newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, ContentDto.class))
+			.entity(mapper.map(newEntity, BankAccountDto.class))
 			.build();
 	}
 
 
 	@PUT
 	@Path("{id : \\d+}")
-	public Response update(@PathParam("id") Long id, ContentDto entityDto, @HeaderParam("lang") Lang lang) {
-		Content entity = mapper.map(entityDto, Content.class);
-		Content newEntity = service.update(entity, buildSessionContext(lang));
+	public Response update(@PathParam("id") Long id, BankAccountDto entityDto, @HeaderParam("lang") Lang lang) {
+		BankAccount entity = mapper.map(entityDto, BankAccount.class);
+		BankAccount newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, ContentDto.class))
+			.entity(mapper.map(newEntity, BankAccountDto.class))
 			.build();
 	}
 
@@ -86,8 +88,12 @@ public class BusinessPartnerContentResourceImpl {
 		return context;
 	}
 
+
 	@Inject
-	private ContentService service;
+	private BusinessPartnerService businessPartnerService;
+
+	@Inject
+	private BankAccountService service;
 
 	@Inject
 	private DozerBeanMapper mapper;

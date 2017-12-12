@@ -5,7 +5,6 @@ import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Reactor;
 import kz.kegoc.bln.exception.RepositoryNotFoundException;
 import kz.kegoc.bln.filter.Filter;
-import kz.kegoc.bln.repository.common.Repository;
 import kz.kegoc.bln.repository.dict.ReactorRepository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.ReactorService;
