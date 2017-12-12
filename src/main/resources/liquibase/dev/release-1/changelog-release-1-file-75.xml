@@ -1371,10 +1371,10 @@
 	</changeSet>
 
 	<changeSet id="dict-eug-330" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating foreign constraint: ecm_content to ecm_content_types</comment>
+		<comment>Creating foreign constraint: ecm_contents to ecm_content_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="ecm_content"
+				baseTableName="ecm_contents"
 				baseColumnNames="content_type_id"
 				constraintName="fk_ecm_content_1"
 				deferrable="true"
