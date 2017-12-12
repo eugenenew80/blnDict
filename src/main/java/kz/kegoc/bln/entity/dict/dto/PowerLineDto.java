@@ -10,6 +10,7 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PowerLineDto {
 	private Long id;
+	private String code;
 	private String name;
 	private Long powerLineTypeId;
 	private String powerLineTypeName;
