@@ -10,31 +10,35 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 	<changeSet id="dict-rus-127" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: dict_contacts_types</comment>
-		<createTable tableName="dict_contacts_types" schemaName="apps" remarks="Справочник Типы контактов">
-			<column name="code" type="varchar(60)" remarks="Код">
+		<comment>Creating table: dict_contact_types</comment>
+		<createTable tableName="dict_contact_types" schemaName="apps" remarks="Справочник Типы контактов">
+			<column name="code" type="varchar(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="name" type="varchar(80)" remarks="Наименование">
+			<column name="short_name" type="varchar(30)" remarks="Краткое наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(100)" remarks="Наименование">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
 	</changeSet>
 
 	<changeSet id="dict-rus-128" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: dict_contacts_types</comment>
+		<comment>Creating primary key for table: dict_contact_types</comment>
 		<addPrimaryKey
 				columnNames="code"
-				constraintName="pk_dict_contacts_types"
+				constraintName="pk_dict_contact_types"
 				schemaName="apps"
-				tableName="dict_contacts_types"/>
+				tableName="dict_contact_types"/>
 	</changeSet>
 
 	<changeSet id="dict-rus-129" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: dict_contacts_types_tl</comment>
-		<createTable tableName="dict_contacts_types_tl" schemaName="apps" remarks="Справочник Типы контактов (Перевод)">
-			<column name="code" type="varchar(60)" remarks="Ссылка на родительскую запись">
+		<comment>Creating table: dict_contact_types_tl</comment>
+		<createTable tableName="dict_contact_types_tl" schemaName="apps" remarks="Справочник Типы контактов (Перевод)">
+			<column name="code" type="varchar(30)" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
 
@@ -42,34 +46,38 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="name" type="varchar(80)" remarks="Наименование">
+			<column name="short_name" type="varchar(30)" remarks="Краткое наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(100)" remarks="Наименование">
 				<constraints nullable="false"/>
 			</column>
 		</createTable>
 	</changeSet>
 
 	<changeSet id="dict-rus-130" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: dict_contacts_types_tl</comment>
+		<comment>Creating primary key for table: dict_contact_types_tl</comment>
 		<addPrimaryKey
 				columnNames="code, lang"
-				constraintName="pk_dict_contacts_types_tl"
+				constraintName="pk_dict_contact_types_tl"
 				schemaName="apps"
-				tableName="dict_contacts_types_tl"/>
+				tableName="dict_contact_types_tl"/>
 	</changeSet>
 
 	<changeSet id="dict-rus-131" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: dict_contacts_types_tl to dict_contacts_types</comment>
+		<comment>Creating foreign constraint: dict_contact_types_tl to dict_contacts_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="dict_contacts_types_tl"
+				baseTableName="dict_contact_types_tl"
 				baseColumnNames="code"
-				constraintName="fk_dict_contacts_types_tl_1"
+				constraintName="fk_dict_contact_types_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="CASCADE"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="dict_contacts_types"
+				referencedTableName="dict_contact_types"
 				referencedColumnNames="code"
 		/>
 	</changeSet>
