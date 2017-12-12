@@ -7,7 +7,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
     <changeSet id="dict-rus-75" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: dict_metering_points_tl</comment>
+		<comment>Creating table: dict_organizations_tl</comment>
 		<createTable tableName="dict_organizations_tl" schemaName="apps" remarks="Справочник Организации (Перевод)">
 			<column name="id" type="number" remarks="Идентификатор">
                 <constraints nullable="false"/>

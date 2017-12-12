@@ -37,7 +37,7 @@
                 <constraints nullable="true"/>
             </column>
 
-			<column name="org_id" type="number" remarks="Идентификатор филиала, в зоне ответственности которого находится подстанция">
+			<column name="org_id" type="number" remarks="Идентификатор заинтересованого филиала">
 				<constraints nullable="false"/>
 			</column>
         </createTable>

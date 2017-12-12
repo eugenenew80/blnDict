@@ -1477,8 +1477,8 @@
 	</changeSet>
 
 	<changeSet id="dict-eug-238" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Adding columns for data auditing: ecm_content</comment>
-		<addColumn schemaName="apps" tableName="ecm_content">
+		<comment>Adding columns for data auditing: ecm_contents</comment>
+		<addColumn schemaName="apps" tableName="ecm_contents">
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
 				<constraints nullable="true"/>
 			</column>

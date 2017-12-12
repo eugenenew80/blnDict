@@ -13,7 +13,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)" remarks="Типы трансформатора напряжения">
+            <column name="name" type="varchar(100)" remarks="Тип">
                 <constraints nullable="false"/>
             </column>
             
@@ -21,11 +21,11 @@
                 <constraints nullable="false"/>
             </column>
             
-            <column name="rated_voltage1" type="number" remarks="Номинальное напряжение в первичной обмотки, В">
+            <column name="rated_voltage1" type="number" remarks="Номинальное напряжение в первичной обмотки">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="rated_voltage2" type="number" remarks="Номинальное напряжение во вторичной обмотки, В">
+            <column name="rated_voltage2" type="number" remarks="Номинальное напряжение во вторичной обмотки">
                 <constraints nullable="true"/>
             </column>  
             

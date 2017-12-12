@@ -21,7 +21,7 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="country_id" type="number" remarks="Ид страны, в которой распологается область">
+			<column name="country_id" type="number" remarks="Ид страны">
 				<constraints nullable="false"/>
 			</column>
         </createTable>

@@ -25,7 +25,7 @@
                 <constraints nullable="false"/>
             </column>
 
-			<column name="org_type" type="varchar(30)" remarks="тип организационной еденицы(головная,филиал,дочерняя,департамент)">
+			<column name="org_type" type="varchar(30)" remarks="Тип">
 				<constraints nullable="false"/>
 			</column>
 

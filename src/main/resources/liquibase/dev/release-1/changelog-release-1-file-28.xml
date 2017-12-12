@@ -17,7 +17,7 @@
                 <constraints nullable="false"/>
             </column>
             
-            <column name="value" type="number" remarks="">
+            <column name="value" type="number" remarks="Уровень напряжения, В">
                 <constraints nullable="false"/>
             </column>
 		</createTable>

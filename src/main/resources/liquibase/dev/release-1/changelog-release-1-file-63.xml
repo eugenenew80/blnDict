@@ -5,8 +5,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 	<changeSet id="dict-eug-126" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating table: ecm_content</comment>
-		<createTable tableName="ecm_content" schemaName="apps" remarks="Справочник Связанные документы">
+		<comment>Creating table: ecm_contents</comment>
+		<createTable tableName="ecm_contents" schemaName="apps" remarks="Справочник Связанные документы">
 			<column name="id" type="number" remarks="Идентификатор">
 				<constraints nullable="false"/>
 			</column>
@@ -42,20 +42,20 @@
 	</changeSet>
 
 	<changeSet id="dict-eug-127" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating primary key for table: ecm_content</comment>
+		<comment>Creating primary key for table: ecm_contents</comment>
 		<addPrimaryKey
 				columnNames="id"
-				constraintName="pk_ecm_content"
+				constraintName="pk_ecm_contents"
 				schemaName="apps"
-				tableName="ecm_content"/>
+				tableName="ecm_contents"/>
 	</changeSet>
 
 	<changeSet id="dict-eug-128" logicalFilePath="path-independent" author="eugene" context="dev">
-		<comment>Creating sequence for table: ecm_content</comment>
+		<comment>Creating sequence for table: ecm_contents</comment>
 		<createSequence
 				incrementBy="1"
 				schemaName="apps"
-				sequenceName="ecm_content_s"
+				sequenceName="ecm_contents_s"
 				startValue="1"/>
 	</changeSet>
 </databaseChangeLog>

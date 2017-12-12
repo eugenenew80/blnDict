@@ -13,7 +13,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)" remarks="Тип счетчика электроэнергии">
+            <column name="name" type="varchar(100)" remarks="Тип">
                 <constraints nullable="false"/>
             </column>
             
@@ -21,11 +21,11 @@
                 <constraints nullable="false"/>
             </column>
             
-            <column name="rated_current" type="number" remarks="Номинальный ток, А">
+            <column name="rated_current" type="number" remarks="Номинальный ток">
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="rated_voltage" type="number" remarks="Номанальное напрежение, В">
+            <column name="rated_voltage" type="number" remarks="Номанальное напрежение">
                 <constraints nullable="true"/>
             </column>  
             
@@ -33,7 +33,7 @@
                 <constraints nullable="true"/>
             </column>  
             
-            <column name="minimum_load" type="number" remarks="Минимальная нагрузка в классе точности,%">
+            <column name="minimum_load" type="number" remarks="Минимальная нагрузка в классе точности">
                 <constraints nullable="true"/>
             </column>  
             
@@ -45,19 +45,19 @@
                 <constraints nullable="true"/>
             </column>
 
-			<column name="is_parameter_ap" type="number" remarks="Фиксирует параметр A+">
+			<column name="is_parameter_ap" type="number" remarks="Параметр A+">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="is_parameter_am" type="number" remarks="Фиксирует параметр A-">
+			<column name="is_parameter_am" type="number" remarks="Параметр A-">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="is_parameter_rp" type="number" remarks="Фиксирует параметр R+">
+			<column name="is_parameter_rp" type="number" remarks="Параметр R+">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="is_parameter_rm" type="number" remarks="Фиксирует параметр R-">
+			<column name="is_parameter_rm" type="number" remarks="Параметр R-">
 				<constraints nullable="true"/>
 			</column>
         </createTable>

@@ -17,11 +17,11 @@
                 <constraints nullable="false"/>
             </column>
             
-            <column name="name" type="varchar(100)" remarks="Наименование энергоузла">
+            <column name="name" type="varchar(100)" remarks="Наименование">
                 <constraints nullable="false"/>
             </column>
 
-			<column name="region_id" type="number" remarks="Наименование административной области, к которой отностися энергоузел">
+			<column name="region_id" type="number" remarks="Ид области">
 				<constraints nullable="false"/>
 			</column>
         </createTable>

@@ -25,7 +25,7 @@
                 <constraints nullable="true"/>
             </column>
 
-            <column name="description" type="varchar(100)" remarks="ФИО">
+            <column name="description" type="varchar(100)" remarks="Описание">
                 <constraints nullable="false"/>
             </column>
         </createTable>
