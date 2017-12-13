@@ -10,7 +10,6 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BankDto {
 	private Long id;
-	private String code;
 	private String name;
 	private String bic;
 	private String bin;

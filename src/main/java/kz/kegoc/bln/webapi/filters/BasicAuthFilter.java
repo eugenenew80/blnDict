@@ -3,9 +3,11 @@ package kz.kegoc.bln.webapi.filters;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
+import javax.jws.soap.SOAPBinding;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -51,37 +53,37 @@ public class BasicAuthFilter implements ContainerRequestFilter {
 			throw new NotAuthorizedException("USER IS NOT REGISTERED");
 
 		sessions.put(userName, user,30, TimeUnit.MINUTES);
-
-		ctx.setSecurityContext(
-			new SecurityContext() {
-				@Override
-				public boolean isUserInRole(String role) {
-					return true;
-				}
-
-				@Override
-				public boolean isSecure() {
-					return false;
-				}
-
-				@Override
-				public Principal getUserPrincipal() {
-					return new CustomPrincipal(userName, user);
-				}
-
-				@Override
-				public String getAuthenticationScheme() {
-					return null;
-				}
+		SecurityContext securityContext = new SecurityContext() {
+			@Override
+			public boolean isUserInRole(String role) {
+				return true;
 			}
-		);
+
+			@Override
+			public boolean isSecure() {
+				return false;
+			}
+
+			@Override
+			public Principal getUserPrincipal() {
+				return new CustomPrincipal(userName, user);
+			}
+
+			@Override
+			public String getAuthenticationScheme() {
+				return null;
+			}
+		};
+		ctx.setSecurityContext(securityContext);
+
+		checkAccess(user, ctx);
 	}
 
-	private void checkAccess(SessionContext context, String func, ContainerRequestContext ctx) {
+	private void checkAccess(User checkedUser, ContainerRequestContext ctx) {
 		String operation = "";
 		switch (ctx.getMethod()) {
 			case "POST":
-				operation = "VREATE";
+				operation = "CREATE";
 				break;
 
 			case "PUT":
@@ -89,7 +91,7 @@ public class BasicAuthFilter implements ContainerRequestFilter {
 				break;
 
 			case "GET":
-				operation = "SELECT";
+				operation = "READ";
 				break;
 
 			case "DELETE":
@@ -97,18 +99,18 @@ public class BasicAuthFilter implements ContainerRequestFilter {
 				break;
 		}
 
-		User user = userService.findById(context.getUser().getId(), context);
-		List<Func> funcs = user.getRoles().stream()
-			.flatMap(u -> u.getRole().getFuncs().stream())
-			.map(roleFunc -> roleFunc.getFunc())
-			.distinct()
-			.collect(Collectors.toList());
+		String finalOperation=operation;
+		boolean b = userService.findById(checkedUser.getId(), null)
+				.getRoles().stream()
+				.flatMap(u -> u.getRole().getFuncs().stream())
+				.map(roleFunc -> roleFunc.getFunc())
+				.distinct()
+				.filter(it -> it.getUrl().equals(ctx.getUriInfo().getPath()) && it.getCode().endsWith(finalOperation))
+				.findFirst()
+				.isPresent();
 
-		boolean b = funcs.stream()
-				.filter(it -> it.getCode().equals(func))
-				.findFirst().isPresent();
-
-		if (!b) throw new NotAuthorizedException("ACCESS DENIED");
+		if (!b)
+			throw new NotAuthorizedException("ACCESS DENIED");
 	}
 
 

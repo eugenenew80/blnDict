@@ -16,13 +16,13 @@ import kz.kegoc.bln.entity.adm.User;
 public class MeteringPoint implements HasId, HasCode, HasName, HasLang, HasDates, HasUser {
 	private Long id;
 
-	@NotNull @Size(max = 15)
+	@NotNull @Size(max = 18)
 	private String code;
 
-	@NotNull @Size(max = 15)
+	@NotNull @Size(max = 100)
 	private String name;
 
-	@NotNull @Size(max = 15)
+	@NotNull @Size(max = 100)
 	private String shortName;
 
 	@Size(min = 18, max = 18)
