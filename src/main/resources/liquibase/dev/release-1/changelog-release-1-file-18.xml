@@ -42,11 +42,11 @@
             </column>
 
             <column name="energy_object_id" type="number" remarks="id объекта">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="energy_object_type" type="varchar(100)" remarks="Тип обьекта">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="rated_voltage" type="number" remarks="id класса напряжения">
