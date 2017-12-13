@@ -1,6 +1,5 @@
 package kz.kegoc.bln.entity.dict;
 
-import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.HasDates;
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.entity.common.HasUser;
@@ -14,6 +13,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Map;
+import kz.kegoc.bln.entity.adm.User;
 
 @Data
 @EqualsAndHashCode(of= {"id"})

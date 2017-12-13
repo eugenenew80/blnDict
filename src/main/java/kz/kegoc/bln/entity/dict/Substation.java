@@ -4,11 +4,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import javax.validation.constraints.*;
-
-import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.*;
 import kz.kegoc.bln.entity.dict.translate.SubstationTranslate;
 import lombok.*;
+import kz.kegoc.bln.entity.adm.User;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
