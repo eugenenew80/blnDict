@@ -2,12 +2,8 @@ package kz.kegoc.bln.webapi.filters;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 import javax.inject.Inject;
-import javax.jws.soap.SOAPBinding;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -15,8 +11,6 @@ import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
 
-import kz.kegoc.bln.ejb.SessionContext;
-import kz.kegoc.bln.entity.adm.Func;
 import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.service.adm.UserService;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;

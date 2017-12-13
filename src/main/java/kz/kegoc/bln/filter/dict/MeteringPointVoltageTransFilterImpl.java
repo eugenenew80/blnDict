@@ -1,6 +1,6 @@
 package kz.kegoc.bln.filter.dict;
 
-import kz.kegoc.bln.ejb.SessionContext;
+import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.MeteringPointVoltageTrans;
 import kz.kegoc.bln.entity.dict.translate.MeteringPointVoltageTransTranslate;

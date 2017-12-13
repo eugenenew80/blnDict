@@ -1,6 +1,6 @@
 package kz.kegoc.bln.service.dict.impl;
 
-import kz.kegoc.bln.ejb.SessionContext;
+import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Reactor;
 import kz.kegoc.bln.exception.RepositoryNotFoundException;

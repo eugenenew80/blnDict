@@ -3,7 +3,7 @@ package kz.kegoc.bln.service.common;
 import java.util.*;
 import java.util.stream.Collectors;
 import javax.validation.*;
-import kz.kegoc.bln.ejb.SessionContext;
+import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.exception.EntityNotFoundException;

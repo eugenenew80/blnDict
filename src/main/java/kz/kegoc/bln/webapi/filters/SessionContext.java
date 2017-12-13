@@ -1,4 +1,4 @@
-package kz.kegoc.bln.ejb;
+package kz.kegoc.bln.webapi.filters;
 
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.adm.User;

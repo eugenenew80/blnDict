@@ -1,6 +1,6 @@
 package kz.kegoc.bln.filter;
 
-import kz.kegoc.bln.ejb.SessionContext;
+import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.HasDates;
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.entity.common.HasUser;

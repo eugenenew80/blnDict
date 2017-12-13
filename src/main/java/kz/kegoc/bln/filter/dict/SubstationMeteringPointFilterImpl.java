@@ -1,6 +1,6 @@
 package kz.kegoc.bln.filter.dict;
 
-import kz.kegoc.bln.ejb.SessionContext;
+import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.dict.SubstationMeteringPoint;
 import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;

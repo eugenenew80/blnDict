@@ -1,6 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
-import kz.kegoc.bln.ejb.SessionContext;
+import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.ContactEmail;
 import kz.kegoc.bln.entity.dict.dto.ContactEmailDto;
