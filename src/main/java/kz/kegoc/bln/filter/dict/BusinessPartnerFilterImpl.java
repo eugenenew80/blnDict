@@ -44,6 +44,7 @@ public class BusinessPartnerFilterImpl extends AbstractFilter<BusinessPartner> i
         translate.setLang(lang);
         translate.setBusinessPartner(entity);
         translate.setName(entity.getName());
+        translate.setShortName(entity.getShortName());
         entity.getTranslations().put(lang, translate);
 
         return entity;

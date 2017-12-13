@@ -18,8 +18,11 @@ public class BusinessPartnerTranslate implements HasId, HasName, HasLang, HasDat
     @NotNull
     private Lang lang;
 
-    @NotNull @Size(max = 100)
+    @NotNull @Size(max = 500)
     private String name;
+
+    @NotNull @Size(max = 120)
+    private String shortName;
 
     @NotNull
     private BusinessPartner businessPartner;

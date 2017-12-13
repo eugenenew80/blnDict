@@ -13,6 +13,7 @@ import java.time.LocalDate;
 public class BusinessPartnerDto {
 	private Long id;
 	private String name;
+	private String shortName;
 	private String bin;
 	private String kbe;
 	private String okpo;
