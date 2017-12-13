@@ -6,10 +6,13 @@ import kz.kegoc.bln.entity.dict.translate.MeterTranslate;
 import kz.kegoc.bln.translator.Translator;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class MeterTranslatorImpl implements Translator<Meter> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public Meter translate(Meter entity, Lang lang) {
         entity.setLang(lang);
 

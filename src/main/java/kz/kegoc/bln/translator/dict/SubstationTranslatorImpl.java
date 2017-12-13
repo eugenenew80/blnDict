@@ -6,10 +6,13 @@ import kz.kegoc.bln.entity.dict.translate.SubstationTranslate;
 import kz.kegoc.bln.translator.Translator;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class SubstationTranslatorImpl implements Translator<Substation> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public Substation translate(Substation entity, Lang lang) {
         entity.setLang(lang);
 

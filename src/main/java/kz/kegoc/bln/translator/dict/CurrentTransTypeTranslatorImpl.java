@@ -5,10 +5,13 @@ import kz.kegoc.bln.entity.dict.CurrentTransType;
 import kz.kegoc.bln.entity.dict.translate.CurrentTransTypeTranslate;
 import kz.kegoc.bln.translator.Translator;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class CurrentTransTypeTranslatorImpl implements Translator<CurrentTransType> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public CurrentTransType translate(CurrentTransType entity, Lang lang) {
         entity.setLang(lang);
 

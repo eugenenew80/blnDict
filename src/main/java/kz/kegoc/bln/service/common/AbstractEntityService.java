@@ -2,6 +2,8 @@ package kz.kegoc.bln.service.common;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.validation.*;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.HasId;
@@ -40,6 +42,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 	}
 
 
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<T> findAll(SessionContext context) {
 		if (repository==null)
 			throw new RepositoryNotFoundException();
@@ -55,6 +58,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		return list;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<T> find(Query query, SessionContext context) {
 		if (repository==null)
 			throw new RepositoryNotFoundException();
@@ -70,6 +74,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		return list;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public T findById(Object entityId, SessionContext context) {
 		if (repository==null)
 			throw new RepositoryNotFoundException();
@@ -87,6 +92,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 
 		return entity;
 	}
+
 
 	public T create(T entity, SessionContext context) {
 		if (repository==null)

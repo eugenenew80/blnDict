@@ -5,10 +5,13 @@ import kz.kegoc.bln.entity.dict.PowerLinePart;
 import kz.kegoc.bln.entity.dict.translate.PowerLinePartTranslate;
 import kz.kegoc.bln.translator.Translator;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class PowerLinePartTranslatorImpl implements Translator<PowerLinePart> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public PowerLinePart translate(PowerLinePart entity, Lang lang) {
         entity.setLang(lang);
 

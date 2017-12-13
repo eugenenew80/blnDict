@@ -6,10 +6,13 @@ import kz.kegoc.bln.entity.dict.translate.ReactorTranslate;
 import kz.kegoc.bln.translator.Translator;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class ReactorTranslatorImpl implements Translator<Reactor> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public Reactor translate(Reactor entity, Lang lang) {
         entity.setLang(lang);
 

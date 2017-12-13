@@ -6,10 +6,13 @@ import kz.kegoc.bln.entity.dict.translate.MeteringPointCurrentTransTranslate;
 import kz.kegoc.bln.translator.Translator;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class MeteringPointCurrentTransTranslatorImpl implements Translator<MeteringPointCurrentTrans> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public MeteringPointCurrentTrans translate(MeteringPointCurrentTrans entity, Lang lang) {
         entity.setLang(lang);
 

@@ -6,10 +6,13 @@ import kz.kegoc.bln.entity.dict.translate.ContactEmailTranslate;
 import kz.kegoc.bln.translator.Translator;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class ContactEmailTranslatorImpl implements Translator<ContactEmail> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public ContactEmail translate(ContactEmail entity, Lang lang) {
         entity.setLang(lang);
 

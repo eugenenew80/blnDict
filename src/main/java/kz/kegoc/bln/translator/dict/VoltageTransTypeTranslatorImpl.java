@@ -5,10 +5,13 @@ import kz.kegoc.bln.entity.dict.VoltageTransType;
 import kz.kegoc.bln.entity.dict.translate.VoltageTransTypeTranslate;
 import kz.kegoc.bln.translator.Translator;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class VoltageTransTypeTranslatorImpl implements Translator<VoltageTransType> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public VoltageTransType translate(VoltageTransType entity, Lang lang) {
         entity.setLang(lang);
 

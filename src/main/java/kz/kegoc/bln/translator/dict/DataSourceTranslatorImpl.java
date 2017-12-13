@@ -5,10 +5,13 @@ import kz.kegoc.bln.entity.dict.DataSource;
 import kz.kegoc.bln.entity.dict.translate.DataSourceTranslate;
 import kz.kegoc.bln.translator.Translator;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class DataSourceTranslatorImpl implements Translator<DataSource> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public DataSource translate(DataSource entity, Lang lang) {
         entity.setLang(lang);
 

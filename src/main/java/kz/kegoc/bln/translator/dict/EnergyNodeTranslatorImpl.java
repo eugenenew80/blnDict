@@ -5,10 +5,13 @@ import kz.kegoc.bln.entity.dict.EnergyNode;
 import kz.kegoc.bln.entity.dict.translate.EnergyNodeTranslate;
 import kz.kegoc.bln.translator.Translator;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class EnergyNodeTranslatorImpl implements Translator<EnergyNode> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public EnergyNode translate(EnergyNode entity, Lang lang) {
         entity.setLang(lang);
 

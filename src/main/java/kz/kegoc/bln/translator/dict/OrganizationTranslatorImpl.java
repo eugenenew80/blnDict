@@ -6,10 +6,13 @@ import kz.kegoc.bln.entity.dict.translate.OrganizationTranslate;
 import kz.kegoc.bln.translator.Translator;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class OrganizationTranslatorImpl implements Translator<Organization> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public Organization translate(Organization entity, Lang lang) {
         entity.setLang(lang);
 

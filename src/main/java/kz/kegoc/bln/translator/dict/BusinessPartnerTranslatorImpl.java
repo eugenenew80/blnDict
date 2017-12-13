@@ -5,10 +5,13 @@ import kz.kegoc.bln.entity.dict.BusinessPartner;
 import kz.kegoc.bln.entity.dict.translate.BusinessPartnerTranslate;
 import kz.kegoc.bln.translator.Translator;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 @Stateless
 public class BusinessPartnerTranslatorImpl implements Translator<BusinessPartner> {
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public BusinessPartner translate(BusinessPartner entity, Lang lang) {
         entity.setLang(lang);
 
