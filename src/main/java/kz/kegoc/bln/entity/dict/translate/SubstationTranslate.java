@@ -20,7 +20,7 @@ public class SubstationTranslate implements HasId, HasName, HasLang, HasDates, H
     @NotNull @Size(max = 100)
     private String name;
 
-    @NotNull @Size(max = 10)
+    @NotNull @Size(max = 30)
     private String shortName;
 
     @Size(max = 300)
