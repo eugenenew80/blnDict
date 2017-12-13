@@ -19,7 +19,7 @@ import kz.kegoc.bln.entity.adm.User;
 public class BusinessPartner implements HasId, HasName, HasLang, HasDates, HasUser {
 	private Long id;
 
-	@NotNull @Size(max = 100)
+	@NotNull @Size(max = 500)
 	private String name;
 
 	@NotNull @Size(min = 12, max = 12)

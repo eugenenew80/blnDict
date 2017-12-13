@@ -12,11 +12,8 @@ import kz.kegoc.bln.entity.adm.User;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class Bank implements HasId, HasCode, HasName, HasLang, HasDates, HasUser {
+public class Bank implements HasId, HasName, HasLang, HasDates, HasUser {
 	private Long id;
-
-	@NotNull @Size(max = 40)
-	private String code;
 
 	@NotNull @Size(max = 100)
 	private String name;
