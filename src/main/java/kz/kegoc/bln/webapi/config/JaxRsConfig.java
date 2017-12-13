@@ -45,6 +45,7 @@ public class JaxRsConfig extends Application {
 		resources.add(VoltageClassResourceImpl.class);
 		resources.add(BankResourceImpl.class);
 		resources.add(OrgTypeResourceImpl.class);
+		resources.add(ContactTypeResourceImpl.class);
 		resources.add(ContentTypeResourceImpl.class);
 
 		resources.add(BasicAuthFilter.class);
