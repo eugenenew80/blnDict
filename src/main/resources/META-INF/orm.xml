@@ -1635,6 +1635,8 @@
 			<many-to-one name="meteringPoint">
 				<join-column name="metering_point_id"/>
 			</many-to-one>
+
+			<transient name="lang" />
 		</attributes>
 	</entity>
 
@@ -1824,6 +1826,8 @@
 			<many-to-one name="meteringType">
 				<join-column name="metering_type_id"/>
 			</many-to-one>
+
+			<transient name="lang" />
 		</attributes>
 	</entity>
 
