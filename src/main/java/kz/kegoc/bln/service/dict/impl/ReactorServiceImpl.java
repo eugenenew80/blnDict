@@ -1,5 +1,6 @@
 package kz.kegoc.bln.service.dict.impl;
 
+import kz.kegoc.bln.service.common.AbstractEntityServiceOrg;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Reactor;
@@ -17,31 +18,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
-public class ReactorServiceImpl extends AbstractEntityService<Reactor> implements ReactorService {
+public class ReactorServiceImpl extends AbstractEntityServiceOrg<Reactor> implements ReactorService {
 
 	@Inject
     public ReactorServiceImpl(ReactorRepository repository, Validator validator, Filter<Reactor> prePersistFilter, Translator<Reactor> translator) {
         super(repository, validator, prePersistFilter, translator);
-        this.reactorRepository = repository;
     }
-
-    public List<Reactor> findByOrg(SessionContext context) {
-        if (repository==null)
-            throw new RepositoryNotFoundException();
-
-        Lang lang = context!=null && context.getLang()!=null ? context.getLang() : Lang.RU;
-
-        List<Long> orgList = new ArrayList<>();
-        orgList.add(context.getUser().getOrgId());
-
-        List<Reactor> list = reactorRepository.selectByOrg(orgList);
-        if (translator!=null && lang!=null) {
-            return list.stream()
-                    .map(t -> translator.translate(t, lang))
-                    .collect(Collectors.toList());
-        }
-        return list;
-    }
-
-    private ReactorRepository reactorRepository;
 }

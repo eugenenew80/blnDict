@@ -2,7 +2,7 @@ package kz.kegoc.bln.service.dict.impl;
 
 import kz.kegoc.bln.entity.dict.PowerLinePart;
 import kz.kegoc.bln.filter.Filter;
-import kz.kegoc.bln.repository.common.Repository;
+import kz.kegoc.bln.repository.dict.PowerLinePartRepository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.PowerLinePartService;
 import kz.kegoc.bln.translator.Translator;
@@ -15,7 +15,7 @@ import javax.validation.Validator;
 public class PowerLinePartServiceImpl extends AbstractEntityService<PowerLinePart> implements PowerLinePartService {
 
 	@Inject
-    public PowerLinePartServiceImpl(Repository<PowerLinePart> repository, Validator validator, Filter<PowerLinePart> prePersistFilter, Translator<PowerLinePart> translator) {
+    public PowerLinePartServiceImpl(PowerLinePartRepository repository, Validator validator, Filter<PowerLinePart> prePersistFilter, Translator<PowerLinePart> translator) {
         super(repository, validator, prePersistFilter, translator);
     }
 }

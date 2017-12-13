@@ -69,10 +69,16 @@ public abstract class AbstractRepository<T extends HasId> implements Repository<
 		
 	protected void setClazz(Class<T> clazz) {
 		this.clazz = clazz;
-	}	
+	}
 
-	
+	protected Class<T> getClazz() {
+		return clazz;
+	}
+
+
+	private Class<T> clazz;
+
 	@PersistenceContext(unitName = "bln")
 	private EntityManager em;
-	private Class<T> clazz;
+
 }

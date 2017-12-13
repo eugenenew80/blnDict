@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import javax.validation.Validator;
 import kz.kegoc.bln.entity.dict.CurrentTransType;
 import kz.kegoc.bln.filter.Filter;
-import kz.kegoc.bln.repository.common.Repository;
+import kz.kegoc.bln.repository.dict.CurrentTransTypeRepository;
 import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.CurrentTransTypeService;
 import kz.kegoc.bln.translator.Translator;
@@ -15,7 +15,7 @@ public class CurrentTransTypeServiceImpl extends AbstractEntityService<CurrentTr
         implements CurrentTransTypeService {
     
 	@Inject
-    public CurrentTransTypeServiceImpl(Repository<CurrentTransType> repository, Validator validator, Filter<CurrentTransType> prePersistFilter, Translator<CurrentTransType> translator) {
+    public CurrentTransTypeServiceImpl(CurrentTransTypeRepository repository, Validator validator, Filter<CurrentTransType> prePersistFilter, Translator<CurrentTransType> translator) {
         super(repository, validator, prePersistFilter, translator);
     }
 }

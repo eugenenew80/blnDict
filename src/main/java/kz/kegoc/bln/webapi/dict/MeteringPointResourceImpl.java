@@ -23,7 +23,7 @@ public class MeteringPointResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		List<MeteringPointDto> list = service.findAll(buildSessionContext(lang))
+		List<MeteringPointDto> list = service.findByOrg(buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.map(it, MeteringPointDto.class))
 			.collect(Collectors.toList());
