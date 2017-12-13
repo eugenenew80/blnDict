@@ -43,14 +43,14 @@
 	</entity>
 
 	<entity class="kz.kegoc.bln.entity.ecm.Content">
-		<table name="ecm_content" schema="apps"/>
+		<table name="ecm_contents" schema="apps"/>
 		<attributes>
 			<id name="id">
 				<column name="id" />
-				<generated-value strategy="SEQUENCE" generator="ecm_content_gen" />
+				<generated-value strategy="SEQUENCE" generator="ecm_contents_gen" />
 				<sequence-generator
-						name="ecm_content_gen"
-						sequence-name="apps.ecm_content_s"
+						name="ecm_contents_gen"
+						sequence-name="apps.ecm_contents_s"
 						allocation-size="1"
 				/>
 			</id>
