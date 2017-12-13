@@ -1,6 +1,5 @@
 package kz.kegoc.bln.entity.dict;
 
-import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.List;
+import kz.kegoc.bln.entity.adm.User;
 
 @Data
 @EqualsAndHashCode(of= {"id"})

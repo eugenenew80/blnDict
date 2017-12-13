@@ -1,7 +1,6 @@
 package kz.kegoc.bln.webapi.common;
 
 import kz.kegoc.bln.entity.adm.User;
-
 import java.security.Principal;
 
 public class CustomPrincipal implements Principal {

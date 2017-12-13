@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.Lang;
 import org.dozer.DozerBeanMapper;
 import org.redisson.Redisson;
@@ -16,6 +15,7 @@ import org.redisson.config.Config;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import java.util.Arrays;
+import kz.kegoc.bln.entity.adm.User;
 
 @ApplicationScoped
 public class Producer {

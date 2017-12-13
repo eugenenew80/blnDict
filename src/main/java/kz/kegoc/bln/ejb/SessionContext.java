@@ -1,7 +1,7 @@
 package kz.kegoc.bln.ejb;
 
-import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.entity.common.Lang;
+import kz.kegoc.bln.entity.adm.User;
 
 public class SessionContext {
     public Lang getLang() {
