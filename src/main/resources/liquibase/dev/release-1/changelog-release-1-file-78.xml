@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-<author>ruslan</author>
-<comment>Создание таблицы Справочник Типы организационных единиц</comment>
+	author:  ruslan
+	comment: Создание таблицы Справочник Типы организационных единиц
 -->
 <databaseChangeLog
 		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
