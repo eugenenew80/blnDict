@@ -11,7 +11,7 @@
 
 	<changeSet id="dict-rus-113" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_energy_districts</comment>
-		<createTable tableName="dict_energy_districts" schemaName="apps" remarks="Энергоузлы">
+		<createTable tableName="dict_energy_districts" schemaName="apps" remarks="Энергорайоны">
 			<column name="id" type="number" remarks="Индетификатор">
 				<constraints nullable="false"/>
 			</column>
@@ -84,7 +84,7 @@
 
 	<changeSet id="dict-rus-117" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dict_energy_districts_tl</comment>
-		<createTable tableName="dict_energy_districts_tl" schemaName="apps" remarks="Энергоузлы (Переводы)">
+		<createTable tableName="dict_energy_districts_tl" schemaName="apps" remarks="Энергорайоны (Перевод)">
 			<column name="id" type="number" remarks="Индетификатор">
 				<constraints nullable="false"/>
 			</column>
