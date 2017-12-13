@@ -41,5 +41,15 @@
        <a>energyObject.name</a>
        <b>energyObjectName</b>
      </field>
+
+      <field>
+          <a>org.id</a>
+          <b>orgId</b>
+      </field>
+
+      <field type="one-way">
+          <a>org.name</a>
+          <b>orgName</b>
+      </field>
   </mapping>
 </mappings> 
