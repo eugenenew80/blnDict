@@ -49,6 +49,9 @@ public class MeteringPointFilterImpl extends AbstractFilter<MeteringPoint> imple
         translate.setMeteringPoint(entity);
         translate.setName(entity.getName());
         translate.setShortName(entity.getShortName());
+        translate.setPropertyBoundary(entity.getPropertyBoundary());
+        translate.setResponsibilityZone1(entity.getResponsibilityZone1());
+        translate.setResponsibilityZone2(entity.getResponsibilityZone2());
         entity.getTranslations().put(lang, translate);
 
         return entity;

@@ -26,6 +26,14 @@ public class MeteringPointTranslate implements HasId, HasName, HasLang, HasDates
     @NotNull @Size(max = 100)
     private String shortName;
 
+    @Size(max = 200)
+    private String propertyBoundary;
+
+    @Size(max = 200)
+    private String responsibilityZone1;
+
+    @Size(max = 200)
+    private String responsibilityZone2;
     private LocalDateTime createDate;
     private LocalDateTime lastUpdateDate;
     private User createBy;

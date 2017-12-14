@@ -37,6 +37,15 @@ public class MeteringPoint implements HasId, HasCode, HasName, HasLang, HasDates
 	@NotNull
 	private EnergyObject energyObject;
 
+	@Size(max = 200)
+	private String propertyBoundary;
+
+	@Size(max = 200)
+	private String responsibilityZone1;
+
+	@Size(max = 200)
+	private String responsibilityZone2;
+
 	private BusinessPartner businessPartner1;
 	private BusinessPartner businessPartner2;
 	private LocalDate startDate;

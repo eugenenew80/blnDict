@@ -20,6 +20,9 @@ public class MeteringPointDto {
 	private Long businessPartnerId2;
 	private String businessPartnerName1;
 	private String businessPartnerName2;
+	private String propertyBoundary;
+	private String responsibilityZone1;
+	private String responsibilityZone2;
 	private Long accountingTypeId;
 	private String accountingTypeName;
 	private Long meteringPointTypeId;
