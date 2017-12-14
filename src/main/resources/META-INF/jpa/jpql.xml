@@ -75,13 +75,13 @@
 
 	<named-query name="MeteringPoint.findAll">
 		<query>
-			select t from MeteringPoint t order by t.code
+			select t from MeteringPoint t order by t.id
 		</query>
 	</named-query>
 
 	<named-query name="MeteringPoint.findByOrg">
 		<query>
-			select t from MeteringPoint t where t.org.id in :orgList order by t.code
+			select t from MeteringPoint t where t.org.id in :orgList order by t.id
 		</query>
 	</named-query>
 
