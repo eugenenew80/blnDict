@@ -43,14 +43,14 @@
 	</entity>
 
 	<entity class="kz.kegoc.bln.entity.ecm.Content">
-		<table name="ecm_contents" schema="apps"/>
+		<table name="ecm_content" schema="apps"/>
 		<attributes>
 			<id name="id">
 				<column name="id" />
-				<generated-value strategy="SEQUENCE" generator="ecm_contents_gen" />
+				<generated-value strategy="SEQUENCE" generator="ecm_content_gen" />
 				<sequence-generator
-						name="ecm_contents_gen"
-						sequence-name="apps.ecm_contents_s"
+						name="ecm_content_gen"
+						sequence-name="apps.ecm_content_s"
 						allocation-size="1"
 				/>
 			</id>
@@ -113,7 +113,7 @@
         			name="dict_units_gen"
         			sequence-name="apps.dict_units_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="code">
@@ -222,7 +222,7 @@
         			name="dict_data_sources_gen"
         			sequence-name="apps.dict_data_sources_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="code">
@@ -314,29 +314,29 @@
         			name="dict_meter_types_gen"
         			sequence-name="apps.dict_meter_types_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="name">
       			<column name="name" />
       		</basic>
-      		
+
       		<basic name="manufacturer">
       			<column name="manufacturer" />
       		</basic>
-      		
+
       		<basic name="ratedCurrent">
       			<column name="rated_current" />
       		</basic>
-      		
+
       		<basic name="ratedVoltage">
       			<column name="rated_voltage" />
       		</basic>
 
       		<basic name="accuracyClass">
       			<column name="accuracy_class" />
-      		</basic>      		
-      		      		      		      		
+      		</basic>
+
       		<basic name="minimumLoad">
       			<column name="minimum_load" />
       		</basic>
@@ -455,17 +455,17 @@
         			name="dict_current_trans_types_gen"
         			sequence-name="apps.dict_current_trans_types_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="name">
       			<column name="name" />
       		</basic>
-      		
+
       		<basic name="manufacturer">
       			<column name="manufacturer" />
       		</basic>
-      		
+
       		<basic name="ratedCurrent1">
       			<column name="rated_current1" />
       		</basic>
@@ -476,11 +476,11 @@
 
       		<basic name="accuracyClass">
       			<column name="accuracy_class" />
-      		</basic>      		
-      		      		      		      		
+      		</basic>
+
       		<basic name="minCurrent">
       			<column name="min_current" />
-      		</basic>      		
+      		</basic>
 
       		<basic name="maxCurrent">
       			<column name="max_current" />
@@ -572,17 +572,17 @@
         			name="dict_voltage_trans_types_gen"
         			sequence-name="apps.dict_voltage_trans_types_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="name">
       			<column name="name" />
       		</basic>
-      		
+
       		<basic name="manufacturer">
       			<column name="manufacturer" />
       		</basic>
-      		
+
       		<basic name="ratedVoltage1">
       			<column name="rated_voltage1" />
       		</basic>
@@ -680,7 +680,7 @@
         			name="dict_energy_zones_gen"
         			sequence-name="apps.dict_energy_zones_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="code">
@@ -773,7 +773,7 @@
         			name="dict_regions_gen"
         			sequence-name="apps.dict_regions_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="code">
@@ -869,7 +869,7 @@
         			name="dict_energy_nodes_gen"
         			sequence-name="apps.dict_energy_nodes_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="shortName">
@@ -1070,7 +1070,7 @@
         			name="dict_organizations_gen"
         			sequence-name="apps.dict_organizations_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="name">
@@ -1080,7 +1080,7 @@
       		<basic name="shortName">
       			<column name="short_name" />
       		</basic>
-      		
+
       		<basic name="bin">
       			<column name="bin" />
       		</basic>
@@ -1180,41 +1180,41 @@
         			name="dict_meters_gen"
         			sequence-name="apps.dict_meters_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="name">
       			<column name="name" />
       		</basic>
-      		
+
       		<basic name="manufacturer">
       			<column name="manufacturer" />
       		</basic>
-      		
+
       		<basic name="serialNumber">
       			<column name="serial_number" />
       		</basic>
-      		      		
+
       		<basic name="ratedCurrent">
       			<column name="rated_current" />
       		</basic>
-      		
+
       		<basic name="ratedVoltage">
       			<column name="rated_voltage" />
       		</basic>
 
       		<basic name="accuracyClass">
       			<column name="accuracy_class" />
-      		</basic>      		
-      		      		      		      		
+      		</basic>
+
       		<basic name="minimumLoad">
       			<column name="minimum_load" />
-      		</basic>      		
+      		</basic>
 
       		<basic name="lastVerificationDate">
       			<column name="last_verification_date" />
       		</basic>
-      		
+
       		<basic name="nextVerificationDate">
       			<column name="next_verification_date" />
       		</basic>
@@ -1346,13 +1346,13 @@
         			name="dict_energy_source_types_gen"
         			sequence-name="apps.dict_energy_source_types_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="name">
       			<column name="name" />
       		</basic>
-      		
+
       		<basic name="shortName">
       			<column name="short_name" />
       		</basic>
@@ -1448,13 +1448,13 @@
         			name="dict_substations_gen"
         			sequence-name="apps.dict_substations_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="name">
       			<column name="name" />
       		</basic>
-      		
+
       		<basic name="shortName">
       			<column name="short_name" />
       		</basic>
@@ -1630,13 +1630,13 @@
         			name="dict_energy_sources_gen"
         			sequence-name="apps.dict_energy_sources_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="name">
       			<column name="name" />
       		</basic>
-      		
+
       		<basic name="shortName">
       			<column name="short_name" />
       		</basic>
@@ -1820,13 +1820,13 @@
         			name="dict_metering_types_gen"
         			sequence-name="apps.dict_metering_types_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="name">
       			<column name="name" />
       		</basic>
-      		
+
       		<basic name="shortName">
       			<column name="short_name" />
       		</basic>
@@ -1926,13 +1926,13 @@
         			name="dict_substation_types_gen"
         			sequence-name="apps.dict_substation_types_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="name">
       			<column name="name" />
       		</basic>
-      		
+
       		<basic name="shortName">
       			<column name="short_name" />
       		</basic>
@@ -2022,7 +2022,7 @@
         			name="dict_accounting_types_gen"
         			sequence-name="apps.dict_accounting_types_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="name">
@@ -2110,7 +2110,7 @@
         			name="dict_metering_point_types_gen"
         			sequence-name="apps.dict_metering_point_types_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="code">
@@ -2203,7 +2203,7 @@
         			name="dict_metering_points_gen"
         			sequence-name="apps.dict_metering_points_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
 
       		<basic name="code">
@@ -2217,10 +2217,10 @@
       		<basic name="shortName">
       			<column name="short_name" />
       		</basic>
-      		
+
       		<basic name="externalCode">
       			<column name="external_code" />
-      		</basic>    
+      		</basic>
 
       		<basic name="startDate">
       			<column name="start_date" />
@@ -2233,6 +2233,18 @@
       		<basic name="ratedVoltage">
       			<column name="rated_voltage" />
       		</basic>
+
+			<basic name="propertyBoundary">
+				<column name="property_boundary" />
+			</basic>
+
+			<basic name="responsibilityZone1">
+				<column name="responsibility_zone_1" />
+			</basic>
+
+			<basic name="responsibilityZone2">
+				<column name="responsibility_zone_2" />
+			</basic>
 
 			<basic name="createDate">
 				<column name="create_date" />
@@ -2252,15 +2264,15 @@
 
 			<many-to-one name="businessPartner1">
 				<join-column name="business_partner_id_1"/>
-			</many-to-one>  
-						
+			</many-to-one>
+
 			<many-to-one name="businessPartner2">
 				<join-column name="business_partner_id_2"/>
-			</many-to-one>  
+			</many-to-one>
 
 			<many-to-one name="accountingType">
 				<join-column name="accounting_type_id"/>
-			</many-to-one>  
+			</many-to-one>
 
 			<many-to-one name="meteringPointType">
 				<join-column name="metering_point_type_id"/>
@@ -2273,7 +2285,7 @@
 			<many-to-one name="org">
 				<join-column name="org_id"/>
 			</many-to-one>
-			
+
 			<many-to-one name="energyObject">
 				<join-column name="energy_object_id" referenced-column-name="object_id" />
 				<join-column name="energy_object_type" referenced-column-name="object_type" />
@@ -2319,6 +2331,18 @@
 
 			<basic name="shortName">
 				<column name="short_name" />
+			</basic>
+
+			<basic name="propertyBoundary">
+				<column name="property_boundary" />
+			</basic>
+
+			<basic name="responsibilityZone1">
+				<column name="responsibility_zone_1" />
+			</basic>
+
+			<basic name="responsibilityZone2">
+				<column name="responsibility_zone_2" />
 			</basic>
 
 			<basic name="createDate">
@@ -2374,9 +2398,9 @@
         			name="dict_metering_point_meters_gen"
         			sequence-name="apps.dict_metering_point_meters_s"
 					allocation-size="1"
-        		/>				
+        		/>
 			</id>
-			
+
       		<basic name="startDate">
       			<column name="start_date" />
       		</basic>
@@ -2402,8 +2426,8 @@
 			</many-to-one>
 
 			<many-to-one name="meteringPoint">
-				<join-column name="metering_point_id" />	
-			</many-to-one>  
+				<join-column name="metering_point_id" />
+			</many-to-one>
 
 			<many-to-one name="meter">
 				<join-column name="meter_id"/>

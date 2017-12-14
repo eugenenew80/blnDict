@@ -26,6 +26,9 @@ public class MeteringPointTranslatorImpl implements Translator<MeteringPoint> {
         if (translate!=null) {
             entity.setName(translate.getName());
             entity.setShortName(translate.getShortName());
+            entity.setPropertyBoundary(translate.getPropertyBoundary());
+            entity.setResponsibilityZone1(translate.getResponsibilityZone1());
+            entity.setResponsibilityZone2(translate.getResponsibilityZone2());
         }
 
         return entity;
