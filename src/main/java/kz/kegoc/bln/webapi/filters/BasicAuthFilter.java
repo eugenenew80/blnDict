@@ -99,7 +99,7 @@ public class BasicAuthFilter implements ContainerRequestFilter {
 				.flatMap(u -> u.getRole().getFuncs().stream())
 				.map(roleFunc -> roleFunc.getFunc())
 				.distinct()
-				.filter(it -> ctx.getUriInfo().getPath().startsWith(it.getUrl()) && it.getCode().endsWith(finalOperation))
+				.filter(it -> ctx.getUriInfo().getPath().contains(it.getUrl()) && it.getCode().endsWith(finalOperation))
 				.findFirst()
 				.isPresent();
 
