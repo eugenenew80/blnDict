@@ -53,11 +53,23 @@
                 <constraints nullable="true"/>
             </column>
 
+            <column name="property_boundary" type="varchar(200)" remarks="Наименование точки раздела">
+                <constraints nullable="true"/>
+            </column>
+
             <column name="business_partner_id_1" type="number" remarks="Id бизнес партнера 1 на границе раздела">
                 <constraints nullable="true"/>
-            </column> 
-            
+            </column>
+
+            <column name="responsibility_zone_1" type="varchar(200)" remarks="Ответственность бизнес-партнера 1">
+                <constraints nullable="true"/>
+            </column>
+
             <column name="business_partner_id_2" type="number" remarks="Id бизнес партнера 2 на границе раздела">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="responsibility_zone_2" type="varchar(200)" remarks="Ответственность бизнес-партнера 2">
                 <constraints nullable="true"/>
             </column>
 
