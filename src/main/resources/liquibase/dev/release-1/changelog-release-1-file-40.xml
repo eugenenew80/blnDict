@@ -25,17 +25,6 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="property_boundary" type="varchar(200)" remarks="Наименование точки раздела">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="responsibility_zone_1" type="varchar(200)" remarks="Ответственность бизнес-партнера 1">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="responsibility_zone_2" type="varchar(200)" remarks="Ответственность бизнес-партнера 2">
-				<constraints nullable="true"/>
-			</column>
 		</createTable>
 	</changeSet>
 
