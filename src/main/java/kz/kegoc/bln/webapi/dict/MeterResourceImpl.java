@@ -23,7 +23,7 @@ public class MeterResourceImpl {
 
 	@GET 
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		List<MeterDto> list = service.findAll(buildSessionContext(lang))
+		List<MeterDto> list = service.findByOrg(buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.map(it, MeterDto.class))
 			.collect(Collectors.toList());

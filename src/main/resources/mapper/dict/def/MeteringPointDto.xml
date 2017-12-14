@@ -51,5 +51,15 @@
           <a>org.name</a>
           <b>orgName</b>
       </field>
+
+      <field>
+          <a>referenceMeteringPoint.id</a>
+          <b>referenceMeteringPointId</b>
+      </field>
+
+      <field type="one-way">
+          <a>referenceMeteringPoint.name</a>
+          <b>referenceMeteringPointName</b>
+      </field>
   </mapping>
 </mappings> 

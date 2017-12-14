@@ -3,16 +3,15 @@ package kz.kegoc.bln.service.dict.impl;
 import kz.kegoc.bln.entity.dict.PowerLine;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.dict.PowerLineRepository;
-import kz.kegoc.bln.service.common.AbstractEntityService;
+import kz.kegoc.bln.service.common.AbstractEntityServiceOrg;
 import kz.kegoc.bln.service.dict.PowerLineService;
 import kz.kegoc.bln.translator.Translator;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.validation.Validator;
 
 @Stateless
-public class PowerLineServiceImpl extends AbstractEntityService<PowerLine> implements PowerLineService {
+public class PowerLineServiceImpl extends AbstractEntityServiceOrg<PowerLine> implements PowerLineService {
 
 	@Inject
     public PowerLineServiceImpl(PowerLineRepository repository, Validator validator, Filter<PowerLine> prePersistFilter, Translator<PowerLine> translator) {

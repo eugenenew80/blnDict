@@ -6,13 +6,12 @@ import javax.validation.Validator;
 import kz.kegoc.bln.entity.dict.Substation;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.dict.SubstationRepository;
-import kz.kegoc.bln.service.common.AbstractEntityService;
+import kz.kegoc.bln.service.common.AbstractEntityServiceOrg;
 import kz.kegoc.bln.service.dict.SubstationService;
 import kz.kegoc.bln.translator.Translator;
 
-
 @Stateless
-public class SubstationServiceImpl extends AbstractEntityService<Substation>
+public class SubstationServiceImpl extends AbstractEntityServiceOrg<Substation>
         implements SubstationService {
     
 	@Inject
