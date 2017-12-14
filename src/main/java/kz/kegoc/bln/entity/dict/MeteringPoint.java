@@ -34,7 +34,6 @@ public class MeteringPoint implements HasId, HasCode, HasName, HasLang, HasDates
 	@NotNull
 	private MeteringPointType meteringPointType;
 
-	@NotNull
 	private EnergyObject energyObject;
 
 	@Size(max = 200)
