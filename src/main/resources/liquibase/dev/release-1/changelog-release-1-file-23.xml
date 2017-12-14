@@ -22,7 +22,7 @@
 			</column>
 
 			<column name="bin" type="varchar(12)" remarks="БИН банка">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="parent_bank_id" type="number" remarks="Ид родительского банка">
