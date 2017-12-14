@@ -21,7 +21,7 @@ public class Bank implements HasId, HasName, HasLang, HasDates, HasUser {
 	@NotNull @Size(max = 10)
 	private String bic;
 
-	@NotNull @Size(min = 12, max = 12)
+	@Size(min = 12, max = 12)
 	private String bin;
 
 	private Bank parentBank;
