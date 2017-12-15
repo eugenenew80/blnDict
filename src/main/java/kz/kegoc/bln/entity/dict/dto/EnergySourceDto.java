@@ -23,6 +23,6 @@ public class EnergySourceDto {
 	private Long orgId;
 	private String orgName;
 	private Long businessPartnerId;
-	private String businessPartnerName;
+	private String businessPartnerShortName;
 	private Lang lang;
 }
