@@ -20,6 +20,7 @@ public class SubstationDto {
 	private String address;
 	private Long businessPartnerId;
 	private String businessPartnerName;
+	private String businessPartnerShortName;
 	private Long orgId;
 	private String orgName;
 	private Lang lang;
