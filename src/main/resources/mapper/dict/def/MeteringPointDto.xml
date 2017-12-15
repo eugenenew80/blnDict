@@ -11,14 +11,24 @@
        <a>businessPartner1.id</a>
        <b>businessPartnerId1</b>
      </field>
-     
-     <field>
-       <a>businessPartner2.id</a>
-       <b>businessPartnerId2</b>
-     </field>
 
-     <field>
-       <a>accountingType.id</a>
+      <field type="one-way">
+          <a>businessPartner1.name</a>
+          <b>businessPartnerName1</b>
+      </field>
+
+      <field>
+          <a>businessPartner2.id</a>
+          <b>businessPartnerId2</b>
+      </field>
+
+      <field type="one-way">
+          <a>businessPartner2.name</a>
+          <b>businessPartnerName2</b>
+      </field>
+
+      <field>
+          <a>accountingType.id</a>
        <b>accountingTypeId</b>
      </field>
 
