@@ -19,7 +19,6 @@ public class Reactor implements HasId, HasName, HasLang, HasDates, HasUser {
 	@NotNull @Size(max = 100)
 	private String name;
 
-	@NotNull
 	private EnergyObject energyObject;
 
 	@NotNull
