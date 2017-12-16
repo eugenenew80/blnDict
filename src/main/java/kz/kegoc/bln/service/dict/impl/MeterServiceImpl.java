@@ -6,12 +6,12 @@ import javax.validation.Validator;
 import kz.kegoc.bln.entity.dict.Meter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.repository.dict.MeterRepository;
-import kz.kegoc.bln.service.common.AbstractEntityServiceOrg;
+import kz.kegoc.bln.service.common.AbstractEntityService;
 import kz.kegoc.bln.service.dict.MeterService;
 import kz.kegoc.bln.translator.Translator;
 
 @Stateless
-public class MeterServiceImpl extends AbstractEntityServiceOrg<Meter>
+public class MeterServiceImpl extends AbstractEntityService<Meter>
         implements MeterService {
     
 	@Inject

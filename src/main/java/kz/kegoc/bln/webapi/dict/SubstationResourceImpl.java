@@ -22,10 +22,14 @@ import kz.kegoc.bln.service.dict.SubstationService;
 public class SubstationResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		List<SubstationDto> list = service.findByOrg(buildSessionContext(lang))
+	public Response getAll(
+			@QueryParam("shortName") String shortName,
+			@QueryParam("name") String name,
+			@QueryParam("lang") Lang lang
+	) {
+		List<SubstationDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, SubstationDto.class) )
+			.map(it-> mapper.map(it, SubstationDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()

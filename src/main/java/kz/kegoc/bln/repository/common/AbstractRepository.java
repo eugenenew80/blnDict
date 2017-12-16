@@ -4,12 +4,14 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaQuery;
+
 import org.apache.commons.lang3.StringUtils;
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.repository.common.query.Query;
 
 
-public abstract class AbstractRepository<T extends HasId> implements Repository<T> {
+public abstract class AbstractRepository<T extends HasId> implements JpaRepository<T> {
 
 	public List<T> selectAll() {
 		TypedQuery<T> query = em.createNamedQuery(clazz.getSimpleName() +  ".findAll", clazz);
@@ -30,7 +32,10 @@ public abstract class AbstractRepository<T extends HasId> implements Repository<
     	return typedQuery.getResultList();
 	}
 
-	
+	public List<T> select(CriteriaQuery<T> query) {
+		return em.createQuery(query).getResultList();
+	}
+
 	public T selectById(Object entityId) {
 		return em.find(clazz, entityId);
 	}
@@ -57,8 +62,7 @@ public abstract class AbstractRepository<T extends HasId> implements Repository<
 		return false;
 	}
 	
-	
-	
+
 	public EntityManager getEntityManager() {
 		return em;
 	}
@@ -67,11 +71,11 @@ public abstract class AbstractRepository<T extends HasId> implements Repository<
 		this.em = em;
 	}	
 		
-	protected void setClazz(Class<T> clazz) {
+	public void setClazz(Class<T> clazz) {
 		this.clazz = clazz;
 	}
 
-	protected Class<T> getClazz() {
+	public Class<T> getClazz() {
 		return clazz;
 	}
 
@@ -80,5 +84,4 @@ public abstract class AbstractRepository<T extends HasId> implements Repository<
 
 	@PersistenceContext(unitName = "bln")
 	private EntityManager em;
-
 }

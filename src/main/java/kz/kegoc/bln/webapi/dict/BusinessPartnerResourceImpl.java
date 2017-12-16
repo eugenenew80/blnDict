@@ -27,14 +27,17 @@ import java.util.stream.Collectors;
 public class BusinessPartnerResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("searchValue") String searchValue, @QueryParam("shortName") String shortName, @HeaderParam("lang") Lang lang) {
+	public Response getAll(
+		@QueryParam("searchValue") String searchValue,
+		@QueryParam("shortName") String shortName,
+		@QueryParam("name") String name,
+		@HeaderParam("lang") Lang lang
+	) {
 		if (StringUtils.isNotEmpty(searchValue))
-			shortName=searchValue.toUpperCase();
+			shortName=searchValue;
 
-		String finalName = shortName;
-		List<BusinessPartnerDto> list = service.findAll(buildSessionContext(lang))
+		List<BusinessPartnerDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
-			.filter(it-> StringUtils.isEmpty(finalName) || it.getShortName().toUpperCase().contains(finalName))
 			.map(it-> mapper.map(it, BusinessPartnerDto.class))
 			.collect(Collectors.toList());
 		

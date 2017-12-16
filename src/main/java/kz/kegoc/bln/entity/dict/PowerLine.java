@@ -14,7 +14,7 @@ import kz.kegoc.bln.entity.adm.User;
 
 @Data
 @EqualsAndHashCode(of= {"id"})
-public class PowerLine implements HasId, HasName, HasLang, HasDates, HasUser {
+public class PowerLine implements HasId, HasName, HasLang, HasDates, HasUser, HasOrg {
 	private Long id;
 
 	@NotNull @Size(max = 30)

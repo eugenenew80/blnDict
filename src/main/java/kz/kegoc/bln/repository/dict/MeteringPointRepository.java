@@ -1,9 +1,8 @@
 package kz.kegoc.bln.repository.dict;
 
 import kz.kegoc.bln.entity.dict.MeteringPoint;
-import kz.kegoc.bln.repository.common.RepositoryOrg;
-
+import kz.kegoc.bln.repository.common.JpaRepository;
 import javax.ejb.Local;
 
 @Local
-public interface MeteringPointRepository extends RepositoryOrg<MeteringPoint> {}
+public interface MeteringPointRepository extends JpaRepository<MeteringPoint> {}

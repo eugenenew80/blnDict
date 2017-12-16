@@ -4,11 +4,14 @@ import java.util.List;
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.repository.common.query.Query;
 
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaQuery;
+
 public interface Repository <T extends HasId> {
     List<T> selectAll();
 
     List<T> select(Query query);
-    
+
     T selectById(Object entityId);
     
     T insert(T entity);

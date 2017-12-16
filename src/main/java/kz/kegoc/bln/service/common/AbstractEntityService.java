@@ -4,7 +4,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.validation.*;
+
+import kz.kegoc.bln.entity.common.HasOrg;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.entity.common.Lang;
@@ -12,29 +18,30 @@ import kz.kegoc.bln.exception.EntityNotFoundException;
 import kz.kegoc.bln.exception.InvalidArgumentException;
 import kz.kegoc.bln.exception.RepositoryNotFoundException;
 import kz.kegoc.bln.filter.Filter;
-import kz.kegoc.bln.repository.common.Repository;
+import kz.kegoc.bln.repository.common.JpaRepository;
 import kz.kegoc.bln.repository.common.query.Query;
 import kz.kegoc.bln.translator.Translator;
+import org.apache.commons.lang3.StringUtils;
 
 public abstract class AbstractEntityService<T extends HasId> implements EntityService<T> {
     public AbstractEntityService() {}
 
-    public AbstractEntityService(Repository<T> repository) {
+    public AbstractEntityService(JpaRepository<T> repository) {
         this.repository = repository;
     }
     
-    public AbstractEntityService(Repository<T> repository, Validator validator) {
+    public AbstractEntityService(JpaRepository<T> repository, Validator validator) {
         this(repository);
         this.validator = validator;
     }
 
-	public AbstractEntityService(Repository<T> repository, Validator validator, Filter<T> prePersistFilter) {
+	public AbstractEntityService(JpaRepository<T> repository, Validator validator, Filter<T> prePersistFilter) {
 		this(repository);
 		this.validator = validator;
 		this.prePersistFilter = prePersistFilter;
 	}
 
-	public AbstractEntityService(Repository<T> repository, Validator validator, Filter<T> prePersistFilter, Translator<T> translator) {
+	public AbstractEntityService(JpaRepository<T> repository, Validator validator, Filter<T> prePersistFilter, Translator<T> translator) {
 		this(repository);
 		this.validator = validator;
 		this.prePersistFilter = prePersistFilter;
@@ -48,14 +55,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 			throw new RepositoryNotFoundException();
 
 		Lang lang = context!=null && context.getLang()!=null ? context.getLang() : Lang.RU;
-
-		List<T> list = repository.selectAll();
-		if (translator!=null && lang!=null) {
-			return list.stream()
-				.map(t -> translator.translate(t, lang))
-				.collect(Collectors.toList());
-		}
-		return list;
+		return translateList(repository.selectAll(), lang);
 	}
 
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
@@ -64,8 +64,42 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 			throw new RepositoryNotFoundException();
 
 		Lang lang = context!=null && context.getLang()!=null ? context.getLang() : Lang.RU;
+		return translateList(repository.select(query), lang);
+	}
 
-		List<T> list = repository.select(query);
+
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public List<T> find(CriteriaQuery<T> query, SessionContext context) {
+		if (repository==null)
+			throw new RepositoryNotFoundException();
+
+		Lang lang = context!=null && context.getLang()!=null ? context.getLang() : Lang.RU;
+		return translateList(repository.select(query), lang);
+	}
+
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public List<T> find(String code, String shortName, String name, SessionContext context) {
+    	CriteriaBuilder cb =  repository.getEntityManager().getCriteriaBuilder();
+    	CriteriaQuery<T> query = cb.createQuery(repository.getClazz());
+		Root<T> root = query.from(repository.getClazz());
+
+		Predicate criteria = cb.conjunction();
+		if (HasOrg.class.isAssignableFrom(repository.getClazz()))
+			criteria = cb.isTrue(root.get("org").get("id").in(buildOrgList(context)));
+
+		if (StringUtils.isNotEmpty(shortName))
+			criteria = cb.and(criteria, cb.like(cb.upper(root.get("shortName")), "%" + shortName.toUpperCase() + "%"));
+
+		if (StringUtils.isNotEmpty(name))
+			criteria = cb.and(criteria, cb.like(cb.upper(root.get("name")), "%" + name.toUpperCase() + "%"));
+
+		if (StringUtils.isNotEmpty(code))
+			criteria = cb.and(criteria, cb.like(root.get("name"), code + "%"));
+
+		return find(query.where(criteria), context);
+	}
+
+	private List<T> translateList(List<T> list, Lang lang) {
 		if (translator!=null && lang!=null) {
 			return list.stream()
 				.map(t -> translator.translate(t, lang))
@@ -73,6 +107,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		}
 		return list;
 	}
+
 
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public T findById(Object entityId, SessionContext context) {
@@ -151,8 +186,14 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		}
 	}
 
+	protected List<Long> buildOrgList(SessionContext context) {
+		if (context.getUser().getOrgId()==1)
+			return Arrays.asList(1l, 2l, 3l, 4l, 5l, 6l, 7l, 8l, 9l, 10l, 11l, 12l, 13l, 14l);
+		else
+			return Arrays.asList(context.getUser().getOrgId());
+	}
 
-	protected Repository<T> repository;
+	protected JpaRepository<T> repository;
 	protected Validator validator;
 	protected Filter<T> prePersistFilter;
 	protected Translator<T> translator;

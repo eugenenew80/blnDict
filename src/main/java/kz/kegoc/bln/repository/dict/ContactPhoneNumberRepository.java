@@ -1,9 +1,8 @@
 package kz.kegoc.bln.repository.dict;
 
 import kz.kegoc.bln.entity.dict.ContactPhoneNumber;
-import kz.kegoc.bln.repository.common.Repository;
-
+import kz.kegoc.bln.repository.common.JpaRepository;
 import javax.ejb.Local;
 
 @Local
-public interface ContactPhoneNumberRepository extends Repository<ContactPhoneNumber> {}
+public interface ContactPhoneNumberRepository extends JpaRepository<ContactPhoneNumber> {}

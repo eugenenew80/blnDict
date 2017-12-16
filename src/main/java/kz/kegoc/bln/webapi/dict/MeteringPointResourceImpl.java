@@ -23,17 +23,21 @@ import kz.kegoc.bln.service.dict.MeteringPointService;
 public class MeteringPointResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("searchValue") String searchValue, @QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+	public Response getAll(
+			@QueryParam("searchValue") String searchValue,
+			@QueryParam("code") String code,
+			@QueryParam("shortName") String shortName,
+			@QueryParam("name") String name,
+			@QueryParam("lang") Lang lang
+	) {
 		if (StringUtils.isNotEmpty(searchValue))
-			name=searchValue.toUpperCase();
+			name=searchValue;
 
-		String finalName = name;
-		List<MeteringPointDto> list = service.findByOrg(buildSessionContext(lang))
+		List<MeteringPointDto> list = service.find(code, shortName, name, buildSessionContext(lang))
 			.stream()
-			.filter(it-> StringUtils.isEmpty(finalName) || it.getName().toUpperCase().contains(finalName))
 			.map(it-> mapper.map(it, MeteringPointDto.class))
 			.collect(Collectors.toList());
-		
+
 		return Response.ok()
 			.entity(new GenericEntity<Collection<MeteringPointDto>>(list){})
 			.build();

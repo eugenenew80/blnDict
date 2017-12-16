@@ -1,9 +1,8 @@
 package kz.kegoc.bln.repository.dict;
 
 import kz.kegoc.bln.entity.dict.VoltageClass;
-import kz.kegoc.bln.repository.common.Repository;
-
+import kz.kegoc.bln.repository.common.JpaRepository;
 import javax.ejb.Local;
 
 @Local
-public interface VoltageClassRepository extends Repository<VoltageClass> {}
+public interface VoltageClassRepository extends JpaRepository<VoltageClass> {}

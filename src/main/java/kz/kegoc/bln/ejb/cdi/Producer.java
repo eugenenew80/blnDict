@@ -14,6 +14,9 @@ import org.redisson.config.Config;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Arrays;
 import kz.kegoc.bln.entity.adm.User;
 
@@ -110,4 +113,10 @@ public class Producer {
     public Lang defLang() {
         return Lang.RU;
     }
+
+    @Produces
+    public CriteriaBuilder getCrieriaBuilder() { return em.getCriteriaBuilder(); };
+
+    @PersistenceContext(unitName = "bln")
+    private EntityManager em;
 }
