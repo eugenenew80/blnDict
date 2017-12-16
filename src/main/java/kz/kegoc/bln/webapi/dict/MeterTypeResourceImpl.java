@@ -21,8 +21,11 @@ import kz.kegoc.bln.service.dict.MeterTypeService;
 public class MeterTypeResourceImpl {
 
 	@GET
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		List<MeterTypeDto> list = service.findAll(buildSessionContext(lang))
+	public Response getAll(
+		@QueryParam("name") String name,
+		@QueryParam("lang") Lang lang
+	) {
+		List<MeterTypeDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.map(it, MeterTypeDto.class))
 			.collect(Collectors.toList());

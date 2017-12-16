@@ -22,8 +22,12 @@ import kz.kegoc.bln.service.dict.DataSourceService;
 public class DataSourceResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
-		List<DataSourceDto> list = service.findAll(buildSessionContext(lang))
+	public Response getAll(
+		@QueryParam("code") String code,
+		@QueryParam("name") String name,
+		@HeaderParam("lang") Lang lang
+	) {
+		List<DataSourceDto> list = service.find(code, null, name, buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, DataSourceDto.class) )
 			.collect(Collectors.toList());

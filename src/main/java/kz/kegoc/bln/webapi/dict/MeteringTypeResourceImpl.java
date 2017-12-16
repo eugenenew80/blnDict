@@ -22,8 +22,11 @@ import kz.kegoc.bln.service.dict.MeteringTypeService;
 public class MeteringTypeResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		List<MeteringTypeDto> list = service.findAll(buildSessionContext(lang))
+	public Response getAll(
+		@QueryParam("name") String name,
+		@QueryParam("lang") Lang lang
+	) {
+		List<MeteringTypeDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, MeteringTypeDto.class) )
 			.collect(Collectors.toList());

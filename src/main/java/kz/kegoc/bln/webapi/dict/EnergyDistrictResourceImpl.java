@@ -26,10 +26,14 @@ import java.util.stream.Collectors;
 public class EnergyDistrictResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
-		List<EnergyDistrictDto> list = service.findAll(buildSessionContext(lang))
+	public Response getAll(
+			@QueryParam("shortName") String shortName,
+			@QueryParam("name") String name,
+			@HeaderParam("lang") Lang lang
+	) {
+		List<EnergyDistrictDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, EnergyDistrictDto.class) )
+			.map(it-> mapper.map(it, EnergyDistrictDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()

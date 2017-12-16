@@ -22,8 +22,12 @@ import kz.kegoc.bln.service.dict.EnergyNodeService;
 public class EnergyNodeResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
-		List<EnergyNodeDto> list = service.findAll(buildSessionContext(lang))
+	public Response getAll(
+		@QueryParam("shortName") String shortName,
+		@QueryParam("name") String name,
+		@HeaderParam("lang") Lang lang
+	) {
+		List<EnergyNodeDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, EnergyNodeDto.class) )
 			.collect(Collectors.toList());

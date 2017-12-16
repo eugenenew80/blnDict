@@ -21,8 +21,11 @@ import kz.kegoc.bln.service.dict.CurrentTransTypeService;
 public class CurrentTransTypeResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
-		List<CurrentTransTypeDto> list = service.findAll(buildSessionContext(lang))
+	public Response getAll(
+		@QueryParam("name") String name,
+		@HeaderParam("lang") Lang lang
+	) {
+		List<CurrentTransTypeDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.map(it, CurrentTransTypeDto.class))
 			.collect(Collectors.toList());

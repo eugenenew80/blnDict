@@ -25,8 +25,11 @@ import java.util.stream.Collectors;
 public class BankResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
-		List<BankDto> list = service.findAll(buildSessionContext(lang))
+	public Response getAll(
+		@QueryParam("name") String name,
+		@HeaderParam("lang") Lang lang
+	) {
+		List<BankDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, BankDto.class) )
 			.collect(Collectors.toList());

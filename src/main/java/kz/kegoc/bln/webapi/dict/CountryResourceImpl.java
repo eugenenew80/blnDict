@@ -25,8 +25,12 @@ import java.util.stream.Collectors;
 public class CountryResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
-		List<CountryDto> list = service.findAll(buildSessionContext(lang))
+	public Response getAll(
+			@QueryParam("code") String code,
+			@QueryParam("name") String name,
+			@HeaderParam("lang") Lang lang
+	) {
+		List<CountryDto> list = service.find(code, null, name, buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.map(it, CountryDto.class))
 			.collect(Collectors.toList());
