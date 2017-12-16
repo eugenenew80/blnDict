@@ -22,8 +22,12 @@ import kz.kegoc.bln.service.dict.UnitService;
 public class UnitResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		List<UnitDto> list = service.findAll(buildSessionContext(lang))
+	public Response getAll(
+		@QueryParam("code") String code,
+		@QueryParam("name") String name,
+		@QueryParam("lang") Lang lang
+	) {
+		List<UnitDto> list = service.find(code, null, name, buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, UnitDto.class) )
 			.collect(Collectors.toList());

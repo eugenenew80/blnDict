@@ -26,8 +26,11 @@ import java.util.stream.Collectors;
 public class PowerTransformerResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		List<PowerTransformerDto> list = service.find(code, null, name, buildSessionContext(lang))
+	public Response getAll(
+		@QueryParam("name") String name,
+		@QueryParam("lang") Lang lang
+	) {
+		List<PowerTransformerDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, PowerTransformerDto.class) )
 			.collect(Collectors.toList());

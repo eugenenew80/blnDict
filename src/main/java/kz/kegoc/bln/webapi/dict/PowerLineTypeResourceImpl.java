@@ -29,8 +29,12 @@ public class PowerLineTypeResourceImpl {
 	private static final Logger logger = LoggerFactory.getLogger(PowerLineTypeResourceImpl.class);
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
-		List<PowerLineTypeDto> list = service.findAll(buildSessionContext(lang))
+	public Response getAll(
+		@QueryParam("code") String code,
+		@QueryParam("name") String name,
+		@HeaderParam("lang") Lang lang
+	) {
+		List<PowerLineTypeDto> list = service.find(code, null, name, buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.map(it, PowerLineTypeDto.class) )
 			.collect(Collectors.toList());

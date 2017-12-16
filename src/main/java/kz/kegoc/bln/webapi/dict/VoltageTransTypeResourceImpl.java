@@ -22,10 +22,13 @@ import kz.kegoc.bln.service.dict.VoltageTransTypeService;
 public class VoltageTransTypeResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
-		List<VoltageTransTypeDto> list = service.findAll(buildSessionContext(lang))
+	public Response getAll(
+		@QueryParam("name") String name,
+		@QueryParam("lang") Lang lang
+	) {
+		List<VoltageTransTypeDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, VoltageTransTypeDto.class) )
+			.map(it-> mapper.map(it, VoltageTransTypeDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
