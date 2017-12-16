@@ -23,8 +23,8 @@
      </field>
 
       <field type="one-way">
-       <a>meter.serialNumber</a>
-       <b>meterSerialNumber</b>
+       <a>meter.manufacturer</a>
+       <b>meterManufacturer</b>
      </field>  
   </mapping> 
 </mappings> 
