@@ -16,7 +16,7 @@ public class PowerLinePartDto {
 	private Long powerLineId;
 	private String powerLineName;
 	private Long businessPartnerId;
-	private String businessPartnerName;
+	private String businessPartnerShortName;
 	private Double length;
 	private Double r;
 	private LocalDate startDate;

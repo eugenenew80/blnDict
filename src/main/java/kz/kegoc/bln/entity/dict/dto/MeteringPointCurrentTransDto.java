@@ -21,7 +21,7 @@ public class MeteringPointCurrentTransDto {
 	private Double minCurrent;
 	private Double maxCurrent;
 	private Long businessPartnerId;
-	private String businessPartnerName;
+	private String businessPartnerShortName;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private Lang lang;

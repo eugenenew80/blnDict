@@ -18,7 +18,6 @@ public class PowerTransformer implements HasId, HasName, HasLang, HasDates, HasU
 	@NotNull @Size(max = 100)
 	private String name;
 
-	@NotNull
 	private EnergyObject energyObject;
 
 	@NotNull

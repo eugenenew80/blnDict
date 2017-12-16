@@ -19,7 +19,7 @@ public class MeteringPointVoltageTransDto {
 	private Double ratedVoltage2;
 	private Double accuracyClass;
 	private Long businessPartnerId;
-	private String businessPartnerName;
+	private String businessPartnerShortName;
 	private Lang lang;
 	private LocalDate startDate;
 	private LocalDate endDate;

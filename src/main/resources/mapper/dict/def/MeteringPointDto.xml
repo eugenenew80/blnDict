@@ -13,8 +13,8 @@
      </field>
 
       <field type="one-way">
-          <a>businessPartner1.name</a>
-          <b>businessPartnerName1</b>
+          <a>businessPartner1.shortName</a>
+          <b>businessPartnerShortName1</b>
       </field>
 
       <field>
@@ -23,8 +23,8 @@
       </field>
 
       <field type="one-way">
-          <a>businessPartner2.name</a>
-          <b>businessPartnerName2</b>
+          <a>businessPartner2.shortName</a>
+          <b>businessPartnerShortName2</b>
       </field>
 
       <field>
@@ -58,8 +58,8 @@
       </field>
 
       <field type="one-way">
-          <a>org.name</a>
-          <b>orgName</b>
+          <a>org.shortName</a>
+          <b>orgShortName</b>
       </field>
 
       <field>

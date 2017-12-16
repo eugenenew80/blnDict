@@ -18,8 +18,8 @@ public class MeteringPointDto {
 	private Double ratedVoltage;
 	private Long businessPartnerId1;
 	private Long businessPartnerId2;
-	private String businessPartnerName1;
-	private String businessPartnerName2;
+	private String businessPartnerShortName1;
+	private String businessPartnerShortName2;
 	private String propertyBoundary;
 	private String responsibilityZone1;
 	private String responsibilityZone2;
@@ -35,6 +35,6 @@ public class MeteringPointDto {
 	private Long referenceMeteringPointId;
 	private String referenceMeteringPointName;
 	private Long orgId;
-	private String orgName;
+	private String orgShortName;
 	private Lang lang;
 }

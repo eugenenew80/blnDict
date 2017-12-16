@@ -10,6 +10,7 @@ import javax.ws.rs.core.*;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
+import org.apache.commons.lang3.StringUtils;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.MeteringPoint;
 import kz.kegoc.bln.entity.dict.dto.MeteringPointDto;
@@ -22,9 +23,14 @@ import kz.kegoc.bln.service.dict.MeteringPointService;
 public class MeteringPointResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+	public Response getAll(@QueryParam("searchValue") String searchValue, @QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+		if (StringUtils.isNotEmpty(searchValue))
+			name=searchValue.toUpperCase();
+
+		String finalName = name;
 		List<MeteringPointDto> list = service.findByOrg(buildSessionContext(lang))
 			.stream()
+			.filter(it-> StringUtils.isEmpty(finalName) || it.getName().toUpperCase().contains(finalName))
 			.map(it-> mapper.map(it, MeteringPointDto.class))
 			.collect(Collectors.toList());
 		

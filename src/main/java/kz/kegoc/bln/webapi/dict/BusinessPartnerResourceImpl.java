@@ -6,6 +6,7 @@ import kz.kegoc.bln.entity.dict.BusinessPartner;
 import kz.kegoc.bln.entity.dict.dto.BusinessPartnerDto;
 import kz.kegoc.bln.service.dict.BusinessPartnerService;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
+import org.apache.commons.lang3.StringUtils;
 import org.dozer.DozerBeanMapper;
 
 import javax.ejb.Stateless;
@@ -26,9 +27,14 @@ import java.util.stream.Collectors;
 public class BusinessPartnerResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
+	public Response getAll(@QueryParam("searchValue") String searchValue, @QueryParam("shortName") String shortName, @HeaderParam("lang") Lang lang) {
+		if (StringUtils.isNotEmpty(searchValue))
+			shortName=searchValue.toUpperCase();
+
+		String finalName = shortName;
 		List<BusinessPartnerDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
+			.filter(it-> StringUtils.isEmpty(finalName) || it.getShortName().toUpperCase().contains(finalName))
 			.map(it-> mapper.map(it, BusinessPartnerDto.class))
 			.collect(Collectors.toList());
 		

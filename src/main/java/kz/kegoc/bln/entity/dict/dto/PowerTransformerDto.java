@@ -15,7 +15,7 @@ public class PowerTransformerDto {
 	private String energyObjectType;
 	private String energyObjectName;
 	private Long businessPartnerId;
-	private String businessPartnerName;
+	private String businessPartnerShortName;
 	private Double snom;
 	private Double deltaPxx;
 	private Double unomH;

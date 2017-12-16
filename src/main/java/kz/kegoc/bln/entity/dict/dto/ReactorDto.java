@@ -17,7 +17,7 @@ public class ReactorDto {
 	private Double deltaPr;
 	private Double unom;
 	private Long businessPartnerId;
-	private String businessPartnerName;
+	private String businessPartnerShortName;
 	private Long orgId;
 	private String orgName;
 	private Lang lang;

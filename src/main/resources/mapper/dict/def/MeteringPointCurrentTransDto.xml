@@ -18,8 +18,8 @@
       </field>
 
       <field type="one-way">
-          <a>businessPartner.name</a>
-          <b>businessPartnerName</b>
+          <a>businessPartner.shortName</a>
+          <b>businessPartnerShortName</b>
       </field>
   </mapping>
 </mappings> 
