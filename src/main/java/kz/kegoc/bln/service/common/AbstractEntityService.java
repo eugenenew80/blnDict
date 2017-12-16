@@ -94,7 +94,7 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 			criteria = cb.and(criteria, cb.like(cb.upper(root.get("name")), "%" + name.toUpperCase() + "%"));
 
 		if (StringUtils.isNotEmpty(code))
-			criteria = cb.and(criteria, cb.like(root.get("name"), code + "%"));
+			criteria = cb.and(criteria, cb.like(root.get("code"), code + "%"));
 
 		return find(query.where(criteria), context);
 	}
