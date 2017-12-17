@@ -28,9 +28,6 @@ public class BankFilterImpl extends AbstractFilter<Bank> implements Filter<Bank>
                 entity.setTranslations(curEntity.getTranslations());
         }
 
-        if (entity.getParentBank()!=null && entity.getParentBank().getId()==null)
-            entity.setParentBank(null);
-
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 

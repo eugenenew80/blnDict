@@ -96,7 +96,8 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		if (StringUtils.isNotEmpty(code))
 			criteria = cb.and(criteria, cb.like(root.get("code"), code + "%"));
 
-		query.orderBy(cb.asc(root.get("id")));
+		if (HasId.class.isAssignableFrom(repository.getClazz()))
+			query.orderBy(cb.asc(root.get("id")));
 
 		return find(query.where(criteria), context);
 	}
