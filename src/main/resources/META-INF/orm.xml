@@ -2819,10 +2819,6 @@
 				/>
 			</id>
 
-			<basic name="code">
-				<column name="code"/>
-			</basic>
-
 			<basic name="name">
 				<column name="name" />
 			</basic>
@@ -4083,10 +4079,6 @@
 			<basic name="lang">
 				<column name="lang"  />
 				<enumerated>STRING</enumerated>
-			</basic>
-
-			<basic name="shortName">
-				<column name="short_name" />
 			</basic>
 
 			<basic name="propertyBoundary">

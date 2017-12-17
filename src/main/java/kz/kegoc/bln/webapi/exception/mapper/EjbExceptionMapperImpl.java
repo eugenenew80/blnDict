@@ -9,6 +9,7 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 import kz.kegoc.bln.exception.ApplicationException;
 import kz.kegoc.bln.webapi.exception.entity.ErrorMessage;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.exception.SQLGrammarException;
 
 
@@ -17,25 +18,24 @@ public class EjbExceptionMapperImpl implements ExceptionMapper<EJBException> {
 	
     @Override
     public Response toResponse(EJBException exc) {
-    	
     	if (exc.getCause()!=null) {
 			if (exc.getCause() instanceof RollbackException) {
 				Throwable appExc =  exc.getCause();
-				if (appExc.getCause()!=null)
-					appExc =  exc.getCause();
 
 				if (appExc.getCause()!=null)
-					appExc =  exc.getCause();
+					appExc = appExc.getCause();
 
 				if (appExc.getCause()!=null)
-					appExc =  exc.getCause();
+					appExc = appExc.getCause();
+
+				if (appExc.getCause()!=null)
+					appExc = appExc.getCause();
 
 				return Response.status(500)
 					.type(MediaType.APPLICATION_JSON)
 					.entity(new ErrorMessage("tx-exception", appExc.getMessage()))
 					.build();
 			}
-
 
 			if (exc.getCause() instanceof SQLGrammarException) {
 				Throwable appExc =  exc.getCause().getCause();
@@ -61,16 +61,17 @@ public class EjbExceptionMapperImpl implements ExceptionMapper<EJBException> {
 	    	        .entity(new ErrorMessage(appExc.getCode(), appExc.getMessage()))
 	    	        .build();    			
     		}
-    		
+
+			String message = StringUtils.isNotEmpty(exc.getCause().getMessage()) ? exc.getCause().getMessage() : exc.getCause().getClass().getName();
         	return Response.status(500)
         		.type(MediaType.APPLICATION_JSON)	
-    	        .entity(new ErrorMessage("ejb_exception", exc.getCause().getMessage()))
+    	        .entity(new ErrorMessage("ejb_exception", message))
     	        .build();
     	}
     		
-    	
+    	String message = StringUtils.isNotEmpty(exc.getMessage()) ? exc.getMessage() : exc.getClass().getName();
     	return Response.status(500)
-	        .entity(new ErrorMessage("ejb_exception", exc.getMessage()))
+	        .entity(new ErrorMessage("ejb_exception", message))
 	        .build();
     }
 }
