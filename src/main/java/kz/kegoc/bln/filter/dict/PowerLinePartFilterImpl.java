@@ -20,7 +20,7 @@ public class PowerLinePartFilterImpl extends AbstractFilter<PowerLinePart> imple
 
     private PowerLinePart prepare(PowerLinePart entity, SessionContext context) {
         if (entity.getId()!=null) {
-            PowerLinePart curEntity = service.findById(entity.getId(), null);
+            PowerLinePart curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

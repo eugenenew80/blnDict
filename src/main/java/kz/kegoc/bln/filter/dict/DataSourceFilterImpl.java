@@ -19,7 +19,7 @@ public class DataSourceFilterImpl extends AbstractFilter<DataSource> implements 
 
     private DataSource prepare(DataSource entity, SessionContext context) {
         if (entity.getId()!=null) {
-            DataSource curEntity = service.findById(entity.getId(), null);
+            DataSource curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

@@ -20,7 +20,7 @@ public class MeteringPointFilterImpl extends AbstractFilter<MeteringPoint> imple
 
     private MeteringPoint prepare(MeteringPoint entity, SessionContext context) {
         if (entity.getId()!=null) {
-            MeteringPoint curEntity = meteringPointService.findById(entity.getId(), null);
+            MeteringPoint curEntity = meteringPointService.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

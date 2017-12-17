@@ -20,7 +20,7 @@ public class MeterTypeFilterImpl extends AbstractFilter<MeterType> implements Fi
 
     private MeterType prepare(MeterType entity, SessionContext context) {
         if (entity.getId()!=null) {
-            MeterType curEntity = service.findById(entity.getId(), null);
+            MeterType curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

@@ -19,7 +19,7 @@ public class SubstationTypeFilterImpl extends AbstractFilter<SubstationType> imp
 
     private SubstationType prepare(SubstationType entity, SessionContext context) {
         if (entity.getId()!=null) {
-            SubstationType curEntity = service.findById(entity.getId(), null);
+            SubstationType curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

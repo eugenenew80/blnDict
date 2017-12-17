@@ -19,7 +19,7 @@ public class PowerLineTypeFilterImpl extends AbstractFilter<PowerLineType> imple
 
     private PowerLineType prepare(PowerLineType entity, SessionContext context) {
         if (entity.getId()!=null) {
-            PowerLineType curEntity = service.findById(entity.getId(), null);
+            PowerLineType curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

@@ -19,7 +19,7 @@ public class EnergyZoneFilterImpl extends AbstractFilter<EnergyZone> implements 
 
     private EnergyZone prepare(EnergyZone entity, SessionContext context) {
         if (entity.getId()!=null) {
-            EnergyZone curEntity = service.findById(entity.getId(), null);
+            EnergyZone curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

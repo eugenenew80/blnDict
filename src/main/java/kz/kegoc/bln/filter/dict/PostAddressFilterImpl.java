@@ -19,7 +19,7 @@ public class PostAddressFilterImpl extends AbstractFilter<PostAddress> implement
 
     private PostAddress prepare(PostAddress entity, SessionContext context) {
         if (entity.getId()!=null) {
-            PostAddress curEntity = service.findById(entity.getId(), null);
+            PostAddress curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

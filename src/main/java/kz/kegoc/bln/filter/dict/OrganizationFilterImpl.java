@@ -19,7 +19,7 @@ public class OrganizationFilterImpl extends AbstractFilter<Organization> impleme
 
     private Organization prepare(Organization entity, SessionContext context) {
         if (entity.getId()!=null) {
-            Organization curEntity = companyService.findById(entity.getId(), null);
+            Organization curEntity = companyService.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

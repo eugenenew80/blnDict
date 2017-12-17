@@ -19,7 +19,7 @@ public class EnergyNodeFilterImpl extends AbstractFilter<EnergyNode> implements 
 
     private EnergyNode prepare(EnergyNode entity, SessionContext context) {
         if (entity.getId()!=null) {
-            EnergyNode curEntity = service.findById(entity.getId(), null);
+            EnergyNode curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

@@ -17,7 +17,7 @@ public class EnergySourceMeteringPointFilterImpl extends AbstractFilter<EnergySo
 
     private EnergySourceMeteringPoint prepare(EnergySourceMeteringPoint entity, SessionContext context) {
         if (entity.getId()!=null) {
-            EnergySourceMeteringPoint curEntity = service.findById(entity.getId(), null);
+            EnergySourceMeteringPoint curEntity = service.findById(entity.getId(), context);
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
         }

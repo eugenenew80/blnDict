@@ -19,7 +19,7 @@ public class MeteringPointCurrentTransFilterImpl extends AbstractFilter<Metering
 
     private MeteringPointCurrentTrans prepare(MeteringPointCurrentTrans entity, SessionContext context) {
         if (entity.getId()!=null) {
-            MeteringPointCurrentTrans curEntity = service.findById(entity.getId(), null);
+            MeteringPointCurrentTrans curEntity = service.findById(entity.getId(), context);
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
 

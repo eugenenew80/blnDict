@@ -20,7 +20,7 @@ public class MeteringPointVoltageTransFilterImpl extends AbstractFilter<Metering
 
     private MeteringPointVoltageTrans prepare(MeteringPointVoltageTrans entity, SessionContext context) {
         if (entity.getId()!=null) {
-            MeteringPointVoltageTrans curEntity = service.findById(entity.getId(), null);
+            MeteringPointVoltageTrans curEntity = service.findById(entity.getId(), context);
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
 

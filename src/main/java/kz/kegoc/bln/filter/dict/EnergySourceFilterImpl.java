@@ -20,7 +20,7 @@ public class EnergySourceFilterImpl extends AbstractFilter<EnergySource> impleme
 
     private EnergySource prepare(EnergySource entity, SessionContext context) {
         if (entity.getId()!=null) {
-            EnergySource curEntity = service.findById(entity.getId(), null);
+            EnergySource curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

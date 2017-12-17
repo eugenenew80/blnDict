@@ -19,7 +19,7 @@ public class RegionFilterImpl extends AbstractFilter<Region> implements Filter<R
 
     private Region prepare(Region entity, SessionContext context) {
         if (entity.getId()!=null) {
-            Region curEntity = service.findById(entity.getId(), null);
+            Region curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

@@ -22,7 +22,7 @@ public class PowerLineFilterImpl extends AbstractFilter<PowerLine> implements Fi
 
     private PowerLine prepare(PowerLine entity, SessionContext context) {
         if (entity.getId()!=null) {
-            PowerLine curEntity = service.findById(entity.getId(), null);
+            PowerLine curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

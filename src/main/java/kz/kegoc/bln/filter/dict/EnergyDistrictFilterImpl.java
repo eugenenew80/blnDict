@@ -20,7 +20,7 @@ public class EnergyDistrictFilterImpl extends AbstractFilter<EnergyDistrict> imp
 
     private EnergyDistrict prepare(EnergyDistrict entity, SessionContext context) {
         if (entity.getId()!=null) {
-            EnergyDistrict curEntity = service.findById(entity.getId(), null);
+            EnergyDistrict curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

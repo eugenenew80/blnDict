@@ -20,7 +20,7 @@ public class ReactorFilterImpl extends AbstractFilter<Reactor> implements Filter
 
     private Reactor prepare(Reactor entity, SessionContext context) {
         if (entity.getId()!=null) {
-            Reactor curEntity = service.findById(entity.getId(), null);
+            Reactor curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

@@ -19,7 +19,7 @@ public class MeteringTypeFilterImpl extends AbstractFilter<MeteringType> impleme
 
     private MeteringType prepare(MeteringType entity, SessionContext context) {
         if (entity.getId()!=null) {
-            MeteringType curEntity = service.findById(entity.getId(), null);
+            MeteringType curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

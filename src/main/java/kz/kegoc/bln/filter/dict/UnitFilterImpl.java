@@ -19,7 +19,7 @@ public class UnitFilterImpl extends AbstractFilter<Unit> implements Filter<Unit>
 
     private Unit prepare(Unit entity, SessionContext context) {
         if (entity.getId()!=null) {
-            Unit curEntity = service.findById(entity.getId(), null);
+            Unit curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

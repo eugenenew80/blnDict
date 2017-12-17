@@ -19,7 +19,7 @@ public class CurrentTransTypeFilterImpl extends AbstractFilter<CurrentTransType>
 
     private CurrentTransType prepare(CurrentTransType entity, SessionContext context) {
         if (entity.getId()!=null) {
-            CurrentTransType curEntity = service.findById(entity.getId(), null);
+            CurrentTransType curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

@@ -19,7 +19,7 @@ public class VoltageTransTypeFilterImpl extends AbstractFilter<VoltageTransType>
 
     private VoltageTransType prepare(VoltageTransType entity, SessionContext context) {
         if (entity.getId()!=null) {
-            VoltageTransType curEntity = service.findById(entity.getId(), null);
+            VoltageTransType curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

@@ -20,7 +20,7 @@ public class PowerTransformerFilterImpl extends AbstractFilter<PowerTransformer>
 
     private PowerTransformer prepare(PowerTransformer entity, SessionContext context) {
         if (entity.getId()!=null) {
-            PowerTransformer curEntity = service.findById(entity.getId(), null);
+            PowerTransformer curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());

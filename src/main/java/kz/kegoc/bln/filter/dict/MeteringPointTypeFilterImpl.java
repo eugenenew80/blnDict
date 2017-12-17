@@ -19,7 +19,7 @@ public class MeteringPointTypeFilterImpl extends AbstractFilter<MeteringPointTyp
 
     private MeteringPointType prepare(MeteringPointType entity, SessionContext context) {
         if (entity.getId()!=null) {
-            MeteringPointType curEntity = service.findById(entity.getId(), null);
+            MeteringPointType curEntity = service.findById(entity.getId(), context);
 
             entity.setCreateDate(curEntity.getCreateDate());
             entity.setCreateBy(curEntity.getCreateBy());
