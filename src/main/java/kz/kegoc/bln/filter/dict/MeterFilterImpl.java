@@ -37,7 +37,7 @@ public class MeterFilterImpl extends AbstractFilter<Meter> implements Filter<Met
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
 
-        if (entity.getBusinessPartner().getId()!=null)
+        if (entity.getBusinessPartner()!=null && entity.getBusinessPartner().getId()!=null)
             entity.setBusinessPartner(businessPartnerService.findById(entity.getBusinessPartner().getId(), context));
 
         entity = addUpdateInfo(entity, context);
