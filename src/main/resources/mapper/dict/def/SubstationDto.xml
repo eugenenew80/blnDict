@@ -8,49 +8,69 @@
     <class-a>kz.kegoc.bln.entity.dict.Substation</class-a>
     <class-b>kz.kegoc.bln.entity.dict.dto.SubstationDto</class-b>
     
-     <field>
-       <a>substationType.id</a>
-       <b>substationTypeId</b>
-     </field>
+    <field>
+        <a>substationType.id</a>
+        <b>substationTypeId</b>
+    </field>
 
-      <field type="one-way">
-       <a>substationType.name</a>
-       <b>substationTypeName</b>
-     </field>
+    <field type="one-way">
+        <a>substationType.name</a>
+        <b>substationTypeName</b>
+    </field>
 
-      <field>
-          <a>businessPartner.id</a>
-          <b>businessPartnerId</b>
-      </field>
+    <field>
+        <a>energyNode.id</a>
+        <b>energyNodeId</b>
+    </field>
 
-      <field type="one-way">
-          <a>businessPartner.shortName</a>
-          <b>businessPartnerShortName</b>
-      </field>
+    <field type="one-way">
+        <a>energyNode.name</a>
+        <b>energyNodeName</b>
+    </field>
 
-      <field>
-          <a>voltageClass.id</a>
-          <b>voltageClassId</b>
-      </field>
+    <field>
+        <a>energyDistrict.id</a>
+        <b>energyDistrictId</b>
+    </field>
 
-      <field type="one-way">
-          <a>voltageClass.name</a>
-          <b>voltageClassName</b>
-      </field>
+    <field type="one-way">
+        <a>energyDistrict.name</a>
+        <b>energyDistrictName</b>
+    </field>
 
-      <field type="one-way">
-          <a>voltageClass.value</a>
-          <b>voltageClassValue</b>
-      </field>
+    <field>
+        <a>businessPartner.id</a>
+        <b>businessPartnerId</b>
+    </field>
 
-      <field>
-          <a>org.id</a>
-          <b>orgId</b>
-      </field>
+    <field type="one-way">
+        <a>businessPartner.shortName</a>
+        <b>businessPartnerShortName</b>
+    </field>
 
-      <field type="one-way">
-          <a>org.name</a>
-          <b>orgName</b>
-      </field>
+    <field>
+        <a>voltageClass.id</a>
+        <b>voltageClassId</b>
+    </field>
+
+    <field type="one-way">
+        <a>voltageClass.name</a>
+        <b>voltageClassName</b>
+    </field>
+
+    <field type="one-way">
+        <a>voltageClass.value</a>
+        <b>voltageClassValue</b>
+    </field>
+
+    <field>
+        <a>org.id</a>
+        <b>orgId</b>
+    </field>
+
+    <field type="one-way">
+        <a>org.name</a>
+        <b>orgName</b>
+    </field>
   </mapping> 
 </mappings> 

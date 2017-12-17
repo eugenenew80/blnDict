@@ -36,6 +36,8 @@ public class EnergySource implements HasId, HasName, HasLang, HasDates, HasUser,
 	@NotNull
 	private Organization org;
 
+	private EnergyNode energyNode;
+	private EnergyDistrict energyDistrict;
 	private BusinessPartner businessPartner;
 	private LocalDateTime createDate;
 	private LocalDateTime lastUpdateDate;

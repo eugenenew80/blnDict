@@ -1495,6 +1495,14 @@
 				<join-column name="business_partner_id"/>
 			</many-to-one>
 
+			<many-to-one name="energyNode">
+				<join-column name="energy_node_id"/>
+			</many-to-one>
+
+			<many-to-one name="energyDistrict">
+				<join-column name="energy_district_id"/>
+			</many-to-one>
+
 			<one-to-many name="meteringPoints" mapped-by="substation" />
 
 			<one-to-many name="translations" mapped-by="substation" orphan-removal="true">
@@ -1684,6 +1692,14 @@
 
 			<many-to-one name="businessPartner">
 				<join-column name="business_partner_id"/>
+			</many-to-one>
+
+			<many-to-one name="energyNode">
+				<join-column name="energy_node_id"/>
+			</many-to-one>
+
+			<many-to-one name="energyDistrict">
+				<join-column name="energy_district_id"/>
 			</many-to-one>
 
 			<one-to-many name="meteringPoints" mapped-by="energySource" />

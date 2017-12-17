@@ -29,10 +29,12 @@ public class EnergyDistrictResourceImpl {
 	public Response getAll(
 			@QueryParam("shortName") String shortName,
 			@QueryParam("name") String name,
+			@QueryParam("energyNodeId") Long energyNodeId,
 			@HeaderParam("lang") Lang lang
 	) {
 		List<EnergyDistrictDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
+			.filter(it -> energyNodeId == null || energyNodeId.equals(it.getEnergyNode().getId()))
 			.map(it-> mapper.map(it, EnergyDistrictDto.class))
 			.collect(Collectors.toList());
 		

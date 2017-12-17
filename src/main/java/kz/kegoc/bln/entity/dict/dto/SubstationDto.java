@@ -12,6 +12,10 @@ public class SubstationDto {
 	private Long id;
 	private String name;
 	private String shortName;
+	private Long energyNodeId;
+	private String energyNodeName;
+	private Long energyDistrictId;
+	private String energyDistrictName;
 	private Long substationTypeId;
 	private String substationTypeName;
 	private Long voltageClassId;

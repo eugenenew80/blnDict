@@ -32,6 +32,8 @@ public class Substation implements HasId, HasName, HasLang, HasDates, HasUser, H
 	@NotNull
 	private Organization org;
 
+	private EnergyNode energyNode;
+	private EnergyDistrict energyDistrict;
 	private BusinessPartner businessPartner;
 	private LocalDateTime createDate;
 	private LocalDateTime lastUpdateDate;

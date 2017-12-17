@@ -15,6 +15,10 @@ public class EnergySourceDto {
 	private String address;
 	private Double installedPower;
 	private Boolean largeElectricityProducer;
+	private Long energyNodeId;
+	private String energyNodeName;
+	private Long energyDistrictId;
+	private String energyDistrictName;
 	private Long energySourceTypeId;
 	private String energySourceTypeName;
 	private Long voltageClassId;

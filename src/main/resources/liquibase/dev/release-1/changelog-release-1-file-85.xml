@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-eug-331" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Adding columns to dict_substations</comment>
+        <addColumn tableName="dict_substations" schemaName="apps">
+            <column name="energy_node_id" type="number" remarks="Ид. энергоузла">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="energy_district_id" type="number" remarks="Ид. энергорайона">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-eug-332" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Adding columns to dict_energy_sources</comment>
+        <addColumn tableName="dict_energy_sources" schemaName="apps">
+            <column name="energy_node_id" type="number" remarks="Ид. энергоузла">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="energy_district_id" type="number" remarks="Ид. энергорайона">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-eug-333" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: dict_substations to dict_energy_nodes</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_substations"
+                baseColumnNames="energy_node_id"
+                constraintName="fk_dict_substations_4"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_energy_nodes"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-eug-334" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: dict_substations to dict_energy_districts</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_substations"
+                baseColumnNames="energy_district_id"
+                constraintName="fk_dict_substations_5"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_energy_districts"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-eug-335" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: dict_energy_sources to dict_energy_nodes</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_energy_sources"
+                baseColumnNames="energy_node_id"
+                constraintName="fk_dict_energy_sources_4"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_energy_nodes"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-eug-336" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: dict_energy_sources to dict_energy_districts</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_energy_sources"
+                baseColumnNames="energy_district_id"
+                constraintName="fk_dict_energy_sources_5"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_energy_districts"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+</databaseChangeLog>
