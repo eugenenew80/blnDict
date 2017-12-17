@@ -1,6 +1,6 @@
 package kz.kegoc.bln.filter.dict;
 
-import kz.kegoc.bln.service.dict.BusinessPartnerService;
+import kz.kegoc.bln.entity.dict.Organization;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Meter;
@@ -8,8 +8,6 @@ import kz.kegoc.bln.entity.dict.translate.MeterTranslate;
 import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
 import kz.kegoc.bln.service.dict.MeterService;
-import kz.kegoc.bln.service.dict.OrganizationService;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.HashMap;
@@ -32,13 +30,10 @@ public class MeterFilterImpl extends AbstractFilter<Meter> implements Filter<Met
         }
 
         if (entity.getOrg()==null)
-            entity.setOrg(organizationService.findById(context.getUser().getOrgId(), context));
+            entity.setOrg(new Organization(context.getUser().getOrgId()));
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
-
-        if (entity.getBusinessPartner()!=null && entity.getBusinessPartner().getId()!=null)
-            entity.setBusinessPartner(businessPartnerService.findById(entity.getBusinessPartner().getId(), context));
 
         entity = addUpdateInfo(entity, context);
         return entity;
@@ -60,12 +55,6 @@ public class MeterFilterImpl extends AbstractFilter<Meter> implements Filter<Met
 
     @Inject
     private MeterService meterService;
-
-    @Inject
-    private BusinessPartnerService businessPartnerService;
-
-    @Inject
-    private OrganizationService organizationService;
 
     @Inject
     private Lang defLang;

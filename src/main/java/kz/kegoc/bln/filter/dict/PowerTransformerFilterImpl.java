@@ -1,12 +1,12 @@
 package kz.kegoc.bln.filter.dict;
 
+import kz.kegoc.bln.entity.dict.Organization;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.PowerTransformer;
 import kz.kegoc.bln.entity.dict.translate.PowerTransformerTranslate;
 import kz.kegoc.bln.filter.AbstractFilter;
 import kz.kegoc.bln.filter.Filter;
-import kz.kegoc.bln.service.dict.OrganizationService;
 import kz.kegoc.bln.service.dict.PowerTransformerService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -30,7 +30,7 @@ public class PowerTransformerFilterImpl extends AbstractFilter<PowerTransformer>
         }
 
         if (entity.getOrg()==null)
-            entity.setOrg(organizationService.findById(context.getUser().getOrgId(), context));
+            entity.setOrg(new Organization(context.getUser().getOrgId()));
 
         if (entity.getTranslations()==null)
             entity.setTranslations(new HashMap<>());
@@ -54,9 +54,6 @@ public class PowerTransformerFilterImpl extends AbstractFilter<PowerTransformer>
 
     @Inject
     private PowerTransformerService service;
-
-    @Inject
-    private OrganizationService organizationService;
 
     @Inject
     private Lang defLang;

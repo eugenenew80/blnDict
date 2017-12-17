@@ -13,6 +13,9 @@ import kz.kegoc.bln.entity.adm.User;
 @Data
 @EqualsAndHashCode(of= {"id"})
 public class Organization implements HasId, HasName, HasLang, HasDates, HasUser {
+	public Organization() {}
+	public Organization(Long id) { setId(id);}
+
 	private Long id;
 
 	@NotNull @Size(max = 250)
