@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-eug-386" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contracts to contract_record_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contracts"
+                baseColumnNames="record_type"
+                constraintName="fk_contracts_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="contract_record_types"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-eug-387" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contracts to contract_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contracts"
+                baseColumnNames="contract_type_id"
+                constraintName="fk_contracts_2"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="contract_types"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-eug-388" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contracts to contract_statuses</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contracts"
+                baseColumnNames="status_id"
+                constraintName="fk_contracts_3"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="contract_statuses"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-eug-389" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contracts to contracts</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contracts"
+                baseColumnNames="parent_contract_id"
+                constraintName="fk_contracts_4"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="contracts"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-eug-390" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contracts to dict_business_partners</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contracts"
+                baseColumnNames="bp1_id"
+                constraintName="fk_contracts_5"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_business_partners"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+
+    <changeSet id="dict-eug-391" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contracts to dict_banks</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contracts"
+                baseColumnNames="bp1_bank_id"
+                constraintName="fk_contracts_6"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_banks"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+
+    <changeSet id="dict-eug-392" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contracts to dict_business_partners</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contracts"
+                baseColumnNames="bp2_id"
+                constraintName="fk_contracts_7"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_business_partners"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-eug-393" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contracts to dict_banks</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contracts"
+                baseColumnNames="bp2_bank_id"
+                constraintName="fk_contracts_8"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_banks"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-eug-394" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contracts to dict_energy_sources</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contracts"
+                baseColumnNames="power_station_id"
+                constraintName="fk_contracts_9"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_energy_sources"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-eug-395" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contracts to dict_energy_source_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contracts"
+                baseColumnNames="power_station_type_id"
+                constraintName="fk_contracts_10"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_energy_source_types"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+</databaseChangeLog>

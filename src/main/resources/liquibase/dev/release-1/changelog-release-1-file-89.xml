@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-eug-357" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating table: contract_statuses</comment>
+        <createTable tableName="contract_statuses" schemaName="apps" remarks="Статусы договоров">
+            <column name="id" type="number" remarks="Индетификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(30)" remarks="Наименование">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата последнего обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор последнего обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-eug-358" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating primary key for table: contract_statuses</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_contract_statuses"
+                schemaName="apps"
+                tableName="contract_statuses"/>
+    </changeSet>
+
+    <changeSet id="dict-eug-359" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating sequence for table: contract_statuses</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="contract_statuses_s"
+                startValue="1"/>
+    </changeSet>
+
+
+    <changeSet id="dict-eug-360" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating table: contract_statuses_tl</comment>
+        <createTable tableName="contract_statuses_tl" schemaName="apps" remarks="Статусы договоров (Перевод)">
+            <column name="id" type="number" remarks="Идентификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="contract_status_id" type="number" remarks="Ссылка на родительскую запись">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(30)" remarks="Наименование">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата последнего обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор последнего обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-eug-361" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating primary key for table: contract_statuses_tl</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_contract_statuses_tl"
+                schemaName="apps"
+                tableName="contract_statuses_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-eug-362" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating unique key for table: contract_statuses_tl</comment>
+        <addUniqueConstraint
+                columnNames="contract_status_id, lang"
+                constraintName="uk_contract_statuses_tl"
+                schemaName="apps"
+                tableName="contract_statuses_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-eug-363" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating sequence for table: contract_statuses_tl</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="contract_statuses_tl_s"
+                startValue="1"/>
+    </changeSet>
+
+    <changeSet id="dict-eug-364" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contract_statuses_tl to contract_statuses</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contract_statuses_tl"
+                baseColumnNames="contract_status_id"
+                constraintName="fk_contract_statuses_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="contract_statuses"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+</databaseChangeLog>

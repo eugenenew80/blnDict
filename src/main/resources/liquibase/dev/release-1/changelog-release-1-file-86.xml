@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-eug-337" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating table: dict_receipt_and_delivery_points</comment>
+        <createTable tableName="dict_receipt_and_delivery_points" schemaName="apps" remarks="Справочник пунктов приёма и доставки эл. энергии">
+            <column name="id" type="number" remarks="Индетификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(300)" remarks="Наименование">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="energy_object_id" type="number" remarks="id объекта">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="energy_object_type" type="varchar(100)" remarks="Тип обьекта">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата последнего обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор последнего обновления">
+                <constraints nullable="true"/>
+            </column>            
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-eug-338" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating primary key for table: dict_receipt_and_delivery_points</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_dict_receipt_and_delivery_points"
+                schemaName="apps"
+                tableName="dict_receipt_and_delivery_points"/>
+    </changeSet>
+
+    <changeSet id="dict-eug-339" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating sequence for table: dict_receipt_and_delivery_points</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="dict_receipt_and_delivery_points_s"
+                startValue="1"/>
+    </changeSet>
+
+
+    <changeSet id="dict-eug-340" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating table: dict_receipt_and_delivery_points_tl</comment>
+        <createTable tableName="dict_receipt_and_delivery_points_tl" schemaName="apps" remarks="Справочник пунктов приёма и доставки эл. энергии (Перевод)">
+            <column name="id" type="number" remarks="Идентификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="receipt_and_delivery_point_id" type="number" remarks="Ссылка на родительскую запись">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(300)" remarks="Наименование">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата последнего обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор последнего обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-eug-341" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating primary key for table: dict_receipt_and_delivery_points_tl</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_dict_receipt_and_delivery_points_tl"
+                schemaName="apps"
+                tableName="dict_receipt_and_delivery_points_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-eug-342" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating unique key for table: dict_receipt_and_delivery_points_tl</comment>
+        <addUniqueConstraint
+                columnNames="receipt_and_delivery_point_id, lang"
+                constraintName="uk_dict_receipt_and_delivery_points_tl"
+                schemaName="apps"
+                tableName="dict_receipt_and_delivery_points_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-eug-343" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating sequence for table: dict_receipt_and_delivery_points_tl</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="dict_receipt_and_delivery_points_tl_s"
+                startValue="1"/>
+    </changeSet>
+
+    <changeSet id="dict-eug-344" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: dict_receipt_and_delivery_points_tl to dict_receipt_and_delivery_points</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_receipt_and_delivery_points_tl"
+                baseColumnNames="receipt_and_delivery_point_id"
+                constraintName="fk_dict_receipt_and_delivery_points_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_receipt_and_delivery_points"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+</databaseChangeLog>

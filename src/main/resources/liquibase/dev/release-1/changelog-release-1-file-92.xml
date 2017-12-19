@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-eug-381" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating table: dict_services</comment>
+        <createTable tableName="contracts_tl" schemaName="apps" remarks="Договора (Перевод)">
+            <column name="id" type="number" remarks="ID записи">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="contract_id" type="number" remarks="ID родительской записи">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="place_of_contract" type="varchar2(30)" remarks="Место заключения контракта">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="bp1_name" type="varchar(500)" remarks="Наименование организации">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_legal_address" type="varchar(300)" remarks="Юридический адрес">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_actual_address" type="varchar(300)" remarks="Фактический адрес">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_contract_person_fio" type="varchar(50)" remarks="Полное ФИО подписывающего">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_contract_person_post" type="varchar(50)" remarks="Должность подписывающего">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_acting_on_basis" type="varchar(100)" remarks="Действующий на основании">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_bank_name" type="varchar(100)" remarks="Наименование банка">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_name" type="varchar(500)" remarks="Наименование организации">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_legal_address" type="varchar(300)" remarks="Юридический адрес">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_actual_address" type="varchar(300)" remarks="Фактический адрес">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_contract_person_fio" type="varchar(50)" remarks="в лице">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_contract_person_post" type="varchar(50)" remarks="должность">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_acting_on_basis" type="varchar(100)" remarks="Действующий на основании">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_bank_name" type="varchar(100)" remarks="Наименование банка">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="power_station_name" type="varchar(100)" remarks="Наименование">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="photoelectric module type" type="varchar(50)" remarks="Тип фотоэлектрического модуля">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="silicon_country" type="varchar(50)" remarks="Страна-производитель кремния">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата последнего обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор последнего обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-eug-382" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating primary key for table: contracts_tl</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_contracts_tl"
+                schemaName="apps"
+                tableName="contracts_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-eug-383" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating sequence for table: contracts_tl</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="contracts_tl_s"
+                startValue="1"/>
+    </changeSet>
+
+
+    <changeSet id="dict-eug-384" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating unique key for table: contracts_tl</comment>
+        <addUniqueConstraint
+                columnNames="contract_id, lang"
+                constraintName="uk_contracts_tl_1"
+                schemaName="apps"
+                tableName="contracts_tl"/>
+    </changeSet>
+
+
+    <changeSet id="dict-eug-385" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: contracts_tl to contracts</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="contracts_tl"
+                baseColumnNames="contract_id"
+                constraintName="fk_contracts_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="contracts"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+</databaseChangeLog>

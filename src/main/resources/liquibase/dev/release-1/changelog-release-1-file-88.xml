@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-eug-354" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating table: dict_services</comment>
+        <createTable tableName="contracts" schemaName="apps" remarks="Договора">
+            <column name="id" type="number" remarks="ID записи">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="contract_number" type="varchar(30)" remarks="Номер договора">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="signing_date" type="date" remarks="Дата заключения">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="place_of_contract" type="varchar2(30)" remarks="Место заключения контракта">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="record_type" type="number" remarks="Тип записи {Договор, Доп.соглашение}">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="supplementary_agreement_number" type="number" remarks="Номер дополнительного соглашения">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="contract_type_id" type="number" remarks="Тип договора">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status_id" type="number" remarks="Статус договора">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="parent_contract_id" type="number" remarks="Ссылка на первую версию договора">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_id" type="number" remarks="id бизнес-партнера-покупателя">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="bp1_name" type="varchar(500)" remarks="Наименование организации">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_legal_address" type="varchar(300)" remarks="Юридический адрес">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_actual_address" type="varchar(300)" remarks="Фактический адрес">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_bin" type="varchar(12)" remarks="БИН">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_contract_person_fio" type="varchar(50)" remarks="Полное ФИО подписывающего">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_contract_person_post" type="varchar(50)" remarks="Должность подписывающего">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_acting_on_basis" type="varchar(100)" remarks="Действующий на основании">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_bank_id" type="number" remarks="id банка">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="bp1_bank_bic" type="varchar(11)" remarks="БИК">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_bank_name" type="varchar(100)" remarks="Наименование банка">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp1_bank_account" type="varchar(40)" remarks="Номер счета">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_id" type="number" remarks="id бизнес-партнера-покупателя">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="bp2_name" type="varchar(500)" remarks="Наименование организации">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_legal_address" type="varchar(300)" remarks="Юридический адрес">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_actual_address" type="varchar(300)" remarks="Фактический адрес">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_bin" type="varchar(12)" remarks="БИН">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_contract_person_fio" type="varchar(50)" remarks="в лице">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_contract_person_post" type="varchar(50)" remarks="должность">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_acting_on_basis" type="varchar(100)" remarks="Действующий на основании">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_bank_id" type="number" remarks="id банка">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="bp2_bank_bic" type="varchar(11)" remarks="БИК">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_bank_name" type="varchar(100)" remarks="Наименование банка">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="bp2_bank_account" type="varchar(40)" remarks="Номер счета">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="application_number" type="varchar(30)" remarks="Входящий номер">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="application_date" type="date" remarks="Дата">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="is_fixed_tariff" type="number" remarks="Тариф фиксированный{1-да, 0-нет}">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="tariff" type="number" remarks="Тариф">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="is_including_vat" type="number" remarks="с учетом НДС: {1-Да, 0-Нет}">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="tariff_plan_id" type="number" remarks="ID тарифного плана">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="power_station_id" type="number" remarks="id энергообъекта">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="power_station_name" type="varchar(100)" remarks="Наименование">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="power_station_type_id" type="number" remarks="Тип электростанции">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="installed_power" type="number" remarks="Суммарная установленная мощность, МВт">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="photoelectric module type" type="varchar(50)" remarks="Тип фотоэлектрического модуля">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="silicon_country" type="varchar(50)" remarks="Страна-производитель кремния">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="cadastral_number" type="varchar(50)" remarks="Кадастровый номер площадки">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="total_area" type="number" remarks="Общая площадь земельного участка, гектар">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="capacity_utilization_factor" type="number" remarks="Прогнозный коэффициент использования установленной мощности">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="commissioning_date" type="date" remarks="Дата ввода в эксплуацию">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="eo_days_before_commissioning_date" type="number" remarks="Не позднее ХХ дней до даты начала эксплуатации">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="eo_days_before_start_month" type="number" remarks="За ХХ дней до начала месяца">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="eo_days_before_start_year" type="number" remarks="За ХХ дней до начала года">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="forfeit_rate" type="number" remarks="Ставка неустойки, %">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="maximum_forfeit" type="number" remarks="Максимальная величина неустойки, %">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="contract_start_date" type="date" remarks="Срок действия с">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="contract_end_date" type="date" remarks="Срок действия по">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="ci_x3_days_after_end_month" type="number" remarks="Не позднее Х3 числа следующего месяца">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="pc1_x1_cdays_after_end_month" type="number" remarks="Оплатить в течении Х1 дней с момента окончания расчетного месяца">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="pc1_and_add_x2_wdays" type="number" remarks="И не позднее Х2 рабочих дней">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата последнего обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор последнего обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-eug-355" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating primary key for table: contracts</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_contracts"
+                schemaName="apps"
+                tableName="contracts"/>
+    </changeSet>
+
+    <changeSet id="dict-eug-356" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating sequence for table: contracts</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="contracts_s"
+                startValue="1"/>
+    </changeSet>
+
+</databaseChangeLog>
