@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-171" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: info_types_by_contract</comment>
+		<createTable tableName="info_types_by_contract" schemaName="apps" remarks="Справочник Типы информации к договору">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="short_name" type="varchar(100)" remarks="Краткое наименование">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="name" type="varchar(200)" remarks="Наименование типа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-172" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: info_types_by_contract</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_info_types_by_contract"
+				schemaName="apps"
+				tableName="info_types_by_contract"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-173" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: info_types_by_contract</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="info_types_by_contract_s"
+				startValue="1"/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-174" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: info_types_by_contract_tl</comment>
+		<createTable tableName="info_types_by_contract_tl" schemaName="apps" remarks="Справочник Типы информации к договору (Перевод)">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="info_types_by_contract_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="short_name" type="varchar(100)" remarks="Краткое наименование">
+				<constraints nullable="true"/>
+			</column
+
+            ><column name="name" type="varchar(200)" remarks="Наименование типа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-175" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: info_types_by_contract_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_info_types_by_contract_tl"
+				schemaName="apps"
+				tableName="info_types_by_contract_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-176" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: info_types_by_contract_tl</comment>
+		<addUniqueConstraint
+				columnNames="info_types_by_contract_id, lang"
+				constraintName="uk_info_types_by_contract_tl"
+				schemaName="apps"
+				tableName="info_types_by_contract_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-177" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: info_types_by_contract_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="info_types_by_contract_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-178" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: info_types_by_contract_tl to info_types_by_contract</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="info_types_by_contract_tl"
+				baseColumnNames="info_types_by_contract_id"
+				constraintName="fk_info_types_by_contract_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="info_types_by_contract"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+</databaseChangeLog>

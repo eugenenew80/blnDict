@@ -99,4 +99,7 @@
     <include file="release-1/changelog-release-1-file-91.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-92.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-93.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-94.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-95.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-96.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

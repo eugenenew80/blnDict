@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-179" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pcv_header</comment>
+		<createTable tableName="pcv_header" schemaName="apps" remarks="Плановые значения по контракту - Заголовок">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="ID договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="info_type_id" type="number" remarks="ID типа информации к договору">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_id" type="number" remarks="ID запроса пользователя">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="version" type="number" remarks="Версия">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="is_active" type="number" remarks="Активно?">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_year" type="number" remarks="Привизать к году">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="year" type="number" remarks="Год">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_quarter" type="number" remarks="Привязать к кварталу">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="quarter" type="number" remarks="Квартал">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_month" type="number" remarks="Привязать к месяцу">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="month" type="number" remarks="Месяц">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_day" type="number" remarks="Привязать к дню">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="day" type="number" remarks="день месеца">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-180" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pcv_header</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pcv_header"
+				schemaName="apps"
+				tableName="pcv_header"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-181" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pcv_header</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pcv_header_s"
+				startValue="1"/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-182" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pcv_header to contracts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pcv_header"
+				baseColumnNames="contract_id"
+				constraintName="fk_pcv_header_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="contracts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-183" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pcv_header to info_types_by_contract</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pcv_header"
+				baseColumnNames="info_type_id"
+				constraintName="fk_pcv_header_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="info_types_by_contract"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+</databaseChangeLog>
