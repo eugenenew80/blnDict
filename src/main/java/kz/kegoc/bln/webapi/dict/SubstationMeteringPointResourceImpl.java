@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.SubstationMeteringPoint;
@@ -29,7 +30,7 @@ public class SubstationMeteringPointResourceImpl {
 		List<SubstationMeteringPointDto> list = substationService.findById(substationId, buildSessionContext(lang))
 			.getMeteringPoints()
 			.stream()
-			.map( it-> mapper.map(it, SubstationMeteringPointDto.class) )
+			.map( it-> mapper.getMapper().map(it, SubstationMeteringPointDto.class) )
 			.collect(Collectors.toList());		
 	
 		return Response.ok()
@@ -43,18 +44,18 @@ public class SubstationMeteringPointResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		SubstationMeteringPoint entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, SubstationMeteringPointDto.class))
+			.entity(mapper.getMapper().map(entity, SubstationMeteringPointDto.class))
 			.build();
 	}
 
 
 	@POST
 	public Response create(SubstationMeteringPointDto entityDto) {
-		SubstationMeteringPoint entity = mapper.map(entityDto, SubstationMeteringPoint.class);
+		SubstationMeteringPoint entity = mapper.getMapper().map(entityDto, SubstationMeteringPoint.class);
 		SubstationMeteringPoint newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, SubstationMeteringPointDto.class))
+			.entity(mapper.getMapper().map(newEntity, SubstationMeteringPointDto.class))
 			.build();
 	}
 
@@ -62,11 +63,11 @@ public class SubstationMeteringPointResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, SubstationMeteringPointDto entityDto ) {
-		SubstationMeteringPoint entity = mapper.map(entityDto, SubstationMeteringPoint.class);
+		SubstationMeteringPoint entity = mapper.getMapper().map(entityDto, SubstationMeteringPoint.class);
 		SubstationMeteringPoint newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, SubstationMeteringPointDto.class))
+			.entity(mapper.getMapper().map(newEntity, SubstationMeteringPointDto.class))
 			.build();
 	}
 
@@ -95,7 +96,7 @@ public class SubstationMeteringPointResourceImpl {
 	private SubstationMeteringPointService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

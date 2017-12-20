@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.ecm;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.ecm.ContentType;
@@ -29,7 +30,7 @@ public class ContentTypeResourceImpl {
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @HeaderParam("lang") Lang lang) {
 		List<ContentTypeDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, ContentTypeDto.class) )
+			.map( it-> mapper.getMapper().map(it, ContentTypeDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -43,18 +44,18 @@ public class ContentTypeResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		ContentType entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, ContentTypeDto.class))
+			.entity(mapper.getMapper().map(entity, ContentTypeDto.class))
 			.build();		
 	}
 
 
 	@POST
 	public Response create(ContentTypeDto entityDto, @HeaderParam("lang") Lang lang) {
-		ContentType entity = mapper.map(entityDto, ContentType.class);
+		ContentType entity = mapper.getMapper().map(entityDto, ContentType.class);
 		ContentType newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, ContentTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, ContentTypeDto.class))
 			.build();
 	}
 	
@@ -62,11 +63,11 @@ public class ContentTypeResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, ContentTypeDto entityDto, @HeaderParam("lang") Lang lang) {
-		ContentType entity = mapper.map(entityDto, ContentType.class);
+		ContentType entity = mapper.getMapper().map(entityDto, ContentType.class);
 		ContentType newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, ContentTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, ContentTypeDto.class))
 			.build();
 	}
 	
@@ -92,7 +93,7 @@ public class ContentTypeResourceImpl {
 	private ContentTypeService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

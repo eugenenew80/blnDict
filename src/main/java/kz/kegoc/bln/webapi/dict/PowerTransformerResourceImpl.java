@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.PowerTransformer;
@@ -32,7 +33,7 @@ public class PowerTransformerResourceImpl {
 	) {
 		List<PowerTransformerDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, PowerTransformerDto.class) )
+			.map( it-> mapper.getMapper().map(it, PowerTransformerDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -46,18 +47,18 @@ public class PowerTransformerResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		PowerTransformer entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, PowerTransformerDto.class))
+			.entity(mapper.getMapper().map(entity, PowerTransformerDto.class))
 			.build();		
 	}
 
 
 	@POST
 	public Response create(PowerTransformerDto entityDto) {
-		PowerTransformer entity = mapper.map(entityDto, PowerTransformer.class);
+		PowerTransformer entity = mapper.getMapper().map(entityDto, PowerTransformer.class);
 		PowerTransformer newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 		
 		return Response.ok()
-			.entity(mapper.map(newEntity, PowerTransformerDto.class))
+			.entity(mapper.getMapper().map(newEntity, PowerTransformerDto.class))
 			.build();
 	}
 	
@@ -65,11 +66,11 @@ public class PowerTransformerResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, PowerTransformerDto entityDto ) {
-		PowerTransformer entity = mapper.map(entityDto, PowerTransformer.class);
+		PowerTransformer entity = mapper.getMapper().map(entityDto, PowerTransformer.class);
 		PowerTransformer newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 		
 		return Response.ok()
-			.entity(mapper.map(newEntity, PowerTransformerDto.class))
+			.entity(mapper.getMapper().map(newEntity, PowerTransformerDto.class))
 			.build();
 	}
 	
@@ -95,7 +96,7 @@ public class PowerTransformerResourceImpl {
 	private PowerTransformerService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.ContactEmail;
@@ -29,7 +30,7 @@ public class ContactEmailResourceImpl {
 		List<ContactEmailDto> list = contactService.findById(contactId, buildSessionContext(lang))
 			.getContactEmails()
 			.stream()
-			.map(it-> mapper.map(it, ContactEmailDto.class))
+			.map(it-> mapper.getMapper().map(it, ContactEmailDto.class))
 			.collect(Collectors.toList());		
 	
 		return Response.ok()
@@ -43,18 +44,18 @@ public class ContactEmailResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		ContactEmail entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, ContactEmailDto.class))
+			.entity(mapper.getMapper().map(entity, ContactEmailDto.class))
 			.build();
 	}
 
 
 	@POST
 	public Response create(ContactEmailDto entityDto, @HeaderParam("lang") Lang lang) {
-		ContactEmail entity = mapper.map(entityDto, ContactEmail.class);
+		ContactEmail entity = mapper.getMapper().map(entityDto, ContactEmail.class);
 		ContactEmail newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, ContactEmailDto.class))
+			.entity(mapper.getMapper().map(newEntity, ContactEmailDto.class))
 			.build();
 	}
 
@@ -62,11 +63,11 @@ public class ContactEmailResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, ContactEmailDto entityDto, @HeaderParam("lang") Lang lang) {
-		ContactEmail entity = mapper.map(entityDto, ContactEmail.class);
+		ContactEmail entity = mapper.getMapper().map(entityDto, ContactEmail.class);
 		ContactEmail newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, ContactEmailDto.class))
+			.entity(mapper.getMapper().map(newEntity, ContactEmailDto.class))
 			.build();
 	}
 
@@ -95,7 +96,7 @@ public class ContactEmailResourceImpl {
 	private ContactEmailService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

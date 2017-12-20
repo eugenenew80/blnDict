@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -27,7 +29,7 @@ public class CurrentTransTypeResourceImpl {
 	) {
 		List<CurrentTransTypeDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
-			.map(it-> mapper.map(it, CurrentTransTypeDto.class))
+			.map(it-> mapper.getMapper().map(it, CurrentTransTypeDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -41,18 +43,18 @@ public class CurrentTransTypeResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		CurrentTransType entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, CurrentTransTypeDto.class))
+			.entity(mapper.getMapper().map(entity, CurrentTransTypeDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(CurrentTransTypeDto entityDto, @HeaderParam("lang") Lang lang) {
-		CurrentTransType entity = mapper.map(entityDto, CurrentTransType.class);
+		CurrentTransType entity = mapper.getMapper().map(entityDto, CurrentTransType.class);
 		CurrentTransType newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, CurrentTransTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, CurrentTransTypeDto.class))
 			.build();
 	}
 	
@@ -60,11 +62,11 @@ public class CurrentTransTypeResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, CurrentTransTypeDto entityDto, @HeaderParam("lang") Lang lang) {
-		CurrentTransType entity = mapper.map(entityDto, CurrentTransType.class);
+		CurrentTransType entity = mapper.getMapper().map(entityDto, CurrentTransType.class);
 		CurrentTransType newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, CurrentTransTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, CurrentTransTypeDto.class))
 			.build();
 	}
 	
@@ -90,7 +92,7 @@ public class CurrentTransTypeResourceImpl {
 	private CurrentTransTypeService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

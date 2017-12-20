@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Country;
@@ -32,7 +33,7 @@ public class CountryResourceImpl {
 	) {
 		List<CountryDto> list = service.find(code, null, name, buildSessionContext(lang))
 			.stream()
-			.map(it-> mapper.map(it, CountryDto.class))
+			.map(it-> mapper.getMapper().map(it, CountryDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -46,18 +47,18 @@ public class CountryResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		Country entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, CountryDto.class))
+			.entity(mapper.getMapper().map(entity, CountryDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(CountryDto entityDto, @HeaderParam("lang") Lang lang) {
-		Country entity = mapper.map(entityDto, Country.class);
+		Country entity = mapper.getMapper().map(entityDto, Country.class);
 		Country newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, CountryDto.class))
+			.entity(mapper.getMapper().map(newEntity, CountryDto.class))
 			.build();
 	}
 	
@@ -65,11 +66,11 @@ public class CountryResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, CountryDto entityDto, @HeaderParam("lang") Lang lang ) {
-		Country entity = mapper.map(entityDto, Country.class);
+		Country entity = mapper.getMapper().map(entityDto, Country.class);
 		Country newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, CountryDto.class))
+			.entity(mapper.getMapper().map(newEntity, CountryDto.class))
 			.build();
 	}
 	
@@ -95,7 +96,7 @@ public class CountryResourceImpl {
 	private CountryService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

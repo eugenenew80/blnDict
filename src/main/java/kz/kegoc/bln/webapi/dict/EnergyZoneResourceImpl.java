@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -29,7 +30,7 @@ public class EnergyZoneResourceImpl {
 	{
 		List<EnergyZoneDto> list = service.find(code, null, name, buildSessionContext(lang))
 			.stream()
-			.map(it-> mapper.map(it, EnergyZoneDto.class))
+			.map(it-> mapper.getMapper().map(it, EnergyZoneDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -43,18 +44,18 @@ public class EnergyZoneResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		EnergyZone entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, EnergyZoneDto.class))
+			.entity(mapper.getMapper().map(entity, EnergyZoneDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(EnergyZoneDto entityDto) {
-		EnergyZone entity = mapper.map(entityDto, EnergyZone.class);
+		EnergyZone entity = mapper.getMapper().map(entityDto, EnergyZone.class);
 		EnergyZone newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergyZoneDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergyZoneDto.class))
 			.build();
 	}
 	
@@ -62,11 +63,11 @@ public class EnergyZoneResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, EnergyZoneDto entityDto ) {
-		EnergyZone entity = mapper.map(entityDto, EnergyZone.class);
+		EnergyZone entity = mapper.getMapper().map(entityDto, EnergyZone.class);
 		EnergyZone newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergyZoneDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergyZoneDto.class))
 			.build();
 	}
 	
@@ -92,7 +93,7 @@ public class EnergyZoneResourceImpl {
 	private EnergyZoneService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

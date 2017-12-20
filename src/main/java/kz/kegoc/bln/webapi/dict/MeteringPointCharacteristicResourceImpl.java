@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.MeteringPointCharacteristic;
@@ -29,7 +30,7 @@ public class MeteringPointCharacteristicResourceImpl {
 		List<MeteringPointCharacteristicDto> list = meteringPointService.findById(meteringPointId, buildSessionContext(lang))
 			.getCharacteristics()
 			.stream()
-			.map( it-> mapper.map(it, MeteringPointCharacteristicDto.class) )
+			.map( it-> mapper.getMapper().map(it, MeteringPointCharacteristicDto.class) )
 			.collect(Collectors.toList());		
 	
 		return Response.ok()
@@ -43,18 +44,18 @@ public class MeteringPointCharacteristicResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		MeteringPointCharacteristic entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, MeteringPointCharacteristicDto.class))
+			.entity(mapper.getMapper().map(entity, MeteringPointCharacteristicDto.class))
 			.build();
 	}
 
 
 	@POST
 	public Response create(MeteringPointCharacteristicDto entityDto) {
-		MeteringPointCharacteristic entity = mapper.map(entityDto, MeteringPointCharacteristic.class);
+		MeteringPointCharacteristic entity = mapper.getMapper().map(entityDto, MeteringPointCharacteristic.class);
 		MeteringPointCharacteristic newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, MeteringPointCharacteristicDto.class))
+			.entity(mapper.getMapper().map(newEntity, MeteringPointCharacteristicDto.class))
 			.build();
 	}
 
@@ -62,11 +63,11 @@ public class MeteringPointCharacteristicResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, MeteringPointCharacteristicDto entityDto ) {
-		MeteringPointCharacteristic entity = mapper.map(entityDto, MeteringPointCharacteristic.class);
+		MeteringPointCharacteristic entity = mapper.getMapper().map(entityDto, MeteringPointCharacteristic.class);
 		MeteringPointCharacteristic newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, MeteringPointCharacteristicDto.class))
+			.entity(mapper.getMapper().map(newEntity, MeteringPointCharacteristicDto.class))
 			.build();
 	}
 
@@ -95,7 +96,7 @@ public class MeteringPointCharacteristicResourceImpl {
 	private MeteringPointCharacteristicService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

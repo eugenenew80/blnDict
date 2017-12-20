@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Bank;
@@ -31,7 +32,7 @@ public class BankResourceImpl {
 	) {
 		List<BankDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, BankDto.class) )
+			.map( it-> mapper.getMapper().map(it, BankDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -45,18 +46,18 @@ public class BankResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		Bank entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, BankDto.class))
+			.entity(mapper.getMapper().map(entity, BankDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(BankDto entityDto, @HeaderParam("lang") Lang lang) {
-		Bank entity = mapper.map(entityDto, Bank.class);
+		Bank entity = mapper.getMapper().map(entityDto, Bank.class);
 		Bank newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, BankDto.class))
+			.entity(mapper.getMapper().map(newEntity, BankDto.class))
 			.build();
 	}
 	
@@ -64,11 +65,11 @@ public class BankResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, BankDto entityDto, @HeaderParam("lang") Lang lang) {
-		Bank entity = mapper.map(entityDto, Bank.class);
+		Bank entity = mapper.getMapper().map(entityDto, Bank.class);
 		Bank newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, BankDto.class))
+			.entity(mapper.getMapper().map(newEntity, BankDto.class))
 			.build();
 	}
 	
@@ -94,7 +95,7 @@ public class BankResourceImpl {
 	private BankService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

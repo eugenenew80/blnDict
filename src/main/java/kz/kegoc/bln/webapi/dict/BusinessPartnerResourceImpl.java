@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.BusinessPartner;
@@ -38,7 +39,7 @@ public class BusinessPartnerResourceImpl {
 
 		List<BusinessPartnerDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
-			.map(it-> mapper.map(it, BusinessPartnerDto.class))
+			.map(it-> mapper.getMapper().map(it, BusinessPartnerDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -52,18 +53,18 @@ public class BusinessPartnerResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		BusinessPartner entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, BusinessPartnerDto.class))
+			.entity(mapper.getMapper().map(entity, BusinessPartnerDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(BusinessPartnerDto entityDto, @HeaderParam("lang") Lang lang) {
-		BusinessPartner entity = mapper.map(entityDto, BusinessPartner.class);
+		BusinessPartner entity = mapper.getMapper().map(entityDto, BusinessPartner.class);
 		BusinessPartner newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, BusinessPartnerDto.class))
+			.entity(mapper.getMapper().map(newEntity, BusinessPartnerDto.class))
 			.build();
 	}
 	
@@ -71,11 +72,11 @@ public class BusinessPartnerResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, BusinessPartnerDto entityDto, @HeaderParam("lang") Lang lang) {
-		BusinessPartner entity = mapper.map(entityDto, BusinessPartner.class);
+		BusinessPartner entity = mapper.getMapper().map(entityDto, BusinessPartner.class);
 		BusinessPartner newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, BusinessPartnerDto.class))
+			.entity(mapper.getMapper().map(newEntity, BusinessPartnerDto.class))
 			.build();
 	}
 	
@@ -126,7 +127,7 @@ public class BusinessPartnerResourceImpl {
 	private BusinessPartnerService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

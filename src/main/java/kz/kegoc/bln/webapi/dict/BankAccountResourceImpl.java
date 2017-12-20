@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.BankAccount;
@@ -30,7 +31,7 @@ public class BankAccountResourceImpl {
 		List<BankAccountDto> list = businessPartnerService.findById(businessPartnerId, buildSessionContext(lang))
 			.getBankAccounts()
 			.stream()
-			.map( it-> mapper.map(it, BankAccountDto.class) )
+			.map( it-> mapper.getMapper().map(it, BankAccountDto.class) )
 			.collect(Collectors.toList());		
 	
 		return Response.ok()
@@ -44,18 +45,18 @@ public class BankAccountResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		BankAccount entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, BankAccountDto.class))
+			.entity(mapper.getMapper().map(entity, BankAccountDto.class))
 			.build();
 	}
 
 
 	@POST
 	public Response create(BankAccountDto entityDto, @HeaderParam("lang") Lang lang) {
-		BankAccount entity = mapper.map(entityDto, BankAccount.class);
+		BankAccount entity = mapper.getMapper().map(entityDto, BankAccount.class);
 		BankAccount newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, BankAccountDto.class))
+			.entity(mapper.getMapper().map(newEntity, BankAccountDto.class))
 			.build();
 	}
 
@@ -63,11 +64,11 @@ public class BankAccountResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, BankAccountDto entityDto, @HeaderParam("lang") Lang lang) {
-		BankAccount entity = mapper.map(entityDto, BankAccount.class);
+		BankAccount entity = mapper.getMapper().map(entityDto, BankAccount.class);
 		BankAccount newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, BankAccountDto.class))
+			.entity(mapper.getMapper().map(newEntity, BankAccountDto.class))
 			.build();
 	}
 
@@ -96,7 +97,7 @@ public class BankAccountResourceImpl {
 	private BankAccountService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

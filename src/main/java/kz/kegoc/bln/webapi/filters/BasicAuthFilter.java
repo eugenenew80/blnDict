@@ -17,10 +17,13 @@ import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RMapCache;
 import org.apache.commons.codec.binary.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Provider
 @PreMatching
 public class BasicAuthFilter implements ContainerRequestFilter {
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	public void filter(ContainerRequestContext ctx) throws IOException {
@@ -45,6 +48,8 @@ public class BasicAuthFilter implements ContainerRequestFilter {
 		User user = sessions.get(hash);
 		if (user==null)
 			throw new NotAuthorizedException("USER IS NOT REGISTERED");
+
+		logger.info(userName + ": " + ctx.getMethod() + " / " + ctx.getUriInfo().getPath());
 
 		sessions.put(userName, user,30, TimeUnit.MINUTES);
 		SecurityContext securityContext = new SecurityContext() {
@@ -95,16 +100,18 @@ public class BasicAuthFilter implements ContainerRequestFilter {
 
 		String finalOperation=operation;
 		boolean b = userService.findById(checkedUser.getId(), null)
-				.getRoles().stream()
-				.flatMap(u -> u.getRole().getFuncs().stream())
-				.map(roleFunc -> roleFunc.getFunc())
-				.distinct()
-				.filter(it -> ctx.getUriInfo().getPath().startsWith(it.getUrl()) && it.getCode().endsWith(finalOperation))
-				.findFirst()
-				.isPresent();
+			.getRoles().stream()
+			.flatMap(u -> u.getRole().getFuncs().stream())
+			.map(roleFunc -> roleFunc.getFunc())
+			.distinct()
+			.filter(it -> ctx.getUriInfo().getPath().startsWith(it.getUrl()) && it.getCode().endsWith(finalOperation))
+			.findFirst()
+			.isPresent();
 
-		if (!b)
+		if (!b) {
+			logger.warn("access denied");
 			throw new NotAuthorizedException("ACCESS DENIED");
+		}
 	}
 
 

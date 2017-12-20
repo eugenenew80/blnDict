@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -29,7 +30,7 @@ public class EnergySourceResourceImpl {
 	) {
 		List<EnergySourceDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
-			.map(it-> mapper.map(it, EnergySourceDto.class))
+			.map(it-> mapper.getMapper().map(it, EnergySourceDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -43,18 +44,18 @@ public class EnergySourceResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		EnergySource entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, EnergySourceDto.class))
+			.entity(mapper.getMapper().map(entity, EnergySourceDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(EnergySourceDto entityDto) {
-		EnergySource entity = mapper.map(entityDto, EnergySource.class);
+		EnergySource entity = mapper.getMapper().map(entityDto, EnergySource.class);
 		EnergySource newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergySourceDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergySourceDto.class))
 			.build();
 	}
 	
@@ -62,11 +63,11 @@ public class EnergySourceResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, EnergySourceDto entityDto ) {
-		EnergySource entity = mapper.map(entityDto, EnergySource.class);
+		EnergySource entity = mapper.getMapper().map(entityDto, EnergySource.class);
 		EnergySource newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergySourceDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergySourceDto.class))
 			.build();
 	}
 	
@@ -101,7 +102,7 @@ public class EnergySourceResourceImpl {
 	private EnergySourceMeteringPointResourceImpl energySourceMeteringPointResource;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

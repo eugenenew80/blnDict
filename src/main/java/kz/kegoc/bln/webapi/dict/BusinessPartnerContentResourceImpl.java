@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.ecm.Content;
@@ -31,7 +32,8 @@ public class BusinessPartnerContentResourceImpl {
 	public Response getAll(@PathParam("businessPartnerId") Long businessPartnerId, @HeaderParam("lang") Lang lang) {
 		List<BusinessPartnerContentDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, BusinessPartnerContentDto.class) )
+			.filter(it -> it.getSourceTable()=="DICT_BUSINESS_PARTNERS" && it.getSourceId()==businessPartnerId)
+			.map(it-> mapper.getMapper().map(it, BusinessPartnerContentDto.class))
 			.collect(Collectors.toList());
 
 		return Response.ok()
@@ -45,7 +47,7 @@ public class BusinessPartnerContentResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		Content entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, BusinessPartnerContentDto.class))
+			.entity(mapper.getMapper().map(entity, BusinessPartnerContentDto.class))
 			.build();
 	}
 
@@ -53,7 +55,7 @@ public class BusinessPartnerContentResourceImpl {
 	@Path("/{id : \\d+}/download")
 	public Response getContent(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		Content entity = service.findById(id, buildSessionContext(lang));
-		BusinessPartnerContentDto entityDto = mapper.map(entity, BusinessPartnerContentDto.class);
+		BusinessPartnerContentDto entityDto = mapper.getMapper().map(entity, BusinessPartnerContentDto.class);
 
 		try {
 			int contentLength = (int) entity.getContent().length();
@@ -72,7 +74,7 @@ public class BusinessPartnerContentResourceImpl {
 
 	@POST
 	public Response create(@PathParam("businessPartnerId") Long businessPartnerId, BusinessPartnerContentDto entityDto, @HeaderParam("lang") Lang lang) {
-		Content entity = mapper.map(entityDto, Content.class);
+		Content entity = mapper.getMapper().map(entityDto, Content.class);
 		entity.setSourceTable("DICT_BUSINESS_PARTNERS");
 		entity.setSourceId(businessPartnerId);
 
@@ -87,7 +89,7 @@ public class BusinessPartnerContentResourceImpl {
 
 		Content newEntity = service.create(entity, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(newEntity, BusinessPartnerContentDto.class))
+			.entity(mapper.getMapper().map(newEntity, BusinessPartnerContentDto.class))
 			.build();
 	}
 
@@ -95,7 +97,7 @@ public class BusinessPartnerContentResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("businessPartnerId") Long businessPartnerId, @PathParam("id") Long id, BusinessPartnerContentDto entityDto, @HeaderParam("lang") Lang lang) {
-		Content entity = mapper.map(entityDto, Content.class);
+		Content entity = mapper.getMapper().map(entityDto, Content.class);
 		entity.setSourceTable("DICT_BUSINESS_PARTNERS");
 		entity.setSourceId(businessPartnerId);
 
@@ -111,7 +113,7 @@ public class BusinessPartnerContentResourceImpl {
 		Content newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, BusinessPartnerContentDto.class))
+			.entity(mapper.getMapper().map(newEntity, BusinessPartnerContentDto.class))
 			.build();
 	}
 
@@ -136,7 +138,7 @@ public class BusinessPartnerContentResourceImpl {
 	private ContentService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

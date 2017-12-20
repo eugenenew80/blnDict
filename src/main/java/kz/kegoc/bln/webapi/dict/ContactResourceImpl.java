@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Contact;
@@ -29,7 +30,7 @@ public class ContactResourceImpl {
 		List<ContactDto> list = businessPartnerService.findById(businessPartnerId, buildSessionContext(lang))
 			.getContacts()
 			.stream()
-			.map( it-> mapper.map(it, ContactDto.class) )
+			.map( it-> mapper.getMapper().map(it, ContactDto.class) )
 			.collect(Collectors.toList());		
 	
 		return Response.ok()
@@ -43,18 +44,18 @@ public class ContactResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		Contact entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, ContactDto.class))
+			.entity(mapper.getMapper().map(entity, ContactDto.class))
 			.build();
 	}
 
 
 	@POST
 	public Response create(ContactDto entityDto, @HeaderParam("lang") Lang lang) {
-		Contact entity = mapper.map(entityDto, Contact.class);
+		Contact entity = mapper.getMapper().map(entityDto, Contact.class);
 		Contact newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, ContactDto.class))
+			.entity(mapper.getMapper().map(newEntity, ContactDto.class))
 			.build();
 	}
 
@@ -62,11 +63,11 @@ public class ContactResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, ContactDto entityDto, @HeaderParam("lang") Lang lang) {
-		Contact entity = mapper.map(entityDto, Contact.class);
+		Contact entity = mapper.getMapper().map(entityDto, Contact.class);
 		Contact newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, ContactDto.class))
+			.entity(mapper.getMapper().map(newEntity, ContactDto.class))
 			.build();
 	}
 
@@ -113,7 +114,7 @@ public class ContactResourceImpl {
 	private ContactService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

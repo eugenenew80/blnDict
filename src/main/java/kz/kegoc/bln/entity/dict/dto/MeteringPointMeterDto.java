@@ -14,7 +14,8 @@ public class MeteringPointMeterDto {
 	private Long meteringPointId;
 	private Long meterId;
 	private String meterName;
-	private String meterManufacturer;
+	private String meterSerialNumber;
+	private String meterBusinessPartnerShortName;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private Lang lang;

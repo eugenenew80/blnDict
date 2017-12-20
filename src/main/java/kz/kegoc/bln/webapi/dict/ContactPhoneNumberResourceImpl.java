@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.ContactPhoneNumber;
@@ -29,7 +30,7 @@ public class ContactPhoneNumberResourceImpl {
 		List<ContactPhoneNumberDto> list = contactService.findById(contactId, buildSessionContext(lang))
 			.getContactPhoneNumbers()
 			.stream()
-			.map( it-> mapper.map(it, ContactPhoneNumberDto.class) )
+			.map( it-> mapper.getMapper().map(it, ContactPhoneNumberDto.class) )
 			.collect(Collectors.toList());		
 	
 		return Response.ok()
@@ -43,18 +44,18 @@ public class ContactPhoneNumberResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		ContactPhoneNumber entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, ContactPhoneNumberDto.class))
+			.entity(mapper.getMapper().map(entity, ContactPhoneNumberDto.class))
 			.build();
 	}
 
 
 	@POST
 	public Response create(ContactPhoneNumberDto entityDto, @HeaderParam("lang") Lang lang) {
-		ContactPhoneNumber entity = mapper.map(entityDto, ContactPhoneNumber.class);
+		ContactPhoneNumber entity = mapper.getMapper().map(entityDto, ContactPhoneNumber.class);
 		ContactPhoneNumber newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, ContactPhoneNumberDto.class))
+			.entity(mapper.getMapper().map(newEntity, ContactPhoneNumberDto.class))
 			.build();
 	}
 
@@ -62,11 +63,11 @@ public class ContactPhoneNumberResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, ContactPhoneNumberDto entityDto, @HeaderParam("lang") Lang lang ) {
-		ContactPhoneNumber entity = mapper.map(entityDto, ContactPhoneNumber.class);
+		ContactPhoneNumber entity = mapper.getMapper().map(entityDto, ContactPhoneNumber.class);
 		ContactPhoneNumber newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, ContactPhoneNumberDto.class))
+			.entity(mapper.getMapper().map(newEntity, ContactPhoneNumberDto.class))
 			.build();
 	}
 
@@ -95,7 +96,7 @@ public class ContactPhoneNumberResourceImpl {
 	private ContactPhoneNumberService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

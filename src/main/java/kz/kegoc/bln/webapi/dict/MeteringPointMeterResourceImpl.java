@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.MeteringPointMeter;
@@ -26,7 +27,7 @@ public class MeteringPointMeterResourceImpl {
 		List<MeteringPointMeterDto> list = meteringPointService.findById(meteringPointId, buildSessionContext(lang))
 			.getMeters()
 			.stream()
-			.map( it-> mapper.map(it, MeteringPointMeterDto.class) )
+			.map( it-> mapper.getMapper().map(it, MeteringPointMeterDto.class) )
 			.collect(Collectors.toList());		
 	
 		return Response.ok()
@@ -40,18 +41,18 @@ public class MeteringPointMeterResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		MeteringPointMeter entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, MeteringPointMeterDto.class))
+			.entity(mapper.getMapper().map(entity, MeteringPointMeterDto.class))
 			.build();
 	}
 
 
 	@POST
 	public Response create(MeteringPointMeterDto entityDto) {
-		MeteringPointMeter entity = mapper.map(entityDto, MeteringPointMeter.class);
+		MeteringPointMeter entity = mapper.getMapper().map(entityDto, MeteringPointMeter.class);
 		MeteringPointMeter newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, MeteringPointMeterDto.class))
+			.entity(mapper.getMapper().map(newEntity, MeteringPointMeterDto.class))
 			.build();
 	}
 
@@ -59,11 +60,11 @@ public class MeteringPointMeterResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, MeteringPointMeterDto entityDto ) {
-		MeteringPointMeter entity = mapper.map(entityDto, MeteringPointMeter.class);
+		MeteringPointMeter entity = mapper.getMapper().map(entityDto, MeteringPointMeter.class);
 		MeteringPointMeter newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, MeteringPointMeterDto.class))
+			.entity(mapper.getMapper().map(newEntity, MeteringPointMeterDto.class))
 			.build();
 	}
 
@@ -92,7 +93,7 @@ public class MeteringPointMeterResourceImpl {
 	private MeteringPointMeterService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

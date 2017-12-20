@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.EnergyDistrict;
@@ -35,7 +36,7 @@ public class EnergyDistrictResourceImpl {
 		List<EnergyDistrictDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
 			.filter(it -> energyNodeId == null || energyNodeId.equals(it.getEnergyNode().getId()))
-			.map(it-> mapper.map(it, EnergyDistrictDto.class))
+			.map(it-> mapper.getMapper().map(it, EnergyDistrictDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -49,18 +50,18 @@ public class EnergyDistrictResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		EnergyDistrict entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, EnergyDistrictDto.class))
+			.entity(mapper.getMapper().map(entity, EnergyDistrictDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(EnergyDistrictDto entityDto, @HeaderParam("lang") Lang lang) {
-		EnergyDistrict entity = mapper.map(entityDto, EnergyDistrict.class);
+		EnergyDistrict entity = mapper.getMapper().map(entityDto, EnergyDistrict.class);
 		EnergyDistrict newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergyDistrictDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergyDistrictDto.class))
 			.build();
 	}
 	
@@ -68,11 +69,11 @@ public class EnergyDistrictResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, EnergyDistrictDto entityDto, @HeaderParam("lang") Lang lang ) {
-		EnergyDistrict map = mapper.map(entityDto, EnergyDistrict.class);
+		EnergyDistrict map = mapper.getMapper().map(entityDto, EnergyDistrict.class);
 		EnergyDistrict newEntity = service.update(map, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergyDistrictDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergyDistrictDto.class))
 			.build();
 	}
 	
@@ -98,7 +99,7 @@ public class EnergyDistrictResourceImpl {
 	private EnergyDistrictService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -29,7 +30,7 @@ public class UnitResourceImpl {
 	) {
 		List<UnitDto> list = service.find(code, null, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, UnitDto.class) )
+			.map( it-> mapper.getMapper().map(it, UnitDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -43,18 +44,18 @@ public class UnitResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		Unit unit = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(unit, UnitDto.class))
+			.entity(mapper.getMapper().map(unit, UnitDto.class))
 			.build();		
 	}
 
 	
 	@POST
 	public Response create(UnitDto entityDto) {
-		Unit entity = mapper.map(entityDto, Unit.class);
+		Unit entity = mapper.getMapper().map(entityDto, Unit.class);
 		Unit newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, UnitDto.class))
+			.entity(mapper.getMapper().map(newEntity, UnitDto.class))
 			.build();
 	}
 	
@@ -62,11 +63,11 @@ public class UnitResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, UnitDto entityDto ) {
-		Unit entity = mapper.map(entityDto, Unit.class);
+		Unit entity = mapper.getMapper().map(entityDto, Unit.class);
 		Unit newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, UnitDto.class))
+			.entity(mapper.getMapper().map(newEntity, UnitDto.class))
 			.build();
 	}
 	
@@ -92,7 +93,7 @@ public class UnitResourceImpl {
 	private UnitService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

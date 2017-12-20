@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -27,7 +29,7 @@ public class MeterTypeResourceImpl {
 	) {
 		List<MeterTypeDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
-			.map(it-> mapper.map(it, MeterTypeDto.class))
+			.map(it-> mapper.getMapper().map(it, MeterTypeDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -41,18 +43,18 @@ public class MeterTypeResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		MeterType meterType = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(meterType, MeterTypeDto.class))
+			.entity(mapper.getMapper().map(meterType, MeterTypeDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(MeterTypeDto entityDto) {
-		MeterType entity = mapper.map(entityDto, MeterType.class);
+		MeterType entity = mapper.getMapper().map(entityDto, MeterType.class);
 		MeterType newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, MeterTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, MeterTypeDto.class))
 			.build();
 	}
 	
@@ -60,11 +62,11 @@ public class MeterTypeResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, MeterTypeDto entityDto ) {
-		MeterType entity = mapper.map(entityDto, MeterType.class);
+		MeterType entity = mapper.getMapper().map(entityDto, MeterType.class);
 		MeterType newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, MeterTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, MeterTypeDto.class))
 			.build();
 	}
 	
@@ -89,7 +91,7 @@ public class MeterTypeResourceImpl {
 	private MeterTypeService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

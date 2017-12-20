@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -29,7 +31,7 @@ public class DataSourceResourceImpl {
 	) {
 		List<DataSourceDto> list = service.find(code, null, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, DataSourceDto.class) )
+			.map( it-> mapper.getMapper().map(it, DataSourceDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -43,18 +45,18 @@ public class DataSourceResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		DataSource dataSource = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(dataSource, DataSourceDto.class))
+			.entity(mapper.getMapper().map(dataSource, DataSourceDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(DataSourceDto entityDto, @HeaderParam("lang") Lang lang) {
-		DataSource entity = mapper.map(entityDto, DataSource.class);
+		DataSource entity = mapper.getMapper().map(entityDto, DataSource.class);
 		DataSource newDataSource = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newDataSource, DataSourceDto.class))
+			.entity(mapper.getMapper().map(newDataSource, DataSourceDto.class))
 			.build();
 	}
 	
@@ -62,11 +64,11 @@ public class DataSourceResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, DataSourceDto entityDto, @HeaderParam("lang") Lang lang ) {
-		DataSource entity = mapper.map(entityDto, DataSource.class);
+		DataSource entity = mapper.getMapper().map(entityDto, DataSource.class);
 		DataSource newDataSource = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newDataSource, DataSourceDto.class))
+			.entity(mapper.getMapper().map(newDataSource, DataSourceDto.class))
 			.build();
 	}
 	
@@ -92,7 +94,7 @@ public class DataSourceResourceImpl {
 	private DataSourceService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

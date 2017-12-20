@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -29,7 +30,7 @@ public class EnergySourceTypeResourceImpl {
 	) {
 		List<EnergySourceTypeDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, EnergySourceTypeDto.class) )
+			.map( it-> mapper.getMapper().map(it, EnergySourceTypeDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -43,18 +44,18 @@ public class EnergySourceTypeResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		EnergySourceType entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, EnergySourceTypeDto.class))
+			.entity(mapper.getMapper().map(entity, EnergySourceTypeDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(EnergySourceTypeDto entityDto) {
-		EnergySourceType entity = mapper.map(entityDto, EnergySourceType.class);
+		EnergySourceType entity = mapper.getMapper().map(entityDto, EnergySourceType.class);
 		EnergySourceType newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergySourceTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergySourceTypeDto.class))
 			.build();
 	}
 	
@@ -62,11 +63,11 @@ public class EnergySourceTypeResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, EnergySourceTypeDto entityDto ) {
-		EnergySourceType entity = mapper.map(entityDto, EnergySourceType.class);
+		EnergySourceType entity = mapper.getMapper().map(entityDto, EnergySourceType.class);
 		EnergySourceType newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergySourceTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergySourceTypeDto.class))
 			.build();
 	}
 	
@@ -92,7 +93,7 @@ public class EnergySourceTypeResourceImpl {
 	private EnergySourceTypeService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

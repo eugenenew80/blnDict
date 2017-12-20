@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -29,7 +30,7 @@ public class MeterResourceImpl {
 	) {
 		List<MeterDto> list = service.find(null, null, name, serialNumber, buildSessionContext(lang))
 			.stream()
-			.map(it-> mapper.map(it, MeterDto.class))
+			.map(it-> mapper.getMapper().map(it, MeterDto.class))
 			.collect(Collectors.toList());
 
 		return Response.ok()
@@ -43,18 +44,18 @@ public class MeterResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		Meter entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, MeterDto.class))
+			.entity(mapper.getMapper().map(entity, MeterDto.class))
 			.build();		
 	}
 
 	
 	@POST
 	public Response create(MeterDto entityDto) {
-		Meter entity = mapper.map(entityDto, Meter.class);
+		Meter entity = mapper.getMapper().map(entityDto, Meter.class);
 		Meter newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, MeterDto.class))
+			.entity(mapper.getMapper().map(newEntity, MeterDto.class))
 			.build();
 	}
 	
@@ -62,11 +63,11 @@ public class MeterResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, MeterDto entityDto ) {
-		Meter entity = mapper.map(entityDto, Meter.class);
+		Meter entity = mapper.getMapper().map(entityDto, Meter.class);
 		Meter newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, MeterDto.class))
+			.entity(mapper.getMapper().map(newEntity, MeterDto.class))
 			.build();
 	}
 	
@@ -92,7 +93,7 @@ public class MeterResourceImpl {
 	private MeterService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

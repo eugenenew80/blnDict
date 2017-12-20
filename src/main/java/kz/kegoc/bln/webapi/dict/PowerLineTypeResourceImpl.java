@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.PowerLineType;
@@ -36,7 +37,7 @@ public class PowerLineTypeResourceImpl {
 	) {
 		List<PowerLineTypeDto> list = service.find(code, null, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, PowerLineTypeDto.class) )
+			.map( it-> mapper.getMapper().map(it, PowerLineTypeDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -50,18 +51,18 @@ public class PowerLineTypeResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		PowerLineType entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, PowerLineTypeDto.class))
+			.entity(mapper.getMapper().map(entity, PowerLineTypeDto.class))
 			.build();		
 	}
 
 
 	@POST
 	public Response create(PowerLineTypeDto entityDto, @HeaderParam("lang") Lang lang) {
-		PowerLineType entity = mapper.map(entityDto, PowerLineType.class);
+		PowerLineType entity = mapper.getMapper().map(entityDto, PowerLineType.class);
 		PowerLineType newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, PowerLineTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, PowerLineTypeDto.class))
 			.build();
 	}
 	
@@ -69,11 +70,11 @@ public class PowerLineTypeResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, PowerLineTypeDto entityDto, @HeaderParam("lang") Lang lang) {
-		PowerLineType entity = mapper.map(entityDto, PowerLineType.class);
+		PowerLineType entity = mapper.getMapper().map(entityDto, PowerLineType.class);
 		PowerLineType newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, PowerLineTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, PowerLineTypeDto.class))
 			.build();
 	}
 	
@@ -99,7 +100,7 @@ public class PowerLineTypeResourceImpl {
 	private PowerLineTypeService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

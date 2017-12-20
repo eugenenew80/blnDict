@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Organization;
@@ -25,7 +26,7 @@ public class OrganizationResourceImpl {
 	public Response getAll(@QueryParam("shortName") String shortName, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
 		List<OrganizationDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
-			.map(it-> mapper.map(it, OrganizationDto.class))
+			.map(it-> mapper.getMapper().map(it, OrganizationDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -39,18 +40,18 @@ public class OrganizationResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		Organization entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, OrganizationDto.class))
+			.entity(mapper.getMapper().map(entity, OrganizationDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(OrganizationDto entityDto) {
-		Organization entity = mapper.map(entityDto, Organization.class);
+		Organization entity = mapper.getMapper().map(entityDto, Organization.class);
 		Organization newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, OrganizationDto.class))
+			.entity(mapper.getMapper().map(newEntity, OrganizationDto.class))
 			.build();
 	}
 	
@@ -58,11 +59,11 @@ public class OrganizationResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, OrganizationDto entityDto ) {
-		Organization entity = mapper.map(entityDto, Organization.class);
+		Organization entity = mapper.getMapper().map(entityDto, Organization.class);
 		Organization newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, OrganizationDto.class))
+			.entity(mapper.getMapper().map(newEntity, OrganizationDto.class))
 			.build();
 	}
 	
@@ -88,7 +89,7 @@ public class OrganizationResourceImpl {
 	private OrganizationService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

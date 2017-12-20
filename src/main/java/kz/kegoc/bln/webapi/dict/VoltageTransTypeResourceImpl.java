@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -28,7 +29,7 @@ public class VoltageTransTypeResourceImpl {
 	) {
 		List<VoltageTransTypeDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
-			.map(it-> mapper.map(it, VoltageTransTypeDto.class))
+			.map(it-> mapper.getMapper().map(it, VoltageTransTypeDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -42,18 +43,18 @@ public class VoltageTransTypeResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		VoltageTransType entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, VoltageTransTypeDto.class))
+			.entity(mapper.getMapper().map(entity, VoltageTransTypeDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(VoltageTransTypeDto entityDto) {
-		VoltageTransType entity = mapper.map(entityDto, VoltageTransType.class);
+		VoltageTransType entity = mapper.getMapper().map(entityDto, VoltageTransType.class);
 		VoltageTransType newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, VoltageTransTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, VoltageTransTypeDto.class))
 			.build();
 	}
 	
@@ -61,11 +62,11 @@ public class VoltageTransTypeResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, VoltageTransTypeDto entityDto ) {
-		VoltageTransType entity = mapper.map(entityDto, VoltageTransType.class);
+		VoltageTransType entity = mapper.getMapper().map(entityDto, VoltageTransType.class);
 		VoltageTransType newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, VoltageTransTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, VoltageTransTypeDto.class))
 			.build();
 	}
 	
@@ -91,7 +92,7 @@ public class VoltageTransTypeResourceImpl {
 	private VoltageTransTypeService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

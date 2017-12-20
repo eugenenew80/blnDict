@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.EnergySourceMeteringPoint;
@@ -29,7 +30,7 @@ public class EnergySourceMeteringPointResourceImpl {
 		List<EnergySourceMeteringPointDto> list = energySourceService.findById(energySourceId, buildSessionContext(lang))
 			.getMeteringPoints()
 			.stream()
-			.map( it-> mapper.map(it, EnergySourceMeteringPointDto.class) )
+			.map( it-> mapper.getMapper().map(it, EnergySourceMeteringPointDto.class) )
 			.collect(Collectors.toList());		
 	
 		return Response.ok()
@@ -43,18 +44,18 @@ public class EnergySourceMeteringPointResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		EnergySourceMeteringPoint entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, EnergySourceMeteringPointDto.class))
+			.entity(mapper.getMapper().map(entity, EnergySourceMeteringPointDto.class))
 			.build();
 	}
 
 
 	@POST
 	public Response create(EnergySourceMeteringPointDto entityDto) {
-		EnergySourceMeteringPoint entity = mapper.map(entityDto, EnergySourceMeteringPoint.class);
+		EnergySourceMeteringPoint entity = mapper.getMapper().map(entityDto, EnergySourceMeteringPoint.class);
 		EnergySourceMeteringPoint newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergySourceMeteringPointDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergySourceMeteringPointDto.class))
 			.build();
 	}
 
@@ -62,11 +63,11 @@ public class EnergySourceMeteringPointResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, EnergySourceMeteringPointDto entityDto ) {
-		EnergySourceMeteringPoint entity = mapper.map(entityDto, EnergySourceMeteringPoint.class);
+		EnergySourceMeteringPoint entity = mapper.getMapper().map(entityDto, EnergySourceMeteringPoint.class);
 		EnergySourceMeteringPoint newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergySourceMeteringPointDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergySourceMeteringPointDto.class))
 			.build();
 	}
 
@@ -95,7 +96,7 @@ public class EnergySourceMeteringPointResourceImpl {
 	private EnergySourceMeteringPointService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

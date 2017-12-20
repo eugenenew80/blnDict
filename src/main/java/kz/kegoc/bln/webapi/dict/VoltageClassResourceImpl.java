@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.VoltageClass;
@@ -32,7 +33,7 @@ public class VoltageClassResourceImpl {
 	) {
 		List<VoltageClassDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, VoltageClassDto.class) )
+			.map( it-> mapper.getMapper().map(it, VoltageClassDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -46,18 +47,18 @@ public class VoltageClassResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		VoltageClass entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, VoltageClassDto.class))
+			.entity(mapper.getMapper().map(entity, VoltageClassDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(VoltageClassDto entityDto) {
-		VoltageClass entity = mapper.map(entityDto, VoltageClass.class);
+		VoltageClass entity = mapper.getMapper().map(entityDto, VoltageClass.class);
 		VoltageClass newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, VoltageClassDto.class))
+			.entity(mapper.getMapper().map(newEntity, VoltageClassDto.class))
 			.build();
 	}
 	
@@ -65,11 +66,11 @@ public class VoltageClassResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, VoltageClassDto entityDto ) {
-		VoltageClass entity = mapper.map(entityDto, VoltageClass.class);
+		VoltageClass entity = mapper.getMapper().map(entityDto, VoltageClass.class);
 		VoltageClass newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, VoltageClassDto.class))
+			.entity(mapper.getMapper().map(newEntity, VoltageClassDto.class))
 			.build();
 	}
 	
@@ -95,7 +96,7 @@ public class VoltageClassResourceImpl {
 	private VoltageClassService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

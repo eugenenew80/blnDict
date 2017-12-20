@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -29,7 +30,7 @@ public class SubstationResourceImpl {
 	) {
 		List<SubstationDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
-			.map(it-> mapper.map(it, SubstationDto.class))
+			.map(it-> mapper.getMapper().map(it, SubstationDto.class))
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -43,18 +44,18 @@ public class SubstationResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		Substation entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, SubstationDto.class))
+			.entity(mapper.getMapper().map(entity, SubstationDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(SubstationDto entityDto) {
-		Substation entity = mapper.map(entityDto, Substation.class);
+		Substation entity = mapper.getMapper().map(entityDto, Substation.class);
 		Substation newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, SubstationDto.class))
+			.entity(mapper.getMapper().map(newEntity, SubstationDto.class))
 			.build();
 	}
 	
@@ -62,11 +63,11 @@ public class SubstationResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, SubstationDto entityDto ) {
-		Substation entity = mapper.map(entityDto, Substation.class);
+		Substation entity = mapper.getMapper().map(entityDto, Substation.class);
 		Substation newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, SubstationDto.class))
+			.entity(mapper.getMapper().map(newEntity, SubstationDto.class))
 			.build();
 	}
 
@@ -101,7 +102,7 @@ public class SubstationResourceImpl {
 	private SubstationMeteringPointResourceImpl substationMeteringPointResource;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

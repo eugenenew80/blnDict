@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -35,7 +36,7 @@ public class MeteringPointResourceImpl {
 
 		List<MeteringPointDto> list = service.find(code, shortName, name, buildSessionContext(lang))
 			.stream()
-			.map(it-> mapper.map(it, MeteringPointDto.class))
+			.map(it-> mapper.getMapper().map(it, MeteringPointDto.class))
 			.collect(Collectors.toList());
 
 		return Response.ok()
@@ -49,18 +50,18 @@ public class MeteringPointResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		MeteringPoint entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, MeteringPointDto.class))
+			.entity(mapper.getMapper().map(entity, MeteringPointDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(MeteringPointDto entityDto) {
-		MeteringPoint entity = mapper.map(entityDto, MeteringPoint.class);
+		MeteringPoint entity = mapper.getMapper().map(entityDto, MeteringPoint.class);
 		MeteringPoint newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, MeteringPointDto.class))
+			.entity(mapper.getMapper().map(newEntity, MeteringPointDto.class))
 			.build();
 	}
 	
@@ -68,11 +69,11 @@ public class MeteringPointResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, MeteringPointDto entityDto ) {
-		MeteringPoint entity = mapper.map(entityDto, MeteringPoint.class);
+		MeteringPoint entity = mapper.getMapper().map(entityDto, MeteringPoint.class);
 		MeteringPoint newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, MeteringPointDto.class))
+			.entity(mapper.getMapper().map(newEntity, MeteringPointDto.class))
 			.build();
 	}
 	
@@ -131,7 +132,7 @@ public class MeteringPointResourceImpl {
 	private MeteringPointCharacteristicResourceImpl characteristicResource;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -29,7 +30,7 @@ public class EnergyNodeResourceImpl {
 	) {
 		List<EnergyNodeDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, EnergyNodeDto.class) )
+			.map( it-> mapper.getMapper().map(it, EnergyNodeDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -43,18 +44,18 @@ public class EnergyNodeResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		EnergyNode entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, EnergyNodeDto.class))
+			.entity(mapper.getMapper().map(entity, EnergyNodeDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(EnergyNodeDto entityDto, @HeaderParam("lang") Lang lang) {
-		EnergyNode entity = mapper.map(entityDto, EnergyNode.class);
+		EnergyNode entity = mapper.getMapper().map(entityDto, EnergyNode.class);
 		EnergyNode newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergyNodeDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergyNodeDto.class))
 			.build();
 	}
 	
@@ -62,11 +63,11 @@ public class EnergyNodeResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, EnergyNodeDto entityDto, @HeaderParam("lang") Lang lang ) {
-		EnergyNode map = mapper.map(entityDto, EnergyNode.class);
+		EnergyNode map = mapper.getMapper().map(entityDto, EnergyNode.class);
 		EnergyNode newEntity = service.update(map, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, EnergyNodeDto.class))
+			.entity(mapper.getMapper().map(newEntity, EnergyNodeDto.class))
 			.build();
 	}
 	
@@ -92,7 +93,7 @@ public class EnergyNodeResourceImpl {
 	private EnergyNodeService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

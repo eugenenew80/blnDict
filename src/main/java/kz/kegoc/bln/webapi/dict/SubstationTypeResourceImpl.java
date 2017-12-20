@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -25,7 +26,7 @@ public class SubstationTypeResourceImpl {
 	public Response getAll(@QueryParam("code") String code, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
 		List<SubstationTypeDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, SubstationTypeDto.class) )
+			.map( it-> mapper.getMapper().map(it, SubstationTypeDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -39,18 +40,18 @@ public class SubstationTypeResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		SubstationType entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, SubstationTypeDto.class))
+			.entity(mapper.getMapper().map(entity, SubstationTypeDto.class))
 			.build();		
 	}
 	
 
 	@POST
 	public Response create(SubstationTypeDto entityDto) {
-		SubstationType entity = mapper.map(entityDto, SubstationType.class);
+		SubstationType entity = mapper.getMapper().map(entityDto, SubstationType.class);
 		SubstationType newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, SubstationTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, SubstationTypeDto.class))
 			.build();
 	}
 	
@@ -58,11 +59,11 @@ public class SubstationTypeResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, SubstationTypeDto entityDto ) {
-		SubstationType entity = mapper.map(entityDto, SubstationType.class);
+		SubstationType entity = mapper.getMapper().map(entityDto, SubstationType.class);
 		SubstationType newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, SubstationTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, SubstationTypeDto.class))
 			.build();
 	}
 	
@@ -88,7 +89,7 @@ public class SubstationTypeResourceImpl {
 	private SubstationTypeService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

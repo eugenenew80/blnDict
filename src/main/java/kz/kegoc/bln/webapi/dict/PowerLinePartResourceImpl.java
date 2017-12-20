@@ -1,5 +1,6 @@
 package kz.kegoc.bln.webapi.dict;
 
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.PowerLinePart;
@@ -30,7 +31,7 @@ public class PowerLinePartResourceImpl {
 		List<PowerLinePartDto> list = powerLineService.findById(powerLineId, buildSessionContext(lang))
 			.getPowerLineParts()
 			.stream()
-			.map( it-> mapper.map(it, PowerLinePartDto.class) )
+			.map( it-> mapper.getMapper().map(it, PowerLinePartDto.class) )
 			.collect(Collectors.toList());		
 	
 		return Response.ok()
@@ -44,18 +45,18 @@ public class PowerLinePartResourceImpl {
 	public Response getById(@PathParam("id") Long id, @QueryParam("lang") Lang lang) {
 		PowerLinePart entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, PowerLinePartDto.class))
+			.entity(mapper.getMapper().map(entity, PowerLinePartDto.class))
 			.build();
 	}
 
 
 	@POST
 	public Response create(PowerLinePartDto entityDto) {
-		PowerLinePart entity = mapper.map(entityDto, PowerLinePart.class);
+		PowerLinePart entity = mapper.getMapper().map(entityDto, PowerLinePart.class);
 		PowerLinePart newEntity = service.create(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, PowerLinePartDto.class))
+			.entity(mapper.getMapper().map(newEntity, PowerLinePartDto.class))
 			.build();
 	}
 
@@ -63,11 +64,11 @@ public class PowerLinePartResourceImpl {
 	@PUT
 	@Path("{id : \\d+}")
 	public Response update(@PathParam("id") Long id, PowerLinePartDto entityDto ) {
-		PowerLinePart entity = mapper.map(entityDto, PowerLinePart.class);
+		PowerLinePart entity = mapper.getMapper().map(entityDto, PowerLinePart.class);
 		PowerLinePart newEntity = service.update(entity, buildSessionContext(entityDto.getLang()));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, PowerLinePartDto.class))
+			.entity(mapper.getMapper().map(newEntity, PowerLinePartDto.class))
 			.build();
 	}
 
@@ -96,7 +97,7 @@ public class PowerLinePartResourceImpl {
 	private PowerLinePartService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;

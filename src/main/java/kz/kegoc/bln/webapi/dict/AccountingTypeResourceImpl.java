@@ -6,10 +6,10 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
-import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.AccountingType;
 import kz.kegoc.bln.entity.dict.dto.AccountingTypeDto;
 import kz.kegoc.bln.service.dict.AccountingTypeService;
@@ -28,7 +28,7 @@ public class AccountingTypeResourceImpl {
 	) {
 		List<AccountingTypeDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
-			.map( it-> mapper.map(it, AccountingTypeDto.class) )
+			.map( it-> mapper.getMapper().map(it, AccountingTypeDto.class) )
 			.collect(Collectors.toList());
 		
 		return Response.ok()
@@ -42,18 +42,18 @@ public class AccountingTypeResourceImpl {
 	public Response getById(@PathParam("id") Long id, @HeaderParam("lang") Lang lang) {
 		AccountingType entity = service.findById(id, buildSessionContext(lang));
 		return Response.ok()
-			.entity(mapper.map(entity, AccountingTypeDto.class))
+			.entity(mapper.getMapper().map(entity, AccountingTypeDto.class))
 			.build();		
 	}
 
 
 	@POST
 	public Response create(AccountingTypeDto entityDto, @HeaderParam("lang") Lang lang) {
-		AccountingType entity = mapper.map(entityDto, AccountingType.class);
+		AccountingType entity = mapper.getMapper().map(entityDto, AccountingType.class);
 		AccountingType newEntity = service.create(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, AccountingTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, AccountingTypeDto.class))
 			.build();
 	}
 	
@@ -61,11 +61,11 @@ public class AccountingTypeResourceImpl {
 	@PUT 
 	@Path("{id : \\d+}") 
 	public Response update(@PathParam("id") Long id, AccountingTypeDto entityDto, @HeaderParam("lang") Lang lang) {
-		AccountingType entity = mapper.map(entityDto, AccountingType.class);
+		AccountingType entity = mapper.getMapper().map(entityDto, AccountingType.class);
 		AccountingType newEntity = service.update(entity, buildSessionContext(lang));
 
 		return Response.ok()
-			.entity(mapper.map(newEntity, AccountingTypeDto.class))
+			.entity(mapper.getMapper().map(newEntity, AccountingTypeDto.class))
 			.build();
 	}
 	
@@ -90,7 +90,7 @@ public class AccountingTypeResourceImpl {
 	private AccountingTypeService service;
 
 	@Inject
-	private DozerBeanMapper mapper;
+	private BeanMapper mapper;
 
 	@Inject
 	private Lang defLang;
