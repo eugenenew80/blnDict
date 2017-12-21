@@ -8,6 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 import kz.kegoc.bln.ejb.mapper.BeanMapper;
+import kz.kegoc.bln.entity.dict.Meter;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
@@ -31,11 +32,13 @@ public class MeteringPointResourceImpl {
 			@QueryParam("name") String name,
 			@QueryParam("lang") Lang lang
 	) {
+		List<MeteringPoint> meteringPoints;
 		if (StringUtils.isNotEmpty(searchValue))
-			name=searchValue;
+			meteringPoints = service.findEveryWhere(searchValue, buildSessionContext(lang));
+		else
+			meteringPoints = service.find(code, shortName, name, buildSessionContext(lang));
 
-		List<MeteringPointDto> list = service.find(code, shortName, name, buildSessionContext(lang))
-			.stream()
+		List<MeteringPointDto> list = meteringPoints.stream()
 			.map(it-> mapper.getMapper().map(it, MeteringPointDto.class))
 			.collect(Collectors.toList());
 

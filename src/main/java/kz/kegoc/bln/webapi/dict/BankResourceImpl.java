@@ -7,6 +7,7 @@ import kz.kegoc.bln.entity.dict.Bank;
 import kz.kegoc.bln.entity.dict.dto.BankDto;
 import kz.kegoc.bln.service.dict.BankService;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
+import org.apache.commons.lang3.StringUtils;
 import org.dozer.DozerBeanMapper;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -27,9 +28,13 @@ public class BankResourceImpl {
 
 	@GET 
 	public Response getAll(
+		@QueryParam("searchValue") String searchValue,
 		@QueryParam("name") String name,
 		@HeaderParam("lang") Lang lang
 	) {
+		if (StringUtils.isNotEmpty(searchValue))
+			name = searchValue;
+
 		List<BankDto> list = service.find(null, null, name, buildSessionContext(lang))
 			.stream()
 			.map( it-> mapper.getMapper().map(it, BankDto.class) )

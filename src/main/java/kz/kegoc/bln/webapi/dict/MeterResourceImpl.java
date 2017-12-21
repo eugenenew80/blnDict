@@ -25,10 +25,10 @@ public class MeterResourceImpl {
 
 	@GET 
 	public Response getAll(
+		@QueryParam("searchValue") String searchValue,
 		@QueryParam("name") String name,
 		@QueryParam("lang") Lang lang,
-		@QueryParam("serialNumber") String serialNumber,
-		@QueryParam("searchValue") String searchValue
+		@QueryParam("serialNumber") String serialNumber
 	) {
 		List<Meter> meters;
 		if (StringUtils.isNotEmpty(searchValue))
