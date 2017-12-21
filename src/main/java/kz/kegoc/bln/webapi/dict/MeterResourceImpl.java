@@ -11,6 +11,7 @@ import kz.kegoc.bln.ejb.mapper.BeanMapper;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
+import org.apache.commons.lang3.StringUtils;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.Meter;
 import kz.kegoc.bln.entity.dict.dto.MeterDto;
@@ -26,10 +27,16 @@ public class MeterResourceImpl {
 	public Response getAll(
 		@QueryParam("name") String name,
 		@QueryParam("lang") Lang lang,
-		@QueryParam("serialNumber") String serialNumber
+		@QueryParam("serialNumber") String serialNumber,
+		@QueryParam("searchValue") String searchValue
 	) {
-		List<MeterDto> list = service.find(null, null, name, serialNumber, buildSessionContext(lang))
-			.stream()
+		List<Meter> meters;
+		if (StringUtils.isNotEmpty(searchValue))
+			meters = service.findEveryWhere(searchValue, buildSessionContext(lang));
+		else
+			meters = service.find(null, null, name, serialNumber, buildSessionContext(lang));
+
+		List<MeterDto> list = meters.stream()
 			.map(it-> mapper.getMapper().map(it, MeterDto.class))
 			.collect(Collectors.toList());
 

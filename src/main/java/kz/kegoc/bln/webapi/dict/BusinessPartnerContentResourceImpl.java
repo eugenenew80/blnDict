@@ -8,6 +8,7 @@ import kz.kegoc.bln.entity.ecm.dto.BusinessPartnerContentDto;
 import kz.kegoc.bln.service.ecm.ContentService;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
 import org.dozer.DozerBeanMapper;
 
 import javax.ejb.Stateless;
@@ -30,9 +31,10 @@ public class BusinessPartnerContentResourceImpl {
 
 	@GET
 	public Response getAll(@PathParam("businessPartnerId") Long businessPartnerId, @HeaderParam("lang") Lang lang) {
+		System.out.println(businessPartnerId);
 		List<BusinessPartnerContentDto> list = service.findAll(buildSessionContext(lang))
 			.stream()
-			.filter(it -> it.getSourceTable()=="DICT_BUSINESS_PARTNERS" && it.getSourceId()==businessPartnerId)
+			.filter(it -> StringUtils.equals(it.getSourceTable(), "DICT_BUSINESS_PARTNERS") && it.getSourceId().equals(businessPartnerId))
 			.map(it-> mapper.getMapper().map(it, BusinessPartnerContentDto.class))
 			.collect(Collectors.toList());
 
