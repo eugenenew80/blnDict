@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-eug-396" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Resize address on dict_substations_tl table</comment>
+		<modifyDataType
+					columnName="address"
+					newDataType="varchar(300)"
+					schemaName="apps"
+					tableName="dict_substations_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="dict-eug-397" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Resize address on dict_energy_sources_tl table</comment>
+		<modifyDataType
+					columnName="address"
+					newDataType="varchar(300)"
+					schemaName="apps"
+					tableName="dict_energy_sources_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="dict-eug-398" logicalFilePath="path-independent" author="eugene" context="dev">
+		<comment>Resize short_name on dict_energy_sources_tl table</comment>
+		<modifyDataType
+					columnName="short_name"
+					newDataType="varchar(30)"
+					schemaName="apps"
+					tableName="dict_energy_sources_tl"/>
+		<rollback/>
+	</changeSet>
+</databaseChangeLog>
