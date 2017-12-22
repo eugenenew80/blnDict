@@ -70,7 +70,7 @@
 				baseTableSchemaName="apps"
 				baseTableName="repayment_schedule_lines"
 				baseColumnNames="header_id"
-				constraintName="fk_repayment_schedule_headers_1"
+				constraintName="fk_repayment_schedule_lines_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
