@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-258" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_prade_on_substations</comment>
+		<createTable tableName=" dict_prade_on_substations" schemaName="apps" remarks="Справочник пунктов приема и доставки электроэнергии на подстанциях">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="substation_id" type="number" remarks="ID энергообъекта">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(300)" remarks="Наименование пункта приема или доставки электроэнергии">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-259" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_prade_on_substations</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dict_prade_on_substations"
+				schemaName="apps"
+				tableName="dict_prade_on_substations"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-260" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_prade_on_substations</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_prade_on_substations_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-261" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_prade_on_substations to dict_substations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_prade_on_substations"
+				baseColumnNames="substation_id"
+				constraintName="fk_dict_prade_on_substations_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_substations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-262" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_prade_on_substations_tl</comment>
+		<createTable tableName="dict_prade_on_substations_tl" schemaName="apps" remarks="Справочник пунктов приема и доставки электроэнергии на подстанциях (Перевод)">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="prade_on_substation_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(300)" remarks="Наименование пункта приема или доставки электроэнергии">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-263" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_prade_on_substations_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dict_prade_on_substations_tl"
+				schemaName="apps"
+				tableName="dict_prade_on_substations_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-264" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dict_prade_on_substations_tl</comment>
+		<addUniqueConstraint
+				columnNames="prade_on_substation_id, lang"
+				constraintName="uk_dict_prade_on_substations_tl"
+				schemaName="apps"
+				tableName="dict_prade_on_substations_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-265" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_prade_on_substations_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_prade_on_substations_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-266" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_prade_on_substations_tl to dict_prade_on_substations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_prade_on_substations_tl"
+				baseColumnNames="prade_on_substation_id"
+				constraintName="fk_dict_prade_on_substations_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_prade_on_substations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+
+</databaseChangeLog>

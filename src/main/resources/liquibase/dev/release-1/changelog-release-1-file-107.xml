@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-236" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<dropColumn columnName="photoelectric module type"
+					schemaName="apps"
+					tableName="contracts"/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-237" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<addColumn schemaName="apps"
+				   tableName="contracts">
+			<column name="photoelectric_module_type" type="varchar(50)"/>
+		</addColumn>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-238" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<addColumn schemaName="apps"
+				   tableName="contracts">
+			<column name="bp1_bank_account_id" type="number"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-rus-239" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<addColumn schemaName="apps"
+				   tableName="contracts">
+			<column name="bp2_bank_account_id" type="number"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-rus-240" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: contracts to dict_bank_accounts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="contracts"
+				baseColumnNames="bp1_bank_account_id"
+				constraintName="fk_contracts_11"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_bank_accounts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-241" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: contracts to dict_bank_accounts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="contracts"
+				baseColumnNames="bp2_bank_account_id"
+				constraintName="fk_contracts_12"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_bank_accounts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-242" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<dropColumn columnName="silicon_country"
+					schemaName="apps"
+					tableName="contracts"/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-243" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<addColumn schemaName="apps"
+				   tableName="contracts">
+			<column name="silicon_country_id" type="number"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="dict-rus-244" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: contracts to dict_countries</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="contracts"
+				baseColumnNames="silicon_country_id"
+				constraintName="fk_contracts_13"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_countries"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-245" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<dropColumn columnName="photoelectric module type"
+					schemaName="apps"
+					tableName="contracts_tl"/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-246" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<addColumn schemaName="apps"
+				   tableName="contracts_tl">
+			<column name="photoelectric_module_type" type="varchar(50)"/>
+		</addColumn>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-247" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<renameColumn columnDataType="number"
+					  newColumnName="energy_source_id"
+					  oldColumnName="power_station_id"
+					  remarks="Ид электростанции"
+					  schemaName="apps"
+					  tableName="contracts"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-248" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<renameColumn columnDataType="varchar(100)"
+					  newColumnName="energy_source_name"
+					  oldColumnName="power_station_name"
+					  remarks="Наименование электростанции"
+					  schemaName="apps"
+					  tableName="contracts"/>
+	</changeSet>
+
+
+
+	<changeSet id="dict-rus-249" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<renameColumn columnDataType="number"
+					  newColumnName="energy_source_type_id"
+					  oldColumnName="power_station_type_id"
+					  remarks="Ид типа электростанции"
+					  schemaName="apps"
+					  tableName="contracts"/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-250" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<dropForeignKeyConstraint baseTableSchemaName="apps" baseTableName="payment_plan_lines" constraintName="FK_PAYMENT_PLAN_LINES_1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-251" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: payment_plan_lines to payment_plan_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="payment_plan_lines"
+				baseColumnNames="header_id"
+				constraintName="fk_payment_plan_lines_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="payment_plan_headers"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+
+	<changeSet id="dict-rus-252" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<dropForeignKeyConstraint baseTableSchemaName="apps" baseTableName="REPAYMENT_SCHEDULE_LINES" constraintName="FK_REPAYMENT_SCHEDULE_LINES_1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-253" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: REPAYMENT_SCHEDULE_LINES to REPAYMENT_SCHEDULE_HEADERS</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="REPAYMENT_SCHEDULE_LINES"
+				baseColumnNames="header_id"
+				constraintName="FK_REPAYMENT_SCHEDULE_LINES_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="REPAYMENT_SCHEDULE_HEADERS"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-254" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<dropForeignKeyConstraint baseTableSchemaName="apps" baseTableName="PCV_VALUES_DAY" constraintName="FK_PCV_VALUES_DAY_1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-255" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: PCV_VALUES_DAY to PCV_HEADERS_DAY</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="PCV_VALUES_DAY"
+				baseColumnNames="header_id"
+				constraintName="FK_PCV_VALUES_DAY_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="PCV_HEADERS_DAY"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-256" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<dropForeignKeyConstraint baseTableSchemaName="apps" baseTableName="PCV_VALUES_YEAR" constraintName="FK_PCV_VALUES_YEAR_1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-257" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: PCV_VALUES_YEAR to PCV_HEADERS_YEAR</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="PCV_VALUES_YEAR"
+				baseColumnNames="header_id"
+				constraintName="FK_PCV_VALUES_YEAR_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="PCV_HEADERS_YEAR"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+</databaseChangeLog>

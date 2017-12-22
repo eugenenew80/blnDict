@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-267" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_prade_on_energy_sources</comment>
+		<createTable tableName=" dict_prade_on_energy_sources" schemaName="apps" remarks="Справочник пунктов приема и доставки электроэнергии на электростанциях">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="energy_source_id" type="number" remarks="ID энергообъекта">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(300)" remarks="Наименование пункта приема или доставки электроэнергии">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-268" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_prade_on_energy_sources</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dict_prade_on_energy_sources"
+				schemaName="apps"
+				tableName="dict_prade_on_energy_sources"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-269" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_prade_on_energy_sources</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_prade_on_energy_sources_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-270" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_prade_on_energy_sources to dict_energy_sources</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_prade_on_energy_sources"
+				baseColumnNames="energy_source_id"
+				constraintName="fk_dict_prade_on_energy_sources_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_sources"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-271" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_prade_on_energy_sources_tl</comment>
+		<createTable tableName="dict_prade_on_energy_sources_tl" schemaName="apps" remarks="Справочник пунктов приема и доставки электроэнергии на электростанциях (Перевод)">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="prade_on_energy_source_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(300)" remarks="Наименование пункта приема или доставки электроэнергии">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-272" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_prade_on_energy_sources_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dict_prade_on_energy_sources_tl"
+				schemaName="apps"
+				tableName="dict_prade_on_energy_sources_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-273" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dict_prade_on_energy_sources_tl</comment>
+		<addUniqueConstraint
+				columnNames="prade_on_energy_source_id, lang"
+				constraintName="uk_dict_prade_on_energy_sources_tl"
+				schemaName="apps"
+				tableName="dict_prade_on_energy_sources_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-274" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_prade_on_energy_sources_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_prade_on_energy_sources_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-275" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_prade_on_energy_sources_tl to dict_prade_on_energy_sources</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_prade_on_energy_sources_tl"
+				baseColumnNames="prade_on_energy_source_id"
+				constraintName="fk_dict_prade_on_energy_sources_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_prade_on_energy_sources"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+</databaseChangeLog>
