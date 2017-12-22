@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-203" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pcv_values_year</comment>
+		<createTable tableName=" pcv_values_year" schemaName="apps" remarks="Справочник Прогнозные/плановые/фактические объёмы выработки эл. энергии на год - значения">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Ид. заголовка">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="value_month" type="number" remarks="Месяц">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="value" type="number" remarks="Значение за месяц">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-204" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pcv_values_year</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pcv_values_year"
+				schemaName="apps"
+				tableName="pcv_values_year"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-205" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pcv_values_year</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pcv_values_year_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-206" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pcv_values_year to pcv_header</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pcv_values_year"
+				baseColumnNames="header_id"
+				constraintName="fk_pcv_values_year_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pcv_header"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+</databaseChangeLog>

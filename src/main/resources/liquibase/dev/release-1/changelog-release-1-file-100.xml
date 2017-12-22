@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-207" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pcv_headers_day</comment>
+		<createTable tableName=" pcv_headers_day" schemaName="apps" remarks="Справочник Прогнозные/плановые/фактические объёмы выработки эл. энергии на сутки - заголовок">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="business_partner_id" type="number" remarks="Ид. бизнес-партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="Ид. договора">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="energy_source_id" type="number" remarks="Ид. электростанции">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="info_type_id" type="number" remarks="Ид. типа информации">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_id" type="number" remarks="Ид. запроса пользователя">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="value_date" type="date" remarks="Дата">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="version" type="number" remarks="Версия">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="is_active" type="number" remarks="Статус записи: Активно/Не активно">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-208" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pcv_headers_day</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pcv_headers_day"
+				schemaName="apps"
+				tableName="pcv_headers_day"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-209" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pcv_headers_day</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pcv_headers_day_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-210" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pcv_headers_day to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pcv_headers_day"
+				baseColumnNames="business_partner_id"
+				constraintName="fk_pcv_headers_day_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-211" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pcv_headers_day to contracts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pcv_headers_day"
+				baseColumnNames="contract_id"
+				constraintName="fk_pcv_headers_day_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="contracts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-212" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pcv_headers_day to dict_energy_sources</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pcv_headers_day"
+				baseColumnNames="energy_source_id"
+				constraintName="fk_pcv_headers_day_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_sources"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-213" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pcv_headers_day to pcv_info_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pcv_headers_day"
+				baseColumnNames="info_type_id"
+				constraintName="fk_pcv_headers_day_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pcv_info_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+</databaseChangeLog>

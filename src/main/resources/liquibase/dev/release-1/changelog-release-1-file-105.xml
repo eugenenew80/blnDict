@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-230" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: payment_plan_lines</comment>
+		<createTable tableName=" payment_plan_lines" schemaName="apps" remarks="График оплаты - строки">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Ид. заголовка">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="business_partner_id" type="number" remarks="Ид. бизнес-партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="Ид. договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="plan_date" type="date" remarks="Планируемая дата оплаты">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="plan_amount" type="number" remarks="Планируемая сумма оплаты">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-231" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: payment_plan_lines</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_payment_plan_lines"
+				schemaName="apps"
+				tableName="payment_plan_lines"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-232" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: payment_plan_lines</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="payment_plan_lines_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-233" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: payment_plan_lines to pcv_header</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="payment_plan_lines"
+				baseColumnNames="header_id"
+				constraintName="fk_payment_plan_lines_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pcv_header"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-234" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: payment_plan_lines to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="payment_plan_lines"
+				baseColumnNames="business_partner_id"
+				constraintName="fk_payment_plan_lines_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-235" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: payment_plan_lines to contracts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="payment_plan_lines"
+				baseColumnNames="contract_id"
+				constraintName="fk_payment_plan_lines_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="contracts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+</databaseChangeLog>

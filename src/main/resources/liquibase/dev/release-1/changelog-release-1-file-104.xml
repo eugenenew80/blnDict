@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-227" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: payment_plan_headers</comment>
+		<createTable tableName=" payment_plan_headers" schemaName="apps" remarks="График оплаты - заголовок">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="plan_year" type="number" remarks="Год">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="plan_month" type="number" remarks="Месяц">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="version" type="number" remarks="Версия">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="status" type="number" remarks="Статус записи: Активно/Не активно">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-228" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: payment_plan_headers</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_payment_plan_headers"
+				schemaName="apps"
+				tableName="payment_plan_headers"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-229" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: payment_plan_headers</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="payment_plan_headers_s"
+				startValue="1"/>
+	</changeSet>
+
+</databaseChangeLog>
