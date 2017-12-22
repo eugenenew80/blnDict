@@ -103,4 +103,13 @@
     <include file="release-1/changelog-release-1-file-95.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-96.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-97.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-98.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-99.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-100.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-101.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-102.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-103.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-104.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-105.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-106.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

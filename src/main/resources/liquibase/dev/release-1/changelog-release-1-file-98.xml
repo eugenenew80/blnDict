@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-188" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pcv_info_types</comment>
+		<createTable tableName=" pcv_info_types" schemaName="apps" remarks="Справочник Типы информации для таблиц PCV_HEADERS_YEAR / PCV_HEADERS_DAY">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="short_name" type="varchar(100)" remarks="Краткое наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(200)" remarks="Наименование типа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="is_year" type="number" remarks="Данные вводятся за год в разрезе месяцев">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_day" type="number" remarks="Данные вводятся за сутки в разрезе часов">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-189" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pcv_info_types</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pcv_info_types"
+				schemaName="apps"
+				tableName="pcv_info_types"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-190" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pcv_info_types</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pcv_info_types_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-191" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pcv_info_types_tl</comment>
+		<createTable tableName="pcv_info_types_tl" schemaName="apps" remarks="Справочник Типы информации для таблиц PCV_HEADERS_YEAR / PCV_HEADERS_DAY (Перевод)">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="pcv_info_types_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="short_name" type="varchar(100)" remarks="Краткое наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(200)" remarks="Наименование типа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-192" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pcv_info_types_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pcv_info_types_tl"
+				schemaName="apps"
+				tableName="pcv_info_types_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-193" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: pcv_info_types_tl</comment>
+		<addUniqueConstraint
+				columnNames="pcv_info_types_id, lang"
+				constraintName="uk_pcv_info_types_tl"
+				schemaName="apps"
+				tableName="pcv_info_types_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-194" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pcv_info_types_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pcv_info_types_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-195" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pcv_info_types_tl to pcv_info_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pcv_info_types_tl"
+				baseColumnNames="pcv_info_types_id"
+				constraintName="fk_pcv_info_types_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pcv_info_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+	
+</databaseChangeLog>
