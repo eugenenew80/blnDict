@@ -12,6 +12,7 @@ import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.Lang;
 import kz.kegoc.bln.entity.dict.Organization;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
+import org.apache.commons.lang3.StringUtils;
 import org.dozer.DozerBeanMapper;
 import kz.kegoc.bln.entity.dict.dto.OrganizationDto;
 import kz.kegoc.bln.service.dict.OrganizationService;
@@ -23,7 +24,15 @@ import kz.kegoc.bln.service.dict.OrganizationService;
 public class OrganizationResourceImpl {
 
 	@GET 
-	public Response getAll(@QueryParam("shortName") String shortName, @QueryParam("name") String name, @QueryParam("lang") Lang lang) {
+	public Response getAll(
+		@QueryParam("searchValue") String searchValue,
+		@QueryParam("shortName") String shortName,
+		@QueryParam("name") String name,
+		@QueryParam("lang") Lang lang
+	) {
+		if (StringUtils.isNotEmpty(searchValue))
+			shortName = searchValue;
+
 		List<OrganizationDto> list = service.find(null, shortName, name, buildSessionContext(lang))
 			.stream()
 			.map(it-> mapper.getMapper().map(it, OrganizationDto.class))

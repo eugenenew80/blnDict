@@ -13,6 +13,11 @@
       <b>bankId</b>
     </field>
 
+    <field type="one-way">
+      <a>bank.name</a>
+      <b>bankName</b>
+    </field>
+
     <field>
       <a>businessPartner.id</a>
       <b>businessPartnerId</b>

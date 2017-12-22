@@ -10,4 +10,5 @@ import java.util.List;
 @Local
 public interface MeterService extends EntityService<Meter> {
     List<Meter> find(String code, String shortName, String name, String serialNumber, SessionContext context);
+    List<Meter> findEveryWhere(String value, SessionContext context);
 }

@@ -34,8 +34,8 @@
     </field>
 
     <field type="one-way">
-      <a>org.name</a>
-      <b>orgName</b>
+      <a>org.shortName</a>
+      <b>orgShortName</b>
     </field>
   </mapping>
 </mappings>
