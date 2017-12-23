@@ -1,9 +1,6 @@
 package kz.kegoc.bln.ejb.mapper;
 
 import org.dozer.DozerBeanMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -13,8 +10,6 @@ import java.util.Arrays;
 @Startup
 @Singleton
 public class BeanMapper {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
     private DozerBeanMapper mapper;
 
     public DozerBeanMapper getMapper() {
@@ -23,8 +18,6 @@ public class BeanMapper {
 
     @PostConstruct
     public void init() {
-        logger.info("BeanMapper init!");
-
         mapper = new DozerBeanMapper();
         mapper.setMappingFiles(Arrays.asList(
             "mapper/MappingConfig.xml",

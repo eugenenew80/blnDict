@@ -11,13 +11,11 @@ import org.redisson.api.RMapCache;
 import org.redisson.api.RedissonClient;
 import org.redisson.codec.JsonJacksonCodec;
 import org.redisson.config.Config;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
-import java.util.Arrays;
 import kz.kegoc.bln.entity.adm.User;
 
 @ApplicationScoped
@@ -42,17 +40,6 @@ public class Producer {
 
         redissonClient = Redisson.create(config);
         return redissonClient;
-    }
-
-
-    @Produces
-    public RMapCache<String, User> createSessions() {
-        if (sessions!=null)
-            return sessions;
-
-        createRedissonClient();
-        sessions = redissonClient.getMapCache("sessions");
-        return sessions;
     }
 
     @Produces

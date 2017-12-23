@@ -11,12 +11,14 @@ import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
 
+import kz.kegoc.bln.entity.adm.RoleFunc;
 import kz.kegoc.bln.entity.adm.User;
 import kz.kegoc.bln.service.adm.UserService;
 import kz.kegoc.bln.webapi.common.CustomPrincipal;
 import org.apache.commons.lang3.StringUtils;
-import org.redisson.api.RMapCache;
+import org.redisson.api.RBucket;
 import org.apache.commons.codec.binary.Base64;
+import org.redisson.api.RedissonClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,13 +47,14 @@ public class BasicAuthFilter implements ContainerRequestFilter {
 			throw new NotAuthorizedException("EMPTY USER");
 
 		String hash = Base64.encodeBase64String((userName + ":" + password).getBytes());
-		User user = sessions.get(hash);
+		RBucket<User> bucket = redissonClient.getBucket(hash);
+		User user = bucket.get();
 		if (user==null)
 			throw new NotAuthorizedException("USER IS NOT REGISTERED");
+		bucket.set(user, 30, TimeUnit.MINUTES);
 
-		logger.info(userName + ": " + ctx.getMethod() + " / " + ctx.getUriInfo().getPath());
+		logger.info(userName + ": " + ctx.getMethod() + " " + ctx.getUriInfo().getPath());
 
-		sessions.put(userName, user,30, TimeUnit.MINUTES);
 		SecurityContext securityContext = new SecurityContext() {
 			@Override
 			public boolean isUserInRole(String role) {
@@ -102,11 +105,9 @@ public class BasicAuthFilter implements ContainerRequestFilter {
 		boolean b = userService.findById(checkedUser.getId(), null)
 			.getRoles().stream()
 			.flatMap(u -> u.getRole().getFuncs().stream())
-			.map(roleFunc -> roleFunc.getFunc())
+			.map(RoleFunc::getFunc)
 			.distinct()
-			.filter(it -> ctx.getUriInfo().getPath().startsWith(it.getUrl()) && it.getCode().endsWith(finalOperation))
-			.findFirst()
-			.isPresent();
+			.anyMatch(it -> ctx.getUriInfo().getPath().startsWith(it.getUrl()) && it.getCode().endsWith(finalOperation));
 
 		if (!b) {
 			logger.warn("access denied");
@@ -114,10 +115,9 @@ public class BasicAuthFilter implements ContainerRequestFilter {
 		}
 	}
 
-
-	@Inject
-	private RMapCache<String, User> sessions;
-
 	@Inject
 	private UserService userService;
+
+	@Inject
+	private RedissonClient redissonClient;
 }
