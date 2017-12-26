@@ -398,14 +398,6 @@
 	</changeSet>
 
 
-	<changeSet id="dict-rus-333" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<dropNotNullConstraint columnDataType="varchar"
-							   columnName="name"
-							   schemaName="apps"
-							   tableName="dict_prade_on_substations"/>
-	</changeSet>
-
-
 	<changeSet id="dict-rus-334" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<dropNotNullConstraint columnDataType="varchar"
 							   columnName="name"
