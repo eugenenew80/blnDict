@@ -366,14 +366,6 @@
 	</changeSet>
 
 
-	<changeSet id="dict-rus-324" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<dropNotNullConstraint columnDataType="varchar"
-							   columnName="locality"
-							   schemaName="apps"
-							   tableName="dict_post_addresses"/>
-	</changeSet>
-
-
 	<changeSet id="dict-rus-325" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<dropNotNullConstraint columnDataType="varchar"
 							   columnName="locality"
