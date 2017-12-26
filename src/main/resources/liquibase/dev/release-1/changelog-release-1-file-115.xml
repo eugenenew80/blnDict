@@ -178,8 +178,8 @@
 	<changeSet id="dict-rus-440" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<insert schemaName="apps"
 				tableName="dict_tariffs_values_tl">
-			<column name="id" type="number" value="3"/>
-			<column name="tariffs_value_id" type="number" value="3"/>
+			<column name="id" type="number" value="4"/>
+			<column name="tariffs_value_id" type="number" value="4"/>
 			<column name="lang" type="varchar" value="RU"/>
 			<column name="document_reference" type="varchar" value="Приказ АРЕМ № 105-ОД от 16 мая 2014 года"/>
 		</insert>
