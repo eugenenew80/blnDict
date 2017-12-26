@@ -446,14 +446,6 @@
 	</changeSet>
 
 
-	<changeSet id="dict-rus-341" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<dropNotNullConstraint columnDataType="varchar"
-							   columnName="address"
-							   schemaName="apps"
-							   tableName="dict_substations"/>
-	</changeSet>
-
-
 	<changeSet id="dict-rus-342" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<dropNotNullConstraint columnDataType="varchar"
 							   columnName="name"
