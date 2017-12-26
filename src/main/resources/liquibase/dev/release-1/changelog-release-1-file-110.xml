@@ -605,7 +605,6 @@
 					<column name="metering_points_locations_id" type="number" value="1"/>
 					<column name="lang" type="varchar" value="RU"/>
 					<column name="name" type="varchar" value="Подстанция"/>
-					<column name="energy_object_type_id" type="number" value="1"/>
 			</insert>
 	</changeSet>
 
@@ -617,7 +616,6 @@
 					<column name="metering_points_locations_id" type="number" value="2"/>
 					<column name="lang" type="varchar" value="RU"/>
 					<column name="name" type="varchar" value="Электростанция"/>
-					<column name="energy_object_type_id" type="number" value="2"/>
 			</insert>
 	</changeSet>
 
