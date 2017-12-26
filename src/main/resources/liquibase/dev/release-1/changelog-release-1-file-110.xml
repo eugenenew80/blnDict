@@ -510,13 +510,6 @@
 	</changeSet>
 
 
-	<changeSet id="dict-rus-350" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<dropNotNullConstraint columnDataType="varchar"
-							   columnName="description"
-							   schemaName="apps"
-							   tableName="ecm_content_types"/>
-	</changeSet>
-
 	<changeSet id="dict-rus-351" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<dropNotNullConstraint columnDataType="varchar"
 							   columnName="name"
