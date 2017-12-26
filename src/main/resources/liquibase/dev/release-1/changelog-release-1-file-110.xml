@@ -96,14 +96,6 @@
 	</changeSet>
 
 
-	<changeSet id="dict-rus-287" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<dropNotNullConstraint columnDataType="varchar"
-							   columnName="description"
-							   schemaName="apps"
-							   tableName="dict_contact_emails"/>
-	</changeSet>
-
-
 	<changeSet id="dict-rus-288" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<dropNotNullConstraint columnDataType="varchar"
 							   columnName="short_name"
