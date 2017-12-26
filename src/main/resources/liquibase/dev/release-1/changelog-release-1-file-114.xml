@@ -148,7 +148,7 @@
                 baseTableSchemaName="apps"
                 baseTableName="dict_tariffs_values_tl"
                 baseColumnNames="tariffs_value_id"
-                constraintName="fk_dict_tariffs_header_tl_1"
+                constraintName="fk_dict_tariffs_values_tl_1"
                 deferrable="true"
                 initiallyDeferred="true"
                 onDelete="CASCADE"
