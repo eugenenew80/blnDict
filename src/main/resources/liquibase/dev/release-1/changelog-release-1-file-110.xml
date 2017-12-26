@@ -602,7 +602,7 @@
 			<insert schemaName="apps"
 				tableName="dict_metering_points_locations_tl">
 					<column name="id" type="number" value="1"/>
-					<column name="metering_points_locations_id" type="number" value="1"/>
+					<column name="metering_points_location_id" type="number" value="1"/>
 					<column name="lang" type="varchar" value="RU"/>
 					<column name="name" type="varchar" value="Подстанция"/>
 			</insert>
@@ -613,7 +613,7 @@
 			<insert schemaName="apps"
 				tableName="dict_metering_points_locations_tl">
 					<column name="id" type="number" value="2"/>
-					<column name="metering_points_locations_id" type="number" value="2"/>
+					<column name="metering_points_location_id" type="number" value="2"/>
 					<column name="lang" type="varchar" value="RU"/>
 					<column name="name" type="varchar" value="Электростанция"/>
 			</insert>
