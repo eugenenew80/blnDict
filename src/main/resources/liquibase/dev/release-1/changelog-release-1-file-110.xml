@@ -598,7 +598,7 @@
 	</changeSet>
 
 
-	<changeSet id="dict-rus-360" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-362" logicalFilePath="path-independent" author="ruslan" context="dev">
 			<insert schemaName="apps"
 				tableName="dict_metering_points_locations_tl">
 					<column name="id" type="number" value="1"/>
@@ -610,7 +610,7 @@
 	</changeSet>
 
 
-	<changeSet id="dict-rus-361" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-363" logicalFilePath="path-independent" author="ruslan" context="dev">
 			<insert schemaName="apps"
 				tableName="dict_metering_points_locations_tl">
 					<column name="id" type="number" value="2"/>
