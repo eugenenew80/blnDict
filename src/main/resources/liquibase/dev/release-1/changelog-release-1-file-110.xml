@@ -199,15 +199,6 @@
 							   tableName="dict_energy_sources"/>
 	</changeSet>
 
-
-	<changeSet id="dict-rus-301" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<dropNotNullConstraint columnDataType="varchar"
-							   columnName="address"
-							   schemaName="apps"
-							   tableName="dict_energy_sources"/>
-	</changeSet>
-
-
 	<changeSet id="dict-rus-302" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<dropNotNullConstraint columnDataType="varchar"
 							   columnName="short_name"
