@@ -576,5 +576,51 @@
 	</changeSet>
 
 
+	<changeSet id="dict-rus-360" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_metering_points_locations">
+					<column name="id" type="number" value="1"/>
+					<column name="code" type="varchar" value="SUBSTATION"/>
+					<column name="name" type="varchar" value="Подстанция"/>
+					<column name="energy_object_type_id" type="number" value="1"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-361" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_metering_points_locations">
+					<column name="id" type="number" value="2"/>
+					<column name="code" type="varchar" value="ENERGY_SOURCE"/>
+					<column name="name" type="varchar" value="Электростанция"/>
+					<column name="energy_object_type_id" type="number" value="2"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-360" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_metering_points_locations_tl">
+					<column name="id" type="number" value="1"/>
+					<column name="metering_points_locations_id" type="number" value="1"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Подстанция"/>
+					<column name="energy_object_type_id" type="number" value="1"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-361" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_metering_points_locations_tl">
+					<column name="id" type="number" value="2"/>
+					<column name="metering_points_locations_id" type="number" value="2"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Электростанция"/>
+					<column name="energy_object_type_id" type="number" value="2"/>
+			</insert>
+	</changeSet>
+
+
 
 </databaseChangeLog>
