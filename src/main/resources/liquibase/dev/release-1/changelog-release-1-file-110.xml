@@ -664,5 +664,13 @@
 	</changeSet>
 
 
+	<changeSet id="dict-rus-359" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<createSequence incrementBy="1"
+						schemaName="apps"
+						sequenceName="dict_metering_points_locations_s"
+						startValue="1"/>
+	</changeSet>
+
+
 
 </databaseChangeLog>
