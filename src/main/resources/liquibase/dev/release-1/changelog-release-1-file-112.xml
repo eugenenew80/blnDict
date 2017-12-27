@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Изменения полей в основных таблицах на нулевые</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-364" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types">
+					<column name="id" type="number" value="1"/>
+					<column name="name" type="varchar" value="Запрос на заключение договора"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-365" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types">
+					<column name="id" type="number" value="2"/>
+					<column name="name" type="varchar" value="Запрос на изменение реквизитов компании"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-366" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types">
+					<column name="id" type="number" value="3"/>
+					<column name="name" type="varchar" value="Запрос на изменение контактных данных или руководителя компании"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-367" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types">
+					<column name="id" type="number" value="4"/>
+					<column name="name" type="varchar" value="Запрос на изменение договорных объемов"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-368" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types">
+					<column name="id" type="number" value="5"/>
+					<column name="name" type="varchar" value="Запрос на изменение акта разграничения балансовой принадлежности электрических сетей"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-369" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types">
+					<column name="id" type="number" value="6"/>
+					<column name="name" type="varchar" value="Запрос на изм. списка приборов коммерческого учета электроэнергии, их характеристик и мест установки"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-370" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types">
+					<column name="id" type="number" value="7"/>
+					<column name="name" type="varchar" value="Запрос на применение ВПК"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-371" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types">
+					<column name="id" type="number" value="8"/>
+					<column name="name" type="varchar" value="Запрос на изменение сроков договора"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-372" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types">
+					<column name="id" type="number" value="9"/>
+					<column name="name" type="varchar" value="Запрос на завершение договора"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-373" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types_tl">
+					<column name="id" type="number" value="1"/>
+					<column name="request_type_id" type="number" value="1"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Запрос на заключение договора"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-374" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types_tl">
+					<column name="id" type="number" value="2"/>
+					<column name="request_type_id" type="number" value="2"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Запрос на изменение реквизитов компании"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-375" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types_tl">
+					<column name="id" type="number" value="3"/>
+					<column name="request_type_id" type="number" value="3"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Запрос на изменение контактных данных или руководителя компании"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-376" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types_tl">
+					<column name="id" type="number" value="4"/>
+					<column name="request_type_id" type="number" value="4"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Запрос на изменение договорных объемов"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-377" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types_tl">
+					<column name="id" type="number" value="5"/>
+					<column name="request_type_id" type="number" value="5"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Запрос на изменение акта разграничения балансовой принадлежности электрических сетей"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-378" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types_tl">
+					<column name="id" type="number" value="6"/>
+					<column name="request_type_id" type="number" value="6"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Запрос на изм. списка приборов коммерческого учета электроэнергии, их характеристик и мест установки"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-379" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types_tl">
+					<column name="id" type="number" value="7"/>
+					<column name="request_type_id" type="number" value="7"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Запрос на применение ВПК"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-380" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types_tl">
+					<column name="id" type="number" value="8"/>
+					<column name="request_type_id" type="number" value="8"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Запрос на изменение сроков договора"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-381" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_request_types_tl">
+					<column name="id" type="number" value="9"/>
+					<column name="request_type_id" type="number" value="9"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Запрос на завершение договора"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-382" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types">
+					<column name="id" type="number" value="1"/>
+					<column name="name" type="varchar" value="Передача эл.энергии"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-383" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types">
+					<column name="id" type="number" value="2"/>
+					<column name="name" type="varchar" value="Техн.диспетчеризация"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-384" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types">
+					<column name="id" type="number" value="3"/>
+					<column name="name" type="varchar" value="Балансирование"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-385" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types">
+					<column name="id" type="number" value="4"/>
+					<column name="name" type="varchar" value="Резервирование мощности"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-386" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types">
+					<column name="id" type="number" value="5"/>
+					<column name="name" type="varchar" value="Транзит по сетям РЭК"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-387" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types">
+					<column name="id" type="number" value="6"/>
+					<column name="name" type="varchar" value="Покупка э/э по фикс.тарифам"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-388" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types">
+					<column name="id" type="number" value="7"/>
+					<column name="name" type="varchar" value="Покупка э/э по тарифам в ТЭО"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-389" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types">
+					<column name="id" type="number" value="8"/>
+					<column name="name" type="varchar" value="Продажа э/э УП"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-390" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types_tl">
+					<column name="id" type="number" value="1"/>
+					<column name="contract_type_id" type="number" value="1"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Передача эл.энергии"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-391" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types_tl">
+					<column name="id" type="number" value="2"/>
+					<column name="contract_type_id" type="number" value="2"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Техн.диспетчеризация"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-392" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types_tl">
+					<column name="id" type="number" value="3"/>
+					<column name="contract_type_id" type="number" value="3"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Балансирование"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-393" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types_tl">
+					<column name="id" type="number" value="4"/>
+					<column name="contract_type_id" type="number" value="4"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Резервирование мощности"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-394" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types_tl">
+					<column name="id" type="number" value="5"/>
+					<column name="contract_type_id" type="number" value="5"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Транзит по сетям РЭК"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-395" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types_tl">
+					<column name="id" type="number" value="6"/>
+					<column name="contract_type_id" type="number" value="6"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Покупка э/э по фикс.тарифам"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-396" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types_tl">
+					<column name="id" type="number" value="7"/>
+					<column name="contract_type_id" type="number" value="7"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Покупка э/э по тарифам в ТЭО"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-397" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="contract_types_tl">
+					<column name="id" type="number" value="8"/>
+					<column name="contract_type_id" type="number" value="8"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Продажа э/э УП"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-398" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_services">
+					<column name="id" type="number" value="1"/>
+					<column name="code" type="varchar" value="351310.100.000000"/>
+					<column name="name" type="varchar" value="Услуги по передаче/распределению электроэнергии"/>
+					<column name="description" type="varchar" value="Услуги по передаче/распределению электроэнергии"/>
+					<column name="unit_id" type="number" value="9"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-399" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_services">
+					<column name="id" type="number" value="2"/>
+					<column name="code" type="varchar" value="351210.110.000000"/>
+					<column name="name" type="varchar" value="Услуги по технической диспетчеризации"/>
+					<column name="description" type="varchar" value="Услуги по технической диспетчеризации режимов производства/потребления электрической энергии в ЕЭС Казахстана"/>
+					<column name="unit_id" type="number" value="9"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-400" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_services">
+					<column name="id" type="number" value="3"/>
+					<column name="code" type="varchar" value="351210.130.000000"/>
+					<column name="name" type="varchar" value="Услуги по организации балансирования производства-потребления электрической энергии"/>
+					<column name="description" type="varchar" value="Услуги по организации балансирования производства-потребления электрической энергии"/>
+					<column name="unit_id" type="number" value="9"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-401" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_services">
+					<column name="id" type="number" value="4"/>
+					<column name="code" type="varchar" value="351210.120.000000"/>
+					<column name="name" type="varchar" value="Услуги по регулированию/резервированию электрической мощности"/>
+					<column name="description" type="varchar" value="Услуги по регулированию/резервированию электрической мощности"/>
+					<column name="unit_id" type="number" value="9"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-402" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_services_tl">
+					<column name="id" type="number" value="1"/>
+					<column name="service_id" type="number" value="1"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Услуги по передаче/распределению электроэнергии"/>
+					<column name="description" type="varchar" value="Услуги по передаче/распределению электроэнергии"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-403" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_services_tl">
+					<column name="id" type="number" value="2"/>
+					<column name="service_id" type="number" value="2"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Услуги по технической диспетчеризации"/>
+					<column name="description" type="varchar" value="Услуги по технической диспетчеризации режимов производства/потребления электрической энергии в ЕЭС Казахстана"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-404" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_services_tl">
+					<column name="id" type="number" value="3"/>
+					<column name="service_id" type="number" value="3"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Услуги по организации балансирования производства-потребления электрической энергии"/>
+					<column name="description" type="varchar" value="Услуги по организации балансирования производства-потребления электрической энергии"/>
+			</insert>
+	</changeSet>
+
+
+	<changeSet id="dict-rus-405" logicalFilePath="path-independent" author="ruslan" context="dev">
+			<insert schemaName="apps"
+				tableName="dict_services_tl">
+					<column name="id" type="number" value="4"/>
+					<column name="service_id" type="number" value="4"/>
+					<column name="lang" type="varchar" value="RU"/>
+					<column name="name" type="varchar" value="Услуги по регулированию/резервированию электрической мощности"/>
+					<column name="description" type="varchar" value="Услуги по регулированию/резервированию электрической мощности"/>
+			</insert>
+	</changeSet>
+
+
+
+</databaseChangeLog>
