@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import kz.kegoc.bln.entity.common.Lang;
 import lombok.Data;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -22,5 +23,6 @@ public class PowerLinePartDto {
 	private LocalDate endDate;
 	private Long orgId;
 	private String orgShortName;
+	private LocalDateTime lastUpdateDate;
 	private Lang lang;
 }

@@ -53,6 +53,7 @@ public class PowerLineServiceImpl extends AbstractEntityService<PowerLine> imple
         if (HasId.class.isAssignableFrom(repository.getClazz()))
             query.orderBy(cb.asc(root.get("id")));
 
+        query.orderBy(cb.desc(root.get("lastUpdateDate")));
         return find(query.where(criteria), context);
     }
 }

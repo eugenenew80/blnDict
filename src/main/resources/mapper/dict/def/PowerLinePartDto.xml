@@ -37,5 +37,10 @@
       <a>org.shortName</a>
       <b>orgShortName</b>
     </field>
+
+    <field type="one-way">
+      <a>lastUpdateDate</a>
+      <b>lastUpdateDate</b>
+    </field>
   </mapping>
 </mappings>

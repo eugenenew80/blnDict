@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import kz.kegoc.bln.entity.common.Lang;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -20,5 +22,6 @@ public class ReactorDto {
 	private String businessPartnerShortName;
 	private Long orgId;
 	private String orgName;
+	private LocalDateTime lastUpdateDate;
 	private Lang lang;
 }

@@ -4,13 +4,18 @@
           xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
-  <configuration>
-      <relationship-type>non-cumulative</relationship-type>
-      <custom-converters>
-          <converter type="kz.kegoc.bln.ejb.converter.dozer.LocalDateConverter">
-              <class-a>java.time.LocalDate</class-a>
-              <class-b>java.time.LocalDate</class-b>
-          </converter>
-      </custom-converters>
-  </configuration>
+    <configuration>
+        <relationship-type>non-cumulative</relationship-type>
+        <custom-converters>
+            <converter type="kz.kegoc.bln.ejb.converter.dozer.LocalDateConverter">
+                <class-a>java.time.LocalDate</class-a>
+                <class-b>java.time.LocalDate</class-b>
+            </converter>
+
+            <converter type="kz.kegoc.bln.ejb.converter.dozer.LocalDateTimeConverter">
+                <class-a>java.time.LocalDateTime</class-a>
+                <class-b>java.time.LocalDateTime</class-b>
+            </converter>
+        </custom-converters>
+    </configuration>
 </mappings> 

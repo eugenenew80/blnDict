@@ -27,5 +27,10 @@
       <a>org.name</a>
       <b>orgName</b>
     </field>
+
+    <field type="one-way">
+      <a>lastUpdateDate</a>
+      <b>lastUpdateDate</b>
+    </field>
   </mapping> 
 </mappings> 

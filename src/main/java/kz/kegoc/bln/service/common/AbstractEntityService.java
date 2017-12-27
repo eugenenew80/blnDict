@@ -11,6 +11,7 @@ import javax.persistence.criteria.Root;
 import javax.validation.*;
 
 import kz.kegoc.bln.entity.common.HasOrg;
+import kz.kegoc.bln.entity.common.IsEquip;
 import kz.kegoc.bln.webapi.filters.SessionContext;
 import kz.kegoc.bln.entity.common.HasId;
 import kz.kegoc.bln.entity.common.Lang;
@@ -96,7 +97,9 @@ public abstract class AbstractEntityService<T extends HasId> implements EntitySe
 		if (StringUtils.isNotEmpty(code))
 			criteria = cb.and(criteria, cb.like(root.get("code"), code + "%"));
 
-		if (HasId.class.isAssignableFrom(repository.getClazz()))
+		if (IsEquip.class.isAssignableFrom(repository.getClazz()))
+			query.orderBy(cb.desc(root.get("lastUpdateDate")));
+		else if (HasId.class.isAssignableFrom(repository.getClazz()))
 			query.orderBy(cb.asc(root.get("id")));
 
 		return find(query.where(criteria), context);

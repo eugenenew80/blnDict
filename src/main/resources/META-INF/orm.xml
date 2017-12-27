@@ -1776,7 +1776,7 @@
 				<generated-value strategy="SEQUENCE" generator="dict_energy_source_metering_points_gen" />
 				<sequence-generator
 						name="dict_energy_source_metering_points_gen"
-						sequence-name="apps.dict_substation_metering_points_s"
+						sequence-name="apps.dict_energy_source_metering_points_s"
 						allocation-size="1"
 				/>
 			</id>
