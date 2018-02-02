@@ -114,8 +114,8 @@
             <properties>
                 <driver>oracle.jdbc.OracleDriver</driver>
                 <url>jdbc:oracle:thin:@localhost:1521:BLNDEV</url>
-                <username>${settings.servers.oracle.username}/</username>
-                <password>${settings.servers.oracle.password}</password>
+                <username>$M2_HOME{settings.servers.ora.username}/</username>
+                <password>$M2_HOME{settings.servers.ora.password}</password>
                 <scripts>dev</scripts>
                 <skipTests>true</skipTests>
 
