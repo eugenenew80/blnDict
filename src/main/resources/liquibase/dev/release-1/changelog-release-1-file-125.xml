@@ -18,11 +18,11 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="name" type="varchar(100)" remarks="Тип">
+            <column name="name" type="varchar2(100)" remarks="Тип">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="manufacturer" type="varchar(100)" remarks="Производитель">
+            <column name="manufacturer" type="varchar2(100)" remarks="Производитель">
                 <constraints nullable="false"/>
             </column>
             

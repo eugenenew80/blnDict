@@ -10,7 +10,7 @@
         <comment>add column: mdfem_device_replacement_acts</comment>
         <addColumn schemaName="apps"
                    tableName="mdfem_device_replacement_acts">
-            <column name="responsible_of_device" type="varchar(100)" remarks="Ответственность за сохранность прборов учета и пломб возложить на"/>
+            <column name="responsible_of_device" type="varchar2(100)" remarks="Ответственность за сохранность прборов учета и пломб возложить на"/>
         </addColumn>
     </changeSet>
 

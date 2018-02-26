@@ -13,11 +13,11 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="manufacturer" type="varchar(100)" remarks="Производитель">
+            <column name="manufacturer" type="varchar2(100)" remarks="Производитель">
                 <constraints nullable="false"/>
             </column>
             
-            <column name="serial_number" type="varchar(30)" remarks="Заводской номер">
+            <column name="serial_number" type="varchar2(30)" remarks="Заводской номер">
                 <constraints nullable="true"/>
             </column>
 
