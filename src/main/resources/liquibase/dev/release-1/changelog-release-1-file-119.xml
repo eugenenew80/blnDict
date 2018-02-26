@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-463" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: mdfem_undercount_calc_method</comment>
+		<createTable tableName=" mdfem_undercount_calc_method" schemaName="apps" remarks="Справочник способ расчета недоучета электроэнергии">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="code" type="varchar2(10)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-464" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: mdfem_undercount_calc_method</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_mdfem_undercount_calc_method"
+				schemaName="apps"
+				tableName="mdfem_undercount_calc_method"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-465" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: mdfem_undercount_calc_method</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="mdfem_undercount_calc_method_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-466" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: mdfem_undercount_calc_method_tl</comment>
+		<createTable tableName="mdfem_undercount_calc_method_tl" schemaName="apps" remarks="Справочник способ расчета недоучета электроэнергии (Перевод)">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="mdfem_undercount_calc_method_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="code" type="varchar2(10)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-467" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: mdfem_undercount_calc_method_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_mdfem_undercount_calc_method_tl"
+				schemaName="apps"
+				tableName="mdfem_undercount_calc_method_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-468" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: mdfem_undercount_calc_method_tl</comment>
+		<addUniqueConstraint
+				columnNames="mdfem_undercount_calc_method_id, lang"
+				constraintName="uk_mdfem_undercount_calc_method_tl"
+				schemaName="apps"
+				tableName="mdfem_undercount_calc_method_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-469" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: mdfem_undercount_calc_method_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="mdfem_undercount_calc_method_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-470" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_undercount_calc_method_tl to mdfem_undercount_calc_method</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_undercount_calc_method_tl"
+				baseColumnNames="mdfem_undercount_calc_method_id"
+				constraintName="fk_mdfem_undercount_calc_method_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_undercount_calc_method"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-471" logicalFilePath="path-independent" author="ruslan">
+		<insert schemaName="apps"  tableName="mdfem_undercount_calc_method">
+			<column name="id"           type="number"       value="1" />
+			<column name="code"         type="varchar2(10)"  value="LPPC" />
+			<column name="name"         type="varchar2(100)" value="Измерение мощности в первичной цепи"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_calc_method">
+			<column name="id"           type="number"       value="2" />
+			<column name="code"         type="varchar2(10)"  value="LPSC"/>
+			<column name="name"         type="varchar2(100)" value="Измерение мошности во вторичной цепи"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_calc_method">
+			<column name="id"           type="number"       value="3" />
+			<column name="code"         type="varchar2(10)"  value="FPAP"/>
+			<column name="name"         type="varchar2(100)" value="Средняя мощность за предыдущий расчетный период"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_calc_method">
+			<column name="id"           type="number"       value="4" />
+			<column name="code"         type="varchar2(10)"  value="APBA"/>
+			<column name="name"         type="varchar2(100)" value="Средняя мощность за последние 5 суток предшествующие нарушению учета"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="dict-rus-472" logicalFilePath="path-independent" author="ruslan">
+		<insert schemaName="apps"  tableName="mdfem_undercount_calc_method_tl">
+			<column name="id"           type="number"       value="1" />
+			<column name="mdfem_undercount_reason_id"       type="number"       value="1" />
+			<column name="lang"         type="varchar2(10)"  value="eng" />
+			<column name="code"         type="varchar2(10)"  value="LPPC" />
+			<column name="name"         type="varchar2(100)" value="Load power in primary circuits"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_calc_method_tl">
+			<column name="id"           type="number"       value="2" />
+			<column name="mdfem_undercount_reason_id"       type="number"       value="2" />
+			<column name="lang"         type="varchar2(10)"  value="eng"/>
+			<column name="code"         type="varchar2(10)"  value="LPSC"/>
+			<column name="name"         type="varchar2(100)" value="Load power in secondary circuits"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_calc_method_tl">
+			<column name="id"           type="number"       value="3" />
+			<column name="mdfem_undercount_reason_id"       type="number"       value="3" />
+			<column name="lang"         type="varchar2(10)"  value="eng" />
+			<column name="code"         type="varchar2(10)"  value="FPAP"/>
+			<column name="name"         type="varchar2(100)" value="For the previous accounting period"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_calc_method_tl">
+			<column name="id"           type="number"       value="4" />
+			<column name="mdfem_undercount_reason_id"       type="number"       value="4" />
+			<column name="lang"         type="varchar2(10)"  value="eng" />
+			<column name="code"         type="varchar2(10)"  value="APBA"/>
+			<column name="name"         type="varchar2(100)" value="Average power for 5 days before the accident"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="dict-rus-473" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_undercount_header to mdfem_undercount_reason</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_undercount_header"
+				baseColumnNames="reason_code"
+				constraintName="fk_mdfem_undercount_header_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_undercount_reason"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-474" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_undercount_header to mdfem_undercount_calc_method</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_undercount_header"
+				baseColumnNames="calculation_method_code"
+				constraintName="fk_mdfem_undercount_header_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_undercount_calc_method"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+
+</databaseChangeLog>

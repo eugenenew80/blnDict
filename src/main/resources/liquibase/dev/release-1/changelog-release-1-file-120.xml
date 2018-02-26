@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-475" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: mdfem_history</comment>
+		<createTable tableName=" mdfem_history" schemaName="apps" remarks="Справочник Приборы учета электрической энергии в точках учета">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="metering_point_id" type="number" remarks="Ид точки учета">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="start_datetime" type="timestamp" remarks="Дата и время установки">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="end_datetime" type="timestamp" remarks="Дата и время снятия">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="seal_number" type="varchar2(10)" remarks="Клеммные крышки опламбированы пломбиром №">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="meter_id" type="number" remarks="Ид счетчика">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="tt_direct_inclusion" type="number" remarks="Трансформатор тока прямого включения (1-да /0-нет)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tt_type_id" type="number" remarks="Ид трансформатора тока">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tn_direct_inclusion" type="number" remarks="Трансформатор напряжения прямого включения">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tn_type_id" type="number" remarks="Ид трансформатор напряжения">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="circuit_voltage_losses_limit" type="number" remarks="Придел допустимых потерь в цепях напряжения, % (Вычисляемое поле. Только для чтения)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="counter_factor" type="number" remarks="Коэфицент счетчика">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="relative_error_limit" type="number" remarks="Предел допустимой относительной погрешности ИКУЭ, %">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="min_load_in_acc_class_power" type="number" remarks="Минимальная нагрузка в первичной цепи в классе точности,кВт">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="max_load_in_acc_class_power" type="number" remarks="Максимальная нагрузка в первичной цепи в классе точности,кВт">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="old_metering_reading_ai" type="number" remarks="Показания снятого счетчика, актив прием">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="old_metering_reading_ae" type="number" remarks="Показания снятого счетчика, актив выдача">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="old_metering_reading_ri" type="number" remarks="Показания снятого счетчика, реактив прием">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="old_metering_reading_re" type="number" remarks="Показания снятого счетчика, реактив выдача">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="new_metering_reading_ai" type="number" remarks="Показания установленного счетчика, актив прием">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="new_metering_reading_ae" type="number" remarks="Показания установленного счетчика, актив выдача">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="new_metering_reading_ri" type="number" remarks="Показания установленного счетчика, реактив прием">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="new_metering_reading_re" type="number" remarks="Показания установленного счетчика, реактив выдача">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-476" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: mdfem_history</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_mdfem_history"
+				schemaName="apps"
+				tableName="mdfem_history"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-477" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: mdfem_history</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="mdfem_history_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-478" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_history to dict_metering_points</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_history"
+				baseColumnNames="metering_point_id"
+				constraintName="fk_mdfem_history_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_metering_points"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-479" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_history to dict_meters</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_history"
+				baseColumnNames="meter_id"
+				constraintName="fk_mdfem_history_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_meters"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-480" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_history to dict_current_trans_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_history"
+				baseColumnNames="tt_type_id"
+				constraintName="fk_mdfem_history_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_current_trans_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-481" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_history to dict_voltage_trans_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_history"
+				baseColumnNames="tn_type_id"
+				constraintName="fk_mdfem_history_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_voltage_trans_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>

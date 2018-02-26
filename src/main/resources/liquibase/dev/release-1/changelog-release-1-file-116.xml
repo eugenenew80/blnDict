@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-441" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_accurancy_classes</comment>
+		<createTable tableName=" dict_accurancy_classes" schemaName="apps" remarks="Справочник классов точности">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="designation" type="varchar2(7)" remarks="Обозначение">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar(300)" remarks="Наименование пункта приема или доставки электроэнергии">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="value" type="number" remarks="Значение">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="min_load_acc_class_percent" type="number" remarks="Минимальная нагрузка в классе точности,%">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-442" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_accurancy_classes</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dict_accurancy_classes"
+				schemaName="apps"
+				tableName="dict_accurancy_classes"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-443" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_accurancy_classes</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_accurancy_classes_s"
+				startValue="1"/>
+	</changeSet>
+</databaseChangeLog>

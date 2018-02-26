@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-482" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: mdfem_device_replacement_acts</comment>
+		<createTable tableName=" mdfem_device_replacement_acts" schemaName="apps" remarks="Справочник акты замены элемента ИКУЭ">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_number" type="varchar2(100)" remarks="Номер договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_date" type="date" remarks="Дата составления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_signing_place" type="varchar2(100)" remarks="Место составления документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="metering_point_id" type="number" remarks="Ид точки учета">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="old_mdfem_id" type="number" remarks="Снят (Ид демонтированной ИКУЭ)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="new_mdfem_id" type="number" remarks="Установлен (Ид установленного ИКУЭ)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="scan_document_id" type="number" remarks="Скан акта замены элемента Икуэ">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="doc_status_code" type="number" remarks="Код статуса акта замены прибора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="undercount_header_id" type="number" remarks="Ид акта недоучета электроэнергии">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-483" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: mdfem_device_replacement_acts</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_mdfem_device_replacement_acts"
+				schemaName="apps"
+				tableName="mdfem_device_replacement_acts"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-484" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: mdfem_device_replacement_acts</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="mdfem_device_replacement_acts_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-485" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_device_replacement_acts to dict_metering_points</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_device_replacement_acts"
+				baseColumnNames="metering_point_id"
+				constraintName="fk_mdfem_device_replacement_acts_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_metering_points"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-486" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_device_replacement_acts to mdfem_history</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_device_replacement_acts"
+				baseColumnNames="old_mdfem_id"
+				constraintName="fk_mdfem_device_replacement_acts_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_history"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-487" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_device_replacement_acts to mdfem_history</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_device_replacement_acts"
+				baseColumnNames="new_mdfem_id"
+				constraintName="fk_mdfem_device_replacement_acts_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_history"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-488" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_device_replacement_acts to ecm_contents</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_device_replacement_acts"
+				baseColumnNames="scan_document_id"
+				constraintName="fk_mdfem_device_replacement_acts_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="ecm_contents"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-489" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_device_replacment_acts to mdfem_undercount_header</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_device_replacement_acts"
+				baseColumnNames="undercount_header_id"
+				constraintName="fk_mdfem_device_replacement_acts_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_undercount_header"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+</databaseChangeLog>

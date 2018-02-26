@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-490" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: mdfem_persons_signing_document</comment>
+		<createTable tableName=" mdfem_persons_signing_document" schemaName="apps" remarks="Лица подписавшие документ">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="ecm_content_type_id" type="number" remarks="Идентификатор типа документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="document_id" type="number" remarks="Ид документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="group_name" type="varchar2(30)" remarks="Группа лиц. Для каждого документа может определяться индивидуально">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="row_num" type="number" remarks="Порядок отражения записи в документе">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="business_partner_id" type="number" remarks="Ид компании, в которой работает подписант">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="post_name" type="varchar2(100)" remarks="Должность">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_name" type="varchar2(100)" remarks="Фамилия">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="first_name" type="varchar2(100)" remarks="Имя">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="middle_name" type="varchar2(100)" remarks="Отчество">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-491" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: mdfem_persons_signing_document</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_mdfem_persons_signing_document"
+				schemaName="apps"
+				tableName="mdfem_persons_signing_document"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-492" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: mdfem_persons_signing_document</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="mdfem_persons_signing_document_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-493" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_persons_signing_document to ecm_content_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_persons_signing_document"
+				baseColumnNames="ecm_content_type_id"
+				constraintName="fk_mdfem_persons_signing_document_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="ecm_content_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-494" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_persons_signing_document to mdfem_device_replacement_acts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_persons_signing_document"
+				baseColumnNames="document_id"
+				constraintName="fk_mdfem_persons_signing_document_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_devices_replacement_acts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-495" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_persons_signing_document to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_persons_signing_document"
+				baseColumnNames="business_partner_id"
+				constraintName="fk_mdfem_persons_signing_document_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_history"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>

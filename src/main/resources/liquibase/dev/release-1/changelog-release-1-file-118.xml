@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<author>ruslan</author>
+<comment>Создание таблицы Справочник Места размещения точек учета</comment>
+-->
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="dict-rus-453" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: mdfem_undercount_reason</comment>
+		<createTable tableName=" mdfem_undercount_reason" schemaName="apps" remarks="Справочник Причины нарушения учета электроэнергии">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="code" type="varchar2(10)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-454" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: mdfem_undercount_reason</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_mdfem_undercount_reason"
+				schemaName="apps"
+				tableName="mdfem_undercount_reason"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-455" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: mdfem_undercount_reason</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="mdfem_undercount_reason_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-456" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: mdfem_undercount_reason</comment>
+		<createTable tableName="mdfem_undercount_reason_tl" schemaName="apps" remarks="Справочник Причины нарушения учета электроэнергии (Перевод)">
+			<column name="id" type="number" remarks="Индетификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="mdfem_undercount_reason_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="code" type="varchar2(10)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dict-rus-457" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: mdfem_undercount_reason_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_mdfem_undercount_reason_tl"
+				schemaName="apps"
+				tableName="mdfem_undercount_reason_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-458" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: mdfem_undercount_reason_tl</comment>
+		<addUniqueConstraint
+				columnNames="mdfem_undercount_reason_id, lang"
+				constraintName="uk_mdfem_undercount_reason_tl"
+				schemaName="apps"
+				tableName="mdfem_undercount_reason_tl"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-459" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: mdfem_undercount_reason_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="mdfem_undercount_reason_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-460" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_undercount_reason_tl to mdfem_undercount_reason</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_undercount_reason_tl"
+				baseColumnNames="mdfem_undercount_reason_id"
+				constraintName="fk_mdfem_undercount_reason_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_undercount_reason"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="dict-rus-461" logicalFilePath="path-independent" author="ruslan">
+		<insert schemaName="apps"  tableName="mdfem_undercount_reason">
+			<column name="id"           type="number"       value="1" />
+			<column name="code"         type="varchar2(10)"  value="CMD" />
+			<column name="name"         type="varchar2(100)" value="Замена измерительного прибора"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_reason">
+			<column name="id"           type="number"       value="2" />
+			<column name="code"         type="varchar2(10)"  value="WMC"/>
+			<column name="name"         type="varchar2(100)" value="Работа в измерительных цепях"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_reason">
+			<column name="id"           type="number"       value="3" />
+			<column name="code"         type="varchar2(10)"  value="MMD"/>
+			<column name="name"         type="varchar2(100)" value="Неисправность измерительного прибора"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_reason">
+			<column name="id"           type="number"       value="4" />
+			<column name="code"         type="varchar2(10)"  value="MMC"/>
+			<column name="name"         type="varchar2(100)" value="Неисправность контактов измерительных цепей"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="dict-rus-462" logicalFilePath="path-independent" author="ruslan">
+		<insert schemaName="apps"  tableName="mdfem_undercount_reason_tl">
+			<column name="id"           type="number"       value="1" />
+			<column name="mdfem_undercount_reason_id"       type="number"       value="1" />
+			<column name="lang"         type="varchar2(10)"  value="eng" />
+			<column name="code"         type="varchar2(10)"  value="CMD" />
+			<column name="name"         type="varchar2(100)" value="Change of meter device"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_reason_tl">
+			<column name="id"           type="number"       value="2" />
+			<column name="mdfem_undercount_reason_id"       type="number"       value="2" />
+			<column name="lang"         type="varchar2(10)"  value="eng" />
+			<column name="code"         type="varchar2(10)"  value="WMC"/>
+			<column name="name"         type="varchar2(100)" value="Work in measuring circuits"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_reason_tl">
+			<column name="id"           type="number"       value="3" />
+			<column name="mdfem_undercount_reason_id"       type="number"       value="3" />
+			<column name="lang"         type="varchar2(10)"  value="eng" />
+			<column name="code"         type="varchar2(10)"  value="MMD"/>
+			<column name="name"         type="varchar2(100)" value="malfunction of measuring device"/>
+		</insert>
+
+		<insert schemaName="apps"  tableName="mdfem_undercount_reason_tl">
+			<column name="id"           type="number"       value="4" />
+			<column name="mdfem_undercount_reason_id"       type="number"       value="4" />
+			<column name="lang"         type="varchar2(10)"  value="eng" />
+			<column name="code"         type="varchar2(10)"  value="MMC"/>
+			<column name="name"         type="varchar2(100)" value="Malfunction of the measuring circuit contacts"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+
+</databaseChangeLog>
