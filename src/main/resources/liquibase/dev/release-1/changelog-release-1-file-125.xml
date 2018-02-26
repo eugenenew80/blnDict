@@ -103,7 +103,7 @@
     <changeSet id="dict-rus-516" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating unique key for table: mdfem_tt_types_tl</comment>
         <addUniqueConstraint
-                columnNames="current_trans_type_id, lang"
+                columnNames="tt_type_id, lang"
                 constraintName="uk_mdfem_tt_types_tl_1"
                 schemaName="apps"
                 tableName="mdfem_tt_types_tl"/>
