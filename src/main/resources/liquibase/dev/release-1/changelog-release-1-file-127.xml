@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-rus-529" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: mdfem_eem_base</comment>
+        <createTable tableName="dict_meters" schemaName="apps" remarks="Справочник база счетчики">
+            <column name="id" type="number" remarks="Идентификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="manufacturer" type="varchar(100)" remarks="Производитель">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="serial_number" type="varchar(30)" remarks="Заводской номер">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="business_partner_id" type="number" remarks="id Компании владелеца счетчика">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_verification_date" type="date" remarks="Дата последней поверки">
+                <constraints nullable="true"/>
+            </column>
+                                    			                                                 
+            <column name="next_verification_date" type="date" remarks="Дата следующей поверки">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="total_digits_number" type="number" remarks="Общее количество знаков в показаниях">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="digits_after_decimal_point" type="number" remarks="Количество знаков после запятой">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="is_parameter_ap" type="number" remarks="Параметр A+">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="is_parameter_am" type="number" remarks="Параметр A-">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="is_parameter_rp" type="number" remarks="Параметр R+">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="is_parameter_rm" type="number" remarks="Параметр R-">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="is_withdrawn" type="number" remarks="Снят с баланса">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="org_id" type="number" remarks="id ответственного филиала">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-rus-530" logicalFilePath="path-independent" author="ruslan" context="dev">
+	    <comment>Creating primary key for table: mdfem_eem_base</comment>
+	    <addPrimaryKey 
+	            columnNames="id"
+	            constraintName="pk_mdfem_eem_base"
+	            schemaName="apps"
+	            tableName="mdfem_eem_base"/>
+	</changeSet>
+	
+	<changeSet id="dict-rus-531" logicalFilePath="path-independent" author="ruslan" context="dev">
+	    <comment>Creating sequence for table: mdfem_eem_base</comment>
+	    <createSequence 
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="mdfem_eem_base_s"
+	            startValue="1"/>
+	</changeSet>
+
+
+    <changeSet id="dict-eug-532" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: mdfem_eem_base to dict_business_partners</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="mdfem_eem_base"
+                baseColumnNames="business_partner_id"
+                constraintName="fk_mdfem_eem_base_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_business_partners"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+
+    <changeSet id="dict-rus-533" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: mdfem_eem_base to dict_organizations</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="mdfem_eem_base"
+                baseColumnNames="org_id"
+                constraintName="fk_mdfem_eem_base_2"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_organizations"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+</databaseChangeLog>

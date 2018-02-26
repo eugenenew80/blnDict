@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-rus-502" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: mdfem_eem_types</comment>
+        <createTable tableName="mdfem_eem_types" schemaName="apps" remarks="Справочник Типы счетчиков для ИКУЭ">
+            <column name="id" type="number" remarks="Идентификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(100)" remarks="Тип">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="is_approve" type="numer" remarks="Утверждено">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="manufacturer" type="varchar(100)" remarks="Производитель">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="rated_current" type="number" remarks="Номинальный ток">
+                <constraints nullable="true"/>
+            </column>  
+            
+            <column name="rated_voltage" type="number" remarks="Номанальное напрежение">
+                <constraints nullable="true"/>
+            </column>  
+            
+            <column name="accuracy_class_id" type="number" remarks="Ид Класса точности">
+                <constraints nullable="true"/>
+            </column>
+            
+            <column name="total_digits_number" type="number" remarks="Общее количество знаков в показаниях счетчика">
+                <constraints nullable="true"/>
+            </column>                                                  
+
+            <column name="digits_after_decimal_point" type="number" remarks="Количество знаков после запятой">
+                <constraints nullable="true"/>
+            </column>
+
+			<column name="is_parameter_ap" type="number" remarks="Параметр A+">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_parameter_am" type="number" remarks="Параметр A-">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_parameter_rp" type="number" remarks="Параметр R+">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_parameter_rm" type="number" remarks="Параметр R-">
+				<constraints nullable="true"/>
+			</column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-rus-503" logicalFilePath="path-independent" author="ruslan" context="dev">
+	    <comment>Creating primary key for table: mdfem_eem_types</comment>
+	    <addPrimaryKey
+	            columnNames="id"
+	            constraintName="pk_mdfem_eem_types"
+	            schemaName="apps"
+	            tableName="mdfem_eem_types"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-504" logicalFilePath="path-independent" author="ruslan" context="dev">
+	    <comment>Creating sequence for table: mdfem_eem_types</comment>
+	    <createSequence 
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="mdfem_eem_types_s"
+	            startValue="1"/>
+	</changeSet>
+
+    <changeSet id="dict-rus-505" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: mdfem_eem_types_tl</comment>
+        <createTable tableName="mdfem_eem_types_tl" schemaName="apps" remarks="Справочник Типы счетчиков для ИКУЭ (Перевод)">
+            <column name="id" type="number" remarks="Идентификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="eem_type_id" type="number" remarks="Ссылка на родительскую запись">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(100)" remarks="Наименование">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="manufacturer" type="varchar(100)" remarks="Производитель">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-rus-506" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: mdfem_eem_types_tl</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_mdfem_eem_types_tl"
+                schemaName="apps"
+                tableName="mdfem_eem_types_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-507" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating unique key for table: mdfem_eem_types_tl</comment>
+        <addUniqueConstraint
+                columnNames="eem_type_id, lang"
+                constraintName="uk_mdfem_eem_types_tl_tl"
+                schemaName="apps"
+                tableName="mdfem_eem_types_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-508" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: mdfem_eem_types_tl</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="mdfem_eem_types_tl_s"
+                startValue="1"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-509" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: mdfem_eem_types_tl to mdfem_eem_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="mdfem_eem_types_tl"
+                baseColumnNames="eem_type_id"
+                constraintName="fk_mdfem_eem_types_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="mdfem_eem_types"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-510" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: mdfem_eem_types to dict_accurancy_classes</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="mdfem_eem_types"
+                baseColumnNames="accuracy_class_id"
+                constraintName="fk_mdfem_eem_types_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="mdfem_meter_types"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+</databaseChangeLog>
+

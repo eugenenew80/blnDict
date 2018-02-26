@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-rus-520" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: mdfem_tn_types</comment>
+        <createTable tableName="mdfem_tn_types" schemaName="apps" remarks="Справочник Типы трансформаторов напряжения для ИКУЭ">
+            <column name="id" type="number" remarks="Идентификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="is_approve" type="number" remarks="Утверждено">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(100)" remarks="Тип">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="manufacturer" type="varchar(100)" remarks="Прозиводитель">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="rated_voltage1" type="number" remarks="Номинальное напряжение в первичной обмотки">
+                <constraints nullable="true"/>
+            </column>
+            
+            <column name="rated_voltage2" type="number" remarks="Номинальное напряжение во вторичной обмотки">
+                <constraints nullable="true"/>
+            </column>  
+            
+            <column name="accuracy_class_id" type="number" remarks="Ид класса точности">
+                <constraints nullable="true"/>
+            </column>  
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-eug-521" logicalFilePath="path-independent" author="eugene" context="dev">
+	    <comment>Creating primary key for table: mdfem_tn_types</comment>
+	    <addPrimaryKey 
+	            columnNames="id"
+	            constraintName="pk_mmdfem_tn_types"
+	            schemaName="apps"
+	            tableName="mdfem_tn_types"/>
+	</changeSet>
+
+	<changeSet id="dict-eug-522" logicalFilePath="path-independent" author="eugene" context="dev">
+	    <comment>Creating sequence for table: mdfem_tn_types</comment>
+	    <createSequence 
+	            incrementBy="1"
+	            schemaName="apps"
+	            sequenceName="mdfem_tn_types_s"
+	            startValue="1"/>
+	</changeSet>
+
+    <changeSet id="dict-rus-523" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: mdfem_tn_types_tl</comment>
+        <createTable tableName="mdfem_tn_types_tl" schemaName="apps" remarks="Справочник Типы трансформаторов напряжения для ИКУЭ (Перевод)">
+            <column name="id" type="number" remarks="Идентификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="tn_type_id" type="number" remarks="Ссылка на родительскую запись">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(100)" remarks="Тип">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="manufacturer" type="varchar(100)" remarks="Производитель">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-rus-524" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: mdfem_tn_types_tl</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_mdfem_tn_types_tl"
+                schemaName="apps"
+                tableName="mdfem_tn_types_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-525" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating unique key for table: mdfem_tn_types_tl</comment>
+        <addUniqueConstraint
+                columnNames="tn_types_id, lang"
+                constraintName="uk_mdfem_tn_types_tl_tl"
+                schemaName="apps"
+                tableName="dict_voltage_trans_types_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-526" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: mdfem_tn_types_tl</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="mdfem_tn_types_tl_s"
+                startValue="1"/>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-527" logicalFilePath="path-independent" author="eugene" context="dev">
+        <comment>Creating foreign constraint: mdfem_tn_types_tl to mdfem_tn_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="mdfem_tn_types_tl"
+                baseColumnNames="tn_type_id"
+                constraintName="fk_mdfem_tn_types_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="mdfem_tn_types"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+
+    <changeSet id="dict-rus-528" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: mdfem_tn_types to dict_accurancy_classes</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="mdfem_tn_types"
+                baseColumnNames="accuracy_class_id"
+                constraintName="fk_mdfem_tn_types_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_accurancy_classes"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+</databaseChangeLog>
