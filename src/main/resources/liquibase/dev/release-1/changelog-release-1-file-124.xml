@@ -17,7 +17,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="is_approve" type="numer" remarks="Утверждено">
+            <column name="is_approve" type="number" remarks="Утверждено">
                 <constraints nullable="false"/>
             </column>
 
