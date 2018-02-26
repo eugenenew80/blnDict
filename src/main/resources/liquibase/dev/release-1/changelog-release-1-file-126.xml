@@ -97,7 +97,7 @@
                 columnNames="tn_type_id, lang"
                 constraintName="uk_mdfem_tn_types_tl_tl"
                 schemaName="apps"
-                tableName="dict_voltage_trans_types_tl"/>
+                tableName="mdfem_tn_types_tl"/>
     </changeSet>
 
     <changeSet id="dict-rus-526" logicalFilePath="path-independent" author="ruslan" context="dev">
