@@ -94,7 +94,7 @@
     <changeSet id="dict-rus-525" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating unique key for table: mdfem_tn_types_tl</comment>
         <addUniqueConstraint
-                columnNames="tn_types_id, lang"
+                columnNames="tn_type_id, lang"
                 constraintName="uk_mdfem_tn_types_tl_tl"
                 schemaName="apps"
                 tableName="dict_voltage_trans_types_tl"/>
