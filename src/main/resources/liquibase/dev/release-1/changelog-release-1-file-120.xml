@@ -197,7 +197,7 @@
 				baseTableSchemaName="apps"
 				baseTableName="mdfem_history"
 				baseColumnNames="tn_type_id"
-				constraintName="fk_mdfem_history_3"
+				constraintName="fk_mdfem_history_4"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
