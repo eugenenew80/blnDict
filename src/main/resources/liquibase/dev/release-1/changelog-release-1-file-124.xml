@@ -150,7 +150,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-510" logicalFilePath="path-independent" author="eugene" context="dev">
+    <changeSet id="dict-rus-510" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: mdfem_eem_types to dict_accurancy_classes</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
@@ -162,7 +162,7 @@
                 onDelete="RESTRICT"
                 onUpdate="RESTRICT"
                 referencedTableSchemaName="apps"
-                referencedTableName="mdfem_meter_types"
+                referencedTableName="dict_accurancy_classes"
                 referencedColumnNames="id"
         />
     </changeSet>
