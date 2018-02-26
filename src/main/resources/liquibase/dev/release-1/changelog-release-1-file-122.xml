@@ -9,7 +9,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="dict-rus-490" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-492" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: mdfem_persons_signing_document</comment>
 		<createTable tableName=" mdfem_persons_signing_document" schemaName="apps" remarks="Лица подписавшие документ">
 			<column name="id" type="number" remarks="Индетификатор">
@@ -70,7 +70,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-491" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-493" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: mdfem_persons_signing_document</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -79,7 +79,7 @@
 				tableName="mdfem_persons_signing_document"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-492" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-494" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: mdfem_persons_signing_document</comment>
 		<createSequence
 				incrementBy="1"
@@ -88,7 +88,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-493" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-495" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_persons_signing_document to ecm_content_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -105,7 +105,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="dict-rus-494" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-496" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_persons_signing_document to mdfem_device_replacement_acts</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -122,7 +122,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="dict-rus-495" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-497" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_persons_signing_document to dict_business_partners</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"

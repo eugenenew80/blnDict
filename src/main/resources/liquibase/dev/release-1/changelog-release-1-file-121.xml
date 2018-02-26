@@ -9,7 +9,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="dict-rus-482" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-484" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: mdfem_device_replacement_acts</comment>
 		<createTable tableName=" mdfem_device_replacement_acts" schemaName="apps" remarks="Справочник акты замены элемента ИКУЭ">
 			<column name="id" type="number" remarks="Индетификатор">
@@ -70,7 +70,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-483" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-485" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: mdfem_device_replacement_acts</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -79,7 +79,7 @@
 				tableName="mdfem_device_replacement_acts"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-484" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-486" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: mdfem_device_replacement_acts</comment>
 		<createSequence
 				incrementBy="1"
@@ -88,7 +88,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-485" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-487" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_device_replacement_acts to dict_metering_points</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -105,7 +105,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="dict-rus-486" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-488" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_device_replacement_acts to mdfem_history</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -122,7 +122,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="dict-rus-487" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-489" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_device_replacement_acts to mdfem_history</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -139,7 +139,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="dict-rus-488" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-490" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_device_replacement_acts to ecm_contents</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -156,7 +156,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="dict-rus-489" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-491" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_device_replacment_acts to mdfem_undercount_header</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"

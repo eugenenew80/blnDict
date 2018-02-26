@@ -9,7 +9,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="dict-rus-475" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-477" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: mdfem_history</comment>
 		<createTable tableName=" mdfem_history" schemaName="apps" remarks="Справочник Приборы учета электрической энергии в точках учета">
 			<column name="id" type="number" remarks="Индетификатор">
@@ -122,7 +122,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-476" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-478" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: mdfem_history</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -131,7 +131,7 @@
 				tableName="mdfem_history"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-477" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-479" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: mdfem_history</comment>
 		<createSequence
 				incrementBy="1"
@@ -140,7 +140,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-478" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-480" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_history to dict_metering_points</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -157,7 +157,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="dict-rus-479" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-481" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_history to dict_meters</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -174,7 +174,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="dict-rus-480" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-482" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_history to dict_current_trans_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -191,7 +191,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="dict-rus-481" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-483" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_history to dict_voltage_trans_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"

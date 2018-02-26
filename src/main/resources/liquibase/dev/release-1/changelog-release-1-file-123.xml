@@ -9,7 +9,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="dict-rus-496" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-498" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: mdfem_undercount_measurements</comment>
 		<createTable tableName=" mdfem_undercount_measurements" schemaName="apps" remarks="Измерения мощности во вторичных цепях">
 			<column name="id" type="number" remarks="Индетификатор">
@@ -46,7 +46,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="dict-rus-497" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-499" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: mdfem_undercount_measurements</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -55,7 +55,7 @@
 				tableName="mdfem_undercount_measurements"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-498" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-500" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: mdfem_undercount_measurements</comment>
 		<createSequence
 				incrementBy="1"
@@ -64,7 +64,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="dict-rus-499" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-501" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_undercount_measurements to mdfem_undercount_header</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"

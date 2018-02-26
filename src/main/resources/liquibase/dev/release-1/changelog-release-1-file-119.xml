@@ -207,7 +207,26 @@
 		<rollback/>
 	</changeSet>
 
+
 	<changeSet id="dict-rus-473" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: mdfem_undercount_reason</comment>
+		<addUniqueConstraint
+				columnNames="code"
+				constraintName="uk_mdfem_undercount_reason_1"
+				schemaName="apps"
+				tableName="mdfem_undercount_reason"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-474" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: mdfem_undercount_calc_method</comment>
+		<addUniqueConstraint
+				columnNames="code"
+				constraintName="uk_mdfem_undercount_calc_method_1"
+				schemaName="apps"
+				tableName="mdfem_undercount_calc_method"/>
+	</changeSet>
+
+	<changeSet id="dict-rus-475" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_undercount_header to mdfem_undercount_reason</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -224,7 +243,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="dict-rus-474" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-476" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: mdfem_undercount_header to mdfem_undercount_calc_method</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
