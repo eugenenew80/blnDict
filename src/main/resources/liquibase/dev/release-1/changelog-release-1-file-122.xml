@@ -117,7 +117,7 @@
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="mdfem_devices_replacement_acts"
+				referencedTableName="mdfem_device_replacement_acts"
 				referencedColumnNames="id"
 		/>
 	</changeSet>
