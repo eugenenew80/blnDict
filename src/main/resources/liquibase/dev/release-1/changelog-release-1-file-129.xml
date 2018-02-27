@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-556" logicalFilePath="path-independent" author="ruslan">
+    <changeSet id="dict-rus-557" logicalFilePath="path-independent" author="ruslan">
         <delete schemaName="apps"
                 tableName="mdfem_undercount_reason_tl">
         </delete>
@@ -14,7 +14,7 @@
     </changeSet>
 
 
-    <changeSet id="dict-rus-557" logicalFilePath="path-independent" author="ruslan">
+    <changeSet id="dict-rus-558" logicalFilePath="path-independent" author="ruslan">
         <delete schemaName="apps"
                 tableName="mdfem_undercount_calc_method_tl">
         </delete>
@@ -22,7 +22,7 @@
     </changeSet>
 
 
-    <changeSet id="dict-rus-462" logicalFilePath="path-independent" author="ruslan">
+    <changeSet id="dict-rus-559" logicalFilePath="path-independent" author="ruslan">
         <insert schemaName="apps"  tableName="mdfem_undercount_reason_tl">
             <column name="id"           type="number"       value="1" />
             <column name="mdfem_undercount_reason_id"       type="number"       value="1" />
@@ -57,7 +57,7 @@
         <rollback/>
     </changeSet>
 
-    <changeSet id="dict-rus-472" logicalFilePath="path-independent" author="ruslan">
+    <changeSet id="dict-rus-600" logicalFilePath="path-independent" author="ruslan">
         <insert schemaName="apps"  tableName="mdfem_undercount_calc_method_tl">
             <column name="id"           type="number"       value="1" />
             <column name="mdfem_undercount_calc_method_id"       type="number"       value="1" />
