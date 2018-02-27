@@ -13,4 +13,21 @@
         </addColumn>
         <rollback/>
     </changeSet>
+
+    <changeSet id="dict-rus-602" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: mdfem_undercount_header to dict_organizations</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="mdfem_undercount_header"
+                baseColumnNames="org_id"
+                constraintName="fk_mdfem_undercount_header_4"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_organizations"
+                referencedColumnNames="id"
+        />
+    </changeSet>
 </databaseChangeLog>
