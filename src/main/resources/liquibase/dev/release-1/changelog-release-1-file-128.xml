@@ -257,6 +257,4 @@
             <column name="last_update_by" type="number" remarks="Автор последнего изменения"/>
         </addColumn>
     </changeSet>
-
-
 </databaseChangeLog>
