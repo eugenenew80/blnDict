@@ -22,5 +22,241 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="dict-rus-536" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column: mdfem_tt_types</comment>
+        <dropColumn columnName="min_current"
+                    schemaName="apps"
+                    tableName="mdfem_tt_types"/>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-537" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tt_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tt_types">
+            <column name="create_date" type="timestamp" remarks="Дата создания"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-538" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tt_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tt_types">
+            <column name="last_update_date" type="timestamp" remarks="Дата последнего обновления"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-539" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tt_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tt_types">
+            <column name="create_by" type="number" remarks="Автор"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-540" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tt_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tt_types">
+            <column name="last_update_by" type="number" remarks="Автор последнего изменения"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-537-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tt_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tt_types_tl">
+            <column name="create_date" type="timestamp" remarks="Дата создания"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-538-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tt_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tt_types_tl">
+            <column name="last_update_date" type="timestamp" remarks="Дата последнего обновления"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-539-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tt_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tt_types_tl">
+            <column name="create_by" type="number" remarks="Автор"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-540-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tt_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tt_types_tl">
+            <column name="last_update_by" type="number" remarks="Автор последнего изменения"/>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-541" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tn_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tn_types">
+            <column name="create_date" type="timestamp" remarks="Дата создания"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-542" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tn_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tn_types">
+            <column name="last_update_date" type="timestamp" remarks="Дата последнего обновления"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-543" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tn_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tn_types">
+            <column name="create_by" type="number" remarks="Автор"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-544" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tn_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tn_types">
+            <column name="last_update_by" type="number" remarks="Автор последнего изменения"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-541-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tn_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tn_types_tl">
+            <column name="create_date" type="timestamp" remarks="Дата создания"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-542-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tn_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tn_types_tl">
+            <column name="last_update_date" type="timestamp" remarks="Дата последнего обновления"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-543-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tn_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tn_types_tl">
+            <column name="create_by" type="number" remarks="Автор"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-544-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_tn_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_tn_types_tl">
+            <column name="last_update_by" type="number" remarks="Автор последнего изменения"/>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-545" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_types">
+            <column name="create_date" type="timestamp" remarks="Дата создания"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-546" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_types">
+            <column name="last_update_date" type="timestamp" remarks="Дата последнего обновления"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-547" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_types">
+            <column name="create_by" type="number" remarks="Автор"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-548" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_types</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_types">
+            <column name="last_update_by" type="number" remarks="Автор последнего изменения"/>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-549" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_types_tl">
+            <column name="create_date" type="timestamp" remarks="Дата создания"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-550" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_types_tl">
+            <column name="last_update_date" type="timestamp" remarks="Дата последнего обновления"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-551" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_types_tl">
+            <column name="create_by" type="number" remarks="Автор"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-552" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_types_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_types_tl">
+            <column name="last_update_by" type="number" remarks="Автор последнего изменения"/>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-553" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_base</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_base">
+            <column name="create_date" type="timestamp" remarks="Дата создания"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-554" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_base</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_base">
+            <column name="last_update_date" type="timestamp" remarks="Дата последнего обновления"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-555" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_base</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_base">
+            <column name="create_by" type="number" remarks="Автор"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-556" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column: mdfem_eem_base</comment>
+        <addColumn schemaName="apps"
+                   tableName="mdfem_eem_base">
+            <column name="last_update_by" type="number" remarks="Автор последнего изменения"/>
+        </addColumn>
+    </changeSet>
+
 
 </databaseChangeLog>
