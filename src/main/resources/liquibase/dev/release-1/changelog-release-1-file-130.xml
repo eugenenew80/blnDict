@@ -119,7 +119,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-612" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-613" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: mdfem_persons_signing_document to mdfem_undercount_header</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
@@ -136,98 +136,98 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-613" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-614" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tt_rated_current2"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-614" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-615" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tt_type_name"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-615" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-616" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tt_manufacturer"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-616" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-617" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tt_rated_current1"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-617" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-618" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tt_accuracy_class"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-618" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-619" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tt_min_current"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-619" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-620" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tt_max_current"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-620" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-621" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tn_type_name"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-621" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-622" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tn_manufacturer"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-622" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-623" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tn_rated_voltage1"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-623" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-624" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tn_rated_voltage2"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-624" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-625" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tn_accuracy_class"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-625" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-626" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from mdfem_device_replacement</comment>
         <dropColumn columnName="tn_voltage_losses_limit"
                     schemaName="apps"
                     tableName="mdfem_device_replacement"/>
     </changeSet>
 
-    <changeSet id="dict-rus-626" logicalFilePath="path-independent" author="ruslan">
+    <changeSet id="dict-rus-627" logicalFilePath="path-independent" author="ruslan">
         <addColumn schemaName="apps"
                    tableName="mdfem_device_replacement">
             <column name="tt_type_id" type="number" remarks="Тип трансформаторов тока"/>
@@ -235,7 +235,7 @@
         <rollback/>
     </changeSet>
 
-    <changeSet id="dict-rus-627" logicalFilePath="path-independent" author="ruslan">
+    <changeSet id="dict-rus-628" logicalFilePath="path-independent" author="ruslan">
         <addColumn schemaName="apps"
                    tableName="mdfem_device_replacement">
             <column name="tn_type_id" type="number" remarks="Тип трансформаторов напряжения"/>
