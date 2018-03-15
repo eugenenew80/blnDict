@@ -242,4 +242,38 @@
         </addColumn>
         <rollback/>
     </changeSet>
+
+    <changeSet id="dict-rus-629" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: mdfem_devices_replacement to mdfem_tt_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="mdfem_devices_replacement"
+                baseColumnNames="tt_type_id"
+                constraintName="fk_mdfem_devices_replacement_6"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="mdfem_tt_types"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-630" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: mdfem_devices_replacement to mdfem_tn_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="mdfem_devices_replacement"
+                baseColumnNames="tn_type_id"
+                constraintName="fk_mdfem_devices_replacement_6"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="mdfem_tn_types"
+                referencedColumnNames="id"
+        />
+    </changeSet>
 </databaseChangeLog>
