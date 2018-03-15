@@ -266,7 +266,7 @@
                 baseTableSchemaName="apps"
                 baseTableName="mdfem_devices_replacement"
                 baseColumnNames="tn_type_id"
-                constraintName="fk_mdfem_devices_replacement_6"
+                constraintName="fk_mdfem_devices_replacement_7"
                 deferrable="true"
                 initiallyDeferred="true"
                 onDelete="RESTRICT"
