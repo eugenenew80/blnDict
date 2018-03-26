@@ -111,7 +111,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="dict-rus-646" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-646-1" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: dict_ubpn_types_tl</comment>
         <addPrimaryKey
                 columnNames="id"
@@ -191,7 +191,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-650" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-650-1" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: insert into dict_ubpn_types</comment>
         <insert schemaName="apps" tableName="dict_ubpn_types">
             <column name="id" type="number" value="1"/>
@@ -204,7 +204,7 @@
         <rollback/>
     </changeSet>
 
-    <changeSet id="dict-rus-651" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-651-2" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: insert into dict_ubpn_types</comment>
         <insert schemaName="apps" tableName="dict_ubpn_types">
             <column name="id" type="number" value="2"/>
