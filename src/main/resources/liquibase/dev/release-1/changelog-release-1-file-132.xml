@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-rus-643" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_ubpn_types</comment>
+        <createTable tableName="dict_ubpn_types" schemaName="apps" remarks="Справочник Типы уникальных идентификаторов бизнес-партнеров">
+            <column name="id" type="number" remarks="Ид">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="country_id" type="number" remarks="Ид страны">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="code" type="varchar2(10)" remarks="Код типа идентификатора бизнес-партнера">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="bp_type_code" type="varchar2(30)" remarks="Код типа бизнес партнера">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="min_length" type="number" remarks="минимальная длина кода">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="max_length" type="number" remarks="максимальная длина кода">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-rus-644" logicalFilePath="path-independent" author="ruslan" context="dev">
+	    <comment>Creating primary key for table: dict_ubpn_types</comment>
+	    <addPrimaryKey 
+	            columnNames="id"
+	            constraintName="pk_dict_ubpn_types"
+	            schemaName="apps"
+	            tableName="dict_ubpn_types"/>
+	</changeSet>
+
+    <changeSet id="dict-rus-645" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: dict_ubpn_types</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="dict_ubpn_types_s"
+                startValue="1"/>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-646" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_ubpn_types_tl</comment>
+        <createTable tableName="dict_ubpn_types_tl" schemaName="apps" remarks="Справочник переводы типов уникальных идентификаторов бизнес-партнеров">
+            <column name="id" type="number" remarks="Ид">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ubpn_type_id" type="number" remarks="Ссылка на родительскую запись">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar2(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="short_name" type="varchar2(10)" remarks="Краткое наименование">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar2(100)" remarks="Наименование">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-rus-646" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: dict_ubpn_types_tl</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_dict_ubpn_types_tl"
+                schemaName="apps"
+                tableName="dict_ubpn_types_tl"/>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-647" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: dict_ubpn_types_tl</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="dict_ubpn_types_tl_s"
+                startValue="1"/>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-648" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating unique key for table: dict_ubpn_types_tl</comment>
+        <addUniqueConstraint
+                columnNames="ubpn_type_id, lang"
+                constraintName="uk_dict_ubpn_types_tl"
+                schemaName="apps"
+                tableName="dict_ubpn_types_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-649" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_business_partner_types_tl to dict_business_partner_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_ubpn_types_tl"
+                baseColumnNames="ubpn_type_id"
+                constraintName="fk_dict_ubpn_types_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_ubpn_types"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-650" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_ubpn_types to dict_countries</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_ubpn_types"
+                baseColumnNames="country_id"
+                constraintName="fk_dict_ubpn_types_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_countries"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-651" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_ubpn_types to dict_business_partner_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_ubpn_types"
+                baseColumnNames="bp_type_code"
+                constraintName="fk_dict_ubpn_types_2"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_business_partner_types"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-650" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types">
+            <column name="id" type="number" value="1"/>
+            <column name="country_id" type="number" value="2"/>
+            <column name="code" type="varchar2" value="INN"/>
+            <column name="bp_type_code" type="varchar2" value="ORGANIZATION"/>
+            <column name="min_length" type="number" value="10"/>
+            <column name="max_length" type="number" value="10"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-651" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types">
+            <column name="id" type="number" value="2"/>
+            <column name="country_id" type="number" value="2"/>
+            <column name="code" type="varchar2" value="INN"/>
+            <column name="bp_type_code" type="varchar2" value="PRIVATE PERSON"/>
+            <column name="min_length" type="number" value="12"/>
+            <column name="max_length" type="number" value="12"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-652" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types">
+            <column name="id" type="number" value="3"/>
+            <column name="country_id" type="number" value="1"/>
+            <column name="code" type="varchar2" value="BIN"/>
+            <column name="bp_type_code" type="varchar2" value="ORGANIZATION"/>
+            <column name="min_length" type="number" value="12"/>
+            <column name="max_length" type="number" value="12"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-653" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types">
+            <column name="id" type="number" value="4"/>
+            <column name="country_id" type="number" value="1"/>
+            <column name="code" type="varchar2" value="BIN"/>
+            <column name="bp_type_code" type="varchar2" value="PRIVATE PERSON"/>
+            <column name="min_length" type="number" value="12"/>
+            <column name="max_length" type="number" value="12"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-654" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types_tl">
+            <column name="id" type="number" value="1"/>
+            <column name="ubpn_type_id" type="number" value="1"/>
+            <column name="lang" type="varchar2" value="RU"/>
+            <column name="short_name" type="varchar2" value="ИНН"/>
+            <column name="name" type="varchar2" value="Индивидуальный идентификационный номер"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-655" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types_tl">
+            <column name="id" type="number" value="2"/>
+            <column name="ubpn_type_id" type="number" value="1"/>
+            <column name="lang" type="varchar2" value="KZ"/>
+            <column name="short_name" type="varchar2" value="ЖСН"/>
+            <column name="name" type="varchar2" value="Жеке сәйкестендіру нөмірі"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-656" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types_tl">
+            <column name="id" type="number" value="3"/>
+            <column name="ubpn_type_id" type="number" value="2"/>
+            <column name="lang" type="varchar2" value="RU"/>
+            <column name="short_name" type="varchar2" value="ИНН"/>
+            <column name="name" type="varchar2" value="Индивидуальный идентификационный номер"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-657" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types_tl">
+            <column name="id" type="number" value="4"/>
+            <column name="ubpn_type_id" type="number" value="2"/>
+            <column name="lang" type="varchar2" value="KZ"/>
+            <column name="short_name" type="varchar2" value="ЖСН"/>
+            <column name="name" type="varchar2" value="Жеке сәйкестендіру нөмірі"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-658" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types_tl">
+            <column name="id" type="number" value="5"/>
+            <column name="ubpn_type_id" type="number" value="3"/>
+            <column name="lang" type="varchar2" value="RU"/>
+            <column name="short_name" type="varchar2" value="БИН"/>
+            <column name="name" type="varchar2" value="Бизнес идентификационный номер"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-659" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types_tl">
+            <column name="id" type="number" value="6"/>
+            <column name="ubpn_type_id" type="number" value="3"/>
+            <column name="lang" type="varchar2" value="KZ"/>
+            <column name="short_name" type="varchar2" value="БСН"/>
+            <column name="name" type="varchar2" value="Бизнес сәйкестендіру нөмірі"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-660" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types_tl">
+            <column name="id" type="number" value="7"/>
+            <column name="ubpn_type_id" type="number" value="4"/>
+            <column name="lang" type="varchar2" value="RU"/>
+            <column name="short_name" type="varchar2" value="БИН"/>
+            <column name="name" type="varchar2" value="Бизнес идентификационный номер"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-661" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_ubpn_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_ubpn_types_tl">
+            <column name="id" type="number" value="8"/>
+            <column name="ubpn_type_id" type="number" value="4"/>
+            <column name="lang" type="varchar2" value="KZ"/>
+            <column name="short_name" type="varchar2" value="БСН"/>
+            <column name="name" type="varchar2" value="Бизнес сәйкестендіру нөмірі"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-rus-631" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_business_partner_types</comment>
+        <createTable tableName="dict_business_partner_types" schemaName="apps" remarks="Справочник Типы бизнес-партнеров">
+            <column name="code" type="varchar2(30)" remarks="Код типа бизнес партнера">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-rus-632" logicalFilePath="path-independent" author="ruslan" context="dev">
+	    <comment>Creating primary key for table: dict_business_partner_types</comment>
+	    <addPrimaryKey 
+	            columnNames="code"
+	            constraintName="pk_dict_business_partner_types"
+	            schemaName="apps"
+	            tableName="dict_business_partner_types"/>
+	</changeSet>
+
+    <changeSet id="dict-rus-633" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_business_partner_types_tl</comment>
+        <createTable tableName="dict_business_partner_types_tl" schemaName="apps" remarks="Справочник Типы бизнес-партнеров (Перевод)">
+            <column name="code" type="varchar2(30)" remarks="Тип">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar2(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar2(100)" remarks="Наименование">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-rus-634" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: dict_business_partner_types_tl</comment>
+        <addPrimaryKey
+                columnNames="code"
+                constraintName="pk_dict_business_partner_types_tl"
+                schemaName="apps"
+                tableName="dict_business_partner_types_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-635" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating unique key for table: dict_business_partner_types_tl</comment>
+        <addUniqueConstraint
+                columnNames="code, lang"
+                constraintName="uk_dict_business_partner_types_tl"
+                schemaName="apps"
+                tableName="dict_business_partner_types_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-636" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_business_partner_types_tl to dict_business_partner_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_business_partner_types_tl"
+                baseColumnNames="code"
+                constraintName="fk_dict_business_partner_types_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_business_partner_types"
+                referencedColumnNames="code"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-637" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_business_partner_types</comment>
+        <insert schemaName="apps" tableName="dict_business_partner_types">
+            <column name="code" type="varchar2" value="ORGANIZATION"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-638" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_business_partner_types</comment>
+        <insert schemaName="apps" tableName="dict_business_partner_types">
+            <column name="code" type="varchar2" value="PRIVATE PERSON"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-639" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_business_partner_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_business_partner_types_tl">
+            <column name="code" type="varchar2" value="ORGANIZATION"/>
+            <column name="lang" type="varchar2" value="KZ"/>
+            <column name="name" type="varchar2" value="Заңды тұлға"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-640" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_business_partner_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_business_partner_types_tl">
+            <column name="code" type="varchar2" value="PRIVATE PERSON"/>
+            <column name="lang" type="varchar2" value="KZ"/>
+            <column name="name" type="varchar2" value="Жеке тұлға"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-641" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_business_partner_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_business_partner_types_tl">
+            <column name="code" type="varchar2" value="PRIVATE PERSON"/>
+            <column name="lang" type="varchar2" value="RU"/>
+            <column name="name" type="varchar2" value="Физическое лицо"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-642" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: insert into dict_business_partner_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_business_partner_types_tl">
+            <column name="code" type="varchar2" value="ORGANIZATION"/>
+            <column name="lang" type="varchar2" value="RU"/>
+            <column name="name" type="varchar2" value="Юридическое лицо"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+
+</databaseChangeLog>
