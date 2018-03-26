@@ -80,5 +80,25 @@
         />
     </changeSet>
 
+    <changeSet id="dict-rus-669" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_accuracy_classes</comment>
+        <dropColumn columnName="dict_accuracy_classes"
+                    schemaName="apps"
+                    tableName="name"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-670" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from mdfem_undercount_reason_tl</comment>
+        <dropColumn columnName="mdfem_undercount_reason_tl"
+                    schemaName="apps"
+                    tableName="code"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-671" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from mdfem_undercount_calc_method_tl</comment>
+        <dropColumn columnName="mdfem_undercount_calc_method_tl"
+                    schemaName="apps"
+                    tableName="code"/>
+    </changeSet>
 
 </databaseChangeLog>
