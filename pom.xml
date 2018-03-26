@@ -127,6 +127,27 @@
         </profile>
 
         <profile>
+            <id>dev2</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <properties>
+                <driver>oracle.jdbc.OracleDriver</driver>
+                <url>jdbc:oracle:thin:@10.9.50.151:1521:orcl</url>
+                <username>system</username>
+                <password>Q1w2e3r4t5</password>
+                <scripts>dev</scripts>
+                <skipTests>true</skipTests>
+
+                <wildfly-server>localhost</wildfly-server>
+                <wildfly-port>9990</wildfly-port>
+                <wildfly-user>admin</wildfly-user>
+                <wildfly-password>1</wildfly-password>
+            </properties>
+        </profile>
+
+        <profile>
             <id>localDev</id>
             <properties>
                 <driver>org.postgresql.Driver</driver>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-rus-662" logicalFilePath="path-independent" author="ruslan">
+        <addColumn schemaName="apps"
+                   tableName="dict_business_partners">
+            <column name="cert_issued_by" type="varchar2(300)" remarks="Орган, выдавший свидетельство"/>
+        </addColumn>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-663" logicalFilePath="path-independent" author="ruslan">
+        <addColumn schemaName="apps"
+                   tableName="dict_business_partners">
+            <column name="is_resident" type="number" remarks="Признак резидента в РК"/>
+        </addColumn>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-664" logicalFilePath="path-independent" author="ruslan">
+        <addColumn schemaName="apps"
+                   tableName="dict_business_partners">
+            <column name="resident_country_id" type="number" remarks="Идентификатор страны резиденства"/>
+        </addColumn>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-665" logicalFilePath="path-independent" author="ruslan">
+        <addColumn schemaName="apps"
+                   tableName="dict_business_partners">
+            <column name="ubpn_type_id" type="number" remarks="Тип уникального идентификатора бизнес-партнера"/>
+        </addColumn>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-666" logicalFilePath="path-independent" author="ruslan">
+        <addColumn schemaName="apps"
+                   tableName="dict_business_partners">
+            <column name="ubp_number" type="varchar2(20)" remarks="Уникальный номер бизнес-партнера"/>
+        </addColumn>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-667" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_business_partners to dict_countries</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_business_partners"
+                baseColumnNames="resident_country_id"
+                constraintName="fk_dict_business_partners_4"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_countries"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-668" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_business_partners to dict_ubpn_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_business_partners"
+                baseColumnNames="ubpn_type_id"
+                constraintName="fk_dict_business_partners_5"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_ubpn_types"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+
+</databaseChangeLog>
