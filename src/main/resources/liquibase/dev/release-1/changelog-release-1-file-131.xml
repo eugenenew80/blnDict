@@ -144,6 +144,14 @@
         <rollback/>
     </changeSet>
 
+    <changeSet id="dict-rus-640-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop primary key dict_business_partner_types_tl</comment>
+        <dropPrimaryKey constraintName="pk_dict_business_partner_types_tl"
+                        schemaName="apps"
+                        tableName="dict_business_partner_types_tl"/>
+        <rollback/>
+    </changeSet>
+
     <changeSet id="dict-rus-641" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: insert into dict_business_partner_types_tl</comment>
         <insert schemaName="apps" tableName="dict_business_partner_types_tl">
