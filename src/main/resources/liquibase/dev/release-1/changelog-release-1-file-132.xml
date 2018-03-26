@@ -173,7 +173,6 @@
                 referencedColumnNames="id"
         />
     </changeSet>
-
     <changeSet id="dict-rus-651" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_ubpn_types to dict_business_partner_types</comment>
         <addForeignKeyConstraint
