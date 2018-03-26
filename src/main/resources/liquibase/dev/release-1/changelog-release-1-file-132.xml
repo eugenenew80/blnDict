@@ -187,7 +187,7 @@
                 onUpdate="RESTRICT"
                 referencedTableSchemaName="apps"
                 referencedTableName="dict_business_partner_types"
-                referencedColumnNames="id"
+                referencedColumnNames="code"
         />
     </changeSet>
 
