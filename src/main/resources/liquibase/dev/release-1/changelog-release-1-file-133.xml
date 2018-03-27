@@ -82,7 +82,7 @@
 
     <changeSet id="dict-rus-669" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from dict_accuracy_classes</comment>
-        <dropColumn columnName="dict_accuracy_classes"
+        <dropColumn columnName="dict_accurancy_classes"
                     schemaName="apps"
                     tableName="name"/>
     </changeSet>
@@ -105,6 +105,14 @@
         <comment>Update column source_type_id in table: media_period_time_values</comment>
         <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
             update apps.MDFEM_UNDERCOUNT_REASON_TL t set t.lang = 'EN' where lang='En' ;
+        </sql>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-673" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Update column source_type_id in table: media_period_time_values</comment>
+        <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+            update apps.MDFEM_UNDERCOUNT_CALC_METHOD_TL t set t.lang = 'EN' where lang='En' ;
         </sql>
         <rollback/>
     </changeSet>
