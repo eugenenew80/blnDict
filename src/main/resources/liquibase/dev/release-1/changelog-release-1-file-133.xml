@@ -82,9 +82,9 @@
 
     <changeSet id="dict-rus-669" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop column from dict_accuracy_classes</comment>
-        <dropColumn columnName="dict_accurancy_classes"
+        <dropColumn columnName="name"
                     schemaName="apps"
-                    tableName="name"/>
+                    tableName="dict_accurancy_classes"/>
     </changeSet>
 
     <changeSet id="dict-rus-670" logicalFilePath="path-independent" author="ruslan" context="dev">
