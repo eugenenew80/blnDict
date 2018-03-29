@@ -149,7 +149,7 @@
         <comment>drop Primary Key in table: mdfem_undercount_reason_tl</comment>
         <dropPrimaryKey constraintName="pk_mdfem_undercount_reason_tl"
                         schemaName="apps"
-                        tableName="mdfem_undercount_calc_method_tl"/>
+                        tableName="mdfem_undercount_reason_tl"/>
     </changeSet>
 
     <changeSet id="dict-rus-679" logicalFilePath="path-independent" author="ruslan" context="dev">
