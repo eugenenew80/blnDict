@@ -117,5 +117,200 @@
         <rollback/>
     </changeSet>
 
+    <changeSet id="dict-rus-674" logicalFilePath="path-independent" author="ruslan">
+        <addColumn schemaName="apps"
+                   tableName="mdfem_undercount_calc_method_tl">
+            <column name="code" type="varchar2(10)" remarks="Код"/>
+        </addColumn>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-675" logicalFilePath="path-independent" author="ruslan">
+        <addColumn schemaName="apps"
+                   tableName="mdfem_undercount_reason_tl">
+            <column name="code" type="varchar2(10)" remarks="Код"/>
+        </addColumn>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-676" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop Primary Key in table: mdfem_undercount_calc_method_tl</comment>
+        <dropPrimaryKey constraintName="pk_mdfem_undercount_calc_method_tl"
+                        schemaName="apps"
+                        tableName="mdfem_undercount_calc_method_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-677" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop Foreign Key Constraint in table: mdfem_undercount_calc_method_tl</comment>
+        <dropForeignKeyConstraint baseTableName="mdfem_undercount_calc_method_tl"  constraintName="fk_mdfem_undercount_calc_method_tl_1" baseTableSchemaName="apps"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-678" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop Primary Key in table: mdfem_undercount_reason_tl</comment>
+        <dropPrimaryKey constraintName="pk_mdfem_undercount_reason_tl"
+                        schemaName="apps"
+                        tableName="mdfem_undercount_calc_method_tl_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-679" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop Foreign Key Constraint in table: mdfem_undercount_reason_tl_tl</comment>
+        <dropForeignKeyConstraint baseTableName="mdfem_undercount_reason_tl"  constraintName="fk_mdfem_undercount_reason_tl_1" baseTableSchemaName="apps"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-680" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop unique constraint in table: mdfem_undercount_reason_tl</comment>
+        <dropUniqueConstraint constraintName="uq_mdfem_undercount_reason_tl"
+                              schemaName="apps"
+                              tableName="mdfem_undercount_reason_tl"
+                              uniqueColumns="mdfem_undercount_reason_id, lang"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-681" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop unique constraint in table: mdfem_undercount_reason_tl</comment>
+        <dropUniqueConstraint constraintName="uq_mdfem_undercount_reason_tl"
+                              schemaName="apps"
+                              tableName="mdfem_undercount_reason_tl"
+                              uniqueColumns="mdfem_undercount_calc_method_id, lang"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-682" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from mdfem_undercount_calc_method_tl</comment>
+        <dropColumn columnName="mdfem_undercount_calc_method_id"
+                    schemaName="apps"
+                    tableName="mdfem_undercount_calc_method_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-683" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from mdfem_undercount_reason_tl</comment>
+        <dropColumn columnName="mdfem_undercount_reason_id"
+                    schemaName="apps"
+                    tableName="mdfem_undercount_reason_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-684" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>delete data from mdfem_undercount_reason_tl</comment>
+        <delete schemaName="apps"
+                tableName="mdfem_undercount_reason_tl">
+        </delete>
+    </changeSet>
+
+    <changeSet id="dict-rus-685" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>delete data from mdfem_undercount_calc_method_tl</comment>
+        <delete schemaName="apps"
+                tableName="mdfem_undercount_calc_method_tl">
+        </delete>
+    </changeSet>
+    <changeSet id="dict-rus-685-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from mdfem_undercount_calc_method_tl</comment>
+        <dropColumn columnName="id"
+                    schemaName="apps"
+                    tableName="mdfem_undercount_calc_method_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-685-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from mdfem_undercount_reason_tl</comment>
+        <dropColumn columnName="id"
+                    schemaName="apps"
+                    tableName="mdfem_undercount_reason_tl"/>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-686" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>insert data in table: mdfem_undercount_calc_method_tl</comment>
+        <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+            INSERT INTO APPS.MDFEM_UNDERCOUNT_CALC_METHOD_TL (
+            LANG,
+            CODE,
+            NAME,
+            CREATE_DATE,
+            LAST_UPDATE_DATE,
+            CREATE_BY,
+            LAST_UPDATE_BY)
+            SELECT
+            'RU',
+            CODE,
+            NAME,
+            CREATE_DATE,
+            LAST_UPDATE_DATE,
+            CREATE_BY,
+            LAST_UPDATE_BY
+            FROM APPS.MDFEM_UNDERCOUNT_CALC_METHOD
+        </sql>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-687" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>insert data in table: mdfem_undercount_reason_tl</comment>
+        <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+            INSERT INTO APPS.MDFEM_UNDERCOUNT_REASON_TL (
+            LANG,
+            CODE,
+            NAME,
+            CREATE_DATE,
+            LAST_UPDATE_DATE,
+            CREATE_BY,
+            LAST_UPDATE_BY)
+            SELECT
+            'RU',
+            CODE,
+            NAME,
+            CREATE_DATE,
+            LAST_UPDATE_DATE,
+            CREATE_BY,
+            LAST_UPDATE_BY
+            FROM APPS.MDFEM_UNDERCOUNT_REASON;
+        </sql>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-688" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>insert data in table: mdfem_undercount_reason_tl</comment>
+        <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+            INSERT INTO APPS.MDFEM_UNDERCOUNT_REASON_TL (
+            LANG,
+            CODE,
+            NAME,
+            CREATE_DATE,
+            LAST_UPDATE_DATE,
+            CREATE_BY,
+            LAST_UPDATE_BY)
+            SELECT
+            'KZ',
+            CODE,
+            NAME,
+            CREATE_DATE,
+            LAST_UPDATE_DATE,
+            CREATE_BY,
+            LAST_UPDATE_BY
+            FROM APPS.MDFEM_UNDERCOUNT_REASON_TL
+            WHERE lang='RU' and not exists (select * FROM APPS.MDFEM_UNDERCOUNT_REASON_TL t where t.lang = 'KZ');
+        </sql>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-689" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>insert data in table: mdfem_undercount_reason_tl</comment>
+        <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+            INSERT INTO APPS.MDFEM_UNDERCOUNT_CALC_METHOD_TL (
+            LANG,
+            CODE,
+            NAME,
+            CREATE_DATE,
+            LAST_UPDATE_DATE,
+            CREATE_BY,
+            LAST_UPDATE_BY)
+            SELECT
+            'KZ',
+            CODE,
+            NAME,
+            CREATE_DATE,
+            LAST_UPDATE_DATE,
+            CREATE_BY,
+            LAST_UPDATE_BY
+            FROM APPS.MDFEM_UNDERCOUNT_CALC_METHOD_TL
+            WHERE lang='RU' and not exists (select * FROM APPS.MDFEM_UNDERCOUNT_CALC_METHOD_TL t where t.lang = 'KZ');
+        </sql>
+        <rollback/>
+    </changeSet>
 
 </databaseChangeLog>
