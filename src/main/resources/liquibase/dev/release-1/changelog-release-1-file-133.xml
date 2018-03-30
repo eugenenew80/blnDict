@@ -342,6 +342,16 @@
     </changeSet>
 
     <changeSet id="dict-rus-690-5" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop Foreign Key Constraint in table: mdfem_undercount_header</comment>
+        <dropForeignKeyConstraint baseTableName="mdfem_undercount_header"  constraintName="fk_mdfem_undercount_header_2" baseTableSchemaName="apps"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-690-6" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop Foreign Key Constraint in table: mdfem_undercount_header</comment>
+        <dropForeignKeyConstraint baseTableName="mdfem_undercount_header"  constraintName="fk_mdfem_undercount_header_3" baseTableSchemaName="apps"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-690-7" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop unique constraint in table: mdfem_undercount_reason_tl</comment>
         <dropUniqueConstraint constraintName="uk_mdfem_undercount_reason_1"
                               schemaName="apps"
@@ -349,7 +359,7 @@
                               uniqueColumns="code"/>
     </changeSet>
 
-    <changeSet id="dict-rus-690-6" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-690-8" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop unique constraint in table: mdfem_undercount_calc_method_tl</comment>
         <dropUniqueConstraint constraintName="uk_mdfem_undercount_calc_method"
                               schemaName="apps"
