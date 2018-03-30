@@ -166,10 +166,10 @@
     </changeSet>
 
     <changeSet id="dict-rus-681" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>drop unique constraint in table: mdfem_undercount_reason_tl</comment>
-        <dropUniqueConstraint constraintName="uk_mdfem_undercount_reason_tl"
+        <comment>drop unique constraint in table: mdfem_undercount_calc_method_tl</comment>
+        <dropUniqueConstraint constraintName="uk_mdfem_undercount_calc_method_tl"
                               schemaName="apps"
-                              tableName="mdfem_undercount_reason_tl"
+                              tableName="mdfem_undercount_calc_method_tl"
                               uniqueColumns="mdfem_undercount_calc_method_id, lang"/>
     </changeSet>
 
@@ -312,5 +312,33 @@
         </sql>
         <rollback/>
     </changeSet>
+
+   <!-- <changeSet id="dict-rus-690" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: mdfem_undercount_reason</comment>
+        <addPrimaryKey
+                columnNames="code"
+                constraintName="pk_mdfem_undercount_reason"
+                schemaName="apps"
+                tableName="mdfem_undercount_reason"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-691" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: mdfem_undercount_reason</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_dict_ubpn_types_tl"
+                schemaName="apps"
+                tableName="dict_ubpn_types_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-648" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating unique key for table: dict_ubpn_types_tl</comment>
+        <addUniqueConstraint
+                columnNames="ubpn_type_id, lang"
+                constraintName="uk_dict_ubpn_types_tl"
+                schemaName="apps"
+                tableName="dict_ubpn_types_tl"/>
+    </changeSet>
+-->
 
 </databaseChangeLog>
