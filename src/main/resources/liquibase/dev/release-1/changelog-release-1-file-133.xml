@@ -376,6 +376,14 @@
                 tableName="mdfem_undercount_reason"/>
     </changeSet>
 
+    <changeSet id="dict-rus-691-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add not null constraint for table: mdfem_undercount_reason_tl</comment>
+        <addNotNullConstraint columnDataType="varchar2"
+                              columnName="code"
+                              schemaName="apps"
+                              tableName="mdfem_undercount_reason_tl"/>
+    </changeSet>
+
     <changeSet id="dict-rus-691" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: mdfem_undercount_reason_tl</comment>
         <addPrimaryKey
@@ -391,14 +399,6 @@
                               columnName="code"
                               schemaName="apps"
                               tableName="mdfem_undercount_reason"/>
-    </changeSet>
-
-    <changeSet id="dict-rus-693" logicalFilePath="path-independent" author="ruslan" context="dev">
-    <comment>add not null constraint for table: mdfem_undercount_reason_tl</comment>
-        <addNotNullConstraint columnDataType="varchar2"
-                              columnName="code"
-                              schemaName="apps"
-                              tableName="mdfem_undercount_reason_tl"/>
     </changeSet>
 
     <changeSet id="dict-rus-694" logicalFilePath="path-independent" author="ruslan" context="dev">
