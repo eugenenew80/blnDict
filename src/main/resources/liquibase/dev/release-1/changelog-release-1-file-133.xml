@@ -313,7 +313,7 @@
         <rollback/>
     </changeSet>
 
-   <!-- <changeSet id="dict-rus-690" logicalFilePath="path-independent" author="ruslan" context="dev">
+   <changeSet id="dict-rus-690" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: mdfem_undercount_reason</comment>
         <addPrimaryKey
                 columnNames="code"
@@ -323,22 +323,81 @@
     </changeSet>
 
     <changeSet id="dict-rus-691" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>Creating primary key for table: mdfem_undercount_reason</comment>
+        <comment>Creating primary key for table: mdfem_undercount_reason_tl</comment>
         <addPrimaryKey
-                columnNames="id"
-                constraintName="pk_dict_ubpn_types_tl"
+                columnNames="code"
+                constraintName="pk_mdfem_undercount_reason_tl"
                 schemaName="apps"
-                tableName="dict_ubpn_types_tl"/>
+                tableName="mdfem_undercount_reason_tl"/>
     </changeSet>
 
-    <changeSet id="dict-rus-648" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>Creating unique key for table: dict_ubpn_types_tl</comment>
-        <addUniqueConstraint
-                columnNames="ubpn_type_id, lang"
-                constraintName="uk_dict_ubpn_types_tl"
-                schemaName="apps"
-                tableName="dict_ubpn_types_tl"/>
+    <changeSet id="dict-rus-692" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add not null constraint for table: mdfem_undercount_reason</comment>
+        <addNotNullConstraint columnDataType="varchar2"
+                              columnName="code"
+                              schemaName="apps"
+                              tableName="mdfem_undercount_reason"/>
     </changeSet>
--->
+
+    <changeSet id="dict-rus-693" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <comment>add not null constraint for table: mdfem_undercount_reason_tl</comment>
+        <addNotNullConstraint columnDataType="varchar2"
+                              columnName="code"
+                              schemaName="apps"
+                              tableName="mdfem_undercount_reason_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-694" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <comment>Creating unique key for table: mdfem_undercount_reason_tl</comment>
+        <addUniqueConstraint
+                columnNames="code, lang"
+                constraintName="uk_mdfem_undercount_reason_tl"
+                schemaName="apps"
+                tableName="mdfem_undercount_reason_tl"/>
+    </changeSet>
+
+   <changeSet id="dict-rus-695" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: mdfem_undercount_calc_method</comment>
+        <addPrimaryKey
+                columnNames="code"
+                constraintName="pk_mdfem_undercount_calc_method"
+                schemaName="apps"
+                tableName="mdfem_undercount_calc_method"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-696" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: mdfem_undercount_calc_method_tl</comment>
+        <addPrimaryKey
+                columnNames="code"
+                constraintName="pk_mdfem_undercount_calc_method_tl"
+                schemaName="apps"
+                tableName="mdfem_undercount_calc_method_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-697" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add not null constraint for table: mdfem_undercount_calc_method</comment>
+        <addNotNullConstraint columnDataType="varchar2"
+                              columnName="code"
+                              schemaName="apps"
+                              tableName="mdfem_undercount_calc_method"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-698" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <comment>add not null constraint for table: mdfem_undercount_calc_method_tl</comment>
+        <addNotNullConstraint columnDataType="varchar2"
+                              columnName="code"
+                              schemaName="apps"
+                              tableName="mdfem_undercount_calc_method_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-699" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <comment>Creating unique key for table: mdfem_undercount_calc_method_tl</comment>
+        <addUniqueConstraint
+                columnNames="code, lang"
+                constraintName="uk_mdfem_undercount_calc_method_tl"
+                schemaName="apps"
+                tableName="mdfem_undercount_calc_method_tl"/>
+    </changeSet>
+
 
 </databaseChangeLog>
