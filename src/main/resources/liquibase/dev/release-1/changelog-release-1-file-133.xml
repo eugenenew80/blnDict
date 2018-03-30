@@ -435,4 +435,39 @@
                               tableName="mdfem_undercount_calc_method_tl"/>
     </changeSet>
 
+    <changeSet id="dict-rus-699" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: mdfem_undercount_header to mdfem_undercount_reason</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="mdfem_undercount_header"
+                baseColumnNames="reason_code"
+                constraintName="fk_mdfem_undercount_header_2"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="mdfem_undercount_reason"
+                referencedColumnNames="code"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-700" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: mdfem_undercount_header to mdfem_undercount_calc_method</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="mdfem_undercount_header"
+                baseColumnNames="calculation_method_code"
+                constraintName="fk_mdfem_undercount_header_3"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="mdfem_undercount_calc_method"
+                referencedColumnNames="code"
+        />
+    </changeSet>
+
+
 </databaseChangeLog>
