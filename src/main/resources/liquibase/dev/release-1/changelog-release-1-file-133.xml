@@ -341,7 +341,21 @@
                     tableName="mdfem_undercount_reason"/>
     </changeSet>
 
+    <changeSet id="dict-rus-690-5" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop unique constraint in table: mdfem_undercount_reason_tl</comment>
+        <dropUniqueConstraint constraintName="uk_mdfem_undercount_reason_1"
+                              schemaName="apps"
+                              tableName="mdfem_undercount_reason"
+                              uniqueColumns="code"/>
+    </changeSet>
 
+    <changeSet id="dict-rus-690-6" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop unique constraint in table: mdfem_undercount_calc_method_tl</comment>
+        <dropUniqueConstraint constraintName="uk_mdfem_undercount_calc_method"
+                              schemaName="apps"
+                              tableName="mdfem_undercount_calc_method"
+                              uniqueColumns="code"/>
+    </changeSet>
 
     <changeSet id="dict-rus-690" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: mdfem_undercount_reason</comment>
