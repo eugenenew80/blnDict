@@ -313,7 +313,37 @@
         <rollback/>
     </changeSet>
 
-   <changeSet id="dict-rus-690" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-690-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop Primary Key in table: mdfem_undercount_calc_method</comment>
+        <dropPrimaryKey constraintName="pk_mdfem_undercount_calc_method"
+                        schemaName="apps"
+                        tableName="mdfem_undercount_calc_method"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-690-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop Primary Key in table: mdfem_undercount_reason</comment>
+        <dropPrimaryKey constraintName="pk_mdfem_undercount_reason"
+                        schemaName="apps"
+                        tableName="mdfem_undercount_reason"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-690-3" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from mdfem_undercount_calc_method</comment>
+        <dropColumn columnName="id"
+                    schemaName="apps"
+                    tableName="mdfem_undercount_calc_method"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-690-4" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from mdfem_undercount_reason</comment>
+        <dropColumn columnName="id"
+                    schemaName="apps"
+                    tableName="mdfem_undercount_reason"/>
+    </changeSet>
+
+
+
+    <changeSet id="dict-rus-690" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: mdfem_undercount_reason</comment>
         <addPrimaryKey
                 columnNames="code"
