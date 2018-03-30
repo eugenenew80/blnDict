@@ -387,7 +387,7 @@
     <changeSet id="dict-rus-691" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: mdfem_undercount_reason_tl</comment>
         <addPrimaryKey
-                columnNames="code"
+                columnNames="code,lang"
                 constraintName="pk_mdfem_undercount_reason_tl_1"
                 schemaName="apps"
                 tableName="mdfem_undercount_reason_tl"/>
@@ -399,15 +399,6 @@
                               columnName="code"
                               schemaName="apps"
                               tableName="mdfem_undercount_reason"/>
-    </changeSet>
-
-    <changeSet id="dict-rus-694" logicalFilePath="path-independent" author="ruslan" context="dev">
-    <comment>Creating unique key for table: mdfem_undercount_reason_tl</comment>
-        <addUniqueConstraint
-                columnNames="code, lang"
-                constraintName="uk_mdfem_undercount_reason_tl"
-                schemaName="apps"
-                tableName="mdfem_undercount_reason_tl"/>
     </changeSet>
 
    <changeSet id="dict-rus-695" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -422,7 +413,7 @@
     <changeSet id="dict-rus-696" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: mdfem_undercount_calc_method_tl</comment>
         <addPrimaryKey
-                columnNames="code"
+                columnNames="code,lang"
                 constraintName="pk_mdfem_undercount_calc_method_tl"
                 schemaName="apps"
                 tableName="mdfem_undercount_calc_method_tl"/>
@@ -443,15 +434,5 @@
                               schemaName="apps"
                               tableName="mdfem_undercount_calc_method_tl"/>
     </changeSet>
-
-    <changeSet id="dict-rus-699" logicalFilePath="path-independent" author="ruslan" context="dev">
-    <comment>Creating unique key for table: mdfem_undercount_calc_method_tl</comment>
-        <addUniqueConstraint
-                columnNames="code, lang"
-                constraintName="uk_mdfem_undercount_calc_method_tl"
-                schemaName="apps"
-                tableName="mdfem_undercount_calc_method_tl"/>
-    </changeSet>
-
 
 </databaseChangeLog>
