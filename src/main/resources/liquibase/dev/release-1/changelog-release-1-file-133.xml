@@ -388,7 +388,7 @@
         <comment>Creating primary key for table: mdfem_undercount_reason_tl</comment>
         <addPrimaryKey
                 columnNames="code"
-                constraintName="pk_mdfem_undercount_reason_tl"
+                constraintName="pk_mdfem_undercount_reason_tl_1"
                 schemaName="apps"
                 tableName="mdfem_undercount_reason_tl"/>
     </changeSet>
