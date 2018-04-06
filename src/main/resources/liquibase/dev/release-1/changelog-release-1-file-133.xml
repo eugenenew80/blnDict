@@ -564,18 +564,20 @@
         <rollback/>
     </changeSet>
 
-    <changeSet id="dict-rus-714" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>drop column from dict_post_addresses</comment>
-        <dropColumn columnName="house_number"
-                    schemaName="apps"
-                    tableName="dict_post_addresses_tl"/>
+    <changeSet id="dict-rus-714" logicalFilePath="path-independent" author="ruslan">
+        <comment>add column in dict_post_addresses_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="dict_post_addresses_tl">
+            <column name="building_number" type="varchar2(20)" remarks="Дом/строение.корпус"/>
+        </addColumn>
+        <rollback/>
     </changeSet>
 
     <changeSet id="dict-rus-715" logicalFilePath="path-independent" author="ruslan">
         <comment>add column in dict_post_addresses_tl</comment>
         <addColumn schemaName="apps"
                    tableName="dict_post_addresses_tl">
-            <column name="building_number" type="varchar2(20)" remarks="Дом/строение.корпус"/>
+            <column name="office_number" type="varchar2(10)" remarks="Квартира/офис"/>
         </addColumn>
         <rollback/>
     </changeSet>
