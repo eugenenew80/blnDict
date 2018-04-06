@@ -595,4 +595,19 @@
                                schemaName="apps"
                                tableName="dict_post_addresses_tl"/>
     </changeSet>
+
+    <changeSet id="dict-rus-718" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_post_addresses_tl</comment>
+        <dropColumn columnName="office_number"
+                    schemaName="apps"
+                    tableName="dict_post_addresses_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-719" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_post_addresses_tl</comment>
+        <dropColumn columnName="house_number"
+                    schemaName="apps"
+                    tableName="dict_post_addresses_tl"/>
+    </changeSet>
+
 </databaseChangeLog>
