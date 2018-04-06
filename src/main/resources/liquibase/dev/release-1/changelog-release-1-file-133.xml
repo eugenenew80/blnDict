@@ -484,24 +484,17 @@
     </changeSet>
 
     <changeSet id="dict-rus-703" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>rename column from dict_post_addresses</comment>
-        <renameColumn columnDataType="varchar2(10)"
-                      newColumnName="house_number"
-                      oldColumnName="house_number"
-                      remarks="Дом/строение.корпус"
-                      schemaName="apps"
-                      tableName="dict_post_addresses"/>
+        <comment>rename column comment from dict_post_addresses</comment>
+        <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+            COMMENT ON COLUMN apps.dict_post_addresses.house_number IS 'Дом/строение.корпус';
+        </sql>
     </changeSet>
 
     <changeSet id="dict-rus-704" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>rename column from dict_post_addresses</comment>
-        <renameColumn columnDataType="varchar2(10)"
-                      newColumnName="office_number"
-                      oldColumnName="office_number"
-                      remarks="Квартира/офис"
-                      schemaName="apps"
-                      tableName="dict_post_addresses"/>
+        <comment>rename column comment from dict_post_addresses</comment>
+        <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+            COMMENT ON COLUMN apps.dict_post_addresses.office_number IS 'Квартира/офис';
+        </sql>
     </changeSet>
-
 
 </databaseChangeLog>
