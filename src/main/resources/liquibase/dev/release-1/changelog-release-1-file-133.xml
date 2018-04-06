@@ -505,4 +505,12 @@
         <rollback/>
     </changeSet>
 
+    <changeSet id="dict-rus-706" logicalFilePath="path-independent" author="ruslan">
+        <addColumn schemaName="apps"
+                   tableName="dict_post_addresses_tl">
+            <column name="district" type="varchar2(150)" remarks="Район"/>
+        </addColumn>
+        <rollback/>
+    </changeSet>
+
 </databaseChangeLog>
