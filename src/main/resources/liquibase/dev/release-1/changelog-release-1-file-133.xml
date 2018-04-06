@@ -513,4 +513,84 @@
         <rollback/>
     </changeSet>
 
+    <changeSet id="dict-rus-707" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_post_addresses</comment>
+        <dropColumn columnName="locality"
+                    schemaName="apps"
+                    tableName="dict_post_addresses"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-708" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_post_addresses</comment>
+        <dropColumn columnName="street"
+                    schemaName="apps"
+                    tableName="dict_post_addresses"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-709" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_post_addresses</comment>
+        <dropColumn columnName="object_name"
+                    schemaName="apps"
+                    tableName="dict_post_addresses"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-710" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_post_addresses</comment>
+        <dropColumn columnName="name"
+                    schemaName="apps"
+                    tableName="dict_post_addresses"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-711" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_post_addresses</comment>
+        <dropColumn columnName="district"
+                    schemaName="apps"
+                    tableName="dict_post_addresses"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-712" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_post_addresses_tl</comment>
+        <dropColumn columnName="name"
+                    schemaName="apps"
+                    tableName="dict_post_addresses_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-713" logicalFilePath="path-independent" author="ruslan">
+        <comment>add column in dict_post_addresses_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="dict_post_addresses_tl">
+            <column name="full_address" type="varchar2(300)" remarks="Полный адрес"/>
+        </addColumn>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-714" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_post_addresses</comment>
+        <dropColumn columnName="house_number"
+                    schemaName="apps"
+                    tableName="dict_post_addresses_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-715" logicalFilePath="path-independent" author="ruslan">
+        <comment>add column in dict_post_addresses_tl</comment>
+        <addColumn schemaName="apps"
+                   tableName="dict_post_addresses_tl">
+            <column name="building_number" type="varchar2(20)" remarks="Дом/строение.корпус"/>
+        </addColumn>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="dict-rus-716" logicalFilePath="path-independent" author="ruslan">
+        <dropNotNullConstraint columnDataType="varchar2(100)"
+                               columnName="locality"
+                               schemaName="apps"
+                               tableName="dict_post_addresses_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-717" logicalFilePath="path-independent" author="ruslan">
+        <dropNotNullConstraint columnDataType="varchar2(100)"
+                               columnName="street"
+                               schemaName="apps"
+                               tableName="dict_post_addresses_tl"/>
+    </changeSet>
 </databaseChangeLog>
