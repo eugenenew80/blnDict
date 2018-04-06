@@ -469,5 +469,39 @@
         />
     </changeSet>
 
+    <changeSet id="dict-rus-701" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_post_addresses</comment>
+        <dropColumn columnName="building_number"
+                    schemaName="apps"
+                    tableName="dict_post_addresses"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-702" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from dict_post_addresses</comment>
+        <dropColumn columnName="apartment"
+                    schemaName="apps"
+                    tableName="dict_post_addresses"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-703" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>rename column from dict_post_addresses</comment>
+        <renameColumn columnDataType="varchar2(10)"
+                      newColumnName="house_number"
+                      oldColumnName="house_number"
+                      remarks="Дом/строение.корпус"
+                      schemaName="apps"
+                      tableName="dict_post_addresses"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-704" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>rename column from dict_post_addresses</comment>
+        <renameColumn columnDataType="varchar2(10)"
+                      newColumnName="office_number"
+                      oldColumnName="office_number"
+                      remarks="Квартира/офис"
+                      schemaName="apps"
+                      tableName="dict_post_addresses"/>
+    </changeSet>
+
 
 </databaseChangeLog>
