@@ -177,7 +177,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-791" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-792" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_plan_configuration to dict_gjs</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
