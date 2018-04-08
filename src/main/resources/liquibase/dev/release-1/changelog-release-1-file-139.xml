@@ -60,7 +60,7 @@
 
 
     <changeSet id="dict-rus-759" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>Creating foreign constraint: dict_tariff_plan_company_use to dict_tariffs</comment>
+        <comment>Creating foreign constraint: dict_tariff_plan_company_use to dict_tariff_plans</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
                 baseTableName="dict_tariff_plan_company_use"
@@ -71,7 +71,7 @@
                 onDelete="RESTRICT"
                 onUpdate="RESTRICT"
                 referencedTableSchemaName="apps"
-                referencedTableName="dict_tariffs"
+                referencedTableName="dict_tariff_plans"
                 referencedColumnNames="id"
         />
     </changeSet>
