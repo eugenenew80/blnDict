@@ -219,7 +219,7 @@
                 onUpdate="RESTRICT"
                 referencedTableSchemaName="apps"
                 referencedTableName="dict_tariffs"
-                referencedColumnNames="id"
+                referencedColumnNames="code"
         />
     </changeSet>
 
