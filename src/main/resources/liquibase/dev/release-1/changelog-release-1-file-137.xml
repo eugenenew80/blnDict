@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-737" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-742" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating table: dict_tariff_company_use</comment>
         <createTable tableName="dict_tariff_company_use" schemaName="apps" remarks="Тариф применяется в компаниях">
             <column name="id" type="number" remarks="Ид">
@@ -39,7 +39,7 @@
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-rus-738" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-743" logicalFilePath="path-independent" author="ruslan" context="dev">
 	    <comment>Creating primary key for table: dict_tariff_company_use</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
@@ -48,7 +48,7 @@
 	            tableName="dict_tariff_company_use"/>
 	</changeSet>
 
-    <changeSet id="dict-rus-739" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-744" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating sequence for table: dict_tariff_company_use</comment>
         <createSequence
                 incrementBy="1"
@@ -59,7 +59,7 @@
 
 
 
-    <changeSet id="dict-rus-740" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-745" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_company_use to dict_tariffs</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
@@ -76,7 +76,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-741" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-746" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_company_use to dict_business_partners</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"

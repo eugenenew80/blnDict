@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-755" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-761" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating table: dict_tariff_plan_configuration</comment>
         <createTable tableName="dict_tariff_plan_configuration" schemaName="apps" remarks="Тарифный план">
             <column name="id" type="number" remarks="Ид">
@@ -71,7 +71,7 @@
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-rus-756" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-762" logicalFilePath="path-independent" author="ruslan" context="dev">
 	    <comment>Creating primary key for table: dict_tariff_plan_configuration</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
@@ -80,7 +80,7 @@
 	            tableName="dict_tariff_plan_configuration"/>
 	</changeSet>
 
-    <changeSet id="dict-rus-757" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-763" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating sequence for table: dict_tariff_plan_configuration</comment>
         <createSequence
                 incrementBy="1"
@@ -90,7 +90,7 @@
     </changeSet>
 
 
-    <changeSet id="dict-rus-758" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-764" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating table: dict_tariff_plan_configuration_tl</comment>
         <createTable tableName="dict_tariff_plan_configuration_tl" schemaName="apps" remarks="Тарфный план перевод">
             <column name="id" type="number" remarks="Ид">
@@ -127,7 +127,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="dict-rus-759" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-765" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: dict_tariff_plan_configuration_tl</comment>
         <addPrimaryKey
                 columnNames="id"
@@ -136,7 +136,7 @@
                 tableName="dict_tariff_plan_configuration_tl"/>
     </changeSet>
 
-    <changeSet id="dict-rus-760" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-766" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating sequence for table: dict_tariff_plan_configuration_tl</comment>
         <createSequence
                 incrementBy="1"
@@ -146,7 +146,7 @@
     </changeSet>
 
 
-    <changeSet id="dict-rus-761" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-767" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating unique key for table: dict_tariff_plan_configuration_tl</comment>
         <addUniqueConstraint
                 columnNames="tariff_plan_configuration_id, lang"
@@ -155,7 +155,7 @@
                 tableName="dict_tariff_plan_configuration_tl"/>
     </changeSet>
 
-    <changeSet id="dict-rus-762" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-768" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_plan_configuration to dict_tariff_plan_configuration_tl</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
@@ -172,7 +172,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-763" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-769" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_plan_configuration to dict_tariff_plans</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
@@ -189,7 +189,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-764" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-770" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_plan_configuration to dict_tariffs</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
@@ -206,7 +206,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-765" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-771" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_plan_configuration to dict_tariffs</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
@@ -223,7 +223,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-766" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-772" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_plan_configuration to dict_gjs_type</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
@@ -240,7 +240,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-767" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-773" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_plan_configuration to currency_codes</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
@@ -257,7 +257,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-768" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-774" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_plan_configuration to dict_units</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"

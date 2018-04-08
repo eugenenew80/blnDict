@@ -86,7 +86,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="dict-rus-735" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-740" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: dict_tariffs_tl</comment>
         <addPrimaryKey
                 columnNames="code,lang"
@@ -95,7 +95,7 @@
                 tableName="dict_tariffs_tl"/>
     </changeSet>
 
-    <changeSet id="dict-rus-736" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-741" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariffs to dict_tariffs_tl</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"

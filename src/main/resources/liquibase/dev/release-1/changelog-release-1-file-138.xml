@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="dict-rus-742" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-748" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating table: dict_tariff_plans</comment>
         <createTable tableName="dict_tariff_plans" schemaName="apps" remarks="Тарифный план">
             <column name="id" type="number" remarks="Ид">
@@ -39,7 +39,7 @@
         </createTable>
     </changeSet>
 
-	<changeSet id="dict-rus-743" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="dict-rus-749" logicalFilePath="path-independent" author="ruslan" context="dev">
 	    <comment>Creating primary key for table: dict_tariff_plans</comment>
 	    <addPrimaryKey 
 	            columnNames="id"
@@ -48,7 +48,7 @@
 	            tableName="dict_tariff_plans"/>
 	</changeSet>
 
-    <changeSet id="dict-rus-744" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-750" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating sequence for table: dict_tariff_plans</comment>
         <createSequence
                 incrementBy="1"
@@ -58,7 +58,7 @@
     </changeSet>
 
 
-    <changeSet id="dict-rus-745" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-751" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating table: dict_tariff_plans_tl</comment>
         <createTable tableName="dict_tariff_plans_tl" schemaName="apps" remarks="Тарфный план перевод">
             <column name="id" type="number" remarks="Ид">
@@ -99,7 +99,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="dict-rus-746" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-752" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: dict_tariff_plans_tl</comment>
         <addPrimaryKey
                 columnNames="id"
@@ -108,7 +108,7 @@
                 tableName="dict_tariff_plans_tl"/>
     </changeSet>
 
-    <changeSet id="dict-rus-747" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-753" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating sequence for table: dict_tariff_plans_tl</comment>
         <createSequence
                 incrementBy="1"
@@ -118,7 +118,7 @@
     </changeSet>
 
 
-    <changeSet id="dict-rus-748" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-754" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating unique key for table: dict_tariff_plans_tl</comment>
         <addUniqueConstraint
                 columnNames="tariff_plan_id, lang"
@@ -127,7 +127,7 @@
                 tableName="dict_tariff_plans_tl"/>
     </changeSet>
 
-    <changeSet id="dict-rus-749" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-755" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_plans to dict_tariff_plans_tl</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
