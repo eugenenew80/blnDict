@@ -257,17 +257,17 @@
     </changeSet>
 
     <changeSet id="dict-rus-776" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>add column for table: dict_tariff_plans_company_use</comment>
+        <comment>add column for table: dict_tariff_plan_company_use</comment>
         <addColumn schemaName="apps"
-                   tableName="dict_tariff_plans_company_use">
+                   tableName="dict_tariff_plan_company_use">
             <column name="start_date" type="date" remarks="Дата действия с"/>
         </addColumn>
     </changeSet>
 
     <changeSet id="dict-rus-777" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>add column for table: dict_tariff_plans_company_use</comment>
+        <comment>add column for table: dict_tariff_plan_company_use</comment>
         <addColumn schemaName="apps"
-                   tableName="dict_tariff_plans_company_use">
+                   tableName="dict_tariff_plan_company_use">
             <column name="end_date" type="date" remarks="Дата действия по"/>
         </addColumn>
     </changeSet>
