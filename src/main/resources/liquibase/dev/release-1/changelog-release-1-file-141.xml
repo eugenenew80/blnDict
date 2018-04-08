@@ -156,8 +156,8 @@
         <comment>Creating foreign constraint: dict_gjs to dict_tariff_plans</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
-                baseTableName="gjs_type_code"
-                baseColumnNames="tariff_plan_id"
+                baseTableName="dict_gjs"
+                baseColumnNames="gjs_type_code"
                 constraintName="fk_dict_gjs_1"
                 deferrable="true"
                 initiallyDeferred="true"
@@ -165,6 +165,23 @@
                 onUpdate="RESTRICT"
                 referencedTableSchemaName="apps"
                 referencedTableName="dict_gjs_type"
+                referencedColumnNames="code"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-791" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_tariff_plan_configuration to dict_gjs</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_tariff_plan_configuration"
+                baseColumnNames="gjs_id"
+                constraintName="fk_dict_tariff_plan_configuration_4"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_gjs"
                 referencedColumnNames="id"
         />
     </changeSet>
