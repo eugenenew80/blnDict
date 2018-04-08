@@ -236,7 +236,7 @@
                 onUpdate="RESTRICT"
                 referencedTableSchemaName="apps"
                 referencedTableName="dict_gjs_type"
-                referencedColumnNames="id"
+                referencedColumnNames="code"
         />
     </changeSet>
 
@@ -270,7 +270,7 @@
                 onUpdate="RESTRICT"
                 referencedTableSchemaName="apps"
                 referencedTableName="dict_units"
-                referencedColumnNames="code"
+                referencedColumnNames="id"
         />
     </changeSet>
 
