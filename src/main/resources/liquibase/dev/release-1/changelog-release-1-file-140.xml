@@ -285,7 +285,7 @@
         <comment>change default column for table: dict_tariffs</comment>
         <addDefaultValue columnDataType="date"
                             columnName="end_date"
-                            defaultValue="TO_DATE('9999-12-31', 'yyyy-mm-dd')"
+                            defaultValueComputed="TO_DATE('9999-12-31', 'yyyy-mm-dd')"
                             schemaName="apps"
                             tableName="dict_tariffs"/>
     </changeSet>
@@ -294,7 +294,7 @@
         <comment>change default value column for table: dict_tariff_plans</comment>
         <addDefaultValue columnDataType="date"
                             columnName="start_date"
-                            defaultValue="CURRENT_DATE"
+                            defaultValueComputed="CURRENT_DATE"
                             schemaName="apps"
                             tableName="dict_tariff_plans"/>
     </changeSet>
@@ -303,7 +303,7 @@
         <comment>change default value column for table: dict_tariff_plans</comment>
         <addDefaultValue columnDataType="date"
                             columnName="end_date"
-                            defaultValue="TO_DATE('9999-12-31', 'yyyy-mm-dd')"
+                            defaultValueComputed="TO_DATE('9999-12-31', 'yyyy-mm-dd')"
                             schemaName="apps"
                             tableName="dict_tariff_plans"/>
     </changeSet>
