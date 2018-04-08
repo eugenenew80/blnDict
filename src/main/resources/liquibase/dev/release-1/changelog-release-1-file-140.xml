@@ -212,7 +212,7 @@
                 baseTableSchemaName="apps"
                 baseTableName="dict_tariff_plan_configuration"
                 baseColumnNames="tariff_code"
-                constraintName="fk_dict_tariff_plan_configuration_3"
+                constraintName="fk_dict_tariff_plan_configuration_4"
                 deferrable="true"
                 initiallyDeferred="true"
                 onDelete="RESTRICT"
