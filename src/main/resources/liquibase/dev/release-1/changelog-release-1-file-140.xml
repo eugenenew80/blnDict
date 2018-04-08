@@ -202,7 +202,7 @@
                 onUpdate="RESTRICT"
                 referencedTableSchemaName="apps"
                 referencedTableName="dict_tariffs"
-                referencedColumnNames="id"
+                referencedColumnNames="code"
         />
     </changeSet>
 
@@ -305,6 +305,43 @@
             <column name="end_date" type="date" remarks="Дата действия по"/>
         </addColumn>
     </changeSet>
+
+    <changeSet id="dict-rus-779" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>change default column for table: dict_tariffs</comment>
+        <addDefaultValue columnDataType="date"
+                            columnName="start_date"
+                            defaultValue="CURRENT_DATE"
+                            schemaName="apps"
+                            tableName="dict_tariffs"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-780" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>change default column for table: dict_tariffs</comment>
+        <addDefaultValue columnDataType="date"
+                            columnName="end_date"
+                            defaultValue="TO_DATE('9999-12-31', 'yyyy-mm-dd')"
+                            schemaName="apps"
+                            tableName="dict_tariffs"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-781" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>change default value column for table: dict_tariff_plans</comment>
+        <addDefaultValue columnDataType="date"
+                            columnName="start_date"
+                            defaultValue="CURRENT_DATE"
+                            schemaName="apps"
+                            tableName="dict_tariff_plans"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-782" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>change default value column for table: dict_tariff_plans</comment>
+        <addDefaultValue columnDataType="date"
+                            columnName="end_date"
+                            defaultValue="TO_DATE('9999-12-31', 'yyyy-mm-dd')"
+                            schemaName="apps"
+                            tableName="dict_tariff_plans"/>
+    </changeSet>
+
 
 
 </databaseChangeLog>
