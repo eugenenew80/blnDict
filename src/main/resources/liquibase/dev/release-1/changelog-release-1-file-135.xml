@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-rus-732" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_gjs_type</comment>
+        <createTable tableName="dict_gjs_type" schemaName="apps" remarks="Справочник видов ТРУ">
+
+            <column name="code" type="varchar2(30)" remarks="Код ТРУ">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-rus-733" logicalFilePath="path-independent" author="ruslan" context="dev">
+	    <comment>Creating primary key for table: dict_gjs_type</comment>
+	    <addPrimaryKey 
+	            columnNames="code"
+	            constraintName="pk_dict_gjs_type"
+	            schemaName="apps"
+	            tableName="dict_gjs_type"/>
+	</changeSet>
+
+    <changeSet id="dict-rus-734" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_gjs_type_tl</comment>
+        <createTable tableName="dict_gjs_type_tl" schemaName="apps" remarks="Справочник Значение тарифоф">
+            <column name="code" type="varchar2(30)" remarks="Код ТРУ">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar2(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar2(100)" remarks="Наименование">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-rus-735" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: dict_gjs_type_tl</comment>
+        <addPrimaryKey
+                columnNames="code,lang"
+                constraintName="pk_dict_gjs_type_tl"
+                schemaName="apps"
+                tableName="dict_gjs_type_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-736" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_gjs_type to dict_gjs_type_tl</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_gjs_type_tl"
+                baseColumnNames="code"
+                constraintName="fk_dict_gjs_type_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_gjs_type"
+                referencedColumnNames="code"
+        />
+    </changeSet>
+</databaseChangeLog>

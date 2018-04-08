@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-rus-737" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_tariffs</comment>
+        <createTable tableName="dict_tariffs" schemaName="apps" remarks="Справочник тарифоф">
+
+            <column name="code" type="varchar2(30)" remarks="Код">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="start_date" type="date" remarks="Действует с">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="end_date" type="date" remarks="Действует по">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-rus-738" logicalFilePath="path-independent" author="ruslan" context="dev">
+	    <comment>Creating primary key for table: dict_tariffs</comment>
+	    <addPrimaryKey 
+	            columnNames="code"
+	            constraintName="pk_dict_tariffs"
+	            schemaName="apps"
+	            tableName="dict_tariffs"/>
+	</changeSet>
+
+    <changeSet id="dict-rus-739" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_tariffs_tl</comment>
+        <createTable tableName="dict_tariffs_tl" schemaName="apps" remarks="Справочник Значение тарифоф">
+            <column name="code" type="varchar2(30)" remarks="Код ТРУ">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar2(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar2(10)" remarks="Наименование">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="description" type="varchar2(10)" remarks="Описание">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-rus-735" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: dict_tariffs_tl</comment>
+        <addPrimaryKey
+                columnNames="code,lang"
+                constraintName="pk_dict_tariffs_tl"
+                schemaName="apps"
+                tableName="dict_tariffs_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-736" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_tariffs to dict_tariffs_tl</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_tariffs_tl"
+                baseColumnNames="code"
+                constraintName="fk_dict_tariffs_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_tariffs"
+                referencedColumnNames="code"
+        />
+    </changeSet>
+</databaseChangeLog>

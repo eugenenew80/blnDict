@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-rus-722" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_tariff_values</comment>
+        <createTable tableName="dict_tariff_values" schemaName="apps" remarks="Справочник Значение тарифоф">
+            <column name="id" type="number" remarks="Ид">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="code" type="varchar2(30)" remarks="Код тарифа">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="start_date" type="TIMESTAMP" remarks="действует с">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="end_date" type="TIMESTAMP" remarks="действует  по">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="rate" type="number(10,2)" remarks="цена">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="currency_code" type="varchar2(3)" remarks="код валюты">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="unit_id" type="number" remarks="еденица измерения">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="is_include_vat" type="number" remarks="включает НДС(Да/Нет)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="doc_reference" type="varchar2(300)" remarks="Наименование документа">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-rus-723" logicalFilePath="path-independent" author="ruslan" context="dev">
+	    <comment>Creating primary key for table: dict_tariff_values</comment>
+	    <addPrimaryKey 
+	            columnNames="id"
+	            constraintName="pk_dict_tariff_values"
+	            schemaName="apps"
+	            tableName="dict_tariff_values"/>
+	</changeSet>
+
+    <changeSet id="dict-rus-724" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: dict_tariff_values</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="dict_tariff_values_s"
+                startValue="1"/>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-725" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_tariff_values_tl</comment>
+        <createTable tableName="dict_tariff_values_tl" schemaName="apps" remarks="Справочник Значение тарифоф">
+            <column name="id" type="number" remarks="Ид">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="tariff_value_id" type="number" remarks="Ссылка на родительскую запись">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar2(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="doc_reference" type="varchar2(300)" remarks="Наименование документа">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="dict-rus-726" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: dict_tariff_values_tl</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_dict_tariff_values_tl"
+                schemaName="apps"
+                tableName="dict_tariff_values_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-727" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: dict_tariff_values_tl</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="dict_tariff_values_tl_s"
+                startValue="1"/>
+    </changeSet>
+
+
+    <changeSet id="dict-rus-728" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating unique key for table: dict_tariff_values_tl</comment>
+        <addUniqueConstraint
+                columnNames="tariff_value_id, lang"
+                constraintName="uk_dict_tariff_values_tl"
+                schemaName="apps"
+                tableName="dict_tariff_values_tl"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-729" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_tariff_values to dict_tariff_values_tl</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_tariff_values_tl"
+                baseColumnNames="tariff_value_id"
+                constraintName="fk_dict_tariff_values_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_tariff_values"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-730" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_tariff_values to currency_code</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_tariff_values"
+                baseColumnNames="currency_code"
+                constraintName="fk_dict_tariff_values_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="currency_code"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-731" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_tariff_values to dict_units</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_tariff_values"
+                baseColumnNames="unit_id"
+                constraintName="fk_dict_tariff_values_2"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_units"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="dict-rus-750" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_tariff_plan_company_use</comment>
+        <createTable tableName="dict_tariff_plan_company_use" schemaName="apps" remarks="Тариф применяется в компаниях">
+            <column name="id" type="number" remarks="Ид">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="tariff_plan_id" type="number" remarks="ID тарифного плана">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="bp_id" type="number" remarks="ID бизнес партнера продавца ТРУ">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="dict-rus-751" logicalFilePath="path-independent" author="ruslan" context="dev">
+	    <comment>Creating primary key for table: dict_tariff_plan_company_use</comment>
+	    <addPrimaryKey 
+	            columnNames="id"
+	            constraintName="pk_dict_tariff_plan_company_use"
+	            schemaName="apps"
+	            tableName="dict_tariff_plan_company_use"/>
+	</changeSet>
+
+    <changeSet id="dict-rus-752" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: dict_tariff_plan_company_use</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="dict_tariff_plan_company_use_s"
+                startValue="1"/>
+    </changeSet>
+
+
+
+    <changeSet id="dict-rus-753" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_tariff_plan_company_use to dict_tariffs</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_tariff_plan_company_use"
+                baseColumnNames="tariff_plan_id"
+                constraintName="fk_dict_tariff_plan_company_use_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_tariffs"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="dict-rus-754" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: dict_tariff_plan_company_use to dict_business_partners</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_tariff_plan_company_use"
+                baseColumnNames="bp_id"
+                constraintName="fk_dict_tariff_plan_company_use_2"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_business_partners"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+</databaseChangeLog>
