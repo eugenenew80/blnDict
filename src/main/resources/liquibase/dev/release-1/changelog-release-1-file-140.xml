@@ -206,25 +206,7 @@
         />
     </changeSet>
 
-
     <changeSet id="dict-rus-772" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>Creating foreign constraint: dict_tariff_plan_configuration to dict_gjs_type</comment>
-        <addForeignKeyConstraint
-                baseTableSchemaName="apps"
-                baseTableName="dict_tariff_plan_configuration"
-                baseColumnNames="gjs_id"
-                constraintName="fk_dict_tariff_plan_configuration_4"
-                deferrable="true"
-                initiallyDeferred="true"
-                onDelete="RESTRICT"
-                onUpdate="RESTRICT"
-                referencedTableSchemaName="apps"
-                referencedTableName="dict_gjs_type"
-                referencedColumnNames="id"
-        />
-    </changeSet>
-
-    <changeSet id="dict-rus-773" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_plan_configuration to currency_codes</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
@@ -241,7 +223,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-774" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-773" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_tariff_plan_configuration to dict_units</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
@@ -258,7 +240,7 @@
         />
     </changeSet>
 
-    <changeSet id="dict-rus-775" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-774" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>add column for table: dict_tariff_company_use</comment>
         <addColumn schemaName="apps"
                    tableName="dict_tariff_company_use">
@@ -266,11 +248,19 @@
         </addColumn>
     </changeSet>
 
-    <changeSet id="dict-rus-776" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-775" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>add column for table: dict_tariff_company_use</comment>
         <addColumn schemaName="apps"
                    tableName="dict_tariff_company_use">
             <column name="end_date" type="date" remarks="Дата действия по"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="dict-rus-776" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column for table: dict_tariff_plans_company_use</comment>
+        <addColumn schemaName="apps"
+                   tableName="dict_tariff_plans_company_use">
+            <column name="start_date" type="date" remarks="Дата действия с"/>
         </addColumn>
     </changeSet>
 
@@ -278,19 +268,11 @@
         <comment>add column for table: dict_tariff_plans_company_use</comment>
         <addColumn schemaName="apps"
                    tableName="dict_tariff_plans_company_use">
-            <column name="start_date" type="date" remarks="Дата действия с"/>
-        </addColumn>
-    </changeSet>
-
-    <changeSet id="dict-rus-778" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>add column for table: dict_tariff_plans_company_use</comment>
-        <addColumn schemaName="apps"
-                   tableName="dict_tariff_plans_company_use">
             <column name="end_date" type="date" remarks="Дата действия по"/>
         </addColumn>
     </changeSet>
 
-    <changeSet id="dict-rus-779" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-778" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>change default column for table: dict_tariffs</comment>
         <addDefaultValue columnDataType="date"
                             columnName="start_date"
@@ -299,7 +281,7 @@
                             tableName="dict_tariffs"/>
     </changeSet>
 
-    <changeSet id="dict-rus-780" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-779" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>change default column for table: dict_tariffs</comment>
         <addDefaultValue columnDataType="date"
                             columnName="end_date"
@@ -308,7 +290,7 @@
                             tableName="dict_tariffs"/>
     </changeSet>
 
-    <changeSet id="dict-rus-781" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-780" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>change default value column for table: dict_tariff_plans</comment>
         <addDefaultValue columnDataType="date"
                             columnName="start_date"
@@ -317,7 +299,7 @@
                             tableName="dict_tariff_plans"/>
     </changeSet>
 
-    <changeSet id="dict-rus-782" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="dict-rus-781" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>change default value column for table: dict_tariff_plans</comment>
         <addDefaultValue columnDataType="date"
                             columnName="end_date"
