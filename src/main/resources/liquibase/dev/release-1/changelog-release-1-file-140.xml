@@ -276,7 +276,7 @@
         <comment>change default column for table: dict_tariffs</comment>
         <addDefaultValue columnDataType="date"
                             columnName="start_date"
-                            defaultValue="CURRENT_DATE"
+                            defaultValueComputed="CURRENT_DATE"
                             schemaName="apps"
                             tableName="dict_tariffs"/>
     </changeSet>
