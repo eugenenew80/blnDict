@@ -153,6 +153,14 @@
     </changeSet>
 
     <changeSet id="dict-rus-790" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>change data type: gjs_type_code</comment>
+        <modifyDataType columnName="gjs_type_code"
+                        newDataType="varchar2(30)"
+                        schemaName="apps"
+                        tableName="dict_gjs"/>
+    </changeSet>
+
+    <changeSet id="dict-rus-791" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: dict_gjs to dict_tariff_plans</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"
