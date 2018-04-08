@@ -176,8 +176,8 @@
                 onDelete="RESTRICT"
                 onUpdate="RESTRICT"
                 referencedTableSchemaName="apps"
-                referencedTableName="currency_code"
-                referencedColumnNames="id"
+                referencedTableName="currency_codes"
+                referencedColumnNames="code"
         />
     </changeSet>
 
